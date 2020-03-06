@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Blob_binding">
+	<Bindings>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.Area" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemArea" attribute="node" />
+		</Binding>		
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.ModelNumber" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemModel" attribute="value" />
+		</Binding>	
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.PositionX" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemPosX" attribute="node" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.PositionY" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemPosY" attribute="node" />
+		</Binding>	
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.MeanGrayValue" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemGray" attribute="value" />
+		</Binding>				
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.Clipped" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemClipped" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.RegionalFeature" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobRegionalFeatures" attribute="value" />
+		</Binding>				
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visEnableCommand" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobRegionalFeatures" attribute="enable" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visTableNo" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="ItemNo" attribute="node" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.Orientation" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemOrientation" attribute="node" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.Length" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemLength" attribute="node" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.Width" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemWidth" attribute="node" />
+		</Binding>
+	</Bindings>
+</BindingsSet>

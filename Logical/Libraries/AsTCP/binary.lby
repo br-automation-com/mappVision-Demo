@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.0.0?>
+<Library xmlns="http://br-automation.co.at/AS/Library" Description="This library contains FBKs for exchanging data (data stream) via stream sockets (TCP).">
+  <Files>
+    <File>AsTCP.fun</File>
+    <File>AsTCP.typ</File>
+    <File>AsTCP.var</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="runtime" />
+  </Dependencies>
+</Library>

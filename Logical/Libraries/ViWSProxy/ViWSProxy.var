@@ -1,0 +1,12 @@
+(********************************************************************
+ * COPYRIGHT (C) BERNECKER + RAINER, AUSTRIA, A-5142 EGGELSBERG
+ ********************************************************************
+ * Library: ViWSProxy
+ * File:	ViWSProxy.var
+ ********************************************************************
+ * Declaration of constants for ViWSProxy-library; Ie. status-codes
+ ********************************************************************)
+
+VAR CONSTANT
+
+END_VAR

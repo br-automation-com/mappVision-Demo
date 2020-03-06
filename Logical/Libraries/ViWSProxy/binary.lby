@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.7.2.98?>
+<Library Version="5.09.5" SubType="binary" Description="[mapp Vision] Websocket Proxy library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File>ViWSProxy.fun</File>
+    <File>ViWSProxy.typ</File>
+    <File>ViWSProxy.var</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="AsBrStr" />
+    <Dependency ObjectName="astime" />
+    <Dependency ObjectName="ArEventLog" />
+    <Dependency ObjectName="sys_lib" />
+  </Dependencies>
+</Library>

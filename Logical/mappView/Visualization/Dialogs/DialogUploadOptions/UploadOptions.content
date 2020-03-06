@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="UploadOptionsContent" height="430" width="400" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.RadioButtonGroup" id="RadioButtonGroupJPEGorBitmap" top="170" left="20" zIndex="1" childPositioning="relative">
+      <Widgets>
+        <Widget xsi:type="widgets.brease.RadioButton" id="RadioButtonJPEG" top="5" left="10" zIndex="0" text="JPEG (.jpg)" margin="5px 0px" />
+        <Widget xsi:type="widgets.brease.RadioButton" id="RadioButtonBitmap" top="5" left="10" zIndex="1" text="Bitmap (.bmp)" margin="5px 0px" />
+      </Widgets>
+    </Widget>
+    <Widget xsi:type="widgets.brease.CheckBox" id="chkUploadJBEGBitmap" top="55" left="20" width="380" zIndex="2" text="JPEG/Bitmap image (only image)" fontSize="18px" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="chkUploadSVG" top="95" left="20" width="380" zIndex="3" text="SVG image (with crosshairs and text)" fontSize="18px" />
+    <Widget xsi:type="widgets.brease.Label" id="LabelQuality" top="180" left="130" width="100" zIndex="0" text="quality" textAlign="right" fontSize="18px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="numJPEGQuality" top="180" left="240" width="90" zIndex="4" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" minValue="1" fontSize="16px" padding="0px 5px 0px 5px" />
+    <Widget xsi:type="widgets.brease.Label" id="LabelImageSettings" top="140" left="20" width="360" zIndex="5" text="Image quality (also needed for SVG)" textAlign="left" fontSize="18px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label19" top="15" left="20" width="300" zIndex="6" text="" textAlign="left" fontSize="18px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="LabelUploadImages" top="15" left="20" width="300" zIndex="7" text="Select image type for upload" textAlign="left" fontSize="18px" bold="true" />
+    <Widget xsi:type="widgets.brease.Button" id="btnDeleteAll" top="325" left="20" width="130" height="85" zIndex="8" multiLine="true" text="Delete all images" wordWrap="true" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.Button" id="btnClose" top="325" left="260" width="120" height="85" zIndex="9" text="Close" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="chkMainAutoArchive" top="275" left="25" width="300" height="35" zIndex="10" text="Auto Archiv Image" fontSize="18px" />
+  </Widgets>
+</Content>

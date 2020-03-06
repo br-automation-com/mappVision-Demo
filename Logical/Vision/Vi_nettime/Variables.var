@@ -1,0 +1,6 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Local varibales*)
+VAR
+	OldNettime : DINT; (*Old nettime used to calculate Powerlink cycle time*)
+	OldPosition : LREAL;
+END_VAR

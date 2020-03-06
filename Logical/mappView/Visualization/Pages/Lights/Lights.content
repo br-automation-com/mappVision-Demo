@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="contentLights" height="518" width="1200" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpHardware" top="180" left="10" width="335" height="265" zIndex="0" text="Hardware">
+      <Widgets>
+        <Widget xsi:type="widgets.brease.Label" id="Label19" top="78" left="78" width="128" height="20" zIndex="0" text="Serial No" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_SerialNumber" top="78" left="218" height="20" zIndex="1" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="Label20" top="103" left="78" width="128" height="20" zIndex="2" text="Hardware ID" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_ID" top="103" left="218" height="20" zIndex="3" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="Label21" top="128" left="78" width="128" height="20" zIndex="4" text="HW Variant" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Variant" top="128" left="218" height="20" zIndex="5" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="Label22" top="153" left="42" width="164" height="20" zIndex="6" text="Firmware" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Firmware" top="153" left="218" height="20" zIndex="7" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.ToggleButton" id="StatusConnected" top="8" left="14" width="140" zIndex="8" mouseDownText="Connected" text="Disconnected" cornerRadius="5px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledTextColor="rgba(255, 255, 255, 1)" fontSize="14px" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" style="Operate" />
+        <Widget xsi:type="widgets.brease.ToggleButton" id="StatusReady" top="8" left="169" width="140" zIndex="9" mouseDownText="Ready" text="Not Ready" cornerRadius="5px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledTextColor="rgba(255, 255, 255, 1)" fontSize="14px" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" style="Operate" />
+        <Widget xsi:type="widgets.brease.Label" id="Label24" top="178" left="42" width="164" height="20" zIndex="10" text="Temperature" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Temperature" top="178" left="218" height="20" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labCameraStatus" top="53" left="146" width="60" height="20" zIndex="12" text="Status" textAlign="right" fontSize="16px" bold="false" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="txtLightsStatus" top="53" left="219" width="99" height="20" zIndex="13" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 5px" />
+      </Widgets>
+    </Widget>
+    <Widget xsi:type="widgets.brease.Button" id="btnLightsTrigger" top="455" left="15" width="335" height="50" zIndex="1" text="Trigger" fontSize="24px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpSelection" top="10" left="10" width="335" height="165" zIndex="2" text="Selection">
+      <Widgets>
+        <Widget xsi:type="widgets.brease.Label" id="labCameraNo" top="13" left="54" width="105" height="20" zIndex="0" text="Lights No." textAlign="right" fontSize="16px" bold="true" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="numLightsNo" top="8" left="214" width="40" zIndex="1" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="5" minValue="1" textAlign="center" fontSize="22px" padding="0px 0px 0px 0px" />
+        <Widget xsi:type="widgets.brease.Image" id="numCameraNoDown" top="8" left="179" width="30" height="30" zIndex="2" image="Media/back.svg" borderWidth="0px" />
+        <Widget xsi:type="widgets.brease.Image" id="numCameraNoUp" top="8" left="264" width="30" height="30" zIndex="3" image="Media/forward.svg" borderWidth="0px" />
+        <Widget xsi:type="widgets.brease.Label" id="labCameraStatus1" top="53" left="34" width="165" height="20" zIndex="4" text="Powerlink Node" textAlign="right" fontSize="16px" bold="true" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="txtLightsPlkNode" top="48" left="209" width="50" height="25" zIndex="5" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labCameraStatus2" top="83" left="29" height="20" zIndex="6" text="Function" textAlign="right" fontSize="16px" bold="true" />
+        <Widget xsi:type="widgets.brease.DropDownBox" id="ddbLights" top="78" left="119" width="140" height="25" zIndex="7" dataProvider="[{'value':'0','text':'None'},{'value':'1','text':'Backlight'},{'value':'2','text':'Lightbar'}]" selectedValue="0" disabledTextColor="rgba(0, 0, 0, 1)" textAlign="right" enable="false" />
+      </Widgets>
+    </Widget>
+  </Widgets>
+</Content>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.5.2.102?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">Acknowledge.svg</Object>
+    <Object Type="File">Alarm.svg</Object>
+    <Object Type="File">AlarmHistory.svg</Object>
+    <Object Type="File">Error.svg</Object>
+  </Objects>
+</Package>

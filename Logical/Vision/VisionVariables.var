@@ -1,0 +1,23 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Global variables for sensor hardware and vision functions*)
+VAR
+	gVisionSensor : ARRAY[1..MAX_NUM_CAMS] OF typVisionMain; (*General vision functions that are independent from the inspection function*)
+	gVisionLight : ARRAY[1..MAX_NUM_LIGHTS] OF typLightMain; (*General Light  functions that are independent from the inspection function*)
+	gVisionImage : typVisionImage; (*Data for image handling*)
+	gVisionNettime : typVisionNettime; (*Data for nettime calculation*)
+	gMatch : typMatchMain; (*Data that is specific for the match function*)
+	gCodeReader : typCodeReaderMain; (*Data that is specific for the code reader*)
+	gMT : typMTMain; (*Data that is specific for the measurement function*)
+	gOCR : typOCRMain; (*Data that is specific for the OCR function*)
+	gBlob : typBlobMain; (*Data that is specific for the blob function*)
+	visSelectedSensor : USINT := 1; (*Selected camera node number*)
+	visSelectedLight : USINT := 1; (*Selected Light node number*)
+	NettimeCurrent : DINT; (*Current Powerlink nettime*)
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Global constants*)
+VAR CONSTANT
+	MAX_NUM_RESULTS : UINT := 10; (*Maximum number of results*)
+	MAX_NUM_CAMS : UINT := 5; (*Maximum number of camera's*)
+	MAX_NUM_LIGHTS : UINT := 5; (*Maximum number of light's*)
+END_VAR

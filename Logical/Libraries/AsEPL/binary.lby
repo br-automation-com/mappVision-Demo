@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.0.0?>
+<Library xmlns="http://br-automation.co.at/AS/Library" Description="The AsEPL library is used to access service data objects of Ethernet-Powerlink stations">
+  <Files>
+    <File>AsEPL.fun</File>
+    <File>AsEPL.typ</File>
+    <File>AsEPL.var</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="runtime" />
+  </Dependencies>
+</Library>

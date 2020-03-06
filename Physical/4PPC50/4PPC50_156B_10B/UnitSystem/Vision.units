@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Element ID="VisionUnitPixel1000" Type="Units">
+    <Property ID="Namespace" Value="http://www.br-automation.com/units" />
+    <Property ID="UnitID" Value="5654835" />
+    <Property ID="CommonCode" Value="VI3" />
+    <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
+    <Group ID="Classification[1]" />
+    <Selector ID="AtomicOrCompound">
+      <Property ID="AtomicFactor" Value="1000" />
+    </Selector>
+  </Element>
+  <Element ID="VisionUnitPixel1" Type="Units">
+    <Property ID="Namespace" Value="http://www.br-automation.com/units" />
+    <Property ID="UnitID" Value="5654832" />
+    <Property ID="CommonCode" Value="VI0" />
+    <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
+    <Group ID="Classification[1]" />
+    <Selector ID="AtomicOrCompound">
+      <Property ID="AtomicFactor" Value="1" />
+    </Selector>
+  </Element>
+  <Element ID="VisionUnitPixel100" Type="Units">
+    <Property ID="Namespace" Value="http://www.br-automation.com/units" />
+    <Property ID="UnitID" Value="5654834" />
+    <Property ID="CommonCode" Value="VI2" />
+    <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
+    <Group ID="Classification[1]" />
+    <Selector ID="AtomicOrCompound">
+      <Property ID="AtomicFactor" Value="100" />
+    </Selector>
+  </Element>
+  <Element ID="VisionUnitPixel10" Type="Units">
+    <Property ID="Namespace" Value="http://www.br-automation.com/units" />
+    <Property ID="UnitID" Value="5654833" />
+    <Property ID="CommonCode" Value="VI1" />
+    <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
+    <Group ID="Classification[1]" />
+    <Selector ID="AtomicOrCompound">
+      <Property ID="AtomicFactor" Value="10" />
+    </Selector>
+  </Element>
+</Configuration>

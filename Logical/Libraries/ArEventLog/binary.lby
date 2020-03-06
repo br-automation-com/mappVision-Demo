@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.0.0?>
+<Library xmlns="http://br-automation.co.at/AS/Library" Description="The ArEventLog library can be used to collect additional error information and for further processing.">
+  <Files>
+    <File>ArEventLog.fun</File>
+    <File>ArEventLog.typ</File>
+    <File>ArEventLog.var</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="runtime" />
+  </Dependencies>
+</Library>

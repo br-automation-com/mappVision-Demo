@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.7.2.98?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="Blob" Type="VSS112Q22.041P-000" Version="0.7.0.0">
+    <Connection Connector="PLK1" TargetModule="X20CP0483" TargetConnector="IF3" NodeNumber="1">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="CodeReader" TargetConnector="PLK1" NodeNumber="1">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraBlob" />
+  </Module>
+  <Module Name="CodeReader" Type="VSS112Q22.041P-000" Version="0.7.0.0">
+    <Connection Connector="PLK1" TargetModule="Blob" TargetConnector="PLK2" NodeNumber="3">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="Match" TargetConnector="PLK1" NodeNumber="3">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
+  </Module>
+  <Module Name="Match" Type="VSS112Q22.041P-000" Version="0.7.0.0">
+    <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="4">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="OCR" TargetConnector="PLK1" NodeNumber="4">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraMatch" />
+  </Module>
+  <Module Name="Measurement" Type="VSS112Q22.041P-000" Version="0.7.0.0">
+    <Connection Connector="PLK1" TargetModule="OCR" TargetConnector="PLK2" NodeNumber="2">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
+  </Module>
+  <Module Name="OCR" Type="VSS112Q22.041P-000" Version="0.7.0.0">
+    <Connection Connector="PLK1" TargetModule="Match" TargetConnector="PLK2" NodeNumber="5">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="Measurement" TargetConnector="PLK1" NodeNumber="5">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraOCR" />
+  </Module>
+  <Module Name="X20BB52" Type="X20BB52" Version="1.1.0.0">
+    <Connector Name="IF6">
+      <Parameter ID="CycleTime" Value="2000" />
+    </Connector>
+  </Module>
+  <Module Name="X20CP0483" Type="X20CP0483" Version="1.2.1.0">
+    <Connection Connector="SL" TargetModule="X20BB52" TargetConnector="SL1" />
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+      <Parameter ID="Mode" Value="Manual" />
+      <Parameter ID="InternetAddress" Value="10.49.140.212" />
+      <Parameter ID="SubnetMask" Value="255.255.255.0" />
+    </Connector>
+    <Connector Name="IF3">
+      <Parameter ID="MtuSize" Value="1500" />
+      <Parameter ID="CycleTime" Value="800" />
+      <Parameter ID="InternetAddress" Value="192.168.200.240" />
+      <Parameter ID="SubnetMask" Value="255.255.255.0" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="Vision_Sample" />
+    <Parameter ID="UserPartitionSize" Value="400" />
+    <Parameter ID="UserRamSize" Value="10000" />
+    <Parameter ID="RemMemSize" Value="10000" />
+    <Parameter ID="PermanentPvSize" Value="2000" />
+    <Parameter ID="VolatileGlobalPvSize" Value="120000" />
+    <Parameter ID="TimerDeviceType" Value="SWIOTIMER" />
+    <Parameter ID="Cyclic1Duration" Value="10000" />
+    <Parameter ID="Cyclic1Tolerance" Value="10000" />
+    <Parameter ID="Cyclic2Duration" Value="20000" />
+    <Parameter ID="Cyclic2Tolerance" Value="20000" />
+    <Parameter ID="Cyclic3Duration" Value="50000" />
+    <Parameter ID="Cyclic3Tolerance" Value="50000" />
+    <Parameter ID="Cyclic4Duration" Value="100000" />
+    <Parameter ID="Cyclic4Tolerance" Value="100000" />
+    <Parameter ID="Cyclic5Duration" Value="200000" />
+    <Parameter ID="Cyclic5Tolerance" Value="200000" />
+    <Parameter ID="Cyclic6Duration" Value="500000" />
+    <Parameter ID="Cyclic6Tolerance" Value="500000" />
+    <Parameter ID="Cyclic7Duration" Value="1000000" />
+    <Parameter ID="Cyclic7Tolerance" Value="1000000" />
+    <Parameter ID="Cyclic8Duration" Value="10000" />
+    <Parameter ID="Cyclic8Tolerance" Value="30000000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="VisionFileDevice" />
+    <Parameter ID="FileDevicePath1" Value="F:\" />
+    <Group ID="FtpUser1" />
+    <Parameter ID="FtpUsername1" Value="bundr" />
+    <Parameter ID="FtpUserPassword1" Value="nMrFtJX1iKQAFT02mGT80Wb1a11GH29G52ATfKQ9HoA=" />
+    <Parameter ID="FtpUserSalt1" Value="/yM7MnyJ" />
+    <Parameter ID="FTPAccessRight1" Value="0" />
+    <Parameter ID="FTPMSpath1" Value="" />
+    <Parameter ID="ActivateOpcUa" Value="1" />
+    <Parameter ID="OpcUa_Limits_MonitoredItemsPerSubscription" Value="2000" />
+    <Parameter ID="OpcUaMaxSubsItemQueueSize" Value="200" />
+    <Parameter ID="OpcUaMaxSubsEventQueueSize" Value="2000" />
+    <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
+  </Module>
+  <Module Name="X20PS9600" Type="X20PS9600" Version="1.0.1.0">
+    <Connection Connector="PS" TargetModule="X20BB52" TargetConnector="PS1" />
+    <Connection Connector="SS1" TargetModule="X20TB12" TargetConnector="SS" />
+  </Module>
+  <Module Name="X20TB12" Type="X20TB12" Version="1.0.0.0" />
+</Hardware>

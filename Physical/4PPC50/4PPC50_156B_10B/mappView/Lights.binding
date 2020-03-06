@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Lights_binding">
+	<Bindings>
+
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:visSelectedLight" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsNo" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.PowerlinkNode" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsPlkNode" attribute="value" />
+		</Binding>
+	<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.Temperature" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Temperature" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.Firmware" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Firmware" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.Variant" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Variant" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_light:visEnableCommand" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="btnLightsTrigger" attribute="enable" />
+</Binding>
+</Bindings>
+</BindingsSet>

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tmx version="1.4">
+  <header creationtool="B&amp;R Automation Studio" creationtoolversion="4.2" datatype="unknown" segtype="sentence" adminlang="en" srclang="en" o-tmf="TMX">
+    <note>Change the namespace to define where this text module should be located within the logical structure of your texts</note>
+    <prop type="x-BR-TS:Namespace">Localization/Units/User</prop>
+  </header>
+  <body>
+    <tu tuid="5654833.Name">
+      <note>Pixels10</note>
+      <tuv xml:lang="de">
+        <seg>Pixels10</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Pixels10</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Mon unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654833.Sym">
+      <note>px</note>
+      <tuv xml:lang="de">
+        <seg>px</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>px</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654833.Desc">
+      <note>pixels</note>
+      <tuv xml:lang="de">
+        <seg>pixels</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>pixels</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Ma description</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654834.Name">
+      <note>Pixels100</note>
+      <tuv xml:lang="de">
+        <seg>Pixels100</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Pixels100</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Mon unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654834.Sym">
+      <note>p</note>
+      <tuv xml:lang="de">
+        <seg>px</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>p</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654834.Desc">
+      <note>pixels</note>
+      <tuv xml:lang="de">
+        <seg>pixels</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>pixels</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Ma description</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654832.Name">
+      <note>Pixels1</note>
+      <tuv xml:lang="de">
+        <seg>Pixels1</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Pixels1</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Mon unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654832.Sym">
+      <note>px</note>
+      <tuv xml:lang="de">
+        <seg>px</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>px</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654832.Desc">
+      <note>hundreth of pixels</note>
+      <tuv xml:lang="de">
+        <seg>hundreth of pixels</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>hundreth of pixels</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Ma description</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654835.Name_1">
+      <note>Pixels1000</note>
+      <tuv xml:lang="de">
+        <seg>Pixels1000</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Pixels1000</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Mon unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654835.Sym_1">
+      <note>p</note>
+      <tuv xml:lang="de">
+        <seg>px</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>p</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Unité</seg>
+      </tuv>
+    </tu>
+    <tu tuid="5654835.Desc_1">
+      <note>pixels</note>
+      <tuv xml:lang="de">
+        <seg>pixels</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>pixels</seg>
+      </tuv>
+      <tuv xml:lang="fr">
+        <seg>Ma description</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

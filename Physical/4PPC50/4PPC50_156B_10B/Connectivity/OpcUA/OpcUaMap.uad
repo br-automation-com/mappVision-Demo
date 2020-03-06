@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OpcUaSource FileVersion="7" ArVersion="C4.72">
+  <Aliases>
+    <ACLAliases>
+      <ACL Id="1">
+        <ACE RoleId="1" RoleName="Administrators" Access="0x017F" />
+        <ACE RoleId="2" RoleName="Everyone" Access="0x015F" />
+      </ACL>
+      <ACL Id="2">
+        <ACE RoleId="2" RoleName="Everyone" Access="0x01FF" />
+        <ACE RoleId="1" RoleName="Administrators" Access="0x01FF" />
+      </ACL>
+    </ACLAliases>
+    <EURangeViolationAliases />
+    <EURangesAliases>
+      <EURanges Id="2">
+        <EURange>
+          <Low ValueProvider="Const">1</Low>
+          <High ValueProvider="Const">20</High>
+        </EURange>
+      </EURanges>
+      <EURanges Id="3">
+        <EURange>
+          <Low ValueProvider="Const">0</Low>
+          <High ValueProvider="Const">5000</High>
+        </EURange>
+      </EURanges>
+    </EURangesAliases>
+    <EngineeringUnitAliases>
+      <EngineeringUnit Id="1" UnitId="5654832" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels1" Symbol="p" />
+    </EngineeringUnitAliases>
+  </Aliases>
+  <DefaultView AclId="2">
+    <Module Name="&lt;Default&gt;">
+      <GlobalVariables Name="Global Variables">
+        <Variable Name="Recipe_01" AutomaticEnable="True">
+          <Variable Name="VIS" EnableArrayElements="True" />
+        </Variable>
+        <Variable Name="gCameraBlob" AutomaticEnable="True" />
+        <Variable Name="gCameraCodeReading" AutomaticEnable="True" />
+        <Variable Name="gCameraMatch" AutomaticEnable="True" />
+        <Variable Name="gCameraMeasurement" AutomaticEnable="True" />
+        <Variable Name="gCameraOCR" AutomaticEnable="True" />
+        <Variable Name="visSelectedSensor" />
+        <Variable Name="visSelectedLight" />
+        <Variable Name="gVisionImage" AutomaticEnable="True" />
+        <Variable Name="gVisionLight" EnableArrayElements="True" />
+        <Variable Name="gVisionNettime" AutomaticEnable="True" />
+        <Variable Name="gVisionSensor" EnableArrayElements="True" />
+      </GlobalVariables>
+      <Task Name="Vi_main">
+        <Variable Name="VisionSensor" AutomaticEnable="True" />
+        <Variable Name="Blob" AutomaticEnable="True">
+          <Variable Name="DATA">
+            <Variable Name="PositionX" EngineeringUnitId="1" />
+            <Variable Name="PositionY" EngineeringUnitId="1" />
+            <Variable Name="Orientation" EngineeringUnitId="1" />
+            <Variable Name="Length" EngineeringUnitId="1" />
+            <Variable Name="Width" EngineeringUnitId="1" />
+            <Variable Name="Area" EngineeringUnitId="1" />
+          </Variable>
+        </Variable>
+        <Variable Name="CodeReader" AutomaticEnable="True">
+          <Variable Name="DATA">
+            <Variable Name="PositionX" EngineeringUnitId="1" />
+            <Variable Name="PositionY" EngineeringUnitId="1" />
+            <Variable Name="Orientation" EngineeringUnitId="1" />
+          </Variable>
+        </Variable>
+        <Variable Name="Match" AutomaticEnable="True">
+          <Variable Name="DATA">
+            <Variable Name="PositionX" EngineeringUnitId="1" />
+            <Variable Name="PositionY" EngineeringUnitId="1" />
+            <Variable Name="Orientation" EngineeringUnitId="1" />
+            <Variable Name="RotCenterX" EngineeringUnitId="1" />
+            <Variable Name="RotCenterY" EngineeringUnitId="1" />
+          </Variable>
+        </Variable>
+        <Variable Name="MT" AutomaticEnable="True">
+          <Variable Name="DATA">
+            <Variable Name="Result" EnableArrayElements="True" EngineeringUnitId="1" />
+          </Variable>
+        </Variable>
+        <Variable Name="OCR" AutomaticEnable="True">
+          <Variable Name="DATA">
+            <Variable Name="PositionX" EngineeringUnitId="1" />
+            <Variable Name="PositionY" EngineeringUnitId="1" />
+            <Variable Name="Orientation" EngineeringUnitId="1" />
+          </Variable>
+        </Variable>
+        <Variable Name="visAutoArchiv" />
+        <Variable Name="visCrossHair" AutomaticEnable="True">
+          <Variable Name="SvgTransformation" EnableArrayElements="True" />
+          <Variable Name="SvgContent" EnableArrayElements="True" />
+          <Variable Name="SvgVisible" EnableArrayElements="True" />
+        </Variable>
+        <Variable Name="visEnableCommand" />
+        <Variable Name="visEnableVision" />
+        <Variable Name="visHttpPath" />
+        <Variable Name="visImageTrigger" />
+        <Variable Name="visRepetitiveMode" />
+        <Variable Name="visSelectedCodeTypeDetected" EnableArrayElements="True" />
+        <Variable Name="visSelectedCodeTypePreset" />
+        <Variable Name="visSelectedFlashColor" />
+        <Variable Name="visTableNo" EnableArrayElements="True" />
+        <Variable Name="visEnableSetup" />
+      </Task>
+      <Task Name="Vi_image">
+        <Variable Name="visImagePath" />
+        <Variable Name="visSelectedImage" />
+        <Variable Name="visSelectedIndex" />
+        <Variable Name="visSelectedIndexOld" />
+        <Variable Name="visDownloadFileUrl" />
+        <Variable Name="visEnableButtons_1" />
+        <Variable Name="visEnableButtons_2" />
+      </Task>
+      <Task Name="Recipe_01">
+        <Variable Name="RECIPE" AutomaticEnable="True">
+          <Variable Name="VIS" EnableArrayElements="True" />
+          <Variable Name="DAT">
+            <Variable Name="RecipeNames" EnableArrayElements="True" />
+            <Variable Name="RecipeIDs" EnableArrayElements="True" />
+          </Variable>
+        </Variable>
+      </Task>
+      <Task Name="Vi_light">
+        <Variable Name="VisionLight" AutomaticEnable="True" />
+        <Variable Name="visEnableCommand" />
+        <Variable Name="visLightsTrigger" />
+      </Task>
+      <Task Name="Vi_nettime" />
+      <Task Name="YourTask">
+        <Variable Name="Acceleration" />
+        <Variable Name="cmdAxisRun" />
+        <Variable Name="MotionStep" />
+        <Variable Name="MpAxisBasic_0" AutomaticEnable="True" />
+        <Variable Name="Velocity" />
+      </Task>
+    </Module>
+  </DefaultView>
+</OpcUaSource>

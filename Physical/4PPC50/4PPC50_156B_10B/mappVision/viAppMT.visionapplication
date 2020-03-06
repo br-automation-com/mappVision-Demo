@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Element ID="ViAppMeasurement" Type="visionapplication">
+    <Group ID="ImgProcessingInputs">
+      <Group ID="Input[0]">
+        <Property ID="ChannelID" Value="Enable" />
+      </Group>
+      <Group ID="Input[1]">
+        <Property ID="ChannelID" Value="Alignment" />
+      </Group>
+      <Group ID="Input[2]">
+        <Property ID="ChannelID" Value="NumSearchMax" />
+      </Group>
+      <Group ID="Input[3]">
+        <Property ID="ChannelID" Value="OffsetRoiX" />
+      </Group>
+      <Group ID="Input[4]">
+        <Property ID="ChannelID" Value="OffsetRoiY" />
+      </Group>
+      <Group ID="Input[5]">
+        <Property ID="ChannelID" Value="OffsetRoiOrientation" />
+      </Group>
+      <Group ID="Input[6]">
+        <Property ID="ChannelID" Value="OffsetRoiRotationCenterX" />
+      </Group>
+      <Group ID="Input[7]">
+        <Property ID="ChannelID" Value="OffsetRoiRotationCenterY" />
+      </Group>
+    </Group>
+    <Group ID="ImgProcessingVariables" />
+    <Group ID="ImageAcquisition">
+      <Group ID="AcquisitionConfiguration">
+        <Selector ID="TriggerMode">
+          <Property ID="TriggerDelay" Value="1" />
+        </Selector>
+      </Group>
+    </Group>
+    <Group ID="VisionFunctionSet">
+      <Group ID="VfInstance[1]">
+        <Property ID="VfName" Value="VfInstanceMeasurement" />
+        <Property ID="VfExecutionNr" Value="1" />
+        <Selector ID="VfType" Value="vf-measurement">
+          <Group ID="VfDataSet">
+            <Property ID="WidgetModels" Value="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" />
+          </Group>
+          <Group ID="VfConstants">
+            <Property ID="NumResultsMax" Value="10" />
+          </Group>
+          <Group ID="VfWirings">
+            <Group ID="Image">
+              <Selector ID="SourceType" Value="ImageAcquisition">
+                <Property ID="IaParameter" Value="Image01" />
+              </Selector>
+            </Group>
+            <Group ID="Enable">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Enable" />
+              </Selector>
+            </Group>
+            <Group ID="NumSearchMax">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="NumSearchMax" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIX">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiX" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIY">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiY" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIOrientation">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiOrientation" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIRotCenterX">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiRotationCenterX" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIRotCenterY">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
+              </Selector>
+            </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
+              </Selector>
+            </Group>
+          </Group>
+        </Selector>
+        <Group ID="Position">
+          <Property ID="X" Value="1" />
+          <Property ID="Y" Value="0" />
+        </Group>
+      </Group>
+    </Group>
+    <Group ID="ImgProcessingOutputs">
+      <Group ID="Output[0]">
+        <Property ID="ChannelID" Value="Results" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMeasurement" />
+          <Property ID="VfOutputParameter" Value="Result" />
+        </Group>
+      </Group>
+      <Group ID="Output[1]">
+        <Property ID="ChannelID" Value="NumResults" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMeasurement" />
+          <Property ID="VfOutputParameter" Value="NumResults" />
+        </Group>
+      </Group>
+    </Group>
+  </Element>
+</Configuration>

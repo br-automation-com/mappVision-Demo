@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EventBindingSet id="Main_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Bindings>
+		<!-- Reload web image />-->
+		<EventBinding id="contentMain.cmdShowPictureReload.Click">
+			<Source contentRefId="contentMain" widgetRefId="btnMainReload" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="widgets.brease.WebViewer.Action" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" >
+						<Method xsi:type="widgets.brease.WebViewer.Action.Reload"/>
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Reload web page after trigger was fired />-->
+		<EventBinding id="MainReload">
+			<Source xsi:type="opcUa.Event" refId="::Vi_main:VisionSensor.CMD.BrowserReload" event="ValueChanged" />			
+			<EventHandler condition="newValue" >
+				<Sequence>
+					<Step order="0">
+						<Action>
+							<Target xsi:type="widgets.brease.WebViewer.Action" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" >
+								<Method xsi:type="widgets.brease.WebViewer.Action.Reload"/>
+							</Target>
+						</Action>
+					</Step>
+					<Step order="1">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.CMD.BrowserReload" >
+								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+							</Target>
+						</Action>
+					</Step>
+				</Sequence>
+			</EventHandler>			
+		</EventBinding>
+		
+		<!-- Selected details no />-->
+		<EventBinding id="contentMain.numCameraNoDown.Click">
+			<Source contentRefId="contentMain" widgetRefId="numDetailsNoDown" xsi:type="widgets.brease.Image.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visCrossHair.DetailsNo" >
+						<Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+					</Target>
+				</Action>		
+			</EventHandler>
+		</EventBinding>
+		<EventBinding id="contentMain.numCameraNoUp.Click">
+			<Source contentRefId="contentMain" widgetRefId="numDetailsNoUp" xsi:type="widgets.brease.Image.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visCrossHair.DetailsNo" >
+						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+						
+	</Bindings>
+</EventBindingSet>

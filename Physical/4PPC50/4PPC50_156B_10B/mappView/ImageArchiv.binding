@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="ImageArchiv_binding">
+	<Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.DATA.Images" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="lstImageArchiv" attribute="dataProvider" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visImagePath" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="imgImageArchiv" attribute="image" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visEnableButtons_2" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="btnImageArchivDelete" attribute="enable" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visSelectedImage" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="lstImageArchiv" attribute="selectedValue" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visEnableButtons_1" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="btnImageArchivSave" attribute="enable" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visEnableButtons_1" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="btnImageArchivRefresh" attribute="enable" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visSelectedIndex" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="lstImageArchiv" attribute="selectedIndex" />
+		</Binding>		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.STA.Status" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="numImageStatus" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.Format" attribute="value" />
+			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="RadioButtonGroupJPEGorBitmap" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.QualityJPG" attribute="value" />
+			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="numJPEGQuality" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.UploadBmpJpg" attribute="value" />
+			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkUploadJBEGBitmap" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.UploadSVG" attribute="value" />
+			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkUploadSVG" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visEnableButtons_1" attribute="value" />
+			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="btnDeleteAll" attribute="enable" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visDownloadFileUrl" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="WebDownloadImage" attribute="path" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visAutoArchiv" attribute="value" />
+			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkMainAutoArchive" attribute="value" />
+		</Binding>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.BarcodeType" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemType" attribute="value" />
+</Binding>
+</Bindings>
+</BindingsSet>

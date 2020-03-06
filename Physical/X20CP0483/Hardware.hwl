@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<BR.AS.HardwareTopology Version="0.0.0.1">
+  <Modules>
+    <Module Name="X20CP1586" Type="X20CP1586" X="100" Y="100" />
+    <Module Name="Blob" Type="VSS112Q22.081P-E01" X="192" Y="399" />
+    <Module Name="CodeRead" Type="VSS112Q22.081P-E01" X="322" Y="399" />
+    <Module Name="MT" Type="VSS112Q22.081P-E01" X="452" Y="399" />
+    <Module Name="Match" Type="VSS112Q22.081P-E01" X="582" Y="399" />
+    <Module Name="OCR" Type="VSS112Q22.081P-E01" X="712" Y="399" />
+  </Modules>
+  <Links>
+    <Link From="Blob" To="Match" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
+      <Point X="210" Y="517" />
+      <Point X="210" Y="517" />
+      <Point X="210" Y="522" />
+      <Point X="210" Y="549" />
+      <Point X="645" Y="549" />
+      <Point X="645" Y="522" />
+      <Point X="645" Y="517" />
+      <Point X="645" Y="517" />
+    </Link>
+    <Link From="Blob" To="OCR" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="255" Y="517" />
+      <Point X="255" Y="517" />
+      <Point X="255" Y="522" />
+      <Point X="255" Y="556" />
+      <Point X="730" Y="556" />
+      <Point X="730" Y="522" />
+      <Point X="730" Y="517" />
+      <Point X="730" Y="517" />
+    </Link>
+    <Link From="CodeRead" To="MT" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="385" Y="517" />
+      <Point X="385" Y="517" />
+      <Point X="385" Y="522" />
+      <Point X="385" Y="535" />
+      <Point X="470" Y="535" />
+      <Point X="470" Y="522" />
+      <Point X="470" Y="517" />
+      <Point X="470" Y="517" />
+    </Link>
+    <Link From="MT" To="Match" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="515" Y="517" />
+      <Point X="515" Y="517" />
+      <Point X="515" Y="522" />
+      <Point X="515" Y="535" />
+      <Point X="600" Y="535" />
+      <Point X="600" Y="522" />
+      <Point X="600" Y="517" />
+      <Point X="600" Y="517" />
+    </Link>
+    <Link From="CodeRead" To="X20CP1586" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
+      <Point X="340" Y="517" />
+      <Point X="340" Y="517" />
+      <Point X="340" Y="522" />
+      <Point X="340" Y="535" />
+      <Point X="156" Y="535" />
+      <Point X="156" Y="200" />
+      <Point X="156" Y="187" />
+      <Point X="156" Y="187" />
+    </Link>
+  </Links>
+  <InfoElements />
+</BR.AS.HardwareTopology>

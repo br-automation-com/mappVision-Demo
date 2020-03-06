@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Header_binding">
+	<Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.HW.Connected" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="StatusConnected" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.HW.Ready" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="StatusReady" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.ImageProcessingActive" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="StatusProcessing" attribute="value" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.Status" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraStatus" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visHttpPath" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="host" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.CockpitIsActive" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="CockpitStatus" attribute="value" />
+		</Binding>
+	<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.PowerlinkNode" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraPlkNode" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.VisionFunction" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="DropDownBox1" attribute="selectedIndex" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:visSelectedSensor" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="numCameraNo" attribute="value" />
+</Binding>
+</Bindings>
+</BindingsSet>

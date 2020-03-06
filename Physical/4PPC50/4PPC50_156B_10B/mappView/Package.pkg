@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.7.2.98?>
+<Package SubType="mappViewControl" PackageType="mappViewControl" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">Config.mappviewcfg</Object>
+    <Object Type="File">Visualizat.vis</Object>
+    <Object Type="File">Header.binding</Object>
+    <Object Type="File">Footer.binding</Object>
+    <Object Type="File">Main.binding</Object>
+    <Object Type="File">CodeReader.binding</Object>
+    <Object Type="File">Blob.binding</Object>
+    <Object Type="File">Match.binding</Object>
+    <Object Type="File">OCR.binding</Object>
+    <Object Type="File">MT.binding</Object>
+    <Object Type="File">Lights.binding</Object>
+    <Object Type="File">Nettime.binding</Object>
+    <Object Type="File">ImageArchiv.binding</Object>
+    <Object Type="File">Recipe.binding</Object>
+    <Object Type="File">Header.eventbinding</Object>
+    <Object Type="File">Footer.eventbinding</Object>
+    <Object Type="File">Navigation.eventbinding</Object>
+    <Object Type="File">MainContent.eventbinding</Object>
+    <Object Type="File">Lights.eventbinding</Object>
+    <Object Type="File">ImageArchiv.eventbinding</Object>
+    <Object Type="File">Recipe.eventbinding</Object>
+  </Objects>
+</Package>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0.0.0?>
+<Library xmlns="http://br-automation.co.at/AS/Library" Description="The powerlnk library supports low level layer 2 access to POWERLINK networks.">
+  <Files>
+    <File>powerlnk.fun</File>
+    <File>powerlnk.typ</File>
+    <File>powerlnk.var</File>
+  </Files>
+</Library>

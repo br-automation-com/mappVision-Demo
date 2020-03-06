@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.7.2.98?>
+<Library Version="5.09.5" SubType="binary" Description="[mapp Vision] Base library" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File>ViBase.fun</File>
+    <File>ViBase.typ</File>
+    <File>ViBase.var</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="ViCore" />
+  </Dependencies>
+</Library>

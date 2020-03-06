@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EventBindingSet id="Header_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Bindings>					
+		<!-- Selected camera no />-->
+		<EventBinding id="contentHeader.numCameraNoDown.Click">
+			<Source contentRefId="contentHeader" widgetRefId="numCameraNoDown" xsi:type="widgets.brease.Image.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:visSelectedSensor" >
+						<Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+					</Target>
+				</Action>		
+			</EventHandler>
+		</EventBinding>
+		<EventBinding id="contentHeader.numCameraNoUp.Click">
+			<Source contentRefId="contentHeader" widgetRefId="numCameraNoUp" xsi:type="widgets.brease.Image.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:visSelectedSensor" >
+						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+
+	</Bindings>
+</EventBindingSet>

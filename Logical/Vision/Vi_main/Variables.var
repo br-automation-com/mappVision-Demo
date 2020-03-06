@@ -1,0 +1,56 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	VisionSensor : REFERENCE TO typVisionMain; (*General vision functions that are independent from the inspection function*)
+	Match : REFERENCE TO typMatchMain; (*Data that is specific for the match function*)
+	CodeReader : REFERENCE TO typCodeReaderMain; (*Data that is specific for the code reader*)
+	MT : REFERENCE TO typMTMain; (*Data that is specific for the OCR function*)
+	OCR : REFERENCE TO typOCRMain; (*Data that is specific for the OCR function*)
+	Blob : REFERENCE TO typBlobMain; (*Data that is specific for the blob function*)
+	tmpMatch : {REDUND_UNREPLICABLE} typMatchMain; (*Data that is specific for the match function*)
+	tmpCodeReader : {REDUND_UNREPLICABLE} typCodeReaderMain; (*Data that is specific for the code reader*)
+	tmpMT : {REDUND_UNREPLICABLE} typMTMain; (*Data that is specific for the OCR function*)
+	tmpOCR : {REDUND_UNREPLICABLE} typOCRMain; (*Data that is specific for the OCR function*)
+	tmpBlob : {REDUND_UNREPLICABLE} typBlobMain; (*Data that is specific for the blob function*)
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	idx : UINT;
+	DetailsNoOld : USINT;
+	visSelectedSensorOld : USINT := 1; (*Selected camera node number*)
+	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
+	visEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
+	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
+	visEnableVision : BOOL; (*Enable vision function*)
+	visAutoArchiv : BOOL; (*Enable/Disable auto archiving of camera images*)
+	visImageTrigger : BOOL; (*Trigger new image*)
+	TriggerTimeout : TON_10ms; (*Disable web reload when timed out*)
+	ReloadTimeout : TON_10ms; (*Disable web reload when timed out*)
+	visSelectedFlashColor : STRING[10];
+	visRepetitiveMode : BOOL;
+	RepetitiveModeTimer : TON;
+	DisableAutoArchiv : BOOL;
+	AcquisitionFailedCntOld : UDINT;
+	AcquisitionCompletedCntOld : UDINT;
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Code Reader*)
+VAR
+	visSelectedCodeTypeDetected : ARRAY[1..MAX_NUM_RESULTS] OF STRING[80]; (*HMI helper string*)
+	visSelectedCodeTypePreset : STRING[80]; (*HMI helper string*)
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Image, crosshair data and constants*)
+VAR
+	visHttpPath : STRING[80];
+	visCrossHair : typCrossHair; (*Data structure to draw the crosshairs on the main page*)
+	CrosshairModelNumber : USINT;
+	CrosshairPositionX : REAL;
+	CrosshairPositionY : REAL;
+	CrosshairOrientation : INT;
+	tmpStr1 : STRING[1000];
+	tmpStr2 : STRING[100];
+	tmpStr3 : STRING[100];
+	tmpC : REAL;
+	tmpYI : REAL;
+	tmpXI : REAL;
+END_VAR

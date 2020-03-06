@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.5.2.102?>
+<Package SubType="MediaPackage" PackageType="MediaPackage" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Package">Alarm</Object>
+    <Object Type="File">back.svg</Object>
+    <Object Type="File">fast-backward.svg</Object>
+    <Object Type="File">fast-forward.svg</Object>
+    <Object Type="File">forward.svg</Object>
+    <Object Type="File">Crosshairs_Red.svg</Object>
+  </Objects>
+</Package>

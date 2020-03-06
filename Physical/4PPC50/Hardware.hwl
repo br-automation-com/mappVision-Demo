@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<BR.AS.HardwareTopology Version="0.0.0.1">
+  <TimeStamps>
+    <TimeStamp LogicalPath="4PPC50_156B.Hardware.hw" LastWriteTime="02/17/2020 10:22:52" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="4PPC50_156B_10B" Type="4PPC50.156B-10B" X="100" Y="100" />
+  </Modules>
+  <Links />
+  <InfoElements />
+</BR.AS.HardwareTopology>

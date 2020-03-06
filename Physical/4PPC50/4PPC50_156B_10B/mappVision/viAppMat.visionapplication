@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Element ID="ViAppMatch" Type="visionapplication">
+    <Group ID="ImgProcessingInputs">
+      <Group ID="Input[0]">
+        <Property ID="ChannelID" Value="Enable" />
+      </Group>
+      <Group ID="Input[1]">
+        <Property ID="ChannelID" Value="Alignment" />
+      </Group>
+      <Group ID="Input[2]">
+        <Property ID="ChannelID" Value="NumSearchMax" />
+      </Group>
+      <Group ID="Input[3]">
+        <Property ID="ChannelID" Value="Timeout" />
+      </Group>
+      <Group ID="Input[4]">
+        <Property ID="ChannelID" Value="OffsetRoiX" />
+      </Group>
+      <Group ID="Input[5]">
+        <Property ID="ChannelID" Value="OffsetRoiY" />
+      </Group>
+      <Group ID="Input[6]">
+        <Property ID="ChannelID" Value="OffsetRoiOrientation" />
+      </Group>
+      <Group ID="Input[7]">
+        <Property ID="ChannelID" Value="OffsetRoiRotationCenterX" />
+      </Group>
+      <Group ID="Input[8]">
+        <Property ID="ChannelID" Value="OffsetRoiRotationCenterY" />
+      </Group>
+      <Group ID="Input[9]">
+        <Property ID="ChannelID" Value="MinScore" />
+      </Group>
+      <Group ID="Input[10]">
+        <Property ID="ChannelID" Value="MaxOverlay" />
+      </Group>
+    </Group>
+    <Group ID="ImgProcessingVariables" />
+    <Group ID="ImageAcquisition">
+      <Group ID="AcquisitionConfiguration">
+        <Selector ID="TriggerMode">
+          <Property ID="TriggerDelay" Value="1" />
+        </Selector>
+      </Group>
+    </Group>
+    <Group ID="VisionFunctionSet">
+      <Group ID="VfInstance[1]">
+        <Property ID="VfName" Value="VfInstanceMatch" />
+        <Property ID="VfExecutionNr" Value="1" />
+        <Selector ID="VfType" Value="vf-matching">
+          <Group ID="VfConstants">
+            <Property ID="NumResultsMax" Value="10" />
+          </Group>
+          <Group ID="VfWirings">
+            <Group ID="Image">
+              <Selector ID="SourceType" Value="ImageAcquisition">
+                <Property ID="IaParameter" Value="Image01" />
+              </Selector>
+            </Group>
+            <Group ID="Enable">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Enable" />
+              </Selector>
+            </Group>
+            <Group ID="NumSearchMax">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="NumSearchMax" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIX">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiX" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIY">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiY" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIOrientation">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiOrientation" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIRotCenterX">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiRotationCenterX" />
+              </Selector>
+            </Group>
+            <Group ID="OffsetROIRotCenterY">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
+              </Selector>
+            </Group>
+            <Group ID="Timeout">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Timeout" />
+              </Selector>
+            </Group>
+            <Group ID="MinScore">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="MinScore" />
+              </Selector>
+            </Group>
+            <Group ID="MaxOverlap">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="MaxOverlay" />
+              </Selector>
+            </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
+              </Selector>
+            </Group>
+          </Group>
+        </Selector>
+        <Group ID="Position">
+          <Property ID="X" Value="1" />
+          <Property ID="Y" Value="0" />
+        </Group>
+      </Group>
+    </Group>
+    <Group ID="ImgProcessingOutputs">
+      <Group ID="Output[0]">
+        <Property ID="ChannelID" Value="NumResults" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="NumResults" />
+        </Group>
+      </Group>
+      <Group ID="Output[1]">
+        <Property ID="ChannelID" Value="ModelNumber" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="ModelNumber" />
+        </Group>
+      </Group>
+      <Group ID="Output[2]">
+        <Property ID="ChannelID" Value="Score" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="Score" />
+        </Group>
+      </Group>
+      <Group ID="Output[3]">
+        <Property ID="ChannelID" Value="PositionX" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="PositionX" />
+        </Group>
+      </Group>
+      <Group ID="Output[4]">
+        <Property ID="ChannelID" Value="PositionY" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="PositionY" />
+        </Group>
+      </Group>
+      <Group ID="Output[5]">
+        <Property ID="ChannelID" Value="Orientation" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="Orientation" />
+        </Group>
+      </Group>
+      <Group ID="Output[6]">
+        <Property ID="ChannelID" Value="Scale" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="Scale" />
+        </Group>
+      </Group>
+      <Group ID="Output[7]">
+        <Property ID="ChannelID" Value="RotCenterX" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="RotCenterX" />
+        </Group>
+      </Group>
+      <Group ID="Output[8]">
+        <Property ID="ChannelID" Value="RotCenterY" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="RotCenterY" />
+        </Group>
+      </Group>
+      <Group ID="Output[9]">
+        <Property ID="ChannelID" Value="ProcessingTime" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMatch" />
+          <Property ID="VfOutputParameter" Value="FunctionProcessingTime" />
+        </Group>
+      </Group>
+    </Group>
+  </Element>
+</Configuration>
