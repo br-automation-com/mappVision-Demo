@@ -3,5 +3,6 @@
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="File">Vision Demo Application.docx</Object>
+    <Object Type="File">Vision Demo Application.pdf</Object>
   </Objects>
 </Package>

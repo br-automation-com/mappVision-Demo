@@ -1,12 +1,3 @@
-# 1. Short description
+# mappVision-Demo
 
-This is a sample project for B&R Vision applications.
-
-## Features
-
-* mappView Visualization
-* Setup focus, exposure time, ...
-* Show images with crosshairs and result information
-* Image archive for upload and save images on CF card
-
-
+Demo application for B&R vision camera. For a detailed description see this documentation.

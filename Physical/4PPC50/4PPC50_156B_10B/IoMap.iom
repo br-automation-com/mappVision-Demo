@@ -487,4 +487,5 @@ VAR_CONFIG
 	::gCodeReader.CFG.GradingEnable AT %QB."CodeReader".CodeGrading;
 	::gCodeReader.CFG.CodeType AT %QB."CodeReader".OCRSymbolType;
 	::NettimeCurrent AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
+	::NettimeCurrent AT %ID."X20CP0483".IF3.NettimeSoC;
 END_VAR
