@@ -55,8 +55,7 @@ END_VAR
 (**)
 (*mappView connected variables*)
 VAR
-	visSelectedIndex : UINT;
-	visSelectedIndexOld : UINT;
+	visSelectedImageOld : STRING[80];
 	visSelectedImage : STRING[80];
 	visImagePath : STRING[80];
 	visEnableButtons_1 : BOOL;

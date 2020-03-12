@@ -108,8 +108,6 @@
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />
         <Variable Name="visSelectedImage" />
-        <Variable Name="visSelectedIndex" />
-        <Variable Name="visSelectedIndexOld" />
         <Variable Name="visDownloadFileUrl" />
         <Variable Name="visEnableButtons_1" />
         <Variable Name="visEnableButtons_2" />

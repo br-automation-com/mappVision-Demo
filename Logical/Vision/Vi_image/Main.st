@@ -174,7 +174,7 @@ PROGRAM _CYCLIC
 					
 			// -----------------------------------------------------------------------------------------------------------
 			// Load new image into window
-			IF visSelectedIndexOld <> visSelectedIndex AND dir_entry > 0 THEN
+			IF visSelectedImageOld <> visSelectedImage AND dir_entry > 0 THEN
 				brsmemset(ADR(visImagePath), 0, SIZEOF(visImagePath));
 				brsmemset(ADR(tmpStr1), 0, SIZEOF(tmpStr1));
 				visImagePath := '/FileDevice:';
@@ -184,7 +184,7 @@ PROGRAM _CYCLIC
 				brsstrcat(ADR(visImagePath), ADR('/'));
 				brsstrcat(ADR(visImagePath), ADR(visSelectedImage));
 			END_IF
-			visSelectedIndexOld := visSelectedIndex;
+			visSelectedImageOld := visSelectedImage;
 			
 			// -----------------------------------------------------------------------------------------------------------
 			// Disable buttons when command is pending
@@ -386,8 +386,8 @@ PROGRAM _CYCLIC
 			// Clear all memory
 			brsmemset(ADR(gVisionImage.DATA.Images), 0, SIZEOF(gVisionImage.DATA.Images));
 			brsmemset(ADR(visSelectedImage), 0, SIZEOF(visSelectedImage));
-			visSelectedIndexOld := 65535;
-			visSelectedIndex	:= 0;
+			visSelectedImageOld := '';
+			visSelectedImage	:= '';
 			dir_entry			:= 0;
 			idx					:= 0;
 			file_newest			:= '';
