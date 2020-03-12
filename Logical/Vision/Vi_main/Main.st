@@ -337,7 +337,7 @@ PROGRAM _CYCLIC
 							// Add text data to cross hair
 							brsstrcat(ADR(tmpStr1), ADR('<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="10"> '));
 							
-							// Add modell ID information
+							// Add modell ID information for blob and match
 							IF(VisionSensor.CFG.VisionFunction = enumBlob OR VisionSensor.CFG.VisionFunction = enumMatch) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('ID:'), CrosshairModelNumber);
 							END_IF
@@ -352,32 +352,18 @@ PROGRAM _CYCLIC
 							IF(VisionSensor.CFG.VisionFunction <> enumMeasurement) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Orientation:'), CrosshairOrientation/visCrossHair.PixelRatio);
 							END_IF
-							// Add clipped information for blob
+							// Add detail information for blob
 							IF(VisionSensor.CFG.VisionFunction = enumBlob) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Clipped:'), Blob.DATA.Clipped[idx]);
-							END_IF
-							// Add gray information for blob
-							IF(VisionSensor.CFG.VisionFunction = enumBlob) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Gray:'), Blob.DATA.MeanGrayValue[idx]);
-							END_IF
-							// Add length information for blob
-							IF(VisionSensor.CFG.VisionFunction = enumBlob) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Length:'), UDINT_TO_REAL(Blob.DATA.Length[idx])/visCrossHair.PixelRatio);
-							END_IF
-							// Add width information for blob
-							IF(VisionSensor.CFG.VisionFunction = enumBlob) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Width:'), UDINT_TO_REAL(Blob.DATA.Width[idx])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Area:'), UDINT_TO_REAL(Blob.DATA.Area[idx])/visCrossHair.PixelRatio);
 							END_IF
-							// Add score information for match
+							// Add detail information for match
 							IF(VisionSensor.CFG.VisionFunction = enumMatch) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score:'), Match.DATA.Score[idx]);
-							END_IF
-							// Add scale information for match
-							IF(VisionSensor.CFG.VisionFunction = enumMatch) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale:'), Match.DATA.Scale[idx]);
-							END_IF
-							// Add result information for code reader
-							IF(VisionSensor.CFG.VisionFunction = enumCoderReader) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.DATA.BarcodeType[idx]));
 							END_IF
 							brsstrcat(ADR(tmpStr1), ADR('</text>'));
