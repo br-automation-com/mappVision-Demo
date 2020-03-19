@@ -13,7 +13,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.ImageProcessingActive" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="StatusProcessing" attribute="value" />
 		</Binding>
-		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.Status" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraStatus" attribute="node" />
@@ -26,17 +25,17 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.CockpitIsActive" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="CockpitStatus" attribute="value" />
 		</Binding>
-	<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.PowerlinkNode" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraPlkNode" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.VisionFunction" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="DropDownBox1" attribute="selectedIndex" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:visSelectedSensor" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="numCameraNo" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.PowerlinkNode" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraPlkNode" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.VisionFunction" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="DropDownBox1" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:visSelectedSensor" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="numCameraNo" attribute="value" />
+		</Binding>
+	</Bindings>
 </BindingsSet>
