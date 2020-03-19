@@ -3,6 +3,9 @@
   <Element ID="gCameraMeasurement" Type="visioncomponent">
     <Selector ID="VisionComponentType">
       <Property ID="VisionApplicationReference" Value="ViAppMeasurement" />
+      <Group ID="VSLList">
+        <Property ID="VSL[1%]" Value="gCameraMeasurement" />
+      </Group>
     </Selector>
   </Element>
 </Configuration>

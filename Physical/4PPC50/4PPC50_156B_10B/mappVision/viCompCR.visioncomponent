@@ -3,6 +3,9 @@
   <Element ID="gCameraCodeReading" Type="visioncomponent">
     <Selector ID="VisionComponentType">
       <Property ID="VisionApplicationReference" Value="ViAppCodeReading" />
+      <Group ID="VSLList">
+        <Property ID="VSL[1%]" Value="gCameraCodeReading" />
+      </Group>
     </Selector>
   </Element>
 </Configuration>
