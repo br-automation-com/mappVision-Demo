@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="File">Vision Demo Application.docx</Object>
     <Object Type="File">Vision Demo Application.pdf</Object>
+    <Object Type="File">screenshot.png</Object>
   </Objects>
 </Package>
