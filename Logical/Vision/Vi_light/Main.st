@@ -1,7 +1,4 @@
-
 PROGRAM _INIT
-
-
 	// -----------------------------------------------------------------------------------------------------------
 	// Map global structure to local reference
 	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
