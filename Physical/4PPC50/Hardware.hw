@@ -10,9 +10,6 @@
     </Connector>
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
-      <Parameter ID="Mode" Value="Manual" />
-      <Parameter ID="InternetAddress" Value="10.49.140.212" />
-      <Parameter ID="SubnetMask" Value="255.255.255.0" />
       <Parameter ID="InaNodeNumber" Value="212" />
     </Connector>
     <Connector Name="IF3">

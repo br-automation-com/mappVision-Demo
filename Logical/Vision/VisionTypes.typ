@@ -195,7 +195,7 @@ TYPE
 		CrosshairX : REAL;
 		CrosshairY : REAL;
 		CrosshairRotate : REAL;
-		Text : STRING[700];
+		Text : STRING[1000];
 	END_STRUCT;
 END_TYPE
 

@@ -4,8 +4,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 PROGRAM _INIT
 	IF RemCfgImage.ConvertCycles = 0 THEN 							// Invalid --> use default values
-		gVisionImage.CFG.FileDevice 		:= 'VisionFileDevice';		// File device name where the images are stored
-		gVisionImage.CFG.DirName			:= 'Vision';				// Directory used for images
+		gVisionImage.CFG.FileDevice 	:= 'VisionFileDevice';		// File device name where the images are stored
+		gVisionImage.CFG.DirName		:= 'Vision';				// Directory used for images
 		gVisionImage.CFG.CameraIP		:= '192.168.200.';			// IP adress of the camera
 		gVisionImage.CFG.ConvertCycles	:= 10000;					// Conversioncycles per Step (TK8 call). Use higer value on high performance CPU, use
 																	// lower values on low performance CPU (e.g. Compact-S) or in case of cycle time violations
