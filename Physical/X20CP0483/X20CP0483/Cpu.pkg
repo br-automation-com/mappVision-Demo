@@ -20,7 +20,7 @@
     <AutomationRuntime Version="C4.72" />
     <Build GccVersion="4.1.2" />
     <DefaultTargetMemory Tasks="UserROM" />
-    <Vc FirmwareVersion="V4.52.0" />
+    <Vc FirmwareVersion="V4.72.0" />
     <OnlineConfiguration Name="X20CP0483_1" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=1" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=10.49.140.212 /REPO=11159 /ANSL=1 /PT=11169" Description="" />
   </Configuration>
 </Cpu>
