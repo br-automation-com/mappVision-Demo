@@ -25,10 +25,11 @@ VAR
 	visImageTrigger : BOOL; (*Trigger new image*)
 	TriggerTimeout : TON_10ms; (*Disable web reload when timed out*)
 	ReloadTimeout : TON_10ms; (*Disable web reload when timed out*)
-	visSelectedFlashColor : STRING[10];
-	visRepetitiveMode : BOOL;
-	RepetitiveModeTimer : TON;
-	DisableAutoArchiv : BOOL;
+	visSelectedFlashColor : STRING[10]; (*Flash color string*)
+	visSelectedFlashSegment : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)
+	visRepetitiveMode : BOOL; (*Enable/Disable repetitive mode*)
+	RepetitiveModeTimer : TON; (*Timer for repetitive mode*)
+	DisableAutoArchiv : BOOL; (*Enable/Disable automatic archieving for images*)
 	AcquisitionFailedCntOld : UDINT;
 	AcquisitionCompletedCntOld : UDINT;
 END_VAR

@@ -58,6 +58,7 @@ PROGRAM _CYCLIC
 	END_IF
 	// Vision Sensor - flash color
 	VisionSensor.CFG.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
+	VisionSensor.CFG.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Transfer data from global structure to mappView on selected camera change

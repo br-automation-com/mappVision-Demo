@@ -104,6 +104,7 @@
         <Variable Name="visSelectedFlashColor" />
         <Variable Name="visTableNo" EnableArrayElements="True" />
         <Variable Name="visEnableSetup" />
+        <Variable Name="visSelectedFlashSegment" EnableArrayElements="True" />
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />
