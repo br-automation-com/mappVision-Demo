@@ -18,9 +18,11 @@
     <Connector Name="IF4">
       <Parameter ID="AssignedOperatingSystem" Value="GPOS" />
     </Connector>
-    <Parameter ID="ConfigurationID" Value="VisionSample_4PPC50" />
+    <Parameter ID="ConfigurationID" Value="Vision_Sample" />
     <Parameter ID="ConfigVersion" Value="2.0.0" />
-    <Parameter ID="UserPartitionSize" Value="32" />
+    <Parameter ID="UserPartitionSize" Value="400" />
+    <Parameter ID="PermanentPvSize" Value="2000" />
+    <Parameter ID="RemanentGlobalPvSize" Value="20000" />
     <Parameter ID="VolatileGlobalPvSize" Value="120000" />
     <Parameter ID="TimerDeviceType" Value="EPLX2X" />
     <Parameter ID="TimerDevice" Value="4PPC50_156B_10B.IF1" />
@@ -46,8 +48,8 @@
     <Parameter ID="FileDevicePath1" Value="F:\" />
     <Group ID="FtpUser1" />
     <Parameter ID="FtpUsername1" Value="bundr" />
-    <Parameter ID="FtpUserPassword1" Value="bhvF2msozjjNR9Mlo4WjmD5T/aguPq0w0QJDRNO7+b8=" />
-    <Parameter ID="FtpUserSalt1" Value="had7AyfJ" />
+    <Parameter ID="FtpUserPassword1" Value="nMrFtJX1iKQAFT02mGT80Wb1a11GH29G52ATfKQ9HoA=" />
+    <Parameter ID="FtpUserSalt1" Value="/yM7MnyJ" />
     <Parameter ID="FTPAccessRight1" Value="0" />
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
@@ -59,9 +61,6 @@
   <Module Name="8AC114.60-2" Type="8AC114.60-2" Version="1.0.0.8">
     <Connection Connector="SS" TargetModule="8V1010.50-2" TargetConnector="SS1" />
     <Connection Connector="PLK1" TargetModule="Backlight2" TargetConnector="PLK2">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
-    </Connection>
-    <Connection Connector="PLK2" TargetModule="Match" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
   </Module>
@@ -138,41 +137,44 @@
     <Connection Connector="PLK1" TargetModule="4PPC50_156B_10B" TargetConnector="IF1" NodeNumber="1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="CodeReader" TargetConnector="PLK1" NodeNumber="1">
+    <Connection Connector="PLK2" TargetModule="Measurement" TargetConnector="PLK1" NodeNumber="1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
   <Module Name="CodeReader" Type="VSS112Q22.041P-000" Version="0.8.0.69">
-    <Connection Connector="PLK1" TargetModule="Blob" TargetConnector="PLK2" NodeNumber="3">
+    <Connection Connector="PLK1" TargetModule="Measurement" TargetConnector="PLK2" NodeNumber="3">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="OCR" TargetConnector="PLK1" NodeNumber="3">
+    <Connection Connector="PLK2" TargetModule="Match" TargetConnector="PLK1" NodeNumber="3">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
   <Module Name="Match" Type="VSS112Q22.041P-000" Version="0.8.0.69">
-    <Connection Connector="PLK1" TargetModule="8AC114.60-2" TargetConnector="PLK2" NodeNumber="4">
+    <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="4">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="Measurement" TargetConnector="PLK1" NodeNumber="4">
+    <Connection Connector="PLK2" TargetModule="OCR" TargetConnector="PLK1" NodeNumber="4">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMatch" />
   </Module>
   <Module Name="Measurement" Type="VSS112Q22.041P-000" Version="0.8.0.69">
-    <Connection Connector="PLK1" TargetModule="Match" TargetConnector="PLK2" NodeNumber="2">
+    <Connection Connector="PLK1" TargetModule="Blob" TargetConnector="PLK2" NodeNumber="2">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="CodeReader" TargetConnector="PLK1" NodeNumber="2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
   </Module>
   <Module Name="OCR" Type="VSS112Q22.041P-000" Version="0.8.0.69">
-    <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="5">
+    <Connection Connector="PLK1" TargetModule="Match" TargetConnector="PLK2" NodeNumber="5">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Connection Connector="PLK2" TargetModule="Backlight1" TargetConnector="PLK1" NodeNumber="5">

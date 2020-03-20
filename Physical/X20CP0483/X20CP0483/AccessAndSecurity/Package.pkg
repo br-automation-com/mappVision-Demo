@@ -5,5 +5,6 @@
     <Object Type="Package">UserRoleSystem</Object>
     <Object Type="Package">CertificateStore</Object>
     <Object Type="Package">TransportLayerSecurity</Object>
+    <Object Type="Package">Firewall</Object>
   </Objects>
 </Package>
