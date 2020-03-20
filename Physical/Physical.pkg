@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="Configuration">4PPC50</Object>
     <Object Type="Configuration">X20CP0483</Object>
+    <Object Type="Configuration">X20CP1586</Object>
   </Objects>
 </Physical>

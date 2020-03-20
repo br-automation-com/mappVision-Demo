@@ -229,7 +229,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[3].CFG.Enable AT %QB."CodeReader".Enable;
 	Cyclic#1.::gVisionSensor[3].CFG.OffsetROIOrientation AT %QW."CodeReader".OffsetRoiOrientation;
 	Cyclic#1.::gVisionSensor[3].CFG.IRFilter AT %QX."CodeReader".IRFilter;
-	Cyclic#1.::gVisionSensor[3].CFG.Timeout  AT %QW."CodeReader".Timeout;
+	Cyclic#1.::gVisionSensor[3].CFG.Timeout AT %QW."CodeReader".Timeout;
 	Cyclic#1.::gCodeReader.CFG.ParameterMode AT %QB."CodeReader".ParameterMode;
 	Cyclic#1.::gCodeReader.CFG.ParameterOptimization AT %QB."CodeReader".ParameterOptimization;
 	Cyclic#1.::gCodeReader.DATA.BarcodeType[1] AT %IB."CodeReader".SymbolType01;
@@ -517,4 +517,5 @@ VAR_CONFIG
 	Cyclic#1.::gCodeReader.CFG.CodeType AT %QB."CodeReader".OCRSymbolType;
 	Cyclic#1.::NettimeCurrent AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
 	Cyclic#1.::NettimeCurrent AT %ID."X20CP0483".IF3.NettimeSoC;
+	Cyclic#1.::NettimeCurrent AT %ID."X20CP1586".IF3.NettimeSoC;
 END_VAR

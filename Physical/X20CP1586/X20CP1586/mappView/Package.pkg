@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.7.2.98?>
+<Package SubType="mappViewControl" PackageType="mappViewControl" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Config.mappviewcfg</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Visualizat.vis</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Header.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Footer.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Main.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\CodeReader.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Blob.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Match.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\OCR.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\MT.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Lights.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Nettime.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\ImageArchiv.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Header.eventbinding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Footer.eventbinding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Navigation.eventbinding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\MainContent.eventbinding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Lights.eventbinding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\ImageArchiv.eventbinding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.eventbinding</Object>
+  </Objects>
+</Package>
