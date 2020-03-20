@@ -234,7 +234,7 @@ TYPE
 		DATA : typBlobData;
 	END_STRUCT;
 	typBlobConfig : 	STRUCT 
-		RegionalFeature : BOOL;
+		RegionalFeature : USINT;
 	END_STRUCT;
 	typBlobData : 	STRUCT 
 		ModelNumber : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
