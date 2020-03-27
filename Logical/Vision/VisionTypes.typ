@@ -45,6 +45,7 @@ TYPE
 		AcquisitionAcceptedCnt : USINT;
 		AcquisitionCompletedCnt : USINT;
 		AcquisitionFailedCnt : USINT;
+		LightWarningCnt : USINT;
 		ImageProcessingError : UINT;
 		ImageProcessingActive : BOOL;
 		ImageNettime : DINT;

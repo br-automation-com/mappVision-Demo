@@ -4,8 +4,7 @@
 #ifndef _VICORE_
 #define _VICORE_
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 #include <bur/plctypes.h>
@@ -15,16 +14,19 @@ extern "C"
 #endif
 /* Datatypes and datatypes of function blocks */
 typedef struct ViComponentInternalMappLinkType
-{	unsigned long Internal[2];
+{
+	unsigned long Internal[2];
 } ViComponentInternalMappLinkType;
 
 typedef struct ViComponentInternalCameraIfType
-{	unsigned long Internal[2];
+{
+	plcdword Vtable;
 } ViComponentInternalCameraIfType;
 
 typedef struct ViComponentType
-{	struct ViComponentInternalMappLinkType mappLinkInternal;
-	struct ViComponentInternalCameraIfType CameraType;
+{
+	struct ViComponentInternalCameraIfType* CameraType;
+	struct ViComponentInternalMappLinkType MappLinkInternal;
 } ViComponentType;
 
 #ifdef __cplusplus

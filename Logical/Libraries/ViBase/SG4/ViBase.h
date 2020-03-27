@@ -16,17 +16,28 @@ extern "C" {
 #define _BUR_PUBLIC
 #endif
 /* Datatypes and datatypes of function blocks */
-typedef struct ViBaseExecInternalType
+typedef struct ViBaseFubProcessingType
 {
-	unsigned short i_serno;
-	unsigned short i_state;
-	signed long Result;
-} ViBaseExecInternalType;
+	signed long Mediator[2];
+} ViBaseFubProcessingType;
+
+typedef struct ViBaseControlIfType
+{
+	plcdword VTable;
+} ViBaseControlIfType;
 
 typedef struct ViBaseInternalType
 {
-	struct ViBaseExecInternalType i_base;
-	unsigned long m_ctx;
+	unsigned long ID;
+	unsigned long Check;
+	unsigned long ParamHash;
+	plcword State;
+	unsigned short Error;
+	struct ViBaseFubProcessingType* Treating;
+	unsigned long Reserve[2];
+	unsigned char Flags;
+	struct ViBaseControlIfType* ControlIf;
+	signed long SeqNo;
 } ViBaseInternalType;
 
 typedef struct ViBaseSaveDiagInfo

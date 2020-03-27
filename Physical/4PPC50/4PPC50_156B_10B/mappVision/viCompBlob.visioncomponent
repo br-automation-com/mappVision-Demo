@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
   <Element ID="gCameraBlob" Type="visioncomponent">
-    <Selector ID="VisionComponentType">
-      <Property ID="VisionApplicationReference" Value="ViAppBlob" />
-      <Group ID="VSLList">
-        <Property ID="VSL[1%]" Value="gCameraBlob" />
-      </Group>
-    </Selector>
+    <Property ID="VisionApplicationReference" Value="ViAppBlob" />
   </Element>
 </Configuration>

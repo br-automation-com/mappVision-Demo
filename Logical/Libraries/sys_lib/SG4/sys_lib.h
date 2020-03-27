@@ -55,7 +55,6 @@ extern "C"
 #define ERR_BUR_INSTALL         3318    /* error install datamodule */
 #define ERR_BUR_WRONG_MODTYP    3319    /* wrong Moduletype */
 
-
 #define ERR_BUR_OBJDEL          3320    /* object already deleted */
 #define ERR_BUR_ILLOBJ          3324    /* object does not exist */
 #define ERR_BUR_ILLOBJTYP       3328    /* invalid object type */
@@ -89,7 +88,7 @@ extern "C"
 #define     Z_ST_stdebug        0x88
 #define     Z_ST_tmp_suspended  0x90
 
-/* PV data types */
+/* PV data types - obsolete */
 #define     PB_DT_STRUCT        0       /* structure */
 #define     PB_DT_BOOL          1       /* boolean */
 #define     PB_DT_INT8          2       /* integer8 */
@@ -99,13 +98,35 @@ extern "C"
 #define     PB_DT_WORD          6       /* unsigned integer16 */
 #define     PB_DT_LONG          7       /* unsigned integer32 */
 #define     PB_DT_FLOAT         8       /* floating point */
-#define     PB_DT_VIS           9       /* visible string*/
+#define     PB_DT_VIS           9       /* visible string */
 #define     PB_DT_OCTET         10      /* octet string */
 #define     PB_DT_DATE          11      /* date */
 #define     PB_DT_TIME          12      /* time of day */
 #define     PB_DT_DIFF          13      /* time difference */
 #define     PB_DT_BIT           14      /* bit string */
 #define     PB_DT_ARRAY         15      /* array */
+
+/* elementary data types */
+#define 	SYSLIB_IEC_TYPE_USER_DEFINED	0	/* User-defined data type */
+#define 	SYSLIB_IEC_TYPE_USER_DEFINED_2	15 	/* User-defined data type (legacy: array of structs) */
+#define 	SYSLIB_IEC_TYPE_BOOL			1   /* 8 Bit containing a boolean value FALSE=0 or TRUE=1 */
+#define 	SYSLIB_IEC_TYPE_SINT			2   /* 8 Bit signed integer */
+#define 	SYSLIB_IEC_TYPE_INT				3   /* 16 Bit signed integer */
+#define 	SYSLIB_IEC_TYPE_DINT			4   /* 32 Bit signed integer */
+#define 	SYSLIB_IEC_TYPE_USINT			5   /* 8 Bit unsigned integer */
+#define 	SYSLIB_IEC_TYPE_UINT			6   /* 16 Bit unsigned integer */
+#define 	SYSLIB_IEC_TYPE_UDINT			7   /* 32 Bit unsigned integer */
+#define 	SYSLIB_IEC_TYPE_REAL			8   /* 32 Bit floating point number */
+#define 	SYSLIB_IEC_TYPE_STRING			9   /* Variable-length single-byte character string */
+#define 	SYSLIB_IEC_TYPE_DATE_AND_TIME	11 	/* 32 Bit of Date in Seconds since 01.01.1970 00:00:00 */
+#define 	SYSLIB_IEC_TYPE_TIME			12 	/* 32 Bit of Time in ms */
+#define 	SYSLIB_IEC_TYPE_DATE			13 	/* 32 Bit of Date (only) */
+#define 	SYSLIB_IEC_TYPE_LREAL			14 	/* 64 Bit floating point number */
+#define 	SYSLIB_IEC_TYPE_TIME_OF_DAY		16 	/* 32 Bit Time of day (only) */
+#define		SYSLIB_IEC_TYPE_BYTE			17 	/* Bit string of length 8 */
+#define		SYSLIB_IEC_TYPE_WORD			18 	/* Bit string of length 16 */
+#define		SYSLIB_IEC_TYPE_DWORD			19 	/* Bit string of length 32 */
+#define		SYSLIB_IEC_TYPE_WSTRING			21	/* Variable-length double-byte character string */
 
 /* memory types */
 #define     SYS_RAM             1       /* RAM */

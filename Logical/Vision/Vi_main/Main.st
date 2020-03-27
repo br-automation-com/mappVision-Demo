@@ -80,7 +80,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Check if vision cockpit is open
 	// -----------------------------------------------------------------------------------------------------------
-	IF(VisionSensor.STA.Status = 16777216) THEN
+	IF((VisionSensor.STA.Status AND 16#8000_0000) > 0) THEN
 		VisionSensor.STA.CockpitIsActive := TRUE;
 	ELSE
 		VisionSensor.STA.CockpitIsActive := FALSE;

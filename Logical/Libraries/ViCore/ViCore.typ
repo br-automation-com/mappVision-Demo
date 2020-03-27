@@ -9,15 +9,15 @@
 
 
 TYPE
-	ViComponentInternalMappLinkType : 	STRUCT
-		Internal : ARRAY[0..1]OF UDINT;
+	ViComponentInternalMappLinkType : STRUCT	(*internal variable*)
+		Internal : ARRAY[0..1]OF UDINT; (*Internal data*)
 	END_STRUCT;
-	ViComponentInternalCameraIfType : 	STRUCT
-		Internal : ARRAY[0..1]OF UDINT;
+	ViComponentInternalCameraIfType : 	 STRUCT (*Partial interface type (C only)*)
+		Vtable : DWORD; (**)
 	END_STRUCT;
 	ViComponentType : {REDUND_UNREPLICABLE} 	STRUCT
-		mappLinkInternal : ViComponentInternalMappLinkType;
-		CameraType :  ViComponentInternalCameraIfType;
+		CameraType : REFERENCE TO ViComponentInternalCameraIfType ;
+		MappLinkInternal : ViComponentInternalMappLinkType;
 	END_STRUCT;
 
 

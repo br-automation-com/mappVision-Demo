@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
   <Element ID="gCameraOCR" Type="visioncomponent">
-    <Selector ID="VisionComponentType">
-      <Property ID="VisionApplicationReference" Value="ViAppOCR" />
-      <Group ID="VSLList">
-        <Property ID="VSL[1%]" Value="gCameraOCR" />
-      </Group>
-    </Selector>
+    <Property ID="VisionApplicationReference" Value="ViAppOCR" />
   </Element>
 </Configuration>

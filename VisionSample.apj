@@ -2,7 +2,7 @@
 <?AutomationStudio Version="4.7.2.98"?>
 <Project Version="1.00.0" Edition="Standard" EditionComment="Standard" xmlns="http://br-automation.co.at/AS/Project">
   <Communication />
-  <ANSIC Declarations="false" DefaultIncludes="true" />
+  <ANSIC Declarations="true" DefaultIncludes="true" />
   <IEC ExtendedConstants="true" IecExtendedComments="true" KeywordsAsStructureMembers="false" NamingConventions="true" Pointers="true" Preprocessor="false" />
   <Motion RestartAcoposParameter="true" RestartInitParameter="true" />
   <Project StoreRuntimeInProject="false" />
@@ -12,6 +12,6 @@
     <mappCockpit Version="5.9.0" />
     <mappMotion McAcpDrv="5.9.2" McAcpSim="5.9.2" McAcpSys="5.9.2" Version="5.9.2" />
     <mappView Version="5.9.1" />
-    <mappVision Version="5.9.5532" />
+    <mappVision Version="5.9.5540" />
   </TechnologyPackages>
 </Project>

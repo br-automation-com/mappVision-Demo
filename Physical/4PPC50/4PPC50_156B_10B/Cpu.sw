@@ -79,14 +79,14 @@
     <LibraryObject Name="MpBase" Source="Libraries.MpBase.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="AsBrWStr" Source="Libraries.AsBrWStr.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="AsIODiag" Source="Libraries.AsIODiag.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="ViBase" Source="Libraries.ViBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="ViCore" Source="Libraries.ViCore.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="ViWSProxy" Source="Libraries.ViWSProxy.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="asstring" Source="Libraries.asstring.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="McBase" Source="Libraries.McBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="MpAxis" Source="Libraries.MpAxis.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="McAxis" Source="Libraries.McAxis.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="McAcpAx" Source="Libraries.McAcpAx.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="ViBase" Source="Libraries.ViBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="ViCore" Source="Libraries.ViCore.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="ViWSProxy" Source="Libraries.ViWSProxy.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="arflatprv" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="arcoal" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
