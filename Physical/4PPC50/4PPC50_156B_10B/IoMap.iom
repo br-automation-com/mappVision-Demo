@@ -24,6 +24,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[1].CMD.AutoSetupStartStop AT %QX."Blob".SearchAcquisitionSettings;
 	Cyclic#1.::gVisionSensor[1].STA.ImageProcessingActive AT %IX."Blob".ImageProcessingActive;
 	Cyclic#1.::gVisionSensor[1].HW.DigitalInput01 AT %IX."Blob".DigitalInput01;
+	Cyclic#1.::gVisionSensor[1].HW.DigitalOutput01  AT %QX."Blob".DigitalOutput01;
 	Cyclic#1.::gVisionSensor[1].HW.DigitalOutputStatus01 AT %IX."Blob".DigitalOutputStatus01;
 	Cyclic#1.::gVisionSensor[1].CFG.MaxItemCnt AT %QB."Blob".NumSearchMax;
 	Cyclic#1.::gVisionSensor[1].CFG.OffsetROIX AT %QD."Blob".OffsetRoiX;
@@ -39,6 +40,9 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[1].CFG.OffsetROIRotationCenterX AT %QD."Blob".OffsetRoiRotationCenterX;
 	Cyclic#1.::gVisionSensor[1].CFG.OffsetROIRotationCenterY AT %QD."Blob".OffsetRoiRotationCenterY;
 	Cyclic#1.::gVisionSensor[1].CFG.Enable AT %QB."Blob".Enable;
+	Cyclic#1.::gVisionSensor[1].STA.LightWarningCnt AT %IB."Blob".LightWarningCnt;
+	Cyclic#1.::gVisionSensor[1].HW.Ready AT %IX."Blob".ImageAcquisitionReady;
+	Cyclic#1.::gVisionSensor[1].CFG.IRFilter AT %QX."Blob".IRFilter;
 	Cyclic#1.::gBlob.CFG.RegionalFeature AT %QB."Blob".RegionalFeatures;
 	Cyclic#1.::gBlob.DATA.PositionX[1] AT %ID."Blob".PositionX01;
 	Cyclic#1.::gBlob.DATA.PositionX[2] AT %ID."Blob".PositionX02;
@@ -130,7 +134,6 @@ VAR_CONFIG
 	Cyclic#1.::gBlob.DATA.MeanGrayValue[8] AT %IB."Blob".MeanGrayValue08;
 	Cyclic#1.::gBlob.DATA.MeanGrayValue[9] AT %IB."Blob".MeanGrayValue10;
 	Cyclic#1.::gBlob.DATA.MeanGrayValue[10] AT %IB."Blob".MeanGrayValue09;
-	Cyclic#1.::gVisionSensor[1].CFG.IRFilter AT %QX."Blob".IRFilter;
 	Cyclic#1.::gVisionSensor[2].HW.Connected AT %IX."Measurement".ModuleOk;
 	Cyclic#1.::gVisionSensor[2].HW.SerialNumber AT %ID."Measurement".SerialNumber;
 	Cyclic#1.::gVisionSensor[2].HW.ID AT %ID."Measurement".ModuleID;
@@ -156,6 +159,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[2].CMD.AutoSetupStartStop AT %QX."Measurement".SearchAcquisitionSettings;
 	Cyclic#1.::gVisionSensor[2].STA.ImageProcessingActive AT %IX."Measurement".ImageProcessingActive;
 	Cyclic#1.::gVisionSensor[2].HW.DigitalInput01 AT %IX."Measurement".DigitalInput01;
+	Cyclic#1.::gVisionSensor[2].HW.DigitalOutput01  AT %QX."Measurement".DigitalOutput01;
 	Cyclic#1.::gVisionSensor[2].HW.DigitalOutputStatus01 AT %IX."Measurement".DigitalOutputStatus01;
 	Cyclic#1.::gVisionSensor[2].CFG.MaxItemCnt AT %QB."Measurement".NumSearchMax;
 	Cyclic#1.::gVisionSensor[2].CFG.OffsetROIX AT %QD."Measurement".OffsetRoiX;
@@ -171,6 +175,8 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[2].CFG.OffsetROIRotationCenterY AT %QD."Measurement".OffsetRoiRotationCenterY;
 	Cyclic#1.::gVisionSensor[2].CFG.Enable AT %QB."Measurement".Enable;
 	Cyclic#1.::gVisionSensor[2].CFG.IRFilter AT %QX."Measurement".IRFilter;
+	Cyclic#1.::gVisionSensor[2].STA.LightWarningCnt  AT %IB."Measurement".LightWarningCnt;
+	Cyclic#1.::gVisionSensor[2].HW.Ready AT %IX."Measurement".ImageAcquisitionReady;
 	Cyclic#1.::gMT.DATA.Result[1] AT %ID."Measurement".Results01;
 	Cyclic#1.::gMT.DATA.Result[2] AT %ID."Measurement".Results02;
 	Cyclic#1.::gMT.DATA.Result[3] AT %ID."Measurement".Results03;
@@ -201,6 +207,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[3].CMD.AutoSetupStartStop AT %QX."CodeReader".SearchAcquisitionSettings;
 	Cyclic#1.::gVisionSensor[3].STA.ImageProcessingActive AT %IX."CodeReader".ImageProcessingActive;
 	Cyclic#1.::gVisionSensor[3].HW.DigitalInput01 AT %IX."CodeReader".DigitalInput01;
+	Cyclic#1.::gVisionSensor[3].HW.DigitalOutput01 AT %QX."CodeReader".DigitalOutput01;
 	Cyclic#1.::gVisionSensor[3].HW.DigitalOutputStatus01 AT %IX."CodeReader".DigitalOutputStatus01;
 	Cyclic#1.::gVisionSensor[3].CFG.MaxItemCnt AT %QB."CodeReader".NumSearchMax;
 	Cyclic#1.::gVisionSensor[3].CFG.OffsetROIX AT %QD."CodeReader".OffsetRoiX;
@@ -218,6 +225,8 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[3].CFG.OffsetROIOrientation AT %QW."CodeReader".OffsetRoiOrientation;
 	Cyclic#1.::gVisionSensor[3].CFG.IRFilter AT %QX."CodeReader".IRFilter;
 	Cyclic#1.::gVisionSensor[3].CFG.Timeout AT %QW."CodeReader".Timeout;
+	Cyclic#1.::gVisionSensor[3].STA.LightWarningCnt  AT %IB."CodeReader".LightWarningCnt;
+	Cyclic#1.::gVisionSensor[3].HW.Ready AT %IX."CodeReader".ImageAcquisitionReady;
 	Cyclic#1.::gCodeReader.CFG.ParameterMode AT %QB."CodeReader".ParameterMode;
 	Cyclic#1.::gCodeReader.CFG.ParameterOptimization AT %QB."CodeReader".ParameterOptimization;
 	Cyclic#1.::gCodeReader.DATA.BarcodeType[1] AT %IB."CodeReader".SymbolType01;
@@ -305,6 +314,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[4].CMD.AutoSetupStartStop AT %QX."Match".SearchAcquisitionSettings;
 	Cyclic#1.::gVisionSensor[4].STA.ImageProcessingActive AT %IX."Match".ImageProcessingActive;
 	Cyclic#1.::gVisionSensor[4].HW.DigitalInput01 AT %IX."Match".DigitalInput01;
+	Cyclic#1.::gVisionSensor[4].HW.DigitalOutput01 AT %QX."Match".DigitalOutput01;
 	Cyclic#1.::gVisionSensor[4].HW.DigitalOutputStatus01 AT %IX."Match".DigitalOutputStatus01;
 	Cyclic#1.::gVisionSensor[4].CFG.MaxItemCnt AT %QB."Match".NumSearchMax;
 	Cyclic#1.::gVisionSensor[4].CFG.OffsetROIX AT %QD."Match".OffsetRoiX;
@@ -322,6 +332,8 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[4].CFG.OffsetROIOrientation AT %QW."Match".OffsetRoiOrientation;
 	Cyclic#1.::gVisionSensor[4].CFG.IRFilter AT %QX."Match".IRFilter;
 	Cyclic#1.::gVisionSensor[4].CFG.Timeout AT %QW."Match".Timeout;
+	Cyclic#1.::gVisionSensor[4].STA.LightWarningCnt  AT %IB."Match".LightWarningCnt;
+	Cyclic#1.::gVisionSensor[4].HW.Ready AT %IX."Match".ImageAcquisitionReady;
 	Cyclic#1.::gMatch.CFG.MinScore AT %QB."Match".MinScore;
 	Cyclic#1.::gMatch.CFG.MaxOverlap AT %QB."Match".MaxOverlay;
 	Cyclic#1.::gMatch.DATA.Score[1] AT %IB."Match".Score01;
@@ -429,6 +441,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[5].CMD.AutoSetupStartStop AT %QX."OCR".SearchAcquisitionSettings;
 	Cyclic#1.::gVisionSensor[5].STA.ImageProcessingActive AT %IX."OCR".ImageProcessingActive;
 	Cyclic#1.::gVisionSensor[5].HW.DigitalOutput01 AT %IX."OCR".DigitalInput01;
+	Cyclic#1.::gVisionSensor[5].HW.DigitalOutput02 AT %QX."OCR".DigitalOutput01;
 	Cyclic#1.::gVisionSensor[5].HW.DigitalOutputStatus01 AT %IX."OCR".DigitalOutputStatus01;
 	Cyclic#1.::gVisionSensor[5].CFG.MaxItemCnt AT %QB."OCR".NumSearchMax;
 	Cyclic#1.::gVisionSensor[5].CFG.OffsetROIX AT %QD."OCR".OffsetRoiX;
@@ -446,6 +459,8 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[5].CFG.OffsetROIOrientation AT %QW."OCR".OffsetRoiOrientation;
 	Cyclic#1.::gVisionSensor[5].CFG.IRFilter AT %QX."OCR".IRFilter;
 	Cyclic#1.::gVisionSensor[5].CFG.Timeout AT %QW."OCR".Timeout;
+	Cyclic#1.::gVisionSensor[5].STA.LightWarningCnt  AT %IB."OCR".LightWarningCnt;
+	Cyclic#1.::gVisionSensor[5].HW.Ready AT %IX."OCR".ImageAcquisitionReady;
 	Cyclic#1.::gOCR.CFG.ParameterMode AT %QB."OCR".ParameterMode;
 	Cyclic#1.::gOCR.DATA.Text[1] AT %IO."OCR".OCR_Data01;
 	Cyclic#1.::gOCR.DATA.Text[2] AT %IO."OCR".OCR_Data02;
@@ -498,19 +513,4 @@ VAR_CONFIG
 	Cyclic#1.::NettimeCurrent AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
 	Cyclic#1.::NettimeCurrent AT %ID."X20CP0483".IF3.NettimeSoC;
 	Cyclic#1.::NettimeCurrent AT %ID."X20CP1586".IF3.NettimeSoC;
-	Cyclic#1.::gVisionSensor[1].HW.Ready AT %IX."Blob".ImageAcquisitionReady;
-	Cyclic#1.::gVisionSensor[2].HW.Ready AT %IX."Measurement".ImageAcquisitionReady;
-	Cyclic#1.::gVisionSensor[3].HW.Ready AT %IX."CodeReader".ImageAcquisitionReady;
-	Cyclic#1.::gVisionSensor[4].HW.Ready AT %IX."Match".ImageAcquisitionReady;
-	Cyclic#1.::gVisionSensor[5].HW.Ready AT %IX."OCR".ImageAcquisitionReady;
-	Cyclic#1.::gVisionSensor[1].STA.LightWarningCnt AT %IB."Blob".LightWarningCnt;
-	Cyclic#1.::gVisionSensor[2].STA.LightWarningCnt  AT %IB."Measurement".LightWarningCnt;
-	Cyclic#1.::gVisionSensor[3].STA.LightWarningCnt  AT %IB."CodeReader".LightWarningCnt;
-	Cyclic#1.::gVisionSensor[4].STA.LightWarningCnt  AT %IB."Match".LightWarningCnt;
-	Cyclic#1.::gVisionSensor[5].STA.LightWarningCnt  AT %IB."OCR".LightWarningCnt;
-	Cyclic#1.::gVisionSensor[5].HW.DigitalOutput02 AT %QX."OCR".DigitalOutput01;
-	Cyclic#1.::gVisionSensor[4].HW.DigitalOutput01 AT %QX."Match".DigitalOutput01;
-	Cyclic#1.::gVisionSensor[3].HW.DigitalOutput01 AT %QX."CodeReader".DigitalOutput01;
-	Cyclic#1.::gVisionSensor[2].HW.DigitalOutput01  AT %QX."Measurement".DigitalOutput01;
-	Cyclic#1.::gVisionSensor[1].HW.DigitalOutput01  AT %QX."Blob".DigitalOutput01;
 END_VAR
