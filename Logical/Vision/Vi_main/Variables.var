@@ -23,7 +23,7 @@ VAR
 	visEnableVision : BOOL; (*Enable vision function*)
 	visAutoArchiv : BOOL; (*Enable/Disable auto archiving of camera images*)
 	visImageTrigger : BOOL; (*Trigger new image*)
-	TriggerTimeout : TON_10ms; (*Disable web reload when timed out*)
+	TriggerTimeout : TON; (*Disable web reload when timed out*)
 	ReloadTimeout : TON_10ms; (*Disable web reload when timed out*)
 	visSelectedFlashColor : STRING[10]; (*Flash color string*)
 	visSelectedFlashSegment : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)

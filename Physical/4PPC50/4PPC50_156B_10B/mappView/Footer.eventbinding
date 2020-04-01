@@ -17,22 +17,11 @@
 		<EventBinding id="contentFooter.btnImageTrigger.Click">
 			<Source contentRefId="contentFooter" widgetRefId="btnImageTrigger" xsi:type="widgets.brease.Button.Event" event="Click" />
 			<EventHandler>
-				<Sequence>
-					<Step order="0">
-						<Action>
-							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.CFG.NettimeDelay" >
-								<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="0" />
-							</Target>
-						</Action>
-					</Step>
-					<Step order="1">
-						<Action>
-							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visImageTrigger" >
-								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-							</Target>
-						</Action>
-					</Step>
-				</Sequence>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visImageTrigger" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
 			</EventHandler>
 		</EventBinding>
 	</Bindings>

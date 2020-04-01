@@ -171,7 +171,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF VisionSensor.CMD.ImageTrigger THEN
 		TriggerTimeout.IN := TRUE;
-		TriggerTimeout.PT := VisionSensor.CFG.Timeout/5;
+		TriggerTimeout.PT := UINT_TO_TIME(VisionSensor.CFG.Timeout)*2;
 		IF TriggerTimeout.Q THEN
 			VisionSensor.CMD.ImageTrigger := FALSE;
 			VisionSensor.CMD.ImageTriggerReset := TRUE;
@@ -197,12 +197,12 @@ PROGRAM _CYCLIC
 	// Transfer auto setup data to preset values
 	// -----------------------------------------------------------------------------------------------------------
 	IF(EDGEPOS(VisionSensor.CMD.AutoSetupTransfer)) THEN
-		VisionSensor.CFG.Gain := VisionSensor.STA.AutoSetupGain;
-		VisionSensor.CFG.Focus := VisionSensor.STA.AutoSetupFocus;
-		VisionSensor.CFG.Exposure := VisionSensor.STA.AutoSetupExposure;
-		VisionSensor.CMD.AutoSetupTransfer := FALSE;
-		VisionSensor.CMD.AutoSetupStartStop := FALSE;
-		VisionSensor.CMD.ImageTrigger := TRUE;
+		VisionSensor.CFG.Gain				:= VisionSensor.STA.AutoSetupGain;
+		VisionSensor.CFG.Focus				:= VisionSensor.STA.AutoSetupFocus;
+		VisionSensor.CFG.Exposure			:= VisionSensor.STA.AutoSetupExposure;
+		VisionSensor.CMD.AutoSetupTransfer	:= FALSE;
+		VisionSensor.CMD.AutoSetupStartStop	:= FALSE;
+		visImageTrigger						:= TRUE;
 	END_IF
 	
 	// -----------------------------------------------------------------------------------------------------------
