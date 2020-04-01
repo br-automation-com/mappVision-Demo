@@ -136,21 +136,19 @@ TYPE
 		DAT : typNettimeData;
 	END_STRUCT;
 	typNettimeCommand : 	STRUCT 
-		Activate : BOOL := TRUE;
+		Activate : BOOL;
 	END_STRUCT;
 	typNettimeConfig : 	STRUCT 
-		AxisPeriod : LREAL := 360; (*Units when period repeats*)
-		PowerlinkDelay : USINT := 4; (*Number of powerlink cycles the trigger has to be send ahead*)
-		AxisPositionTrigger : LREAL := 0; (*Position in the period where trigger is fired*)
+		AxisPeriod : LREAL; (*Units when period repeats*)
+		AxisPositionTrigger : LREAL; (*Position in the period where trigger is fired*)
+		AxisPositionDelay_Cycles : LREAL; (*Delay in PLK cycles for the read position from drive*)
+		VisionPreTrigger_Cycles : DINT; (*Number of powerlink cycles the trigger has to be send ahead*)
 	END_STRUCT;
 	typNettimeData : 	STRUCT 
-		PowerlinkCycle : DINT; (*Powerlink cycle time in microseconds*)
-		NettimeNext : DINT; (*Calculated nettime for next trigger*)
-		NettimeDelta : DINT; (*Difference between current nettime and calculated nettime*)
+		NettimeNext_us : DINT; (*Calculated nettime for next trigger*)
+		NettimeDelta_us : DINT; (*Difference between current nettime and calculated nettime for the camera trigger*)
 		AxisPosition : LREAL; (*Current axis position*)
 		AxisVelocity : LREAL; (*Current axis position*)
-		AxisPositionDelta : LREAL; (*Units when next trigger position is reached*)
-		AxisTimeDelta : DINT; (*Time when next trigger position is reached*)
 		AxisInVelocity : BOOL; (*Indicates that the axis is moving at speed*)
 		Overflow : DINT; (*Counts up when a trigger could not be set on time*)
 	END_STRUCT;

@@ -510,7 +510,7 @@ VAR_CONFIG
 	Cyclic#1.::gCodeReader.CFG.RobustnessEnable AT %QB."CodeReader".EnableRobustness;
 	Cyclic#1.::gCodeReader.CFG.GradingEnable AT %QB."CodeReader".CodeGrading;
 	Cyclic#1.::gCodeReader.CFG.CodeType AT %QB."CodeReader".OCRSymbolType;
-	Cyclic#1.::NettimeCurrent AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
-	Cyclic#1.::NettimeCurrent AT %ID."X20CP0483".IF3.NettimeSoC;
-	Cyclic#1.::NettimeCurrent AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::NettimeCurrent_us AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
+	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP0483".IF3.NettimeSoC;
+	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP1586".IF3.NettimeSoC;
 END_VAR

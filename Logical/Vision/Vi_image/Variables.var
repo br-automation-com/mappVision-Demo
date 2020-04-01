@@ -1,5 +1,4 @@
 VAR
-	ViBaseSaveDiagInfo_01 : ViBaseSaveDiagInfo;
 	Step : VIStep_Enum;
 	tmpStr1 : STRING[80];
 	tmpStr2 : STRING[40];

@@ -8,6 +8,7 @@
     <Object Type="Program" Language="IEC">Vi_light</Object>
     <Object Type="Program" Language="IEC">Vi_nettime</Object>
     <Object Type="Program" Language="IEC">Vi_image</Object>
+    <Object Type="Program" Language="IEC">Axis</Object>
     <Object Type="Program" Language="IEC">YourTask</Object>
     <Object Type="File">setRouteToCamera.bat</Object>
     <Object Type="File">revision.txt</Object>

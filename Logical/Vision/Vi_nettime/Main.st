@@ -4,59 +4,44 @@
 // - Make sure that nettime is selected in the vision application (Image aquisition -> Aquisition configuration -> Trigger Source -> Trigger delay
 // --------------------------------------------------------------------------------------------------------------------
 PROGRAM _INIT
-
+	gVisionNettime.CMD.Activate					:= TRUE;
+	gVisionNettime.CFG.AxisPeriod				:= 360; // Needs also to be set in the axis configuration
+	gVisionNettime.CFG.AxisPositionTrigger		:= 0;
+	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; // Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
+	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 4; // Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
 END_PROGRAM
 
 PROGRAM _CYCLIC
-	
-	// --------------------------------------------------------------------------------------------------------------------
-	// Main state machine
-	// --------------------------------------------------------------------------------------------------------------------
-	IF(gVisionNettime.CMD.Activate) THEN
-		// --------------------------------------------------------------------------------------------------------------------
-		// Calculate Powerlink cycle time
-		gVisionNettime.DAT.PowerlinkCycle := NettimeCurrent - OldNettime;
-		OldNettime := NettimeCurrent;
-		
-		// --------------------------------------------------------------------------------------------------------------------
-		// Make sure we are moving and on speed
-		IF(gVisionNettime.DAT.AxisInVelocity AND gVisionNettime.DAT.AxisVelocity > 0) THEN
-			// --------------------------------------------------------------------------------------------------------------------
-			// Check if axis is before the image or if it is after the image position
-			IF (gVisionNettime.CFG.AxisPositionTrigger >= gVisionNettime.DAT.AxisPosition) THEN
-				// Calculate the distance [units] between the image position and the actual position
-				gVisionNettime.DAT.AxisPositionDelta := gVisionNettime.CFG.AxisPositionTrigger - gVisionNettime.DAT.AxisPosition;
+	PowerlinkCycle_us			:= NettimeCurrent_us - NettimeLastCycle_us;
+	NettimeLastCycle_us			:= NettimeCurrent_us;
+	IF gVisionNettime.CMD.Activate AND gVisionNettime.DAT.AxisInVelocity AND gVisionNettime.DAT.AxisVelocity > 0 THEN
+		AxisPositionNow			:= gVisionNettime.DAT.AxisPosition + gVisionNettime.DAT.AxisVelocity * PowerlinkCycle_us * gVisionNettime.CFG.AxisPositionDelay_Cycles / 1000000; // When the MpAxis gives us the read position, it is old. So calculate the "now" position
+		IF AxisPositionNow > gVisionNettime.CFG.AxisPeriod THEN // modulo correction
+			AxisPositionNow		:= AxisPositionNow - gVisionNettime.CFG.AxisPeriod;
+		ELSIF AxisPositionNow < 0 THEN // modulo correction
+			AxisPositionNow		:= AxisPositionNow + gVisionNettime.CFG.AxisPeriod;
+		END_IF
+		IF gVisionNettime.DAT.AxisVelocity > 0 THEN
+			TriggerPosDelta		:= gVisionNettime.CFG.AxisPositionTrigger - AxisPositionNow;
 			ELSE
-				// Calculate the distance [units] between the image position and the actual position taking in account the period 
-				gVisionNettime.DAT.AxisPositionDelta := (gVisionNettime.CFG.AxisPeriod - gVisionNettime.DAT.AxisPosition) + gVisionNettime.CFG.AxisPositionTrigger;
+			TriggerPosDelta		:= AxisPositionNow - gVisionNettime.CFG.AxisPositionTrigger;
+		END_IF
+		IF TriggerPosDelta < 0 THEN // modulo correction
+			TriggerPosDelta	:= TriggerPosDelta + gVisionNettime.CFG.AxisPeriod;
 			END_IF
-			
-			// --------------------------------------------------------------------------------------------------------------------
-			// Calculate the time difference [microsec] when reaching the image position
-			gVisionNettime.DAT.AxisTimeDelta := LREAL_TO_DINT((gVisionNettime.DAT.AxisPositionDelta / gVisionNettime.DAT.AxisVelocity) * 1000000);
-			
-			// --------------------------------------------------------------------------------------------------------------------
+		TriggerTimeDelta_us := LREAL_TO_DINT((TriggerPosDelta / gVisionNettime.DAT.AxisVelocity) * 1000000);
 			// Wait for the moment that axis is in the send trigger window depend on delay by topology and the actual powerlink cycle
-			IF (gVisionNettime.DAT.AxisTimeDelta >= USINT_TO_SINT(gVisionNettime.CFG.PowerlinkDelay) * gVisionNettime.DAT.PowerlinkCycle) AND 
-			   (gVisionNettime.DAT.AxisTimeDelta <= USINT_TO_SINT(gVisionNettime.CFG.PowerlinkDelay + 2)*gVisionNettime.DAT.PowerlinkCycle) THEN
-				
-				// --------------------------------------------------------------------------------------------------------------------
-				// Axis has reached the position to send a command, 2x Powerlink cycle time + 1x task class cycle time
-				gVisionNettime.DAT.NettimeNext := NettimeCurrent + gVisionNettime.DAT.AxisTimeDelta;
-				gVisionNettime.DAT.NettimeDelta := gVisionNettime.DAT.AxisTimeDelta;
-				
-				// --------------------------------------------------------------------------------------------------------------------
+		IF (TriggerTimeDelta_us >= (gVisionNettime.CFG.VisionPreTrigger_Cycles)     * PowerlinkCycle_us) AND
+		   (TriggerTimeDelta_us <= (gVisionNettime.CFG.VisionPreTrigger_Cycles + 1) * PowerlinkCycle_us) THEN
+			gVisionNettime.DAT.NettimeNext_us	:= NettimeCurrent_us + TriggerTimeDelta_us;
+			gVisionNettime.DAT.NettimeDelta_us	:= TriggerTimeDelta_us;
 				// Transfer nettime to sensor and fire trigger
 				IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].STA.ImageProcessingActive THEN
-					gVisionSensor[visSelectedSensor].CFG.NettimeDelay := gVisionNettime.DAT.NettimeNext;
+				gVisionSensor[visSelectedSensor].CFG.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
 					gVisionSensor[visSelectedSensor].CMD.ImageTrigger := TRUE;
 				ELSE
 					gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
 				END_IF
 			END_IF
 		END_IF
-	END_IF
-
 END_PROGRAM
-
-

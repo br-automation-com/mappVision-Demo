@@ -1,5 +1,7 @@
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Local varibales*)
 VAR
-	OldNettime : DINT; (*Old nettime used to calculate Powerlink cycle time*)
+	PowerlinkCycle_us : DINT; (*Powerlink cycletime in microseconds*)
+	NettimeLastCycle_us : DINT; (*Old nettime used to calculate Powerlink cycle time*)
+	AxisPositionNow : LREAL; (*Calculated positon of the axis position, acopos and network delay times are compensated*)
+	TriggerTimeDelta_us : DINT; (*Delta time in microseconds to the next trigger*)
+	TriggerPosDelta : LREAL; (*Delta position in units to the next trigger*)
 END_VAR

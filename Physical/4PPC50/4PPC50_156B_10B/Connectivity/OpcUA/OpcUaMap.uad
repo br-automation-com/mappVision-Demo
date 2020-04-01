@@ -127,13 +127,21 @@
         <Variable Name="visEnableCommand" />
         <Variable Name="visLightsTrigger" />
       </Task>
-      <Task Name="Vi_nettime" />
-      <Task Name="YourTask">
-        <Variable Name="Acceleration" />
+      <Task Name="Vi_nettime">
+        <Variable Name="PowerlinkCycle_us" />
+        <Variable Name="TriggerPosDelta" />
+        <Variable Name="TriggerTimeDelta_us" />
+      </Task>
+      <Task Name="YourTask" />
+      <Task Name="Axis">
+        <Variable Name="AxisAcceleration" />
+        <Variable Name="AxisVelocity" />
+        <Variable Name="cmdAxisHome" />
+        <Variable Name="cmdAxisMoveAbs" />
+        <Variable Name="cmdAxisPower" />
         <Variable Name="cmdAxisRun" />
-        <Variable Name="MotionStep" />
         <Variable Name="MpAxisBasic_0" AutomaticEnable="True" />
-        <Variable Name="Velocity" />
+        <Variable Name="cmdAxisErrorReset" />
       </Task>
     </Module>
   </DefaultView>

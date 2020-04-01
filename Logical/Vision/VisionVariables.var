@@ -12,7 +12,7 @@ VAR
 	gBlob : typBlobMain; (*Data that is specific for the blob function*)
 	visSelectedSensor : USINT := 1; (*Selected camera node number*)
 	visSelectedLight : USINT := 1; (*Selected Light node number*)
-	NettimeCurrent : DINT; (*Current Powerlink nettime*)
+	NettimeCurrent_us : DINT; (*Current Powerlink nettime*)
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Global constants*)

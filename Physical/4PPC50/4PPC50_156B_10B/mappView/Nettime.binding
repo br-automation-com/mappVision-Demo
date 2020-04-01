@@ -1,66 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Nettime_binding">
 	<Bindings>
-
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::YourTask:Velocity" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numVelocity" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::YourTask:Acceleration" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numAcceleration" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::YourTask:cmdAxisRun" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnDriveRun" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::YourTask:MpAxisBasic_0.Velocity" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtVelocityCurrent" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::YourTask:MpAxisBasic_0.Position" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtPositionCurrent" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CFG.AxisPeriod" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numAxisPeriod" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CFG.PowerlinkDelay" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numPowerlinkDelay" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CFG.AxisPositionTrigger" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numPositionTrigger" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.DAT.PowerlinkCycle" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtPowerlinkCycle" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CMD.Activate" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnNettimeActivate" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.DAT.NettimeNext" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtNettimeNext" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.DAT.NettimeDelta" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtNettimeDelta" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.DAT.AxisPosition" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtPositionDelta" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.DAT.AxisTimeDelta" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtTimeDelta" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.DAT.Overflow" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtNettimeOverflow" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Axis:MpAxisBasic_0.Velocity" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtVelocityCurrent" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Axis:MpAxisBasic_0.Position" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtPositionCurrent" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Axis:AxisAcceleration" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numAcceleration" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Axis:AxisVelocity" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numVelocity" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Axis:cmdAxisPower" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnDrivePower" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Axis:cmdAxisRun" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnDriveRun" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Axis:cmdAxisMoveAbs" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnMoveToTrigger" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Axis:cmdAxisHome" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnHomeAxis" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Axis:cmdAxisErrorReset" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnAckAxisError" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CFG.AxisPositionTrigger" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numPositionTrigger" attribute="value" />
+		</Binding>	
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CMD.Activate" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnNettimeActivate" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CFG.AxisPeriod" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numAxisPeriod" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CFG.VisionPreTrigger_Cycles" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numPowerlinkDelayCamera" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_nettime:PowerlinkCycle_us" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtPowerlinkCycle" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_nettime:TriggerTimeDelta_us" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtTimeDelta" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_nettime:TriggerPosDelta" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtPositionDelta" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.DAT.Overflow" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtNettimeOverflow" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionNettime.CFG.AxisPositionDelay_Cycles" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numPowerlinkDelayAcopos" attribute="value" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

@@ -112,8 +112,8 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF(visImageTrigger AND VisionSensor.HW.Ready AND NOT VisionSensor.STA.ImageProcessingActive) THEN
 		// When nettime is used dealy trigger by 10ms
-		IF(NettimeCurrent <> 0) THEN
-			VisionSensor.CFG.NettimeDelay := NettimeCurrent + 10000;
+		IF(NettimeCurrent_us <> 0) THEN
+			VisionSensor.CFG.NettimeDelay := NettimeCurrent_us + 10000;
 		END_IF
 		VisionSensor.CMD.ImageTrigger := TRUE;
 		visImageTrigger := FALSE;
