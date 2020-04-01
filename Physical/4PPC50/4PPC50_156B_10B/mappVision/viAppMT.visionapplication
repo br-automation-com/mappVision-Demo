@@ -30,7 +30,7 @@
     <Group ID="ImgProcessingVariables" />
     <Group ID="ImageAcquisition">
       <Group ID="AcquisitionConfiguration">
-        <Selector ID="TriggerMode">
+        <Selector ID="TriggerSource">
           <Property ID="TriggerDelay" Value="1" />
         </Selector>
       </Group>
