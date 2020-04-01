@@ -10,8 +10,8 @@ VAR
 	gMT : typMTMain; (*Data that is specific for the measurement function*)
 	gOCR : typOCRMain; (*Data that is specific for the OCR function*)
 	gBlob : typBlobMain; (*Data that is specific for the blob function*)
-	visSelectedSensor : USINT := 1; (*Selected camera node number*)
-	visSelectedLight : USINT := 1; (*Selected Light node number*)
+	visSelectedSensor : UINT := 1; (*Selected camera node number*)
+	visSelectedLight : UINT := 1; (*Selected Light node number*)
 	NettimeCurrent_us : DINT; (*Current Powerlink nettime*)
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)

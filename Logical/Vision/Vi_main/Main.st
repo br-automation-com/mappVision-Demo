@@ -19,18 +19,28 @@ PROGRAM _INIT
 	// Vision sensor - flash color
 	brsitoa(VisionSensor.CFG.FlashColor, ADR(visSelectedFlashColor));
 	visTableNo;
+	InitialSearchSensor := TRUE;
 END_PROGRAM
 
 PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Map global structure to local reference for mappView
 	// -----------------------------------------------------------------------------------------------------------
+	IF InitialSearchSensor THEN // Once after a boot search one camera
+		FOR i := 1 TO MAX_NUM_CAMS DO
+			IF gVisionSensor[i].HW.Connected THEN
+				visSelectedSensor := i;
+				InitialSearchSensor := FALSE;
+				EXIT;
+			END_IF
+		END_FOR
+	END_IF
 	// Make sure we dont exceed array limit
-	IF(visSelectedSensor > SIZEOF(gVisionSensor)/SIZEOF(gVisionSensor[1])) THEN
+	IF(visSelectedSensor > MAX_NUM_CAMS) THEN
 		visSelectedSensor := 1;
 	END_IF
 	IF(visSelectedSensor < 1) THEN
-		visSelectedSensor := SIZEOF(gVisionSensor)/SIZEOF(gVisionSensor[1]);
+		visSelectedSensor := MAX_NUM_CAMS;
 	END_IF
 	// -----------------------------------------------------------------------------------------------------------
 	// Assign pointers
@@ -93,9 +103,6 @@ PROGRAM _CYCLIC
 		visEnableCommand := FALSE;
 	ELSE
 		visEnableCommand := TRUE;
-	END_IF
-	IF EDGEPOS(visEnableCommand) THEN
-		visEnableVision := TRUE;
 	END_IF
 	
 	// -----------------------------------------------------------------------------------------------------------
