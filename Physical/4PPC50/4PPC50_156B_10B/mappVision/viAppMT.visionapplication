@@ -112,6 +112,13 @@
           <Property ID="VfOutputParameter" Value="NumResults" />
         </Group>
       </Group>
+      <Group ID="Output[2]">
+        <Property ID="ChannelID" Value="FunctionProcessingTime" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceMeasurement" />
+          <Property ID="VfOutputParameter" Value="FunctionProcessingTime" />
+        </Group>
+      </Group>
     </Group>
   </Element>
 </Configuration>

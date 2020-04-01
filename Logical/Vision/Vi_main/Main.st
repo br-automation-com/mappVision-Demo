@@ -128,6 +128,10 @@ PROGRAM _CYCLIC
 		IF RepetitiveModeTimer.Q THEN
 			IF VisionSensor.HW.Ready AND NOT VisionSensor.STA.ImageProcessingActive THEN
 				RepetitiveModeTimer.IN := FALSE;
+				// When nettime is used dealy trigger by 10ms
+				IF(NettimeCurrent_us <> 0) THEN
+					VisionSensor.CFG.NettimeDelay := NettimeCurrent_us + 10000;
+				END_IF
 				VisionSensor.CMD.ImageTrigger := TRUE;
 			END_IF
 		END_IF

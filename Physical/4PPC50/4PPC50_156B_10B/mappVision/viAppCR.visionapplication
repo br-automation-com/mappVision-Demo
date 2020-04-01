@@ -195,6 +195,13 @@
           <Property ID="VfOutputParameter" Value="PositionY" />
         </Group>
       </Group>
+      <Group ID="Output[7]">
+        <Property ID="ChannelID" Value="FunctionProcessingTime" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceCodeReading" />
+          <Property ID="VfOutputParameter" Value="FunctionProcessingTime" />
+        </Group>
+      </Group>
     </Group>
   </Element>
 </Configuration>

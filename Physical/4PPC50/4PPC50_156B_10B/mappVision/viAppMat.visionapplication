@@ -186,7 +186,7 @@
         </Group>
       </Group>
       <Group ID="Output[9]">
-        <Property ID="ChannelID" Value="ProcessingTime" />
+        <Property ID="ChannelID" Value="FunctionProcessingTime" />
         <Group ID="VpOutputWire">
           <Property ID="SourceVfName" Value="VfInstanceMatch" />
           <Property ID="VfOutputParameter" Value="FunctionProcessingTime" />

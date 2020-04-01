@@ -176,6 +176,13 @@
           <Property ID="VfOutputParameter" Value="MeanGrayValue" />
         </Group>
       </Group>
+      <Group ID="Output[10]">
+        <Property ID="ChannelID" Value="FunctionProcessingTime" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceBlob" />
+          <Property ID="VfOutputParameter" Value="FunctionProcessingTime" />
+        </Group>
+      </Group>
     </Group>
   </Element>
 </Configuration>
