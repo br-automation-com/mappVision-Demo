@@ -12,7 +12,6 @@ TYPE
 		ImageTrigger : BOOL;
 		ImageTriggerReset : BOOL;
 		AutoSetupStartStop : BOOL;
-		AutoSetupTransfer : BOOL;
 		BrowserReload : BOOL;
 	END_STRUCT;
 	typVisionConfig : 	STRUCT 

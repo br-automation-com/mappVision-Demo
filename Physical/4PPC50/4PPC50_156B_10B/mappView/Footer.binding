@@ -133,29 +133,25 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:visEnableSetup" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnAutoSetup" attribute="enable" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visEnableSetup" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnTransferValues" attribute="enable" />
-		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.IRFilter" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor1" attribute="selectedIndex" />
 		</Binding>
-	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[0]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsRight" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[1]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[2]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsLeft" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[3]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsBottom" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[0]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsRight" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[1]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[2]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsLeft" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visSelectedFlashSegment[3]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsBottom" attribute="value" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

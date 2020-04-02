@@ -24,9 +24,8 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
-	// Map global structure to local reference for mappView
-	// -----------------------------------------------------------------------------------------------------------
-	IF InitialSearchSensor THEN // Once after a boot search one camera
+	// Select first available camera after reboot
+	IF InitialSearchSensor THEN 
 		FOR i := 1 TO MAX_NUM_CAMS DO
 			IF gVisionSensor[i].HW.Connected THEN
 				visSelectedSensor := i;
@@ -35,6 +34,9 @@ PROGRAM _CYCLIC
 			END_IF
 		END_FOR
 	END_IF
+	// -----------------------------------------------------------------------------------------------------------
+	// Map global structure to local reference for mappView
+	// -----------------------------------------------------------------------------------------------------------
 	// Make sure we dont exceed array limit
 	IF(visSelectedSensor > MAX_NUM_CAMS) THEN
 		visSelectedSensor := 1;
@@ -66,6 +68,8 @@ PROGRAM _CYCLIC
 	ELSE
 		RETURN;
 	END_IF
+
+	// -----------------------------------------------------------------------------------------------------------
 	// Vision Sensor - flash color
 	VisionSensor.CFG.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
 	VisionSensor.CFG.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
@@ -108,7 +112,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Disable setup buttons when camera is disconnected, processing an image or not ready
 	// -----------------------------------------------------------------------------------------------------------
-	IF(NOT VisionSensor.HW.Connected OR NOT VisionSensor.HW.Ready OR VisionSensor.STA.ImageProcessingActive) THEN
+	IF(NOT VisionSensor.HW.Connected OR NOT (VisionSensor.HW.Ready OR AutoSetupRunning) OR VisionSensor.STA.ImageProcessingActive) THEN
 		visEnableSetup := FALSE;
 	ELSE
 		visEnableSetup := TRUE;
@@ -196,12 +200,17 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Transfer auto setup data to preset values
 	// -----------------------------------------------------------------------------------------------------------
-	IF(EDGEPOS(VisionSensor.CMD.AutoSetupTransfer)) THEN
+	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.STA.Status <> 0) THEN
+		AutoSetupRunning := TRUE;
+	ELSIF(VisionSensor.CMD.AutoSetupStartStop = FALSE) THEN
+		AutoSetupRunning := FALSE;
+	END_IF
+	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.STA.Status = 0 AND AutoSetupRunning = TRUE) THEN
 		VisionSensor.CFG.Gain				:= VisionSensor.STA.AutoSetupGain;
 		VisionSensor.CFG.Focus				:= VisionSensor.STA.AutoSetupFocus;
 		VisionSensor.CFG.Exposure			:= VisionSensor.STA.AutoSetupExposure;
-		VisionSensor.CMD.AutoSetupTransfer	:= FALSE;
 		VisionSensor.CMD.AutoSetupStartStop	:= FALSE;
+		AutoSetupRunning					:= FALSE;
 		visImageTrigger						:= TRUE;
 	END_IF
 	

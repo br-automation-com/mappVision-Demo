@@ -30,8 +30,10 @@ VAR
 	visRepetitiveMode : BOOL; (*Enable/Disable repetitive mode*)
 	RepetitiveModeTimer : TON; (*Timer for repetitive mode*)
 	DisableAutoArchiv : BOOL; (*Enable/Disable automatic archieving for images*)
-	AcquisitionFailedCntOld : UDINT;
-	AcquisitionCompletedCntOld : UDINT;
+	AcquisitionFailedCntOld : UDINT; (*Old aquisition failed counter*)
+	AcquisitionCompletedCntOld : UDINT; (*Old aquisition completed counter*)
+	InitialSearchSensor : BOOL; (*Flag for first boot*)
+	AutoSetupRunning : BOOL; (*Flag for auto setup running*)
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Code Reader*)
@@ -55,5 +57,4 @@ VAR
 	tmpYI : REAL;
 	tmpXI : REAL;
 	i : UINT;
-	InitialSearchSensor : BOOL;
 END_VAR
