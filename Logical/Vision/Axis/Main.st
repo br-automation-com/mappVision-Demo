@@ -6,17 +6,7 @@ PROGRAM _INIT
 	MpAxisBasic_0.MpLink			:= ADR(gAxis_1);
 	MpAxisBasic_0.Parameters		:= ADR(MpAxisBasicPar_0);
 	MpAxisBasic_0();
-	// The following lines are necessary if you want to home to the encoders refpulse. If you do not want to use it: comment these lines out.
-	// It is also possible to configure the refpulse at the axis settings, but unfortunately acutally it does not work.
-	MpAxisBasicPar_0.Homing.Mode	:= mcHOMING_INIT;
-	MC_BR_InitHome_0.Axis			:= ADR(gAxis_1);
-	MC_BR_InitHome_0.Execute		:= TRUE;
-	MC_BR_InitHome_0.HomingParameters.HomingMode		:= mcHOMING_DIRECT;
-	MC_BR_InitHome_0.HomingParameters.Position			:= 0;
-	MC_BR_InitHome_0.HomingParameters.StartVelocity		:= 30;
-	MC_BR_InitHome_0.HomingParameters.HomingVelocity	:= 15;
-	MC_BR_InitHome_0.HomingParameters.Acceleration		:= 50;
-	MC_BR_InitHome_0.HomingParameters.ReferencePulse	:= mcSWITCH_ON;
+	MpAxisBasicPar_0.Homing.Mode	:= mcHOMING_DEFAULT;
 END_PROGRAM
 PROGRAM _CYCLIC
 	MpAxisBasic_0.Power					:= MpAxisBasic_0.Active AND MpAxisBasic_0.Info.ReadyToPowerOn AND cmdAxisPower;
@@ -43,11 +33,5 @@ PROGRAM _CYCLIC
 	END_IF
 	IF MpAxisBasic_0.InPosition THEN
 		MpAxisBasic_0.MoveAbsolute		:= FALSE;
-	END_IF
-	
-	// Function to use reference pulse of the encoder for homing
-	MC_BR_InitHome_0();
-	IF MC_BR_InitHome_0.Done THEN
-		MC_BR_InitHome_0.Execute := FALSE;
 	END_IF
 END_PROGRAM
