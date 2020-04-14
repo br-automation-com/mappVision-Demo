@@ -28,7 +28,11 @@
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.RegionalFeature" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobRegionalFeatures" attribute="value" />
-		</Binding>				
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.EnhancedBlobInformation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobEnhancedBlobInfo" attribute="value" />
+		</Binding>
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:visEnableCommand" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobRegionalFeatures" attribute="enable" />

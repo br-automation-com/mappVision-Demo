@@ -29,6 +29,9 @@
       <Group ID="Input[8]">
         <Property ID="ChannelID" Value="RegionalFeatures" />
       </Group>
+      <Group ID="Input[9]">
+        <Property ID="ChannelID" Value="EnhancedBlobInfo" />
+      </Group>
     </Group>
     <Group ID="ImgProcessingVariables" />
     <Group ID="ImageAcquisition">
@@ -65,6 +68,11 @@
             <Group ID="RegionFeatures">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="RegionalFeatures" />
+              </Selector>
+            </Group>
+            <Group ID="EnhancedBlobInformation">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="EnhancedBlobInfo" />
               </Selector>
             </Group>
             <Group ID="OffsetROIX">

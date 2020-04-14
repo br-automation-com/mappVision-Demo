@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <BR.AS.HardwareTopology Version="0.0.0.1">
   <TimeStamps>
-    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="03/20/2020 15:13:04" />
+    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="04/14/2020 15:31:04" />
   </TimeStamps>
   <Modules>
     <Module Name="Blob" Type="VSS112Q22.041P-000" X="192" Y="399" />
@@ -46,6 +46,16 @@
       <Point X="1027" Y="517" />
       <Point X="1027" Y="517" />
     </Link>
+    <Link From="Blob" To="X20CP1586" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
+      <Point X="210" Y="517" />
+      <Point X="210" Y="517" />
+      <Point X="210" Y="522" />
+      <Point X="210" Y="535" />
+      <Point X="156" Y="535" />
+      <Point X="156" Y="200" />
+      <Point X="156" Y="187" />
+      <Point X="156" Y="187" />
+    </Link>
     <Link From="Blob" To="Measurement" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
       <Point X="255" Y="517" />
       <Point X="255" Y="517" />
@@ -85,16 +95,6 @@
       <Point X="730" Y="522" />
       <Point X="730" Y="517" />
       <Point X="730" Y="517" />
-    </Link>
-    <Link From="Blob" To="X20CP1586" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
-      <Point X="210" Y="517" />
-      <Point X="210" Y="517" />
-      <Point X="210" Y="522" />
-      <Point X="210" Y="535" />
-      <Point X="156" Y="535" />
-      <Point X="156" Y="200" />
-      <Point X="156" Y="187" />
-      <Point X="156" Y="187" />
     </Link>
   </Links>
   <InfoElements />

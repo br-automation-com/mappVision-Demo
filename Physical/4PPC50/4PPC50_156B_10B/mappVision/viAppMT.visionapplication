@@ -6,24 +6,21 @@
         <Property ID="ChannelID" Value="Enable" />
       </Group>
       <Group ID="Input[1]">
-        <Property ID="ChannelID" Value="Alignment" />
-      </Group>
-      <Group ID="Input[2]">
         <Property ID="ChannelID" Value="NumSearchMax" />
       </Group>
-      <Group ID="Input[3]">
+      <Group ID="Input[2]">
         <Property ID="ChannelID" Value="OffsetRoiX" />
       </Group>
-      <Group ID="Input[4]">
+      <Group ID="Input[3]">
         <Property ID="ChannelID" Value="OffsetRoiY" />
       </Group>
-      <Group ID="Input[5]">
+      <Group ID="Input[4]">
         <Property ID="ChannelID" Value="OffsetRoiOrientation" />
       </Group>
-      <Group ID="Input[6]">
+      <Group ID="Input[5]">
         <Property ID="ChannelID" Value="OffsetRoiRotationCenterX" />
       </Group>
-      <Group ID="Input[7]">
+      <Group ID="Input[6]">
         <Property ID="ChannelID" Value="OffsetRoiRotationCenterY" />
       </Group>
     </Group>
@@ -82,11 +79,6 @@
             <Group ID="OffsetROIRotCenterY">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
-              </Selector>
-            </Group>
-            <Group ID="Alignment">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
           </Group>

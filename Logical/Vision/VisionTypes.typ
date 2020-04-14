@@ -233,6 +233,7 @@ TYPE
 	END_STRUCT;
 	typBlobConfig : 	STRUCT 
 		RegionalFeature : USINT;
+		EnhancedBlobInformation : USINT := 1;
 	END_STRUCT;
 	typBlobData : 	STRUCT 
 		ModelNumber : ARRAY[1..MAX_NUM_RESULTS]OF USINT;

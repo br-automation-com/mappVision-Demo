@@ -20,6 +20,7 @@
     <AutomationRuntime Version="C4.72" />
     <Build GccVersion="4.1.2" />
     <DefaultTargetMemory Tasks="UserROM" />
+    <Safety SafetyRelease="0.0" />
     <Vc FirmwareVersion="V4.72.0" />
     <OnlineConfiguration Name="X20CP1586_2" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=251" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.100 /REPO=11159 /ANSL=1 /PT=11169" Description="" />
   </Configuration>

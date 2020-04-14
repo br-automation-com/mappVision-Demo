@@ -15,6 +15,7 @@
         <Widget xsi:type="widgets.brease.TableItem" id="itemWidth" zIndex="9" columnWidth="120" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" text="Width" unit="{'metric':'http://www.br-automation.com/units|VI2','imperial':'http://www.br-automation.com/units|VI2','imperial-us':'http://www.br-automation.com/units|VI2'}" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.ToggleButton" id="btnBlobRegionalFeatures" top="375" left="10" width="300" height="60" zIndex="1" mouseDownText="Disable Regional Feature" text="Enable Regional Feature" fontSize="18px" style="Operate" />
+    <Widget xsi:type="widgets.brease.ToggleButton" id="btnBlobRegionalFeatures" top="375" left="10" width="360" height="60" zIndex="1" mouseDownText="Disable Regional Feature" text="Enable Regional Feature" fontSize="18px" style="Operate" />
+    <Widget xsi:type="widgets.brease.ToggleButton" id="btnBlobEnhancedBlobInfo" top="375" left="400" width="360" height="60" zIndex="2" mouseDownText="Disable Enhanced Blob Information" text="Enable Enhanced Blob Information" fontSize="18px" style="Operate" />
   </Widgets>
 </Content>

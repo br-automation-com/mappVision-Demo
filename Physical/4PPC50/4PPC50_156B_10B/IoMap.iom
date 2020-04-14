@@ -45,6 +45,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[1].CFG.IRFilter AT %QX."Blob".IRFilter;
 	Cyclic#1.::gVisionSensor[1].STA.ProcessingTimeFunction AT %IW."Blob".FunctionProcessingTime;
 	Cyclic#1.::gBlob.CFG.RegionalFeature AT %QB."Blob".RegionalFeatures;
+	Cyclic#1.::gBlob.CFG.EnhancedBlobInformation AT %QB."Blob".EnhancedBlobInfo;
 	Cyclic#1.::gBlob.DATA.PositionX[1] AT %ID."Blob".PositionX01;
 	Cyclic#1.::gBlob.DATA.PositionX[2] AT %ID."Blob".PositionX02;
 	Cyclic#1.::gBlob.DATA.PositionX[3] AT %ID."Blob".PositionX03;
@@ -171,7 +172,6 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[2].STA.ResultCnt AT %IB."Measurement".NumResults;
 	Cyclic#1.::gVisionSensor[2].STA.Status AT %ID."Measurement".CameraStatus;
 	Cyclic#1.::gVisionSensor[2].CFG.ChromaticLock AT %QX."Measurement".ChromaticLock;
-	Cyclic#1.::gVisionSensor[2].CFG.Alignment AT %QB."Measurement".Alignment;
 	Cyclic#1.::gVisionSensor[2].CFG.OffsetROIRotationCenterX AT %QD."Measurement".OffsetRoiRotationCenterX;
 	Cyclic#1.::gVisionSensor[2].CFG.OffsetROIRotationCenterY AT %QD."Measurement".OffsetRoiRotationCenterY;
 	Cyclic#1.::gVisionSensor[2].CFG.Enable AT %QB."Measurement".Enable;
@@ -456,7 +456,6 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[5].STA.ResultCnt AT %IB."OCR".NumResults;
 	Cyclic#1.::gVisionSensor[5].STA.Status AT %ID."OCR".CameraStatus;
 	Cyclic#1.::gVisionSensor[5].CFG.ChromaticLock AT %QX."OCR".ChromaticLock;
-	Cyclic#1.::gVisionSensor[5].CFG.Alignment AT %QB."OCR".Alignment;
 	Cyclic#1.::gVisionSensor[5].CFG.OffsetROIRotationCenterX AT %QD."OCR".OffsetRoiRotationCenterX;
 	Cyclic#1.::gVisionSensor[5].CFG.OffsetROIRotationCenterY AT %QD."OCR".OffsetRoiRotationCenterY;
 	Cyclic#1.::gVisionSensor[5].CFG.Enable AT %QB."OCR".Enable;

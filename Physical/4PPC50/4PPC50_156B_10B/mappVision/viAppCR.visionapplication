@@ -59,6 +59,7 @@
         <Property ID="VfExecutionNr" Value="1" />
         <Selector ID="VfType" Value="vf-datacode">
           <Group ID="VfConstants">
+            <Property ID="MaxStringSize" Value="100" />
             <Property ID="NumResultsMax" Value="10" />
           </Group>
           <Group ID="VfWirings">

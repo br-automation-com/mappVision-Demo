@@ -374,7 +374,7 @@ PROGRAM _CYCLIC
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Orientation:'), CrosshairOrientation/visCrossHair.PixelRatio);
 							END_IF
 							// Add detail information for blob
-							IF(VisionSensor.CFG.VisionFunction = enumBlob) THEN
+							IF(VisionSensor.CFG.VisionFunction = enumBlob AND Blob.CFG.EnhancedBlobInformation = 1) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Clipped:'), Blob.DATA.Clipped[idx]);
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Gray:'), Blob.DATA.MeanGrayValue[idx]);
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Length:'), UDINT_TO_REAL(Blob.DATA.Length[idx])/visCrossHair.PixelRatio);

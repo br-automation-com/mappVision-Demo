@@ -6,33 +6,30 @@
         <Property ID="ChannelID" Value="Enable" />
       </Group>
       <Group ID="Input[1]">
-        <Property ID="ChannelID" Value="Alignment" />
-      </Group>
-      <Group ID="Input[2]">
         <Property ID="ChannelID" Value="NumSearchMax" />
       </Group>
-      <Group ID="Input[3]">
+      <Group ID="Input[2]">
         <Property ID="ChannelID" Value="OffsetRoiX" />
       </Group>
-      <Group ID="Input[4]">
+      <Group ID="Input[3]">
         <Property ID="ChannelID" Value="OffsetRoiY" />
       </Group>
-      <Group ID="Input[5]">
+      <Group ID="Input[4]">
         <Property ID="ChannelID" Value="OffsetRoiOrientation" />
       </Group>
-      <Group ID="Input[6]">
+      <Group ID="Input[5]">
         <Property ID="ChannelID" Value="OffsetRoiRotationCenterX" />
       </Group>
-      <Group ID="Input[7]">
+      <Group ID="Input[6]">
         <Property ID="ChannelID" Value="OffsetRoiRotationCenterY" />
       </Group>
-      <Group ID="Input[8]">
+      <Group ID="Input[7]">
         <Property ID="ChannelID" Value="ParameterMode" />
       </Group>
-      <Group ID="Input[9]">
+      <Group ID="Input[8]">
         <Property ID="ChannelID" Value="Timeout" />
       </Group>
-      <Group ID="Input[10]">
+      <Group ID="Input[9]">
         <Property ID="ChannelID" Value="Grading" />
       </Group>
     </Group>
@@ -103,11 +100,6 @@
             <Group ID="Grading">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="Grading" />
-              </Selector>
-            </Group>
-            <Group ID="Alignment">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
           </Group>

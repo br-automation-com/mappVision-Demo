@@ -13,5 +13,7 @@
     <Dependency ObjectName="Powerlnk" />
     <Dependency ObjectName="AsEpl" />
     <Dependency ObjectName="AsIO" />
+    <Dependency ObjectName="astime" />
+    <Dependency ObjectName="sys_lib" />
   </Dependencies>
 </Library>

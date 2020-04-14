@@ -32,6 +32,5 @@
     <Object Type="Library" Language="Binary" Description="Recipe management">MpRecipe</Object>
     <Object Type="Library" Language="binary" Description="[mapp Vision] Base library">ViBase</Object>
     <Object Type="Library" Language="binary" Description="[mapp Vision] Core library">ViCore</Object>
-    <Object Type="Library" Language="binary" Description="[mapp Vision] Websocket Proxy library">ViWSProxy</Object>
   </Objects>
 </Package>

@@ -138,7 +138,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="Blob" Type="VSS112Q22.041P-000" Version="0.8.1.85">
+  <Module Name="Blob" Type="VSS112Q22.041P-000" Version="0.8.1.172">
     <Connection Connector="PLK1" TargetModule="4PPC50_156B_10B" TargetConnector="IF1" NodeNumber="1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
@@ -148,7 +148,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
-  <Module Name="CodeReader" Type="VSS112Q22.041P-000" Version="0.8.1.85">
+  <Module Name="CodeReader" Type="VSS112Q22.041P-000" Version="0.8.1.172">
     <Connection Connector="PLK1" TargetModule="Measurement" TargetConnector="PLK2" NodeNumber="3">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
@@ -158,7 +158,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
-  <Module Name="Match" Type="VSS112Q22.041P-000" Version="0.8.1.85">
+  <Module Name="Match" Type="VSS112Q22.041P-000" Version="0.8.1.172">
     <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="4">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
@@ -168,7 +168,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMatch" />
   </Module>
-  <Module Name="Measurement" Type="VSS112Q22.041P-000" Version="0.8.1.85">
+  <Module Name="Measurement" Type="VSS112Q22.041P-000" Version="0.8.1.172">
     <Connection Connector="PLK1" TargetModule="Blob" TargetConnector="PLK2" NodeNumber="2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
@@ -178,7 +178,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
   </Module>
-  <Module Name="OCR" Type="VSS112Q22.041P-000" Version="0.8.1.85">
+  <Module Name="OCR" Type="VSS112Q22.041P-000" Version="0.8.1.172">
     <Connection Connector="PLK1" TargetModule="Match" TargetConnector="PLK2" NodeNumber="5">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
