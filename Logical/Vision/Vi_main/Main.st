@@ -70,6 +70,18 @@ PROGRAM _CYCLIC
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
+	// Display Camera Status in hex - documenation is also in hex
+	IF VisionSensor.STA.Status = 0 THEN // Display only a single 0
+		visCameraStatus := '0';
+	ELSE // Display the status in Format 0x02000800
+		visCameraStatus := '';
+		FOR i := 0 TO 28 BY 4 DO
+			visCameraStatus := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(VisionSensor.STA.Status, i) AND 16#0000000F) + 1), 16)), visCameraStatus);
+		END_FOR
+		visCameraStatus := CONCAT('0x', visCameraStatus);
+	END_IF
+	
+	// -----------------------------------------------------------------------------------------------------------
 	// Vision Sensor - flash color
 	VisionSensor.CFG.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
 	VisionSensor.CFG.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
