@@ -397,6 +397,9 @@ PROGRAM _CYCLIC
 							IF(VisionSensor.CFG.VisionFunction = enumMatch) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score:'), Match.DATA.Score[idx]);
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale:'), Match.DATA.Scale[idx]);
+							END_IF
+							// Add detail information for code reader
+							IF(VisionSensor.CFG.VisionFunction = enumCoderReader) THEN
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.DATA.BarcodeType[idx]));
 							END_IF
 							brsstrcat(ADR(tmpStr1), ADR('</text>'));
