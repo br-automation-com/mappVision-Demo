@@ -3,5 +3,6 @@ VAR
 	VisionLight : REFERENCE TO typLightMain; (*General vision functions that are independent from the inspection function*)
 	FlashFailedCntOld : USINT;
 	visLightsTrigger : BOOL;
+	visLightsReset : BOOL;
 	visEnableCommand : BOOL;
 END_VAR

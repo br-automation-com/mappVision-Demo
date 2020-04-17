@@ -61,5 +61,17 @@
 			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.STA.FlashAcceptedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numFlashAccepted" attribute="value" />
 		</Binding>
-	</Bindings>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.FlashColor" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor" attribute="selectedIndex" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.Exposure" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsExposure" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.NettimeDelay" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsNettime" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>

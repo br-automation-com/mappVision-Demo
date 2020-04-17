@@ -21,7 +21,6 @@
     <Parameter ID="ConfigurationID" Value="Vision_Sample" />
     <Parameter ID="ConfigVersion" Value="2.0.0" />
     <Parameter ID="UserPartitionSize" Value="400" />
-    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="PermanentPvSize" Value="2000" />
     <Parameter ID="RemanentGlobalPvSize" Value="20000" />
     <Parameter ID="VolatileGlobalPvSize" Value="120000" />
@@ -119,7 +118,7 @@
     <Parameter ID="SimulationModeOnPLC" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="SetValueGeneration" />
     <Parameter ID="SimulationModeOnACOPOS" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="NotUsed" />
   </Module>
-  <Module Name="Backlight1" Type="VSLB11F00.54DP-000" Version="0.1.0.0">
+  <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" Version="0.1.0.0">
     <Connection Connector="PLK1" TargetModule="OCR" TargetConnector="PLK2" NodeNumber="10">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>

@@ -6,7 +6,19 @@
 			<Source contentRefId="contentLights" widgetRefId="btnLightsTrigger" xsi:type="widgets.brease.Button.Event" event="Click" />
 			<EventHandler>
 				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_lights:visLightsTrigger" >
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_light:visLightsTrigger" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Reset external lights trigger />-->
+		<EventBinding id="contentLights.btnLightsReset.Click">
+			<Source contentRefId="contentLights" widgetRefId="btnLightsReset" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_light:visLightsReset" >
 						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 					</Target>
 				</Action>

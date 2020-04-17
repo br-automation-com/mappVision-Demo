@@ -21,8 +21,9 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Reset Light trigger
 	// -----------------------------------------------------------------------------------------------------------
-	IF (VisionLight.STA.FlashCompletedCnt <> FlashCompletedCntOld OR VisionLight.STA.FlashFailedCnt <> FlashFailedCntOld) THEN
+	IF (VisionLight.STA.FlashCompletedCnt <> FlashCompletedCntOld OR VisionLight.STA.FlashFailedCnt <> FlashFailedCntOld OR visLightsReset) THEN
 		VisionLight.CMD.FlashTrigger := FALSE;
+		visLightsReset := FALSE;
 	END_IF
 	FlashCompletedCntOld := VisionLight.STA.FlashCompletedCnt;
 	FlashFailedCntOld := VisionLight.STA.FlashFailedCnt;
@@ -31,6 +32,7 @@ PROGRAM _CYCLIC
 	// Fire trigger for lights
 	// -----------------------------------------------------------------------------------------------------------
 	IF(visLightsTrigger AND VisionLight.HW.Ready) THEN
+		VisionLight.CFG.NettimeDelay := NettimeCurrent_us + 10000;
 		VisionLight.CMD.FlashTrigger := TRUE;
 		visLightsTrigger := FALSE;
 	END_IF
@@ -42,18 +44,6 @@ PROGRAM _CYCLIC
 		visEnableCommand := FALSE;
 	ELSE
 		visEnableCommand := TRUE;
-	END_IF
-	
-	IF(gVisionSensor[1].CMD.ImageTrigger) THEN
-		gVisionLight[1].CFG.Exposure := gVisionSensor[1].CFG.Exposure;
-		gVisionLight[2].CFG.Exposure := gVisionSensor[1].CFG.Exposure;
-		gVisionLight[1].CFG.NettimeDelay := gVisionSensor[1].CFG.NettimeDelay;
-		gVisionLight[2].CFG.NettimeDelay := gVisionSensor[1].CFG.NettimeDelay;
-		gVisionLight[1].CMD.FlashTrigger := TRUE;
-		gVisionLight[2].CMD.FlashTrigger := TRUE;
-	ELSE
-		gVisionLight[1].CMD.FlashTrigger := FALSE;
-		gVisionLight[2].CMD.FlashTrigger := FALSE;
 	END_IF
 	
 END_PROGRAM
