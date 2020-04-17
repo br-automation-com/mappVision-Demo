@@ -127,6 +127,7 @@
         <Variable Name="VisionLight" AutomaticEnable="True" />
         <Variable Name="visEnableCommand" />
         <Variable Name="visLightsTrigger" />
+        <Variable Name="visLightsReset" />
       </Task>
       <Task Name="Vi_nettime">
         <Variable Name="PowerlinkCycle_us" />
