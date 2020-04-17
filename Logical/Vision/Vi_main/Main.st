@@ -4,7 +4,7 @@
 // - Load image on main page when camera has finished inspection
 // - Transfer parameters after vision setup
 // - Draw crosshairs into image on the main page
-// Version 2.0
+// Version 2.x (Check revision history for details)
 // --------------------------------------------------------------------------------------------------------------------
 PROGRAM _INIT
 	// -----------------------------------------------------------------------------------------------------------
@@ -22,6 +22,9 @@ PROGRAM _INIT
 	InitialSearchSensor := TRUE;
 END_PROGRAM
 
+// -----------------------------------------------------------------------------------------------------------
+// Cyclic part
+// -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Select first available camera after reboot
@@ -240,6 +243,7 @@ PROGRAM _CYCLIC
 	// Draw cross hairs on main page
 	// -----------------------------------------------------------------------------------------------------------
 	IF (EDGENEG(VisionSensor.STA.ImageProcessingActive) AND visCrossHair.ShowCrosshair) OR EDGEPOS(visCrossHair.ShowCrosshair) OR (visCrossHair.DetailsNo <> DetailsNoOld) THEN
+		// -----------------------------------------------------------------------------------------------------------
 		// Handle details no
 		IF(visCrossHair.DetailsNo < 1) THEN
 			visCrossHair.DetailsNo := VisionSensor.STA.ResultCnt;
@@ -249,17 +253,19 @@ PROGRAM _CYCLIC
 		END_IF		
 		DetailsNoOld := visCrossHair.DetailsNo;
 		
+		// -----------------------------------------------------------------------------------------------------------
 		// Create cross hairs and data for all results
 		FOR idx := 1 TO MAX_NUM_RESULTS DO
 			visCrossHair.SvgTransformation[idx] := '';
 			visCrossHair.SvgVisible[idx] := FALSE;
 			CrosshairPositionX := 0;
 			CrosshairPositionY := 0;
-			gVisionImage.DATA.Crosshair[idx].CrosshairX		:= 0;
-			gVisionImage.DATA.Crosshair[idx].CrosshairY		:= 0;
+			gVisionImage.DATA.Crosshair[idx].CrosshairX			:= 0;
+			gVisionImage.DATA.Crosshair[idx].CrosshairY			:= 0;
 			gVisionImage.DATA.Crosshair[idx].CrosshairRotate	:= 0;
 			brsmemset(ADR(gVisionImage.DATA.Crosshair[idx].Text), 0, SIZEOF(gVisionImage.DATA.Crosshair[idx].Text));
 
+			// -----------------------------------------------------------------------------------------------------------
 			// Make sure we have data to display
 			IF(VisionSensor.STA.ResultCnt <> 0 AND idx <= VisionSensor.STA.ResultCnt) THEN
 				// Select data source from vision function
@@ -290,6 +296,7 @@ PROGRAM _CYCLIC
 						END_IF
 				END_CASE
 			
+				// -----------------------------------------------------------------------------------------------------------
 				// Show crosshair except for measurement function
 				IF (VisionSensor.CFG.VisionFunction <> enumMeasurement OR MT.CFG.UseResultAsXY = TRUE) THEN
 					// -----------------------------------------------------------------------------------------------------------
@@ -405,6 +412,7 @@ PROGRAM _CYCLIC
 							brsstrcat(ADR(tmpStr1), ADR('</text>'));
 						END_IF
 					END_IF
+				// -----------------------------------------------------------------------------------------------------------
 				// Add result information measurement
 				ELSE
 					visCrossHair.SvgTransformation[idx] := '[{"select":"#CrosshairRed","display":false}, {"select":"#CrosshairBlue","display":false}]';

@@ -11,6 +11,9 @@ PROGRAM _INIT
 	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 4; // Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
 END_PROGRAM
 
+// -----------------------------------------------------------------------------------------------------------
+// Cyclic part
+// -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
 	PowerlinkCycle_us			:= NettimeCurrent_us - NettimeLastCycle_us;
 	NettimeLastCycle_us			:= NettimeCurrent_us;

@@ -1,8 +1,8 @@
-Version 2.0 (development)
+Version 2.x (development)
 - Convert data structure to new camera firmware
 - Support for multiple camera's
 - Recipe managment for loading and saving parameters
 - Download camera images directly through web browser
 - Cleaned up UI
-- Support for lights
-- Sample for nettime with motion
+- Support for external lights
+- Sample task for nettime with motion
