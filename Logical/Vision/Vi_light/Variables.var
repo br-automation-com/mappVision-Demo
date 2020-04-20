@@ -5,4 +5,5 @@ VAR
 	visLightsTrigger : BOOL;
 	visLightsReset : BOOL;
 	visEnableCommand : BOOL;
+	visSelectedFlashColor : STRING[10]; (*Flash color string*)
 END_VAR

@@ -16,7 +16,7 @@ PROGRAM _INIT
 	OCR ACCESS ADR(tmpOCR);
 	MT ACCESS ADR(tmpMT);
 
-	// Vision sensor - flash color
+	// Flash color
 	brsitoa(VisionSensor.CFG.FlashColor, ADR(visSelectedFlashColor));
 	visTableNo;
 	InitialSearchSensor := TRUE;

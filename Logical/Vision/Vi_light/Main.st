@@ -5,6 +5,9 @@
 PROGRAM _INIT
 	// Map global structure to local reference
 	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
+	
+	// Flash color
+	brsitoa(VisionLight.CFG.FlashColor, ADR(visSelectedFlashColor));
 	 
 END_PROGRAM
 
@@ -51,6 +54,10 @@ PROGRAM _CYCLIC
 	ELSE
 		visEnableCommand := TRUE;
 	END_IF
+	
+	// -----------------------------------------------------------------------------------------------------------
+	// Vision Sensor - flash color
+	VisionLight.CFG.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
 	
 END_PROGRAM
 

@@ -35,8 +35,10 @@ PROGRAM _INIT
 	// -----------------------------------------------------------------------------------------------------------	
 	// Configuration for barlights
 	gVisionLight[1].CFG.LightType := enumBarlight;
+	gVisionLight[1].CFG.FlashColor := 1;
 	gVisionLight[1].CFG.PowerlinkNode := 10;
 	gVisionLight[2].CFG.LightType := enumBarlight;
+	gVisionLight[2].CFG.FlashColor := 1;
 	gVisionLight[2].CFG.PowerlinkNode := 11;
 END_PROGRAM
 
