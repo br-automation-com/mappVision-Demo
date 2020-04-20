@@ -53,10 +53,6 @@
     <Parameter ID="FTPAccessRight1" Value="0" />
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
-    <Parameter ID="LXTMode" Value="Manual" />
-    <Parameter ID="LXTInternetAddress" Value="10.49.140.213" />
-    <Parameter ID="LXTDefaultGateway" Value="10.49.140.212" />
-    <Parameter ID="LXTSubnetmask" Value="255.255.255.0" />
   </Module>
   <Module Name="8AC114.60-2" Type="8AC114.60-2" Version="1.0.0.8">
     <Connection Connector="SS" TargetModule="8V1010.50-2" TargetConnector="SS1" />
