@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
+<?AutomationStudio Version=4.7.3.93 SP?>
 <Package SubType="MediaPackage" PackageType="MediaPackage" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="Package">Alarm</Object>
@@ -9,5 +9,6 @@
     <Object Type="File">forward.svg</Object>
     <Object Type="File">Crosshairs_Red.svg</Object>
     <Object Type="File">FrontSmartSensor.png</Object>
+    <Object Type="File">disconnected.png</Object>
   </Objects>
 </Package>
