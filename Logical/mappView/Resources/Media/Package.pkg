@@ -10,5 +10,6 @@
     <Object Type="File">Crosshairs_Red.svg</Object>
     <Object Type="File">FrontSmartSensor.png</Object>
     <Object Type="File">disconnected.png</Object>
+    <Object Type="File">VisionEye.png</Object>
   </Objects>
 </Package>
