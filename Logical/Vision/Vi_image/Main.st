@@ -9,8 +9,8 @@ PROGRAM _INIT
 		gVisionImage.CFG.CameraIP		:= '192.168.200.';			// IP adress of the camera
 		gVisionImage.CFG.ConvertCycles	:= 10000;					// Conversioncycles per Step (TK8 call). Use higer value on high performance CPU, use
 																	// lower values on low performance CPU (e.g. Compact-S) or in case of cycle time violations
-		gVisionImage.CFG.Format			:= 1;						// Image type, use 0 for JPEG, 1 for bitmap
-		gVisionImage.CFG.QualityJPG		:= 20;						// Quality for JPG images, larger numbers produce better images
+		gVisionImage.CFG.Format			:= 0;						// Image type, use 0 for JPEG, 1 for bitmap
+		gVisionImage.CFG.QualityJPG		:= 80;						// Quality for JPG images, larger numbers produce better images
 		gVisionImage.CFG.UploadBmpJpg	:= TRUE;
 		gVisionImage.CFG.UploadSVG		:= TRUE;
 	ELSE
@@ -457,7 +457,6 @@ PROGRAM _CYCLIC
 		// Wait for vis before setting last file
 		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_READ_DIR3:
-			
 			TON_VisPause.IN := TRUE;
 			TON_VisPause.PT := T#250ms;
 			TON_VisPause();
