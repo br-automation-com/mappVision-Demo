@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CodeReader_binding">
 	<Bindings>
 		<Binding mode="twoWay">
@@ -64,6 +64,14 @@
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.Orientation" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemOrientation" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visSelectedCodeTypeDetected" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemType" attribute="stringValue" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visCodeTypePresentDropDownValues" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderTypePreset" attribute="dataProvider" />
 		</Binding>
 	</Bindings>
 </BindingsSet>

@@ -6,7 +6,7 @@ FUNCTION CrosshairDetailsText
 	brsstrcat(strTarget, ADR(tmpStr));
 	brsstrcat(strTarget, strText);
 	brsftoa(fValue, ADR(tmpStr));
-	brsstrcat(strTarget, ADR(tmpStr));			
+	brsstrcat(strTarget, ADR(tmpStr));
 	brsstrcat(strTarget, ADR('</tspan> '));
 	
 	CrosshairDetailsText := TRUE;

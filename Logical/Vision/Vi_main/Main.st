@@ -20,6 +20,7 @@ PROGRAM _INIT
 	brsitoa(VisionSensor.CFG.FlashColor, ADR(visSelectedFlashColor));
 	visTableNo;
 	InitialSearchSensor := TRUE;
+	ACTION_InitCodeTypes;
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
@@ -61,8 +62,12 @@ PROGRAM _CYCLIC
 				// Code Reader - selected/detected types
 				CodeReader.CFG.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypePreset)));
 				FOR idx:=1 TO MAX_NUM_RESULTS DO
-					brsitoa(CodeReader.DATA.BarcodeType[idx], ADR(visSelectedCodeTypeDetected[idx]));
-				END_FOR;
+					IF CodeReader.DATA.BarcodeType[idx] <> 0 THEN
+						brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(CodeTypes[LIMIT(0, CodeReader.DATA.BarcodeType[idx], MAX_NUM_CODETYPES)]));
+					ELSE
+						brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(''));
+					END_IF
+				END_FOR
 			enumOCR:
 				OCR ACCESS VisionSensor.CFG.DataStructure;
 			enumMeasurement:
@@ -379,35 +384,40 @@ PROGRAM _CYCLIC
 							
 							// Add modell ID information for blob and match
 							IF(VisionSensor.CFG.VisionFunction = enumBlob OR VisionSensor.CFG.VisionFunction = enumMatch) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('ID:'), CrosshairModelNumber);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('ID: '), CrosshairModelNumber);
 							END_IF
 							// Add X and Y position information
 							IF(CrosshairPositionX <> 0) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Pos X:'), CrosshairPositionX/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Pos X: '), CrosshairPositionX/visCrossHair.PixelRatio);
 							END_IF	
 							IF(CrosshairPositionY <> 0) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Pos Y:'), CrosshairPositionY/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Pos Y: '), CrosshairPositionY/visCrossHair.PixelRatio);
 							END_IF		
 							// Add orientation information
 							IF(VisionSensor.CFG.VisionFunction <> enumMeasurement) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Orientation:'), CrosshairOrientation/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Orientation: '), CrosshairOrientation/visCrossHair.PixelRatio);
 							END_IF
 							// Add detail information for blob
 							IF(VisionSensor.CFG.VisionFunction = enumBlob AND Blob.CFG.EnhancedBlobInformation = 1) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Clipped:'), Blob.DATA.Clipped[idx]);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Gray:'), Blob.DATA.MeanGrayValue[idx]);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Length:'), UDINT_TO_REAL(Blob.DATA.Length[idx])/visCrossHair.PixelRatio);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Width:'), UDINT_TO_REAL(Blob.DATA.Width[idx])/visCrossHair.PixelRatio);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Area:'), UDINT_TO_REAL(Blob.DATA.Area[idx])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Clipped: '), Blob.DATA.Clipped[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Gray: '), Blob.DATA.MeanGrayValue[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Length: '), UDINT_TO_REAL(Blob.DATA.Length[idx])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Width: '), UDINT_TO_REAL(Blob.DATA.Width[idx])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Area: '), UDINT_TO_REAL(Blob.DATA.Area[idx])/visCrossHair.PixelRatio);
 							END_IF
 							// Add detail information for match
 							IF(VisionSensor.CFG.VisionFunction = enumMatch) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score:'), Match.DATA.Score[idx]);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale:'), Match.DATA.Scale[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score: '), Match.DATA.Score[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale: '), Match.DATA.Scale[idx]);
 							END_IF
 							// Add detail information for code reader
 							IF(VisionSensor.CFG.VisionFunction = enumCoderReader) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.DATA.BarcodeType[idx]));
+								//CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.DATA.BarcodeType[idx]));
+								tmpStr2:= '<tspan class="text" x="10" dy="32">';
+								brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+								brsstrcat(ADR(tmpStr1), ADR('Code: '));
+								brsstrcat(ADR(tmpStr1), ADR(CodeTypes[LIMIT(0, CodeReader.DATA.BarcodeType[idx], MAX_NUM_CODETYPES)]));
+								brsstrcat(ADR(tmpStr1), ADR('</tspan> '));
 							END_IF
 							brsstrcat(ADR(tmpStr1), ADR('</text>'));
 						END_IF

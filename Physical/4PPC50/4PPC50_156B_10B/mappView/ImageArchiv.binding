@@ -58,9 +58,5 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:visAutoArchiv" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkMainAutoArchive" attribute="value" />
 		</Binding>
-	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.BarcodeType" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemType" attribute="value" />
-</Binding>
 </Bindings>
 </BindingsSet>

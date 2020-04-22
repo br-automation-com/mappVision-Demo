@@ -40,6 +40,11 @@ END_VAR
 VAR
 	visSelectedCodeTypeDetected : ARRAY[1..MAX_NUM_RESULTS] OF STRING[80]; (*HMI helper string*)
 	visSelectedCodeTypePreset : STRING[80]; (*HMI helper string*)
+	CodeTypes : ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
+	visCodeTypePresentDropDownValues : ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
+END_VAR
+VAR CONSTANT
+	MAX_NUM_CODETYPES : USINT := 69;
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Image, crosshair data and constants*)
