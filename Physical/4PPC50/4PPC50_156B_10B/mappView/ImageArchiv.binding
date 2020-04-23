@@ -25,10 +25,13 @@
 			<Source xsi:type="opcUa" refId="::Vi_image:visEnableButtons_1" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="btnImageArchivRefresh" attribute="enable" />
 		</Binding>
-				
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.STA.Status" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="numImageStatus" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visEnableButtons_2" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="btnImageArchivDownload" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.Format" attribute="value" />
@@ -58,5 +61,5 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:visAutoArchiv" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkMainAutoArchive" attribute="value" />
 		</Binding>
-</Bindings>
+	</Bindings>
 </BindingsSet>

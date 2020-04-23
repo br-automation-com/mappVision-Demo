@@ -12,7 +12,6 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
-		
 		<!-- Reload web page after trigger was fired />-->
 		<EventBinding id="MainReload">
 			<Source xsi:type="opcUa.Event" refId="::Vi_main:VisionSensor.CMD.BrowserReload" event="ValueChanged" />			
@@ -35,7 +34,6 @@
 				</Sequence>
 			</EventHandler>			
 		</EventBinding>
-		
 		<!-- Selected details no />-->
 		<EventBinding id="contentMain.numCameraNoDown.Click">
 			<Source contentRefId="contentMain" widgetRefId="numDetailsNoDown" xsi:type="widgets.brease.Image.Event" event="Click" />

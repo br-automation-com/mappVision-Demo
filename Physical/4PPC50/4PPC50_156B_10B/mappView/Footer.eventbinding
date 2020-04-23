@@ -12,7 +12,6 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
-		
 		<!-- Close setup window after process is finished />-->
 		<EventBinding id="AutoSetupStartStop">
 			<Source xsi:type="opcUa.Event" refId="::Vi_main:VisionSensor.CMD.AutoSetupStartStop" event="ValueChanged" />

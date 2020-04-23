@@ -43,7 +43,7 @@
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="txtRecFilter" attribute="value" />
 		</Binding>
 		
-		<!-- Multiple bindings from vis PLC to mappView />-->	
+		<!-- Multiple bindings from vis PLC to mappView />-->
 		<Binding mode="oneWay">
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="::SYSTEM:clientInfo.slotId" attribute="value" />
@@ -55,7 +55,6 @@
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="lstRecNames" attribute="dataProvider" />
 		</Binding>
-
 		<Binding mode="oneWay">
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="::SYSTEM:clientInfo.slotId" attribute="value" />
@@ -67,7 +66,6 @@
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="numRecItems" attribute="value" />
 		</Binding>
-		
 		<Binding mode="oneWay">
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="::SYSTEM:clientInfo.slotId" attribute="value" />

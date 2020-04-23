@@ -12,7 +12,6 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
-		
 		<!-- Reset external lights trigger />-->
 		<EventBinding id="contentLights.btnLightsReset.Click">
 			<Source contentRefId="contentLights" widgetRefId="btnLightsReset" xsi:type="widgets.brease.Button.Event" event="Click" />
@@ -24,7 +23,6 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
-		
 		<!-- Selected external light no />-->
 		<EventBinding id="contentHeader.numLightNoDown.Click">
 			<Source contentRefId="contentLights" widgetRefId="numLightNoDown" xsi:type="widgets.brease.Image.Event" event="Click" />

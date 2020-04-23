@@ -18,10 +18,6 @@
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraStatus1" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visHttpPath" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="host" />
-		</Binding>
-		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.CockpitIsActive" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="CockpitStatus" attribute="value" />
 		</Binding>

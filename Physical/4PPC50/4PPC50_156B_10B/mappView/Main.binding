@@ -165,5 +165,9 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.HW.Connected" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="imgBackgroundVisionEye" attribute="visible" />
 		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visHttpPath" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="host" />
+		</Binding>
 	</Bindings>
 </BindingsSet>
