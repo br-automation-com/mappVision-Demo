@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentFooter" height="150" width="1366" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faAutoSetup" top="0" left="1000" width="350" height="630" zIndex="19" buttonOffset="190" docking="bottom" showOnTop="true" text="Setup" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faAutoSetup" top="0" left="1000" width="360" height="630" zIndex="19" buttonOffset="200" docking="bottom" showOnTop="true" text="Setup" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="Label6" top="19" left="94" width="130" zIndex="0" text="Gain" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.Label" id="Label7" top="54" left="94" width="130" zIndex="1" text="Focus" textAlign="right" fontSize="18px" />
@@ -48,7 +48,7 @@
     <Widget xsi:type="widgets.brease.Label" id="labFooter4" top="10" left="725" width="150" zIndex="14" text="Max items count" textAlign="right" fontSize="18px" />
     <Widget xsi:type="widgets.brease.NumericInput" id="numMaxItemsCount" top="10" left="875" width="90" zIndex="15" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10" fontSize="16px" padding="0px 5px 0px 5px" />
     <Widget xsi:type="widgets.brease.Button" id="btnImageTrigger" top="10" left="305" width="200" height="60" zIndex="16" text="Trigger" fontSize="24px" bold="true" style="Operate" />
-    <Widget xsi:type="widgets.brease.FlyOut" id="faStatistics" top="0" left="850" width="300" zIndex="18" buttonOffset="150" docking="bottom" showOnTop="true" text="Statistics" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faStatistics" top="0" left="1000" width="300" zIndex="18" buttonOffset="20" docking="bottom" showOnTop="true" text="Statistics" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="Label9" top="20" left="5" width="200" height="25" zIndex="0" text="Acquisition Accepted" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.NumericOutput" id="numAcquisitionAcceptedCnt" top="20" left="209" width="75" height="25" zIndex="1" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" padding="0px 5px 0px 5px" />
@@ -62,7 +62,7 @@
         <Widget xsi:type="widgets.brease.NumericOutput" id="numImageNettime" top="140" left="209" width="75" height="25" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" padding="0px 5px 0px 5px" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faHardware" top="0" left="690" width="270" zIndex="1" buttonOffset="120" docking="bottom" showOnTop="true" text="Hardware" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="18px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faHardware" top="0" left="820" width="300" zIndex="1" buttonOffset="20" docking="bottom" showOnTop="true" text="Hardware" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="18px">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="Label19" top="18" left="-21" width="164" height="20" zIndex="0" text="Serial No" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_SerialNumber" top="15" left="154" height="25" zIndex="1" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
