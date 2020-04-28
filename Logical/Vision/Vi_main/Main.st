@@ -283,7 +283,7 @@ PROGRAM _CYCLIC
 			gVisionImage.DATA.Crosshair[idx].CrosshairY			:= 0;
 			gVisionImage.DATA.Crosshair[idx].CrosshairRotate	:= 0;
 			brsmemset(ADR(gVisionImage.DATA.Crosshair[idx].Text), 0, SIZEOF(gVisionImage.DATA.Crosshair[idx].Text));
-
+			
 			// -----------------------------------------------------------------------------------------------------------
 			// Make sure we have data to display
 			IF(VisionSensor.STA.ResultCnt <> 0 AND idx <= VisionSensor.STA.ResultCnt) THEN
@@ -393,7 +393,7 @@ PROGRAM _CYCLIC
 										
 						IF(visCrossHair.DetailsNo = idx) THEN
 							// -----------------------------------------------------------------------------------------------------------
-							// Add text data to cross hair
+							// Add text data from selected cross hair
 							brsstrcat(ADR(tmpStr1), ADR('<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="10"> '));
 							
 							// Add modell ID information for blob and match
@@ -450,7 +450,13 @@ PROGRAM _CYCLIC
 				END_IF	
 				visCrossHair.SvgContent[idx] := tmpStr1;
 				// for saving svg file
-				brsstrcpy(ADR(gVisionImage.DATA.Crosshair[idx].Text), ADR(tmpStr1)); 
+				brsstrcpy(ADR(gVisionImage.DATA.Crosshair[idx].Text), ADR(tmpStr1));
+			// -----------------------------------------------------------------------------------------------------------
+			// Show information that processing is disabled
+			ELSIF(VisionSensor.STA.ResultCnt = 0 AND visEnableVision = FALSE) THEN
+				visCrossHair.SvgVisible[1] := TRUE;
+				visCrossHair.SvgTransformation[1] := '[{"select":"#CrosshairRed","display":false}, {"select":"#CrosshairBlue","display":false}]';
+				visCrossHair.SvgContent[1] := '<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="40"> Processing is disabled </text>';
 			END_IF	
 		END_FOR
 	END_IF
