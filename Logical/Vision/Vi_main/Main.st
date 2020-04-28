@@ -16,11 +16,25 @@ PROGRAM _INIT
 	OCR ACCESS ADR(tmpOCR);
 	MT ACCESS ADR(tmpMT);
 
-	// Flash color
+	// -----------------------------------------------------------------------------------------------------------
+	// Preload code types
+	FOR i := 0 TO MAX_NUM_CODETYPES DO
+		IF CodeTypes[i] <> '' THEN
+			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR('{"value":"'));
+			brsitoa(i, ADR(tmpStr1));
+			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR(tmpStr1));
+			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR('","text":"'));
+			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR(CodeTypes[i]));
+			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR('"}'));
+		END_IF
+	END_FOR
+
+	// -----------------------------------------------------------------------------------------------------------
+	// Set flash color, table no
 	brsitoa(VisionSensor.CFG.FlashColor, ADR(visSelectedFlashColor));
 	visTableNo;
 	InitialSearchSensor := TRUE;
-	ACTION_InitCodeTypes;
+	
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
