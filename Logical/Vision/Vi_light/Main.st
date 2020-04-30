@@ -38,6 +38,22 @@ PROGRAM _CYCLIC
 	FlashFailedCntOld := VisionLight.STA.FlashFailedCnt;
 	
 	// -----------------------------------------------------------------------------------------------------------
+	// Reset trigger when timed out
+	// -----------------------------------------------------------------------------------------------------------
+	IF VisionLight.CMD.FlashTrigger THEN
+		TriggerTimeout.IN := TRUE;
+		TriggerTimeout.PT := UINT_TO_TIME(VisionLight.CFG.Timeout)*2;
+		IF TriggerTimeout.Q THEN
+			VisionLight.CMD.FlashTrigger := FALSE;
+			VisionLight.CMD.FlashTriggerReset := TRUE;
+		END_IF
+	ELSE
+		TriggerTimeout.IN := FALSE;
+		VisionLight.CMD.FlashTriggerReset := FALSE;
+	END_IF
+	TriggerTimeout();
+	
+	// -----------------------------------------------------------------------------------------------------------
 	// Fire trigger for lights
 	// -----------------------------------------------------------------------------------------------------------
 	IF(visLightsTrigger AND VisionLight.HW.Ready) THEN

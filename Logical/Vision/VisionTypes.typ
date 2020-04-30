@@ -100,6 +100,7 @@ TYPE
 		Enable : USINT := 1;
 		FlashColor : USINT := 99;
 		Exposure : UDINT := 200;
+		Timeout : UINT := 5000;
 		NettimeDelay : DINT;
 	END_STRUCT;
 	typLightStatus : 	STRUCT 

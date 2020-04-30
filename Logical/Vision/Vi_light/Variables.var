@@ -1,9 +1,11 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
 VAR
-	FlashCompletedCntOld : USINT;
 	VisionLight : REFERENCE TO typLightMain; (*General vision functions that are independent from the inspection function*)
 	FlashFailedCntOld : USINT;
+	FlashCompletedCntOld : USINT;
 	visLightsTrigger : BOOL;
 	visLightsReset : BOOL;
 	visEnableCommand : BOOL;
 	visSelectedFlashColor : STRING[10]; (*Flash color string*)
+	TriggerTimeout : TON; (*Disable web reload when timed out*)
 END_VAR

@@ -33,7 +33,7 @@ PROGRAM _INIT
 	// -----------------------------------------------------------------------------------------------------------
 	// Lights configuration
 	// -----------------------------------------------------------------------------------------------------------	
-	// Configuration for barlights
+	// Configuration for backlights
 	gVisionLight[1].CFG.LightType := enumBarlight;
 	gVisionLight[1].CFG.FlashColor := 1;
 	gVisionLight[1].CFG.PowerlinkNode := 10;
@@ -47,7 +47,7 @@ END_PROGRAM
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------	
-	// Trigger first backlight when sensor is triggered
+	// Trigger first backlight when first sensor is triggered
 	IF(EDGEPOS(gVisionSensor[1].CMD.ImageTrigger)) THEN
 		gVisionLight[1].CFG.Exposure := gVisionSensor[1].CFG.Exposure;
 		gVisionLight[1].CFG.NettimeDelay := gVisionSensor[1].CFG.NettimeDelay;
