@@ -43,6 +43,7 @@ END_PROGRAM
 PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Select first available camera after reboot
+	// -----------------------------------------------------------------------------------------------------------
 	IF InitialSearchSensor THEN 
 		FOR i := 1 TO MAX_NUM_CAMS DO
 			IF gVisionSensor[i].HW.Connected THEN
@@ -52,6 +53,7 @@ PROGRAM _CYCLIC
 			END_IF
 		END_FOR
 	END_IF
+	
 	// -----------------------------------------------------------------------------------------------------------
 	// Map global structure to local reference for mappView
 	// -----------------------------------------------------------------------------------------------------------
@@ -92,7 +94,8 @@ PROGRAM _CYCLIC
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
-	// Display Camera Status in hex - documenation is also in hex
+	// Display camera status in hex - documenation is also in hex
+	// -----------------------------------------------------------------------------------------------------------
 	IF VisionSensor.STA.Status = 0 THEN // Display only a single 0
 		visCameraStatus := '0';
 	ELSE // Display the status in Format 0x02000800
@@ -104,7 +107,8 @@ PROGRAM _CYCLIC
 	END_IF
 	
 	// -----------------------------------------------------------------------------------------------------------
-	// Vision Sensor - flash color
+	// Translate flash color and segments from mappView to IO mapping
+	// -----------------------------------------------------------------------------------------------------------
 	VisionSensor.CFG.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
 	VisionSensor.CFG.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
 
@@ -155,8 +159,8 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Fire trigger for camera image
 	// -----------------------------------------------------------------------------------------------------------
-	IF(visImageTrigger AND VisionSensor.HW.Ready AND NOT VisionSensor.STA.ImageProcessingActive) THEN
-		// When nettime is used dealy trigger by 10ms
+	IF((visImageTrigger OR EDGEPOS(visEnableVision)) AND VisionSensor.HW.Ready AND NOT VisionSensor.STA.ImageProcessingActive) THEN
+		// When nettime is used delay trigger by 10ms
 		IF(NettimeCurrent_us <> 0) THEN
 			VisionSensor.CFG.NettimeDelay := NettimeCurrent_us + 10000;
 		END_IF
@@ -168,6 +172,7 @@ PROGRAM _CYCLIC
 	// Repetitive mode
 	// -----------------------------------------------------------------------------------------------------------
 	IF visRepetitiveMode THEN
+		// Trigger new image every 0.5s
 		RepetitiveModeTimer.IN := TRUE;
 		RepetitiveModeTimer.PT := T#500ms;
 		IF RepetitiveModeTimer.Q THEN
