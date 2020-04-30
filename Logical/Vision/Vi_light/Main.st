@@ -57,6 +57,7 @@ PROGRAM _CYCLIC
 	// Fire trigger for lights
 	// -----------------------------------------------------------------------------------------------------------
 	IF(visLightsTrigger AND VisionLight.HW.Ready) THEN
+		// Add default delay and fire trigger
 		VisionLight.CFG.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 		VisionLight.CMD.FlashTrigger := TRUE;
 		visLightsTrigger := FALSE;

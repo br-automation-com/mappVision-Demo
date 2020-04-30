@@ -160,10 +160,8 @@ PROGRAM _CYCLIC
 	// Fire trigger for camera image
 	// -----------------------------------------------------------------------------------------------------------
 	IF((visImageTrigger OR EDGEPOS(visEnableVision)) AND VisionSensor.HW.Ready AND NOT VisionSensor.STA.ImageProcessingActive) THEN
-		// When nettime is used delay trigger by 10ms
-		IF(NettimeCurrent_us <> 0) THEN
-			VisionSensor.CFG.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
-		END_IF
+		// Add default delay and fire trigger
+		VisionSensor.CFG.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 		VisionSensor.CMD.ImageTrigger := TRUE;
 		visImageTrigger := FALSE;
 	END_IF
