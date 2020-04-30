@@ -232,6 +232,9 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[3].STA.ProcessingTimeFunction AT %IW."CodeReader".FunctionProcessingTime;
 	Cyclic#1.::gCodeReader.CFG.ParameterMode AT %QB."CodeReader".ParameterMode;
 	Cyclic#1.::gCodeReader.CFG.ParameterOptimization AT %QB."CodeReader".ParameterOptimization;
+	Cyclic#1.::gCodeReader.CFG.RobustnessEnable AT %QB."CodeReader".EnableRobustness;
+	Cyclic#1.::gCodeReader.CFG.GradingEnable AT %QB."CodeReader".CodeGrading;
+	Cyclic#1.::gCodeReader.CFG.CodeType AT %QB."CodeReader".OCRSymbolType;
 	Cyclic#1.::gCodeReader.DATA.BarcodeType[1] AT %IB."CodeReader".SymbolType01;
 	Cyclic#1.::gCodeReader.DATA.BarcodeType[2] AT %IB."CodeReader".SymbolType02;
 	Cyclic#1.::gCodeReader.DATA.BarcodeType[3] AT %IB."CodeReader".SymbolType03;
@@ -511,10 +514,25 @@ VAR_CONFIG
 	Cyclic#1.::gVisionLight[1].CFG.NettimeDelay AT %QD."Backlight1".Nettime01;
 	Cyclic#1.::gVisionLight[1].CFG.Exposure AT %QD."Backlight1".ExposureTime01;
 	Cyclic#1.::gVisionLight[1].CFG.FlashColor AT %QB."Backlight1".FlashColor01;
-	Cyclic#1.::gCodeReader.CFG.RobustnessEnable AT %QB."CodeReader".EnableRobustness;
-	Cyclic#1.::gCodeReader.CFG.GradingEnable AT %QB."CodeReader".CodeGrading;
-	Cyclic#1.::gCodeReader.CFG.CodeType AT %QB."CodeReader".OCRSymbolType;
+	Cyclic#1.::gVisionLight[1].HW.Temperature AT %IB."Backlight1".SensorTemperature;
+	Cyclic#1.::gVisionLight[2].HW.Connected AT %IX."Backlight2".ModuleOk;
+	Cyclic#1.::gVisionLight[2].HW.SerialNumber AT %ID."Backlight2".SerialNumber;
+	Cyclic#1.::gVisionLight[2].HW.ID AT %ID."Backlight2".ModuleID;
+	Cyclic#1.::gVisionLight[2].HW.Variant AT %ID."Backlight2".HardwareVariant;
+	Cyclic#1.::gVisionLight[2].HW.Firmware AT %ID."Backlight2".FirmwareVersion;
+	Cyclic#1.::gVisionLight[2].HW.Ready AT %IX."Backlight2".Ready;
+	Cyclic#1.::gVisionLight[2].STA.Status AT %ID."Backlight2".Status;
+	Cyclic#1.::gVisionLight[2].STA.FlashAcceptedCnt AT %IB."Backlight2".AcceptedFlashCnt;
+	Cyclic#1.::gVisionLight[2].STA.FlashCompletedCnt AT %IB."Backlight2".CompletedFlashCnt;
+	Cyclic#1.::gVisionLight[2].STA.FlashFailedCnt AT %IB."Backlight2".FailedFlashCnt;
+	Cyclic#1.::gVisionLight[2].CMD.FlashTrigger AT %QX."Backlight2".FlashTrigger;
+	Cyclic#1.::gVisionLight[2].CMD.FlashTriggerReset AT %QX."Backlight2".ResetFlashTrigger;
+	Cyclic#1.::gVisionLight[2].CFG.NettimeDelay AT %QD."Backlight2".Nettime01;
+	Cyclic#1.::gVisionLight[2].CFG.Exposure AT %QD."Backlight2".ExposureTime01;
+	Cyclic#1.::gVisionLight[2].CFG.FlashColor AT %QB."Backlight2".FlashColor01;
+	Cyclic#1.::gVisionLight[2].HW.Temperature AT %IB."Backlight2".SensorTemperature;
 	Cyclic#1.::NettimeCurrent_us AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
 	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP0483".IF3.NettimeSoC;
 	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP1586".IF3.NettimeSoC;
+
 END_VAR
