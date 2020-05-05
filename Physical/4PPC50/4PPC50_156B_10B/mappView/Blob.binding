@@ -53,5 +53,25 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:Blob.DATA.Width" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemWidth" attribute="node" />
 		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.EnhancedBlobInformation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemClipped" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.EnhancedBlobInformation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemArea" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.EnhancedBlobInformation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemGray" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.EnhancedBlobInformation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemWidth" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:Blob.CFG.EnhancedBlobInformation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemLength" attribute="visible" />
+		</Binding>
 	</Bindings>
 </BindingsSet>
