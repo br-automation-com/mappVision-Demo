@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.7.3.93 SP?>
-<Library Version="5.09.5" SubType="binary" Description="[mapp Vision] Base library" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="5.10.5" SubType="binary" Description="[mapp Vision] Base library" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>ViBase.fun</File>
     <File>ViBase.typ</File>
     <File>ViBase.var</File>
   </Files>
   <Dependencies>
-    <Dependency ObjectName="ViCore" />
+    <Dependency ObjectName="AsZip" />
+    <Dependency ObjectName="FileIO" />
+    <Dependency ObjectName="AsArCfg" />
+    <Dependency ObjectName="Powerlnk" />
+    <Dependency ObjectName="AsEpl" />
+    <Dependency ObjectName="AsIO" />
+    <Dependency ObjectName="astime" />
+    <Dependency ObjectName="sys_lib" />
   </Dependencies>
 </Library>

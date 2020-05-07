@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.09.2 */
+/* McBase 5.10.0 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.09.2
+#define _McBase_VERSION 5.10.0
 #endif
 
 #include <bur/plctypes.h>
@@ -224,9 +224,13 @@ typedef enum McCfgTypeEnum
 	mcCFG_AXGRP_FEAT_2D_COMP = 21120,
 	mcCFG_AXGRP_FEAT_3D_COMP = 21121,
 	mcCFG_AXGRP_FEAT_PATH_PREVIEW = 21122,
-	mcCFG_AXGRP_FEAT_DYN_MDL_IDENT = 21123,
 	mcCFG_AXGRP_FEAT_TAN_TOOL = 21124,
 	mcCFG_AXGRP_FEAT_REV_MOVE = 21125,
+	mcCFG_ASM_FEAT_CPLG = 31101,
+	mcCFG_ASM_FEAT_SIM_SH_DEF = 31102,
+	mcCFG_ASM_FEAT_SH_TRACE = 31103,
+	mcCFG_ASM_FEAT_SH_AUT_ATT = 31104,
+	mcCFG_ASM_FEAT_LOC_LIM = 31105,
 	mcCFG_SEC_COMP = 31301,
 	mcCFG_SEC_SUB = 31302,
 	mcCFG_MS_CUS_STD = 50001,

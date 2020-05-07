@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAcpAx 5.09.2 */
+/* McAcpAx 5.10.0 */
 
 #ifndef _MCACPAX_
 #define _MCACPAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAcpAx_VERSION
-#define _McAcpAx_VERSION 5.09.2
+#define _McAcpAx_VERSION 5.10.0
 #endif
 
 #include <bur/plctypes.h>
@@ -240,14 +240,14 @@ typedef enum McACMPCFFFFwdEnum
 } McACMPCFFFFwdEnum;
 
 typedef enum McACMVFCVFTypEnum
-{	mcACMVFCVFT_LIN = 0,
-	mcACMVFCVFT_CONST_LD_TORQ = 1,
-	mcACMVFCVFT_QUAD = 2
+{	mcACMVFCVFT_LIN = 129,
+	mcACMVFCVFT_CONST_LD_TORQ = 131,
+	mcACMVFCVFT_QUAD = 130
 } McACMVFCVFTypEnum;
 
 typedef enum McACMVFCVFAutCfgEnum
-{	mcACMVFCVFAC_MOT_PAR_BASED = 0,
-	mcACMVFCVFAC_NOT_USE = 1
+{	mcACMVFCVFAC_MOT_PAR_BASED = 1,
+	mcACMVFCVFAC_NOT_USE = 0
 } McACMVFCVFAutCfgEnum;
 
 typedef enum McAHModEnum

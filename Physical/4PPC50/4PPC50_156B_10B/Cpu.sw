@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
+<?AutomationStudio Version=4.7.3.93 SP?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
     <Task Name="Axis" Source="Vision.Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
@@ -88,6 +88,5 @@
     <LibraryObject Name="arflatprv" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="arcoal" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="ViBase" Source="Libraries.ViBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="ViCore" Source="Libraries.ViCore.lby" Memory="UserROM" Language="binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

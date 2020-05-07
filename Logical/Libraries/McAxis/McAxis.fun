@@ -97,7 +97,7 @@ FUNCTION_BLOCK MC_Halt (*commands a controlled motion stop.*)
         Axis : REFERENCE TO McAxisType; (*axis reference*)
         Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
         Deceleration : REAL; (*value of deceleration*)
-	Jerk : REAL; (*maximum jerk*)
+		Jerk : REAL; (*maximum jerk*)
         BufferMode : McBufferModeEnum; (*defines the chronological sequence of FB*)
     END_VAR
     VAR_OUTPUT
@@ -671,6 +671,56 @@ FUNCTION_BLOCK MC_GearIn (*commands a ratio between the velocity of the master a
     END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_GearInPos (*commands a ratio between the velocity of the master and slave axes at defined master and slave positions*)
+    VAR_INPUT
+		Master : REFERENCE TO McAxisType; (*master axis reference*)
+		Slave : REFERENCE TO McAxisType; (*slave axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		RatioNumerator : DINT; (*gear ratio numerator*)
+		RatioDenominator : DINT; (*gear ratio denominator*)
+		MasterValueSource : McValueSrcEnum; (*defines the source for synchronization*)
+		MasterSyncPosition : LREAL; (*master position at which the axes begin moving in sync [measurement units of master]*)
+		SlaveSyncPosition : LREAL; (*slave position at which the axes begin moving in sync [measurement units of slave]*)
+		SyncMode : McSyncModeEnum; (*defines the type of synchronization*)
+		MasterStartDistance : LREAL; (*the master distance for the slave to start to synchronize to the master [measurement units of master]*)
+		Velocity : REAL; (*maximum velocity during the movement between StartSync and InSync [measurement units of slave/s]*)
+		Acceleration : REAL; (*maximum acceleration during the movement between StartSync and InSync [measurement units of slave/s²]*)
+		Deceleration : REAL; (*maximum deceleration during the movement between StartSync and InSync [measurement units of slave/s²]*)
+		Jerk : REAL; (*maximum jerk during the movement between StartSync and InSync [measurement units of slave/s3]*)
+		BufferMode : McBufferModeEnum; (*defines the chronological sequence of FB*)
+		AdvancedParameters : McAdvGearInPosParType; (*structure for using additional functions*)
+    END_VAR
+    VAR_OUTPUT
+		StartSync : BOOL; (*synchronization is starting*)
+		InSync : BOOL; (*synchronization is finished*)
+		Busy : BOOL; (*function block is not finished*)
+		Active : BOOL; (*FB has control over the axis*)
+		CommandAborted : BOOL; (*function block is aborted by another command*)
+		Error : BOOL; (*error occurred during operation*)
+        ErrorID : DINT; (*error number*)
+    END_VAR
+    VAR
+        Internal : McInternalTwoRefType; (*internal variable*)
+    END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_GearOut (*ends the coupling of the slave axis to the master, the slave keeps moving with the current velocity*)
+    VAR_INPUT
+        Slave : REFERENCE TO McAxisType; (*slave axis reference*)
+        Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		Jerk : REAL; (*maximum jerk*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. Function block is finished*)
+		Busy : BOOL; (*function block is not finished and must continue to be called*)
+		Error : BOOL; (*error occurred during operation*)
+        ErrorID : DINT; (*error number*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK MC_CamIn (*starts a cam coupling between the master and slave axis*)
     VAR_INPUT
         Master : REFERENCE TO McAxisType; (*master axis reference*)
@@ -734,6 +784,23 @@ FUNCTION_BLOCK MC_BR_CamIn (*starts a cam coupling between the master and slave 
     VAR
         Internal : McInternalTwoRefType; (*internal variable*)
     END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_CamOut (*ends the coupling of the slave axis to the master, the slave keeps moving with the current velocity*)
+    VAR_INPUT
+        Slave : REFERENCE TO McAxisType; (*slave axis reference*)
+        Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		Jerk : REAL; (*maximum jerk*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. Function block is finished*)
+		Busy : BOOL; (*function block is not finished and must continue to be called*)
+		Error : BOOL; (*error occurred during operation*)
+        ErrorID : DINT; (*error number*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
 END_FUNCTION_BLOCK
 
 FUNCTION_BLOCK MC_BR_CamPrepare (*prepare cam to use for synchronous movement or functionality*)
@@ -1027,3 +1094,4 @@ FUNCTION_BLOCK MC_BR_GetCamSlavePosition (*Determine the slave position accordin
         Internal : McInternalTwoRefType; (*Data for internal use*)
     END_VAR
 END_FUNCTION_BLOCK
+

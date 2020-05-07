@@ -3,7 +3,7 @@
   <header creationtool="B&amp;R Automation Studio" creationtoolversion="4.2" datatype="unknown" segtype="sentence" adminlang="en" srclang="en" o-tmf="TMX">
     <note>Do not change anything in this file, else the tmx-file will not be recognized as a valid system text anymore</note>
     <prop type="x-BR-TS:Namespace">BR/EventLog</prop>
-    <prop type="x-BR-TS:systemtextsig">fLZKXZm4Yjc1hj9uMmE60HAFeKG9mgphGxUIKVEobIvHQgUxZMRJfMmAkwgHI8hZFj6ykYWb4nUwpPvCrIDRQKC1FrKHfz9NjEpym73hDCIVkb6EYT7if2l/9N5SGSPCtBzrP0hv/P98Q86miOO5RzL9feVgxWtcVeWXA0lBEAE=</prop>
+    <prop type="x-BR-TS:systemtextsig">NbjwMWIrlyBpKwW0fii6UResxIYcd3NVuEMfb/HG8pa9fw57Mq50HzBwWdngzErqDIojJVfab3Mm0c2dg5UT6R4Qh2I6FDpBX2JdkodKYA/jd+3aLiFCWVbpkjzEutof7rt+PC/Qy8gIu1NhpGQqxU2wQHWw/asxPNDlfCfA6/g=</prop>
   </header>
   <body>
     <tu tuid="-1064239099">
@@ -422,6 +422,22 @@
         <seg>Could not create component</seg>
       </tuv>
     </tu>
+    <tu tuid="-1064303616">
+      <tuv xml:lang="de">
+        <seg>Es wurde keine PV mit dem angegebenen Namen gefunden.</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>No PV with the requested name was found.</seg>
+      </tuv>
+    </tu>
+    <tu tuid="-1064303615">
+      <tuv xml:lang="de">
+        <seg>Die gewünschte Referenz ist NULL.</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>The requested reference is NULL.</seg>
+      </tuv>
+    </tu>
     <tu tuid="-1064303614">
       <tuv xml:lang="de">
         <seg>Ungültige Konfiguration der Query {2} (in {3})</seg>
@@ -472,10 +488,10 @@
     </tu>
     <tu tuid="-1064239101">
       <tuv xml:lang="de">
-        <seg>MpLink connection not allowed</seg>
+        <seg>MpLink-Verbindung nicht erlaubt</seg>
       </tuv>
       <tuv xml:lang="en">
-        <seg>MpLink-Verbindung nicht erlaubt</seg>
+        <seg>MpLink connection not allowed</seg>
       </tuv>
     </tu>
     <tu tuid="-1064239100">
@@ -532,6 +548,14 @@
       </tuv>
       <tuv xml:lang="en">
         <seg>Warning loading configuration</seg>
+      </tuv>
+    </tu>
+    <tu tuid="-2138045423">
+      <tuv xml:lang="de">
+        <seg>Eingegebener Taskname "{2}" ist zu lang und wurde gekürzt: "{3}"</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Entered task name "{2}" is too long and was truncated: "{3}"</seg>
       </tuv>
     </tu>
   </body>

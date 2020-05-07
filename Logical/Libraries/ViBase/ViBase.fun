@@ -8,11 +8,10 @@
  ********************************************************************)
 
 
-FUNCTION_BLOCK ViBaseSaveDiagInfo
+FUNCTION_BLOCK ViBaseSaveDiagData
 VAR_INPUT
 		MpLink : REFERENCE TO ViComponentType;
 		Execute : BOOL;
-		ImageNettime : DINT;
 		DeviceName : REFERENCE TO STRING[50];
 		FileName : REFERENCE TO STRING[255];
 	END_VAR

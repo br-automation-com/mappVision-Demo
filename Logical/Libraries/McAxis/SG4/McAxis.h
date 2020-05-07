@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxis 5.09.2 */
+/* McAxis 5.10.0 */
 
 #ifndef _MCAXIS_
 #define _MCAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxis_VERSION
-#define _McAxis_VERSION 5.09.2
+#define _McAxis_VERSION 5.10.0
 #endif
 
 #include <bur/plctypes.h>
@@ -294,10 +294,6 @@ typedef enum McAMoveLimDecEnum
 	mcAMLD_ADV = 1
 } McAMoveLimDecEnum;
 
-typedef struct McAdvGearInPosParType
-{	float MasterMaxVelocity;
-} McAdvGearInPosParType;
-
 typedef struct McLibraryInfoType
 {	plcstring Name[33];
 } McLibraryInfoType;
@@ -354,6 +350,10 @@ typedef struct McAdvOffsetParType
 typedef struct McAdvGearInParType
 {	float MasterMaxVelocity;
 } McAdvGearInParType;
+
+typedef struct McAdvGearInPosParType
+{	float MasterMaxVelocity;
+} McAdvGearInPosParType;
 
 typedef struct McAdvCamInParType
 {	plcbit Periodic;
@@ -547,6 +547,24 @@ typedef struct McAdvBrCamInParType
 	float Jerk;
 } McAdvBrCamInParType;
 
+typedef struct McDigCamSwSwitchesParType
+{	signed short TrackNumber;
+	double FirstOnPosition[17];
+	double LastOnPosition[17];
+	float Period;
+} McDigCamSwSwitchesParType;
+
+typedef struct McDigCamSwOutputsParType
+{	struct McAxisType* Axis;
+	plcbit* VariableAddress;
+} McDigCamSwOutputsParType;
+
+typedef struct McDigCamSwTrackOptParType
+{	plctime OnCompensation;
+	plctime OffCompensation;
+	float Hysteresis;
+} McDigCamSwTrackOptParType;
+
 typedef struct McABTLinBdType
 {	enum McCfgLocLenUnitEnum MeasurementUnit;
 	double MeasurementResolution;
@@ -658,38 +676,29 @@ typedef struct McCfgAxMoveLimType
 {	struct McAMLType MovementLimits;
 } McCfgAxMoveLimType;
 
-typedef struct MC_GearInPos
+typedef struct MC_DigitalCamSwitch
 {
 	/* VAR_INPUT (analog) */
-	struct McAxisType* Master;
-	struct McAxisType* Slave;
-	signed long RatioNumerator;
-	signed long RatioDenominator;
-	enum McValueSrcEnum MasterValueSource;
-	double MasterSyncPosition;
-	double SlaveSyncPosition;
-	enum McSyncModeEnum SyncMode;
-	double MasterStartDistance;
-	float Velocity;
-	float Acceleration;
-	float Deceleration;
-	float Jerk;
-	enum McBufferModeEnum BufferMode;
-	struct McAdvGearInPosParType AdvancedParameters;
+	struct McAxisType* Axis;
+	struct McDigCamSwSwitchesParType Switches;
+	struct McDigCamSwOutputsParType Outputs;
+	struct McDigCamSwTrackOptParType TrackOptions;
 	/* VAR_OUTPUT (analog) */
 	signed long ErrorID;
 	/* VAR (analog) */
-	struct McInternalTwoRefType Internal;
+	struct McInternalType Internal;
 	/* VAR_INPUT (digital) */
-	plcbit Execute;
+	plcbit Enable;
+	plcbit InitSwitches;
+	plcbit InitTrackOptions;
+	plcbit EnableMask;
 	/* VAR_OUTPUT (digital) */
-	plcbit StartSync;
-	plcbit InSync;
+	plcbit InOperation;
 	plcbit Busy;
-	plcbit Active;
-	plcbit CommandAborted;
 	plcbit Error;
-} MC_GearInPos_typ;
+	plcbit SwitchesInitialized;
+	plcbit TrackOptionsInitialized;
+} MC_DigitalCamSwitch_typ;
 
 typedef struct MC_BR_GetAxisLibraryInfo
 {
@@ -1362,6 +1371,56 @@ typedef struct MC_GearIn
 	plcbit Error;
 } MC_GearIn_typ;
 
+typedef struct MC_GearInPos
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Master;
+	struct McAxisType* Slave;
+	signed long RatioNumerator;
+	signed long RatioDenominator;
+	enum McValueSrcEnum MasterValueSource;
+	double MasterSyncPosition;
+	double SlaveSyncPosition;
+	enum McSyncModeEnum SyncMode;
+	double MasterStartDistance;
+	float Velocity;
+	float Acceleration;
+	float Deceleration;
+	float Jerk;
+	enum McBufferModeEnum BufferMode;
+	struct McAdvGearInPosParType AdvancedParameters;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalTwoRefType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit StartSync;
+	plcbit InSync;
+	plcbit Busy;
+	plcbit Active;
+	plcbit CommandAborted;
+	plcbit Error;
+} MC_GearInPos_typ;
+
+typedef struct MC_GearOut
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Slave;
+	float Jerk;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} MC_GearOut_typ;
+
 typedef struct MC_CamIn
 {
 	/* VAR_INPUT (analog) */
@@ -1426,6 +1485,23 @@ typedef struct MC_BR_CamIn
 	plcbit EndOfProfile;
 	plcbit Ready;
 } MC_BR_CamIn_typ;
+
+typedef struct MC_CamOut
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Slave;
+	float Jerk;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} MC_CamOut_typ;
 
 typedef struct MC_BR_CamPrepare
 {
@@ -1722,7 +1798,7 @@ typedef struct MC_BR_GetCamSlavePosition
 
 
 /* Prototyping of functions and function blocks */
-_BUR_PUBLIC void MC_GearInPos(struct MC_GearInPos* inst);
+_BUR_PUBLIC void MC_DigitalCamSwitch(struct MC_DigitalCamSwitch* inst);
 _BUR_PUBLIC void MC_BR_GetAxisLibraryInfo(struct MC_BR_GetAxisLibraryInfo* inst);
 _BUR_PUBLIC void MC_Power(struct MC_Power* inst);
 _BUR_PUBLIC void MC_Home(struct MC_Home* inst);
@@ -1755,8 +1831,11 @@ _BUR_PUBLIC void MC_TorqueControl(struct MC_TorqueControl* inst);
 _BUR_PUBLIC void MC_LimitLoad(struct MC_LimitLoad* inst);
 _BUR_PUBLIC void MC_BR_LoadSimulationCommand(struct MC_BR_LoadSimulationCommand* inst);
 _BUR_PUBLIC void MC_GearIn(struct MC_GearIn* inst);
+_BUR_PUBLIC void MC_GearInPos(struct MC_GearInPos* inst);
+_BUR_PUBLIC void MC_GearOut(struct MC_GearOut* inst);
 _BUR_PUBLIC void MC_CamIn(struct MC_CamIn* inst);
 _BUR_PUBLIC void MC_BR_CamIn(struct MC_BR_CamIn* inst);
+_BUR_PUBLIC void MC_CamOut(struct MC_CamOut* inst);
 _BUR_PUBLIC void MC_BR_CamPrepare(struct MC_BR_CamPrepare* inst);
 _BUR_PUBLIC void MC_BR_CommandError(struct MC_BR_CommandError* inst);
 _BUR_PUBLIC void MC_PhasingAbsolute(struct MC_PhasingAbsolute* inst);

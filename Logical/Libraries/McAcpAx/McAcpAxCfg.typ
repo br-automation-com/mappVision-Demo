@@ -193,14 +193,14 @@ TYPE
 	END_STRUCT;
 	McACMVFCVFTypEnum :
 		( (*Type of characteristic curve*)
-		mcACMVFCVFT_LIN := 0, (*Linear - Linear characteristic curve*)
-		mcACMVFCVFT_CONST_LD_TORQ := 1, (*Constant load torque - Characteristic curve for constant load torque*)
-		mcACMVFCVFT_QUAD := 2 (*Quadratic - Characteristic curve for quadratic load curves*)
+		mcACMVFCVFT_LIN := 129, (*Linear - Linear characteristic curve*)
+		mcACMVFCVFT_CONST_LD_TORQ := 131, (*Constant load torque - Characteristic curve for constant load torque*)
+		mcACMVFCVFT_QUAD := 130 (*Quadratic - Characteristic curve for quadratic load curves*)
 		);
 	McACMVFCVFAutCfgEnum :
 		( (*Automatic configuration selector setting*)
-		mcACMVFCVFAC_MOT_PAR_BASED := 0, (*Motor parameter based - Automatic configuration based on motor parameters*)
-		mcACMVFCVFAC_NOT_USE := 1 (*Not used - No automatic configuration*)
+		mcACMVFCVFAC_MOT_PAR_BASED := 1, (*Motor parameter based - Automatic configuration based on motor parameters*)
+		mcACMVFCVFAC_NOT_USE := 0 (*Not used - No automatic configuration*)
 		);
 	McACMVFCVFAutCfgNotUseType : STRUCT (*Type mcACMVFCVFAC_NOT_USE settings*)
 		BoostVoltage : REAL; (*Boost voltage [V]*)

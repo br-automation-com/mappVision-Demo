@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.7.3.93 SP?>
-<Library Version="5.09.1" SubType="Binary" Description="Recipe management" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="5.10.0" SubType="Binary" Description="Recipe management" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>MpRecipe.typ</File>
     <File>MpRecipeAlarm.typ</File>
@@ -8,7 +8,7 @@
     <File>MpRecipe.fun</File>
   </Files>
   <Dependencies>
-    <Dependency ObjectName="MpBase" FromVersion="5.09.0" ToVersion="5.09.9" />
+    <Dependency ObjectName="MpBase" FromVersion="5.10.0" ToVersion="5.10.9" />
     <Dependency ObjectName="sys_lib" />
   </Dependencies>
 </Library>
