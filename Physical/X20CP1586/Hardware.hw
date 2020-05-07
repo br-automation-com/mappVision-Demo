@@ -63,7 +63,7 @@
     <Parameter ID="SimulationModeOnPLC" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="SetValueGeneration" />
     <Parameter ID="SimulationModeOnACOPOS" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="NotUsed" />
   </Module>
-  <Module Name="Backlight1" Type="VSLB11F00.54DP-000" Version="0.1.0.0">
+  <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" Version="0.1.0.0">
     <Connection Connector="PLK1" TargetModule="OCR" TargetConnector="PLK2" NodeNumber="10">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
@@ -71,7 +71,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
   <Module Name="Backlight2" Type="VSLB11F00.54DP-000" Version="0.1.0.0">
     <Connection Connector="PLK1" TargetModule="Backlight1" TargetConnector="PLK2">
@@ -81,7 +81,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
   <Module Name="Blob" Type="VSS112Q22.041P-000" Version="0.8.1.178">
     <Connection Connector="PLK1" TargetModule="X20CP1586" TargetConnector="IF3" NodeNumber="1">
