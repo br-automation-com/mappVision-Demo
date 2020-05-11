@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
+<?AutomationStudio Version=4.7.3.93 SP?>
 <Package SubType="mappVision" PackageType="mappVision" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="File">Settings_1.vicfg</Object>
-    <Object Type="File">viAppBlob.visionapplication</Object>
+    <Object Type="File">viAppBlob1.visionapplication</Object>
+    <Object Type="File">viAppBlob2.visionapplication</Object>
     <Object Type="File">viAppCR.visionapplication</Object>
     <Object Type="File">viAppMat.visionapplication</Object>
     <Object Type="File">viAppMT.visionapplication</Object>

@@ -1,13 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
 //	Function:	Recipe management with mappRecipe																			
-//  Version:	0.4																		
+//  Version:	0.7																		
 //	Changed:	24.10.2019															
 // --------------------------------------------------------------------------------------------------------------------
 
 PROGRAM _INIT
 	// ----------------------------------------------------------------------------------------
 	// The following settings can be adjusted
-	Recipe_01.PAR.RecipeVariable 	:= 'gVisionSensor';		// Top variable structure with recipe data
+	Recipe_01.PAR.RecipeVariable 	:= 'RecipeData';		// Top variable structure with recipe data
 	IF(DiagCpuIsSimulated()) THEN
 		Recipe_01.PAR.DeviceName 	:= 'SIM_DEVICE';		// Device name from the CPU configuration for simulation
 	ELSE
@@ -16,7 +16,11 @@ PROGRAM _INIT
 	// ----------------------------------------------------------------------------------------
 	this							:= 'Recipe_01';			// Name of the global variable structure and this task name
 	Recipe_01.PAR.RecipeDirectory 	:= 'Recipes';			// Directory where the recipes are stored 
-	Recipe_01.PAR.MpLink 		:= gRecipeCsv_01; 		// MpLink from mappRecipe configuration in physical view
+	IF(REC_RECIPE_TYPE = typeCSV) THEN
+		Recipe_01.PAR.MpLink 		:= gRecipeCsv_01; 		// MpLink from mappRecipe configuration in physical view
+	ELSE
+//		Recipe_01.PAR.MpLink 		:= gRecipeXml_01; 		// MpLink from mappRecipe configuration in physical view
+	END_IF
 	
 	// ---------------------------------------------------------------------------------------- 
 	// Dont change anything below this line
@@ -49,4 +53,12 @@ PROGRAM _INIT
 			rec_state := CreateError(ADR(RECIPE), ERR_MEM_ALLOC, "file upload and download alloc failed", rec_state);
 		END_IF
 	END_IF
+	
+	// ----------------------------------------------------------------------------------------
+	// Generate HTML messages for web upload
+	upload_response	:= '<html><body><form action="/uploadA.html" name="form_upload" method="post" enctype="multipart/form-data" >
+	<label for="file-upload" style="font-weight:bold;font-family: sans-serif;font-size:16px;padding:15px 50px;10px;10px;" class="custom-file-upload">Upload</label>
+	<input type="file" id="file-upload" style="display:none;" onchange="form.submit()" name="file_selected" content-type="application/octet-stream" />
+	</form><body></html> ';
+	WebServiceUpload.pServiceName := ADR('uploadA.html');
 END_PROGRAM

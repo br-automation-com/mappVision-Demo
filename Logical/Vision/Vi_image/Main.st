@@ -57,14 +57,6 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
-	
-//	IF(test = 1) THEN
-//		ViBaseSaveDiagInfo_01.Execute := TRUE;
-//		ViBaseSaveDiagInfo_01.MpLink := ADR(gCameraCodeReading);
-//		ViBaseSaveDiagInfo_01.DeviceName := ADR('VisionFileDevice');
-//		ViBaseSaveDiagInfo_01.FileName := ADR('test');
-//		ViBaseSaveDiagInfo_01();
-//	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
 	// State machine for uploading the image
@@ -76,17 +68,17 @@ PROGRAM _CYCLIC
 			// -----------------------------------------------------------------------------------------------------------
 			// Create the internal directory VisionImageArchive
 			IF gVisionImage.CMD.CreateDir THEN 
-				gVisionImage.STA.Status := 65535;
+				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_CREATE_DIR;
 			// -----------------------------------------------------------------------------------------------------------
 			// Delete image directory
 			ELSIF gVisionImage.CMD.DeleteDir THEN
-				gVisionImage.STA.Status := 65535;
+				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_DELETE_DIR;
 			// -----------------------------------------------------------------------------------------------------------
 			// Refresh image data from file device
 			ELSIF gVisionImage.CMD.Refresh THEN 
-				gVisionImage.STA.Status := 65535;
+				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_READ_DIR1;
 			// -----------------------------------------------------------------------------------------------------------
 			// Delete image data from file device
@@ -95,7 +87,7 @@ PROGRAM _CYCLIC
 					brsstrcpy(ADR(tmpStr1), ADR(gVisionImage.CFG.DirName));
 					brsstrcat(ADR(tmpStr1), ADR('/'));
 					brsstrcat(ADR(tmpStr1), ADR(visSelectedImage));
-					gVisionImage.STA.Status := 65535;
+					gVisionImage.DAT.Status := 65535;
 					Step := VISTEP_DELETE_IMAGE;
 				ELSE 
 					gVisionImage.CMD.Delete := FALSE;
@@ -107,7 +99,7 @@ PROGRAM _CYCLIC
 					brsstrcpy(ADR(tmpStr1), ADR(gVisionImage.CFG.DirName));
 					brsstrcat(ADR(tmpStr1), ADR('/'));
 					brsstrcat(ADR(tmpStr1), ADR(visSelectedImage));
-					gVisionImage.STA.Status := 65535;
+					gVisionImage.DAT.Status := 65535;
 					visDownloadFileUrl := '';
 					Step := VISTEP_DOWNLOAD_IMAGE;
 				ELSE // If no pictures are available, don't try to delete pictures
@@ -166,7 +158,7 @@ PROGRAM _CYCLIC
 					END_IF
 					brsstrcat(ADR(FileNameSvg), ADR('svg'));
 					// Set default parameters
-					gVisionImage.STA.Status		:= 65535;
+					gVisionImage.DAT.Status		:= 65535;
 					Step						:= VISTEP_REQUEST1;
 				END_IF
 			// -----------------------------------------------------------------------------------------------------------
@@ -218,7 +210,7 @@ PROGRAM _CYCLIC
 			IF DirCreate_0.status = 0 OR DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
 				Step := VISTEP_READ_DIR1;
 			ELSIF DirCreate_0.status <> 65535 THEN
-				gVisionImage.STA.Status := DirCreate_0.status;
+				gVisionImage.DAT.Status := DirCreate_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -232,7 +224,7 @@ PROGRAM _CYCLIC
 			IF DirDeleteEx_0.status = 0 THEN
 				Step := VISTEP_CREATE_DIR;
 			ELSIF DirDeleteEx_0.status <> 65535 THEN
-				gVisionImage.STA.Status := DirDeleteEx_0.status;
+				gVisionImage.DAT.Status := DirDeleteEx_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// --------------------------------------------------------------------------------------------------------------------
@@ -258,12 +250,12 @@ PROGRAM _CYCLIC
 					Step := VISTEP_DOWNLOAD_IMAGE_1;
 					// File is too large
 				ELSE
-					gVisionImage.STA.Status := ERR_MEM_DOWNLOAD;
+					gVisionImage.DAT.Status := ERR_MEM_DOWNLOAD;
 					Step := VISTEP_ERR;
 				END_IF;
 				// Error
 			ELSIF (FOpen.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.STA.Status := FOpen.status;
+				gVisionImage.DAT.Status := FOpen.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// --------------------------------------------------------------------------------------------------------------------
@@ -284,7 +276,7 @@ PROGRAM _CYCLIC
 				Step := VISTEP_DOWNLOAD_IMAGE_2;
 				// Error
 			ELSIF (FRead.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.STA.Status := FRead.status;
+				gVisionImage.DAT.Status := FRead.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// --------------------------------------------------------------------------------------------------------------------
@@ -305,7 +297,7 @@ PROGRAM _CYCLIC
 				Step := VISTEP_DOWNLOAD_IMAGE_3;
 				// Error
 			ELSIF (FileClose_0.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.STA.Status := FileClose_0.status;
+				gVisionImage.DAT.Status := FileClose_0.status;
 				Step := VISTEP_ERR;
 			END_IF		
 		// --------------------------------------------------------------------------------------------------------------------
@@ -340,7 +332,7 @@ PROGRAM _CYCLIC
 			download_timeout.PT := 300;
 			download_timeout();
 			IF(download_timeout.Q) THEN
-				gVisionImage.STA.Status := ERR_TIMEOUT_DOWNLOAD;
+				gVisionImage.DAT.Status := ERR_TIMEOUT_DOWNLOAD;
 				Step := VISTEP_ERR;
 			END_IF
 
@@ -356,7 +348,7 @@ PROGRAM _CYCLIC
 				Step := VISTEP_DOWNLOAD_IMAGE_4;
 			// Error
 			ELSIF (WebserviceDownload.status <> ERR_FUB_BUSY AND WebserviceDownload.status <> 0) THEN
-				gVisionImage.STA.Status := WebserviceDownload.status;
+				gVisionImage.DAT.Status := WebserviceDownload.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// --------------------------------------------------------------------------------------------------------------------
@@ -366,7 +358,7 @@ PROGRAM _CYCLIC
 			WebserviceDownload();
 			download_timeout();
 			IF(download_timeout.Q) THEN
-				gVisionImage.STA.Status := ERR_TIMEOUT_DOWNLOAD;
+				gVisionImage.DAT.Status := ERR_TIMEOUT_DOWNLOAD;
 				Step := VISTEP_ERR;
 			END_IF
 			
@@ -376,11 +368,11 @@ PROGRAM _CYCLIC
 				visDownloadFileUrl := '';
 				WebserviceDownload.send := FALSE;
 				gVisionImage.CMD.Download := FALSE;
-				gVisionImage.STA.Status := 0;
+				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			// Error
 			ELSIF (WebserviceDownload.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.STA.Status := WebserviceDownload.status;
+				gVisionImage.DAT.Status := WebserviceDownload.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -388,7 +380,7 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_READ_DIR1:
 			// Clear all memory
-			brsmemset(ADR(gVisionImage.DATA.Images), 0, SIZEOF(gVisionImage.DATA.Images));
+			brsmemset(ADR(gVisionImage.DAT.Images), 0, SIZEOF(gVisionImage.DAT.Images));
 			brsmemset(ADR(visSelectedImage), 0, SIZEOF(visSelectedImage));
 			visSelectedImageOld := '';
 			visSelectedImage	:= '';
@@ -426,13 +418,13 @@ PROGRAM _CYCLIC
 						brsstrcpy(ADR(file_oldest), ADR(dir_data.Filename));
 						date_oldest := dir_data.Date;
 					END_IF
-					IF dir_entry <= SIZEOF(gVisionImage.DATA.Images)/SIZEOF(gVisionImage.DATA.Images[0]) - 1 THEN
+					IF dir_entry <= SIZEOF(gVisionImage.DAT.Images)/SIZEOF(gVisionImage.DAT.Images[0]) - 1 THEN
 						// Create list box data
-						gVisionImage.DATA.Images[dir_entry] := '{"value":"';
-						brsstrcat(ADR(gVisionImage.DATA.Images[dir_entry]), ADR(dir_data.Filename));					
-						brsstrcat(ADR(gVisionImage.DATA.Images[dir_entry]), ADR('","text":"'));	
-						brsstrcat(ADR(gVisionImage.DATA.Images[dir_entry]), ADR(dir_data.Filename));					
-						brsstrcat(ADR(gVisionImage.DATA.Images[dir_entry]), ADR('"}'));	
+						gVisionImage.DAT.Images[dir_entry] := '{"value":"';
+						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR(dir_data.Filename));					
+						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR('","text":"'));	
+						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR(dir_data.Filename));					
+						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR('"}'));	
 						dir_entry := dir_entry + 1;
 					ELSE
 						cmdDeleteOldest := TRUE;
@@ -450,7 +442,7 @@ PROGRAM _CYCLIC
 					Step := VISTEP_READ_DIR3;				
 				END_IF
 			ELSIF DirRead_0.status <> 65535 THEN
-				gVisionImage.STA.Status := DirRead_0.status;
+				gVisionImage.DAT.Status := DirRead_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -463,7 +455,7 @@ PROGRAM _CYCLIC
 			IF TON_VisPause.Q THEN
 				brsstrcpy(ADR(visSelectedImage), ADR(file_newest));
 				brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));
-				gVisionImage.STA.Status := 0;
+				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -478,7 +470,7 @@ PROGRAM _CYCLIC
 			IF FileDelete_0.status = 0 THEN
 				Step := VISTEP_READ_DIR1; // Refresh --> Read dir again
 			ELSIF FileDelete_0.status <> 65535 THEN
-				gVisionImage.STA.Status := FileDelete_0.status;
+				gVisionImage.DAT.Status := FileDelete_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -538,10 +530,10 @@ PROGRAM _CYCLIC
 					Step := VISTEP_SVG_PREPARE;
 				END_IF
 			ELSIF httpClient_0.status <> ERR_FUB_BUSY AND httpClient_0.status <> 0 THEN
-				gVisionImage.STA.Status := httpClient_0.status;
+				gVisionImage.DAT.Status := httpClient_0.status;
 				Step := VISTEP_ERR;
 			ELSIF TON_ReloadTimeout.Q THEN // Timout! httpClient takes too long, so abort
-				gVisionImage.STA.Status := ERR_NO_IMAGE;
+				gVisionImage.DAT.Status := ERR_NO_IMAGE;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -556,7 +548,7 @@ PROGRAM _CYCLIC
 			IF FileCreate_0.status = 0 THEN
 				Step := VISTEP_SAVE2;
 			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.STA.Status := FileCreate_0.status;
+				gVisionImage.DAT.Status := FileCreate_0.status;
 				Step := VISTEP_ERR;
 			END_IF	
 		VISTEP_SAVE2:
@@ -569,7 +561,7 @@ PROGRAM _CYCLIC
 			IF FileWrite_0.status = 0 THEN
 				Step := VISTEP_SAVE3;
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.STA.Status := FileWrite_0.status;
+				gVisionImage.DAT.Status := FileWrite_0.status;
 				Step := VISTEP_ERR;
 			END_IF	
 		VISTEP_SAVE3:
@@ -584,7 +576,7 @@ PROGRAM _CYCLIC
 					Step := VISTEP_READ_DIR1;
 				END_IF
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.STA.Status := FileClose_0.status;
+				gVisionImage.DAT.Status := FileClose_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -607,7 +599,7 @@ PROGRAM _CYCLIC
 				brsstrcat(MemSvg, ADR(SvgTexts.Header3));
 				Step := VISTEP_SVG_BAS64_1;
 			ELSE
-				gVisionImage.STA.Status := ERR_BUFF_TOO_SMALL;
+				gVisionImage.DAT.Status := ERR_BUFF_TOO_SMALL;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -653,23 +645,23 @@ PROGRAM _CYCLIC
 			brsstrcat(MemSvgCrossh, ADR(SvgTexts.Header4));
 			brsstrcat(MemSvgCrossh, ADR(SvgTexts.CrosshairDefinition));
 			FOR i := 1 TO MAX_NUM_RESULTS DO
-				IF gVisionImage.DATA.Crosshair[i].CrosshairX <> 0 AND gVisionImage.DATA.Crosshair[i].CrosshairY <> 0 THEN
+				IF gVisionImage.DAT.Crosshair[i].CrosshairX <> 0 AND gVisionImage.DAT.Crosshair[i].CrosshairY <> 0 THEN
 					brsstrcat(MemSvgCrossh, ADR(SvgTexts.Crosshair1));
-					brsitoa(REAL_TO_DINT(gVisionImage.DATA.Crosshair[i].CrosshairX), ADR(tmpStr1));
+					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[i].CrosshairX), ADR(tmpStr1));
 					brsstrcat(MemSvgCrossh, ADR(tmpStr1));
 					brsstrcat(MemSvgCrossh, ADR(','));
-					brsitoa(REAL_TO_DINT(gVisionImage.DATA.Crosshair[i].CrosshairY), ADR(tmpStr1));
+					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[i].CrosshairY), ADR(tmpStr1));
 					brsstrcat(MemSvgCrossh, ADR(tmpStr1));
 					brsstrcat(MemSvgCrossh, ADR(') rotate('));
-					brsitoa(REAL_TO_DINT(gVisionImage.DATA.Crosshair[i].CrosshairRotate), ADR(tmpStr1));
+					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[i].CrosshairRotate), ADR(tmpStr1));
 					brsstrcat(MemSvgCrossh, ADR(tmpStr1));
 					brsstrcat(MemSvgCrossh, ADR(',40,40)"/>'));
 				END_IF
 			END_FOR
 			FOR i := 1 TO MAX_NUM_RESULTS DO
-				IF gVisionImage.DATA.Crosshair[i].CrosshairX <> 0 AND gVisionImage.DATA.Crosshair[i].CrosshairY <> 0 THEN
+				IF gVisionImage.DAT.Crosshair[i].CrosshairX <> 0 AND gVisionImage.DAT.Crosshair[i].CrosshairY <> 0 THEN
 					brsstrcat(MemSvgCrossh, ADR('$r$n$t'));
-					brsstrcat(MemSvgCrossh, ADR(gVisionImage.DATA.Crosshair[i].Text));
+					brsstrcat(MemSvgCrossh, ADR(gVisionImage.DAT.Crosshair[i].Text));
 				END_IF
 			END_FOR
 			brsstrcat(MemSvgCrossh, ADR(SvgTexts.SvgClose));
@@ -686,7 +678,7 @@ PROGRAM _CYCLIC
 			IF FileCreate_0.status = 0 THEN
 				Step := VISTEP_SVG_SAVE2;
 			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.STA.Status := FileCreate_0.status;
+				gVisionImage.DAT.Status := FileCreate_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		VISTEP_SVG_SAVE2:
@@ -699,7 +691,7 @@ PROGRAM _CYCLIC
 			IF FileWrite_0.status = 0 THEN
 				Step := VISTEP_SVG_SAVE3;
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.STA.Status := FileWrite_0.status;
+				gVisionImage.DAT.Status := FileWrite_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		VISTEP_SVG_SAVE3:
@@ -710,7 +702,7 @@ PROGRAM _CYCLIC
 				DiagTime.EndSVGSave := clock_ms() - DiagStartTime;
 				Step := VISTEP_READ_DIR1;
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.STA.Status := FileClose_0.status;
+				gVisionImage.DAT.Status := FileClose_0.status;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -730,7 +722,7 @@ PROGRAM _CYCLIC
 				httpClient_0.abort := FALSE;
 				httpClient_0();
 				gVisionImage.CMD.ResetError := FALSE;
-				gVisionImage.STA.Status := 0;
+				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;				
 			END_IF				
 			brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));

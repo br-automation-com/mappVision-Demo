@@ -22,6 +22,13 @@ TYPE
 		REC_DOWNLOAD_2,
 		REC_DOWNLOAD_3,
 		REC_DOWNLOAD_4,
+		REC_UPLOAD,
+		REC_UPLOAD_1,
+		REC_UPLOAD_2,
+		REC_UPLOAD_3,
+		REC_UPLOAD_4,
+		REC_UPLOAD_5,
+		REC_UPLOAD_6,
 		REC_ERROR
 		);
 	recTYPE : 
@@ -49,6 +56,7 @@ TYPE
 		Rename : BOOL; (*Rename recipe*)
 		Delete : BOOL; (*Delete recipe*)
 		Download : BOOL; (*Download recipe*)
+		Upload : BOOL; (*Upload recipe*)
 		ErrorReset : BOOL; (*Reset pending errors*)
 	END_STRUCT;
 	recPAR : 	STRUCT  (*Recipe management parameter structure*)
@@ -75,6 +83,9 @@ TYPE
 		RecipeFilter : WSTRING[REC_NAME_LENGTH]; (*Only show recipes that fit this pattern*)
 		RecipeSelect : WSTRING[REC_NAME_LENGTH]; (*Select recipe in listbox after command new or rename*)
 		DownloadFileUrl : STRING[REC_NAME_LENGTH]; (*URL used with recipe download*)
+		UploadOverwriteRequest : BOOL; (*Show message box to overwrite file*)
+		UploadOverwriteResponse : USINT; (*Response from message box overwrite file*)
+		ReloadUpload : BOOL; (*Reload upload button*)
 		RecipeDoubleClick : USINT; (*Track double click event*)
 		ViewFilePath : STRING[REC_VIS_LENGTH]; (*Full path for viewing file*)
 		ViewFile : BOOL; (*Trigger that opens the fly out window when viewing recipes*)
@@ -86,5 +97,21 @@ TYPE
 		DAT : recDAT; (*Data structure*)
 		VIS : ARRAY[0..REC_MAX_CLIENTS_ID]OF recVIS; (*Visualization structure*)
 		ERR : recERR; (* Error structure *)
+	END_STRUCT;
+END_TYPE
+
+(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Structure that contains the recipe variables*)
+
+TYPE
+	recVariable : 	STRUCT 
+		ApplicationName : STRING[40];
+		MaxItemCnt : USINT := 10;
+		Timeout : UINT := 5000;
+		Gain : USINT;
+		Focus : UINT;
+		Exposure : UDINT;
+		FlashColor : USINT := 1;
+		FlashSegment : USINT := 15;
 	END_STRUCT;
 END_TYPE

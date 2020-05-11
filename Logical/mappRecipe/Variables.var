@@ -2,6 +2,7 @@
 (*Configuration for recipe managment*)
 VAR CONSTANT
 	REC_USE_UNICODE : BOOL := FALSE; (*Use standard strings for recipe name when false, use unicode strings for recipe name when true*)
+	REC_SORT_NUMERIC : BOOL := FALSE; (*Sort recipe names as numeric values instead of alphabetic*)
 END_VAR
 VAR
 	REC_RECIPE_TYPE : recTYPE := typeCSV; (*Type of recipe (CSV / XML)*)
@@ -16,4 +17,5 @@ END_VAR
 VAR
 	REC_VIEW_FILTER : ARRAY[0..9] OF STRING[5] := ['csv','xml',8('')]; (*Files extensions than can be used with the view command*)
 	Recipe_01 : recMAIN; (*Global recipe structure. The name must match the task name of the recipe managment.*)
+	RecipeData : recVariable; (*Structure that contains the recipe variables*)
 END_VAR

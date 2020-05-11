@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
   <Element ID="gCameraBlob" Type="visioncomponent">
-    <Property ID="VisionApplicationReference" Value="ViAppBlob" />
+    <Property ID="VisionApplicationReference" Value="ViAppBlob1" />
   </Element>
 </Configuration>

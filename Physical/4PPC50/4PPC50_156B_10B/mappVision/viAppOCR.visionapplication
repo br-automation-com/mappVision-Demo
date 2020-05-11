@@ -146,6 +146,20 @@
           <Property ID="VfOutputParameter" Value="FunctionProcessingTime" />
         </Group>
       </Group>
+      <Group ID="Output[5]">
+        <Property ID="ChannelID" Value="GradingValue" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceOCR" />
+          <Property ID="VfOutputParameter" Value="GradingValue" />
+        </Group>
+      </Group>
+      <Group ID="Output[6]">
+        <Property ID="ChannelID" Value="Orientation" />
+        <Group ID="VpOutputWire">
+          <Property ID="SourceVfName" Value="VfInstanceOCR" />
+          <Property ID="VfOutputParameter" Value="Orientation" />
+        </Group>
+      </Group>
     </Group>
   </Element>
 </Configuration>

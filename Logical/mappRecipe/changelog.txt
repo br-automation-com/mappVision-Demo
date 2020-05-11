@@ -1,3 +1,18 @@
+Version 0.7
+- Fixed recipe view does not show correct data on double click or command view
+- Fixed ReplaceString function call
+
+Version 0.6
+- Code cleanup
+- Option to sort recipe names as numeric values instead of alphabetic
+- Renamed web controls to avoid conflicts with other samples
+- Fixed download not working when downloading the same file again
+- Fixed upload not working with large files > 1 MB
+
+Version 0.5
+- Added support for recipe upload over mappView
+- Fixed renaming recipes in ASCII mode
+
 Version 0.4
 - Added support for recipe download over mappView
 - Removed view file status message

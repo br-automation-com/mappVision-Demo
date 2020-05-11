@@ -1,4 +1,8 @@
-Version 2.x (development)
+Version 2.1 (development)
+- Simplified and reduced data structures
+- Added function to switch vision applications
+
+Version 2.0
 - Convert data structure to new camera firmware
 - Support for multiple camera's
 - Recipe managment for loading and saving parameters

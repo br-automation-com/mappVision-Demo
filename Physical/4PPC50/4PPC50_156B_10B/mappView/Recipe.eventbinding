@@ -1,6 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Recipe_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
+		<!-- Refresh vision application list />--> 
+		<EventBinding id="contentRecipe.btnVaRefresh.Click"> 
+			<Source contentRefId="contentRecipe" widgetRefId="btnVaRefresh" xsi:type="widgets.brease.Button.Event" event="Click" /> 
+			<EventHandler> 
+				<Action> 
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.CMD.VaListRefresh" > 
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" /> 
+					</Target> 
+				</Action> 
+			</EventHandler> 
+		</EventBinding> 
+		
+		<!-- Switch vision application />--> 
+		<EventBinding id="contentRecipe.btnVaSwitch.Click"> 
+			<Source contentRefId="contentRecipe" widgetRefId="btnVaSwitch" xsi:type="widgets.brease.Button.Event" event="Click" /> 
+			<!-- Read selected vision application name />--> 
+			<Operand name="lstVaAppNames" datatype="ANY_STRING"> 
+				<ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="contentRecipe" widgetRefId="lstVaAppNames" > 
+					<Method xsi:type="widgets.brease.ListBox.Action.GetSelectedValue" /> 
+				</ReadTarget> 
+			</Operand> 
+			<EventHandler> 
+				<Sequence> 
+					<!-- Set vision application name />--> 
+					<Step order="0"> 
+						<Action> 
+							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.FCT.ApplicationName" > 
+								<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstVaAppNames" /> 
+							</Target> 
+						</Action> 
+					</Step> 
+					<!-- Set load vision application name />--> 
+					<Step order="1"> 
+						<Action> 
+							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.CMD.VaSwitchApplication" > 
+								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" /> 
+							</Target> 
+						</Action> 
+					</Step> 
+				</Sequence>	 
+			</EventHandler> 
+		</EventBinding> 
+		
 		<!-- File open on button click />-->
 		<EventBinding id="contentRecipe.btnRecView.Click">
 			<Source contentRefId="contentRecipe" widgetRefId="btnRecView" xsi:type="widgets.brease.Button.Event" event="Click" />
@@ -8,6 +51,12 @@
 			<Operand name="slotId" datatype="ANY_INT">
 				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
 					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<!-- Read selected recipe name />-->
+			<Operand name="lstRecNames" datatype="ANY_STRING">
+				<ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="contentRecipe" widgetRefId="lstRecNames" >
+					<Method xsi:type="widgets.brease.ListBox.Action.GetSelectedValue" />
 				</ReadTarget>
 			</Operand>
 			<EventHandler>
@@ -20,8 +69,16 @@
 							</Target>
 						</Action>
 					</Step>
-					<!-- Set command />-->
+					<!-- Set recipe name />-->
 					<Step order="2">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.PAR.RecipeName" >
+								<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstRecNames" />
+							</Target>
+						</Action>
+					</Step>
+					<!-- Set command />-->
+					<Step order="3">
 						<Action>
 							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.CMD.View" >
 								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
@@ -41,26 +98,71 @@
 					<Method xsi:type="session.VariableAction.GetValue" />
 				</ReadTarget>
 			</Operand>
-			<EventHandler condition="slotId=0" >		
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[0].RecipeDoubleClick" >
-						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-					</Target>
-				</Action>
+			<!-- Read selected recipe name />-->
+			<Operand name="lstRecNames" datatype="ANY_STRING">
+				<ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="contentRecipe" widgetRefId="lstRecNames" >
+					<Method xsi:type="widgets.brease.ListBox.Action.GetSelectedValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler condition="slotId=0" >
+				<Sequence>
+					<!-- Increase double click counter />-->
+					<Step order="1">		
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[0].RecipeDoubleClick" >
+								<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+							</Target>
+						</Action>
+					</Step>
+					<!-- Remember recipe name />-->
+					<Step order="2">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[0].RecipeSelect" >
+								<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstRecNames" />
+							</Target>
+						</Action>
+					</Step>
+				</Sequence>
 			</EventHandler>
 			<EventHandler condition="slotId=1" >		
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[1].RecipeDoubleClick" >
-						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-					</Target>
-				</Action>
+				<Sequence>
+					<!-- Increase double click counter />-->
+					<Step order="1">		
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[1].RecipeDoubleClick" >
+								<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+							</Target>
+						</Action>
+					</Step>
+					<!-- Remember recipe name />-->
+					<Step order="2">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[1].RecipeSelect" >
+								<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstRecNames" />
+							</Target>
+						</Action>
+					</Step>
+				</Sequence>
 			</EventHandler>
 			<EventHandler condition="slotId=2" >		
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[2].RecipeDoubleClick" >
-						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-					</Target>
-				</Action>
+				<Sequence>
+					<!-- Increase double click counter />-->
+					<Step order="1">		
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[2].RecipeDoubleClick" >
+								<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+							</Target>
+						</Action>
+					</Step>
+					<!-- Remember recipe name />-->
+					<Step order="2">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[2].RecipeSelect" >
+								<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstRecNames" />
+							</Target>
+						</Action>
+					</Step>
+				</Sequence>
 			</EventHandler>
 		</EventBinding>
 
@@ -348,7 +450,7 @@
 					<!-- Set command />-->
 					<Step order="3">
 						<Action>
-							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.CMD.New" >
+							<Target xsi:type="opcUa.NodeAction" refId="::YourTask:visNewRecipe" >
 								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 							</Target>
 						</Action>
@@ -445,7 +547,7 @@
 								<!-- Set command />-->
 								<Step order="3">
 									<Action>
-										<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.CMD.Save" >
+										<Target xsi:type="opcUa.NodeAction" refId="::YourTask:visSaveRecipe" >
 											<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 										</Target>
 									</Action>
@@ -516,7 +618,7 @@
 			</EventHandler>
 		</EventBinding>
 				
-		<!-- Command load recipe />-->
+		<!-- Command download recipe />-->
 		<EventBinding id="Recipe_01.btnRecDownload.Click">
 			<Source contentRefId="contentRecipe" widgetRefId="btnRecDownload" xsi:type="widgets.brease.Button.Event" event="Click" />
 			<!-- Read session id />-->
@@ -561,6 +663,104 @@
 			</EventHandler>
 		</EventBinding>
 		
+		<!-- Opens overwrite message box />-->
+		<EventBinding id="Recipe_01.VIS[0].UploadOverwriteRequest">
+			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:Recipe_01.VIS[0].UploadOverwriteRequest" event="ValueChanged" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler condition="slotId=0 AND newValue">
+				<Action>
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.ShowMessageBox" type="YesNo" message="Recipe already exists. Do you want to overwrite it?" header="Overwrite?" icon="Question"  />
+					</Target>
+					<Result>
+						<ResultHandler condition="result = 1">
+							<Action>
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[0].UploadOverwriteResponse" >
+									<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
+								</Target>
+							</Action>
+						</ResultHandler>
+						<ResultHandler condition="result = 2">
+							<Action>
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[0].UploadOverwriteResponse" >
+									<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
+								</Target>
+							</Action>
+						</ResultHandler>
+					</Result>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		<EventBinding id="Recipe_01.VIS[1].UploadOverwriteRequest">
+			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:Recipe_01.VIS[1].UploadOverwriteRequest" event="ValueChanged" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler condition="slotId=1 AND newValue">
+				<Action>
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.ShowMessageBox" type="YesNo" message="Recipe already exists. Do you want to overwrite it?" header="Overwrite?" icon="Question"  />
+					</Target>
+					<Result>
+						<ResultHandler condition="result = 1">
+							<Action>
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[1].UploadOverwriteResponse" >
+									<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
+								</Target>
+							</Action>
+						</ResultHandler>
+						<ResultHandler condition="result = 2">
+							<Action>
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[1].UploadOverwriteResponse" >
+									<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
+								</Target>
+							</Action>
+						</ResultHandler>
+					</Result>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		<EventBinding id="Recipe_01.VIS[2].UploadOverwriteRequest">
+			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:Recipe_01.VIS[0].UploadOverwriteRequest" event="ValueChanged" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler condition="slotId=2 AND newValue">
+				<Action>
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.ShowMessageBox" type="YesNo" message="Recipe already exists. Do you want to overwrite it?" header="Overwrite?" icon="Question"  />
+					</Target>
+					<Result>
+						<ResultHandler condition="result = 1">
+							<Action>
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[2].UploadOverwriteResponse" >
+									<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
+								</Target>
+							</Action>
+						</ResultHandler>
+						<ResultHandler condition="result = 2">
+							<Action>
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Recipe_01.VIS[2].UploadOverwriteResponse" >
+									<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="2" />
+								</Target>
+							</Action>
+						</ResultHandler>
+					</Result>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+			
 		<!-- Command delete recipe />-->
 		<EventBinding id="Recipe_01.btnRecDelete.Click">
 			<Source contentRefId="contentRecipe" widgetRefId="btnRecDelete" xsi:type="widgets.brease.Button.Event" event="Click" />
@@ -736,3 +936,4 @@
 		</EventBinding>
 	</Bindings>
 </EventBindingSet>
+

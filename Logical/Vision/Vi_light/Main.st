@@ -7,7 +7,7 @@ PROGRAM _INIT
 	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
 	
 	// Flash color
-	brsitoa(VisionLight.CFG.FlashColor, ADR(visSelectedFlashColor));
+	brsitoa(VisionLight.DAT.FlashColor, ADR(visSelectedFlashColor));
 	 
 END_PROGRAM
 
@@ -30,19 +30,19 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Reset Light trigger
 	// -----------------------------------------------------------------------------------------------------------
-	IF (VisionLight.STA.FlashCompletedCnt <> FlashCompletedCntOld OR VisionLight.STA.FlashFailedCnt <> FlashFailedCntOld OR visLightsReset) THEN
+	IF (VisionLight.DAT.FlashCompletedCnt <> FlashCompletedCntOld OR VisionLight.DAT.FlashFailedCnt <> FlashFailedCntOld OR visLightsReset) THEN
 		VisionLight.CMD.FlashTrigger := FALSE;
 		visLightsReset := FALSE;
 	END_IF
-	FlashCompletedCntOld := VisionLight.STA.FlashCompletedCnt;
-	FlashFailedCntOld := VisionLight.STA.FlashFailedCnt;
+	FlashCompletedCntOld := VisionLight.DAT.FlashCompletedCnt;
+	FlashFailedCntOld := VisionLight.DAT.FlashFailedCnt;
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Reset trigger when timed out
 	// -----------------------------------------------------------------------------------------------------------
 	IF VisionLight.CMD.FlashTrigger THEN
 		TriggerTimeout.IN := TRUE;
-		TriggerTimeout.PT := UINT_TO_TIME(VisionLight.CFG.Timeout)*2;
+		TriggerTimeout.PT := UINT_TO_TIME(VisionLight.DAT.Timeout)*2;
 		IF TriggerTimeout.Q THEN
 			VisionLight.CMD.FlashTrigger := FALSE;
 			VisionLight.CMD.FlashTriggerReset := TRUE;
@@ -58,7 +58,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF(visLightsTrigger AND VisionLight.HW.Ready) THEN
 		// Add default delay and fire trigger
-		VisionLight.CFG.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+		VisionLight.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 		VisionLight.CMD.FlashTrigger := TRUE;
 		visLightsTrigger := FALSE;
 	END_IF
@@ -74,7 +74,7 @@ PROGRAM _CYCLIC
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Vision Sensor - flash color
-	VisionLight.CFG.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
+	VisionLight.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
 	
 END_PROGRAM
 

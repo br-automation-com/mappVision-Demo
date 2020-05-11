@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------********
 //	Cylic task for recipe management
-//	Version 0.4
+//	Version 0.7
 //	Changed 28.12.2019
 // --------------------------------------------------------------------------------------------------------------------********
 
@@ -29,6 +29,36 @@ PROGRAM _CYCLIC
 	// Cyclic function calls
 	MpRecipeCsv_0();
 	MpRecipeXml_0();
+	
+	// ----------------------------------------------------------------------------------------
+	// Web service driver for file upload
+	WebServiceUpload.enable 			:= TRUE;
+	WebServiceUpload.option 			:= httpOPTION_HTTP_11 + httpOPTION_SERVICE_TYPE_NAME;	
+	WebServiceUpload.pRequestData  		:= AsMemPartAllocClear_0.mem;
+	WebServiceUpload.requestDataSize 	:= REC_UPLOAD_DOWNLOAD_SIZE;
+	WebServiceUpload.pResponseData 		:= ADR(upload_response);
+	WebServiceUpload.responseDataLen 	:= brsstrlen(ADR(upload_response));
+	WebServiceUpload();
+
+	// Reset send command 
+	IF(WebServiceUpload.send = TRUE)  THEN		
+		WebServiceUpload.send := FALSE;
+		// Send response when page is loaded or data is posted
+	ELSIF(WebServiceUpload.status = ERR_OK AND WebServiceUpload.send = FALSE) THEN 
+		WebServiceUpload.send := TRUE;
+		// New upload data arrived
+	ELSIF(WebServiceUpload.send = FALSE AND WebServiceUpload.requestDataLen > 0 AND RECIPE.CMD.Upload = FALSE) THEN
+		// Add delay so that upload can finish
+		upload_delay.PT := WebServiceUpload.requestDataLen/100000*5;
+		upload_delay.IN := TRUE;
+		upload_delay();
+	END_IF
+	// Check new uploaded data
+	IF(upload_delay.Q AND RECIPE.CMD.Upload = FALSE) THEN
+		upload_delay.IN := FALSE;
+		upload_delay();
+		RECIPE.CMD.Upload := TRUE;
+	END_IF
 	
 	// --------------------------------------------------------------------------------------------------------------------****
 	// Recipe management state machine																						
@@ -63,19 +93,20 @@ PROGRAM _CYCLIC
 			// Handle double click for file open
 			IF(RECIPE.VIS[VisuSlotID].RecipeDoubleClick > 0) THEN
 				DoubleClickRecipeName[VisuSlotID].PT := 50;
-				DoubleClickRecipeName[VisuSlotID].IN := 1;
+				DoubleClickRecipeName[VisuSlotID].IN := TRUE;
 				DoubleClickRecipeName[VisuSlotID]();
 				// Open selected file
 				IF(RECIPE.VIS[VisuSlotID].RecipeDoubleClick > 1) THEN
-					DoubleClickRecipeName[VisuSlotID].IN := 0;
+					DoubleClickRecipeName[VisuSlotID].IN := FALSE;
 					DoubleClickRecipeName[VisuSlotID]();
 					RECIPE.VIS[VisuSlotID].RecipeDoubleClick := 0;
 					RECIPE.PAR.VisuSlotID := VisuSlotID;
+					RECIPE.PAR.RecipeName := RECIPE.VIS[VisuSlotID].RecipeSelect;
 					RECIPE.CMD.View := TRUE;
 				END_IF
 			END_IF
 			IF(DoubleClickRecipeName[VisuSlotID].Q) THEN
-				DoubleClickRecipeName[VisuSlotID].IN := 0;
+				DoubleClickRecipeName[VisuSlotID].IN := FALSE;
 				DoubleClickRecipeName[VisuSlotID]();
 				IF(RECIPE.VIS[VisuSlotID].RecipeDoubleClick > 0) THEN
 					RECIPE.VIS[VisuSlotID].RecipeDoubleClick := RECIPE.VIS[VisuSlotID].RecipeDoubleClick - 1;
@@ -174,12 +205,23 @@ PROGRAM _CYCLIC
 				animation := WorkingStatus(ADR(RECIPE), ADR("deleting recipe..."), animation);
 				rec_state := REC_GEN_FILE_NAME;
 			// ---------------------------------------------------------------------------------------- 
-			// Command delete recipe
+			// Command download recipe
 			ELSIF (RECIPE.CMD.Download = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
 				// Show current state, copy recipe name to local variable																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("downloading recipe..."), animation);
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl := '';
 				rec_state := REC_GEN_FILE_NAME;
+			// ---------------------------------------------------------------------------------------- 
+			// Command upload recipe
+			ELSIF (RECIPE.CMD.Upload = TRUE) THEN
+				// Make sure that unicode support is turned off
+				IF(REC_USE_UNICODE = FALSE) THEN
+					// Show current state, copy recipe name to local variable																		
+					animation := WorkingStatus(ADR(RECIPE), ADR("uploading recipe..."), animation);
+					rec_state := REC_UPLOAD;
+				ELSE
+					rec_state := CreateError(ADR(RECIPE), ERR_UNICODE_UPLOAD, "upload is not supported when using unicode recipes", rec_state);
+				END_IF
 			// ---------------------------------------------------------------------------------------- 
 			// Rename recipe
 			ELSIF (RECIPE.CMD.Rename = TRUE AND RECIPE.PAR.RecipeName <> "" AND RECIPE.PAR.RecipeNameNew <> "") THEN
@@ -204,13 +246,13 @@ PROGRAM _CYCLIC
 
 			// ---------------------------------------------------------------------------------------- 
 			// Check parameters																					
-			IF (RECIPE.CMD.Init OR RECIPE.CMD.New OR RECIPE.CMD.Load OR RECIPE.CMD.Save OR RECIPE.CMD.Rename OR RECIPE.CMD.Delete) THEN
+			IF (RECIPE.CMD.Init OR RECIPE.CMD.New OR RECIPE.CMD.Load OR RECIPE.CMD.Save OR RECIPE.CMD.Rename OR RECIPE.CMD.Delete OR RECIPE.CMD.View) THEN
 				// Make sure recipe mangament was intialized
 				IF (NOT RECIPE.CMD.Init AND NOT RECIPE.PAR.Initialized) THEN
 					rec_state := CreateError(ADR(RECIPE), ERR_REC_NOT_INITIALIZED, "recipe management is not initiialized", rec_state);
 				END_IF
 				// Make sure recipe name is valid
-				IF((RECIPE.CMD.New OR RECIPE.CMD.Load OR RECIPE.CMD.Save OR RECIPE.CMD.Rename OR RECIPE.CMD.Delete) AND RecipeName = "") THEN
+				IF((RECIPE.CMD.New OR RECIPE.CMD.Load OR RECIPE.CMD.Save OR RECIPE.CMD.Rename OR RECIPE.CMD.Delete OR RECIPE.CMD.View) AND RecipeName = "") THEN
 					rec_state := CreateError(ADR(RECIPE), ERR_REC_NAME_EMPTY, "recipe name is empty", rec_state);
 				END_IF
 				// Make sure new recipe name is valid
@@ -272,7 +314,7 @@ PROGRAM _CYCLIC
 		// Create recipe directory																
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_CREATE_DIR:
-			DCreate.enable 	:= 1;
+			DCreate.enable 	:= TRUE;
 			DCreate.pDevice	:= ADR(RECIPE.PAR.DeviceName);
 			DCreate.pName := ADR(RECIPE.PAR.RecipeDirectory);
 			DCreate();
@@ -298,7 +340,7 @@ PROGRAM _CYCLIC
 			RECIPE.DAT.RecipeNum := 0;
 			// ---------------------------------------------------------------------------------------- 		
 			// Set values and get device dir															
-			DInfo.enable 	:= 1;
+			DInfo.enable 	:= TRUE;
 			DInfo.pDevice	:= ADR(RECIPE.PAR.DeviceName);
 			DInfo();
 						
@@ -326,7 +368,7 @@ PROGRAM _CYCLIC
 		// Open directory 																				
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_READ_DIR_1:														
-			DOpen.enable 	:= 1;
+			DOpen.enable 	:= TRUE;
 			DOpen.pDevice	:= ADR(RECIPE.PAR.DeviceName);
 			DOpen.pName 	:= ADR(RECIPE.PAR.RecipeDirectory);
 			DOpen();
@@ -349,7 +391,7 @@ PROGRAM _CYCLIC
 		// Read file directory information																
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_READ_DIR_2:													
-			DRead.enable 	:= 1;
+			DRead.enable 	:= TRUE;
 			DRead.ident		:= DOpen.ident;
 			DRead.pData 	:= ADR(lDirReadData);
 			DRead.data_len 	:= SIZEOF(lDirReadData);
@@ -371,7 +413,7 @@ PROGRAM _CYCLIC
 						// Verify that we still have space in list												
 						IF (RECIPE.DAT.RecipeNum <= REC_MAX_NUM) THEN
 							// -------------------------------------------------------------------- 		
-							// Read recipe name from recipe data in next step when using unicode
+							// Read recipe name from recipe data in next rec_state when using unicode
 							IF(REC_USE_UNICODE) THEN
 								RecipeIDs[brsatoi(ADR(RECIPE.PAR.RecipeID))] := TRUE;
 								rec_state := REC_GEN_FILE_NAME;
@@ -400,7 +442,7 @@ PROGRAM _CYCLIC
 		// Close directory information																	
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_READ_DIR_3:														
-			DClose.enable 	:= 1;
+			DClose.enable 	:= TRUE;
 			DClose.ident	:= DOpen.ident;
 			DClose();
 										
@@ -409,7 +451,7 @@ PROGRAM _CYCLIC
 			IF (DClose.status = OK) THEN
 				// Reset command and return to wait state												
 				RECIPE.DAT.Status := "initializing complete";
-				RECIPE.CMD.Init	:= 0;
+				RECIPE.CMD.Init	:= FALSE;
 				RECIPE.PAR.RecipeID := '';
 				RECIPE.PAR.Initialized := TRUE;
 				DClose.ident	:= 0;
@@ -460,7 +502,7 @@ PROGRAM _CYCLIC
 						END_IF
 					END_IF
 				END_IF
-				// Use recipe name as file name when using standard strings
+			// Use recipe name as file name when using standard strings
 			ELSE
 				brwcsconv(ADR(RECIPE.PAR.RecipeID), ADR(RecipeName), brwUCtoU8);
 			END_IF
@@ -482,7 +524,7 @@ PROGRAM _CYCLIC
 				RecipeName := RecipeNameNew;	
 			END_IF		
 		
-			// Proceed with next step
+			// Proceed with next rec_state
 			IF(RECIPE.CMD.Delete) THEN
 				rec_state := REC_DELETE;
 			ELSIF(RECIPE.CMD.View) THEN
@@ -597,7 +639,7 @@ PROGRAM _CYCLIC
 		REC_DELETE:		
 			// ---------------------------------------------------------------------------------------- 		
 			// Initialize file delete structure 														
-			FDelete.enable		:= 1;
+			FDelete.enable		:= TRUE;
 			FDelete.pDevice 	:= ADR(RECIPE.PAR.DeviceName);
 			FDelete.pName		:= ADR(RecipeFullFileName);
 			FDelete();
@@ -640,7 +682,7 @@ PROGRAM _CYCLIC
 			
 			// ---------------------------------------------------------------------------------------- 		
 			// Initialize file delete structure 														
-			FRename.enable		:= 1;
+			FRename.enable		:= TRUE;
 			FRename.pDevice 	:= ADR(RECIPE.PAR.DeviceName);
 			FRename.pName		:= ADR(RecipeFullFileName);
 			FRename.pNewName	:= ADR(tmpStr1);
@@ -653,11 +695,18 @@ PROGRAM _CYCLIC
 				brsmemmove(ADR(RECIPE.DAT.RecipeNames[RecipeIndex]),ADR(RECIPE.DAT.RecipeNames[RecipeIndex+1]), (RECIPE.DAT.RecipeNum) * SIZEOF(RECIPE.DAT.RecipeNames[0]));
 				brsmemmove(ADR(RECIPE.DAT.RecipeIDs[RecipeIndex]),ADR(RECIPE.DAT.RecipeIDs[RecipeIndex+1]), (RECIPE.DAT.RecipeNum) * SIZEOF(RECIPE.DAT.RecipeIDs[0]));
 				RECIPE.DAT.RecipeNum := RECIPE.DAT.RecipeNum - 1;
-				InsertRecName(ADR(RECIPE), RecipeNameNew, RECIPE.PAR.RecipeID);
+				
+				// Use the same name for unicode
+				IF(REC_USE_UNICODE) THEN
+					InsertRecName(ADR(RECIPE), RecipeNameNew, RECIPE.PAR.RecipeID);
+				// Use the new name for ASCII
+				ELSE
+					InsertRecName(ADR(RECIPE), RecipeNameNew, tmpStr2);
+				END_IF
 
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].RecipeSelect := RecipeNameNew;
 				CreateMessage(ADR(RECIPE.DAT.Status), ADR("renamed recipe"), ADR(RecipeName), RECIPE.PAR.VisuSlotID);
-				RECIPE.CMD.Rename := 0;
+				RECIPE.CMD.Rename := FALSE;
 				rec_state := REC_WAIT;
 				// Error 		
 			ELSIF (FRename.status <> ERR_FUB_BUSY) THEN
@@ -691,7 +740,7 @@ PROGRAM _CYCLIC
 				rec_state := REC_WAIT;
 			END_IF			
 		// --------------------------------------------------------------------------------------------------------------------
-		// Download file
+		// Download recipe - open recipe file
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD:						
 			// ----------------------------------------------------------------------------------------
@@ -724,7 +773,7 @@ PROGRAM _CYCLIC
 				rec_state := CreateError(ADR(RECIPE), FOpen.status, "error opening file for download", rec_state);
 			END_IF
 		// --------------------------------------------------------------------------------------------------------------------
-		// Download file
+		// Download recipe - read recipe file
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_1:			
 			// ----------------------------------------------------------------------------------------
@@ -744,7 +793,7 @@ PROGRAM _CYCLIC
 				rec_state := CreateError(ADR(RECIPE), FRead.status, "error reading file for download", rec_state);
 			END_IF
 		// --------------------------------------------------------------------------------------------------------------------
-		// Download file
+		// Download recipe - close recipe file
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_2:			
 			// ----------------------------------------------------------------------------------------
@@ -764,7 +813,7 @@ PROGRAM _CYCLIC
 				rec_state := CreateError(ADR(RECIPE), FClose.status, "error closing file for download", rec_state);
 			END_IF		
 		// --------------------------------------------------------------------------------------------------------------------
-		// Download file - web service
+		// Download recipe - web service
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_3:			
 			// ----------------------------------------------------------------------------------------
@@ -777,7 +826,7 @@ PROGRAM _CYCLIC
 			ELSE
 				brsstrcat(ADR(tmpStr1), ADR('.xml'));
 			END_IF
-			ReplaceString(ADR(tmpStr1), ADR(' '), ADR('%20'));
+			ReplaceString(ADR(tmpStr1), ADR(' '), ADR('%20'), FALSE);
 			brsstrcat(ADR(response_header_data), ADR(tmpStr1));
 			brsstrcat(ADR(response_header_data), ADR('"'));
 			
@@ -799,7 +848,7 @@ PROGRAM _CYCLIC
 			
 			// ----------------------------------------------------------------------------------------
 			// Timeout if file is not pulled from browser
-			download_timeout.IN := 1;
+			download_timeout.IN := TRUE;
 			download_timeout.PT := 300;
 			download_timeout();
 			IF(download_timeout.Q) THEN
@@ -815,7 +864,6 @@ PROGRAM _CYCLIC
 				WebserviceDownload.send := TRUE;
 				// Sending data finished
 			ELSIF (WebserviceDownload.send = TRUE) THEN
-				RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl := '';
 				WebserviceDownload.send := FALSE;
 				rec_state := REC_DOWNLOAD_4;
 				// Error
@@ -823,25 +871,223 @@ PROGRAM _CYCLIC
 				rec_state := CreateError(ADR(RECIPE), WebserviceDownload.status, "error sending web response", rec_state);
 			END_IF
 		// --------------------------------------------------------------------------------------------------------------------
-		// Download file - web service
+		// Download recipe - web service
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_4:			
 			WebserviceDownload();
 			
 			// ----------------------------------------------------------------------------------------
 			// Start sending data
-			IF (WebserviceDownload.status = OK AND WebserviceDownload.send = FALSE) THEN
-				WebserviceDownload.send := TRUE;
-			// Sending data finished
-			ELSIF (WebserviceDownload.send = TRUE) THEN
+			IF (WebserviceDownload.phase = httpPHASE_WAITING) THEN 
 				CreateMessage(ADR(RECIPE.DAT.Status), ADR("downloaded recipe"), ADR(RecipeName), RECIPE.PAR.VisuSlotID);
+				RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl := '';
 				WebserviceDownload.send := FALSE;
-				RECIPE.CMD.Download := 0;
+				RECIPE.CMD.Download := FALSE;
 				rec_state := REC_WAIT;
 			// Error
 			ELSIF (WebserviceDownload.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), WebserviceDownload.status, "error sending web response", rec_state);
 			END_IF
+		//**********************************************************************************************
+		// Upload file - verify parameters
+		//**********************************************************************************************
+		REC_UPLOAD:
+			
+			// Make sure data fits into memory
+			IF(WebServiceUpload.requestDataLen < REC_UPLOAD_DOWNLOAD_SIZE) THEN
+				// Find file name start
+				file_name_start := FindInMem(AsMemPartAllocClear_0.mem, WebServiceUpload.requestDataLen, ADR('filename="'), brsstrlen(ADR('filename="'))) + brsstrlen(ADR('filename="'));
+				IF(file_name_start > 0) THEN
+					// Find end of file name
+					file_name_len := FindInMem(AsMemPartAllocClear_0.mem+file_name_start, WebServiceUpload.requestDataLen-file_name_start, ADR('"$r$n'), brsstrlen(ADR('"$r$n')));
+					IF(file_name_len > 0) THEN
+						// Make sure file name is not too long
+						IF(file_name_len <= SIZEOF(item_name)) THEN
+							// Store file name
+							brsmemset(ADR(item_name), 0, SIZEOF(item_name));
+							brsmemcpy(ADR(item_name), AsMemPartAllocClear_0.mem+file_name_start, file_name_len);
+							// Find start of data
+							file_data_start := FindInMem(AsMemPartAllocClear_0.mem, WebServiceUpload.requestDataLen, ADR('Content-Type:'), brsstrlen(ADR('Content-Type:'))) + brsstrlen(ADR('Content-Type:'));
+							IF(file_data_start > 0) THEN
+								// Find end of data
+								file_data_start := FindInMem(AsMemPartAllocClear_0.mem+file_data_start, WebServiceUpload.requestDataLen-file_data_start, ADR('$r$n$r$n'), brsstrlen(ADR('$r$n$r$n'))) + brsstrlen(ADR('$r$n$r$n'))+file_data_start;
+								file_data_len := FindInMem(AsMemPartAllocClear_0.mem+file_data_start, WebServiceUpload.requestDataLen-file_data_start, ADR('$r$n------'), brsstrlen(ADR('$r$n------')));
+								// When file name and data is correct procceed with saving data to file
+								IF(file_data_len > 0) THEN
+									rec_state := REC_UPLOAD_1;
+									RETURN;
+								ELSE
+									rec_state := CreateError(ADR(RECIPE), ERR_SIZE_DATA_UPLOAD, "data end not found in upload response", rec_state);
+								END_IF
+								// Data start not found in upload response
+							ELSE
+								rec_state := CreateError(ADR(RECIPE), ERR_POS_DATA_UPLOAD, "data start not found in upload response", rec_state);
+							END_IF
+							// File name is too long in upload response
+						ELSE
+							rec_state := CreateError(ADR(RECIPE), ERR_LEN_NAME_UPLOAD, "file name is too long in upload response", rec_state);
+						END_IF
+						// File name end not found in upload response
+					ELSE
+						rec_state := CreateError(ADR(RECIPE), ERR_SIZE_NAME_UPLOAD, "file name end not found in upload response", rec_state);
+					END_IF
+					// File name start not found in upload response
+				ELSE
+					rec_state := CreateError(ADR(RECIPE), ERR_POS_NAME_UPLOAD, "file name position not found in upload response", rec_state);
+				END_IF
+				// Upload file exceeds maximum buffer size
+			ELSE
+				tmpWStr1 := "upload file exceeds maximum buffer size of ";
+				brsitoa(REC_UPLOAD_DOWNLOAD_SIZE, ADR(tmpStr2));
+				brsstrcat(ADR(tmpWStr1), ADR(tmpWStr2));
+				brsstrcat(ADR(tmpWStr1), ADR(" bytes"));
+				rec_state := CreateError(ADR(RECIPE), ERR_MEM_UPLOAD, tmpWStr1, rec_state);
+			END_IF
+			// Reset upload buffer and function block
+			brsmemset(AsMemPartAllocClear_0.mem, 0, REC_UPLOAD_DOWNLOAD_SIZE);
+			RECIPE.VIS[RECIPE.PAR.VisuSlotID].ReloadUpload := TRUE;
+			WebServiceUpload.enable := FALSE;
+			WebServiceUpload();
+		//**********************************************************************************************
+		// Upload file - Check if file exists
+		//**********************************************************************************************
+		REC_UPLOAD_1:					
+			// ----------------------------------------------------------------------------------------
+			// Checking for files with the same name
+			RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteResponse := 0;
+			tmpStr1 := item_name;
+			ReplaceString(ADR(tmpStr1), ADR('.csv'), ADR(''), TRUE);
+			ReplaceString(ADR(tmpStr1), ADR('.xml'), ADR(''), TRUE);
+			
+			FOR idx:=0 TO RECIPE.DAT.RecipeNum DO	
+				IF(RECIPE.CMD.Upload = TRUE AND RECIPE.DAT.RecipeIDs[idx] = tmpStr1) THEN
+					RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteRequest := TRUE;
+					rec_state := REC_UPLOAD_2;
+					RETURN;	 
+				END_IF;
+			END_FOR;
+			
+			// Generate recipe path and extension
+			RecipeFullFileName := RECIPE.PAR.RecipeDirectory;
+			brsstrcat(ADR(RecipeFullFileName), ADR('/'));
+			brsstrcat(ADR(RecipeFullFileName), ADR(item_name));
+			rec_state := REC_UPLOAD_4;
+		//**********************************************************************************************
+		// Upload file - Wait for message box response
+		//**********************************************************************************************
+		REC_UPLOAD_2:
+			// Overwrite file
+			IF(RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteResponse = YES) THEN
+				RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteRequest := FALSE;
+				// Generate recipe path and extension
+				RecipeFullFileName := RECIPE.PAR.RecipeDirectory;
+				brsstrcat(ADR(RecipeFullFileName), ADR('/'));
+				brsstrcat(ADR(RecipeFullFileName), ADR(item_name));
+			
+				rec_state := REC_UPLOAD_3;
+			// Do not overwrite file
+			ELSIF(RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteResponse = NO) THEN
+				// Reset upload command
+				brsmemset(AsMemPartAllocClear_0.mem, 0, REC_UPLOAD_DOWNLOAD_SIZE);
+				WebServiceUpload.enable := FALSE;
+				WebServiceUpload();
+				RECIPE.CMD.Upload := 0;
+				RECIPE.VIS[RECIPE.PAR.VisuSlotID].ReloadUpload := TRUE;
+				RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteRequest	:= FALSE;
+				rec_state := REC_WAIT;
+			END_IF
+		// --------------------------------------------------------------------------------------------------------------------
+		// Upload recipe - delete existing recipe																			
+		// --------------------------------------------------------------------------------------------------------------------
+		REC_UPLOAD_3:		
+			// ---------------------------------------------------------------------------------------- 		
+			// Initialize file delete structure 														
+			FDelete.enable		:= TRUE;
+			FDelete.pDevice 	:= ADR(RECIPE.PAR.DeviceName);
+			FDelete.pName		:= ADR(RecipeFullFileName);
+			FDelete();
+										
+			// ---------------------------------------------------------------------------------------- 		
+			// OK																																				
+			IF (FDelete.status = OK) THEN
+				rec_state := REC_UPLOAD_4;
+			// Error 		
+			ELSIF (FDelete.status <> ERR_FUB_BUSY) THEN
+				tmpWStr1 := "error deleting recipe ";
+				brwcscat(ADR(tmpWStr1), ADR(RecipeName));
+				rec_state := CreateError(ADR(RECIPE), FDelete.status, tmpWStr1, rec_state);
+			END_IF
+			//**********************************************************************************************
+			// Upload file
+			//**********************************************************************************************
+		REC_UPLOAD_4:		
+			// ----------------------------------------------------------------------------------------
+			// Initialize file create structure
+			FCreate.enable	:= TRUE;
+			FCreate.pDevice := ADR(RECIPE.PAR.DeviceName);
+			FCreate.pFile	:= ADR(RecipeFullFileName);
+			FCreate();
+			
+			// ----------------------------------------------------------------------------------------
+			// OK
+			IF (FCreate.status = OK) THEN
+				rec_state := REC_UPLOAD_5;
+				// Error
+			ELSIF (FCreate.status <> ERR_FUB_BUSY) THEN
+				rec_state := CreateError(ADR(RECIPE), FCreate.status, "error creating file from upload", rec_state);
+				// Reset upload buffer and function block
+				brsmemset(AsMemPartAllocClear_0.mem, 0, REC_UPLOAD_DOWNLOAD_SIZE);
+				RECIPE.VIS[RECIPE.PAR.VisuSlotID].ReloadUpload := TRUE;
+				WebServiceUpload.enable := FALSE;
+				WebServiceUpload();
+				FCreate.enable	:= FALSE;
+				FCreate();
+			END_IF
+		//**********************************************************************************************
+		// Upload file
+		//**********************************************************************************************
+		REC_UPLOAD_5:
+			
+			// ----------------------------------------------------------------------------------------
+			// Initialize file write structure
+			FWrite.enable	:= TRUE;
+			FWrite.ident	:= FCreate.ident;
+			FWrite.len		:= file_data_len;
+			FWrite.pSrc		:= AsMemPartAllocClear_0.mem + file_data_start;
+			FWrite();
+			
+			// ----------------------------------------------------------------------------------------
+			// OK
+			IF (FWrite.status = OK) THEN
+				rec_state := REC_UPLOAD_6;
+				// Error
+			ELSIF (FWrite.status <> ERR_FUB_BUSY) THEN
+				rec_state := CreateError(ADR(RECIPE), FWrite.status, "error writing file from upload", rec_state);
+			END_IF
+		//**********************************************************************************************
+		// Upload file
+		//**********************************************************************************************
+		REC_UPLOAD_6:
+			// ----------------------------------------------------------------------------------------
+			// Initialize file close structure
+			FClose.enable	:= TRUE;
+			FClose.ident	:= FCreate.ident;
+			FClose();
+			
+			// ----------------------------------------------------------------------------------------
+			// OK
+			IF (FClose.status = OK) THEN
+				brsmemset(AsMemPartAllocClear_0.mem, 0, REC_UPLOAD_DOWNLOAD_SIZE);
+				WebServiceUpload.enable := FALSE;
+				WebServiceUpload();
+				RECIPE.CMD.Upload := FALSE;
+				RECIPE.CMD.Init := TRUE;
+				RECIPE.VIS[RECIPE.PAR.VisuSlotID].ReloadUpload := TRUE;
+				rec_state := REC_WAIT;
+				// Error
+			ELSIF (FClose.status <> ERR_FUB_BUSY) THEN
+				rec_state := CreateError(ADR(RECIPE), FClose.status, "error closing file from upload", rec_state);
+			END_IF			
 		// --------------------------------------------------------------------------------------------------------------------
 		// Error 
 		// --------------------------------------------------------------------------------------------------------------------					
@@ -861,6 +1107,9 @@ PROGRAM _CYCLIC
 				brsmemset(AsMemPartAllocClear_0.mem, 0, REC_UPLOAD_DOWNLOAD_SIZE);
 				WebserviceDownload.enable := FALSE;
 				WebserviceDownload();
+				WebServiceUpload.enable := FALSE;
+				WebServiceUpload();
+				RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteRequest := FALSE;
 				
 				// Reset function blocks
 				MpRecipeCsv_0.ErrorReset := TRUE;

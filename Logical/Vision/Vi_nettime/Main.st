@@ -7,8 +7,8 @@ PROGRAM _INIT
 	gVisionNettime.CMD.Activate					:= TRUE;
 	gVisionNettime.CFG.AxisPeriod				:= 360; // Needs also to be set in the axis configuration
 	gVisionNettime.CFG.AxisPositionTrigger		:= 0;
-	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; // Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
-	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 4; // Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
+	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; 	// Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
+	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 4; 	// Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
@@ -39,9 +39,9 @@ PROGRAM _CYCLIC
 			gVisionNettime.DAT.NettimeNext_us	:= NettimeCurrent_us + TriggerTimeDelta_us;
 			gVisionNettime.DAT.NettimeDelta_us	:= TriggerTimeDelta_us;
 				// Transfer nettime to sensor and fire trigger
-				IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].STA.ImageProcessingActive THEN
+				IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive THEN
 					gVisionSensor[visSelectedSensor].CMD.ImageTrigger	:= TRUE;
-					gVisionSensor[visSelectedSensor].CFG.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
+					gVisionSensor[visSelectedSensor].DAT.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
 				ELSE
 					gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
 				END_IF

@@ -92,44 +92,60 @@ END_FUNCTION
 // Insert new recipe name																	
 //******************************************************************************************************
 FUNCTION InsertRecName
-	// Set up start values for iteration
-	IF (RECIPE.DAT.RecipeNum <> 0) THEN
-		idy := RECIPE.DAT.RecipeNum - 1;
-	END_IF
-	idx := idy;
-
-	// Start iteration	search
-	WHILE (idy > 1) DO
-		// Check current entry
-		lSort := brwcscmp(ADR(new_name), ADR(RECIPE.DAT.RecipeNames[idy]));
-		// Solve new search range
-		IF (idy MOD 2 = 0) THEN
-			idy := idy / 2;
-		ELSE
-			idy := idy / 2 + 1;
+	// Sort recipes names numeric
+	IF(REC_SORT_NUMERIC) THEN
+		IF(RECIPE.DAT.RecipeNum > 0) THEN
+			brwcsconv(ADR(tmpSTR), ADR(new_name), brwUCtoU8);
+			lValue := brsatoi(ADR(tmpSTR));
+			FOR idx:=0 TO RECIPE.DAT.RecipeNum - 1 DO
+				brwcsconv(ADR(tmpSTR), ADR(RECIPE.DAT.RecipeNames[idx]), brwUCtoU8);
+				lSort := brsatoi(ADR(tmpSTR));
+				IF(lValue < lSort) THEN
+					EXIT;
+				END_IF
+			END_FOR;
 		END_IF
-		// New range is lower or higher than current
-		IF (lSort > 0) THEN
-			idx := idx + idy;
-			IF (idx > UINT_TO_INT(RECIPE.DAT.RecipeNum)) THEN
-				idx := RECIPE.DAT.RecipeNum;
-			END_IF
-		ELSE
-			idx := idx - idy;
-			IF (idx < 1) THEN
-				idx := 1;
-			END_IF
+	// Sort recipes names alphabetic
+	ELSE
+		// Set up start values for iteration
+		IF (RECIPE.DAT.RecipeNum <> 0) THEN
+			idy := RECIPE.DAT.RecipeNum - 1;
 		END_IF
-	END_WHILE;
-
-	// New entry is this, next or previous
-	lSort := brwcscmp(ADR(new_name), ADR(RECIPE.DAT.RecipeNames[idx]));
-	IF (lSort > 0 AND idx <> UINT_TO_INT(RECIPE.DAT.RecipeNum)) THEN
-		idx := idx +1;
-	ELSIF (idx > 0) THEN
-		lSort := brwcscmp(ADR(new_name), ADR(RECIPE.DAT.RecipeNames[idx-1]));
-		IF (lSort < 0) THEN
-			idx := idx - 1;
+		idx := idy;
+		
+		// Start iteration	search
+		WHILE (idy > 1) DO
+			// Check current entry
+			lSort := brwcscmp(ADR(new_name), ADR(RECIPE.DAT.RecipeNames[idy]));
+			// Solve new search range
+			IF (idy MOD 2 = 0) THEN
+				idy := idy / 2;
+			ELSE
+				idy := idy / 2 + 1;
+			END_IF
+			// New range is lower or higher than current
+			IF (lSort > 0) THEN
+				idx := idx + idy;
+				IF (idx > UINT_TO_INT(RECIPE.DAT.RecipeNum)) THEN
+					idx := RECIPE.DAT.RecipeNum;
+				END_IF
+			ELSE
+				idx := idx - idy;
+				IF (idx < 1) THEN
+					idx := 1;
+				END_IF
+			END_IF
+		END_WHILE;
+	
+		// New entry is this, next or previous
+		lSort := brwcscmp(ADR(new_name), ADR(RECIPE.DAT.RecipeNames[idx]));
+		IF (lSort > 0 AND idx <> UINT_TO_INT(RECIPE.DAT.RecipeNum)) THEN
+			idx := idx +1;
+		ELSIF (idx > 0) THEN
+			lSort := brwcscmp(ADR(new_name), ADR(RECIPE.DAT.RecipeNames[idx-1]));
+			IF (lSort < 0) THEN
+				idx := idx - 1;
+			END_IF
 		END_IF
 	END_IF
 
@@ -177,13 +193,26 @@ END_FUNCTION
 // Find and replace string																	
 //******************************************************************************************************
 FUNCTION ReplaceString
-	IF (brsstrlen(dataSTR) > brsstrlen(searchSTR)) THEN
+	IF (brsstrlen(dataSTR) >= brsstrlen(searchSTR)) THEN
 		FOR idx:=0 TO brsstrlen(dataSTR) - brsstrlen(searchSTR) DO
 			IF (brsmemcmp(dataSTR + idx, searchSTR, brsstrlen(searchSTR)) = 0) THEN
-				brsmemmove(dataSTR + idx + brsstrlen(replaceSTR), dataSTR + idx + brsstrlen(searchSTR), brsstrlen(dataSTR) - idx - brsstrlen(searchSTR));
+				// Move data around
+				brsmemmove(dataSTR + idx + brsstrlen(replaceSTR), dataSTR + idx + brsstrlen(searchSTR), brsstrlen(dataSTR) - brsstrlen(searchSTR) + 1);
 				brsmemcpy(dataSTR + idx, replaceSTR, brsstrlen(replaceSTR));
+				// Set found flag and exit if only one hit is needed
 				ReplaceString := TRUE;
-				EXIT;
+				IF(first) THEN
+					EXIT;
+				END_IF
+				// Correct index for next search
+				IF(brsstrlen(replaceSTR) > 0) THEN
+					idx := idx + brsstrlen(replaceSTR);
+				END_IF
+				idx := idx - 1;
+				// Exit if no data is left
+				IF (brsstrlen(dataSTR) = 0 OR brsstrlen(dataSTR) < brsstrlen(searchSTR)) THEN
+					EXIT;
+				END_IF
 			END_IF
 		END_FOR;
 	END_IF

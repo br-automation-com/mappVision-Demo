@@ -34,7 +34,7 @@
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="StatusConnected" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.STA.Status" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.Status" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsStatus" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
@@ -50,23 +50,23 @@
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="ddbLights" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.STA.FlashFailedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashFailedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numFlashFailed" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.STA.FlashCompletedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashCompletedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numFlashCompleted" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.STA.FlashAcceptedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashAcceptedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numFlashAccepted" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.Exposure" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.Exposure" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsExposure" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.NettimeDelay" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.NettimeDelay" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsNettime" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">

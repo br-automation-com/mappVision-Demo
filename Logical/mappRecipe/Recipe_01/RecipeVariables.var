@@ -3,6 +3,8 @@
 VAR CONSTANT
 	OK : USINT := 0; (*Constant for status OK *)
 	REC_DOES_NOT_EXIST : UINT := 65535; (*Constant for record does not exist*)
+	YES : USINT := 1;
+	NO : USINT := 2;
 END_VAR
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Local Variables*)
@@ -39,7 +41,14 @@ VAR
 	DoubleClickRecipeName : ARRAY[0..REC_MAX_CLIENTS_ID] OF TON_10ms;
 	response_header : httpResponseHeader_t;
 	response_header_data : STRING[300];
+	upload_delay : TON_10ms;
 	download_timeout : TON_10ms;
+	upload_response : STRING[600];
+	file_name_start : UDINT;
+	file_name_len : UDINT;
+	file_data_start : UDINT;
+	file_data_len : UDINT;
+	item_name : STRING[REC_NAME_LENGTH];
 END_VAR
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Local function calls*)
@@ -50,11 +59,14 @@ VAR
 	DClose : DirClose;
 	DCreate : DirCreate;
 	FOpen : FileOpen;
+	FCreate : FileCreate;
 	FRead : FileReadEx;
+	FWrite : FileWrite;
 	FClose : FileClose;
 	FDelete : FileDelete;
 	FRename : FileRename;
 	WebserviceDownload : httpService := (0);
+	WebServiceUpload : httpService := (0);
 	AsMemPartCreate_0 : AsMemPartCreate;
 	AsMemPartAllocClear_0 : AsMemPartAllocClear;
 	MpRecipeCsv_0 : MpRecipeCsv;
@@ -84,4 +96,11 @@ VAR
 	ERR_MEM_ALLOC : UINT := 50300; (*Memory allocation for file upload and download failed*)
 	ERR_MEM_DOWNLOAD : UINT := 50310; (*Size of download file exceeds maximum*)
 	ERR_TIMEOUT_DOWNLOAD : UINT := 50320; (*Download response timed out*)
+	ERR_POS_NAME_UPLOAD : UINT := 50400; (*Can not find filename in upload response*)
+	ERR_SIZE_NAME_UPLOAD : UINT := 50401; (*Can not determine end of filename in upload response*)
+	ERR_LEN_NAME_UPLOAD : UINT := 50402; (*Filename is too long in upload response*)
+	ERR_POS_DATA_UPLOAD : UINT := 50403; (*Can not find data in upload response*)
+	ERR_SIZE_DATA_UPLOAD : UINT := 50404; (*Can not determine end of data in upload response*)
+	ERR_MEM_UPLOAD : UINT := 50410; (*Size of upload file exceeds maximum size*)
+	ERR_UNICODE_UPLOAD : UINT := 50420; (*Upload is not supported when unicode is used*)
 END_VAR

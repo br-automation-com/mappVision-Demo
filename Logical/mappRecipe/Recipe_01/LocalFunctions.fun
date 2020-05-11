@@ -41,6 +41,8 @@ FUNCTION InsertRecName : UINT
 		idx : INT;
 		idy : INT;
 		lSort : DINT;
+		lValue : DINT;
+		tmpSTR : STRING[REC_NAME_LENGTH];
 	END_VAR
 END_FUNCTION
 
@@ -81,6 +83,7 @@ FUNCTION ReplaceString : BOOL
 		dataSTR : UDINT;
 		searchSTR : UDINT;
 		replaceSTR : UDINT;
+		first : BOOL;
 	END_VAR
 	VAR
 		idx : UDINT;

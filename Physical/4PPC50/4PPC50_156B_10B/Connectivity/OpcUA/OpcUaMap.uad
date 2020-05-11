@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<OpcUaSource FileVersion="7" ArVersion="C4.72">
+<OpcUaSource FileVersion="7" ArVersion="A4.73">
   <Aliases>
     <ACLAliases>
       <ACL Id="1">
@@ -51,42 +51,44 @@
       <Task Name="Vi_main">
         <Variable Name="VisionSensor" AutomaticEnable="True" />
         <Variable Name="Blob" AutomaticEnable="True">
-          <Variable Name="DATA">
-            <Variable Name="PositionX" EngineeringUnitId="1" />
-            <Variable Name="PositionY" EngineeringUnitId="1" />
-            <Variable Name="Orientation" EngineeringUnitId="1" />
-            <Variable Name="Length" EngineeringUnitId="1" />
-            <Variable Name="Width" EngineeringUnitId="1" />
-            <Variable Name="Area" EngineeringUnitId="1" />
-          </Variable>
+          <Variable Name="ModelNumber" EnableArrayElements="True" />
+          <Variable Name="Clipped" EnableArrayElements="True" />
+          <Variable Name="Area" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="MeanGrayValue" EnableArrayElements="True" />
+          <Variable Name="Length" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Width" EnableArrayElements="True" EngineeringUnitId="1" />
         </Variable>
         <Variable Name="CodeReader" AutomaticEnable="True">
-          <Variable Name="DATA">
-            <Variable Name="PositionX" EngineeringUnitId="1" />
-            <Variable Name="PositionY" EngineeringUnitId="1" />
-            <Variable Name="Orientation" EngineeringUnitId="1" />
-          </Variable>
+          <Variable Name="BarcodeText" EnableArrayElements="True" />
+          <Variable Name="BarcodeType" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Grading" EnableArrayElements="True" />
+          <Variable Name="EnhancedGrading" EnableArrayElements="True" />
         </Variable>
         <Variable Name="Match" AutomaticEnable="True">
-          <Variable Name="DATA">
-            <Variable Name="PositionX" EngineeringUnitId="1" />
-            <Variable Name="PositionY" EngineeringUnitId="1" />
-            <Variable Name="Orientation" EngineeringUnitId="1" />
-            <Variable Name="RotCenterX" EngineeringUnitId="1" />
-            <Variable Name="RotCenterY" EngineeringUnitId="1" />
-          </Variable>
+          <Variable Name="ModelNumber" EnableArrayElements="True" />
+          <Variable Name="Score" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Scale" EnableArrayElements="True" />
+          <Variable Name="RotCenterX" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="RotCenterY" EnableArrayElements="True" EngineeringUnitId="1" />
         </Variable>
         <Variable Name="MT" AutomaticEnable="True">
-          <Variable Name="DATA">
-            <Variable Name="Result" EnableArrayElements="True" EngineeringUnitId="1" />
-          </Variable>
+          <Variable Name="Result" EnableArrayElements="True" EngineeringUnitId="1" />
         </Variable>
         <Variable Name="OCR" AutomaticEnable="True">
-          <Variable Name="DATA">
-            <Variable Name="PositionX" EngineeringUnitId="1" />
-            <Variable Name="PositionY" EngineeringUnitId="1" />
-            <Variable Name="Orientation" EngineeringUnitId="1" />
-          </Variable>
+          <Variable Name="Text" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="1" />
+          <Variable Name="Grading" EnableArrayElements="True" />
         </Variable>
         <Variable Name="visAutoArchiv" />
         <Variable Name="visCrossHair" AutomaticEnable="True">
@@ -107,6 +109,7 @@
         <Variable Name="visSelectedFlashSegment" EnableArrayElements="True" />
         <Variable Name="visCameraStatus" />
         <Variable Name="visCodeTypePresentDropDownValues" EnableArrayElements="True" />
+        <Variable Name="visVisionApplicationList" EnableArrayElements="True" />
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />
@@ -136,7 +139,10 @@
         <Variable Name="TriggerPosDelta" />
         <Variable Name="TriggerTimeDelta_us" />
       </Task>
-      <Task Name="YourTask" />
+      <Task Name="YourTask">
+        <Variable Name="visSaveRecipe" />
+        <Variable Name="visNewRecipe" />
+      </Task>
       <Task Name="Axis">
         <Variable Name="AxisAcceleration" />
         <Variable Name="AxisVelocity" />

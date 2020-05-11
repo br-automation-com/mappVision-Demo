@@ -31,7 +31,7 @@ PROGRAM _INIT
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Set flash color, table no
-	brsitoa(VisionSensor.CFG.FlashColor, ADR(visSelectedFlashColor));
+	brsitoa(VisionSensor.DAT.FlashColor, ADR(visSelectedFlashColor));
 	visTableNo;
 	InitialSearchSensor := TRUE;
 	
@@ -52,6 +52,7 @@ PROGRAM _CYCLIC
 				EXIT;
 			END_IF
 		END_FOR
+		VisionSensor.CMD.VaListRefresh := TRUE;
 	END_IF
 	
 	// -----------------------------------------------------------------------------------------------------------
@@ -76,10 +77,10 @@ PROGRAM _CYCLIC
 			enumCoderReader:
 				CodeReader ACCESS VisionSensor.CFG.DataStructure;
 				// Code Reader - selected/detected types
-				CodeReader.CFG.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypePreset)));
+				CodeReader.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypePreset)));
 				FOR idx:=1 TO MAX_NUM_RESULTS DO
-					IF CodeReader.DATA.BarcodeType[idx] <> 0 THEN
-						brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(CodeTypes[LIMIT(0, CodeReader.DATA.BarcodeType[idx], MAX_NUM_CODETYPES)]));
+					IF CodeReader.BarcodeType[idx] <> 0 THEN
+						brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
 					ELSE
 						brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(''));
 					END_IF
@@ -96,12 +97,12 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Display camera status in hex - documenation is also in hex
 	// -----------------------------------------------------------------------------------------------------------
-	IF VisionSensor.STA.Status = 0 THEN // Display only a single 0
+	IF VisionSensor.DAT.Status = 0 THEN // Display only a single 0
 		visCameraStatus := '0';
 	ELSE // Display the status in Format 0x02000800
 		visCameraStatus := '';
 		FOR i := 0 TO 28 BY 4 DO
-			visCameraStatus := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(VisionSensor.STA.Status, i) AND 16#0000000F) + 1), 16)), visCameraStatus);
+			visCameraStatus := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(VisionSensor.DAT.Status, i) AND 16#0000000F) + 1), 16)), visCameraStatus);
 		END_FOR
 		visCameraStatus := CONCAT('0x', visCameraStatus);
 	END_IF
@@ -109,15 +110,15 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Translate flash color and segments from mappView to IO mapping
 	// -----------------------------------------------------------------------------------------------------------
-	VisionSensor.CFG.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
-	VisionSensor.CFG.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
+	VisionSensor.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
+	VisionSensor.DAT.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Transfer data from global structure to mappView on selected camera change
 	// -----------------------------------------------------------------------------------------------------------
 	IF(visSelectedSensor <> visSelectedSensorOld) THEN
 		// Vision Sensor - flash color
-		brsitoa(VisionSensor.CFG.FlashColor, ADR(visSelectedFlashColor));
+		brsitoa(VisionSensor.DAT.FlashColor, ADR(visSelectedFlashColor));
 		brsmemset(ADR(visCrossHair.SvgVisible), 0, SIZEOF(visCrossHair.SvgVisible));
 	END_IF
 	visSelectedSensorOld := visSelectedSensor;
@@ -132,16 +133,16 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Check if vision cockpit is open
 	// -----------------------------------------------------------------------------------------------------------
-	IF((VisionSensor.STA.Status AND 16#8000_0000) > 0) THEN
-		VisionSensor.STA.CockpitIsActive := TRUE;
+	IF((VisionSensor.DAT.Status AND 16#8000_0000) > 0) THEN
+		VisionSensor.DAT.CockpitIsActive := TRUE;
 	ELSE
-		VisionSensor.STA.CockpitIsActive := FALSE;
+		VisionSensor.DAT.CockpitIsActive := FALSE;
 	END_IF
 		
 	// -----------------------------------------------------------------------------------------------------------
 	// Disable command buttons when camera is disconnected, not ready, processing an image or vision cockpit is open
 	// -----------------------------------------------------------------------------------------------------------
-	IF(NOT VisionSensor.HW.Connected OR NOT VisionSensor.HW.Ready OR VisionSensor.STA.ImageProcessingActive OR VisionSensor.STA.CockpitIsActive) THEN
+	IF(NOT VisionSensor.HW.Connected OR NOT VisionSensor.HW.Ready OR VisionSensor.DAT.ImageProcessingActive OR VisionSensor.DAT.CockpitIsActive) THEN
 		visEnableCommand := FALSE;
 	ELSE
 		visEnableCommand := TRUE;
@@ -150,7 +151,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Disable setup buttons when camera is disconnected, processing an image or not ready
 	// -----------------------------------------------------------------------------------------------------------
-	IF(NOT VisionSensor.HW.Connected OR NOT (VisionSensor.HW.Ready OR AutoSetupRunning) OR VisionSensor.STA.ImageProcessingActive) THEN
+	IF(NOT VisionSensor.HW.Connected OR NOT (VisionSensor.HW.Ready OR AutoSetupRunning) OR VisionSensor.DAT.ImageProcessingActive) THEN
 		visEnableSetup := FALSE;
 	ELSE
 		visEnableSetup := TRUE;
@@ -159,9 +160,9 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Fire trigger for camera image
 	// -----------------------------------------------------------------------------------------------------------
-	IF((visImageTrigger OR EDGEPOS(visEnableVision)) AND VisionSensor.HW.Ready AND NOT VisionSensor.STA.ImageProcessingActive) THEN
+	IF((visImageTrigger OR EDGEPOS(visEnableVision)) AND VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
 		// Add default delay and fire trigger
-		VisionSensor.CFG.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+		VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 		VisionSensor.CMD.ImageTrigger := TRUE;
 		visImageTrigger := FALSE;
 	END_IF
@@ -174,11 +175,11 @@ PROGRAM _CYCLIC
 		RepetitiveModeTimer.IN := TRUE;
 		RepetitiveModeTimer.PT := T#500ms;
 		IF RepetitiveModeTimer.Q THEN
-			IF VisionSensor.HW.Ready AND NOT VisionSensor.STA.ImageProcessingActive THEN
+			IF VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive THEN
 				RepetitiveModeTimer.IN := FALSE;
 				// When nettime is used dealy trigger by 10ms
 				IF(NettimeCurrent_us <> 0) THEN
-					VisionSensor.CFG.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+					VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 				END_IF
 				VisionSensor.CMD.ImageTrigger := TRUE;
 			END_IF
@@ -188,14 +189,14 @@ PROGRAM _CYCLIC
 		RepetitiveModeTimer.IN := TRUE;
 	END_IF
 	RepetitiveModeTimer();
-	VisionSensor.CFG.Enable := visEnableVision AND NOT visRepetitiveMode; 
+	VisionSensor.DAT.Enable := visEnableVision AND NOT visRepetitiveMode; 
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Reset image trigger, reload web page and store image when process is finished
 	// -----------------------------------------------------------------------------------------------------------
-	IF ((VisionSensor.STA.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld OR VisionSensor.STA.AcquisitionFailedCnt <> AcquisitionFailedCntOld) AND VisionSensor.STA.ImageProcessingActive = FALSE) THEN
-		AcquisitionCompletedCntOld := VisionSensor.STA.AcquisitionCompletedCnt;
-		AcquisitionFailedCntOld := VisionSensor.STA.AcquisitionFailedCnt;
+	IF ((VisionSensor.DAT.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld OR VisionSensor.DAT.AcquisitionFailedCnt <> AcquisitionFailedCntOld) AND VisionSensor.DAT.ImageProcessingActive = FALSE) THEN
+		AcquisitionCompletedCntOld := VisionSensor.DAT.AcquisitionCompletedCnt;
+		AcquisitionFailedCntOld := VisionSensor.DAT.AcquisitionFailedCnt;
 		VisionSensor.CMD.BrowserReload := TRUE;
 		VisionSensor.CMD.ImageTrigger := FALSE;	
 		// Store image to flash card
@@ -212,7 +213,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF VisionSensor.CMD.ImageTrigger THEN
 		TriggerTimeout.IN := TRUE;
-		TriggerTimeout.PT := UINT_TO_TIME(VisionSensor.CFG.Timeout)*2;
+		TriggerTimeout.PT := UINT_TO_TIME(VisionSensor.DAT.Timeout)*2;
 		IF TriggerTimeout.Q THEN
 			VisionSensor.CMD.ImageTrigger := FALSE;
 			VisionSensor.CMD.ImageTriggerReset := TRUE;
@@ -226,7 +227,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Auto reset web reload when stuck
 	// -----------------------------------------------------------------------------------------------------------
-	ReloadTimeout.PT := VisionSensor.CFG.Timeout/10;
+	ReloadTimeout.PT := VisionSensor.DAT.Timeout/10;
 	ReloadTimeout.IN := VisionSensor.CMD.BrowserReload;
 	ReloadTimeout();
 	IF(ReloadTimeout.Q) THEN
@@ -237,19 +238,76 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Transfer auto setup data to preset values
 	// -----------------------------------------------------------------------------------------------------------
-	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.STA.Status <> 0) THEN
+	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status <> 0) THEN
 		AutoSetupRunning := TRUE;
 	ELSIF(VisionSensor.CMD.AutoSetupStartStop = FALSE) THEN
 		AutoSetupRunning := FALSE;
 	END_IF
-	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.STA.Status = 0 AND AutoSetupRunning = TRUE) THEN
-		VisionSensor.CFG.Gain				:= VisionSensor.STA.AutoSetupGain;
-		VisionSensor.CFG.Focus				:= VisionSensor.STA.AutoSetupFocus;
-		VisionSensor.CFG.Exposure			:= VisionSensor.STA.AutoSetupExposure;
+	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status = 0 AND AutoSetupRunning = TRUE) THEN
+		VisionSensor.DAT.Gain				:= VisionSensor.DAT.AutoSetupGain;
+		VisionSensor.DAT.Focus				:= VisionSensor.DAT.AutoSetupFocus;
+		VisionSensor.DAT.Exposure			:= VisionSensor.DAT.AutoSetupExposure;
 		VisionSensor.CMD.AutoSetupStartStop	:= FALSE;
 		AutoSetupRunning					:= FALSE;
 		visImageTrigger						:= TRUE;
 	END_IF
+	
+	// -----------------------------------------------------------------------------------------------------------
+	// Get list of vision applications and components
+	// -----------------------------------------------------------------------------------------------------------
+	IF (VisionSensor.CMD.VaListRefresh) THEN
+		VaGetList_01.Enable := TRUE;
+		VaGetList_01();
+		VisionSensor.FCT.Status := ERR_FUB_BUSY;
+				
+		// -----------------------------------------------------------------------------------------------------------
+		// OK
+		IF(VaGetList_01.Status = ERR_OK) THEN
+			// Convert vision application list to main structure and mappView format
+			IF(VaGetList_01.VaApplicationCnt > 0) THEN
+				FOR idx:=0 TO VaGetList_01.VaApplicationCnt - 1 DO
+					VisionSensor.FCT.ApplicationNameList[idx] := VaGetList_01.VaApplicationNames[idx];
+					String2DataProvider(ADR(VaGetList_01.VaApplicationNames[idx]), ADR(visVisionApplicationList[idx]));
+				END_FOR
+			END_IF
+			VisionSensor.FCT.ApplicationNameCnt := VaGetList_01.VaApplicationCnt;
+			// Reset function block
+			VaGetList_01.Enable := FALSE;
+			VaGetList_01();
+			VisionSensor.FCT.Status := 0;
+			VisionSensor.CMD.VaListRefresh := FALSE;
+			// -----------------------------------------------------------------------------------------------------------
+			// Error
+		ELSIF(VaGetList_01.Status <> ERR_FUB_BUSY) THEN
+			VisionSensor.FCT.Status := VaGetList_01.Status;
+			VaGetList_01.Enable := FALSE;
+			VaGetList_01();
+			VisionSensor.CMD.VaListRefresh := FALSE;
+		END_IF
+	END_IF
+	
+	// -----------------------------------------------------------------------------------------------------------
+	// Load vision application
+	// -----------------------------------------------------------------------------------------------------------
+	IF (VisionSensor.CMD.VaSwitchApplication) THEN
+		ViBaseLoadApplication_01.MpLink := ADR(VisionSensor.CFG.ComponentLink);
+		ViBaseLoadApplication_01.Name := ADR(VisionSensor.FCT.ApplicationName);
+		VisionSensor.FCT.Status := ERR_FUB_BUSY;
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// OK
+		IF (ViBaseLoadApplication_01.Done) THEN
+			VisionSensor.FCT.Status := ERR_OK;
+			VisionSensor.CMD.VaSwitchApplication := FALSE;
+		// -----------------------------------------------------------------------------------------------------------
+		// Error
+		ELSIF (NOT ViBaseLoadApplication_01.Busy AND ViBaseLoadApplication_01.Error) THEN
+			VisionSensor.FCT.Status := ViBaseLoadApplication_01.StatusID;
+			VisionSensor.CMD.VaSwitchApplication := FALSE;
+		END_IF		
+	END_IF
+	ViBaseLoadApplication_01.Execute := VisionSensor.CMD.VaSwitchApplication;
+	ViBaseLoadApplication_01();
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Hide cross hairs on main page
@@ -264,13 +322,13 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Draw cross hairs on main page
 	// -----------------------------------------------------------------------------------------------------------
-	IF (EDGENEG(VisionSensor.STA.ImageProcessingActive) AND visCrossHair.ShowCrosshair) OR EDGEPOS(visCrossHair.ShowCrosshair) OR (visCrossHair.DetailsNo <> DetailsNoOld) THEN
+	IF (EDGENEG(VisionSensor.DAT.ImageProcessingActive) AND visCrossHair.ShowCrosshair) OR EDGEPOS(visCrossHair.ShowCrosshair) OR (visCrossHair.DetailsNo <> DetailsNoOld) THEN
 		// -----------------------------------------------------------------------------------------------------------
 		// Handle details no
 		IF(visCrossHair.DetailsNo < 1) THEN
-			visCrossHair.DetailsNo := VisionSensor.STA.ResultCnt;
+			visCrossHair.DetailsNo := VisionSensor.DAT.ResultCnt;
 		END_IF
-		IF(visCrossHair.DetailsNo > VisionSensor.STA.ResultCnt) THEN
+		IF(visCrossHair.DetailsNo > VisionSensor.DAT.ResultCnt) THEN
 			visCrossHair.DetailsNo := 1;
 		END_IF		
 		DetailsNoOld := visCrossHair.DetailsNo;
@@ -282,45 +340,45 @@ PROGRAM _CYCLIC
 			visCrossHair.SvgVisible[idx] := FALSE;
 			CrosshairPositionX := 0;
 			CrosshairPositionY := 0;
-			gVisionImage.DATA.Crosshair[idx].CrosshairX			:= 0;
-			gVisionImage.DATA.Crosshair[idx].CrosshairY			:= 0;
-			gVisionImage.DATA.Crosshair[idx].CrosshairRotate	:= 0;
-			brsmemset(ADR(gVisionImage.DATA.Crosshair[idx].Text), 0, SIZEOF(gVisionImage.DATA.Crosshair[idx].Text));
+			gVisionImage.DAT.Crosshair[idx].CrosshairX		:= 0;
+			gVisionImage.DAT.Crosshair[idx].CrosshairY		:= 0;
+			gVisionImage.DAT.Crosshair[idx].CrosshairRotate	:= 0;
+			brsmemset(ADR(gVisionImage.DAT.Crosshair[idx].Text), 0, SIZEOF(gVisionImage.DAT.Crosshair[idx].Text));
 			
 			// -----------------------------------------------------------------------------------------------------------
 			// Make sure we have data to display
-			IF(VisionSensor.STA.ResultCnt <> 0 AND idx <= VisionSensor.STA.ResultCnt) THEN
+			IF(VisionSensor.DAT.ResultCnt <> 0 AND idx <= VisionSensor.DAT.ResultCnt) THEN
 				// Select data source from vision function
 				CASE VisionSensor.CFG.VisionFunction OF
 					enumBlob:
-						CrosshairModelNumber := Blob.DATA.ModelNumber[idx];
-						CrosshairPositionX := UDINT_TO_REAL(Blob.DATA.PositionX[idx]);    
-						CrosshairPositionY := UDINT_TO_REAL(Blob.DATA.PositionY[idx]);    
-						CrosshairOrientation := Blob.DATA.Orientation[idx];
+						CrosshairModelNumber := Blob.ModelNumber[idx];
+						CrosshairPositionX := UDINT_TO_REAL(Blob.PositionX[idx]);    
+						CrosshairPositionY := UDINT_TO_REAL(Blob.PositionY[idx]);    
+						CrosshairOrientation := Blob.Orientation[idx];
 					enumMatch:
-						CrosshairModelNumber := Match.DATA.ModelNumber[idx]; 
-						CrosshairPositionX := UDINT_TO_REAL(Match.DATA.PositionX[idx]);    
-						CrosshairPositionY := UDINT_TO_REAL(Match.DATA.PositionY[idx]);    
-						CrosshairOrientation := Match.DATA.Orientation[idx];
+						CrosshairModelNumber := Match.ModelNumber[idx]; 
+						CrosshairPositionX := UDINT_TO_REAL(Match.PositionX[idx]);    
+						CrosshairPositionY := UDINT_TO_REAL(Match.PositionY[idx]);    
+						CrosshairOrientation := Match.Orientation[idx];
 					enumCoderReader:
-						CrosshairPositionX := UDINT_TO_REAL(CodeReader.DATA.PositionX[idx]);    
-						CrosshairPositionY := UDINT_TO_REAL(CodeReader.DATA.PositionY[idx]);    
-						CrosshairOrientation := CodeReader.DATA.Orientation[idx];
+						CrosshairPositionX := UDINT_TO_REAL(CodeReader.PositionX[idx]);    
+						CrosshairPositionY := UDINT_TO_REAL(CodeReader.PositionY[idx]);    
+						CrosshairOrientation := CodeReader.Orientation[idx];
 					enumOCR:
-						CrosshairPositionX := UDINT_TO_REAL(OCR.DATA.PositionX[idx]);    
-						CrosshairPositionY := UDINT_TO_REAL(OCR.DATA.PositionY[idx]);    
-						CrosshairOrientation := OCR.DATA.Orientation[idx];
+						CrosshairPositionX := UDINT_TO_REAL(OCR.PositionX[idx]);    
+						CrosshairPositionY := UDINT_TO_REAL(OCR.PositionY[idx]);    
+						CrosshairOrientation := OCR.Orientation[idx];
 					enumMeasurement:
-						IF(MT.CFG.UseResultAsXY = TRUE) THEN
-							CrosshairPositionX := UDINT_TO_REAL(MT.DATA.Result[idx])/10;    
-							CrosshairPositionY := UDINT_TO_REAL(MT.DATA.Result[idx+1])/10;
+						IF(MT.UseResultAsXY = TRUE) THEN
+							CrosshairPositionX := UDINT_TO_REAL(MT.Result[idx])/10;    
+							CrosshairPositionY := UDINT_TO_REAL(MT.Result[idx+1])/10;
 							idx := idx + 1;
 						END_IF
 				END_CASE
 			
 				// -----------------------------------------------------------------------------------------------------------
 				// Show crosshair except for measurement function
-				IF (VisionSensor.CFG.VisionFunction <> enumMeasurement OR MT.CFG.UseResultAsXY = TRUE) THEN
+				IF (VisionSensor.CFG.VisionFunction <> enumMeasurement OR MT.UseResultAsXY = TRUE) THEN
 					// -----------------------------------------------------------------------------------------------------------
 					// Set start values
 					IF(CrosshairPositionX <> 0 AND CrosshairPositionY <> 0) THEN
@@ -339,13 +397,13 @@ PROGRAM _CYCLIC
 						brsitoa(REAL_TO_INT(tmpXI - tmpC), ADR(tmpStr2));
 						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
 						brsstrcat(ADR(tmpStr1), ADR(','));
-						gVisionImage.DATA.Crosshair[idx].CrosshairX := tmpXI - tmpC; 
+						gVisionImage.DAT.Crosshair[idx].CrosshairX := tmpXI - tmpC; 
 						
 						// Calculate cross hair Y offset
 						tmpYI := CrosshairPositionY / visCrossHair.PixelRatio;
 						brsitoa(REAL_TO_INT(tmpYI - tmpC), ADR(tmpStr2));
 						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
-						gVisionImage.DATA.Crosshair[idx].CrosshairY := tmpYI - tmpC; 
+						gVisionImage.DAT.Crosshair[idx].CrosshairY := tmpYI - tmpC; 
 		
 						// Add cross hair scaling
 						brsstrcat(ADR(tmpStr1), ADR('],"scale":['));
@@ -366,7 +424,7 @@ PROGRAM _CYCLIC
 						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
 						brsstrcat(ADR(tmpStr1), ADR(']}]'));
 						visCrossHair.SvgTransformation[idx] := tmpStr1;
-						gVisionImage.DATA.Crosshair[idx].CrosshairRotate := CrosshairOrientation/-100;
+						gVisionImage.DAT.Crosshair[idx].CrosshairRotate := CrosshairOrientation/-100;
 					
 						// -----------------------------------------------------------------------------------------------------------
 						// Add text data to selected cross hair
@@ -415,25 +473,25 @@ PROGRAM _CYCLIC
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Orientation: '), CrosshairOrientation/visCrossHair.PixelRatio);
 							END_IF
 							// Add detail information for blob
-							IF(VisionSensor.CFG.VisionFunction = enumBlob AND Blob.CFG.EnhancedBlobInformation = 1) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Clipped: '), Blob.DATA.Clipped[idx]);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Gray: '), Blob.DATA.MeanGrayValue[idx]);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Length: '), UDINT_TO_REAL(Blob.DATA.Length[idx])/visCrossHair.PixelRatio);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Width: '), UDINT_TO_REAL(Blob.DATA.Width[idx])/visCrossHair.PixelRatio);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Area: '), UDINT_TO_REAL(Blob.DATA.Area[idx])/visCrossHair.PixelRatio);
+							IF(VisionSensor.CFG.VisionFunction = enumBlob AND Blob.EnhancedBlobInformation = 1) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Clipped: '), Blob.Clipped[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Gray: '), Blob.MeanGrayValue[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Length: '), UDINT_TO_REAL(Blob.Length[idx])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Width: '), UDINT_TO_REAL(Blob.Width[idx])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Area: '), UDINT_TO_REAL(Blob.Area[idx])/visCrossHair.PixelRatio);
 							END_IF
 							// Add detail information for match
 							IF(VisionSensor.CFG.VisionFunction = enumMatch) THEN
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score: '), Match.DATA.Score[idx]);
-								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale: '), Match.DATA.Scale[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score: '), Match.Score[idx]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale: '), Match.Scale[idx]);
 							END_IF
 							// Add detail information for code reader
 							IF(VisionSensor.CFG.VisionFunction = enumCoderReader) THEN
-								//CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.DATA.BarcodeType[idx]));
+								//CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.BarcodeType[idx]));
 								tmpStr2:= '<tspan class="text" x="10" dy="32">';
 								brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
 								brsstrcat(ADR(tmpStr1), ADR('Code: '));
-								brsstrcat(ADR(tmpStr1), ADR(CodeTypes[LIMIT(0, CodeReader.DATA.BarcodeType[idx], MAX_NUM_CODETYPES)]));
+								brsstrcat(ADR(tmpStr1), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
 								brsstrcat(ADR(tmpStr1), ADR('</tspan> '));
 							END_IF
 							brsstrcat(ADR(tmpStr1), ADR('</text>'));
@@ -448,15 +506,15 @@ PROGRAM _CYCLIC
 					brsitoa(idx*40, ADR(tmpStr2));
 					brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
 					brsstrcat(ADR(tmpStr1), ADR('"> '));
-					CrosshairDetailsText(ADR(tmpStr1),  ADR('Result:'), UDINT_TO_REAL(MT.DATA.Result[idx])/1000);
+					CrosshairDetailsText(ADR(tmpStr1),  ADR('Result:'), UDINT_TO_REAL(MT.Result[idx])/1000);
 					brsstrcat(ADR(tmpStr1), ADR('</text>'));
 				END_IF	
 				visCrossHair.SvgContent[idx] := tmpStr1;
 				// for saving svg file
-				brsstrcpy(ADR(gVisionImage.DATA.Crosshair[idx].Text), ADR(tmpStr1));
+				brsstrcpy(ADR(gVisionImage.DAT.Crosshair[idx].Text), ADR(tmpStr1));
 			// -----------------------------------------------------------------------------------------------------------
 			// Show information that processing is disabled
-			ELSIF(VisionSensor.STA.ResultCnt = 0 AND visEnableVision = FALSE) THEN
+			ELSIF(VisionSensor.DAT.ResultCnt = 0 AND visEnableVision = FALSE) THEN
 				visCrossHair.SvgVisible[1] := TRUE;
 				visCrossHair.SvgTransformation[1] := '[{"select":"#CrosshairRed","display":false}, {"select":"#CrosshairBlue","display":false}]';
 				visCrossHair.SvgContent[1] := '<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="40"> Processing is disabled </text>';

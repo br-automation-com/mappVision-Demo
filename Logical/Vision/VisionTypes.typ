@@ -5,7 +5,8 @@ TYPE
 	typVisionMain : 	STRUCT 
 		CMD : typVisionCommand;
 		CFG : typVisionConfig;
-		STA : typVisionStatus;
+		DAT : typVisionData;
+		FCT : typVisionFunction;
 		HW : typVisionHW;
 	END_STRUCT;
 	typVisionCommand : 	STRUCT 
@@ -13,11 +14,22 @@ TYPE
 		ImageTriggerReset : BOOL;
 		AutoSetupStartStop : BOOL;
 		BrowserReload : BOOL;
+		VaListRefresh : BOOL;
+		VaSwitchApplication : BOOL;
 	END_STRUCT;
 	typVisionConfig : 	STRUCT 
 		VisionFunction : enumVisionFunction;
 		PowerlinkNode : USINT;
 		DataStructure : UDINT;
+		ComponentLink : ViComponentType;
+	END_STRUCT;
+	typVisionFunction : 	STRUCT 
+		ApplicationName : STRING[40];
+		ApplicationNameCnt : USINT;
+		ApplicationNameList : ARRAY[0..19]OF STRING[40];
+		Status : UDINT;
+	END_STRUCT;
+	typVisionData : 	STRUCT 
 		Enable : USINT := 1;
 		MaxItemCnt : USINT := 10;
 		NettimeDelay : DINT;
@@ -33,11 +45,9 @@ TYPE
 		OffsetROIY : DINT;
 		OffsetROIRotationCenterX : DINT;
 		OffsetROIRotationCenterY : DINT;
-		OffsetROIOrientation : INT;
+		OffsetROIOrientation : DINT;
 		ChromaticLock : BOOL;
 		Alignment : USINT;
-	END_STRUCT;
-	typVisionStatus : 	STRUCT 
 		AutoSetupGain : USINT;
 		AutoSetupFocus : UINT;
 		AutoSetupExposure : UDINT;
@@ -87,7 +97,7 @@ TYPE
 	typLightMain : 	STRUCT 
 		CMD : typLightCommand;
 		CFG : typLightConfig;
-		STA : typLightStatus;
+		DAT : typLightData;
 		HW : typLightHW;
 	END_STRUCT;
 	typLightCommand : 	STRUCT 
@@ -97,13 +107,13 @@ TYPE
 	typLightConfig : 	STRUCT 
 		LightType : enumLightType;
 		PowerlinkNode : USINT;
+	END_STRUCT;
+	typLightData : 	STRUCT 
 		Enable : USINT := 1;
 		FlashColor : USINT := 99;
 		Exposure : UDINT := 200;
 		Timeout : UINT := 5000;
 		NettimeDelay : DINT;
-	END_STRUCT;
-	typLightStatus : 	STRUCT 
 		FlashAcceptedCnt : USINT;
 		FlashCompletedCnt : USINT;
 		FlashFailedCnt : USINT;
@@ -161,8 +171,7 @@ TYPE
 	typVisionImage : 	STRUCT 
 		CMD : typVisionImageCommand;
 		CFG : typVisionImageConfig;
-		STA : typVisionImageStatus;
-		DATA : typVisionImageData;
+		DAT : typVisionImageData;
 	END_STRUCT;
 	typVisionImageCommand : 	STRUCT 
 		Save : BOOL;
@@ -183,12 +192,10 @@ TYPE
 		UploadBmpJpg : BOOL;
 		UploadSVG : BOOL;
 	END_STRUCT;
-	typVisionImageStatus : 	STRUCT 
-		Status : UINT;
-	END_STRUCT;
 	typVisionImageData : 	STRUCT 
 		Images : ARRAY[0..19]OF STRING[80];
 		Crosshair : ARRAY[1..MAX_NUM_RESULTS]OF typVisionImageDataCrosshair;
+		Status : UINT;
 	END_STRUCT;
 	typVisionImageDataCrosshair : 	STRUCT 
 		CrosshairX : REAL;
@@ -199,21 +206,15 @@ TYPE
 END_TYPE
 
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Code reader structures*)
+(*Vision specific structures*)
 
 TYPE
-	typCodeReaderMain : 	STRUCT 
-		CFG : typCodeReaderConfig;
-		DATA : typCodeReaderData;
-	END_STRUCT;
-	typCodeReaderConfig : 	STRUCT 
+	typCodeReaderMain : 	STRUCT  (*Code reader structures*)
 		CodeType : USINT;
 		GradingEnable : USINT;
 		RobustnessEnable : USINT;
 		ParameterMode : USINT;
 		ParameterOptimization : USINT;
-	END_STRUCT;
-	typCodeReaderData : 	STRUCT 
 		BarcodeText : ARRAY[1..MAX_NUM_RESULTS]OF STRING[100];
 		BarcodeType : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		PositionX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
@@ -222,21 +223,9 @@ TYPE
 		Grading : ARRAY[1..MAX_NUM_RESULTS]OF SINT;
 		EnhancedGrading : ARRAY[1..23]OF USINT;
 	END_STRUCT;
-END_TYPE
-
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Blob function structures*)
-
-TYPE
-	typBlobMain : 	STRUCT 
-		CFG : typBlobConfig;
-		DATA : typBlobData;
-	END_STRUCT;
-	typBlobConfig : 	STRUCT 
+	typBlobMain : 	STRUCT  (*Blob function structures*)
 		RegionalFeature : USINT;
 		EnhancedBlobInformation : USINT := 1;
-	END_STRUCT;
-	typBlobData : 	STRUCT 
 		ModelNumber : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		Clipped : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		Area : ARRAY[1..MAX_NUM_RESULTS]OF UDINT;
@@ -247,21 +236,9 @@ TYPE
 		Length : ARRAY[1..MAX_NUM_RESULTS]OF UDINT;
 		Width : ARRAY[1..MAX_NUM_RESULTS]OF UDINT;
 	END_STRUCT;
-END_TYPE
-
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Match function structures*)
-
-TYPE
-	typMatchMain : 	STRUCT 
-		CFG : typMatchConfig;
-		DATA : typMatchData;
-	END_STRUCT;
-	typMatchConfig : 	STRUCT 
+	typMatchMain : 	STRUCT  (*Match function structures*)
 		MinScore : USINT := 70;
 		MaxOverlap : USINT;
-	END_STRUCT;
-	typMatchData : 	STRUCT 
 		ModelNumber : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		Score : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		PositionX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
@@ -271,42 +248,18 @@ TYPE
 		RotCenterX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 		RotCenterY : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 	END_STRUCT;
-END_TYPE
-
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*OCR function structures*)
-
-TYPE
-	typOCRMain : 	STRUCT 
-		CFG : typOCRConfig;
-		DATA : typOCRData;
-	END_STRUCT;
-	typOCRConfig : 	STRUCT 
+	typOCRMain : 	STRUCT  (*OCR function structures*)
 		ParameterMode : USINT;
-		Grading : BOOL;
-	END_STRUCT;
-	typOCRData : 	STRUCT 
+		GradingEnable : USINT;
 		Text : ARRAY[1..MAX_NUM_RESULTS]OF STRING[50];
 		Grading : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		PositionX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 		PositionY : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 		Orientation : ARRAY[1..MAX_NUM_RESULTS]OF INT;
 	END_STRUCT;
-END_TYPE
-
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*MT function structures*)
-
-TYPE
-	typMTMain : 	STRUCT 
-		CFG : typMTConfig;
-		DATA : typMTData;
-	END_STRUCT;
-	typMTConfig : 	STRUCT 
+	typMTMain : 	STRUCT  (*MT function structures*)
 		UseResultAsXY : BOOL;
 		ParameterMode : USINT;
-	END_STRUCT;
-	typMTData : 	STRUCT 
 		Result : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 	END_STRUCT;
 END_TYPE

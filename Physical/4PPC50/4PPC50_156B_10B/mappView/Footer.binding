@@ -1,32 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Footer_binding">
 	<Bindings>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.ResultCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.ResultCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numItemsFound" attribute="value" />
 		</Binding>	
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.Focus" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.Focus" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFocus" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.Exposure" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.Exposure" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numExposure" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.LedColor" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.LedColor" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxLedStatusColor" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.AutoSetupExposure" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.AutoSetupExposure" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAutoSetupExposure" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.AutoSetupFocus" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.AutoSetupFocus" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAutoSetupFocus" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.AutoSetupGain" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.AutoSetupGain" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAutoSetupGain" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -42,7 +42,7 @@
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.Timeout" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.Timeout" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numTimeout" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
@@ -70,35 +70,35 @@
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numHW_Temperature" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.AcquisitionFailedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.AcquisitionFailedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAcquisitionFailedCnt" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.AcquisitionCompletedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.AcquisitionCompletedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAcquisitionCompletedCnt" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.AcquisitionAcceptedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.AcquisitionAcceptedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAcquisitionAcceptedCnt" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.ImageProcessingError" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.ImageProcessingError" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numImageProcessingError" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.OffsetROIX" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.OffsetROIX" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIX" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.OffsetROIY" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.OffsetROIY" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIY" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.OffsetROIOrientation" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.OffsetROIOrientation" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIOrientation" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.ImageNettime" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.ImageNettime" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numImageNettime" attribute="node" />
 		</Binding>	
 		<Binding mode="twoWay">
@@ -110,15 +110,15 @@
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnImageTrigger" attribute="enable" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.ProcessingTimeCamera" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.ProcessingTimeCamera" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numCameraProcessingTime" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.STA.ProcessingTimeFunction" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.ProcessingTimeFunction" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFunctionProcessingTime" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.MaxItemCnt" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.MaxItemCnt" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxItemsCount" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -126,7 +126,7 @@
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.Gain" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.Gain" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numGain" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
@@ -134,7 +134,7 @@
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnAutoSetup" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.CFG.IRFilter" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DAT.IRFilter" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor1" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="twoWay">

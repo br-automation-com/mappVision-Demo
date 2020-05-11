@@ -2,11 +2,11 @@
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CodeReader_binding">
 	<Bindings>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.CFG.RobustnessEnable" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.RobustnessEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="btnCodeReaderRobustness" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.CFG.GradingEnable" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.GradingEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="btnCodeReaderGrading" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -26,11 +26,11 @@
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderTypePreset" attribute="selectedValue" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.CFG.ParameterMode" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.ParameterMode" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderParamMode" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.CFG.ParameterOptimization" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.ParameterOptimization" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderParamOptimization" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -44,34 +44,37 @@
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:visTableNo" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="ItemNo" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.BarcodeText" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemData" attribute="stringValue" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.Grading" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemGrading" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.PositionX" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosX" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.PositionY" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosY" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.DATA.Orientation" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemOrientation" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visSelectedCodeTypeDetected" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemType" attribute="stringValue" />
-		</Binding>
+		</Binding>			
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:visCodeTypePresentDropDownValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderTypePreset" attribute="dataProvider" />
 		</Binding>
-	</Bindings>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.BarcodeText" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemData" attribute="stringValue" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.Grading" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemGrading" attribute="value" />
+		</Binding>
+		
+		
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visSelectedCodeTypeDetected" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemType" attribute="stringValue" />
+		</Binding>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.Orientation" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemOrientation" attribute="node" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.PositionY" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosY" attribute="node" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_main:CodeReader.PositionX" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosX" attribute="node" />
+</Binding>
+</Bindings>
 </BindingsSet>
