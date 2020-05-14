@@ -30,7 +30,7 @@ TYPE
 		Status : UDINT;
 	END_STRUCT;
 	typVisionData : 	STRUCT 
-		Enable : USINT := 1;
+		Enable : BOOL := FALSE;
 		MaxItemCnt : USINT := 10;
 		NettimeDelay : DINT;
 		Timeout : UINT := 5000;
@@ -45,7 +45,7 @@ TYPE
 		OffsetROIY : DINT;
 		OffsetROIRotationCenterX : DINT;
 		OffsetROIRotationCenterY : DINT;
-		OffsetROIOrientation : DINT;
+		OffsetROIOrientation : INT;
 		ChromaticLock : BOOL;
 		Alignment : USINT;
 		AutoSetupGain : USINT;
@@ -211,8 +211,8 @@ END_TYPE
 TYPE
 	typCodeReaderMain : 	STRUCT  (*Code reader structures*)
 		CodeType : USINT;
-		GradingEnable : USINT;
-		RobustnessEnable : USINT;
+		GradingEnable : BOOL;
+		RobustnessEnable : BOOL;
 		ParameterMode : USINT;
 		ParameterOptimization : USINT;
 		BarcodeText : ARRAY[1..MAX_NUM_RESULTS]OF STRING[100];
@@ -224,10 +224,10 @@ TYPE
 		EnhancedGrading : ARRAY[1..23]OF USINT;
 	END_STRUCT;
 	typBlobMain : 	STRUCT  (*Blob function structures*)
-		RegionalFeature : USINT;
-		EnhancedBlobInformation : USINT := 1;
+		RegionalFeature : BOOL;
+		EnhancedBlobInformation : BOOL := FALSE;
 		ModelNumber : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
-		Clipped : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
+		Clipped : ARRAY[1..MAX_NUM_RESULTS]OF BOOL;
 		Area : ARRAY[1..MAX_NUM_RESULTS]OF UDINT;
 		PositionX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 		PositionY : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
@@ -250,7 +250,7 @@ TYPE
 	END_STRUCT;
 	typOCRMain : 	STRUCT  (*OCR function structures*)
 		ParameterMode : USINT;
-		GradingEnable : USINT;
+		GradingEnable : BOOL;
 		Text : ARRAY[1..MAX_NUM_RESULTS]OF STRING[50];
 		Grading : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		PositionX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;

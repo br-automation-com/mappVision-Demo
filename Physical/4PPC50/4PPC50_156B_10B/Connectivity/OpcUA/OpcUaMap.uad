@@ -53,7 +53,7 @@
         <Variable Name="Blob" AutomaticEnable="True">
           <Variable Name="ModelNumber" EnableArrayElements="True" />
           <Variable Name="Clipped" EnableArrayElements="True" />
-          <Variable Name="Area" EnableArrayElements="True" />
+          <Variable Name="Area" EnableArrayElements="True" EngineeringUnitId="1" />
           <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="1" />
           <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="1" />
           <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="1" />

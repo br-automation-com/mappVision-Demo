@@ -12,6 +12,6 @@
     <mappCockpit Version="5.10.0" />
     <mappMotion McAcpDrv="5.10.0" McAcpSim="5.10.0" McAcpSys="5.10.0" Version="5.10.0" />
     <mappView Version="5.10.0" />
-    <mappVision Version="5.10.5846" />
+    <mappVision Version="5.10.5890" />
   </TechnologyPackages>
 </Project>
