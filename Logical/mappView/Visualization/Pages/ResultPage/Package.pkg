@@ -3,6 +3,7 @@
 <Package SubType="PagePackage" PackageType="PagePackage" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="File" Description="Page description">Page.page</Object>
+    <Object Type="File">Result.content</Object>
     <Object Type="File">CodeReader.content</Object>
     <Object Type="File">Blob.content</Object>
     <Object Type="File">Match.content</Object>

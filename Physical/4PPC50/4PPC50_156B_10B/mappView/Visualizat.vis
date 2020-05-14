@@ -39,6 +39,7 @@
 		<Dialog refId="UploadOptionsDialog" />
 	</Dialogs>
 	<Contents preCache="all">
+		<Content refId="contentResult" />
 		<Content refId="contentBlob" />
 		<Content refId="contentMatch" />
 		<Content refId="contentMT" />
