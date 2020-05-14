@@ -1,4 +1,4 @@
-### >>> The application is still beta status. First release is expected for later April 2020 <<<
+### >>> The application is still beta status. First release is expected for early June 2020 <<<
 
 # mappVision-Demo
 
