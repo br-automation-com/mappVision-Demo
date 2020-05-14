@@ -70,3 +70,8 @@ END_VAR
 VAR CONSTANT
 	HexTab : STRING[16] := '0123456789ABCDEF';
 END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Error numbers*)
+VAR CONSTANT
+	ERR_VA_LIST_NUM : UINT := 30000; (*Number of applications exceeds array size*)
+END_VAR

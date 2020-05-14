@@ -263,18 +263,21 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// OK
 		IF(VaGetList_01.Status = ERR_OK) THEN
-			// Convert vision application list to main structure and mappView format
-			IF(VaGetList_01.VaApplicationCnt > 0) THEN
+			// Make sure we dont exceed array limit
+			IF(VaGetList_01.VaApplicationCnt > 0 AND VaGetList_01.VaApplicationCnt < SIZEOF(VisionSensor.FCT.ApplicationNameList)/SIZEOF(VisionSensor.FCT.ApplicationNameList[0])) THEN
+				// Convert vision application list to main structure and mappView format
 				FOR idx:=0 TO VaGetList_01.VaApplicationCnt - 1 DO
 					VisionSensor.FCT.ApplicationNameList[idx] := VaGetList_01.VaApplicationNames[idx];
 					String2DataProvider(ADR(VaGetList_01.VaApplicationNames[idx]), ADR(visVisionApplicationList[idx]));
 				END_FOR
+				VisionSensor.FCT.Status := ERR_OK;
+			ELSE
+				VisionSensor.FCT.Status := ERR_VA_LIST_NUM;				
 			END_IF
 			VisionSensor.FCT.ApplicationNameCnt := VaGetList_01.VaApplicationCnt;
 			// Reset function block
 			VaGetList_01.Enable := FALSE;
 			VaGetList_01();
-			VisionSensor.FCT.Status := 0;
 			VisionSensor.CMD.VaListRefresh := FALSE;
 			// -----------------------------------------------------------------------------------------------------------
 			// Error
