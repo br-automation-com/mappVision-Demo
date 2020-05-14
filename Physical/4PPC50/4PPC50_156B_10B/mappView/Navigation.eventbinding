@@ -1,54 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Navigation_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Bindings>		
-		<EventBinding id="contentNav.navResult.Click">
-			<Source contentRefId="contentNav" widgetRefId="navResult" xsi:type="widgets.brease.NavigationButton.Event" event="Click" />
-			<!-- Read value from PLC />-->	
-			<Operand name="VisionFunction" datatype="ANY_INT">
-				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_main:VisionSensor.CFG.VisionFunction" >
-					<Method xsi:type="opcUa.NodeAction.GetValue" />
-				</ReadTarget>
-			</Operand>
-			<!-- Navigate to page blob results />-->
-			<EventHandler condition="VisionFunction=1">
-				<Action>
-					<Target xsi:type="clientSystem.Action"> 
-						<Method xsi:type="clientSystem.Action.Navigate" pageId="pageBlob" /> 
-					</Target>
-				</Action>
-			</EventHandler>
-			<!-- Navigate to page match results />-->
-			<EventHandler condition="VisionFunction=2">
-				<Action>
-					<Target xsi:type="clientSystem.Action"> 
-						<Method xsi:type="clientSystem.Action.Navigate" pageId="pageMatch" /> 
-					</Target>
-				</Action>
-			</EventHandler>
-			<!-- Navigate to page code reader results />-->
-			<EventHandler condition="VisionFunction=3">
-				<Action>
-					<Target xsi:type="clientSystem.Action"> 
-						<Method xsi:type="clientSystem.Action.Navigate" pageId="pageCodeReader" /> 
-					</Target>
-				</Action>
-			</EventHandler>
-			<!-- Navigate to page OCR results />-->
-			<EventHandler condition="VisionFunction=4">
-				<Action>
-					<Target xsi:type="clientSystem.Action"> 
-						<Method xsi:type="clientSystem.Action.Navigate" pageId="pageOCR" /> 
-					</Target>
-				</Action>
-			</EventHandler>
-			<!-- Navigate to page measurement results />-->
-			<EventHandler condition="VisionFunction=5">
-				<Action>
-					<Target xsi:type="clientSystem.Action"> 
-						<Method xsi:type="clientSystem.Action.Navigate" pageId="pageMT" /> 
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-	</Bindings>
+  <Bindings>
+    <EventBinding id="contentNav.navResult.Click">
+      <Source xsi:type="widgets.brease.NavigationButton.Event" contentRefId="contentNav" widgetRefId="navResult" event="Click" />
+      <Operand datatype="ANY_INT" name="VisionFunction">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_main:VisionSensor.CFG.VisionFunction">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="VisionFunction=1">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentBlob" pageId="pageResult" areaId="AreaContent" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="VisionFunction=2">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentMatch" pageId="pageResult" areaId="AreaContent" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="VisionFunction=3">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentCodeReader" pageId="pageResult" areaId="AreaContent" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="VisionFunction=4">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentOCR" pageId="pageResult" areaId="AreaContent" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="VisionFunction=5">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentMT" pageId="pageResult" areaId="AreaContent" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+  </Bindings>
 </EventBindingSet>

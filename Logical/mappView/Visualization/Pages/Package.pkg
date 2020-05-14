@@ -1,14 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
+<?AutomationStudio Version=4.7.3.93 SP?>
 <Package SubType="PagesPackage" PackageType="PagesPackage" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="Package" Description="AreaContents">AreaContents</Object>
     <Object Type="Package">MainPage</Object>
-    <Object Type="Package">CodeReaderPage</Object>
-    <Object Type="Package">BlobPage</Object>
-    <Object Type="Package">MatchPage</Object>
-    <Object Type="Package">OCRPage</Object>
-    <Object Type="Package">MTPage</Object>
+    <Object Type="Package">ResultPage</Object>
     <Object Type="Package">Lights</Object>
     <Object Type="Package">Nettime</Object>
     <Object Type="Package">RecipePage</Object>

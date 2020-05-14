@@ -1,6 +1,7 @@
 Version 2.1 (development)
 - Simplified and reduced data structures
 - Added function to switch vision applications
+- Reduced result content to one page
 
 Version 2.0
 - Convert data structure to new camera firmware

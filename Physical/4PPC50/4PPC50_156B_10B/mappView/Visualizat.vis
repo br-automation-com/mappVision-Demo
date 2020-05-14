@@ -3,11 +3,7 @@
 	<StartPage pageRefId="pageMain" />
 	<Pages>
 		<Page refId="pageMain" />
-		<Page refId="pageCodeReader" />
-		<Page refId="pageBlob" />
-		<Page refId="pageMatch" />
-		<Page refId="pageOCR" />
-		<Page refId="pageMT" />
+		<Page refId="pageResult" />
 		<Page refId="pageLights" />
 		<Page refId="pageNettime" />
 		<Page refId="RecipePage" />
@@ -43,7 +39,11 @@
 		<Dialog refId="UploadOptionsDialog" />
 	</Dialogs>
 	<Contents preCache="all">
-		<!--<Content refId="" />-->
+		<Content refId="contentBlob" />
+		<Content refId="contentMatch" />
+		<Content refId="contentMT" />
+		<Content refId="contentOCR" />
+		<Content refId="contentCodeReader" />
 	</Contents>
 	<SnippetsSets>
 		<!--<SnippetsSet refId=""/>-->
