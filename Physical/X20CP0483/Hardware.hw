@@ -156,7 +156,7 @@
     <Parameter ID="RemMemSize" Value="30000" />
     <Parameter ID="PermanentPvSize" Value="2000" />
     <Parameter ID="RemanentGlobalPvSize" Value="20000" />
-    <Parameter ID="VolatileGlobalPvSize" Value="120000" />
+    <Parameter ID="VolatileGlobalPvSize" Value="150000" />
     <Parameter ID="TimerDeviceType" Value="EPLX2X" />
     <Parameter ID="TimerDevice" Value="X20CP0483.IF3" />
     <Parameter ID="TaskClassIdleTime" Value="800" />
