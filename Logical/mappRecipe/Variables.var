@@ -17,5 +17,7 @@ END_VAR
 VAR
 	REC_VIEW_FILTER : ARRAY[0..9] OF STRING[5] := ['csv','xml',8('')]; (*Files extensions than can be used with the view command*)
 	Recipe_01 : recMAIN; (*Global recipe structure. The name must match the task name of the recipe managment.*)
+END_VAR
+VAR RETAIN
 	RecipeData : recVariable; (*Structure that contains the recipe variables*)
 END_VAR

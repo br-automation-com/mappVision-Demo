@@ -1,4 +1,5 @@
 VAR
 	visNewRecipe : BOOL; (*New camera settings recipe*)
 	visSaveRecipe : BOOL; (*Save camera settings*)
+	cmdLoadRecipeAfterBoot : BOOL;
 END_VAR
