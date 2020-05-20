@@ -30,11 +30,8 @@ PROGRAM _INIT
 	END_FOR
 
 	// -----------------------------------------------------------------------------------------------------------
-	// Set flash color, table no
-	brsitoa(VisionSensor.DAT.FlashColor, ADR(visSelectedFlashColor));
 	visTableNo;
 	InitialSearchSensor := TRUE;
-	
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
@@ -76,15 +73,6 @@ PROGRAM _CYCLIC
 				Match ACCESS VisionSensor.CFG.DataStructure;
 			enumCoderReader:
 				CodeReader ACCESS VisionSensor.CFG.DataStructure;
-				// Code Reader - selected/detected types
-				CodeReader.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypePreset)));
-				FOR idx:=1 TO MAX_NUM_RESULTS DO
-					IF CodeReader.BarcodeType[idx] <> 0 THEN
-						brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
-					ELSE
-						brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(''));
-					END_IF
-				END_FOR
 			enumOCR:
 				OCR ACCESS VisionSensor.CFG.DataStructure;
 			enumMeasurement:
@@ -94,6 +82,20 @@ PROGRAM _CYCLIC
 		RETURN;
 	END_IF
 
+	// -----------------------------------------------------------------------------------------------------------
+	// Code Reader - selected/detected types
+	// -----------------------------------------------------------------------------------------------------------
+	IF VisionSensor.CFG.VisionFunction = enumCoderReader THEN
+		CodeReader.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypePreset)));
+		FOR idx:=1 TO MAX_NUM_RESULTS DO
+			IF CodeReader.BarcodeType[idx] <> 0 THEN
+				brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
+			ELSE
+				brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(''));
+			END_IF
+		END_FOR
+	END_IF
+	
 	// -----------------------------------------------------------------------------------------------------------
 	// Display camera status in hex - documenation is also in hex
 	// -----------------------------------------------------------------------------------------------------------
@@ -110,19 +112,23 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Translate flash color and segments from mappView to IO mapping
 	// -----------------------------------------------------------------------------------------------------------
-	VisionSensor.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
-	VisionSensor.DAT.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
-
-	// -----------------------------------------------------------------------------------------------------------
-	// Transfer data from global structure to mappView on selected camera change
-	// -----------------------------------------------------------------------------------------------------------
-	IF(visSelectedSensor <> visSelectedSensorOld) THEN
-		// Vision Sensor - flash color
+	// Hint: Normally copy from recipe (VisionSensor) to visu. Only in case of a change in the visu copy to recipe
+	IF visSelectedFlashColor <> visSelectedFlashColorOld THEN // The flash color was changed in the mappView visualization
+		VisionSensor.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
+	ELSE
 		brsitoa(VisionSensor.DAT.FlashColor, ADR(visSelectedFlashColor));
-		brsmemset(ADR(visCrossHair.SvgVisible), 0, SIZEOF(visCrossHair.SvgVisible));
 	END_IF
-	visSelectedSensorOld := visSelectedSensor;
-	
+	visSelectedFlashColorOld := visSelectedFlashColor;
+	IF brsmemcmp(ADR(visSelectedFlashSegment), ADR(visSelectedFlashSegmentOld), SIZEOF(visSelectedFlashSegment)) <> 0 THEN // The flash segments was changed in the mappView visualization
+		VisionSensor.DAT.FlashSegment := SHL(visSelectedFlashSegment[0], 0) OR SHL(visSelectedFlashSegment[1], 1) OR SHL(visSelectedFlashSegment[2], 2) OR SHL(visSelectedFlashSegment[3], 3);
+	ELSE
+		visSelectedFlashSegment[0] := VisionSensor.DAT.FlashSegment.0;
+		visSelectedFlashSegment[1] := VisionSensor.DAT.FlashSegment.1;
+		visSelectedFlashSegment[2] := VisionSensor.DAT.FlashSegment.2;
+		visSelectedFlashSegment[3] := VisionSensor.DAT.FlashSegment.3;
+	END_IF
+	visSelectedFlashSegmentOld := visSelectedFlashSegment;
+
 	// -----------------------------------------------------------------------------------------------------------
 	// Create HTTP path for web control
 	// -----------------------------------------------------------------------------------------------------------
@@ -325,6 +331,11 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Draw cross hairs on main page
 	// -----------------------------------------------------------------------------------------------------------
+	IF(visSelectedSensor <> visSelectedSensorOld) THEN
+		brsmemset(ADR(visCrossHair.SvgVisible), 0, SIZEOF(visCrossHair.SvgVisible));
+	END_IF
+	visSelectedSensorOld := visSelectedSensor;
+	
 	IF (EDGENEG(VisionSensor.DAT.ImageProcessingActive) AND visCrossHair.ShowCrosshair) OR EDGEPOS(visCrossHair.ShowCrosshair) OR (visCrossHair.DetailsNo <> DetailsNoOld) THEN
 		// -----------------------------------------------------------------------------------------------------------
 		// Handle details no
