@@ -34,6 +34,10 @@
 			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="btnImageArchivDownload" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visDownloadFileUrl" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="WebDownloadImage" attribute="path" />
+		</Binding>
+		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.Format" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="RadioButtonGroupJPEGorBitmap" attribute="selectedIndex" />
 		</Binding>
@@ -52,10 +56,6 @@
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_image:visEnableButtons_1" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="btnDeleteAll" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visDownloadFileUrl" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="WebDownloadImage" attribute="path" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:visAutoArchiv" attribute="value" />

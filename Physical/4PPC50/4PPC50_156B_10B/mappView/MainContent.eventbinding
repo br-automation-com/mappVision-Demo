@@ -54,7 +54,6 @@
 					</Target>
 				</Action>
 			</EventHandler>
-		</EventBinding>
-						
+		</EventBinding>				
 	</Bindings>
 </EventBindingSet>

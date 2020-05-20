@@ -32,10 +32,6 @@
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:visSelectedSensor" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="numCameraNo" attribute="value" />
-		</Binding>	
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visVisionApplicationList" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="lstVaAppNames" attribute="dataProvider" />
 		</Binding>
 	</Bindings>
 </BindingsSet>

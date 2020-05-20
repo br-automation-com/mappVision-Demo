@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="OCR_binding">
 	<Bindings>
-		
-		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:visTableNo" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="ItemNo" attribute="node" />
@@ -11,7 +9,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:OCR.ParameterMode" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="btnOCR_ParameterMode" attribute="value" />
 		</Binding>
-		
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:OCR.Orientation" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemOrientation" attribute="node" />
@@ -20,22 +17,21 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:OCR.PositionY" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemPosY" attribute="node" />
 		</Binding>
-		
-	<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vi_main:OCR.Text" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemData" attribute="stringValue" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vi_main:OCR.PositionX" attribute="node" />
-<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemPosX" attribute="node" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vi_main:OCR.Grading" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemGrading" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:OCR.GradingEnable" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="btnOCR_Grading" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:OCR.Text" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemData" attribute="stringValue" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:OCR.PositionX" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemPosX" attribute="node" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:OCR.Grading" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="itemGrading" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:OCR.GradingEnable" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentOCR" widgetRefId="btnOCR_Grading" attribute="value" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

@@ -41,6 +41,10 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecView" attribute="enable" />
 		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visVisionApplicationList" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="lstVaAppNames" attribute="dataProvider" />
+		</Binding>
 	
 		<!-- Multiple bindings from mappView to PLC />-->
 		<Binding mode="oneWayToSource">
