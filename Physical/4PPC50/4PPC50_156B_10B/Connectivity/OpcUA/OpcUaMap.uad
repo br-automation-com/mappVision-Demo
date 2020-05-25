@@ -110,6 +110,7 @@
         <Variable Name="visCameraStatus" />
         <Variable Name="visCodeTypePresentDropDownValues" EnableArrayElements="True" />
         <Variable Name="visVisionApplicationList" EnableArrayElements="True" />
+        <Variable Name="visEnableRepetitive" />
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />

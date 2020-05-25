@@ -164,6 +164,23 @@ PROGRAM _CYCLIC
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
+	// Transfer auto setup data to preset values
+	// -----------------------------------------------------------------------------------------------------------
+	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status <> 0) THEN
+		AutoSetupRunning := TRUE;
+	ELSIF(VisionSensor.CMD.AutoSetupStartStop = FALSE) THEN
+		AutoSetupRunning := FALSE;
+	END_IF
+	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status = 0 AND AutoSetupRunning = TRUE) THEN
+		VisionSensor.DAT.Gain				:= VisionSensor.DAT.AutoSetupGain;
+		VisionSensor.DAT.Focus				:= VisionSensor.DAT.AutoSetupFocus;
+		VisionSensor.DAT.Exposure			:= VisionSensor.DAT.AutoSetupExposure;
+		VisionSensor.CMD.AutoSetupStartStop	:= FALSE;
+		AutoSetupRunning					:= FALSE;
+		visImageTrigger						:= TRUE;
+	END_IF
+
+	// -----------------------------------------------------------------------------------------------------------
 	// Fire trigger for camera image
 	// -----------------------------------------------------------------------------------------------------------
 	IF((visImageTrigger OR EDGEPOS(visEnableVision)) AND VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
@@ -176,6 +193,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Repetitive mode
 	// -----------------------------------------------------------------------------------------------------------
+	visEnableRepetitive := visEnableCommand OR visRepetitiveMode; // Enable of the repetitive mode button. Don't disable while repetitive mode is active
 	IF visRepetitiveMode THEN
 		// Trigger new image every 0.5s
 		RepetitiveModeTimer.IN := TRUE;
@@ -183,10 +201,7 @@ PROGRAM _CYCLIC
 		IF RepetitiveModeTimer.Q THEN
 			IF VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive THEN
 				RepetitiveModeTimer.IN := FALSE;
-				// When nettime is used dealy trigger by 10ms
-				IF(NettimeCurrent_us <> 0) THEN
-					VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
-				END_IF
+				VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 				VisionSensor.CMD.ImageTrigger := TRUE;
 			END_IF
 		END_IF
@@ -195,16 +210,16 @@ PROGRAM _CYCLIC
 		RepetitiveModeTimer.IN := TRUE;
 	END_IF
 	RepetitiveModeTimer();
-	VisionSensor.DAT.Enable := visEnableVision AND NOT visRepetitiveMode; 
+	VisionSensor.DAT.Enable := visEnableVision AND NOT visRepetitiveMode;
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Reset image trigger, reload web page and store image when process is finished
 	// -----------------------------------------------------------------------------------------------------------
 	IF ((VisionSensor.DAT.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld OR VisionSensor.DAT.AcquisitionFailedCnt <> AcquisitionFailedCntOld) AND VisionSensor.DAT.ImageProcessingActive = FALSE) THEN
-		AcquisitionCompletedCntOld := VisionSensor.DAT.AcquisitionCompletedCnt;
-		AcquisitionFailedCntOld := VisionSensor.DAT.AcquisitionFailedCnt;
-		VisionSensor.CMD.BrowserReload := TRUE;
-		VisionSensor.CMD.ImageTrigger := FALSE;	
+		AcquisitionCompletedCntOld		:= VisionSensor.DAT.AcquisitionCompletedCnt;
+		AcquisitionFailedCntOld			:= VisionSensor.DAT.AcquisitionFailedCnt;
+		VisionSensor.CMD.BrowserReload	:= TRUE;
+		VisionSensor.CMD.ImageTrigger	:= FALSE;	
 		// Store image to flash card
 		IF visAutoArchiv AND NOT DisableAutoArchiv THEN
 			gVisionImage.CMD.Save := TRUE;
@@ -239,23 +254,6 @@ PROGRAM _CYCLIC
 	IF(ReloadTimeout.Q) THEN
 		ReloadTimeout.IN := FALSE;
 		VisionSensor.CMD.BrowserReload := FALSE;
-	END_IF
-
-	// -----------------------------------------------------------------------------------------------------------
-	// Transfer auto setup data to preset values
-	// -----------------------------------------------------------------------------------------------------------
-	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status <> 0) THEN
-		AutoSetupRunning := TRUE;
-	ELSIF(VisionSensor.CMD.AutoSetupStartStop = FALSE) THEN
-		AutoSetupRunning := FALSE;
-	END_IF
-	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status = 0 AND AutoSetupRunning = TRUE) THEN
-		VisionSensor.DAT.Gain				:= VisionSensor.DAT.AutoSetupGain;
-		VisionSensor.DAT.Focus				:= VisionSensor.DAT.AutoSetupFocus;
-		VisionSensor.DAT.Exposure			:= VisionSensor.DAT.AutoSetupExposure;
-		VisionSensor.CMD.AutoSetupStartStop	:= FALSE;
-		AutoSetupRunning					:= FALSE;
-		visImageTrigger						:= TRUE;
 	END_IF
 	
 	// -----------------------------------------------------------------------------------------------------------

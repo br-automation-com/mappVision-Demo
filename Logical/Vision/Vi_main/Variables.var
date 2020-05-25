@@ -22,6 +22,7 @@ VAR
 	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
 	visEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
 	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
+	visEnableRepetitive : BOOL; (*Enable/Disable repetitive mode*)
 	visEnableVision : BOOL; (*Enable vision function*)
 	visAutoArchiv : BOOL; (*Enable/Disable auto archiving of camera images*)
 	visImageTrigger : BOOL; (*Trigger new image*)
