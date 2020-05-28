@@ -497,11 +497,17 @@ PROGRAM _CYCLIC
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score: '), Match.Score[idx]);
 								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale: '), Match.Scale[idx]);
 							END_IF
+							// Add detail information for OCR
+							IF(VisionSensor.CFG.VisionFunction = enumOCR) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Grading: '), OCR.Grading[idx]);
+								brsstrcat(ADR(tmpStr1), ADR('<tspan class="text" x="10" dy="32">'));
+								brsstrcat(ADR(tmpStr1), ADR('Text: '));
+								brsstrcat(ADR(tmpStr1), ADR(OCR.Text[idx]));
+								brsstrcat(ADR(tmpStr1), ADR('</tspan> '));
+							END_IF
 							// Add detail information for code reader
 							IF(VisionSensor.CFG.VisionFunction = enumCoderReader) THEN
-								//CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.BarcodeType[idx]));
-								tmpStr2:= '<tspan class="text" x="10" dy="32">';
-								brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+								brsstrcat(ADR(tmpStr1), ADR('<tspan class="text" x="10" dy="32">'));
 								brsstrcat(ADR(tmpStr1), ADR('Code: '));
 								brsstrcat(ADR(tmpStr1), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
 								brsstrcat(ADR(tmpStr1), ADR('</tspan> '));
