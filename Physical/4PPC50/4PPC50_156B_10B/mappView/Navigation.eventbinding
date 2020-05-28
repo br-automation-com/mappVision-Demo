@@ -45,48 +45,53 @@
 			</EventHandler>
 		</EventBinding>
 		<EventBinding id="EventBinding_2">
-			<Source xsi:type="widgets.brease.NavigationButton.Event" contentRefId="contentNav" widgetRefId="navResult" event="Click" />
+			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentNav" widgetRefId="navResult" event="Click" />
+			<Operand datatype="ANY_STRING" name="pageID">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.currentPageId">
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
 			<Operand datatype="ANY_INT" name="VisionFunction">
 				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_main:VisionSensor.CFG.VisionFunction">
 					<Method xsi:type="opcUa.NodeAction.GetValue" />
 				</ReadTarget>
 			</Operand>
-			<EventHandler condition="VisionFunction=1 AND contentId=&quot;contentResult&quot;">
+			<EventHandler condition="pageID &lt;&gt; &quot;pageResult&quot;">
+				<Action>
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.Navigate" pageId="pageResult" />
+					</Target>
+				</Action>
+			</EventHandler>
+			<EventHandler condition="VisionFunction=1 AND pageID=&quot;pageResult&quot;">
 				<Action>
 					<Target xsi:type="clientSystem.Action">
 						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentBlob" pageId="pageResult" areaId="AreaContent" />
 					</Target>
 				</Action>
 			</EventHandler>
-			<EventHandler condition="VisionFunction=1">
-				<Action>
-					<Target xsi:type="clientSystem.Action">
-						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentBlob" pageId="pageResult" areaId="AreaContent" />
-					</Target>
-				</Action>
-			</EventHandler>
-			<EventHandler condition="VisionFunction=2">
+			<EventHandler condition="VisionFunction=2 AND pageID=&quot;pageResult&quot;">
 				<Action>
 					<Target xsi:type="clientSystem.Action">
 						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentMatch" pageId="pageResult" areaId="AreaContent" />
 					</Target>
 				</Action>
 			</EventHandler>
-			<EventHandler condition="VisionFunction=3">
+			<EventHandler condition="VisionFunction=3 AND pageID=&quot;pageResult&quot;">
 				<Action>
 					<Target xsi:type="clientSystem.Action">
 						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentCodeReader" pageId="pageResult" areaId="AreaContent" />
 					</Target>
 				</Action>
 			</EventHandler>
-			<EventHandler condition="VisionFunction=4">
+			<EventHandler condition="VisionFunction=4 AND pageID=&quot;pageResult&quot;">
 				<Action>
 					<Target xsi:type="clientSystem.Action">
 						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentOCR" pageId="pageResult" areaId="AreaContent" />
 					</Target>
 				</Action>
 			</EventHandler>
-			<EventHandler condition="VisionFunction=5">
+			<EventHandler condition="VisionFunction=5 AND pageID=&quot;pageResult&quot;">
 				<Action>
 					<Target xsi:type="clientSystem.Action">
 						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentMT" pageId="pageResult" areaId="AreaContent" />
