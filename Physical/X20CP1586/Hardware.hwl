@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <BR.AS.HardwareTopology Version="0.0.0.1">
   <TimeStamps>
-    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="04/14/2020 15:31:04" />
+    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="05/15/2020 09:56:10" />
   </TimeStamps>
   <Modules>
     <Module Name="Blob" Type="VSS112Q22.041P-000" X="192" Y="399" />
@@ -10,7 +10,7 @@
     <Module Name="8V1010.50-2" Type="8V1010.50-2" X="1176" Y="399" />
     <Module Name="8AC120.60-1" Type="8AC120.60-1" X="1190" Y="514.5" />
     <Module Name="8AC114.60-2" Type="8AC114.60-2" X="1178.8" Y="514.5" />
-    <Module Name="Backlight1" Type="VSLB11F00.54DP-000" X="842" Y="399" />
+    <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" X="842" Y="399" />
     <Module Name="Backlight2" Type="VSLB11F00.54DP-000" X="1009" Y="399" />
     <Module Name="CodeReader" Type="VSS112Q22.041P-000" X="431" Y="399" />
     <Module Name="Measurement" Type="VSS112Q22.041P-000" X="303" Y="399" />

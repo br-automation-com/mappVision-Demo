@@ -19,8 +19,6 @@ VAR
 	DirDeleteEx_0 : DirDeleteEx;
 	FileNamePict : STRING[80];
 	FileNameSvg : STRING[80];
-	FOpen : FileOpen;
-	FRead : FileReadEx;
 	FileCreate_0 : FileCreate;
 	FileDelete_0 : FileDelete;
 	FileWrite_0 : FileWrite;
@@ -40,14 +38,13 @@ END_VAR
 (**)
 (*http, download and upload image*)
 VAR
+	ViDownloadImage_0 : ViDownloadImage;
 	httpClient_0 : httpClient;
 	RequestHeader : httpRequestHeader_t;
 	UploadImgSize : UDINT;
 	TON_ReloadTimeout : TON;
-	download_timeout : TON_10ms;
-	response_header : httpResponseHeader_t;
-	response_header_data : STRING[300];
-	WebserviceDownload : httpService := (0);
+END_VAR
+VAR CONSTANT
 	ERR_TIMEOUT_DOWNLOAD : UINT := 50320; (*Download response timed out*)
 	ERR_MEM_DOWNLOAD : UINT := 50310; (*Size of download file exceeds maximum*)
 END_VAR

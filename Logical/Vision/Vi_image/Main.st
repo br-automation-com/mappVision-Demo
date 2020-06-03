@@ -96,11 +96,11 @@ PROGRAM _CYCLIC
 			// Download image data from file device
 			ELSIF gVisionImage.CMD.Download THEN // Download image data from file device
 				IF brsstrlen(ADR(visSelectedImage)) > 0 THEN
-					brsstrcpy(ADR(tmpStr1), ADR(gVisionImage.CFG.DirName));
-					brsstrcat(ADR(tmpStr1), ADR('/'));
-					brsstrcat(ADR(tmpStr1), ADR(visSelectedImage));
-					gVisionImage.DAT.Status := 65535;
-					visDownloadFileUrl := '';
+				brsstrcpy(ADR(tmpStr1), ADR(gVisionImage.CFG.DirName));
+				brsstrcat(ADR(tmpStr1), ADR('/'));
+				brsstrcat(ADR(tmpStr1), ADR(visSelectedImage));
+				gVisionImage.DAT.Status := 65535;
+				visDownloadFileUrl := '';
 					Step := VISTEP_DOWNLOAD_IMAGE;
 				ELSE // If no pictures are available, don't try to delete pictures
 				END_IF
@@ -167,7 +167,7 @@ PROGRAM _CYCLIC
 				gVisionImage.CMD.ResetError := FALSE;
 				// no error, so do nothing else
 			END_IF
-					
+			
 			// -----------------------------------------------------------------------------------------------------------
 			// Load new image into window
 			IF visSelectedImageOld <> visSelectedImage AND dir_entry > 0 THEN
@@ -230,149 +230,21 @@ PROGRAM _CYCLIC
 		// --------------------------------------------------------------------------------------------------------------------
 		// Download file
 		// --------------------------------------------------------------------------------------------------------------------
-		VISTEP_DOWNLOAD_IMAGE:						
-			// ----------------------------------------------------------------------------------------
-			// Initialize file open structure
-			FOpen.enable	:= TRUE;
-			FOpen.pDevice 	:= ADR(gVisionImage.CFG.FileDevice);
-			FOpen.pFile		:= ADR(tmpStr1);
-			FOpen();
-			
-			// ----------------------------------------------------------------------------------------
-			// OK
-			IF (FOpen.status = 0) THEN
-				// Make sure file fits into memory
-				IF(FOpen.filelen <= MemUploadSize) THEN
-					// Clear memory and reset web service
-					brsmemset(MemUpload, 0, MemUploadSize);
-					WebserviceDownload.enable := FALSE;
-					WebserviceDownload();
-					Step := VISTEP_DOWNLOAD_IMAGE_1;
-					// File is too large
-				ELSE
-					gVisionImage.DAT.Status := ERR_MEM_DOWNLOAD;
-					Step := VISTEP_ERR;
-				END_IF;
-				// Error
-			ELSIF (FOpen.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.DAT.Status := FOpen.status;
-				Step := VISTEP_ERR;
-			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download file
-		// --------------------------------------------------------------------------------------------------------------------
-		VISTEP_DOWNLOAD_IMAGE_1:			
-			// ----------------------------------------------------------------------------------------
-			// Initialize file read structure
-			FRead.enable	:= TRUE;
-			FRead.ident		:= FOpen.ident;
-			FRead.len		:= FOpen.filelen;
-			FRead.pDest		:= MemUpload;
-			FRead();
-			
-			// ----------------------------------------------------------------------------------------
-			// OK
-			IF (FRead.status = 0) THEN
-				Step := VISTEP_DOWNLOAD_IMAGE_2;
-				// Error
-			ELSIF (FRead.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.DAT.Status := FRead.status;
-				Step := VISTEP_ERR;
-			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download file
-		// --------------------------------------------------------------------------------------------------------------------
-		VISTEP_DOWNLOAD_IMAGE_2:			
-			// ----------------------------------------------------------------------------------------
-			// Initialize file close structure
-			FileClose_0.enable	:= TRUE;
-			FileClose_0.ident	:= FOpen.ident;
-			FileClose_0();
-			
-			// ----------------------------------------------------------------------------------------
-			// OK
-			IF (FileClose_0.status = 0) THEN
-				download_timeout.IN := 0;
-				download_timeout();
-				Step := VISTEP_DOWNLOAD_IMAGE_3;
-				// Error
-			ELSIF (FileClose_0.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.DAT.Status := FileClose_0.status;
-				Step := VISTEP_ERR;
-			END_IF		
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download file - web service
-		// --------------------------------------------------------------------------------------------------------------------
-		VISTEP_DOWNLOAD_IMAGE_3:			
-			// ----------------------------------------------------------------------------------------
-			// Create response header
-			response_header_data :=  'Content-Type: application/octet-stream; Content-Transfer-Encoding: binary; Content-Disposition: attachment; filename="';
-			brsstrcat(ADR(response_header_data), ADR(visSelectedImage));
-			brsstrcat(ADR(response_header_data), ADR('"'));
-			
-			// ----------------------------------------------------------------------------------------
-			// Pre-configure web service for download
-			response_header.rawHeader.pData 	:= ADR(response_header_data);
-			response_header.rawHeader.dataSize 	:= SIZEOF(response_header_data);		
-			response_header.rawHeader.dataLen 	:= brsstrlen(ADR(response_header_data));
-			
-			// ----------------------------------------------------------------------------------------
-			// Start web service
-			WebserviceDownload.enable 			:= TRUE;
-			WebserviceDownload.option 			:= httpOPTION_HTTP_10 + httpOPTION_SERVICE_TYPE_NAME;
-			WebserviceDownload.pResponseData 	:= MemUpload;
-			WebserviceDownload.pResponseHeader	:= ADR(response_header);
-			WebserviceDownload.pServiceName 	:= ADR(visSelectedImage);
-			WebserviceDownload.responseDataLen 	:= FOpen.filelen;
-			WebserviceDownload();
-			
-			// ----------------------------------------------------------------------------------------
-			// Timeout if file is not pulled from browser
-			download_timeout.IN := 1;
-			download_timeout.PT := 300;
-			download_timeout();
-			IF(download_timeout.Q) THEN
-				gVisionImage.DAT.Status := ERR_TIMEOUT_DOWNLOAD;
-				Step := VISTEP_ERR;
-			END_IF
-
-			// ----------------------------------------------------------------------------------------
-			// Set URL
-			IF (WebserviceDownload.status = ERR_FUB_BUSY AND visDownloadFileUrl = '') THEN
-				brsstrcat(ADR(visDownloadFileUrl), ADR(visSelectedImage));
-				// Start sending data
-			ELSIF (WebserviceDownload.status = 0 AND WebserviceDownload.send = FALSE AND visDownloadFileUrl <> '') THEN
-				WebserviceDownload.send := TRUE;
-			// Sending data finished
-			ELSIF (WebserviceDownload.send = TRUE) THEN
-				Step := VISTEP_DOWNLOAD_IMAGE_4;
-			// Error
-			ELSIF (WebserviceDownload.status <> ERR_FUB_BUSY AND WebserviceDownload.status <> 0) THEN
-				gVisionImage.DAT.Status := WebserviceDownload.status;
-				Step := VISTEP_ERR;
-			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download file - web service
-		// --------------------------------------------------------------------------------------------------------------------
-		VISTEP_DOWNLOAD_IMAGE_4:			
-			WebserviceDownload();
-			download_timeout();
-			IF(download_timeout.Q) THEN
-				gVisionImage.DAT.Status := ERR_TIMEOUT_DOWNLOAD;
-				Step := VISTEP_ERR;
-			END_IF
-			
-			// ----------------------------------------------------------------------------------------
-			// Start sending data
-			IF (WebserviceDownload.phase = httpPHASE_WAITING) THEN
-				visDownloadFileUrl := '';
-				WebserviceDownload.send := FALSE;
+		VISTEP_DOWNLOAD_IMAGE:
+			ViDownloadImage_0.Enable		:= TRUE;
+			ViDownloadImage_0.FileDevice	:= gVisionImage.CFG.FileDevice;
+			ViDownloadImage_0.FileName		:= tmpStr1;
+			ViDownloadImage_0.ImgName		:= visSelectedImage;
+			ViDownloadImage_0.MemAdr		:= MemSvg;
+			ViDownloadImage_0.MemSize		:= MemSvgSize;
+			ViDownloadImage_0.AdrVisDownloadFileUrl := ADR(visDownloadFileUrl);
+			ViDownloadImage_0();
+			IF ViDownloadImage_0.Status = 0 THEN
 				gVisionImage.CMD.Download := FALSE;
 				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
-			// Error
-			ELSIF (WebserviceDownload.status <> ERR_FUB_BUSY) THEN
-				gVisionImage.DAT.Status := WebserviceDownload.status;
+			ELSIF ViDownloadImage_0.Status <> ERR_FUB_BUSY THEN
+				gVisionImage.DAT.Status := ViDownloadImage_0.Status;
 				Step := VISTEP_ERR;
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
@@ -714,10 +586,7 @@ PROGRAM _CYCLIC
 			httpClient_0.send	:= FALSE;
 			httpClient_0.abort	:= TRUE;
 			httpClient_0();
-			
-			WebserviceDownload.enable := FALSE;
-			WebserviceDownload();
-			
+
 			IF gVisionImage.CMD.ResetError THEN
 				httpClient_0.abort := FALSE;
 				httpClient_0();
@@ -728,5 +597,5 @@ PROGRAM _CYCLIC
 			brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));
 	END_CASE
 
-	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage));
+	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
 END_PROGRAM
