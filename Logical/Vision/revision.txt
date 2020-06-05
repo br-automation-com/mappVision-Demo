@@ -2,8 +2,9 @@ Version 2.2 (development)
 - Simplified and sorted the task Vi_image
 - Moved crosshair handling to task Vi_image
 - Some bugfixes in task Vi_image
+- Updated to official versions
 
-Version 2.1 (development)
+Version 2.1
 - Simplified and reduced data structures
 - Added function to switch vision applications
 - Reduced result content to one page
