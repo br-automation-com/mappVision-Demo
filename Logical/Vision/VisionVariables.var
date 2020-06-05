@@ -14,6 +14,12 @@ VAR
 	visSelectedLight : UINT := 1; (*Selected Light node number*)
 	NettimeCurrent_us : DINT; (*Current Powerlink nettime*)
 END_VAR
+VAR CONSTANT
+	MAX_NUM_CODETYPES : USINT := 69;
+END_VAR
+VAR
+	CodeTypes : {REDUND_UNREPLICABLE} ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80] := ['Auto Identify (0)','2/5 Industrial (1)','2/5 Interleaved (2)','Codebar (3)','Code 32 (4)','Code 39 (5)','Code 93 (6)','Code 128 (7)','MSI (8)','PharmaCode (9)','EAN-8 (10)','EAN-8 Add-On 2 (11)','EAN-8 Add-On 5 (12)','EAN-13 (13)','EAN-13 Add-On 2 (14)','EAN-13 Add-On 5 (15)',4(''),'UPC-A (20)','UPC-A Add-On 2 (21)','UPC-A Add-On 5 (22)','UPC-E (23)','UPC-E Add-On 2 (24)','UPC-E Add-On 5 (25)',4(''),'GS1-128 (30)','GS1 DataBar Omnidirectional (31)','GS1 DataBar Truncated (32)','GS1 DataBar Stacked (33)','GS1 DataBar Stacked Omnidirectional (34)','GS1 DataBar Limited (35)','GS1 DataBar Expanded (36)','GS1 DataBar ExpandedStacked (37)',12(''),'Data Matrix ECC200 (50)','QR Code Model 1 (51)','QR Code Model 2 (52)','Micro QRCode (53)','PDF417 (54)','Aztec Code (55)',4(''),'GS1 Data Matrix (60)','GS1 QR Code Model 1 (61)','GS1 QR Code Model 2 (62)','GS1 Aztec Code (63)',6('')];
+END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Global constants*)
 VAR CONSTANT

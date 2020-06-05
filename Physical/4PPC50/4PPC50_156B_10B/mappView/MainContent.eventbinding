@@ -39,7 +39,7 @@
 			<Source contentRefId="contentMain" widgetRefId="numDetailsNoDown" xsi:type="widgets.brease.Image.Event" event="Click" />
 			<EventHandler>
 				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visCrossHair.DetailsNo" >
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo" >
 						<Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
 					</Target>
 				</Action>		
@@ -49,7 +49,7 @@
 			<Source contentRefId="contentMain" widgetRefId="numDetailsNoUp" xsi:type="widgets.brease.Image.Event" event="Click" />
 			<EventHandler>
 				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visCrossHair.DetailsNo" >
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo" >
 						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
 					</Target>
 				</Action>

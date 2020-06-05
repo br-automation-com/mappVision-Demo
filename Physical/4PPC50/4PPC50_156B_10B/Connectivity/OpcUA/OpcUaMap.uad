@@ -91,11 +91,6 @@
           <Variable Name="Grading" EnableArrayElements="True" />
         </Variable>
         <Variable Name="visAutoArchiv" />
-        <Variable Name="visCrossHair" AutomaticEnable="True">
-          <Variable Name="SvgTransformation" EnableArrayElements="True" />
-          <Variable Name="SvgContent" EnableArrayElements="True" />
-          <Variable Name="SvgVisible" EnableArrayElements="True" />
-        </Variable>
         <Variable Name="visEnableCommand" />
         <Variable Name="visEnableVision" />
         <Variable Name="visHttpPath" />
@@ -118,6 +113,12 @@
         <Variable Name="visDownloadFileUrl" />
         <Variable Name="visEnableButtons_1" />
         <Variable Name="visEnableButtons_2" />
+        <Variable Name="visCrossHair" AutomaticEnable="True">
+          <Variable Name="SvgTransformation" EnableArrayElements="True" />
+          <Variable Name="SvgContent" EnableArrayElements="True" />
+          <Variable Name="SvgVisible" EnableArrayElements="True" />
+        </Variable>
+        <Variable Name="visImageList" EnableArrayElements="True" />
       </Task>
       <Task Name="Recipe_01">
         <Variable Name="RECIPE" AutomaticEnable="True">

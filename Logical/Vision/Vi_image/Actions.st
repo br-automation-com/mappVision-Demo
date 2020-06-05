@@ -37,6 +37,4 @@ SvgTexts.Crosshair1 :=
 SvgTexts.SvgClose :=
 '
 </svg>';
-
-
 END_ACTION

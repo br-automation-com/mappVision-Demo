@@ -1,26 +1,145 @@
 
-{REDUND_ERROR} FUNCTION_BLOCK ViDownloadImage (*TODO: Hier einen Kommentar eingeben*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+FUNCTION_BLOCK ViDownloadImage (* *) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
 		Enable : BOOL;
 		FileDevice : STRING[80];
-		FileName : {REDUND_UNREPLICABLE} STRING[80];
+		FileName : STRING[80];
 		ImgName : STRING[80];
-		MemAdr : UDINT;
-		MemSize : UDINT;
-		AdrVisDownloadFileUrl : UDINT;
+		MemSvgAdr : UDINT;
+		MemSvgSize : UDINT;
+		visDownloadFileUrl : REFERENCE TO STRING[200];
 	END_VAR
 	VAR_OUTPUT
 		Status : UINT;
 	END_VAR
 	VAR
+		Step : INT;
 		FileOpen_0 : FileOpen;
 		FileRead_0 : FileRead;
 		FileClose_0 : FileClose;
+		TON_Timeout : TON;
 		httpService_Download : httpService;
-		Step : INT;
 		response_header : httpResponseHeader_t;
 		response_header_data : STRING[300];
-		TON_Timeout : TON;
-		visDownloadFileUrl : REFERENCE TO STRING[200];
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK ViRefreshImageList
+	VAR_INPUT
+		Enable : BOOL;
+		CFG : typVisionImageConfig;
+		ImageList : REFERENCE TO ARRAY[0..19] OF STRING[80];
+		visSelectedImage : REFERENCE TO STRING[80];
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+		DirEntries : UINT;
+	END_VAR
+	VAR
+		Step : INT;
+		visSelectedImageOld : STRING[80];
+		idx : UINT;
+		file_newest : STRING[80];
+		file_oldest : STRING[80];
+		date_newest : DATE_AND_TIME;
+		date_oldest : DATE_AND_TIME;
+		cmdDeleteOldest : BOOL;
+		DirRead_0 : DirRead;
+		FileDelete_0 : FileDelete;
+		dir_data : fiDIR_READ_DATA;
+		DeleteFileName : STRING[80];
+		TON_VisPause : TON;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK ViSaveImgOnPlc
+	VAR_INPUT
+		Enable : BOOL;
+		CFG : typVisionImageConfig;
+		SelectedSensor : UINT;
+		MemInfo : MemInfo_Type;
+		CrossHairInfo : REFERENCE TO ARRAY[0..MAX_NUM_RESULTS] OF typCrossHairInfo;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+	END_VAR
+	VAR
+		Step : INT;
+		DiagStartTime : TIME;
+		DiagTime : DiagTime_Type;
+		DTGetTime_0 : DTGetTime;
+		DTStructure_0 : DTStructure;
+		FileNameImg : STRING[80];
+		FileNameSvg : STRING[80];
+		URI : STRING[80];
+		Host : STRING[80];
+		httpClient_0 : httpClient;
+		httpClientErrorStatus : UINT;
+		RequestHeader : httpRequestHeader_t;
+		TON_ReloadTimeout : TON;
+		UploadedImgSize : UDINT;
+		FileCreate_0 : FileCreate;
+		FileWrite_0 : FileWrite;
+		FileClose_0 : FileClose;
+		b64AdrInBuffer : UDINT;
+		b64AdrOutBuffer : UDINT;
+		b64neededOutput : UDINT;
+		b64key : ARRAY[0..63] OF USINT;
+		b64actposIN : UDINT;
+		b64actposOUT : UDINT;
+		b64in : REFERENCE TO ARRAY[0..2] OF USINT;
+		b64out : REFERENCE TO ARRAY[0..3] OF USINT;
+		b64blockLen : UINT;
+		SvgTexts : SvgTexts_Type;
+		tmpStr1 : STRING[80];
+		i : UDINT;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK ViDrawCrosshair
+	VAR_INPUT
+		SelectedSensor : UINT;
+		CmdRefreshCrosshair : BOOL;
+		VisionSensor : REFERENCE TO typVisionMain;
+		CodeTypes : REFERENCE TO ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
+		VisionDisabled : BOOL;
+		visCrossHair : REFERENCE TO typCrossHair;
+	END_VAR
+	VAR_OUTPUT
+		CrossHairInfo : ARRAY[0..MAX_NUM_RESULTS] OF typCrossHairInfo;
+	END_VAR
+	VAR
+		idx : UINT;
+		SelectedSensorOld : UINT;
+		Blob : REFERENCE TO typBlobMain;
+		Match : REFERENCE TO typMatchMain;
+		CodeReader : REFERENCE TO typCodeReaderMain;
+		OCR : REFERENCE TO typOCRMain;
+		MT : REFERENCE TO typMTMain;
+		DetailsNoOld : USINT;
+		ShowCrosshairOld : BOOL;
+		CrosshairModelNumber : USINT;
+		CrosshairPositionX : REAL;
+		CrosshairPositionY : REAL;
+		CrosshairOrientation : INT;
+		tmpXI : REAL;
+		tmpYI : REAL;
+		tmpC : REAL;
+		tmpStr1 : STRING[1000];
+		tmpStr2 : STRING[100];
+		tmpStr3 : STRING[100];
+		blueTextPos : INT;
+		MT_UseXY : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION CrosshairDetailsText : BOOL
+	VAR_INPUT
+		strTarget : UDINT;
+		strText : UDINT;
+		fValue : REAL;
+	END_VAR
+	VAR
+		tmpStr : STRING[50];
+	END_VAR
+END_FUNCTION

@@ -3,7 +3,7 @@ VAR
 	VisionSensor : REFERENCE TO typVisionMain; (*General vision functions that are independent from the inspection function*)
 	Match : REFERENCE TO typMatchMain; (*Data that is specific for the match function*)
 	CodeReader : REFERENCE TO typCodeReaderMain; (*Data that is specific for the code reader*)
-	MT : REFERENCE TO typMTMain; (*Data that is specific for the OCR function*)
+	MT : REFERENCE TO typMTMain; (*Data that is specific for the MT function*)
 	OCR : REFERENCE TO typOCRMain; (*Data that is specific for the OCR function*)
 	Blob : REFERENCE TO typBlobMain; (*Data that is specific for the blob function*)
 	tmpMatch : {REDUND_UNREPLICABLE} typMatchMain; (*Data that is specific for the match function*)
@@ -17,8 +17,6 @@ END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 VAR
 	idx : UINT;
-	DetailsNoOld : USINT;
-	visSelectedSensorOld : UINT := 1; (*Selected camera node number*)
 	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
 	visEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
 	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
@@ -46,27 +44,13 @@ END_VAR
 VAR
 	visSelectedCodeTypeDetected : ARRAY[1..MAX_NUM_RESULTS] OF STRING[80]; (*HMI helper string*)
 	visSelectedCodeTypePreset : STRING[80]; (*HMI helper string*)
-	CodeTypes : ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80] := ['Auto Identify (0)','2/5 Industrial (1)','2/5 Interleaved (2)','Codebar (3)','Code 32 (4)','Code 39 (5)','Code 93 (6)','Code 128 (7)','MSI (8)','PharmaCode (9)','EAN-8 (10)','EAN-8 Add-On 2 (11)','EAN-8 Add-On 5 (12)','EAN-13 (13)','EAN-13 Add-On 2 (14)','EAN-13 Add-On 5 (15)',4(''),'UPC-A (20)','UPC-A Add-On 2 (21)','UPC-A Add-On 5 (22)','UPC-E (23)','UPC-E Add-On 2 (24)','UPC-E Add-On 5 (25)',4(''),'GS1-128 (30)','GS1 DataBar Omnidirectional (31)','GS1 DataBar Truncated (32)','GS1 DataBar Stacked (33)','GS1 DataBar Stacked Omnidirectional (34)','GS1 DataBar Limited (35)','GS1 DataBar Expanded (36)','GS1 DataBar ExpandedStacked (37)',12(''),'Data Matrix ECC200 (50)','QR Code Model 1 (51)','QR Code Model 2 (52)','Micro QRCode (53)','PDF417 (54)','Aztec Code (55)',4(''),'GS1 Data Matrix (60)','GS1 QR Code Model 1 (61)','GS1 QR Code Model 2 (62)','GS1 Aztec Code (63)',6('')];
 	visCodeTypePresentDropDownValues : ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
-END_VAR
-VAR CONSTANT
-	MAX_NUM_CODETYPES : USINT := 69;
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Image, crosshair data and constants*)
 VAR
 	visHttpPath : STRING[80];
-	visCrossHair : typCrossHair; (*Data structure to draw the crosshairs on the main page*)
-	CrosshairModelNumber : USINT;
-	CrosshairPositionX : REAL;
-	CrosshairPositionY : REAL;
-	CrosshairOrientation : INT;
 	tmpStr1 : STRING[1000];
-	tmpStr2 : STRING[100];
-	tmpStr3 : STRING[100];
-	tmpC : REAL;
-	tmpYI : REAL;
-	tmpXI : REAL;
 	i : UINT;
 	visCameraStatus : STRING[20];
 END_VAR

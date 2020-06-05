@@ -174,13 +174,14 @@ TYPE
 		DAT : typVisionImageData;
 	END_STRUCT;
 	typVisionImageCommand : 	STRUCT 
-		Save : BOOL;
-		Refresh : BOOL;
-		Delete : BOOL;
-		Download : BOOL;
-		ResetError : BOOL;
-		DeleteDir : BOOL;
 		CreateDir : BOOL;
+		DeleteDir : BOOL;
+		DeleteImage : BOOL;
+		Refresh : BOOL;
+		DownloadImage : BOOL;
+		SaveImageOnPLC : BOOL;
+		ResetError : BOOL;
+		RefreshCrosshair : BOOL;
 	END_STRUCT;
 	typVisionImageConfig : 	STRUCT 
 		FileDevice : STRING[80];
@@ -196,6 +197,7 @@ TYPE
 		Images : ARRAY[0..19]OF STRING[80];
 		Crosshair : ARRAY[1..MAX_NUM_RESULTS]OF typVisionImageDataCrosshair;
 		Status : UINT;
+		VisionDisabled : BOOL;
 	END_STRUCT;
 	typVisionImageDataCrosshair : 	STRUCT 
 		CrosshairX : REAL;

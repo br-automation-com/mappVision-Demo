@@ -7,6 +7,10 @@
     <File Description="Local variables" Private="true">Variables.var</File>
     <File>Actions.st</File>
     <File Private="true">LocalFunctions.fun</File>
-    <File>LocalFunctions.st</File>
+    <File>ViDownloadImage.st</File>
+    <File>ViRefreshImageList.st</File>
+    <File>ViSaveImgOnPlc.st</File>
+    <File>ViDrawCrosshair.st</File>
+    <File>CrosshairDetailsText.st</File>
   </Files>
 </Program>

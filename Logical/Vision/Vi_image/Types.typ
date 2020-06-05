@@ -5,28 +5,10 @@ TYPE
 		VISTEP_WAIT,
 		VISTEP_CREATE_DIR,
 		VISTEP_DELETE_DIR,
-		VISTEP_READ_DIR1,
-		VISTEP_READ_DIR2,
-		VISTEP_READ_DIR3,
 		VISTEP_DELETE_IMAGE,
+		VISTEP_REFRESH_IMG_LIST,
 		VISTEP_DOWNLOAD_IMAGE,
-		VISTEP_DOWNLOAD_IMAGE_1,
-		VISTEP_DOWNLOAD_IMAGE_2,
-		VISTEP_DOWNLOAD_IMAGE_3,
-		VISTEP_DOWNLOAD_IMAGE_4,
-		VISTEP_REQUEST1,
-		VISTEP_REQUEST2,
-		VISTEP_SAVE1,
-		VISTEP_SAVE2,
-		VISTEP_SAVE3,
-		VISTEP_SVG_PREPARE,
-		VISTEP_SVG_BAS64_1,
-		VISTEP_SVG_BAS64_2,
-		VISTEP_SVG_CROSSH,
-		VISTEP_SVG_CONCAT,
-		VISTEP_SVG_SAVE1,
-		VISTEP_SVG_SAVE2,
-		VISTEP_SVG_SAVE3,
+		VISTEP_SAVE_IMG_ON_PLC,
 		VISTEP_ERR
 		);
 	SvgTexts_Type : 	STRUCT 
@@ -45,5 +27,31 @@ TYPE
 		BeginSVG : TIME;
 		BeginSVGSave : TIME;
 		EndSVGSave : TIME;
+	END_STRUCT;
+	MemInfo_Type : 	STRUCT 
+		UploadAdr : UDINT;
+		UploadSize : UDINT; (*Upload of the picture data with httpClient*)
+		SvgAdr : UDINT;
+		SvgSize : UDINT;
+		CrosshAdr : UDINT;
+		CrosshSize : UDINT; (*Crosshairs, Texts, ...*)
+		SvgHeaderSize : UDINT; (*Fileheader, ...*)
+	END_STRUCT;
+	typCrossHair : 	STRUCT  (*Cross hair data structure*)
+		SvgTransformation : ARRAY[1..MAX_NUM_RESULTS]OF STRING[200] := [10('')]; (*Transformation string for paper widget*)
+		SvgContent : ARRAY[1..MAX_NUM_RESULTS]OF STRING[1000]; (*Transformation string for paper widget*)
+		SvgVisible : ARRAY[1..MAX_NUM_RESULTS]OF BOOL := [10(FALSE)];
+		Scale : REAL := 1; (*Scale size of the cross hair*)
+		PixelRatio : REAL := 100; (*Position value for one pixel*)
+		Size : USINT := 80; (*Size of the cross hair in pixel*)
+		Font : USINT := 35;
+		DetailsNo : USINT := 1;
+		ShowCrosshair : BOOL := TRUE; (*Enable/Disable cross hairs*)
+	END_STRUCT;
+	typCrossHairInfo : 	STRUCT 
+		CrosshairX : REAL;
+		CrosshairY : REAL;
+		CrosshairRotate : REAL;
+		Text : STRING[1000];
 	END_STRUCT;
 END_TYPE

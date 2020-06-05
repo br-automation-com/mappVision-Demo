@@ -6,7 +6,7 @@
 			<Source contentRefId="contentImageArchiv" widgetRefId="btnImageArchivDownload" xsi:type="widgets.brease.Button.Event" event="Click" />
 			<EventHandler>
 				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.Download" >
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.DownloadImage" >
 						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 					</Target>
 				</Action>
@@ -28,7 +28,7 @@
 			<Source contentRefId="contentImageArchiv" widgetRefId="btnImageArchivDelete" xsi:type="widgets.brease.Button.Event" event="Click" />
 			<EventHandler>
 				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.Delete" >
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.DeleteImage" >
 						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 					</Target>
 				</Action>
@@ -39,7 +39,7 @@
 			<Source contentRefId="contentImageArchiv" widgetRefId="btnImageArchivSave" xsi:type="widgets.brease.Button.Event" event="Click" />
 			<EventHandler>
 				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.Save" >
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.SaveImageOnPLC" >
 						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 					</Target>
 				</Action>

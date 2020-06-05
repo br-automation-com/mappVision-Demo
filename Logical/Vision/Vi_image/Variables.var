@@ -1,52 +1,24 @@
 VAR
 	Step : VIStep_Enum;
-	tmpStr1 : STRING[80];
-	tmpStr2 : STRING[40];
-	tmpStr3 : STRING[80];
-	idx : UINT;
+	FileNameComplete : STRING[80];
 END_VAR
 VAR RETAIN
 	RemCfgImage : typVisionImageConfig;
-END_VAR
-VAR
-	DiagStartTime : TIME;
-	DiagTime : DiagTime_Type;
 END_VAR
 (**)
 (*Filehandling*)
 VAR
 	DirCreate_0 : DirCreate;
 	DirDeleteEx_0 : DirDeleteEx;
-	FileNamePict : STRING[80];
-	FileNameSvg : STRING[80];
-	FileCreate_0 : FileCreate;
 	FileDelete_0 : FileDelete;
-	FileWrite_0 : FileWrite;
-	FileClose_0 : FileClose;
-	DirRead_0 : DirRead;
-	dir_data : fiDIR_READ_DATA;
-	dir_entry : UINT;
-	file_newest : STRING[80];
-	file_oldest : STRING[80];
-	date_newest : DATE_AND_TIME;
-	date_oldest : DATE_AND_TIME;
-	cmdDeleteOldest : BOOL;
-	DTGetTime_0 : DTGetTime;
-	DTStructure_0 : DTStructure;
-	TON_VisPause : TON;
 END_VAR
 (**)
-(*http, download and upload image*)
+(*Internal FBKs*)
 VAR
 	ViDownloadImage_0 : ViDownloadImage;
-	httpClient_0 : httpClient;
-	RequestHeader : httpRequestHeader_t;
-	UploadImgSize : UDINT;
-	TON_ReloadTimeout : TON;
-END_VAR
-VAR CONSTANT
-	ERR_TIMEOUT_DOWNLOAD : UINT := 50320; (*Download response timed out*)
-	ERR_MEM_DOWNLOAD : UINT := 50310; (*Size of download file exceeds maximum*)
+	ViSaveImgOnPlc_0 : ViSaveImgOnPlc;
+	ViDrawCrosshair_0 : ViDrawCrosshair;
+	ViRefreshImageList_0 : ViRefreshImageList;
 END_VAR
 (**)
 (*mappView connected variables*)
@@ -57,38 +29,21 @@ VAR
 	visEnableButtons_1 : BOOL;
 	visEnableButtons_2 : BOOL;
 	visDownloadFileUrl : STRING[200];
+	visCrossHair : typCrossHair; (*Data structure to draw the crosshairs on the main page*)
+	visImageList : ARRAY[0..19] OF STRING[80];
 END_VAR
 (**)
-(*Create memory*)
+(*Memory handling*)
 VAR
 	AsMemPartCreate_0 : AsMemPartCreate;
 	AsMemPartAllocClear_0 : AsMemPartAllocClear;
-	MemUpload : UDINT;
-	MemUploadSize : UDINT;
-	MemSvg : UDINT;
-	MemSvgSize : UDINT;
-	MemSvgHeaderSize : UDINT;
-	MemSvgCrossh : UDINT;
-	MemSvgCrosshSize : UDINT;
-END_VAR
-(**)
-(*Bas64*)
-VAR
-	b64AdrInBuffer : UDINT;
-	b64AdrOutBuffer : UDINT;
-	b64neededOutput : UDINT;
-	b64key : ARRAY[0..63] OF USINT;
-	b64actposIN : UDINT;
-	b64actposOUT : UDINT;
-	b64in : REFERENCE TO ARRAY[0..2] OF USINT;
-	b64out : REFERENCE TO ARRAY[0..3] OF USINT;
-	b64blockLen : USINT;
-	SvgTexts : SvgTexts_Type;
-	i : UDINT;
+	MemInfo : MemInfo_Type;
 END_VAR
 (**)
 (*Constants*)
-VAR
-	ERR_NO_IMAGE : UINT := 50000;
-	ERR_BUFF_TOO_SMALL : UINT := 50001;
+VAR CONSTANT
+	ERR_NO_IMAGE : UINT := 50210;
+	ERR_BUFF_TOO_SMALL : UINT := 50220;
+	ERR_TIMEOUT_DOWNLOAD : UINT := 50320; (*Download response timed out*)
+	ERR_MEM_DOWNLOAD : UINT := 50310; (*Size of download file exceeds maximum*)
 END_VAR
