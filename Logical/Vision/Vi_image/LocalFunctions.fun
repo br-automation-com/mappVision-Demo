@@ -56,7 +56,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 	VAR_INPUT
 		Enable : BOOL;
 		CFG : typVisionImageConfig;
-		SelectedSensor : UINT;
+		PowerlinkNode : USINT;
 		MemInfo : MemInfo_Type;
 		CrossHairInfo : REFERENCE TO ARRAY[0..MAX_NUM_RESULTS] OF typCrossHairInfo;
 	END_VAR

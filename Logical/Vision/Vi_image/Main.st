@@ -187,7 +187,7 @@ PROGRAM _CYCLIC
 		VISTEP_SAVE_IMG_ON_PLC: // Save image from camera to PLC
 			ViSaveImgOnPlc_0.Enable				:= TRUE;
 			ViSaveImgOnPlc_0.CFG				:= gVisionImage.CFG;
-			ViSaveImgOnPlc_0.SelectedSensor		:= visSelectedSensor;
+			ViSaveImgOnPlc_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
 			ViSaveImgOnPlc_0.MemInfo			:= MemInfo;
 			ViSaveImgOnPlc_0.CrossHairInfo		:= ADR(ViDrawCrosshair_0.CrossHairInfo);
 			ViSaveImgOnPlc_0();
