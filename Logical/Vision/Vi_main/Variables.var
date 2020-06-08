@@ -62,3 +62,6 @@ END_VAR
 VAR CONSTANT
 	ERR_VA_LIST_NUM : UINT := 30000; (*Number of applications exceeds array size*)
 END_VAR
+VAR
+	TON_DelayAfterAutoSetup : TON;
+END_VAR
