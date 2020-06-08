@@ -101,6 +101,24 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF VisionSensor.DAT.Status = 0 THEN // Display only a single 0
 		visCameraStatus := '0';
+	ELSIF VisionSensor.DAT.Status = 16#00000001 THEN
+		visCameraStatus := 'Image acquisition';
+	ELSIF VisionSensor.DAT.Status = 16#00000002 THEN
+		visCameraStatus := 'Waiting trigger';
+	ELSIF VisionSensor.DAT.Status = 16#00000010 THEN
+		visCameraStatus := 'Searching settings';
+	ELSIF VisionSensor.DAT.Status = 16#00000080 THEN
+		visCameraStatus := 'Seting focus';
+	ELSIF VisionSensor.DAT.Status = 16#00000090 THEN
+		visCameraStatus := 'Searching settings';
+	ELSIF VisionSensor.DAT.Status = 16#00000800 THEN
+		visCameraStatus := 'Cam CPU not ready';
+	ELSIF VisionSensor.DAT.Status = 16#00001000 THEN
+		visCameraStatus := 'Cam sensor not ready';
+	ELSIF VisionSensor.DAT.Status = 16#02000000 THEN
+		visCameraStatus := 'Camera OS updata';
+	ELSIF VisionSensor.DAT.Status = 16#80000000 THEN
+		visCameraStatus := 'Vision cockpit active';
 	ELSE // Display the status in Format 0x02000800
 		visCameraStatus := '';
 		FOR i := 0 TO 28 BY 4 DO
