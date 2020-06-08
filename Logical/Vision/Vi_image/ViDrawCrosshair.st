@@ -147,8 +147,14 @@ FUNCTION_BLOCK ViDrawCrosshair
 							brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
 							brsstrcat(ADR(tmpStr1), ADR('</tspan></text>'));
 							
-							IF visCrossHair.DetailsNo = idx THEN
-								// Add text data from selected cross hair
+							// for saving svg file. The texts added below are not of interest for the saved SVG, so copy it now before adding the details information
+							brsstrcpy(ADR(CrossHairInfo[idx].Text), ADR(tmpStr1));
+							blueTextPos := FIND(CrossHairInfo[idx].Text, 'fill="blue"'); // Make all texts red. In the SVG is no highlighted crosshair
+							IF blueTextPos > 2 THEN
+								brsmemcpy(ADR(CrossHairInfo[idx].Text) + blueTextPos - 1, ADR('fill="red "'), 11);
+							END_IF
+							
+							IF visCrossHair.DetailsNo = idx THEN // Add text data from selected cross hair in the top left corner of the image
 								brsstrcat(ADR(tmpStr1), ADR('<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="10"> '));
 								
 								// Add model ID information for blob and match
@@ -204,12 +210,6 @@ FUNCTION_BLOCK ViDrawCrosshair
 						brsstrcat(ADR(tmpStr1), ADR('</text>'));
 					END_IF
 					visCrossHair.SvgContent[idx] := tmpStr1;
-					// for saving svg file
-					blueTextPos := FIND(tmpStr1, 'fill="blue"'); // Make all texts red. In the SVG is no highlighted crosshair
-					IF blueTextPos > 2 THEN
-						brsmemcpy(ADR(tmpStr1) + blueTextPos - 1, ADR('fill="red "'), 11);
-					END_IF
-					brsstrcpy(ADR(CrossHairInfo[idx].Text), ADR(tmpStr1));
 				ELSIF VisionSensor.DAT.ResultCnt = 0 AND VisionDisabled THEN // Vision function is disabled --> show a message
 					visCrossHair.SvgVisible[1]			:= TRUE;
 					visCrossHair.SvgTransformation[1]	:= '[{"select":"#CrosshairRed","display":false}, {"select":"#CrosshairBlue","display":false}]';
