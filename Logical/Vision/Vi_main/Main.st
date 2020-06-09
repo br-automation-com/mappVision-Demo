@@ -102,7 +102,7 @@ PROGRAM _CYCLIC
 	ELSIF VisionSensor.DAT.Status = 16#00001000 THEN
 		visCameraStatus := 'Cam sensor not ready';
 	ELSIF VisionSensor.DAT.Status = 16#02000000 THEN
-		visCameraStatus := 'OS check/updata';
+		visCameraStatus := 'OS check/update';
 	ELSIF VisionSensor.DAT.Status = 16#80000000 THEN
 		visCameraStatus := 'Vision cockpit active';
 	ELSE // Display the status in hex format 0x02000800
