@@ -93,7 +93,6 @@
         <Variable Name="visAutoArchiv" />
         <Variable Name="visEnableCommand" />
         <Variable Name="visEnableVision" />
-        <Variable Name="visHttpPath" />
         <Variable Name="visImageTrigger" />
         <Variable Name="visRepetitiveMode" />
         <Variable Name="visSelectedCodeTypeDetected" EnableArrayElements="True" />
@@ -119,6 +118,7 @@
           <Variable Name="SvgVisible" EnableArrayElements="True" />
         </Variable>
         <Variable Name="visImageList" EnableArrayElements="True" />
+        <Variable Name="visWebViewerPath" />
       </Task>
       <Task Name="Recipe_01">
         <Variable Name="RECIPE" AutomaticEnable="True">

@@ -133,6 +133,39 @@ FUNCTION_BLOCK ViDrawCrosshair
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK ViCreateWebDirFile
+	VAR_INPUT
+		Enable : BOOL;
+		FileDevUser : STRING[80];
+		EthDevice : STRING[80];
+		visWebViewerPath : REFERENCE TO STRING[80];
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+		Done : BOOL;
+	END_VAR
+	VAR
+		Step : INT;
+		DirInfo_0 : DirInfo;
+		DirCreate_0 : DirCreate;
+		FileCreate_0 : FileCreate;
+		FileWrite_0 : FileWrite;
+		FileClose_0 : FileClose;
+		DevLink_0 : DevLink;
+		FileCopy_0 : FileCopy;
+		DevUnlink_0 : DevUnlink;
+		CfgGetIPAddr_0 : CfgGetIPAddr;
+		FileDevSystem : STRING[80];
+		FileDevSystemPara : STRING[80];
+		DirNameWeb : STRING[80];
+		FileNameVisImgHtml : STRING[80];
+		FileNameEyeSystem : STRING[80];
+		FileNameEyeUser : STRING[80];
+		EthIpAddr : STRING[80];
+		HtmlFileContent : STRING[3000];
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION CrosshairDetailsText : BOOL
 	VAR_INPUT
 		strTarget : UDINT;

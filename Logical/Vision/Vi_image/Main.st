@@ -11,6 +11,7 @@ PROGRAM _INIT
 		gVisionImage.CFG.FileDevice 	:= 'VisionFileDevice';		// File device name where the images are stored
 		gVisionImage.CFG.DirName		:= 'Vision';				// Directory used for images
 		gVisionImage.CFG.CameraIP		:= '192.168.200.';			// IP adress of the camera (see PLK settings)
+		gVisionImage.CFG.EthDevice		:= 'IF2';					// Device path of the PLCs ETH address
 		gVisionImage.CFG.ConvertCycles	:= 10000;					// Conversioncycles per step (TK8 call). Use higer value on high performance CPU, use lower values on low performance CPU or in case of cycle time violations
 		gVisionImage.CFG.Format			:= 0;						// Image type, use 0 for JPEG, 1 for bitmap
 		gVisionImage.CFG.QualityJPG		:= 80;						// Quality for JPG images, larger numbers produce better images. Allowed values: 0 to 100, but values < ca 10 makes no sense
@@ -216,6 +217,15 @@ PROGRAM _CYCLIC
 	ViDrawCrosshair_0.visCrossHair			:= ADR(visCrossHair);
 	ViDrawCrosshair_0();
 	gVisionImage.CMD.RefreshCrosshair		:= FALSE;
+
+	// Create directory and files for showing the images on the mainpage in mappview visu
+	IF NOT ViCreateWebDirFile_0.Done THEN
+		ViCreateWebDirFile_0.Enable				:= TRUE;
+		ViCreateWebDirFile_0.FileDevUser		:= gVisionImage.CFG.FileDevice;
+		ViCreateWebDirFile_0.EthDevice			:= gVisionImage.CFG.EthDevice;
+		ViCreateWebDirFile_0.visWebViewerPath	:= ADR(visWebViewerPath);
+		ViCreateWebDirFile_0();
+	END_IF
 	
 	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
 END_PROGRAM

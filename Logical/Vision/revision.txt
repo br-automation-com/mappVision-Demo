@@ -1,13 +1,15 @@
 Version 2.2 (development)
-- Simplified and sorted the task Vi_image
-- Moved crosshair handling to task Vi_image
-- Some bugfixes in task Vi_image
-- Updated to official versions
+- Added new functionality to show images in every size on the webviewer widget on the mainpage
+- Improved repetitive mode
 
 Version 2.1
 - Simplified and reduced data structures
 - Added function to switch vision applications
 - Reduced result content to one page
+- Simplified and sorted the task Vi_image
+- Moved crosshair handling to task Vi_image
+- Some bugfixes in task Vi_image
+- Updated to official versions
 
 Version 2.0
 - Convert data structure to new camera firmware

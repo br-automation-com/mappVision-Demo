@@ -129,10 +129,7 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:visRepetitiveMode" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="value" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnMainReload" attribute="enable" />
-		</Binding>
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:visEnableRepetitive" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="enable" />
@@ -162,11 +159,7 @@
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.HW.Connected" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="imgBackgroundVisionEye" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visHttpPath" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerPath" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="host" />
 		</Binding>
 	</Bindings>

@@ -68,24 +68,9 @@
                 <Property ID="IaParameter" Value="Image01" />
               </Selector>
             </Group>
-            <Group ID="ParameterMode">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="ParameterMode" />
-              </Selector>
-            </Group>
             <Group ID="Enable">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="Enable" />
-              </Selector>
-            </Group>
-            <Group ID="CodeGrading">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="CodeGrading" />
-              </Selector>
-            </Group>
-            <Group ID="ParameterOptimization">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="ParameterOptimization" />
               </Selector>
             </Group>
             <Group ID="NumSearchMax">
@@ -93,14 +78,39 @@
                 <Property ID="IoParameter" Value="NumSearchMax" />
               </Selector>
             </Group>
+            <Group ID="ParameterMode">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="ParameterMode" />
+              </Selector>
+            </Group>
             <Group ID="Timeout">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="Timeout" />
               </Selector>
             </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
+              </Selector>
+            </Group>
+            <Group ID="ParameterOptimization">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="ParameterOptimization" />
+              </Selector>
+            </Group>
             <Group ID="SymbolType">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="OCRSymbolType" />
+              </Selector>
+            </Group>
+            <Group ID="EnableRobustness">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="EnableRobustness" />
+              </Selector>
+            </Group>
+            <Group ID="CodeGrading">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="CodeGrading" />
               </Selector>
             </Group>
             <Group ID="OffsetROIX">
@@ -126,16 +136,6 @@
             <Group ID="OffsetROIRotCenterY">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
-              </Selector>
-            </Group>
-            <Group ID="EnableRobustness">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="EnableRobustness" />
-              </Selector>
-            </Group>
-            <Group ID="Alignment">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
           </Group>

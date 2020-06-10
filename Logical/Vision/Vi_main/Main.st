@@ -155,13 +155,6 @@ PROGRAM _CYCLIC
 		visSelectedFlashSegment[3] := VisionSensor.DAT.FlashSegment.3;
 	END_IF
 	visSelectedFlashSegmentOld := visSelectedFlashSegment;
-
-	// -----------------------------------------------------------------------------------------------------------
-	// Create HTTP path for web control
-	// -----------------------------------------------------------------------------------------------------------
-	visHttpPath := 'http://192.168.200.';
-	brsitoa(VisionSensor.CFG.PowerlinkNode, ADR(tmpStr1));
-	brsstrcat(ADR(visHttpPath), ADR(tmpStr1));
 		
 	// -----------------------------------------------------------------------------------------------------------
 	// Disable command buttons when camera is disconnected, not ready, processing an image or vision cockpit is open
@@ -195,7 +188,7 @@ PROGRAM _CYCLIC
 		VisionSensor.DAT.Exposure			:= VisionSensor.DAT.AutoSetupExposure;
 		VisionSensor.CMD.AutoSetupStartStop	:= FALSE;
 		AutoSetupRunning					:= FALSE;
-		TON_DelayAfterAutoSetup.IN				:= TRUE;
+		TON_DelayAfterAutoSetup.IN			:= TRUE;
 	END_IF
 	TON_DelayAfterAutoSetup(PT := T#50ms);
 	IF TON_DelayAfterAutoSetup.Q THEN // After the camera tells it is ready, we need to wait still at least ca 20ms, otherwise it does not accept the trigger
@@ -218,9 +211,9 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	visEnableRepetitive := visEnableCommand OR visRepetitiveMode; // Enable of the repetitive mode button. Don't disable while repetitive mode is active
 	IF visRepetitiveMode THEN
-		// Trigger new image every 0.5s
+		// Trigger new image every 0.3s
 		RepetitiveModeTimer.IN := TRUE;
-		RepetitiveModeTimer.PT := T#500ms;
+		RepetitiveModeTimer.PT := T#300ms;
 		IF RepetitiveModeTimer.Q THEN
 			IF VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive THEN
 				RepetitiveModeTimer.IN := FALSE;
@@ -241,7 +234,6 @@ PROGRAM _CYCLIC
 	IF ((VisionSensor.DAT.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld OR VisionSensor.DAT.AcquisitionFailedCnt <> AcquisitionFailedCntOld) AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
 		AcquisitionCompletedCntOld		:= VisionSensor.DAT.AcquisitionCompletedCnt;
 		AcquisitionFailedCntOld			:= VisionSensor.DAT.AcquisitionFailedCnt;
-		VisionSensor.CMD.BrowserReload	:= TRUE;
 		VisionSensor.CMD.ImageTrigger	:= FALSE;	
 		// Store image to flash card
 		IF visAutoArchiv AND NOT DisableAutoArchiv THEN
@@ -268,17 +260,6 @@ PROGRAM _CYCLIC
 	END_IF
 	TriggerTimeout();
 
-	// -----------------------------------------------------------------------------------------------------------
-	// Auto reset web reload when stuck
-	// -----------------------------------------------------------------------------------------------------------
-	ReloadTimeout.PT := VisionSensor.DAT.Timeout/10;
-	ReloadTimeout.IN := VisionSensor.CMD.BrowserReload;
-	ReloadTimeout();
-	IF(ReloadTimeout.Q) THEN
-		ReloadTimeout.IN := FALSE;
-		VisionSensor.CMD.BrowserReload := FALSE;
-	END_IF
-	
 	// -----------------------------------------------------------------------------------------------------------
 	// Get list of vision applications and components
 	// -----------------------------------------------------------------------------------------------------------

@@ -2,6 +2,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 	IF NOT Enable THEN
 		Status := ERR_FUB_ENABLE_FALSE;
 		Step := 0;
+		RETURN;
 	END_IF
 	CASE Step OF
 		0:

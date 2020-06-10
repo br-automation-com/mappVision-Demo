@@ -68,6 +68,26 @@
                 <Property ID="IoParameter" Value="NumSearchMax" />
               </Selector>
             </Group>
+            <Group ID="Timeout">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Timeout" />
+              </Selector>
+            </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
+              </Selector>
+            </Group>
+            <Group ID="MinScore">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="MinScore" />
+              </Selector>
+            </Group>
+            <Group ID="MaxOverlap">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="MaxOverlay" />
+              </Selector>
+            </Group>
             <Group ID="OffsetROIX">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="OffsetRoiX" />
@@ -91,26 +111,6 @@
             <Group ID="OffsetROIRotCenterY">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
-              </Selector>
-            </Group>
-            <Group ID="Timeout">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Timeout" />
-              </Selector>
-            </Group>
-            <Group ID="MinScore">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="MinScore" />
-              </Selector>
-            </Group>
-            <Group ID="MaxOverlap">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="MaxOverlay" />
-              </Selector>
-            </Group>
-            <Group ID="Alignment">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
           </Group>

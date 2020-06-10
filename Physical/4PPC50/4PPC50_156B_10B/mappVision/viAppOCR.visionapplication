@@ -52,19 +52,29 @@
                 <Property ID="IaParameter" Value="Image01" />
               </Selector>
             </Group>
-            <Group ID="ParameterMode">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="ParameterMode" />
-              </Selector>
-            </Group>
             <Group ID="Enable">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="Enable" />
               </Selector>
             </Group>
+            <Group ID="NumSearchMax">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="NumSearchMax" />
+              </Selector>
+            </Group>
+            <Group ID="ParameterMode">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="ParameterMode" />
+              </Selector>
+            </Group>
             <Group ID="Timeout">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="Timeout" />
+              </Selector>
+            </Group>
+            <Group ID="Grading">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Grading" />
               </Selector>
             </Group>
             <Group ID="OffsetROIX">
@@ -90,16 +100,6 @@
             <Group ID="OffsetROIRotCenterY">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
-              </Selector>
-            </Group>
-            <Group ID="NumSearchMax">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="NumSearchMax" />
-              </Selector>
-            </Group>
-            <Group ID="Grading">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Grading" />
               </Selector>
             </Group>
           </Group>

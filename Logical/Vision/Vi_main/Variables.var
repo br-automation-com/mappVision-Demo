@@ -25,7 +25,6 @@ VAR
 	visAutoArchiv : BOOL; (*Enable/Disable auto archiving of camera images*)
 	visImageTrigger : BOOL; (*Trigger new image*)
 	TriggerTimeout : TON; (*Disable web reload when timed out*)
-	ReloadTimeout : TON_10ms; (*Disable web reload when timed out*)
 	visVisionApplicationList : ARRAY[0..19] OF STRING[80]; (*Flash color string*)
 	visSelectedFlashColor : STRING[10]; (*Flash color string*)
 	visSelectedFlashColorOld : STRING[10]; (*Flash color string*)
@@ -49,10 +48,9 @@ END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Image, crosshair data and constants*)
 VAR
-	visHttpPath : STRING[80];
 	tmpStr1 : STRING[1000];
 	i : UINT;
-	visCameraStatus : STRING[20];
+	visCameraStatus : STRING[30];
 END_VAR
 VAR CONSTANT
 	HexTab : STRING[16] := '0123456789ABCDEF';

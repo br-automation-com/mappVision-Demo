@@ -65,6 +65,11 @@
                 <Property ID="IoParameter" Value="NumSearchMax" />
               </Selector>
             </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
+              </Selector>
+            </Group>
             <Group ID="RegionFeatures">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="RegionalFeatures" />
@@ -98,11 +103,6 @@
             <Group ID="OffsetROIRotCenterY">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
-              </Selector>
-            </Group>
-            <Group ID="Alignment">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
           </Group>

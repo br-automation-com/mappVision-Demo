@@ -2,8 +2,7 @@
 <Content id="contentMain" height="1050" width="2432" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
     <Widget xsi:type="widgets.brease.Image" id="imgDisconnected" top="350" left="450" width="440" height="300" zIndex="0" image="Media/disconnected.png" backColor="rgba(255, 255, 255, 0)" />
-    <Widget xsi:type="widgets.brease.Image" id="imgBackgroundVisionEye" top="0" left="0" width="1280" height="1024" zIndex="2" image="Media/VisionEye.png" backColor="rgba(255, 255, 255, 0)" />
-    <Widget xsi:type="widgets.brease.WebViewer" id="WebViewerVisionMain" top="0" left="0" width="1300" height="1050" zIndex="3" path="jpg?q=30" port="8080" backColor="rgba(255, 255, 255, 0)" borderStyle="none" borderWidth="0px 0px 0px 0px" />
+    <Widget xsi:type="widgets.brease.WebViewer" id="WebViewerVisionMain" top="0" left="0" width="1300" height="1050" zIndex="3" path="VisionImg.html" query="jpg?q=30" backColor="rgba(255, 255, 255, 0)" borderStyle="none" borderWidth="0px 0px 0px 0px" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain1" top="0" left="0" width="1300" height="1024" zIndex="11" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain2" top="0" left="0" width="1300" height="1024" zIndex="12" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain3" top="0" left="0" width="1300" height="1024" zIndex="13" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
@@ -14,12 +13,11 @@
     <Widget xsi:type="widgets.brease.Paper" id="paperMain8" top="0" left="0" width="1300" height="1024" zIndex="18" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain9" top="0" left="0" width="1300" height="1024" zIndex="19" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain10" top="0" left="0" width="1300" height="1024" zIndex="20" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
-    <Widget xsi:type="widgets.brease.Button" id="btnMainReload" top="10" left="1330" width="280" height="100" zIndex="30" breakWord="true" mouseDownText="Reload Image" multiLine="true" text="Reload Image" fontSize="32px" style="Operate" />
-    <Widget xsi:type="widgets.brease.ToggleButton" id="btnChrosshairEnable" top="240" left="1330" width="280" height="100" zIndex="31" breakWord="true" mouseDownText="Disable Crosshairs" multiLine="true" text="Enable Crosshairs" fontSize="32px" bold="true" style="Operate" />
-    <Widget xsi:type="widgets.brease.ToggleButton" id="btnRepetitiveMode" top="125" left="1330" width="280" height="100" zIndex="32" breakWord="true" mouseDownText="Disable \n Repetitive Mode" multiLine="true" text="Enable \n Repetitive Mode" fontSize="32px" bold="true" style="Operate" />
-    <Widget xsi:type="widgets.brease.Label" id="labCameraNo" top="450" left="1335" width="270" zIndex="33" text="Show Details" textAlign="center" fontSize="32px" bold="false" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="numCameraNo" top="360" left="1425" width="80" height="80" zIndex="34" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="5" minValue="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="360" left="1335" width="80" height="80" zIndex="35" image="Media/back.svg" borderWidth="0px" />
-    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="360" left="1525" width="80" height="80" zIndex="36" image="Media/forward.svg" borderWidth="0px" />
+    <Widget xsi:type="widgets.brease.ToggleButton" id="btnChrosshairEnable" top="125" left="1330" width="280" height="100" zIndex="30" breakWord="true" mouseDownText="Disable Crosshairs" multiLine="true" text="Enable Crosshairs" fontSize="32px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.ToggleButton" id="btnRepetitiveMode" top="10" left="1330" width="280" height="100" zIndex="31" breakWord="true" mouseDownText="Disable \n Repetitive Mode" multiLine="true" text="Enable \n Repetitive Mode" fontSize="32px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.Label" id="labCameraNo" top="335" left="1335" width="270" zIndex="32" text="Show Details" textAlign="center" fontSize="32px" bold="false" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="numCameraNo" top="245" left="1425" width="80" height="80" zIndex="33" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="5" minValue="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" />
+    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="245" left="1335" width="80" height="80" zIndex="34" image="Media/back.svg" borderWidth="0px" />
+    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="245" left="1525" width="80" height="80" zIndex="35" image="Media/forward.svg" borderWidth="0px" />
   </Widgets>
 </Content>
