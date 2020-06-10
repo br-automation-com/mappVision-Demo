@@ -5,7 +5,7 @@
 
 <a name="Introduction"></a>
 ## Introduction
-This is a demo application for B&R vision camera. For a detailed description see this [**documentation**](Logical/Documentation/Vision%20Demo%20Application.pdf).
+This is a demo application for B&R vision camera. For a detailed description see this [**documentation**](Logical/Documentation/Vision%20Demo%20Application.pdf). Download the latest release from [**here.**](../../releases)
 
 ![](Logical/Documentation/screenshot.png)
 
