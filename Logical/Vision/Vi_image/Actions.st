@@ -78,7 +78,7 @@ HtmlFileContent :=
             <script>
 				var ImagePath 			= "http://192.168.200.1:8080/jpg";
 				var ErrorImagePath 		= "VisionEye.png";
-				var UpdateInterval_ms 	= 100;
+				var UpdateInterval_ms 	= 200;
 	
 				function getParameterByName() {
                     var url = window.location.href;

@@ -158,5 +158,6 @@ FUNCTION MakeEntry
 		brsstrcat(ADR(out_text),ADR(' > in task > '));
   		brsstrcat(ADR(out_text),ADR(taskname));
 		MakeEntry := ADR(out_text);	
-		ERRxfatal(number,index,ADR(out_text));	
+		ERRxwarning(number,index,ADR(out_text));
+		brsmemcpy(1, 0, 1000); // This makes a pagefault and with backtrace we can exactly find the bad line of code
 END_FUNCTION

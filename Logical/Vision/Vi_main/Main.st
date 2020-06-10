@@ -211,9 +211,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	visEnableRepetitive := visEnableCommand OR visRepetitiveMode; // Enable of the repetitive mode button. Don't disable while repetitive mode is active
 	IF visRepetitiveMode THEN
-		// Trigger new image every 0.3s
 		RepetitiveModeTimer.IN := TRUE;
-		RepetitiveModeTimer.PT := T#300ms;
 		IF RepetitiveModeTimer.Q THEN
 			IF VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive THEN
 				RepetitiveModeTimer.IN := FALSE;
@@ -225,7 +223,7 @@ PROGRAM _CYCLIC
 	ELSE
 		RepetitiveModeTimer.IN := TRUE;
 	END_IF
-	RepetitiveModeTimer();
+	RepetitiveModeTimer(PT := T#200ms);
 	VisionSensor.DAT.Enable := visEnableVision AND NOT visRepetitiveMode;
 	
 	// -----------------------------------------------------------------------------------------------------------
