@@ -222,21 +222,21 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.Header4));
 			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.CrosshairDefinition));
 			FOR i := 1 TO MAX_NUM_RESULTS DO
-				IF CrossHairInfo[i].CrosshairX <> 0 AND CrossHairInfo[i].CrosshairY <> 0 THEN
+				IF CrossHairInfo[i].CrosshairTopLeftX <> 0 AND CrossHairInfo[i].CrosshairTopLeftY <> 0 THEN
 					brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.Crosshair1));
-					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairX), ADR(tmpStr1));
+					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairTopLeftX), ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(','));
-					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairY), ADR(tmpStr1));
+					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairTopLeftY), ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(') rotate('));
-					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairRotate), ADR(tmpStr1));
+					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairRotateCenter), ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(',40,40)"/>'));
 				END_IF
 			END_FOR
 			FOR i := 1 TO MAX_NUM_RESULTS DO
-				IF CrossHairInfo[i].CrosshairX <> 0 AND CrossHairInfo[i].CrosshairY <> 0 THEN
+				IF CrossHairInfo[i].CrosshairTopLeftX <> 0 AND CrossHairInfo[i].CrosshairTopLeftY <> 0 THEN
 					brsstrcat(MemInfo.CrosshAdr, ADR('$r$n$t'));
 					brsstrcat(MemInfo.CrosshAdr, ADR(CrossHairInfo[i].Text));
 				END_IF

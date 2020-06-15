@@ -122,11 +122,9 @@ FUNCTION_BLOCK ViDrawCrosshair
 		CrosshairPositionX : REAL;
 		CrosshairPositionY : REAL;
 		CrosshairOrientation : INT;
-		tmpXI : REAL;
-		tmpYI : REAL;
-		tmpC : REAL;
-		tmpStr1 : STRING[1000];
-		tmpStr2 : STRING[100];
+		svgTrafo : STRING[200];
+		svgContent : STRING[1000];
+		tmpStr : STRING[100];
 		tmpStr3 : STRING[100];
 		blueTextPos : INT;
 		MT_UseXY : BOOL;

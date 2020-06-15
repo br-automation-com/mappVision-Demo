@@ -49,9 +49,10 @@ TYPE
 		ShowCrosshair : BOOL := TRUE; (*Enable/Disable cross hairs*)
 	END_STRUCT;
 	typCrossHairInfo : 	STRUCT 
-		CrosshairX : REAL;
-		CrosshairY : REAL;
-		CrosshairRotate : REAL;
+		CrosshairTopLeftX : REAL; (*top left position of the crosshair in pixels*)
+		CrosshairTopLeftY : REAL; (*top left position of the crosshair in pixels*)
+		CrosshairRotateCenter : REAL; (*crosshair rotation around center in degrees*)
+		CrosshairSize : REAL; (*crosshair size in pixel (in both directions)*)
 		Text : STRING[1000];
 	END_STRUCT;
 END_TYPE

@@ -195,15 +195,8 @@ TYPE
 	END_STRUCT;
 	typVisionImageData : 	STRUCT 
 		Images : ARRAY[0..19]OF STRING[80];
-		Crosshair : ARRAY[1..MAX_NUM_RESULTS]OF typVisionImageDataCrosshair;
 		Status : UINT;
 		VisionDisabled : BOOL;
-	END_STRUCT;
-	typVisionImageDataCrosshair : 	STRUCT 
-		CrosshairX : REAL;
-		CrosshairY : REAL;
-		CrosshairRotate : REAL;
-		Text : STRING[1000];
 	END_STRUCT;
 END_TYPE
 
