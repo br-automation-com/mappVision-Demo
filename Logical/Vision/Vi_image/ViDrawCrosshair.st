@@ -17,15 +17,10 @@ FUNCTION_BLOCK ViDrawCrosshair
 		RETURN;
 	END_IF
 	
-	// Hide cross hairs
-	IF NOT visCrossHair.ShowCrosshair THEN
-		brsmemset(ADR(visCrossHair.SvgTransformation), 0, SIZEOF(visCrossHair.SvgTransformation));
-		brsmemset(ADR(visCrossHair.SvgVisible), 0, SIZEOF(visCrossHair.SvgVisible));
-	END_IF
-	
 	// Draw cross hairs
-	IF CmdRefreshCrosshair OR NOT ShowCrosshairOld OR (visCrossHair.DetailsNo <> DetailsNoOld) OR (SelectedSensor <> SelectedSensorOld) THEN
-		SelectedSensorOld := SelectedSensor;
+	IF CmdRefreshCrosshair OR (visCrossHair.ShowCrosshair <> ShowCrosshairOld) OR (visCrossHair.DetailsNo <> DetailsNoOld) OR (SelectedSensor <> SelectedSensorOld) THEN
+		ShowCrosshairOld	:= visCrossHair.ShowCrosshair;
+		SelectedSensorOld	:= SelectedSensor;
 		// First delete transformation and make everything invisible
 		brsmemset(ADR(visCrossHair.SvgTransformation), 0, SIZEOF(visCrossHair.SvgTransformation));
 		brsmemset(ADR(visCrossHair.SvgVisible), 0, SIZEOF(visCrossHair.SvgVisible));
@@ -51,6 +46,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 				// Make sure we have data to display
 				IF VisionSensor.DAT.ResultCnt <> 0 AND idx <= VisionSensor.DAT.ResultCnt THEN
 					// Select data source from vision function
+					MT_UseXY := FALSE;
 					CASE VisionSensor.CFG.VisionFunction OF
 						enumBlob:
 							CrosshairModelNumber	:= Blob.ModelNumber[idx];
@@ -76,7 +72,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 								CrosshairPositionY	:= UDINT_TO_REAL(MT.Result[idx+1])/10;
 								idx := idx + 1;
 							END_IF
-							MT.UseResultAsXY := TRUE; // use this variable because of in case Visionfunction != MT then the Pointer MT is not initialized
+							MT_UseXY := TRUE; // use this variable because of in case Visionfunction != MT then the Pointer MT is not initialized
 					END_CASE
 				
 					// Show crosshair except for measurement function
@@ -218,5 +214,4 @@ FUNCTION_BLOCK ViDrawCrosshair
 			END_FOR
 		END_IF // IF visCrossHair.ShowCrosshair THEN
 	END_IF
-	ShowCrosshairOld := visCrossHair.ShowCrosshair;
 END_FUNCTION_BLOCK
