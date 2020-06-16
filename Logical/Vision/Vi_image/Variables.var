@@ -5,6 +5,9 @@ END_VAR
 VAR RETAIN
 	RemCfgImage : typVisionImageConfig;
 END_VAR
+VAR
+	tmpStr : STRING[80];
+END_VAR
 (**)
 (*Filehandling*)
 VAR
@@ -33,6 +36,7 @@ VAR
 	visCrossHair : typCrossHair; (*Data structure to draw the crosshairs on the main page*)
 	visImageList : ARRAY[0..19] OF STRING[80];
 	visWebViewerPath : STRING[80];
+	visWebViewerQuery : STRING[80];
 END_VAR
 (**)
 (*Memory handling*)

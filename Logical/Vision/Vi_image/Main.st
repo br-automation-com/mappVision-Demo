@@ -226,6 +226,9 @@ PROGRAM _CYCLIC
 		ViCreateWebDirFile_0.visWebViewerPath	:= ADR(visWebViewerPath);
 		ViCreateWebDirFile_0();
 	END_IF
+	visWebViewerQuery := 'jpg?q=30&node=';
+	brsitoa(gVisionSensor[visSelectedSensor].CFG.PowerlinkNode, ADR(tmpStr));
+	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
 	
 	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
 END_PROGRAM

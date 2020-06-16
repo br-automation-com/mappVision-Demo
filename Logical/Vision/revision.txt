@@ -1,6 +1,7 @@
 Version 2.2 (development)
 - Added new functionality to show images in every size on the webviewer widget on the mainpage
 - Improved repetitive mode
+- SVG files save now all information. It is possible to click on the crosshairs to show the details
 
 Version 2.1
 - Simplified and reduced data structures

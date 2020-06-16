@@ -12,13 +12,19 @@ TYPE
 		VISTEP_ERR
 		);
 	SvgTexts_Type : 	STRUCT 
-		Header1 : STRING[500];
-		Header2 : STRING[500];
-		Header3 : STRING[500];
-		Header4 : STRING[500];
-		CrosshairDefinition : STRING[1000];
-		Crosshair1 : STRING[500];
-		SvgClose : STRING[50];
+		ContentStart : STRING[500];
+		ContentAfterTitle : STRING[200];
+		ContentBase64 : STRING[200];
+		ContentBeginJS : STRING[2000];
+		ContentBetween1 : STRING[200];
+		ContentBetween2 : STRING[200];
+		ContentEndJS : STRING[3000];
+		ContentCrossHairBegin : STRING[200];
+		ContentCrossHairMiddle : STRING[200];
+		ContentCrossHairEnd : STRING[200];
+		ContentCrossHairRed : STRING[200];
+		ContentCrossHairIndex : STRING[200];
+		ContentEnd : STRING[2000];
 	END_STRUCT;
 	DiagTime_Type : 	STRUCT 
 		Refresh : TIME;
@@ -53,6 +59,8 @@ TYPE
 		CrosshairTopLeftY : REAL; (*top left position of the crosshair in pixels*)
 		CrosshairRotateCenter : REAL; (*crosshair rotation around center in degrees*)
 		CrosshairSize : REAL; (*crosshair size in pixel (in both directions)*)
+		DataVis : STRING[80];
+		Data : STRING[400];
 		Text : STRING[1000];
 	END_STRUCT;
 END_TYPE

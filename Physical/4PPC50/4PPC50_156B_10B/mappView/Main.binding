@@ -162,5 +162,9 @@
 			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerPath" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="host" />
 		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerQuery" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="query" />
+		</Binding>
 	</Bindings>
 </BindingsSet>

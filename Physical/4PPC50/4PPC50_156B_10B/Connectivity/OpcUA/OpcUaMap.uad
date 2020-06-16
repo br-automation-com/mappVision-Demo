@@ -119,6 +119,7 @@
         </Variable>
         <Variable Name="visImageList" EnableArrayElements="True" />
         <Variable Name="visWebViewerPath" />
+        <Variable Name="visWebViewerQuery" />
       </Task>
       <Task Name="Recipe_01">
         <Variable Name="RECIPE" AutomaticEnable="True">

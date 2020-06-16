@@ -90,6 +90,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 		b64in : REFERENCE TO ARRAY[0..2] OF USINT;
 		b64out : REFERENCE TO ARRAY[0..3] OF USINT;
 		b64blockLen : UINT;
+		FirstElement : BOOL;
 		SvgTexts : SvgTexts_Type;
 		tmpStr1 : STRING[80];
 		i : UDINT;
@@ -125,7 +126,6 @@ FUNCTION_BLOCK ViDrawCrosshair
 		svgTrafo : STRING[200];
 		svgContent : STRING[1000];
 		tmpStr : STRING[100];
-		tmpStr3 : STRING[100];
 		blueTextPos : INT;
 		MT_UseXY : BOOL;
 	END_VAR

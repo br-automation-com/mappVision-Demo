@@ -168,15 +168,15 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			IF b64neededOutput < MemInfo.SvgSize - MemInfo.SvgHeaderSize - MemInfo.CrosshSize THEN
 				brsmemset(MemInfo.SvgAdr, 0, MemInfo.SvgSize); // clear complete memory
 				// Prepare the svg header up to the base64 picture data
-				brsstrcpy(MemInfo.SvgAdr, ADR(SvgTexts.Header1));
+				brsstrcpy(MemInfo.SvgAdr, ADR(SvgTexts.ContentStart));
 				brsstrcat(MemInfo.SvgAdr, ADR(FileNameSvg));
-				brsstrcat(MemInfo.SvgAdr, ADR(SvgTexts.Header2));
+				brsstrcat(MemInfo.SvgAdr, ADR(SvgTexts.ContentAfterTitle));
 				IF CFG.Format = 0 THEN
 					brsstrcat(MemInfo.SvgAdr, ADR('jpg'));
 				ELSE
 					brsstrcat(MemInfo.SvgAdr, ADR('bmp'));
 				END_IF
-				brsstrcat(MemInfo.SvgAdr, ADR(SvgTexts.Header3));
+				brsstrcat(MemInfo.SvgAdr, ADR(SvgTexts.ContentBase64));
 				Step := 31;
 			ELSE
 				Status := ERR_BUFF_TOO_SMALL;
@@ -219,11 +219,29 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 
 		33: // Prepare the second part after base64 picture data
 			brsmemset(MemInfo.CrosshAdr, 0, MemInfo.CrosshSize);
-			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.Header4));
-			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.CrosshairDefinition));
+			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentBeginJS));
+			brsstrcat(MemInfo.CrosshAdr, ADR(CrossHairInfo[1].DataVis));
+			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentBetween1));
+			FirstElement := TRUE;
 			FOR i := 1 TO MAX_NUM_RESULTS DO
 				IF CrossHairInfo[i].CrosshairTopLeftX <> 0 AND CrossHairInfo[i].CrosshairTopLeftY <> 0 THEN
-					brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.Crosshair1));
+					IF FirstElement THEN
+						FirstElement := FALSE;
+					ELSE
+						brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentBetween2)); // Needed between the elements
+					END_IF
+					brsstrcat(MemInfo.CrosshAdr, ADR(CrossHairInfo[i].Data));
+				END_IF
+			END_FOR
+			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentEndJS));
+
+			// Create the crosshairs
+			FOR i := 1 TO MAX_NUM_RESULTS DO
+				IF CrossHairInfo[i].CrosshairTopLeftX <> 0 AND CrossHairInfo[i].CrosshairTopLeftY <> 0 THEN
+					brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentCrossHairBegin));
+					brsitoa(i, ADR(tmpStr1));
+					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
+					brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentCrossHairMiddle));
 					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairTopLeftX), ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(','));
@@ -232,16 +250,18 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 					brsstrcat(MemInfo.CrosshAdr, ADR(') rotate('));
 					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairRotateCenter), ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
-					brsstrcat(MemInfo.CrosshAdr, ADR(',40,40)"/>'));
+					brsstrcat(MemInfo.CrosshAdr, ADR(',40,40)"'));
+					brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentCrossHairEnd));
 				END_IF
 			END_FOR
+			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentCrossHairRed));
+			// Create the indices
 			FOR i := 1 TO MAX_NUM_RESULTS DO
 				IF CrossHairInfo[i].CrosshairTopLeftX <> 0 AND CrossHairInfo[i].CrosshairTopLeftY <> 0 THEN
-					brsstrcat(MemInfo.CrosshAdr, ADR('$r$n$t'));
-					brsstrcat(MemInfo.CrosshAdr, ADR(CrossHairInfo[i].Text));
+					brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentCrossHairIndex));
 				END_IF
 			END_FOR
-			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.SvgClose));
+			brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentEnd));
 			Step := 41;
 		41:
 			brsstrcat(MemInfo.SvgAdr, MemInfo.CrosshAdr);
