@@ -1,25 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Footer_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Bindings>
-		<EventBinding id="contentFooter.btnImageTrigger.Click">
-			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentFooter" widgetRefId="btnImageTrigger" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visImageTrigger">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<EventBinding id="AutoSetupStartStop">
-			<Source xsi:type="opcUa.Event" refId="::Vi_main:VisionSensor.CMD.AutoSetupStartStop" event="ValueChanged" />
-			<EventHandler condition="NOT newValue">
-				<Action>
-					<Target xsi:type="widgets.brease.FlyOut.Action" contentRefId="contentFooter" widgetRefId="faAutoSetup">
-						<Method xsi:type="widgets.brease.FlyOut.Action.Close" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-	</Bindings>
+  <Bindings>
+    <EventBinding id="contentFooter.btnImageTrigger.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentFooter" widgetRefId="btnImageTrigger" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visImageTrigger">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="AutoSetupStartStop">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:VisionSensor.CMD.AutoSetupStartStop" event="ValueChanged" />
+      <EventHandler condition="NOT newValue">
+        <Action>
+          <Target xsi:type="widgets.brease.FlyOut.Action" contentRefId="contentFooter" widgetRefId="faAutoSetup">
+            <Method xsi:type="widgets.brease.FlyOut.Action.Close" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="contentFooter.btnDiagSave.Click">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentFooter" widgetRefId="btnDiagSave" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.CMD.SaveDiagData">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="SaveDiagData">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:VisionSensor.CMD.SaveDiagData" event="ValueChanged" />
+      <Operand datatype="ANY_INT" name="DiagStatus">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_main:VisionSensor.DIA.Status" serverAlias="">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="DiagStatus=0 AND newValue=0">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition" header="Success" icon="Information" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+  </Bindings>
 </EventBindingSet>

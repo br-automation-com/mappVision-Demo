@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 PROGRAM _INIT
 	IF RemCfgImage.ConvertCycles = 0 THEN 							// Invalid --> use default values
-		gVisionImage.CFG.FileDevice 	:= 'VisionFileDevice';		// File device name where the images are stored
+		gVisionImage.CFG.FileDevice 	:= DEVICE_NAME;				// File device name where the images are stored
 		gVisionImage.CFG.DirName		:= 'Vision';				// Directory used for images
 		gVisionImage.CFG.CameraIP		:= '192.168.200.';			// IP adress of the camera (see PLK settings)
 		gVisionImage.CFG.EthDevice		:= 'IF2';					// Device path of the PLCs ETH address

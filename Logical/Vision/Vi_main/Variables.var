@@ -1,4 +1,5 @@
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Main vision and data structures*)
 VAR
 	VisionSensor : REFERENCE TO typVisionMain; (*General vision functions that are independent from the inspection function*)
 	Match : REFERENCE TO typMatchMain; (*Data that is specific for the match function*)
@@ -11,10 +12,17 @@ VAR
 	tmpMT : {REDUND_UNREPLICABLE} typMTMain; (*Data that is specific for the OCR function*)
 	tmpOCR : {REDUND_UNREPLICABLE} typOCRMain; (*Data that is specific for the OCR function*)
 	tmpBlob : {REDUND_UNREPLICABLE} typBlobMain; (*Data that is specific for the blob function*)
-	VaGetList_01 : VaGetList;
-	ViBaseLoadApplication_01 : ViBaseLoadApplication;
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Vision function blocks*)
+VAR
+	VaGetList_01 : VaGetList;
+	ViBaseLoadApplication_01 : ViBaseLoadApplication;
+	ViBaseSaveDiagData_01 : ViBaseSaveDiagData;
+	FDelete : FileDelete;
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Local variables*)
 VAR
 	idx : UINT;
 	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];

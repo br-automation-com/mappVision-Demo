@@ -321,4 +321,39 @@ PROGRAM _CYCLIC
 		gVisionImage.CMD.RefreshCrosshair := TRUE;
 	END_IF
 	gVisionImage.DAT.VisionDisabled := NOT visEnableVision;
+	
+	// -----------------------------------------------------------------------------------------------------------
+	// Save diagnostic data
+	// -----------------------------------------------------------------------------------------------------------
+	IF (VisionSensor.CMD.SaveDiagData) THEN
+		// Delete old file first
+		FDelete.enable := VisionSensor.CMD.SaveDiagData AND NOT ViBaseSaveDiagData_01.Execute;
+		FDelete.pDevice := ADR(DEVICE_NAME);
+		FDelete.pName := ADR(VisionSensor.DIA.DiagName);
+		IF (FDelete.status <> ERR_FUB_BUSY) THEN
+			ViBaseSaveDiagData_01.Execute := TRUE;
+		END_IF
+		// Upload diagnostic information
+		ViBaseSaveDiagData_01.MpLink := ADR(VisionSensor.CFG.ComponentLink);
+		ViBaseSaveDiagData_01.DeviceName := ADR(DEVICE_NAME);
+		ViBaseSaveDiagData_01.FileName := ADR(VisionSensor.DIA.DiagName);
+		VisionSensor.DIA.Status := ERR_FUB_BUSY;
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// OK
+		IF (ViBaseSaveDiagData_01.Done) THEN
+			VisionSensor.DIA.Status := ERR_OK;
+			ViBaseSaveDiagData_01.Execute := FALSE;
+			VisionSensor.CMD.SaveDiagData := FALSE;
+		// -----------------------------------------------------------------------------------------------------------
+		// Error
+		ELSIF (NOT ViBaseSaveDiagData_01.Busy AND ViBaseSaveDiagData_01.Error) THEN
+			VisionSensor.DIA.Status := ViBaseSaveDiagData_01.StatusID;
+			ViBaseSaveDiagData_01.Execute := FALSE;
+			VisionSensor.CMD.SaveDiagData := FALSE;
+		END_IF
+	END_IF
+	ViBaseSaveDiagData_01();
+	FDelete();
+
 END_PROGRAM

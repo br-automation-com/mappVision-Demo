@@ -7,6 +7,7 @@ TYPE
 		CFG : typVisionConfig;
 		DAT : typVisionData;
 		FCT : typVisionFunction;
+		DIA : typVisionDiag;
 		HW : typVisionHW;
 	END_STRUCT;
 	typVisionCommand : 	STRUCT 
@@ -15,6 +16,7 @@ TYPE
 		AutoSetupStartStop : BOOL;
 		VaListRefresh : BOOL;
 		VaSwitchApplication : BOOL;
+		SaveDiagData : BOOL;
 	END_STRUCT;
 	typVisionConfig : 	STRUCT 
 		VisionFunction : enumVisionFunction;
@@ -26,7 +28,11 @@ TYPE
 		ApplicationName : STRING[40];
 		ApplicationNameCnt : USINT;
 		ApplicationNameList : ARRAY[0..19]OF STRING[40];
-		Status : UDINT;
+		Status : DINT;
+	END_STRUCT;
+	typVisionDiag : 	STRUCT 
+		DiagName : STRING[80] := 'diag.tgz';
+		Status : DINT;
 	END_STRUCT;
 	typVisionData : 	STRUCT 
 		Enable : BOOL := FALSE;

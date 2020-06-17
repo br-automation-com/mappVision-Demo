@@ -33,5 +33,14 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:visSelectedSensor" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="numCameraNo" attribute="value" />
 		</Binding>
-	</Bindings>
+	
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DIA.DiagName" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="txtDiagName" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DIA.Status" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDIAG_Status" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>
