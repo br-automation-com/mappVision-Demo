@@ -1,3 +1,15 @@
+Version 0.91 (12.06.2020)
+- Wrong MpLink name now generates an error
+- Moved status text up to main strutcure
+- Moved error no up to main structure and renamed it to StatusNo
+- Better recovering from errors
+
+Version 0.81
+- Changed some parameters to constants
+- Simplified configuration
+- Added better error messages
+- Added the possibility to define multiple variables
+
 Version 0.7
 - Fixed recipe view does not show correct data on double click or command view
 - Fixed ReplaceString function call

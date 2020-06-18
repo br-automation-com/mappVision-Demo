@@ -10,7 +10,8 @@ END_VAR
 (*Local Variables*)
 VAR
 	RECIPE : REFERENCE TO recMAIN; (*Local recipe structure*)
-	RecipeIDs : ARRAY[0..REC_MAX_NUM] OF BOOL; (*Used with unicode option, keeps tracks of the IDs used*)
+	DeviceName : STRING[80]; (*Device name where the recipes are stored*)
+	RecipeIDs : ARRAY[0..REC_REC_NUM] OF BOOL; (*Used with unicode option, keeps tracks of the IDs used*)
 	RecipeIndex : UINT; (*Current recipe index*)
 	RecipeName : WSTRING[REC_NAME_LENGTH]; (*Local recipe name*)
 	RecipeNameNew : WSTRING[REC_NAME_LENGTH]; (*Local recipe new name*)
@@ -20,35 +21,35 @@ VAR
 	rec_state : recSTATE := REC_WAIT; (*Main step index *)
 	animation : USINT := 0; (*Animation for working status	*)
 	VisuSlotID : USINT; (*Slot of the visualization that is current used*)
-	idx : UINT;
-	idy : UINT;
+	idx : UINT; (*Index*)
+	idy : UINT; (*Index*)
 	has_oversized_items : BOOL; (*Indicates that at least one recipe name exceeds the maximum length*)
 	tmpStr1 : STRING[200]; (*Temporary string variable *)
 	tmpStr2 : STRING[200]; (*Temporary string variable *)
 	tmpWStr1 : WSTRING[REC_VIS_LENGTH]; (*Temporary unicode string variable *)
 	tmpWStr2 : WSTRING[REC_VIS_LENGTH]; (*Temporary unicode string variable *)
 	lDirReadData : fiDIR_READ_EX_DATA; (*File information structure*)
-	this : STRING[100]; (*Name of the task and global recipe structure*)
 	taskID : UDINT; (*Task ID*)
 	taskGroup : USINT; (*Task Group*)
 	taskStatus : UINT; (*Status of task information*)
 	pvADR : UDINT; (*Adress of global variable structure*)
 	pvLEN : UDINT; (*Lenght of global variable structure*)
 	pvStatus : UINT; (*Status of global variable information*)
+	pvCnt : UINT; (*Counter for variable registration*)
 	MpRecipeDone : BOOL; (*Generic status done*)
 	MpRecipeError : BOOL; (*Genereic status error*)
 	MpRecipeStatusID : DINT; (*Generic error details*)
-	DoubleClickRecipeName : ARRAY[0..REC_MAX_CLIENTS_ID] OF TON_10ms;
-	response_header : httpResponseHeader_t;
-	response_header_data : STRING[300];
-	upload_delay : TON_10ms;
-	download_timeout : TON_10ms;
-	upload_response : STRING[600];
-	file_name_start : UDINT;
-	file_name_len : UDINT;
-	file_data_start : UDINT;
-	file_data_len : UDINT;
-	item_name : STRING[REC_NAME_LENGTH];
+	DoubleClickRecipeName : ARRAY[0..REC_MAX_CLIENTS_ID] OF TON_10ms; (*Timer for double click detection*)
+	response_header : httpResponseHeader_t; (*Response header for download*)
+	response_header_data : STRING[300]; (*Response header data*)
+	upload_delay : TON_10ms; (*Wait for upload data to finish*)
+	download_timeout : TON_10ms; (*Timeout when download must finish*)
+	upload_response : STRING[600]; (*Response for upload*)
+	file_name_start : UDINT; (*Start of file name in upload data*)
+	file_name_len : UDINT; (*Length of file name in upload data*)
+	file_data_start : UDINT; (*Start of data in upload data*)
+	file_data_len : UDINT; (*Length of data in upload data*)
+	item_name : STRING[REC_NAME_LENGTH]; (*Recipe name in upload data*)
 END_VAR
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Local function calls*)
@@ -72,7 +73,8 @@ VAR
 	MpRecipeCsv_0 : MpRecipeCsv;
 	MpRecipeXml_0 : MpRecipeXml;
 	MpRecipeRegPar_0 : MpRecipeRegPar;
-	MpRecipeRegPar_1 : MpRecipeRegPar;
+	MpRecipeRegPar_1 : ARRAY[1..REC_VAR_NUM] OF MpRecipeRegPar;
+	MpComGetLink_0 : MpComGetLink;
 END_VAR
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Error numbers*)
@@ -82,17 +84,12 @@ VAR CONSTANT
 	ERR_REC_NAME_EXISTS : DINT := 50101; (*Recipe name already exists*)
 	ERR_REC_NAME_LOST : DINT := 50102; (*Recipe name was not found*)
 	ERR_REC_NAME_LENGTH : DINT := 50103; (*One or more recipe names exceeds maximum length*)
-END_VAR
-VAR
 	ERR_REC_DEV_NAME_EMPTY : DINT := 50110; (*Device name is empty*)
-END_VAR
-VAR CONSTANT
 	ERR_REC_VAR_NAME_EMPTY : DINT := 50120; (*Variable name is empty*)
 	ERR_REC_NOT_INITIALIZED : DINT := 50130; (*Recipemanagement is not initialized*)
-	ERR_REC_MAX_NUM : DINT := 50140; (*Maximum number of recipes reached*)
+	ERR_REC_REC_NUM : DINT := 50140; (*Maximum number of recipes reached*)
 	ERR_REC_TASK_NAME : DINT := 50150; (*Task name is incorrect*)
-END_VAR
-VAR
+	ERR_REC_MPLINK : DINT := 50160; (*MpLink name is incorrect*)
 	ERR_MEM_ALLOC : UINT := 50300; (*Memory allocation for file upload and download failed*)
 	ERR_MEM_DOWNLOAD : UINT := 50310; (*Size of download file exceeds maximum*)
 	ERR_TIMEOUT_DOWNLOAD : UINT := 50320; (*Download response timed out*)

@@ -264,3 +264,19 @@ TYPE
 		Result : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 	END_STRUCT;
 END_TYPE
+
+(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Structure that contains the recipe variables*)
+
+TYPE
+	recVariable : 	STRUCT 
+		ApplicationName : STRING[40];
+		MaxItemCnt : USINT := 10;
+		Timeout : UINT := 5000;
+		Gain : USINT;
+		Focus : UINT;
+		Exposure : UDINT;
+		FlashColor : USINT := 1;
+		FlashSegment : USINT := 15;
+	END_STRUCT;
+END_TYPE

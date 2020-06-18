@@ -15,8 +15,8 @@
     <Task Name="Vi_main" Source="Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_light" Source="Vision.Vi_light.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_image" Source="Vision.Vi_image.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="YourTask" Source="Vision.YourTask.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Recipe_01" Source="mappRecipe.Recipe_01.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="YourTask" Source="Vision.YourTask.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <DataObjects>
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />
@@ -90,5 +90,6 @@
     <LibraryObject Name="McAcpAx" Source="Libraries.McAcpAx.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="ViBase" Source="Libraries.ViBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MpCom" Source="Libraries.MpCom.lby" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

@@ -31,7 +31,7 @@ END_FUNCTION
 // Create error
 //******************************************************************************************************
 FUNCTION CreateError
-	RECIPE.ERR.No := No;
+	RECIPE.StatusNo := No;
 	RECIPE.ERR.State := State;
 	RECIPE.ERR.Text := Text;
 	CreateError := REC_ERROR;
@@ -62,13 +62,13 @@ FUNCTION WorkingStatus
 		animation := 0;
 	END_IF
 
-	brsmemset(ADR(RECIPE.DAT.Status), 0, SIZEOF(RECIPE.DAT.Status));
-	brwcscpy(ADR(RECIPE.DAT.Status), str);
+	brsmemset(ADR(RECIPE.StatusText), 0, SIZEOF(RECIPE.StatusText));
+	brwcscpy(ADR(RECIPE.StatusText), str);
 	CASE(animation) OF
-		0..19	: brwcscat(ADR(RECIPE.DAT.Status), ADR("/"));
-		20..39	: brwcscat(ADR(RECIPE.DAT.Status), ADR("-"));
-		40..59	: brwcscat(ADR(RECIPE.DAT.Status), ADR("\"));
-		60..79	: brwcscat(ADR(RECIPE.DAT.Status), ADR("|"));
+		0..19	: brwcscat(ADR(RECIPE.StatusText), ADR("/"));
+		20..39	: brwcscat(ADR(RECIPE.StatusText), ADR("-"));
+		40..59	: brwcscat(ADR(RECIPE.StatusText), ADR("\"));
+		60..79	: brwcscat(ADR(RECIPE.StatusText), ADR("|"));
 	END_CASE;
 	WorkingStatus := animation;
 END_FUNCTION
@@ -78,12 +78,12 @@ END_FUNCTION
 //******************************************************************************************************
 FUNCTION RemoveRecName
 	// Remove name from recipe list
-	IF(RecipeIndex < REC_MAX_NUM) THEN
-		brsmemmove(ADR(RECIPE.DAT.RecipeNames[RecipeIndex]),ADR(RECIPE.DAT.RecipeNames[RecipeIndex+1]), (REC_MAX_NUM - RecipeIndex) * SIZEOF(RECIPE.DAT.RecipeNames[0]));
-		brsmemmove(ADR(RECIPE.DAT.RecipeIDs[RecipeIndex]),ADR(RECIPE.DAT.RecipeIDs[RecipeIndex+1]), (REC_MAX_NUM - RecipeIndex) * SIZEOF(RECIPE.DAT.RecipeIDs[0]));
+	IF(RecipeIndex < REC_REC_NUM) THEN
+		brsmemmove(ADR(RECIPE.DAT.RecipeNames[RecipeIndex]),ADR(RECIPE.DAT.RecipeNames[RecipeIndex+1]), (REC_REC_NUM - RecipeIndex) * SIZEOF(RECIPE.DAT.RecipeNames[0]));
+		brsmemmove(ADR(RECIPE.DAT.RecipeIDs[RecipeIndex]),ADR(RECIPE.DAT.RecipeIDs[RecipeIndex+1]), (REC_REC_NUM - RecipeIndex) * SIZEOF(RECIPE.DAT.RecipeIDs[0]));
 	END_IF
-	brsmemset(ADR(RECIPE.DAT.RecipeNames[REC_MAX_NUM]), 0, SIZEOF(ADR(RECIPE.DAT.RecipeNames[0])));
-	brsmemset(ADR(RECIPE.DAT.RecipeIDs[REC_MAX_NUM]), 0, SIZEOF(ADR(RECIPE.DAT.RecipeIDs[0])));
+	brsmemset(ADR(RECIPE.DAT.RecipeNames[REC_REC_NUM]), 0, SIZEOF(ADR(RECIPE.DAT.RecipeNames[0])));
+	brsmemset(ADR(RECIPE.DAT.RecipeIDs[REC_REC_NUM]), 0, SIZEOF(ADR(RECIPE.DAT.RecipeIDs[0])));
 	RECIPE.DAT.RecipeNum := RECIPE.DAT.RecipeNum - 1;
 	RemoveRecName := TRUE;
 END_FUNCTION
@@ -97,7 +97,7 @@ FUNCTION InsertRecName
 		IF(RECIPE.DAT.RecipeNum > 0) THEN
 			brwcsconv(ADR(tmpSTR), ADR(new_name), brwUCtoU8);
 			lValue := brsatoi(ADR(tmpSTR));
-			FOR idx:=0 TO RECIPE.DAT.RecipeNum - 1 DO
+			FOR idx:=0 TO UINT_TO_INT(RECIPE.DAT.RecipeNum - 1) DO
 				brwcsconv(ADR(tmpSTR), ADR(RECIPE.DAT.RecipeNames[idx]), brwUCtoU8);
 				lSort := brsatoi(ADR(tmpSTR));
 				IF(lValue < lSort) THEN
@@ -150,7 +150,7 @@ FUNCTION InsertRecName
 	END_IF
 
 	// Move all data entrys backwards and fill in new entry
-	IF(idx < REC_MAX_NUM) THEN
+	IF(idx < REC_REC_NUM) THEN
 		brsmemmove(ADR(RECIPE.DAT.RecipeNames[idx+1]),ADR(RECIPE.DAT.RecipeNames[idx]), (RECIPE.DAT.RecipeNum - idx) * SIZEOF(RECIPE.DAT.RecipeNames[1]));
 		brsmemmove(ADR(RECIPE.DAT.RecipeIDs[idx+1]),ADR(RECIPE.DAT.RecipeIDs[idx]), (RECIPE.DAT.RecipeNum - idx) * SIZEOF(RECIPE.DAT.RecipeIDs[1]));
 	END_IF

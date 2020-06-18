@@ -44,7 +44,6 @@ END_TYPE
 TYPE
 	recERR : 	STRUCT  (*Recipe management error structure*)
 		Text : WSTRING[200]; (* Error text *)
-		No : DINT; (* Error number *)
 		State : recSTATE; (* Error step *)
 	END_STRUCT;
 	recCMD : 	STRUCT  (*Recipe management command structure*)
@@ -60,25 +59,20 @@ TYPE
 		ErrorReset : BOOL; (*Reset pending errors*)
 	END_STRUCT;
 	recPAR : 	STRUCT  (*Recipe management parameter structure*)
-		RecipeVariable : STRING[200]; (*Name of the variable where the data is stored*)
 		RecipeName : WSTRING[REC_NAME_LENGTH]; (*Recipe name*)
 		RecipeNameNew : WSTRING[REC_NAME_LENGTH]; (*New recipe name*)
 		RecipeID : STRING[REC_NAME_LENGTH]; (*File name of the recipe*)
-		RecipeDirectory : STRING[200]; (*Recipe directory*)
-		DeviceName : STRING[100]; (*Device name where the recipes are stored*)
-		MpLink : MpComIdentType; (*MpLink from mappRecipe*)
 		Initialized : BOOL; (*Indicates that recipe management was initialized*)
 		VisuSlotID : USINT; (*ID for connected web connection*)
 		VisuEnableCommand : BOOL;
 	END_STRUCT;
 	recDAT : 	STRUCT  (*Recipe management data structure*)
-		RecipeNames : ARRAY[0..REC_MAX_NUM]OF WSTRING[REC_NAME_LENGTH]; (*Recipe unicode names*)
-		RecipeIDs : ARRAY[0..REC_MAX_NUM]OF STRING[REC_NAME_LENGTH]; (*File name of the recipes*)
+		RecipeNames : ARRAY[0..REC_REC_NUM]OF WSTRING[REC_NAME_LENGTH]; (*Recipe unicode names*)
+		RecipeIDs : ARRAY[0..REC_REC_NUM]OF STRING[REC_NAME_LENGTH]; (*File name of the recipes*)
 		RecipeNum : UINT; (*Number of recipes*)
-		Status : WSTRING[100]; (*Shows the result of the last command*)
 	END_STRUCT;
 	recVIS : 	STRUCT  (*Recipe management visualization structure*)
-		RecipeNames : ARRAY[0..REC_MAX_NUM]OF WSTRING[REC_VIS_LENGTH]; (*Recipe names as mappView data provider*)
+		RecipeNames : ARRAY[0..REC_REC_NUM]OF WSTRING[REC_VIS_LENGTH]; (*Recipe names as mappView data provider*)
 		RecipeNum : UINT; (*Number of visible recipes*)
 		RecipeFilter : WSTRING[REC_NAME_LENGTH]; (*Only show recipes that fit this pattern*)
 		RecipeSelect : WSTRING[REC_NAME_LENGTH]; (*Select recipe in listbox after command new or rename*)
@@ -97,21 +91,7 @@ TYPE
 		DAT : recDAT; (*Data structure*)
 		VIS : ARRAY[0..REC_MAX_CLIENTS_ID]OF recVIS; (*Visualization structure*)
 		ERR : recERR; (* Error structure *)
-	END_STRUCT;
-END_TYPE
-
-(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
-(*Structure that contains the recipe variables*)
-
-TYPE
-	recVariable : 	STRUCT 
-		ApplicationName : STRING[40];
-		MaxItemCnt : USINT := 10;
-		Timeout : UINT := 5000;
-		Gain : USINT;
-		Focus : UINT;
-		Exposure : UDINT;
-		FlashColor : USINT := 1;
-		FlashSegment : USINT := 15;
+		StatusText : WSTRING[100]; (*Shows the result of the last command*)
+		StatusNo : DINT; (* Error number *)
 	END_STRUCT;
 END_TYPE
