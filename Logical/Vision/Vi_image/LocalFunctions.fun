@@ -27,7 +27,7 @@ END_FUNCTION_BLOCK
 FUNCTION_BLOCK ViRefreshImageList
 	VAR_INPUT
 		Enable : BOOL;
-		CFG : typVisionImageConfig;
+		VisionImage : REFERENCE TO typVisionImage;
 		ImageList : REFERENCE TO ARRAY[0..19] OF STRING[80];
 		visSelectedImage : REFERENCE TO STRING[80];
 	END_VAR

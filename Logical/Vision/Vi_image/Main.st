@@ -156,7 +156,7 @@ PROGRAM _CYCLIC
 
 		VISTEP_REFRESH_IMG_LIST: // Refresh image list from the image directory on the user partition
 			ViRefreshImageList_0.Enable				:= TRUE;
-			ViRefreshImageList_0.CFG				:= gVisionImage.CFG;
+			ViRefreshImageList_0.VisionImage		:= ADR(gVisionImage);
 			ViRefreshImageList_0.ImageList			:= ADR(visImageList);
 			ViRefreshImageList_0.visSelectedImage	:= ADR(visSelectedImage);
 			ViRefreshImageList_0();
