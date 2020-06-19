@@ -5,7 +5,6 @@
     <Object Type="File">RecTypes.typ</Object>
     <Object Type="File">RecVariables.var</Object>
     <Object Type="Program" Language="IEC">Recipe_01</Object>
-    <Object Type="Program" Language="IEC">YourTask</Object>
     <Object Type="File">changelog.txt</Object>
     <Object Type="File">HowToImport.pdf</Object>
   </Objects>

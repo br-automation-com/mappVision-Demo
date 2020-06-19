@@ -1,5 +1,0 @@
-VAR
-	MaschineData : recVariable; (*Structure that contains the recipe variables*)
-	ProductID : STRING[80];
-	CustomerID : STRING[80];
-END_VAR
