@@ -40,12 +40,6 @@
           <Property ID="TriggerDelay" Value="1" />
         </Selector>
       </Group>
-      <Group ID="ImageSettings">
-        <Property ID="ImageWidth" Value="448" />
-        <Property ID="ImageHeight" Value="358" />
-        <Property ID="ImageOffsetX" Value="416" />
-        <Property ID="ImageOffsetY" Value="333" />
-      </Group>
     </Group>
     <Group ID="VisionFunctionSet">
       <Group ID="VfInstance[1]">
