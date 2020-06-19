@@ -20,3 +20,5 @@
 # Ignore Conversion logs (AS2 to AS3)
 /ConvertLog.txt
 Logical/Documentation/~$sion Demo Application.docx
+
+.vscode/

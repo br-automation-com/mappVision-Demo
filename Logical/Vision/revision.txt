@@ -3,6 +3,8 @@ Version 2.2 (development)
 - Improved repetitive mode
 - SVG files save now all information. It is possible to click on the crosshairs to show the details
 - Added diagnostic data creation
+- Updated recipe management
+- Changed public arrays start index to 0 to avoid issues with C task
 
 Version 2.1
 - Simplified and reduced data structures
