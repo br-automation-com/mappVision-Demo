@@ -98,4 +98,5 @@ PROGRAM _CYCLIC
 		visNewRecipe := FALSE;
 		visSaveRecipe := FALSE;
 	END_IF
+
 END_PROGRAM

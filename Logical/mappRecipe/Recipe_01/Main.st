@@ -41,10 +41,10 @@ PROGRAM _CYCLIC
 	// Reset send command 
 	IF(WebServiceUpload.send = TRUE)  THEN		
 		WebServiceUpload.send := FALSE;
-	// Send response when page is loaded or data is posted
+		// Send response when page is loaded or data is posted
 	ELSIF(WebServiceUpload.status = ERR_OK AND WebServiceUpload.send = FALSE) THEN 
 		WebServiceUpload.send := TRUE;
-	// New upload data arrived
+		// New upload data arrived
 	ELSIF(WebServiceUpload.send = FALSE AND WebServiceUpload.requestDataLen > 0 AND RECIPE.CMD.Upload = FALSE) THEN
 		// Add delay so that upload can finish
 		upload_delay.PT := WebServiceUpload.requestDataLen/100000*5;
@@ -141,8 +141,8 @@ PROGRAM _CYCLIC
 					rec_state := REC_REG_VAR;
 				END_IF
 				pvCnt := 1;
-			// ---------------------------------------------------------------------------------------- 
-			// Command new recipe
+				// ---------------------------------------------------------------------------------------- 
+				// Command new recipe
 			ELSIF (RECIPE.CMD.New = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
 				// Show current state																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("creating recipe..."), animation);
@@ -162,15 +162,15 @@ PROGRAM _CYCLIC
 				// Reset selected recipe, copy recipe name to local variable
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].RecipeSelect := "";
 				rec_state := REC_GEN_FILE_NAME;
-			// ---------------------------------------------------------------------------------------- 
-			// Command load recipe
+				// ---------------------------------------------------------------------------------------- 
+				// Command load recipe
 			ELSIF (RECIPE.CMD.Load = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
 				// Show current state																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("loading recipe..."), animation);
 				// Copy recipe name to local variable
 				rec_state := REC_GEN_FILE_NAME;
 				// ---------------------------------------------------------------------------------------- 
-			// Command save recipe
+				// Command save recipe
 			ELSIF (RECIPE.CMD.Save = TRUE AND (RECIPE.PAR.RecipeName <> "" OR RECIPE.PAR.RecipeNameNew <> "")) THEN
 				// Show current state																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("saving recipe..."), animation);
@@ -179,26 +179,26 @@ PROGRAM _CYCLIC
 				END_IF
 				// Copy recipe name to local variable
 				rec_state := REC_GEN_FILE_NAME;
-			// ---------------------------------------------------------------------------------------- 
-			// Command view recipe
+				// ---------------------------------------------------------------------------------------- 
+				// Command view recipe
 			ELSIF (RECIPE.CMD.View = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
 				// Copy recipe name to local variable																		
 				rec_state := REC_GEN_FILE_NAME;				
-			// ---------------------------------------------------------------------------------------- 
-			// Command delete recipe
+				// ---------------------------------------------------------------------------------------- 
+				// Command delete recipe
 			ELSIF (RECIPE.CMD.Delete = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
 				// Show current state, copy recipe name to local variable																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("deleting recipe..."), animation);
 				rec_state := REC_GEN_FILE_NAME;
-			// ---------------------------------------------------------------------------------------- 
-			// Command download recipe
+				// ---------------------------------------------------------------------------------------- 
+				// Command download recipe
 			ELSIF (RECIPE.CMD.Download = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
 				// Show current state, copy recipe name to local variable																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("downloading recipe..."), animation);
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl := '';
 				rec_state := REC_GEN_FILE_NAME;
-			// ---------------------------------------------------------------------------------------- 
-			// Command upload recipe
+				// ---------------------------------------------------------------------------------------- 
+				// Command upload recipe
 			ELSIF (RECIPE.CMD.Upload = TRUE) THEN
 				// Make sure that unicode support is turned off
 				IF(REC_USE_UNICODE = FALSE) THEN
@@ -208,8 +208,8 @@ PROGRAM _CYCLIC
 				ELSE
 					rec_state := CreateError(ADR(RECIPE), ERR_UNICODE_UPLOAD, "upload is not supported when using unicode recipes", rec_state);
 				END_IF
-			// ---------------------------------------------------------------------------------------- 
-			// Rename recipe
+				// ---------------------------------------------------------------------------------------- 
+				// Rename recipe
 			ELSIF (RECIPE.CMD.Rename = TRUE AND RECIPE.PAR.RecipeName <> "" AND RECIPE.PAR.RecipeNameNew <> "") THEN
 				// Show current state																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("renaming recipe..."), animation);
@@ -226,8 +226,8 @@ PROGRAM _CYCLIC
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].RecipeSelect := "";
 				RecipeNameNew := RECIPE.PAR.RecipeNameNew;
 				rec_state := REC_GEN_FILE_NAME;
-			// ---------------------------------------------------------------------------------------- 
-			// Reset error
+				// ---------------------------------------------------------------------------------------- 
+				// Reset error
 			ELSIF (RECIPE.CMD.ErrorReset = TRUE) THEN
 				rec_state := REC_ERROR;				
 			END_IF
@@ -240,30 +240,30 @@ PROGRAM _CYCLIC
 				RECIPE.StatusNo := ERR_FUB_BUSY;
 				// Make sure recipe mangament was intialized
 				IF (NOT RECIPE.CMD.Init AND NOT RECIPE.PAR.Initialized) THEN
-					rec_state := CreateError(ADR(RECIPE), ERR_REC_NOT_INITIALIZED, "recipe management is not initiialized", rec_state);
+					rec_state := CreateError(ADR(RECIPE), ERR_REC_NOT_INITIALIZED, "recipe management is not initiialized", REC_WAIT);
 				END_IF
 				// Make sure recipe name is valid
 				IF((RECIPE.CMD.New OR RECIPE.CMD.Load OR RECIPE.CMD.Save OR RECIPE.CMD.Rename OR RECIPE.CMD.Delete OR RECIPE.CMD.View) AND RecipeName = "") THEN
-					rec_state := CreateError(ADR(RECIPE), ERR_REC_NAME_EMPTY, "recipe name is empty", rec_state);
+					rec_state := CreateError(ADR(RECIPE), ERR_REC_NAME_EMPTY, "recipe name is empty", REC_WAIT);
 				END_IF
 				// Make sure new recipe name is valid
 				IF((RECIPE.CMD.Rename) AND RecipeNameNew = "") THEN
-					rec_state := CreateError(ADR(RECIPE), ERR_REC_NAME_EMPTY, "new recipe name is empty", rec_state);
+					rec_state := CreateError(ADR(RECIPE), ERR_REC_NAME_EMPTY, "new recipe name is empty", REC_WAIT);
 				END_IF
 				// Make sure device name is valid
 				IF(DeviceName = '') THEN
-					rec_state := CreateError(ADR(RECIPE), ERR_REC_DEV_NAME_EMPTY, "device name is empty", rec_state);
+					rec_state := CreateError(ADR(RECIPE), ERR_REC_DEV_NAME_EMPTY, "device name is empty", REC_WAIT);
 				END_IF
 				// Make sure variable name has at least one entry
 				IF(REC_VAR_LIST[1] = '') THEN
-					rec_state := CreateError(ADR(RECIPE), ERR_REC_VAR_NAME_EMPTY, "variable name is empty", rec_state);
+					rec_state := CreateError(ADR(RECIPE), ERR_REC_VAR_NAME_EMPTY, "variable name is empty", REC_WAIT);
 				END_IF
 
 				RECIPE.PAR.VisuEnableCommand := FALSE;
 			END_IF	
-		// --------------------------------------------------------------------------------------------------------------------
-		// Register recipe name																
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Register recipe name																
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_REG_NAME:
 			// Generate string for local recipe name
 			tmpStr1 := REC_THIS_TASK;
@@ -278,13 +278,13 @@ PROGRAM _CYCLIC
 			// OK																																				
 			IF (MpRecipeRegPar_0.Active AND NOT MpRecipeRegPar_0.Error) THEN
 				rec_state := REC_REG_VAR;
-			// Error
+				// Error
 			ELSIF (MpRecipeRegPar_0.Error) THEN
 				rec_state := CreateError(ADR(RECIPE), MpRecipeRegPar_0.StatusID, "error trying to register recipe name", rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Register variable structure																
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Register variable structure																
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_REG_VAR:
 			MpRecipeRegPar_1[pvCnt].Enable := TRUE;
 			MpRecipeRegPar_1[pvCnt].MpLink := ADR(MpComGetLink_0.MpLink);
@@ -299,16 +299,16 @@ PROGRAM _CYCLIC
 				IF((pvCnt >= SIZEOF(REC_VAR_LIST)/SIZEOF(REC_VAR_LIST[pvCnt])) OR (REC_VAR_LIST[pvCnt] = '')) THEN
 					rec_state := REC_CREATE_DIR;
 				END_IF
-			// Error
+				// Error
 			ELSIF (MpRecipeRegPar_1[pvCnt].Error) THEN
 				tmpWStr1 := "error trying to register variable name ";
 				brwcsconv(ADR(tmpWStr2), ADR(REC_VAR_LIST[pvCnt]), brwU8toUC);
 				brwcscat(ADR(tmpWStr1), ADR(tmpWStr2));
 				rec_state := CreateError(ADR(RECIPE), MpRecipeRegPar_1[pvCnt].StatusID, tmpWStr1, rec_state);
 			END_IF	
-		// --------------------------------------------------------------------------------------------------------------------
-		// Create recipe directory																
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Create recipe directory																
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_CREATE_DIR:
 			DCreate.enable 	:= TRUE;
 			DCreate.pDevice	:= ADR(DeviceName);
@@ -320,7 +320,7 @@ PROGRAM _CYCLIC
 			IF (DCreate.status = OK OR DCreate.status = fiERR_DIR_ALREADY_EXIST) THEN
 				// Reset command and RETURN to wait state												
 				rec_state := REC_READ_DIR;
-			// Error 		
+				// Error 		
 			ELSIF (DCreate.status <> ERR_FUB_BUSY) THEN
 				// File device is wrong
 				IF(DCreate.status = fiERR_DEVICE_MANAGER) THEN
@@ -329,9 +329,9 @@ PROGRAM _CYCLIC
 					rec_state := CreateError(ADR(RECIPE), DCreate.status, "error creating recipe directory", rec_state);
 				END_IF			
 			END_IF			
-		// --------------------------------------------------------------------------------------------------------------------
-		// Read directory information																	
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Read directory information																	
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_READ_DIR:
 			// Show current state																		
 			animation := WorkingStatus(ADR(RECIPE), ADR("reading recipes..."), animation);
@@ -365,9 +365,9 @@ PROGRAM _CYCLIC
 			ELSIF (DInfo.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), DInfo.status, "error dir info", rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Open directory 																				
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Open directory 																				
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_READ_DIR_1:														
 			DOpen.enable 	:= TRUE;
 			DOpen.pDevice	:= ADR(DeviceName);
@@ -378,20 +378,20 @@ PROGRAM _CYCLIC
 			// OK																																				
 			IF (DOpen.status = OK) THEN
 				rec_state := REC_READ_DIR_2;
-			// Create error message for missing directory
+				// Create error message for missing directory
 			ELSIF (DInfo.status = fiERR_DIR_NOT_EXIST) THEN
 				tmpWStr1 := "directory ";
 				brwcsconv(ADR(tmpWStr2), ADR(REC_DIRECTORY), brwU8toUC);
 				brwcscat(ADR(tmpWStr1), ADR(tmpWStr2));
 				brwcscat(ADR(tmpWStr1), ADR(" is unavailable"));
 				rec_state := CreateError(ADR(RECIPE), DInfo.status, tmpWStr1, rec_state);				
-			// Error
+				// Error
 			ELSIF (DOpen.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), DOpen.status, "error dir open", rec_state);
 			END_IF;
-		// --------------------------------------------------------------------------------------------------------------------
-		// Read file directory information																
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Read file directory information																
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_READ_DIR_2:													
 			DRead.enable 	:= TRUE;
 			DRead.ident		:= DOpen.ident;
@@ -433,16 +433,16 @@ PROGRAM _CYCLIC
 				ELSE
 					has_oversized_items := TRUE;
 				END_IF
-			// Last entry reached
+				// Last entry reached
 			ELSIF (DRead.status = fiERR_NO_MORE_ENTRIES) THEN 
 				rec_state := REC_READ_DIR_3;
-			// Error		
+				// Error		
 			ELSIF (DRead.status <> ERR_FUB_BUSY AND DRead.status <> OK) THEN
 				rec_state := CreateError(ADR(RECIPE), DRead.status, "error recipe list read", rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Close directory information																	
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Close directory information																	
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_READ_DIR_3:														
 			DClose.enable 	:= TRUE;
 			DClose.ident	:= DOpen.ident;
@@ -463,13 +463,13 @@ PROGRAM _CYCLIC
 				ELSE
 					rec_state := REC_WAIT;
 				END_IF
-			// Error 		
+				// Error 		
 			ELSIF (DClose.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), DClose.status, "error dir close", rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Generate recipe name	full path and file name																
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Generate recipe name	full path and file name																
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_GEN_FILE_NAME:
 			// Find recipe entry
 			RecipeIndex := FindRecName(ADR(RECIPE), RecipeName);
@@ -505,7 +505,7 @@ PROGRAM _CYCLIC
 						END_IF
 					END_IF
 				END_IF
-			// Use recipe name as file name when using standard strings
+				// Use recipe name as file name when using standard strings
 			ELSE
 				brwcsconv(ADR(RECIPE.PAR.RecipeID), ADR(RecipeName), brwUCtoU8);
 			END_IF
@@ -539,9 +539,9 @@ PROGRAM _CYCLIC
 			ELSE
 				rec_state := REC_LOAD_SAVE;
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Load or save recipe data																	
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Load or save recipe data																	
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_LOAD_SAVE:
 			
 			IF(REC_RECIPE_TYPE = typeCSV) THEN
@@ -623,7 +623,7 @@ PROGRAM _CYCLIC
 				// Complete status string
 				CreateMessage(ADR(RECIPE.StatusText), ADR(tmpWStr1), ADR(RecipeName), RECIPE.PAR.VisuSlotID);
 				rec_state := REC_WAIT;	
-			// Error		
+				// Error		
 			ELSIF (MpRecipeStatusID = mpRECIPE_ERR_CONFIG_INVALID) THEN
 				rec_state := CreateError(ADR(RECIPE), MpRecipeStatusID, "mapp configuration is invalid, check REC_MPLINK constant", rec_state);
 			ELSIF (MpRecipeStatusID = mpRECIPE_WRN_LOAD_WITH_WARN) THEN
@@ -638,9 +638,9 @@ PROGRAM _CYCLIC
 				brwcscat(ADR(tmpWStr1), ADR(RecipeName));
 				rec_state := CreateError(ADR(RECIPE), MpRecipeStatusID, tmpWStr1, rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Delete selected recipe																			
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Delete selected recipe																			
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_DELETE:		
 			// ---------------------------------------------------------------------------------------- 		
 			// Initialize file delete structure 														
@@ -662,15 +662,15 @@ PROGRAM _CYCLIC
 				CreateMessage(ADR(RECIPE.StatusText), ADR("deleted recipe"), ADR(RecipeName), RECIPE.PAR.VisuSlotID);
 				RECIPE.CMD.Delete := 0;
 				rec_state := REC_WAIT;
-			// Error 		
+				// Error 		
 			ELSIF (FDelete.status <> ERR_FUB_BUSY) THEN
 				tmpWStr1 := "error deleting recipe ";
 				brwcscat(ADR(tmpWStr1), ADR(RecipeName));
 				rec_state := CreateError(ADR(RECIPE), FDelete.status, tmpWStr1, rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Rename selected recipe																			
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Rename selected recipe																			
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_RENAME:
 			// Generate recipe path and extension
 			tmpStr1 := REC_DIRECTORY;
@@ -704,7 +704,7 @@ PROGRAM _CYCLIC
 				// Use the same name for unicode
 				IF(REC_USE_UNICODE) THEN
 					InsertRecName(ADR(RECIPE), RecipeNameNew, RECIPE.PAR.RecipeID);
-				// Use the new name for ASCII
+					// Use the new name for ASCII
 				ELSE
 					InsertRecName(ADR(RECIPE), RecipeNameNew, tmpStr2);
 				END_IF
@@ -713,15 +713,15 @@ PROGRAM _CYCLIC
 				CreateMessage(ADR(RECIPE.StatusText), ADR("renamed recipe"), ADR(RecipeName), RECIPE.PAR.VisuSlotID);
 				RECIPE.CMD.Rename := FALSE;
 				rec_state := REC_WAIT;
-			// Error 		
+				// Error 		
 			ELSIF (FRename.status <> ERR_FUB_BUSY) THEN
 				tmpWStr1 := "error renaming recipe ";
 				brwcscat(ADR(tmpWStr1), ADR(RecipeName));
 				rec_state := CreateError(ADR(RECIPE), FRename.status, tmpWStr1, rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// View selected file																			
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// View selected file																			
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_VIEW:
 			IF(RECIPE.DAT.RecipeNum > 0) THEN
 				FOR idx:=0 TO SIZEOF(REC_VIEW_FILTER)/SIZEOF(REC_VIEW_FILTER[0]) - 1 DO
@@ -744,9 +744,9 @@ PROGRAM _CYCLIC
 				RECIPE.CMD.View := FALSE;
 				rec_state := REC_WAIT;
 			END_IF			
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download recipe - open recipe file
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Download recipe - open recipe file
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD:						
 			// ----------------------------------------------------------------------------------------
 			// Initialize file open structure
@@ -773,13 +773,13 @@ PROGRAM _CYCLIC
 					brsstrcat(ADR(tmpWStr1), ADR(" bytes"));				
 					rec_state := CreateError(ADR(RECIPE), ERR_MEM_DOWNLOAD, tmpWStr1, rec_state);
 				END_IF;
-			// Error
+				// Error
 			ELSIF (FOpen.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), FOpen.status, "error opening file for download", rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download recipe - read recipe file
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Download recipe - read recipe file
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_1:			
 			// ----------------------------------------------------------------------------------------
 			// Initialize file read structure
@@ -793,13 +793,13 @@ PROGRAM _CYCLIC
 			// OK
 			IF (FRead.status = OK) THEN
 				rec_state := REC_DOWNLOAD_2;
-			// Error
+				// Error
 			ELSIF (FRead.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), FRead.status, "error reading file for download", rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download recipe - close recipe file
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Download recipe - close recipe file
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_2:			
 			// ----------------------------------------------------------------------------------------
 			// Initialize file close structure
@@ -813,13 +813,13 @@ PROGRAM _CYCLIC
 				download_timeout.IN := 0;
 				download_timeout();
 				rec_state := REC_DOWNLOAD_3;
-			// Error
+				// Error
 			ELSIF (FClose.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), FClose.status, "error closing file for download", rec_state);
 			END_IF		
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download recipe - web service
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Download recipe - web service
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_3:			
 			// ----------------------------------------------------------------------------------------
 			// Create response header
@@ -864,20 +864,20 @@ PROGRAM _CYCLIC
 			// Set URL
 			IF (WebserviceDownload.status = ERR_FUB_BUSY AND RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl = '') THEN
 				brsstrcat(ADR(RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl), ADR(tmpStr1));
-			// Start sending data
+				// Start sending data
 			ELSIF (WebserviceDownload.status = OK AND WebserviceDownload.send = FALSE AND RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl <> '') THEN
 				WebserviceDownload.send := TRUE;
-			// Sending data finished
+				// Sending data finished
 			ELSIF (WebserviceDownload.send = TRUE) THEN
 				WebserviceDownload.send := FALSE;
 				rec_state := REC_DOWNLOAD_4;
-			// Error
+				// Error
 			ELSIF (WebserviceDownload.status <> ERR_FUB_BUSY AND WebserviceDownload.status <> OK) THEN
 				rec_state := CreateError(ADR(RECIPE), WebserviceDownload.status, "error sending web response", rec_state);
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Download recipe - web service
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Download recipe - web service
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_DOWNLOAD_4:			
 			WebserviceDownload();
 			
@@ -889,13 +889,13 @@ PROGRAM _CYCLIC
 				WebserviceDownload.send := FALSE;
 				RECIPE.CMD.Download := FALSE;
 				rec_state := REC_WAIT;
-			// Error
+				// Error
 			ELSIF (WebserviceDownload.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), WebserviceDownload.status, "error sending web response", rec_state);
 			END_IF
-		//**********************************************************************************************
-		// Upload file - verify parameters
-		//**********************************************************************************************
+			//**********************************************************************************************
+			// Upload file - verify parameters
+			//**********************************************************************************************
 		REC_UPLOAD:
 			
 			// Make sure data fits into memory
@@ -924,23 +924,23 @@ PROGRAM _CYCLIC
 								ELSE
 									rec_state := CreateError(ADR(RECIPE), ERR_SIZE_DATA_UPLOAD, "data end not found in upload response", rec_state);
 								END_IF
-							// Data start not found in upload response
+								// Data start not found in upload response
 							ELSE
 								rec_state := CreateError(ADR(RECIPE), ERR_POS_DATA_UPLOAD, "data start not found in upload response", rec_state);
 							END_IF
-						// File name is too long in upload response
+							// File name is too long in upload response
 						ELSE
 							rec_state := CreateError(ADR(RECIPE), ERR_LEN_NAME_UPLOAD, "file name is too long in upload response", rec_state);
 						END_IF
-					// File name end not found in upload response
+						// File name end not found in upload response
 					ELSE
 						rec_state := CreateError(ADR(RECIPE), ERR_SIZE_NAME_UPLOAD, "file name end not found in upload response", rec_state);
 					END_IF
-				// File name start not found in upload response
+					// File name start not found in upload response
 				ELSE
 					rec_state := CreateError(ADR(RECIPE), ERR_POS_NAME_UPLOAD, "file name position not found in upload response", rec_state);
 				END_IF
-			// Upload file exceeds maximum buffer size
+				// Upload file exceeds maximum buffer size
 			ELSE
 				tmpWStr1 := "upload file exceeds maximum buffer size of ";
 				brsitoa(REC_UPLOAD_DOWNLOAD_SIZE, ADR(tmpStr2));
@@ -953,9 +953,9 @@ PROGRAM _CYCLIC
 			RECIPE.VIS[RECIPE.PAR.VisuSlotID].ReloadUpload := TRUE;
 			WebServiceUpload.enable := FALSE;
 			WebServiceUpload();
-		//**********************************************************************************************
-		// Upload file - Check if file exists
-		//**********************************************************************************************
+			//**********************************************************************************************
+			// Upload file - Check if file exists
+			//**********************************************************************************************
 		REC_UPLOAD_1:					
 			// ----------------------------------------------------------------------------------------
 			// Checking for files with the same name
@@ -977,9 +977,9 @@ PROGRAM _CYCLIC
 			brsstrcat(ADR(RecipeFullFileName), ADR('/'));
 			brsstrcat(ADR(RecipeFullFileName), ADR(item_name));
 			rec_state := REC_UPLOAD_4;
-		//**********************************************************************************************
-		// Upload file - Wait for message box response
-		//**********************************************************************************************
+			//**********************************************************************************************
+			// Upload file - Wait for message box response
+			//**********************************************************************************************
 		REC_UPLOAD_2:
 			// Overwrite file
 			IF(RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteResponse = YES) THEN
@@ -990,7 +990,7 @@ PROGRAM _CYCLIC
 				brsstrcat(ADR(RecipeFullFileName), ADR(item_name));
 			
 				rec_state := REC_UPLOAD_3;
-			// Do not overwrite file
+				// Do not overwrite file
 			ELSIF(RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteResponse = NO) THEN
 				// Reset upload command
 				brsmemset(AsMemPartAllocClear_0.mem, 0, REC_UPLOAD_DOWNLOAD_SIZE);
@@ -1001,9 +1001,9 @@ PROGRAM _CYCLIC
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].UploadOverwriteRequest	:= FALSE;
 				rec_state := REC_WAIT;
 			END_IF
-		// --------------------------------------------------------------------------------------------------------------------
-		// Upload recipe - delete existing recipe																			
-		// --------------------------------------------------------------------------------------------------------------------
+			// --------------------------------------------------------------------------------------------------------------------
+			// Upload recipe - delete existing recipe																			
+			// --------------------------------------------------------------------------------------------------------------------
 		REC_UPLOAD_3:		
 			// ---------------------------------------------------------------------------------------- 		
 			// Initialize file delete structure 														
@@ -1016,7 +1016,7 @@ PROGRAM _CYCLIC
 			// OK																																				
 			IF (FDelete.status = OK) THEN
 				rec_state := REC_UPLOAD_4;
-			// Error 		
+				// Error 		
 			ELSIF (FDelete.status <> ERR_FUB_BUSY) THEN
 				tmpWStr1 := "error deleting recipe ";
 				brwcscat(ADR(tmpWStr1), ADR(RecipeName));
@@ -1037,7 +1037,7 @@ PROGRAM _CYCLIC
 			// OK
 			IF (FCreate.status = OK) THEN
 				rec_state := REC_UPLOAD_5;
-			// Error
+				// Error
 			ELSIF (FCreate.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), FCreate.status, "error creating file from upload", rec_state);
 				// Reset upload buffer and function block
@@ -1048,9 +1048,9 @@ PROGRAM _CYCLIC
 				FCreate.enable	:= FALSE;
 				FCreate();
 			END_IF
-		//**********************************************************************************************
-		// Upload file
-		//**********************************************************************************************
+			//**********************************************************************************************
+			// Upload file
+			//**********************************************************************************************
 		REC_UPLOAD_5:
 			
 			// ----------------------------------------------------------------------------------------
@@ -1065,13 +1065,13 @@ PROGRAM _CYCLIC
 			// OK
 			IF (FWrite.status = OK) THEN
 				rec_state := REC_UPLOAD_6;
-			// Error
+				// Error
 			ELSIF (FWrite.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), FWrite.status, "error writing file from upload", rec_state);
 			END_IF
-		//**********************************************************************************************
-		// Upload file
-		//**********************************************************************************************
+			//**********************************************************************************************
+			// Upload file
+			//**********************************************************************************************
 		REC_UPLOAD_6:
 			// ----------------------------------------------------------------------------------------
 			// Initialize file close structure
@@ -1089,13 +1089,13 @@ PROGRAM _CYCLIC
 				RECIPE.CMD.Init := TRUE;
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].ReloadUpload := TRUE;
 				rec_state := REC_WAIT;
-			// Error
+				// Error
 			ELSIF (FClose.status <> ERR_FUB_BUSY) THEN
 				rec_state := CreateError(ADR(RECIPE), FClose.status, "error closing file from upload", rec_state);
 			END_IF			
-		// --------------------------------------------------------------------------------------------------------------------
-		// Error 
-		// --------------------------------------------------------------------------------------------------------------------					
+			// --------------------------------------------------------------------------------------------------------------------
+			// Error 
+			// --------------------------------------------------------------------------------------------------------------------					
 		REC_ERROR:
 			RECIPE.StatusText := "error state triggered on web client ID ";
 			tmpWStr1 := DINT_TO_WSTRING(RECIPE.PAR.VisuSlotID);
