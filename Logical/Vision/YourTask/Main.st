@@ -33,7 +33,7 @@ PROGRAM _INIT
 	gVisionSensor[5].CFG.VisionFunction	:= enumOCR;
 	gVisionSensor[5].CFG.PowerlinkNode	:= 5;
 	gVisionSensor[5].CFG.DataStructure	:= ADR(gOCR);
-	gVisionSensor[5].CFG.ComponentLink	:= gCameraMeasurement;
+	gVisionSensor[5].CFG.ComponentLink	:= gCameraOCR;
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Lights configuration
