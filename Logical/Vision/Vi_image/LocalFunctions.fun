@@ -5,8 +5,6 @@ FUNCTION_BLOCK ViDownloadImage (* *) (*$GROUP=User,$CAT=User,$GROUPICON=User.png
 		FileDevice : STRING[80];
 		FileName : STRING[80];
 		ImgName : STRING[80];
-		MemSvgAdr : UDINT;
-		MemSvgSize : UDINT;
 		visDownloadFileUrl : REFERENCE TO STRING[200];
 	END_VAR
 	VAR_OUTPUT
@@ -14,6 +12,10 @@ FUNCTION_BLOCK ViDownloadImage (* *) (*$GROUP=User,$CAT=User,$GROUPICON=User.png
 	END_VAR
 	VAR
 		Step : INT;
+		AsMemPartCreate_0 : AsMemPartCreate;
+		AsMemPartAllocClear_0 : AsMemPartAllocClear;
+		MemSvgAdr : UDINT;
+		MemSvgSize : UDINT;
 		FileOpen_0 : FileOpen;
 		FileRead_0 : FileRead;
 		FileClose_0 : FileClose;
@@ -57,7 +59,6 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 		Enable : BOOL;
 		CFG : typVisionImageConfig;
 		PowerlinkNode : USINT;
-		MemInfo : MemInfo_Type;
 		CrossHairInfo : REFERENCE TO ARRAY[0..MAX_NUM_RESULTS] OF typCrossHairInfo;
 	END_VAR
 	VAR_OUTPUT
@@ -65,6 +66,9 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 	END_VAR
 	VAR
 		Step : INT;
+		AsMemPartCreate_0 : AsMemPartCreate;
+		AsMemPartAllocClear_0 : AsMemPartAllocClear;
+		MemInfo : MemInfo_Type;
 		DiagStartTime : TIME;
 		DiagTime : DiagTime_Type;
 		DTGetTime_0 : DTGetTime;

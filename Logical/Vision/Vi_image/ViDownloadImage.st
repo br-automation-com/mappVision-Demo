@@ -1,14 +1,36 @@
+// Note: This FBK needs to be called at least once in the INIT of the task to alloc memory (restriction of AsMem)
 FUNCTION_BLOCK ViDownloadImage
 	IF NOT Enable THEN
 		Status := ERR_FUB_ENABLE_FALSE;
 		Step := 0;
 		RETURN;
 	END_IF
+	IF MemSvgAdr = 0 THEN // This will only be done once in the INIT of the task
+		// Create memory for saving the image
+		// Size: a 5MP picture in bmp format has less than 6.000.000 Bytes. A SVG with bas64 conversion maximum the 4/3 size.
+		// UploadSize					:= 6000000;		// Upload of the picture data with httpClient
+		// SvgHeaderSize				:= 2000; 		// Fileheader, ...
+		// CrosshSize					:= 18000; 		// Crosshairs, Texts, ...
+		MemSvgSize						:= 6000000 * 4 / 3 + 2000 + 18000;
+		AsMemPartCreate_0.enable		:= TRUE;
+		AsMemPartCreate_0.len			:= MemSvgSize + 1000; // 1000 Bytes for AsMemPart stuff/header
+		AsMemPartCreate_0();
+		IF AsMemPartCreate_0.status = 0 THEN
+			// Svg mem for creating the svg file including the image
+			AsMemPartAllocClear_0.len	:= MemSvgSize;
+			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
+			IF AsMemPartAllocClear_0.status = 0 THEN
+				MemSvgAdr 				:= AsMemPartAllocClear_0.mem;
+			END_IF
+		END_IF
+	END_IF
 	CASE Step OF
 		0:
 			visDownloadFileUrl := '';
 			Status := ERR_FUB_BUSY;
-			Step := 1;
+			IF MemSvgAdr <> 0 THEN
+				Step := 1;
+			END_IF
 		1:
 			FileOpen_0.enable	:= TRUE;
 			FileOpen_0.pDevice 	:= ADR(FileDevice);

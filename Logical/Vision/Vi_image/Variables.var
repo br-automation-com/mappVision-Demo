@@ -39,13 +39,6 @@ VAR
 	visWebViewerQuery : STRING[80];
 END_VAR
 (**)
-(*Memory handling*)
-VAR
-	AsMemPartCreate_0 : AsMemPartCreate;
-	AsMemPartAllocClear_0 : AsMemPartAllocClear;
-	MemInfo : MemInfo_Type;
-END_VAR
-(**)
 (*Constants*)
 VAR CONSTANT
 	ERR_NO_IMAGE : UINT := 50210;

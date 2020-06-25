@@ -22,36 +22,9 @@ PROGRAM _INIT
 	END_IF
 	gVisionImage.CMD.CreateDir	:= TRUE;
 	visSelectedImage			:= '';
-
-	// Create memory for uploading and transforming image
-	// Size: a 5MP picture in bmp format has less than 6.000.000 Bytes. A SVG with bas64 conversion maximum the 4/3 size.
-	MemInfo.UploadSize		:= 6000000;		// Upload of the picture data with httpClient
-	MemInfo.SvgHeaderSize	:= 2000; 		// Fileheader, ...
-	MemInfo.CrosshSize		:= 18000; 		// Crosshairs, Texts, ...
-	MemInfo.SvgSize			:= MemInfo.UploadSize * 4 / 3 + MemInfo.SvgHeaderSize + MemInfo.CrosshSize;
-	AsMemPartCreate_0.enable	:= TRUE;
-	AsMemPartCreate_0.len		:= MemInfo.UploadSize + MemInfo.SvgSize + MemInfo.CrosshSize + 1000; // 1000 Bytes for AsMemPart stuff/header
-	AsMemPartCreate_0();
-	IF AsMemPartCreate_0.status = 0 THEN
-		// Upload mem for loading the image from camera to plc
-		AsMemPartAllocClear_0.len		:= MemInfo.UploadSize;
-		AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-		IF AsMemPartAllocClear_0.status = 0 THEN
-			MemInfo.UploadAdr			:= AsMemPartAllocClear_0.mem;
-		END_IF
-		// Svg mem for creating the svg file including the image
-		AsMemPartAllocClear_0.len		:= MemInfo.SvgSize;
-		AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-		IF AsMemPartAllocClear_0.status = 0 THEN
-			MemInfo.SvgAdr 				:= AsMemPartAllocClear_0.mem;
-		END_IF
-		// Mem for creating the crosshaurs
-		AsMemPartAllocClear_0.len		:= MemInfo.CrosshSize;
-		AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-		IF AsMemPartAllocClear_0.status = 0 THEN
-			MemInfo.CrosshAdr			:= AsMemPartAllocClear_0.mem;
-		END_IF
-	END_IF
+	// Call FBKs which interanally alloc memory once in the INIT
+	ViDownloadImage_0();
+	ViSaveImgOnPlc_0();
 END_PROGRAM
 PROGRAM _CYCLIC
 	CASE Step OF
@@ -173,8 +146,6 @@ PROGRAM _CYCLIC
 			ViDownloadImage_0.FileDevice			:= gVisionImage.CFG.FileDevice;
 			ViDownloadImage_0.FileName				:= FileNameComplete;
 			ViDownloadImage_0.ImgName				:= visSelectedImage;
-			ViDownloadImage_0.MemSvgAdr				:= MemInfo.SvgAdr;
-			ViDownloadImage_0.MemSvgSize			:= MemInfo.SvgSize;
 			ViDownloadImage_0.visDownloadFileUrl	:= ADR(visDownloadFileUrl);
 			ViDownloadImage_0();
 			IF ViDownloadImage_0.Status = 0 THEN
@@ -189,7 +160,6 @@ PROGRAM _CYCLIC
 			ViSaveImgOnPlc_0.Enable				:= TRUE;
 			ViSaveImgOnPlc_0.CFG				:= gVisionImage.CFG;
 			ViSaveImgOnPlc_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
-			ViSaveImgOnPlc_0.MemInfo			:= MemInfo;
 			ViSaveImgOnPlc_0.CrossHairInfo		:= ADR(ViDrawCrosshair_0.CrossHairInfo);
 			ViSaveImgOnPlc_0();
 			IF ViSaveImgOnPlc_0.Status = 0 THEN

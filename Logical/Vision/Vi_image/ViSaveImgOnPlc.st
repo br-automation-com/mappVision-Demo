@@ -1,13 +1,47 @@
+// Note: This FBK needs to be called at least once in the INIT of the task to alloc memory (restriction of AsMem)
 FUNCTION_BLOCK ViSaveImgOnPlc
 	IF NOT Enable THEN
 		Status := ERR_FUB_ENABLE_FALSE;
 		Step := 0;
 		RETURN;
 	END_IF
+	IF MemInfo.SvgAdr = 0 THEN // This will only be done once in the INIT of the task
+		// Create memory for uploading and transforming image
+		// Size: a 5MP picture in bmp format has less than 6.000.000 Bytes. A SVG with bas64 conversion maximum the 4/3 size.
+		MemInfo.UploadSize			:= 6000000;		// Upload of the picture data with httpClient
+		MemInfo.SvgHeaderSize		:= 2000; 		// Fileheader, ...
+		MemInfo.CrosshSize			:= 18000; 		// Crosshairs, Texts, ...
+		MemInfo.SvgSize				:= MemInfo.UploadSize * 4 / 3 + MemInfo.SvgHeaderSize + MemInfo.CrosshSize;
+		AsMemPartCreate_0.enable	:= TRUE;
+		AsMemPartCreate_0.len		:= MemInfo.UploadSize + MemInfo.SvgSize + MemInfo.CrosshSize + 1000; // 1000 Bytes for AsMemPart stuff/header
+		AsMemPartCreate_0();
+		IF AsMemPartCreate_0.status = 0 THEN
+			// Upload mem for loading the image from camera to plc
+			AsMemPartAllocClear_0.len		:= MemInfo.UploadSize;
+			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
+			IF AsMemPartAllocClear_0.status = 0 THEN
+				MemInfo.UploadAdr			:= AsMemPartAllocClear_0.mem;
+			END_IF
+			// Svg mem for creating the svg file including the image
+			AsMemPartAllocClear_0.len		:= MemInfo.SvgSize;
+			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
+			IF AsMemPartAllocClear_0.status = 0 THEN
+				MemInfo.SvgAdr 				:= AsMemPartAllocClear_0.mem;
+			END_IF
+			// Mem for creating the crosshaurs
+			AsMemPartAllocClear_0.len		:= MemInfo.CrosshSize;
+			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
+			IF AsMemPartAllocClear_0.status = 0 THEN
+				MemInfo.CrosshAdr			:= AsMemPartAllocClear_0.mem;
+			END_IF
+		END_IF
+	END_IF
 	CASE Step OF
 		0:
 			Status := ERR_FUB_BUSY;
-			Step := 1;
+			IF MemInfo.UploadAdr <> 0 AND MemInfo.SvgAdr <> 0 AND MemInfo.CrosshAdr <> 0 THEN
+				Step := 1;
+			END_IF
 		1: // Initialization
 			ACTION_InitTexts;
 			brsmemcpy(ADR(b64key), ADR('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'), SIZEOF(b64key));
