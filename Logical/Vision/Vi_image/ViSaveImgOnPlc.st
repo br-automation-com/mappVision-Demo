@@ -1,10 +1,5 @@
 // Note: This FBK needs to be called at least once in the INIT of the task to alloc memory (restriction of AsMem)
 FUNCTION_BLOCK ViSaveImgOnPlc
-	IF NOT Enable THEN
-		Status := ERR_FUB_ENABLE_FALSE;
-		Step := 0;
-		RETURN;
-	END_IF
 	IF MemInfo.SvgAdr = 0 THEN // This will only be done once in the INIT of the task
 		// Create memory for uploading and transforming image
 		// Size: a 5MP picture in bmp format has less than 6.000.000 Bytes. A SVG with bas64 conversion maximum the 4/3 size.
@@ -35,6 +30,11 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 				MemInfo.CrosshAdr			:= AsMemPartAllocClear_0.mem;
 			END_IF
 		END_IF
+	END_IF
+	IF NOT Enable THEN
+		Status := ERR_FUB_ENABLE_FALSE;
+		Step := 0;
+		RETURN;
 	END_IF
 	CASE Step OF
 		0:
