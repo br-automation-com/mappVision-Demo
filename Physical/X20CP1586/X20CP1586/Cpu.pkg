@@ -15,6 +15,7 @@
     <Object Type="Package">mappView</Object>
     <Object Type="Package">mappVision</Object>
     <Object Type="Package">mappCockpit</Object>
+    <Object Type="Package">VC</Object>
   </Objects>
   <Configuration ModuleId="X20CP1586">
     <AutomationRuntime Version="A4.73" />

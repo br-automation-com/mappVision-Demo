@@ -34,7 +34,7 @@ TYPE
 		BeginSVGSave : TIME;
 		EndSVGSave : TIME;
 	END_STRUCT;
-	MemInfo_Type : 	STRUCT 
+	MemInfoSave_Type : 	STRUCT 
 		UploadAdr : UDINT;
 		UploadSize : UDINT; (*Upload of the picture data with httpClient*)
 		SvgAdr : UDINT;
@@ -42,6 +42,12 @@ TYPE
 		CrosshAdr : UDINT;
 		CrosshSize : UDINT; (*Crosshairs, Texts, ...*)
 		SvgHeaderSize : UDINT; (*Fileheader, ...*)
+	END_STRUCT;
+	MemInfoVC4_Type : 	STRUCT 
+		UploadBmp8Adr : UDINT;
+		UploadBmp8Size : UDINT; (*Upload of the picture data with httpClient*)
+		Bmp24Adr : UDINT;
+		Bmp24Size : UDINT;
 	END_STRUCT;
 	typCrossHair : 	STRUCT  (*Cross hair data structure*)
 		SvgTransformation : ARRAY[1..MAX_NUM_RESULTS]OF STRING[200] := [10('')]; (*Transformation string for paper widget*)
@@ -62,5 +68,45 @@ TYPE
 		DataVis : STRING[80];
 		Data : STRING[400];
 		Text : STRING[1000];
+	END_STRUCT;
+	Bmp24Bit_Type : 	STRUCT 
+		FileHeader : BmpFileHeader_Type;
+		InfoHeader : BmpInfoHeader_Type;
+	END_STRUCT;
+	Bmp8Bit_Type : 	STRUCT 
+		FileHeader : BmpFileHeader_Type;
+		InfoHeader : BmpInfoHeader_Type;
+		ColorTable : ARRAY[0..255]OF BmpColorTable_Type;
+	END_STRUCT;
+	BmpFileHeader_Type : 	STRUCT 
+		Fill : ARRAY[0..1]OF USINT;
+		bfType : ARRAY[0..1]OF USINT;
+		bfSize : UDINT;
+		bfReserved : UDINT;
+		bfOffBits : UDINT;
+	END_STRUCT;
+	BmpInfoHeader_Type : 	STRUCT 
+		biSize : UDINT;
+		biWidth : DINT;
+		biHeight : DINT;
+		biPlanes : UINT;
+		biBitCount : UINT;
+		biCompression : UDINT;
+		biSizeImage : UDINT;
+		biXPelsPerMeter : DINT;
+		biYPelsPerMeter : DINT;
+		biClrUSer : UDINT;
+		biClrImportant : UDINT;
+	END_STRUCT;
+	BmpColorTable_Type : 	STRUCT 
+		Blue : USINT;
+		Green : USINT;
+		Red : USINT;
+		Fill : USINT;
+	END_STRUCT;
+	PixelDestColor_Type : 	STRUCT 
+		Blue : USINT;
+		Green : USINT;
+		Red : USINT;
 	END_STRUCT;
 END_TYPE

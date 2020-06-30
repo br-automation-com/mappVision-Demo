@@ -68,7 +68,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 		Step : INT;
 		AsMemPartCreate_0 : AsMemPartCreate;
 		AsMemPartAllocClear_0 : AsMemPartAllocClear;
-		MemInfo : MemInfo_Type;
+		MemInfo : MemInfoSave_Type;
 		DiagStartTime : TIME;
 		DiagTime : DiagTime_Type;
 		DTGetTime_0 : DTGetTime;
@@ -165,6 +165,52 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		FileNameEyeUser : STRING[80];
 		EthIpAddr : STRING[80];
 		HtmlFileContent : STRING[3000];
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK ViShowImgOnVC4
+	VAR_INPUT
+		Enable : BOOL;
+		RefreshImage : BOOL;
+		CFG : typVisionImageConfig;
+		PowerlinkNode : USINT;
+		ImgWidthInVC4_px : UINT;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+		HTMLStreamContent : STRING[600];
+		RefreshDone : BOOL;
+	END_VAR
+	VAR
+		Step : INT;
+		AsMemPartCreate_0 : AsMemPartCreate;
+		AsMemPartAllocClear_0 : AsMemPartAllocClear;
+		MemInfo : MemInfoVC4_Type;
+		FileNameBmp24Bit : STRING[80];
+		FileNameBmp24BitDir : STRING[80];
+		URI : STRING[80];
+		Host : STRING[80];
+		ImgHeight_px : UINT;
+		httpClient_0 : httpClient;
+		httpClientErrorStatus : UINT;
+		RequestHeader : httpRequestHeader_t;
+		TON_Timeout : TON;
+		FileSizeIn8Bit : UDINT;
+		FileDelete_0 : FileDelete;
+		FileCreate_0 : FileCreate;
+		FileWrite_0 : FileWrite;
+		FileClose_0 : FileClose;
+		Bmp8Bit : Bmp8Bit_Type;
+		Bmp24Bit : Bmp24Bit_Type;
+		BytesPerLine : DINT;
+		PixelSourceAdr : UDINT;
+		PixelDestAdr : UDINT;
+		PixelSourceColor : REFERENCE TO USINT;
+		PixelDestColor : REFERENCE TO PixelDestColor_Type;
+		BytesRemaining : DINT;
+		VC4HTML : ARRAY[0..3] OF STRING[300];
+		tmpStr1 : STRING[30];
+		i : UDINT;
 	END_VAR
 END_FUNCTION_BLOCK
 

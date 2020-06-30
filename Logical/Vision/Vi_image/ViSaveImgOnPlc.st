@@ -130,10 +130,15 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			IF httpClient_0.status = 0 AND httpClient_0.responseDataLen <> 0 THEN
 				UploadedImgSize				:= httpClient_0.responseDataLen;
 				httpClient_0(send := FALSE);
-				IF CFG.UploadBmpJpg THEN
-					Step := 20; // save the image (bmp or jpg)
+				IF UploadedImgSize < 100 THEN // No image available. Hint: In case of no image there will be sent 86 Bytes with an html error text
+					Status := ERR_NO_IMAGE;
+					Step := 0;
 				ELSE
-					Step := 30; // directly upload the svg
+					IF CFG.UploadBmpJpg THEN
+						Step := 20; // save the image (bmp or jpg)
+					ELSE
+						Step := 30; // directly upload the svg
+					END_IF
 				END_IF
 			ELSIF httpClient_0.status <> ERR_FUB_BUSY AND httpClient_0.status <> 0 THEN
 				httpClientErrorStatus := httpClient_0.status;

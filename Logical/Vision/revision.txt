@@ -5,6 +5,8 @@ Version 2.2 (development)
 - Added diagnostic data creation
 - Updated recipe management
 - Changed public arrays start index to 0 to avoid issues with C task
+- Added a VC4 visualization
+- Added functionality to show the image on the VC4 visualization (documentation still missing)
 
 Version 2.1
 - Simplified and reduced data structures

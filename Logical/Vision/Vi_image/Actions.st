@@ -248,3 +248,19 @@ HtmlFileContent :=
 	</body>
 </html>';
 END_ACTION
+ACTION CreateVC4HTML:
+VC4HTML[0] := '<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Camera Picture</title>		
+	</head>
+	<body >
+		<img id="imgError" width="';
+VC4HTML[1] := 'px" height="';
+VC4HTML[2] := 'px" src="';
+VC4HTML[3] := '" />
+	</body>
+</html>';
+END_ACTION

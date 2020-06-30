@@ -200,5 +200,16 @@ PROGRAM _CYCLIC
 	brsitoa(gVisionSensor[visSelectedSensor].CFG.PowerlinkNode, ADR(tmpStr));
 	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
 	
+	// Show camera image on VC4 visualization
+	ViShowImgOnVC4_0.Enable				:= ViCreateWebDirFile_0.Done; // Wait until the directory "web" is created
+	ViShowImgOnVC4_0.RefreshImage		:= visVC4RefreshImg;
+	ViShowImgOnVC4_0.CFG				:= gVisionImage.CFG;
+	ViShowImgOnVC4_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
+	ViShowImgOnVC4_0.ImgWidthInVC4_px	:= 500; // Pixel
+	ViShowImgOnVC4_0();
+	IF ViShowImgOnVC4_0.RefreshDone THEN
+		visVC4RefreshImg := FALSE;
+	END_IF
+	
 	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
 END_PROGRAM

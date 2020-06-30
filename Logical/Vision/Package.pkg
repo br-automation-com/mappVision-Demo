@@ -12,5 +12,6 @@
     <Object Type="Program" Language="IEC">YourTask</Object>
     <Object Type="File">setRouteToCamera.bat</Object>
     <Object Type="File">revision.txt</Object>
+    <Object Type="DataObject" Language="Vc" Description="Sample VC4 Visu 640x480 (VGA)">Visu</Object>
   </Objects>
 </Package>

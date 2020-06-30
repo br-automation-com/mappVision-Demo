@@ -12,6 +12,7 @@
     <File>ViSaveImgOnPlc.st</File>
     <File>ViDrawCrosshair.st</File>
     <File>ViCreateWebDirFile.st</File>
+    <File>ViShowImgOnVC4.st</File>
     <File>CrosshairDetailsText.st</File>
   </Files>
 </Program>
