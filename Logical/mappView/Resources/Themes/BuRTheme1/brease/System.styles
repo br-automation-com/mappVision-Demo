@@ -31,5 +31,9 @@
 	<Style id="default" xsi:type="system.brease.Scrollbar"
 		backColor="rgba(77,77,77,0.5)"
 		borderColor="rgba(214,214,214,0.9)"  />
-	
+
+	<Style id="default" xsi:type="system.brease.StartupProgressBar"
+		barBackColor="#000000"
+		barColor="#FF8000" 
+		barBorderColor="#999999"/>
 </Styles>

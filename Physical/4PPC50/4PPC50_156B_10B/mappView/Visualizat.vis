@@ -63,6 +63,8 @@
 		<Configuration key="activityCount" value="false" />
 		<Configuration key="zoom" value="true" />
 		<Configuration key="bootProgressBar" value="true" />
+		<Configuration key="bootLogo" value="Media/VisionEye.png" />
+		<Configuration key="bootColor" value="#000000" />
 		<Gestures>
 			<!--<SystemGesture1 touchPoints="2" />
 			<SystemGesture2 touchPoints="2" />
