@@ -201,9 +201,10 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF((visImageTrigger OR EDGEPOS(visEnableVision)) AND VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
 		// Add default delay and fire trigger
-		VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
-		VisionSensor.CMD.ImageTrigger := TRUE;
-		visImageTrigger := FALSE;
+		VisionSensor.DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+		VisionSensor.CMD.ImageTrigger	:= TRUE;
+		visImageTrigger					:= FALSE;
+		VisionSensor.DAT.Active			:= TRUE;
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
@@ -229,10 +230,11 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Reset image trigger, reload web page and store image when process is finished
 	// -----------------------------------------------------------------------------------------------------------
-	IF ((VisionSensor.DAT.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld OR VisionSensor.DAT.AcquisitionFailedCnt <> AcquisitionFailedCntOld) AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
+	IF ((VisionSensor.DAT.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld OR VisionSensor.DAT.AcquisitionFailedCnt <> AcquisitionFailedCntOld) AND NOT VisionSensor.DAT.ImageProcessingActive AND VisionSensor.HW.Ready) THEN
 		AcquisitionCompletedCntOld		:= VisionSensor.DAT.AcquisitionCompletedCnt;
 		AcquisitionFailedCntOld			:= VisionSensor.DAT.AcquisitionFailedCnt;
-		VisionSensor.CMD.ImageTrigger	:= FALSE;	
+		VisionSensor.CMD.ImageTrigger	:= FALSE;
+		VisionSensor.DAT.Active			:= FALSE;
 		// Store image to flash card
 		IF visAutoArchiv AND NOT DisableAutoArchiv THEN
 			gVisionImage.CMD.SaveImageOnPLC := TRUE;
@@ -249,8 +251,9 @@ PROGRAM _CYCLIC
 		TriggerTimeout.IN := TRUE;
 		TriggerTimeout.PT := UINT_TO_TIME(VisionSensor.DAT.Timeout)*2;
 		IF TriggerTimeout.Q THEN
-			VisionSensor.CMD.ImageTrigger := FALSE;
-			VisionSensor.CMD.ImageTriggerReset := TRUE;
+			VisionSensor.CMD.ImageTrigger		:= FALSE;
+			VisionSensor.CMD.ImageTriggerReset	:= TRUE;
+			VisionSensor.DAT.Active				:= FALSE;
 		END_IF
 	ELSE
 		TriggerTimeout.IN := FALSE;

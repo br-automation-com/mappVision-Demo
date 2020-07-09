@@ -68,6 +68,7 @@ TYPE
 		ResultCnt : USINT;
 		CockpitIsActive : BOOL;
 		Status : UDINT;
+		Active : BOOL;
 	END_STRUCT;
 	typVisionHW : 	STRUCT 
 		Connected : BOOL;
