@@ -8,22 +8,34 @@ PROGRAM _INIT
 	
 	// Flash color
 	brsitoa(VisionLight.DAT.FlashColor, ADR(visSelectedFlashColor));
-	 
+	InitialSearchLight := TRUE;
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
+	// -----------------------------------------------------------------------------------------------------------
+	// Select first available light after reboot
+	// -----------------------------------------------------------------------------------------------------------
+	IF InitialSearchLight THEN 
+		FOR i := 1 TO MAX_NUM_LIGHTS DO
+			IF gVisionLight[i].HW.Connected THEN
+				visSelectedLight := i;
+				InitialSearchLight := FALSE;
+				EXIT;
+			END_IF
+		END_FOR
+	END_IF
 	 // -----------------------------------------------------------------------------------------------------------
 	// Map global structure to local reference
 	// -----------------------------------------------------------------------------------------------------------
 	// Make sure we dont exceed array limit
-	IF(visSelectedLight > SIZEOF(gVisionLight)/SIZEOF(gVisionLight[1])) THEN
+	IF(visSelectedLight > MAX_NUM_LIGHTS) THEN
 		visSelectedLight := 1;
 	END_IF
 	IF(visSelectedLight < 1) THEN
-		visSelectedLight := SIZEOF(gVisionLight)/SIZEOF(gVisionLight[1]);
+		visSelectedLight := MAX_NUM_LIGHTS;
 	END_IF
 	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
 	
@@ -75,10 +87,4 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Vision Sensor - flash color
 	VisionLight.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
-	
 END_PROGRAM
-
-PROGRAM _EXIT
-	 
-END_PROGRAM
-

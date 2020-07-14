@@ -8,4 +8,6 @@ VAR
 	visEnableCommand : BOOL;
 	visSelectedFlashColor : STRING[10]; (*Flash color string*)
 	TriggerTimeout : TON; (*Disable web reload when timed out*)
+	InitialSearchLight : BOOL;
+	i : INT;
 END_VAR
