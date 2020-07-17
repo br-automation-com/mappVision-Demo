@@ -21,9 +21,6 @@
   <DataObjects>
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />
   </DataObjects>
-  <VcDataObjects>
-    <VcDataObject Name="Visu" Source="Vision.Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
-  </VcDataObjects>
   <Binaries>
     <BinaryObject Name="udbdef" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="mvLoader" Source="" Memory="UserROM" Language="Binary" />
@@ -92,7 +89,7 @@
     <LibraryObject Name="McAxis" Source="Libraries.McAxis.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="McAcpAx" Source="Libraries.McAcpAx.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="ViBase" Source="Libraries.ViBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="MpCom" Source="Libraries.MpCom.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>
