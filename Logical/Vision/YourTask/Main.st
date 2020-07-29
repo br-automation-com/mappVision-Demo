@@ -65,14 +65,21 @@ PROGRAM _CYCLIC
 	// Transfer data when loading a recipe
 	IF EDGENEG(Recipe_01.CMD.Load) OR cmdLoadRecipeAfterBoot THEN
 		cmdLoadRecipeAfterBoot := FALSE;
-		gVisionSensor[visSelectedSensor].FCT.ApplicationName	:= RecipeData.ApplicationName;
-		gVisionSensor[visSelectedSensor].DAT.Exposure			:= RecipeData.Exposure;
-		gVisionSensor[visSelectedSensor].DAT.FlashColor			:= RecipeData.FlashColor;
-		gVisionSensor[visSelectedSensor].DAT.FlashSegment		:= RecipeData.FlashSegment;
-		gVisionSensor[visSelectedSensor].DAT.Focus				:= RecipeData.Focus;
-		gVisionSensor[visSelectedSensor].DAT.Gain				:= RecipeData.Gain;
-		gVisionSensor[visSelectedSensor].DAT.MaxItemCnt			:= RecipeData.MaxItemCnt;
-		gVisionSensor[visSelectedSensor].DAT.Timeout			:= RecipeData.Timeout;
+		FOR i := 1 TO MAX_NUM_CAMS DO
+			gVisionSensor[i].FCT.ApplicationName	:= RecipeData.Cam[i].ApplicationName;
+			gVisionSensor[i].DAT.Exposure			:= RecipeData.Cam[i].Exposure;
+			gVisionSensor[i].DAT.FlashColor			:= RecipeData.Cam[i].FlashColor;
+			gVisionSensor[i].DAT.FlashSegment		:= RecipeData.Cam[i].FlashSegment;
+			gVisionSensor[i].DAT.Focus				:= RecipeData.Cam[i].Focus;
+			gVisionSensor[i].DAT.Gain				:= RecipeData.Cam[i].Gain;
+			gVisionSensor[i].DAT.MaxItemCnt			:= RecipeData.Cam[i].MaxItemCnt;
+			gVisionSensor[i].DAT.Timeout			:= RecipeData.Cam[i].Timeout;
+		END_FOR
+		FOR i := 1 TO MAX_NUM_LIGHTS DO
+			gVisionLight[i].DAT.Exposure			:= RecipeData.Light[i].Exposure;
+			gVisionLight[i].DAT.FlashColor			:= RecipeData.Light[i].FlashColor;
+			gVisionLight[i].DAT.Timeout				:= RecipeData.Light[i].Timeout;
+		END_FOR
 		// Switch vision application when recipe for blob was loaded
 		gVisionSensor[1].CMD.VaSwitchApplication := TRUE;
 	END_IF
@@ -80,14 +87,21 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------	
 	// Transfer data cyclic to the remanent variable
 	IF NOT Recipe_01.CMD.Load THEN
-		RecipeData.ApplicationName	:= gVisionSensor[visSelectedSensor].FCT.ApplicationName;
-		RecipeData.Exposure			:= gVisionSensor[visSelectedSensor].DAT.Exposure;
-		RecipeData.FlashColor		:= gVisionSensor[visSelectedSensor].DAT.FlashColor;
-		RecipeData.FlashSegment		:= gVisionSensor[visSelectedSensor].DAT.FlashSegment;
-		RecipeData.Focus			:= gVisionSensor[visSelectedSensor].DAT.Focus;
-		RecipeData.Gain				:= gVisionSensor[visSelectedSensor].DAT.Gain;
-		RecipeData.MaxItemCnt		:= gVisionSensor[visSelectedSensor].DAT.MaxItemCnt;
-		RecipeData.Timeout			:= gVisionSensor[visSelectedSensor].DAT.Timeout;
+		FOR i := 1 TO MAX_NUM_CAMS DO
+			RecipeData.Cam[i].ApplicationName	:= gVisionSensor[i].FCT.ApplicationName;
+			RecipeData.Cam[i].Exposure			:= gVisionSensor[i].DAT.Exposure;
+			RecipeData.Cam[i].FlashColor		:= gVisionSensor[i].DAT.FlashColor;
+			RecipeData.Cam[i].FlashSegment		:= gVisionSensor[i].DAT.FlashSegment;
+			RecipeData.Cam[i].Focus				:= gVisionSensor[i].DAT.Focus;
+			RecipeData.Cam[i].Gain				:= gVisionSensor[i].DAT.Gain;
+			RecipeData.Cam[i].MaxItemCnt		:= gVisionSensor[i].DAT.MaxItemCnt;
+			RecipeData.Cam[i].Timeout			:= gVisionSensor[i].DAT.Timeout;
+		END_FOR
+		FOR i := 1 TO MAX_NUM_LIGHTS DO
+			RecipeData.Light[i].Exposure		:= gVisionLight[i].DAT.Exposure;
+			RecipeData.Light[i].FlashColor		:= gVisionLight[i].DAT.FlashColor;
+			RecipeData.Light[i].Timeout			:= gVisionLight[i].DAT.Timeout;
+		END_FOR
 	END_IF
 	IF visSaveRecipe OR visNewRecipe THEN
 		IF(visNewRecipe) THEN
@@ -98,5 +112,4 @@ PROGRAM _CYCLIC
 		visNewRecipe := FALSE;
 		visSaveRecipe := FALSE;
 	END_IF
-
 END_PROGRAM

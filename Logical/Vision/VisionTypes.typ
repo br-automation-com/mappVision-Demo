@@ -271,6 +271,10 @@ END_TYPE
 
 TYPE
 	recVariable : 	STRUCT 
+		Cam : ARRAY[1..MAX_NUM_CAMS]OF recVariableCam;
+		Light : ARRAY[1..MAX_NUM_LIGHTS]OF recVariableLight;
+	END_STRUCT;
+	recVariableCam : 	STRUCT 
 		ApplicationName : STRING[40];
 		MaxItemCnt : USINT := 10;
 		Timeout : UINT := 5000;
@@ -279,5 +283,10 @@ TYPE
 		Exposure : UDINT;
 		FlashColor : USINT := 1;
 		FlashSegment : USINT := 15;
+	END_STRUCT;
+	recVariableLight : 	STRUCT 
+		Timeout : UINT := 5000;
+		Exposure : UDINT;
+		FlashColor : USINT := 1;
 	END_STRUCT;
 END_TYPE
