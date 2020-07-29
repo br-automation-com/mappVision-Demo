@@ -39,12 +39,12 @@ PROGRAM _INIT
 	// Lights configuration
 	// -----------------------------------------------------------------------------------------------------------	
 	// Configuration for backlights
-	gVisionLight[1].CFG.LightType		:= enumBarlight;
-	gVisionLight[1].DAT.FlashColor		:= 1;
+	gVisionLight[1].CFG.LightType		:= enumBacklight;
 	gVisionLight[1].CFG.PowerlinkNode	:= 10;
-	gVisionLight[2].CFG.LightType		:= enumBarlight;
-	gVisionLight[2].DAT.FlashColor		:= 1;
+	gVisionLight[1].DAT.FlashColor		:= 1;
+	gVisionLight[2].CFG.LightType		:= enumBacklight;
 	gVisionLight[2].CFG.PowerlinkNode	:= 11;
+	gVisionLight[2].DAT.FlashColor		:= 1;
 	
 	cmdLoadRecipeAfterBoot	:= TRUE;
 END_PROGRAM
