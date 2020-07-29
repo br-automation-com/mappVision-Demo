@@ -10,4 +10,5 @@ VAR
 	TriggerTimeout : TON; (*Disable web reload when timed out*)
 	InitialSearchLight : BOOL;
 	i : INT;
+	visSelectedFlashColorOld : STRING[10];
 END_VAR

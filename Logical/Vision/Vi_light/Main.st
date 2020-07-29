@@ -5,9 +5,7 @@
 PROGRAM _INIT
 	// Map global structure to local reference
 	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
-	
-	// Flash color
-	brsitoa(VisionLight.DAT.FlashColor, ADR(visSelectedFlashColor));
+
 	InitialSearchLight := TRUE;
 END_PROGRAM
 
@@ -39,6 +37,17 @@ PROGRAM _CYCLIC
 	END_IF
 	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
 	
+	// -----------------------------------------------------------------------------------------------------------
+	// Translate flash color from mappView to IO mapping
+	// -----------------------------------------------------------------------------------------------------------
+	// Hint: Normally copy from recipe (VisionLight) to visu. Only in case of a change in the visu copy to recipe
+	IF visSelectedFlashColor <> visSelectedFlashColorOld THEN // The flash color was changed in the mappView visualization
+		VisionLight.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
+	ELSE
+		brsitoa(VisionLight.DAT.FlashColor, ADR(visSelectedFlashColor));
+	END_IF
+	visSelectedFlashColorOld := visSelectedFlashColor;
+
 	// -----------------------------------------------------------------------------------------------------------
 	// Reset Light trigger
 	// -----------------------------------------------------------------------------------------------------------
@@ -83,8 +92,4 @@ PROGRAM _CYCLIC
 	ELSE
 		visEnableCommand := TRUE;
 	END_IF
-	
-	// -----------------------------------------------------------------------------------------------------------
-	// Vision Sensor - flash color
-	VisionLight.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSelectedFlashColor)));
 END_PROGRAM
