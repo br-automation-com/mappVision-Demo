@@ -116,7 +116,8 @@ TYPE
 	END_STRUCT;
 	typLightData : 	STRUCT 
 		Enable : USINT := 1;
-		FlashColor : USINT := 99;
+		FlashColor : USINT := 1;
+		FlashSegment : UINT := 15;
 		Exposure : UDINT := 200;
 		SetAngle : UINT;
 		Timeout : UINT := 5000;
@@ -291,6 +292,7 @@ TYPE
 		Timeout : UINT := 5000;
 		Exposure : UDINT;
 		FlashColor : USINT := 1;
+		FlashSegment : UINT := 15;
 		SetAngle : UINT := 45;
 	END_STRUCT;
 END_TYPE

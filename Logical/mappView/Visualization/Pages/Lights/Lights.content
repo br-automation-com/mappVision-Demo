@@ -28,8 +28,8 @@
         <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Temperature1" top="418" left="209" height="25" zIndex="22" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.Button" id="btnLightsTrigger" top="235" left="10" width="280" height="50" zIndex="1" text="Trigger" fontSize="24px" bold="true" style="Operate" />
-    <Widget xsi:type="widgets.brease.GroupBox" id="grpSelection" top="10" left="10" width="280" height="215" zIndex="2" text="Selection">
+    <Widget xsi:type="widgets.brease.Button" id="btnLightsTrigger" top="275" left="10" width="280" height="50" zIndex="1" text="Trigger" fontSize="24px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpSelection" top="10" left="10" width="280" height="255" zIndex="2" text="Selection">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="labLightsNo" top="13" left="19" width="105" height="20" zIndex="0" text="Lights No." textAlign="right" fontSize="18px" bold="false" />
         <Widget xsi:type="widgets.brease.NumericInput" id="numLightsNo" top="8" left="169" width="51" zIndex="1" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="5" minValue="1" textAlign="center" fontSize="20px" bold="true" padding="0px 0px 0px 0px" />
@@ -39,8 +39,10 @@
         <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBoxFlashColor" top="53" left="134" width="124" zIndex="5" dataProvider="[{'value':'0','text':'Off'},{'value':'1','text':'Red'},{'value':'2','text':'Green'},{'value':'3','text':'Blue'},{'value':'4','text':'Lime'},{'value':'99','text':'White'},{'value':'100','text':'Infrared'},{'value':'210','text':'Ultraviolet'}]" listPosition="bottom" selectedValue="0" textAlign="center" fontSize="18px" />
         <Widget xsi:type="widgets.brease.Label" id="labLightsExposure" top="88" left="19" width="105" height="40" zIndex="6" text="Exposure" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.NumericInput" id="numLightsExposure" top="93" left="134" width="121" zIndex="7" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10000" minValue="1" value="200" textAlign="right" fontSize="20px" bold="true" padding="0px 5px 0px 5px" />
-        <Widget xsi:type="widgets.brease.Label" id="labLightsExposure1" top="128" left="19" width="105" height="40" zIndex="8" text="Set Angle" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.NumericInput" id="numLightsExposure1" top="133" left="134" width="121" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="140" value="90" textAlign="right" fontSize="20px" bold="true" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labLightsSetAngle" top="168" left="19" width="105" height="40" zIndex="8" text="Set Angle" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="numLightsSetAngle" top="173" left="134" width="121" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="140" value="90" textAlign="right" fontSize="20px" bold="true" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labLightsFlashSegments" top="128" left="19" width="105" height="40" zIndex="10" text="Segments" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericInput" id="numLightsFlashSegments" top="133" left="134" width="121" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="15" value="15" textAlign="right" fontSize="20px" bold="true" padding="0px 5px 0px 5px" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.GroupBox" id="grpStatistics" top="10" left="655" width="280" height="175" zIndex="3" text="Statistics">

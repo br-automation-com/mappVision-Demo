@@ -569,6 +569,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionLight[3].CMD.FlashTriggerReset AT %QX."Lightbar1".ResetFlashTrigger;
 	Cyclic#1.::gVisionLight[3].DAT.NettimeDelay AT %QD."Lightbar1".Nettime01;
 	Cyclic#1.::gVisionLight[3].DAT.Exposure AT %QD."Lightbar1".ExposureTime01;
+	Cyclic#1.::gVisionLight[3].DAT.FlashSegment AT %QW."Lightbar1".FlashSegment01;
 	Cyclic#1.::gVisionLight[3].DAT.FlashColor AT %QB."Lightbar1".FlashColor01;
 	Cyclic#1.::gVisionLight[3].DAT.SetAngle AT %QW."Lightbar1".SetAngleTotal;
 	Cyclic#1.::NettimeCurrent_us AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;

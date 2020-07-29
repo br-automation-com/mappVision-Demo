@@ -78,24 +78,36 @@
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Temperature1" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.SetAngle" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsExposure1" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Temperature1" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsExposure1" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="labLightTemperature1" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashSegment" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsFlashSegments" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="labLightsExposure1" attribute="visible" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="labLightsFlashSegments" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsFlashSegments" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsSetAngle" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="labLightsSetAngle" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.SetAngle" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsSetAngle" attribute="value" />
 		</Binding>
 	</Bindings>
 </BindingsSet>

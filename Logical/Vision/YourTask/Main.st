@@ -82,6 +82,7 @@ PROGRAM _CYCLIC
 		FOR i := 1 TO MAX_NUM_LIGHTS DO
 			gVisionLight[i].DAT.Exposure			:= RecipeData.Light[i].Exposure;
 			gVisionLight[i].DAT.FlashColor			:= RecipeData.Light[i].FlashColor;
+			gVisionLight[i].DAT.FlashSegment		:= RecipeData.Light[i].FlashSegment;
 			gVisionLight[i].DAT.SetAngle			:= RecipeData.Light[i].SetAngle;
 			gVisionLight[i].DAT.Timeout				:= RecipeData.Light[i].Timeout;
 		END_FOR
@@ -105,6 +106,7 @@ PROGRAM _CYCLIC
 		FOR i := 1 TO MAX_NUM_LIGHTS DO
 			RecipeData.Light[i].Exposure		:= gVisionLight[i].DAT.Exposure;
 			RecipeData.Light[i].FlashColor		:= gVisionLight[i].DAT.FlashColor;
+			RecipeData.Light[i].FlashSegment	:= gVisionLight[i].DAT.FlashSegment;
 			RecipeData.Light[i].SetAngle		:= gVisionLight[i].DAT.SetAngle;
 			RecipeData.Light[i].Timeout			:= gVisionLight[i].DAT.Timeout;
 		END_FOR
