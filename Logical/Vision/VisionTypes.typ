@@ -138,7 +138,7 @@ TYPE
 		(
 		enumLightNone,
 		enumBacklight,
-		enumBarlight
+		enumLightbar
 		);
 END_TYPE
 
