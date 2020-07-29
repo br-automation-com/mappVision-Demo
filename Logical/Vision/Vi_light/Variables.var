@@ -11,4 +11,5 @@ VAR
 	InitialSearchLight : BOOL;
 	i : INT;
 	visSelectedFlashColorOld : STRING[10];
+	visEnableLightBarValues : BOOL;
 END_VAR

@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <BR.AS.HardwareTopology Version="0.0.0.1">
   <TimeStamps>
-    <TimeStamp LogicalPath="X20CP0483.Hardware.hw" LastWriteTime="03/20/2020 14:48:52" />
+    <TimeStamp LogicalPath="X20CP0483.Hardware.hw" LastWriteTime="07/29/2020 14:42:05" />
   </TimeStamps>
   <Modules>
     <Module Name="Blob" Type="VSS112Q22.041P-000" X="192" Y="399" />
     <Module Name="Match" Type="VSS112Q22.041P-000" X="582" Y="399" />
     <Module Name="OCR" Type="VSS112Q22.041P-000" X="712" Y="399" />
-    <Module Name="8V1010.50-2" Type="8V1010.50-2" X="1176" Y="399" />
-    <Module Name="8AC120.60-1" Type="8AC120.60-1" X="1190" Y="514.5" />
-    <Module Name="8AC114.60-2" Type="8AC114.60-2" X="1178.8" Y="514.5" />
-    <Module Name="Backlight1" Type="VSLB11F00.54DP-000" X="842" Y="399" />
+    <Module Name="8V1010.50-2" Type="8V1010.50-2" X="1353" Y="399" />
+    <Module Name="8AC120.60-1" Type="8AC120.60-1" X="1367" Y="514.5" />
+    <Module Name="8AC114.60-2" Type="8AC114.60-2" X="1355.8" Y="514.5" />
+    <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" X="842" Y="399" />
     <Module Name="Backlight2" Type="VSLB11F00.54DP-000" X="1009" Y="399" />
     <Module Name="CodeReader" Type="VSS112Q22.041P-000" X="431" Y="399" />
     <Module Name="Measurement" Type="VSS112Q22.041P-000" X="303" Y="399" />
@@ -18,16 +18,17 @@
     <Module Name="X20PS9600" Type="X20PS9600" X="125" Y="100" />
     <Module Name="X20TB12" Type="X20TB12" X="125" Y="127" />
     <Module Name="X20CP0483" Type="X20CP0483" X="100" Y="100" />
+    <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" X="1175" Y="427" />
   </Modules>
   <Links>
-    <Link From="8AC114.60-2" To="Backlight2" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
-      <Point X="1184.9" Y="542.3" />
-      <Point X="1184.9" Y="542.3" />
-      <Point X="1175.9" Y="542.3" />
-      <Point X="1072" Y="542.3" />
-      <Point X="1072" Y="522" />
-      <Point X="1072" Y="517" />
-      <Point X="1072" Y="517" />
+    <Link From="8AC114.60-2" To="Lightbar1" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
+      <Point X="1361.9" Y="542.3" />
+      <Point X="1361.9" Y="542.3" />
+      <Point X="1352.9" Y="542.3" />
+      <Point X="1238" Y="542.3" />
+      <Point X="1238" Y="522" />
+      <Point X="1238" Y="517" />
+      <Point X="1238" Y="517" />
     </Link>
     <Link From="Backlight1" To="OCR" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
       <Point X="860" Y="517" />
@@ -49,6 +50,16 @@
       <Point X="1027" Y="517" />
       <Point X="1027" Y="517" />
     </Link>
+    <Link From="Backlight2" To="Lightbar1" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="1072" Y="517" />
+      <Point X="1072" Y="517" />
+      <Point X="1072" Y="522" />
+      <Point X="1072" Y="535" />
+      <Point X="1193" Y="535" />
+      <Point X="1193" Y="522" />
+      <Point X="1193" Y="517" />
+      <Point X="1193" Y="517" />
+    </Link>
     <Link From="Blob" To="X20CP0483" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
       <Point X="210" Y="517" />
       <Point X="210" Y="517" />
@@ -59,6 +70,26 @@
       <Point X="99" Y="173" />
       <Point X="114" Y="173" />
       <Point X="114" Y="173" />
+    </Link>
+    <Link From="Blob" To="Measurement" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="255" Y="517" />
+      <Point X="255" Y="517" />
+      <Point X="255" Y="522" />
+      <Point X="255" Y="535" />
+      <Point X="321" Y="535" />
+      <Point X="321" Y="522" />
+      <Point X="321" Y="517" />
+      <Point X="321" Y="517" />
+    </Link>
+    <Link From="CodeReader" To="Measurement" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
+      <Point X="366" Y="517" />
+      <Point X="366" Y="517" />
+      <Point X="366" Y="522" />
+      <Point X="366" Y="535" />
+      <Point X="449" Y="535" />
+      <Point X="449" Y="522" />
+      <Point X="449" Y="517" />
+      <Point X="449" Y="517" />
     </Link>
     <Link From="CodeReader" To="Match" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
       <Point X="494" Y="517" />
@@ -79,26 +110,6 @@
       <Point X="730" Y="522" />
       <Point X="730" Y="517" />
       <Point X="730" Y="517" />
-    </Link>
-    <Link From="Blob" To="Measurement" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
-      <Point X="255" Y="517" />
-      <Point X="255" Y="517" />
-      <Point X="255" Y="522" />
-      <Point X="255" Y="535" />
-      <Point X="321" Y="535" />
-      <Point X="321" Y="522" />
-      <Point X="321" Y="517" />
-      <Point X="321" Y="517" />
-    </Link>
-    <Link From="Measurement" To="CodeReader" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
-      <Point X="366" Y="517" />
-      <Point X="366" Y="517" />
-      <Point X="366" Y="522" />
-      <Point X="366" Y="535" />
-      <Point X="449" Y="535" />
-      <Point X="449" Y="522" />
-      <Point X="449" Y="517" />
-      <Point X="449" Y="517" />
     </Link>
   </Links>
   <InfoElements />

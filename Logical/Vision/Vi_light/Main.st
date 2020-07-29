@@ -92,4 +92,9 @@ PROGRAM _CYCLIC
 	ELSE
 		visEnableCommand := TRUE;
 	END_IF
+	
+	// -----------------------------------------------------------------------------------------------------------
+	// Enable fields for different light types
+	// -----------------------------------------------------------------------------------------------------------
+	visEnableLightBarValues := VisionLight.CFG.LightType = enumLightbar;
 END_PROGRAM

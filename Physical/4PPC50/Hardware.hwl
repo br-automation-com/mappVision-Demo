@@ -1,20 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <BR.AS.HardwareTopology Version="0.0.0.1">
   <TimeStamps>
-    <TimeStamp LogicalPath="4PPC50.Hardware.hw" LastWriteTime="03/20/2020 14:48:08" />
+    <TimeStamp LogicalPath="4PPC50.Hardware.hw" LastWriteTime="07/29/2020 14:44:33" />
   </TimeStamps>
   <Modules>
     <Module Name="4PPC50_156B_10B" Type="4PPC50.156B-10B" X="100" Y="100" />
-    <Module Name="8V1010.50-2" Type="8V1010.50-2" X="1271.8" Y="339.3" />
-    <Module Name="8AC120.60-1" Type="8AC120.60-1" X="1285.8" Y="454.8" />
-    <Module Name="8AC114.60-2" Type="8AC114.60-2" X="1274.6001" Y="454.8" />
-    <Module Name="Backlight1" Type="VSLB11F00.54DP-000" X="937.8" Y="339.3" />
-    <Module Name="Backlight2" Type="VSLB11F00.54DP-000" X="1104.8" Y="339.3" />
-    <Module Name="Blob" Type="VSS112Q22.041P-000" X="389.8" Y="339.3" />
-    <Module Name="CodeReader" Type="VSS112Q22.041P-000" X="608.8" Y="339.3" />
-    <Module Name="Match" Type="VSS112Q22.041P-000" X="714.1001" Y="339.3" />
-    <Module Name="Measurement" Type="VSS112Q22.041P-000" X="499.8" Y="339.3" />
-    <Module Name="OCR" Type="VSS112Q22.041P-000" X="820.8" Y="339.3" />
+    <Module Name="8V1010.50-2" Type="8V1010.50-2" X="1428" Y="321" />
+    <Module Name="8AC120.60-1" Type="8AC120.60-1" X="1442" Y="436.5" />
+    <Module Name="8AC114.60-2" Type="8AC114.60-2" X="1430.8" Y="436.5" />
+    <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" X="937" Y="339" />
+    <Module Name="Backlight2" Type="VSLB11F00.54DP-000" X="1104" Y="339" />
+    <Module Name="Blob" Type="VSS112Q22.041P-000" X="389" Y="339" />
+    <Module Name="CodeReader" Type="VSS112Q22.041P-000" X="608" Y="339" />
+    <Module Name="Match" Type="VSS112Q22.041P-000" X="714" Y="339" />
+    <Module Name="Measurement" Type="VSS112Q22.041P-000" X="499" Y="339" />
+    <Module Name="OCR" Type="VSS112Q22.041P-000" X="820" Y="339" />
+    <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" X="1250" Y="363" />
   </Modules>
   <Links>
     <Link From="4PPC50_156B_10B" To="Blob" FromPort="IF1" ToPort="PLK1" IsRoutedByUser="False">
@@ -27,6 +28,15 @@
       <Point X="407.8" Y="457.3" />
       <Point X="407.8" Y="457.3" />
     </Link>
+    <Link From="8AC114.60-2" To="Lightbar1" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
+      <Point X="1436.9" Y="464.3" />
+      <Point X="1436.9" Y="464.3" />
+      <Point X="1427.9" Y="464.3" />
+      <Point X="1313" Y="464.3" />
+      <Point X="1313" Y="458" />
+      <Point X="1313" Y="453" />
+      <Point X="1313" Y="453" />
+    </Link>
     <Link From="Backlight1" To="OCR" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
       <Point X="955.8" Y="457.3" />
       <Point X="955.8" Y="457.3" />
@@ -36,15 +46,6 @@
       <Point X="883.8" Y="462.3" />
       <Point X="883.8" Y="457.3" />
       <Point X="883.8" Y="457.3" />
-    </Link>
-    <Link From="8AC114.60-2" To="Backlight2" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
-      <Point X="1280.7002" Y="482.599976" />
-      <Point X="1280.7002" Y="482.599976" />
-      <Point X="1271.7002" Y="482.599976" />
-      <Point X="1167.8" Y="482.599976" />
-      <Point X="1167.8" Y="462.3" />
-      <Point X="1167.8" Y="457.3" />
-      <Point X="1167.8" Y="457.3" />
     </Link>
     <Link From="Backlight1" To="Backlight2" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
       <Point X="1000.8" Y="457.3" />
@@ -56,6 +57,16 @@
       <Point X="1122.8" Y="457.3" />
       <Point X="1122.8" Y="457.3" />
     </Link>
+    <Link From="Backlight2" To="Lightbar1" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="1167" Y="457" />
+      <Point X="1167" Y="457" />
+      <Point X="1167" Y="462" />
+      <Point X="1167" Y="475" />
+      <Point X="1268" Y="475" />
+      <Point X="1268" Y="458" />
+      <Point X="1268" Y="453" />
+      <Point X="1268" Y="453" />
+    </Link>
     <Link From="Blob" To="Measurement" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
       <Point X="452.8" Y="457.3" />
       <Point X="452.8" Y="457.3" />
@@ -66,7 +77,7 @@
       <Point X="517.8" Y="457.3" />
       <Point X="517.8" Y="457.3" />
     </Link>
-    <Link From="Measurement" To="CodeReader" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+    <Link From="CodeReader" To="Measurement" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
       <Point X="562.8" Y="457.3" />
       <Point X="562.8" Y="457.3" />
       <Point X="562.8" Y="462.3" />

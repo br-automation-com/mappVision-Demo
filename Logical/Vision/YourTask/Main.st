@@ -45,6 +45,10 @@ PROGRAM _INIT
 	gVisionLight[2].CFG.LightType		:= enumBacklight;
 	gVisionLight[2].CFG.PowerlinkNode	:= 11;
 	gVisionLight[2].DAT.FlashColor		:= 1;
+	// Configuration for lightbars
+	gVisionLight[3].CFG.LightType		:= enumLightbar;
+	gVisionLight[3].CFG.PowerlinkNode	:= 20;
+	gVisionLight[3].DAT.FlashColor		:= 1;
 	
 	cmdLoadRecipeAfterBoot	:= TRUE;
 END_PROGRAM
@@ -78,6 +82,7 @@ PROGRAM _CYCLIC
 		FOR i := 1 TO MAX_NUM_LIGHTS DO
 			gVisionLight[i].DAT.Exposure			:= RecipeData.Light[i].Exposure;
 			gVisionLight[i].DAT.FlashColor			:= RecipeData.Light[i].FlashColor;
+			gVisionLight[i].DAT.SetAngle			:= RecipeData.Light[i].SetAngle;
 			gVisionLight[i].DAT.Timeout				:= RecipeData.Light[i].Timeout;
 		END_FOR
 		// Switch vision application when recipe for blob was loaded
@@ -100,6 +105,7 @@ PROGRAM _CYCLIC
 		FOR i := 1 TO MAX_NUM_LIGHTS DO
 			RecipeData.Light[i].Exposure		:= gVisionLight[i].DAT.Exposure;
 			RecipeData.Light[i].FlashColor		:= gVisionLight[i].DAT.FlashColor;
+			RecipeData.Light[i].SetAngle		:= gVisionLight[i].DAT.SetAngle;
 			RecipeData.Light[i].Timeout			:= gVisionLight[i].DAT.Timeout;
 		END_FOR
 	END_IF

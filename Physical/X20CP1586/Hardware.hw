@@ -3,7 +3,7 @@
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="8AC114.60-2" Type="8AC114.60-2" Version="1.0.0.8">
     <Connection Connector="SS" TargetModule="8V1010.50-2" TargetConnector="SS1" />
-    <Connection Connector="PLK1" TargetModule="Backlight2" TargetConnector="PLK2">
+    <Connection Connector="PLK1" TargetModule="Lightbar1" TargetConnector="PLK2" NodeNumber="50">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
   </Module>
@@ -77,7 +77,7 @@
     <Connection Connector="PLK1" TargetModule="Backlight1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="8AC114.60-2" TargetConnector="PLK1">
+    <Connection Connector="PLK2" TargetModule="Lightbar1" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -102,6 +102,16 @@
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
+  </Module>
+  <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" Version="0.0.1.225">
+    <Connection Connector="PLK1" TargetModule="Backlight2" TargetConnector="PLK2" NodeNumber="20">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="8AC114.60-2" TargetConnector="PLK1" NodeNumber="20">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
   <Module Name="Match" Type="VSS112Q22.041P-000" Version="1.0.0.186">
     <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="4">

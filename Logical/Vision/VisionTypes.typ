@@ -118,6 +118,7 @@ TYPE
 		Enable : USINT := 1;
 		FlashColor : USINT := 99;
 		Exposure : UDINT := 200;
+		SetAngle : UINT;
 		Timeout : UINT := 5000;
 		NettimeDelay : DINT;
 		FlashAcceptedCnt : USINT;
@@ -132,7 +133,9 @@ TYPE
 		ID : UDINT;
 		Variant : UDINT;
 		Firmware : UDINT;
-		Temperature : SINT;
+		TemperatureLED : SINT;
+		TemperatureControllerBoard : SINT;
+		WarningCnt : USINT;
 	END_STRUCT;
 	enumLightType : 
 		(
@@ -288,5 +291,6 @@ TYPE
 		Timeout : UINT := 5000;
 		Exposure : UDINT;
 		FlashColor : USINT := 1;
+		SetAngle : UINT := 45;
 	END_STRUCT;
 END_TYPE

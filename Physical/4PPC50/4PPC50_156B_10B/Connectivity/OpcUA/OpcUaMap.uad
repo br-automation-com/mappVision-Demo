@@ -136,6 +136,7 @@
         <Variable Name="visLightsTrigger" />
         <Variable Name="visLightsReset" />
         <Variable Name="visSelectedFlashColor" />
+        <Variable Name="visEnableLightBarValues" />
       </Task>
       <Task Name="Vi_nettime">
         <Variable Name="PowerlinkCycle_us" />
