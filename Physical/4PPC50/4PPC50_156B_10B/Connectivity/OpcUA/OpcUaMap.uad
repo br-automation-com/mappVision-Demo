@@ -96,6 +96,7 @@
         <Variable Name="visImageTrigger" />
         <Variable Name="visRepetitiveMode" />
         <Variable Name="visSelectedCodeTypeDetected" EnableArrayElements="True" />
+        <Variable Name="visSelectedCodeTypePreset" />
         <Variable Name="visSelectedFlashColor" />
         <Variable Name="visTableNo" EnableArrayElements="True" />
         <Variable Name="visEnableSetup" />
