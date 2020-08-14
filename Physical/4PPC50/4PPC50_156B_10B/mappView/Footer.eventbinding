@@ -38,7 +38,7 @@
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
-      <EventHandler condition="DiagStatus=0 AND newValue=0">
+      <EventHandler condition="DiagStatus=0 AND newValue=false AND oldValue=true">
         <Action>
           <Target xsi:type="clientSystem.Action">
             <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition" header="Success" icon="Information" />
