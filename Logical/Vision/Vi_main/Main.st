@@ -126,7 +126,6 @@ PROGRAM _CYCLIC
 	// Code Reader - selected/detected types
 	// -----------------------------------------------------------------------------------------------------------
 	IF VisionSensor.CFG.VisionFunction = enumCoderReader THEN
-		CodeReader.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypePreset)));
 		FOR idx:=1 TO MAX_NUM_RESULTS DO
 			IF CodeReader.BarcodeType[idx] <> 0 THEN
 				brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
