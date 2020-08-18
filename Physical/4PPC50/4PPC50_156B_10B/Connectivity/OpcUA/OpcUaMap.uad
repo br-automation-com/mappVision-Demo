@@ -96,7 +96,6 @@
         <Variable Name="visImageTrigger" />
         <Variable Name="visRepetitiveMode" />
         <Variable Name="visSelectedCodeTypeDetected" EnableArrayElements="True" />
-        <Variable Name="visSelectedCodeTypePreset" />
         <Variable Name="visSelectedFlashColor" />
         <Variable Name="visTableNo" EnableArrayElements="True" />
         <Variable Name="visEnableSetup" />
@@ -105,6 +104,8 @@
         <Variable Name="visCodeTypePresentDropDownValues" EnableArrayElements="True" />
         <Variable Name="visVisionApplicationList" EnableArrayElements="True" />
         <Variable Name="visEnableRepetitive" />
+        <Variable Name="visSelectedCodeTypeFromPLC" />
+        <Variable Name="visSelectedCodeTypeToPLC" />
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />
