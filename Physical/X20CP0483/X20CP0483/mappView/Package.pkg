@@ -23,5 +23,6 @@
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Lights.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\ImageArchiv.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.eventbinding</Object>
+	<Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Results.eventbinding</Object>
   </Objects>
 </Package>
