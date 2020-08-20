@@ -14,21 +14,21 @@ PROGRAM _INIT
 	gVisionSensor[1].CFG.PowerlinkNode	:= 1;				// Powerlink node number
 	gVisionSensor[1].CFG.DataStructure	:= ADR(gBlob);		// Global structures that holds all data related to this function
 	gVisionSensor[1].CFG.ComponentLink	:= gCameraBlob;		// Vision component name defined under mappVision in the configuration view
-	// Configuration for meaurement
-	gVisionSensor[2].CFG.VisionFunction	:= enumMeasurement;
-	gVisionSensor[2].CFG.PowerlinkNode	:= 2;
-	gVisionSensor[2].CFG.DataStructure	:= ADR(gMT);
-	gVisionSensor[2].CFG.ComponentLink	:= gCameraMeasurement;
 	// Configuration for code reader
-	gVisionSensor[3].CFG.VisionFunction	:= enumCoderReader;
-	gVisionSensor[3].CFG.PowerlinkNode	:= 3;
-	gVisionSensor[3].CFG.DataStructure	:= ADR(gCodeReader);
-	gVisionSensor[3].CFG.ComponentLink	:= gCameraCodeReading;
+	gVisionSensor[2].CFG.VisionFunction	:= enumCoderReader;
+	gVisionSensor[2].CFG.PowerlinkNode	:= 2;
+	gVisionSensor[2].CFG.DataStructure	:= ADR(gCodeReader);
+	gVisionSensor[2].CFG.ComponentLink	:= gCameraCodeReading;
 	// Configuration for match
-	gVisionSensor[4].CFG.VisionFunction	:= enumMatch;
+	gVisionSensor[3].CFG.VisionFunction	:= enumMatch;
+	gVisionSensor[3].CFG.PowerlinkNode	:= 3;
+	gVisionSensor[3].CFG.DataStructure	:= ADR(gMatch);
+	gVisionSensor[3].CFG.ComponentLink	:= gCameraMatch;
+	// Configuration for meaurement
+	gVisionSensor[4].CFG.VisionFunction	:= enumMeasurement;
 	gVisionSensor[4].CFG.PowerlinkNode	:= 4;
-	gVisionSensor[4].CFG.DataStructure	:= ADR(gMatch);
-	gVisionSensor[4].CFG.ComponentLink	:= gCameraMatch;
+	gVisionSensor[4].CFG.DataStructure	:= ADR(gMT);
+	gVisionSensor[4].CFG.ComponentLink	:= gCameraMeasurement;
 	// Configuration for OCR
 	gVisionSensor[5].CFG.VisionFunction	:= enumOCR;
 	gVisionSensor[5].CFG.PowerlinkNode	:= 5;
