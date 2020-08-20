@@ -89,10 +89,10 @@ TYPE
 		(
 		enumFunctionNone,
 		enumBlob,
-		enumMatch,
 		enumCoderReader,
-		enumOCR,
-		enumMeasurement
+		enumMatch,
+		enumMeasurement,
+		enumOCR
 		);
 END_TYPE
 

@@ -11,10 +11,10 @@ PROGRAM _INIT
 	// Map global structure to local reference
 	VisionSensor ACCESS ADR(gVisionSensor[visSelectedSensor]);
 	Blob ACCESS ADR(tmpBlob);
-	Match ACCESS ADR(tmpMatch);
 	CodeReader ACCESS ADR(tmpCodeReader);
-	OCR ACCESS ADR(tmpOCR);
+	Match ACCESS ADR(tmpMatch);
 	MT ACCESS ADR(tmpMT);
+	OCR ACCESS ADR(tmpOCR);
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Preload code types
@@ -69,14 +69,14 @@ PROGRAM _CYCLIC
 		CASE VisionSensor.CFG.VisionFunction OF
 			enumBlob:
 				Blob ACCESS VisionSensor.CFG.DataStructure;
-			enumMatch:
-				Match ACCESS VisionSensor.CFG.DataStructure;
 			enumCoderReader:
 				CodeReader ACCESS VisionSensor.CFG.DataStructure;
-			enumOCR:
-				OCR ACCESS VisionSensor.CFG.DataStructure;
+			enumMatch:
+				Match ACCESS VisionSensor.CFG.DataStructure;
 			enumMeasurement:
 				MT ACCESS VisionSensor.CFG.DataStructure;
+			enumOCR:
+				OCR ACCESS VisionSensor.CFG.DataStructure;
 		END_CASE
 	ELSE
 		RETURN;

@@ -4,14 +4,14 @@ FUNCTION_BLOCK ViDrawCrosshair
 		CASE VisionSensor.CFG.VisionFunction OF
 			enumBlob:
 				Blob ACCESS VisionSensor.CFG.DataStructure;
-			enumMatch:
-				Match ACCESS VisionSensor.CFG.DataStructure;
 			enumCoderReader:
 				CodeReader ACCESS VisionSensor.CFG.DataStructure;
-			enumOCR:
-				OCR ACCESS VisionSensor.CFG.DataStructure;
+			enumMatch:
+				Match ACCESS VisionSensor.CFG.DataStructure;
 			enumMeasurement:
 				MT ACCESS VisionSensor.CFG.DataStructure;
+			enumOCR:
+				OCR ACCESS VisionSensor.CFG.DataStructure;
 		END_CASE
 	ELSE
 		RETURN;
@@ -50,19 +50,15 @@ FUNCTION_BLOCK ViDrawCrosshair
 							CrosshairPositionX		:= UDINT_TO_REAL(Blob.PositionX[idx]);
 							CrosshairPositionY		:= UDINT_TO_REAL(Blob.PositionY[idx]);
 							CrosshairOrientation	:= Blob.Orientation[idx];
+						enumCoderReader:
+							CrosshairPositionX		:= UDINT_TO_REAL(CodeReader.PositionX[idx]);
+							CrosshairPositionY		:= UDINT_TO_REAL(CodeReader.PositionY[idx]);
+							CrosshairOrientation	:= CodeReader.Orientation[idx];
 						enumMatch:
 							CrosshairModelNumber	:= Match.ModelNumber[idx]; 
 							CrosshairPositionX		:= UDINT_TO_REAL(Match.PositionX[idx]);
 							CrosshairPositionY		:= UDINT_TO_REAL(Match.PositionY[idx]);
 							CrosshairOrientation	:= Match.Orientation[idx];
-						enumCoderReader:
-							CrosshairPositionX		:= UDINT_TO_REAL(CodeReader.PositionX[idx]);
-							CrosshairPositionY		:= UDINT_TO_REAL(CodeReader.PositionY[idx]);
-							CrosshairOrientation	:= CodeReader.Orientation[idx];
-						enumOCR:
-							CrosshairPositionX		:= UDINT_TO_REAL(OCR.PositionX[idx]);
-							CrosshairPositionY		:= UDINT_TO_REAL(OCR.PositionY[idx]);
-							CrosshairOrientation	:= OCR.Orientation[idx];
 						enumMeasurement:
 							IF MT.UseResultAsXY THEN
 								CrosshairPositionX	:= UDINT_TO_REAL(MT.Result[idx])/10;
@@ -70,6 +66,10 @@ FUNCTION_BLOCK ViDrawCrosshair
 								idx := idx + 1;
 							END_IF
 							MT_UseXY := TRUE; // use this variable because of in case Visionfunction != MT then the Pointer MT is not initialized
+						enumOCR:
+							CrosshairPositionX		:= UDINT_TO_REAL(OCR.PositionX[idx]);
+							CrosshairPositionY		:= UDINT_TO_REAL(OCR.PositionY[idx]);
+							CrosshairOrientation	:= OCR.Orientation[idx];
 					END_CASE
 				
 					// Show crosshair except for measurement function
