@@ -127,17 +127,18 @@ PROGRAM _CYCLIC
 		// Reset trigger when timed out
 		// -----------------------------------------------------------------------------------------------------------
 		IF gVisionSensor[idx].CMD.ImageTrigger THEN
-			TriggerTimeout.IN := TRUE;
-			TriggerTimeout.PT := UINT_TO_TIME(gVisionSensor[idx].DAT.Timeout)*2;
-			IF TriggerTimeout.Q THEN
+			TriggerTimeout[idx].IN := TRUE;
+			TriggerTimeout[idx].PT := UINT_TO_TIME(gVisionSensor[idx].DAT.Timeout)*1.25;
+			IF TriggerTimeout[idx].Q THEN
 				gVisionSensor[idx].CMD.ImageTrigger		:= FALSE;
 				gVisionSensor[idx].CMD.ImageTriggerReset	:= TRUE;
 				gVisionSensor[idx].DAT.Active				:= FALSE;
 			END_IF
 		ELSE
-			TriggerTimeout.IN := FALSE;
+			TriggerTimeout[idx].IN := FALSE;
 			gVisionSensor[idx].CMD.ImageTriggerReset := FALSE;
 		END_IF
+		TriggerTimeout[idx]();
 	END_FOR
 	
 // -----------------------------------------------------------------------------------------------------------
