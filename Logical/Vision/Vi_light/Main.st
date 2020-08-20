@@ -13,6 +13,39 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
+// -----------------------------------------------------------------------------------------------------------
+// Part 1: Things to be done for every light
+// -----------------------------------------------------------------------------------------------------------
+	FOR idx := 1 TO MAX_NUM_LIGHTS DO
+		// -----------------------------------------------------------------------------------------------------------
+		// Reset Light trigger
+		// -----------------------------------------------------------------------------------------------------------
+		IF (gVisionLight[idx].DAT.FlashCompletedCnt <> FlashCompletedCntOld[idx] OR gVisionLight[idx].DAT.FlashFailedCnt <> FlashFailedCntOld[idx]) THEN
+			FlashCompletedCntOld[idx]			:= gVisionLight[idx].DAT.FlashCompletedCnt;
+			FlashFailedCntOld[idx]				:= gVisionLight[idx].DAT.FlashFailedCnt;
+			gVisionLight[idx].CMD.FlashTrigger	:= FALSE;
+		END_IF
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// Reset trigger when timed out
+		// -----------------------------------------------------------------------------------------------------------
+		IF gVisionLight[idx].CMD.FlashTrigger THEN
+			TriggerTimeout[idx].IN := TRUE;
+			TriggerTimeout[idx].PT := REAL_TO_TIME(gVisionLight[idx].DAT.Timeout * 1.25);
+			IF TriggerTimeout[idx].Q THEN
+				gVisionLight[idx].CMD.FlashTrigger		:= FALSE;
+				gVisionLight[idx].CMD.FlashTriggerReset	:= TRUE;
+			END_IF
+		ELSE
+			TriggerTimeout[idx].IN := FALSE;
+			gVisionLight[idx].CMD.FlashTriggerReset := FALSE;
+		END_IF
+		TriggerTimeout[idx]();
+	END_FOR
+
+// -----------------------------------------------------------------------------------------------------------
+// Part 2: Things to be done for the actual selected light / visualization related things
+// -----------------------------------------------------------------------------------------------------------
 	// -----------------------------------------------------------------------------------------------------------
 	// Select first available light after reboot
 	// -----------------------------------------------------------------------------------------------------------
@@ -49,30 +82,12 @@ PROGRAM _CYCLIC
 	visSelectedFlashColorOld := visSelectedFlashColor;
 
 	// -----------------------------------------------------------------------------------------------------------
-	// Reset Light trigger
+	// Reset Light trigger manually
 	// -----------------------------------------------------------------------------------------------------------
-	IF (VisionLight.DAT.FlashCompletedCnt <> FlashCompletedCntOld OR VisionLight.DAT.FlashFailedCnt <> FlashFailedCntOld OR visLightsReset) THEN
+	IF (visLightsReset) THEN
 		VisionLight.CMD.FlashTrigger := FALSE;
 		visLightsReset := FALSE;
 	END_IF
-	FlashCompletedCntOld := VisionLight.DAT.FlashCompletedCnt;
-	FlashFailedCntOld := VisionLight.DAT.FlashFailedCnt;
-	
-	// -----------------------------------------------------------------------------------------------------------
-	// Reset trigger when timed out
-	// -----------------------------------------------------------------------------------------------------------
-	IF VisionLight.CMD.FlashTrigger THEN
-		TriggerTimeout.IN := TRUE;
-		TriggerTimeout.PT := UINT_TO_TIME(VisionLight.DAT.Timeout)*2;
-		IF TriggerTimeout.Q THEN
-			VisionLight.CMD.FlashTrigger := FALSE;
-			VisionLight.CMD.FlashTriggerReset := TRUE;
-		END_IF
-	ELSE
-		TriggerTimeout.IN := FALSE;
-		VisionLight.CMD.FlashTriggerReset := FALSE;
-	END_IF
-	TriggerTimeout();
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Fire trigger for lights

@@ -1,15 +1,16 @@
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 VAR
 	VisionLight : REFERENCE TO typLightMain; (*General vision functions that are independent from the inspection function*)
-	FlashFailedCntOld : USINT;
-	FlashCompletedCntOld : USINT;
+	FlashFailedCntOld : ARRAY[1..MAX_NUM_LIGHTS] OF USINT;
+	FlashCompletedCntOld : ARRAY[1..MAX_NUM_LIGHTS] OF USINT;
 	visLightsTrigger : BOOL;
 	visLightsReset : BOOL;
 	visEnableCommand : BOOL;
 	visSelectedFlashColor : STRING[10]; (*Flash color string*)
-	TriggerTimeout : TON; (*Disable web reload when timed out*)
+	TriggerTimeout : ARRAY[1..MAX_NUM_LIGHTS] OF TON; (*Disable web reload when timed out*)
 	InitialSearchLight : BOOL;
 	i : INT;
 	visSelectedFlashColorOld : STRING[10];
 	visEnableLightBarValues : BOOL;
+	idx : UINT;
 END_VAR

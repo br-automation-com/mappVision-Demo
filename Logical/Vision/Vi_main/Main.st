@@ -128,9 +128,9 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		IF gVisionSensor[idx].CMD.ImageTrigger THEN
 			TriggerTimeout[idx].IN := TRUE;
-			TriggerTimeout[idx].PT := UINT_TO_TIME(gVisionSensor[idx].DAT.Timeout)*1.25;
+			TriggerTimeout[idx].PT := REAL_TO_TIME(gVisionSensor[idx].DAT.Timeout * 1.25);
 			IF TriggerTimeout[idx].Q THEN
-				gVisionSensor[idx].CMD.ImageTrigger		:= FALSE;
+				gVisionSensor[idx].CMD.ImageTrigger			:= FALSE;
 				gVisionSensor[idx].CMD.ImageTriggerReset	:= TRUE;
 				gVisionSensor[idx].DAT.Active				:= FALSE;
 			END_IF
