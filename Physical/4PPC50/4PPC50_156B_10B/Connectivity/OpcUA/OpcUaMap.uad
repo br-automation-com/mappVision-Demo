@@ -106,6 +106,7 @@
         <Variable Name="visEnableRepetitive" />
         <Variable Name="visSelectedCodeTypeFromPLC" />
         <Variable Name="visSelectedCodeTypeToPLC" />
+        <Variable Name="visVaListRefresh" />
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />

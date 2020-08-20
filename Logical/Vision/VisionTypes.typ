@@ -14,7 +14,6 @@ TYPE
 		ImageTrigger : BOOL;
 		ImageTriggerReset : BOOL;
 		AutoSetupStartStop : BOOL;
-		VaListRefresh : BOOL;
 		VaSwitchApplication : BOOL;
 		SaveDiagData : BOOL;
 	END_STRUCT;
@@ -26,8 +25,6 @@ TYPE
 	END_STRUCT;
 	typVisionFunction : 	STRUCT 
 		ApplicationName : STRING[40];
-		ApplicationNameCnt : USINT;
-		ApplicationNameList : ARRAY[0..19]OF STRING[40];
 		Status : DINT;
 	END_STRUCT;
 	typVisionDiag : 	STRUCT 
@@ -68,6 +65,7 @@ TYPE
 		ResultCnt : USINT;
 		CockpitIsActive : BOOL;
 		Status : UDINT;
+		StatusText : STRING[30];
 		Active : BOOL;
 	END_STRUCT;
 	typVisionHW : 	STRUCT 

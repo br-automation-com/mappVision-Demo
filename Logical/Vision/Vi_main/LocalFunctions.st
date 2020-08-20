@@ -77,7 +77,7 @@ FUNCTION_BLOCK VaGetList
 							brsmemcpy(ADR(VaApplicationNames[VaApplicationCnt]), ModuleList.adress+j+1, i-j-1);
 							VaApplicationCnt := VaApplicationCnt + 1;
 							// Make sure we dont exceed array limit
-							IF(VaApplicationCnt >= SIZEOF(VaApplicationNames)/SIZEOF(VaApplicationNames[0])) THEN
+							IF VaApplicationCnt > MAX_IDX_VA_LIST THEN
 								Status := ERR_VA_LIST_NUM;
 								State := STATE_WAIT;
 								EXIT;

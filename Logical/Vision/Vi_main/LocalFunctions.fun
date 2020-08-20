@@ -5,7 +5,7 @@ FUNCTION_BLOCK VaGetList
 	END_VAR
 	VAR_OUTPUT
 		VaApplicationCnt : USINT;
-		VaApplicationNames : ARRAY[0..19] OF STRING[40];
+		VaApplicationNames : ARRAY[0..MAX_IDX_VA_LIST] OF STRING[40];
 		Status : UINT;
 	END_VAR
 	VAR

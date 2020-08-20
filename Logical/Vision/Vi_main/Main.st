@@ -38,6 +38,111 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
+// -----------------------------------------------------------------------------------------------------------
+// Part 1: Things to be done for every camera/sensor
+// -----------------------------------------------------------------------------------------------------------
+	FOR idx := 1 TO MAX_NUM_CAMS DO
+		// -----------------------------------------------------------------------------------------------------------
+		// Display camera status in hex - documenation is also in hex
+		// -----------------------------------------------------------------------------------------------------------
+		IF gVisionSensor[idx].DAT.Status = 0 THEN // Display only a single 0
+			gVisionSensor[idx].DAT.StatusText := '0';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#00000001 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Image acquisition';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#00000002 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Waiting trigger';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#00000010 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Searching settings';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#00000080 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Setting focus';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#00000090 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Searching settings';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#00000800 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Cam CPU not ready';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#00001000 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Cam sensor not ready';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#02000000 THEN
+			gVisionSensor[idx].DAT.StatusText := 'OS check/update';
+		ELSIF gVisionSensor[idx].DAT.Status = 16#80000000 THEN
+			gVisionSensor[idx].DAT.StatusText := 'Vision cockpit active';
+		ELSE // Display the status in hex format 0x02000800
+			gVisionSensor[idx].DAT.StatusText := '';
+			FOR i := 0 TO 28 BY 4 DO
+				gVisionSensor[idx].DAT.StatusText := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(gVisionSensor[idx].DAT.Status, i) AND 16#0000000F) + 1), 16)), gVisionSensor[idx].DAT.StatusText);
+			END_FOR
+			gVisionSensor[idx].DAT.StatusText := CONCAT('0x', gVisionSensor[idx].DAT.StatusText);
+		END_IF
+	
+		// -----------------------------------------------------------------------------------------------------------
+		// Check if vision cockpit is open
+		// -----------------------------------------------------------------------------------------------------------
+		gVisionSensor[idx].DAT.CockpitIsActive := (gVisionSensor[idx].DAT.Status AND 16#8000_0000) > 0;
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// Auto setup handling
+		// -----------------------------------------------------------------------------------------------------------
+		IF(gVisionSensor[idx].CMD.AutoSetupStartStop AND gVisionSensor[idx].DAT.Status <> 0) THEN
+			AutoSetupRunning[idx] := TRUE;
+		ELSIF NOT gVisionSensor[idx].CMD.AutoSetupStartStop THEN
+			AutoSetupRunning[idx] := FALSE;
+		END_IF
+		IF(gVisionSensor[idx].CMD.AutoSetupStartStop AND gVisionSensor[idx].DAT.Status = 0 AND AutoSetupRunning[idx]) THEN // Setup successfully finished
+			gVisionSensor[idx].DAT.Gain					:= gVisionSensor[idx].DAT.AutoSetupGain;
+			gVisionSensor[idx].DAT.Focus				:= gVisionSensor[idx].DAT.AutoSetupFocus;
+			gVisionSensor[idx].DAT.Exposure				:= gVisionSensor[idx].DAT.AutoSetupExposure;
+			gVisionSensor[idx].CMD.AutoSetupStartStop	:= FALSE;
+			AutoSetupRunning[idx]						:= FALSE;
+			TON_DelayAfterAutoSetup.IN					:= TRUE;
+		END_IF
+		TON_DelayAfterAutoSetup(PT := T#50ms);
+		IF TON_DelayAfterAutoSetup.Q THEN // After the camera tells it is ready, we need to wait still at least ca 20ms, otherwise it does not accept the trigger
+			TON_DelayAfterAutoSetup.IN := FALSE;
+			IF gVisionSensor[idx].HW.Ready AND NOT gVisionSensor[idx].DAT.ImageProcessingActive THEN
+				gVisionSensor[idx].DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+				gVisionSensor[idx].CMD.ImageTrigger	:= TRUE;
+				gVisionSensor[idx].DAT.Active			:= TRUE;
+			END_IF
+		END_IF
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// Reset image trigger, reload web page and store image when process is finished
+		// -----------------------------------------------------------------------------------------------------------
+		IF ((gVisionSensor[idx].DAT.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld[idx] OR gVisionSensor[idx].DAT.AcquisitionFailedCnt <> AcquisitionFailedCntOld[idx]) AND NOT gVisionSensor[idx].DAT.ImageProcessingActive AND gVisionSensor[idx].HW.Ready) THEN
+			AcquisitionCompletedCntOld[idx]			:= gVisionSensor[idx].DAT.AcquisitionCompletedCnt;
+			AcquisitionFailedCntOld[idx]			:= gVisionSensor[idx].DAT.AcquisitionFailedCnt;
+			gVisionSensor[idx].CMD.ImageTrigger		:= FALSE;
+			gVisionSensor[idx].DAT.Active			:= FALSE;
+			// Store image to flash card, only for the actual selected camera
+			IF idx = visSelectedSensor THEN
+				IF visAutoArchiv AND NOT DisableAutoArchiv THEN
+					gVisionImage.CMD.SaveImageOnPLC := TRUE;
+				END_IF
+				IF NOT visRepetitiveMode THEN
+					DisableAutoArchiv := FALSE;
+				END_IF
+			END_IF
+		END_IF
+	
+		// -----------------------------------------------------------------------------------------------------------
+		// Reset trigger when timed out
+		// -----------------------------------------------------------------------------------------------------------
+		IF gVisionSensor[idx].CMD.ImageTrigger THEN
+			TriggerTimeout.IN := TRUE;
+			TriggerTimeout.PT := UINT_TO_TIME(gVisionSensor[idx].DAT.Timeout)*2;
+			IF TriggerTimeout.Q THEN
+				gVisionSensor[idx].CMD.ImageTrigger		:= FALSE;
+				gVisionSensor[idx].CMD.ImageTriggerReset	:= TRUE;
+				gVisionSensor[idx].DAT.Active				:= FALSE;
+			END_IF
+		ELSE
+			TriggerTimeout.IN := FALSE;
+			gVisionSensor[idx].CMD.ImageTriggerReset := FALSE;
+		END_IF
+	END_FOR
+	
+// -----------------------------------------------------------------------------------------------------------
+// Part 2: Things to be done for the actual selected camera / visualization related things
+// -----------------------------------------------------------------------------------------------------------
 	// -----------------------------------------------------------------------------------------------------------
 	// Select first available camera after reboot
 	// -----------------------------------------------------------------------------------------------------------
@@ -49,7 +154,7 @@ PROGRAM _CYCLIC
 				EXIT;
 			END_IF
 		END_FOR
-		VisionSensor.CMD.VaListRefresh := TRUE;
+		visVaListRefresh := TRUE;
 	END_IF
 	
 	// -----------------------------------------------------------------------------------------------------------
@@ -67,61 +172,21 @@ PROGRAM _CYCLIC
 	VisionSensor ACCESS ADR(gVisionSensor[visSelectedSensor]);
 	IF(VisionSensor.CFG.DataStructure <> 0) THEN
 		CASE VisionSensor.CFG.VisionFunction OF
-			enumBlob:
-				Blob ACCESS VisionSensor.CFG.DataStructure;
-			enumCoderReader:
-				CodeReader ACCESS VisionSensor.CFG.DataStructure;
-			enumMatch:
-				Match ACCESS VisionSensor.CFG.DataStructure;
-			enumMeasurement:
-				MT ACCESS VisionSensor.CFG.DataStructure;
-			enumOCR:
-				OCR ACCESS VisionSensor.CFG.DataStructure;
+			enumBlob:			Blob ACCESS VisionSensor.CFG.DataStructure;
+			enumCoderReader:	CodeReader ACCESS VisionSensor.CFG.DataStructure;
+			enumMatch:			Match ACCESS VisionSensor.CFG.DataStructure;
+			enumMeasurement:	MT ACCESS VisionSensor.CFG.DataStructure;
+			enumOCR:			OCR ACCESS VisionSensor.CFG.DataStructure;
 		END_CASE
 	ELSE
 		RETURN;
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
-	// Display camera status in hex - documenation is also in hex
+	// Display camera status
 	// -----------------------------------------------------------------------------------------------------------
-	IF VisionSensor.DAT.Status = 0 THEN // Display only a single 0
-		visCameraStatus := '0';
-	ELSIF VisionSensor.DAT.Status = 16#00000001 THEN
-		visCameraStatus := 'Image acquisition';
-	ELSIF VisionSensor.DAT.Status = 16#00000002 THEN
-		visCameraStatus := 'Waiting trigger';
-	ELSIF VisionSensor.DAT.Status = 16#00000010 THEN
-		visCameraStatus := 'Searching settings';
-	ELSIF VisionSensor.DAT.Status = 16#00000080 THEN
-		visCameraStatus := 'Setting focus';
-	ELSIF VisionSensor.DAT.Status = 16#00000090 THEN
-		visCameraStatus := 'Searching settings';
-	ELSIF VisionSensor.DAT.Status = 16#00000800 THEN
-		visCameraStatus := 'Cam CPU not ready';
-	ELSIF VisionSensor.DAT.Status = 16#00001000 THEN
-		visCameraStatus := 'Cam sensor not ready';
-	ELSIF VisionSensor.DAT.Status = 16#02000000 THEN
-		visCameraStatus := 'OS check/update';
-	ELSIF VisionSensor.DAT.Status = 16#80000000 THEN
-		visCameraStatus := 'Vision cockpit active';
-	ELSE // Display the status in hex format 0x02000800
-		visCameraStatus := '';
-		FOR i := 0 TO 28 BY 4 DO
-			visCameraStatus := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(VisionSensor.DAT.Status, i) AND 16#0000000F) + 1), 16)), visCameraStatus);
-		END_FOR
-		visCameraStatus := CONCAT('0x', visCameraStatus);
-	END_IF
-	
-	// -----------------------------------------------------------------------------------------------------------
-	// Check if vision cockpit is open
-	// -----------------------------------------------------------------------------------------------------------
-	IF((VisionSensor.DAT.Status AND 16#8000_0000) > 0) THEN
-		VisionSensor.DAT.CockpitIsActive := TRUE;
-	ELSE
-		VisionSensor.DAT.CockpitIsActive := FALSE;
-	END_IF
-
+	visCameraStatus := VisionSensor.DAT.StatusText;
+		
 	// -----------------------------------------------------------------------------------------------------------
 	// Code Reader - selected/detected types
 	// -----------------------------------------------------------------------------------------------------------
@@ -131,11 +196,11 @@ PROGRAM _CYCLIC
 			visSelectedCodeTypeToPLC := '';
 		END_IF
 		brsitoa(CodeReader.CodeType, ADR(visSelectedCodeTypeFromPLC));
-		FOR idx:=1 TO MAX_NUM_RESULTS DO
-			IF CodeReader.BarcodeType[idx] <> 0 THEN
-				brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
+		FOR i := 1 TO MAX_NUM_RESULTS DO
+			IF CodeReader.BarcodeType[i] <> 0 THEN
+				brsstrcpy(ADR(visSelectedCodeTypeDetected[i]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[i], MAX_NUM_CODETYPES)]));
 			ELSE
-				brsstrcpy(ADR(visSelectedCodeTypeDetected[idx]), ADR(''));
+				brsstrcpy(ADR(visSelectedCodeTypeDetected[i]), ADR(''));
 			END_IF
 		END_FOR
 	END_IF
@@ -172,32 +237,10 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Disable setup buttons when camera is disconnected, processing an image or not ready
 	// -----------------------------------------------------------------------------------------------------------
-	IF(NOT VisionSensor.HW.Connected OR NOT (VisionSensor.HW.Ready OR AutoSetupRunning) OR VisionSensor.DAT.ImageProcessingActive) THEN
+	IF(NOT VisionSensor.HW.Connected OR NOT (VisionSensor.HW.Ready OR AutoSetupRunning[visSelectedSensor]) OR VisionSensor.DAT.ImageProcessingActive) THEN
 		visEnableSetup := FALSE;
 	ELSE
 		visEnableSetup := TRUE;
-	END_IF
-
-	// -----------------------------------------------------------------------------------------------------------
-	// Transfer auto setup data to preset values
-	// -----------------------------------------------------------------------------------------------------------
-	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status <> 0) THEN
-		AutoSetupRunning := TRUE;
-	ELSIF NOT VisionSensor.CMD.AutoSetupStartStop THEN
-		AutoSetupRunning := FALSE;
-	END_IF
-	IF(VisionSensor.CMD.AutoSetupStartStop AND VisionSensor.DAT.Status = 0 AND AutoSetupRunning) THEN
-		VisionSensor.DAT.Gain				:= VisionSensor.DAT.AutoSetupGain;
-		VisionSensor.DAT.Focus				:= VisionSensor.DAT.AutoSetupFocus;
-		VisionSensor.DAT.Exposure			:= VisionSensor.DAT.AutoSetupExposure;
-		VisionSensor.CMD.AutoSetupStartStop	:= FALSE;
-		AutoSetupRunning					:= FALSE;
-		TON_DelayAfterAutoSetup.IN			:= TRUE;
-	END_IF
-	TON_DelayAfterAutoSetup(PT := T#50ms);
-	IF TON_DelayAfterAutoSetup.Q THEN // After the camera tells it is ready, we need to wait still at least ca 20ms, otherwise it does not accept the trigger
-		TON_DelayAfterAutoSetup.IN := FALSE;
-		visImageTrigger := TRUE;
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
@@ -232,69 +275,27 @@ PROGRAM _CYCLIC
 	VisionSensor.DAT.Enable := visEnableVision AND NOT visRepetitiveMode;
 	
 	// -----------------------------------------------------------------------------------------------------------
-	// Reset image trigger, reload web page and store image when process is finished
-	// -----------------------------------------------------------------------------------------------------------
-	IF ((VisionSensor.DAT.AcquisitionCompletedCnt <> AcquisitionCompletedCntOld OR VisionSensor.DAT.AcquisitionFailedCnt <> AcquisitionFailedCntOld) AND NOT VisionSensor.DAT.ImageProcessingActive AND VisionSensor.HW.Ready) THEN
-		AcquisitionCompletedCntOld		:= VisionSensor.DAT.AcquisitionCompletedCnt;
-		AcquisitionFailedCntOld			:= VisionSensor.DAT.AcquisitionFailedCnt;
-		VisionSensor.CMD.ImageTrigger	:= FALSE;
-		VisionSensor.DAT.Active			:= FALSE;
-		// Store image to flash card
-		IF visAutoArchiv AND NOT DisableAutoArchiv THEN
-			gVisionImage.CMD.SaveImageOnPLC := TRUE;
-		END_IF
-		IF NOT visRepetitiveMode THEN
-			DisableAutoArchiv := FALSE;
-		END_IF
-	END_IF
-
-	// -----------------------------------------------------------------------------------------------------------
-	// Reset trigger when timed out
-	// -----------------------------------------------------------------------------------------------------------
-	IF VisionSensor.CMD.ImageTrigger THEN
-		TriggerTimeout.IN := TRUE;
-		TriggerTimeout.PT := UINT_TO_TIME(VisionSensor.DAT.Timeout)*2;
-		IF TriggerTimeout.Q THEN
-			VisionSensor.CMD.ImageTrigger		:= FALSE;
-			VisionSensor.CMD.ImageTriggerReset	:= TRUE;
-			VisionSensor.DAT.Active				:= FALSE;
-		END_IF
-	ELSE
-		TriggerTimeout.IN := FALSE;
-		VisionSensor.CMD.ImageTriggerReset := FALSE;
-	END_IF
-	TriggerTimeout();
-
-	// -----------------------------------------------------------------------------------------------------------
 	// Get list of vision applications and components
 	// -----------------------------------------------------------------------------------------------------------
-	IF (VisionSensor.CMD.VaListRefresh) THEN
+	IF (visVaListRefresh) THEN
 		VaGetList_01(Enable := TRUE);
 		VisionSensor.FCT.Status := ERR_FUB_BUSY;
-		// -----------------------------------------------------------------------------------------------------------
-		// OK
-		IF(VaGetList_01.Status = ERR_OK) THEN
-			// Make sure we dont exceed array limit
-			IF(VaGetList_01.VaApplicationCnt > 0 AND VaGetList_01.VaApplicationCnt < SIZEOF(VisionSensor.FCT.ApplicationNameList)/SIZEOF(VisionSensor.FCT.ApplicationNameList[0])) THEN
-				// Convert vision application list to main structure and mappView format
-				FOR idx:=0 TO VaGetList_01.VaApplicationCnt - 1 DO
-					VisionSensor.FCT.ApplicationNameList[idx] := VaGetList_01.VaApplicationNames[idx];
-					String2DataProvider(ADR(VaGetList_01.VaApplicationNames[idx]), ADR(visVisionApplicationList[idx]));
-				END_FOR
+		IF VaGetList_01.Status <> ERR_FUB_BUSY THEN
+			// Convert vision application list to mappView format
+			IF VaGetList_01.Status = ERR_OK THEN
+				IF VaGetList_01.VaApplicationCnt > 0 AND VaGetList_01.VaApplicationCnt < MAX_IDX_VA_LIST THEN
+					FOR i:=0 TO VaGetList_01.VaApplicationCnt - 1 DO
+						String2DataProvider(ADR(VaGetList_01.VaApplicationNames[i]), ADR(visVisionApplicationList[i]));
+					END_FOR
+				END_IF
 				VisionSensor.FCT.Status := ERR_OK;
-			ELSE
-				VisionSensor.FCT.Status := ERR_VA_LIST_NUM;				
+			ELSE // Error
+				brsmemset(ADR(visVisionApplicationList), 0, SIZEOF(visVisionApplicationList));
+				VisionSensor.FCT.Status := VaGetList_01.Status;
 			END_IF
-			VisionSensor.FCT.ApplicationNameCnt := VaGetList_01.VaApplicationCnt;
 			// Reset function block
 			VaGetList_01(Enable := FALSE);
-			VisionSensor.CMD.VaListRefresh := FALSE;
-			// -----------------------------------------------------------------------------------------------------------
-			// Error
-		ELSIF(VaGetList_01.Status <> ERR_FUB_BUSY) THEN
-			VisionSensor.FCT.Status := VaGetList_01.Status;
-			VaGetList_01(Enable := FALSE);
-			VisionSensor.CMD.VaListRefresh := FALSE;
+			visVaListRefresh := FALSE;
 		END_IF
 	END_IF
 	

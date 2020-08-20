@@ -41,10 +41,10 @@ VAR
 	visRepetitiveMode : BOOL; (*Enable/Disable repetitive mode*)
 	RepetitiveModeTimer : TON; (*Timer for repetitive mode*)
 	DisableAutoArchiv : BOOL; (*Enable/Disable automatic archieving for images*)
-	AcquisitionFailedCntOld : UDINT; (*Old aquisition failed counter*)
-	AcquisitionCompletedCntOld : UDINT; (*Old aquisition completed counter*)
+	AcquisitionFailedCntOld : ARRAY[1..MAX_NUM_CAMS] OF UDINT; (*Old aquisition failed counter*)
+	AcquisitionCompletedCntOld : ARRAY[1..MAX_NUM_CAMS] OF UDINT; (*Old aquisition completed counter*)
 	InitialSearchSensor : BOOL; (*Flag for first boot*)
-	AutoSetupRunning : BOOL; (*Flag for auto setup running*)
+	AutoSetupRunning : ARRAY[1..MAX_NUM_CAMS] OF BOOL; (*Flag for auto setup running*)
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Code Reader*)
@@ -71,4 +71,5 @@ VAR CONSTANT
 END_VAR
 VAR
 	TON_DelayAfterAutoSetup : TON;
+	visVaListRefresh : BOOL;
 END_VAR

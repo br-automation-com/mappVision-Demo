@@ -6,7 +6,7 @@
 			<Source contentRefId="contentRecipe" widgetRefId="btnVaRefresh" xsi:type="widgets.brease.Button.Event" event="Click" /> 
 			<EventHandler> 
 				<Action> 
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.CMD.VaListRefresh" > 
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visVaListRefresh" > 
 						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" /> 
 					</Target> 
 				</Action> 

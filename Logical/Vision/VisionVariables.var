@@ -23,6 +23,7 @@ VAR CONSTANT
 	MAX_NUM_CAMS : UINT := 5; (*Maximum number of camera's*)
 	MAX_NUM_LIGHTS : UINT := 5; (*Maximum number of light's*)
 	MAX_NUM_RESULTS : UINT := 10; (*Maximum number of results*)
+	MAX_IDX_VA_LIST : UINT := 19; (*Maximum number of entrys in the Vision Application list*)
 	DEVICE_NAME : STRING[40] := 'VisionFileDevice'; (*File device where the images and recipes are stored*)
 	NETTIME_DEFAULT_DELAY : UDINT := 30000; (*This delay is used when software trigger is used and nettime is enabled*)
 	MAX_NUM_CODETYPES : USINT := 69; (*Maximum number of code types*)
