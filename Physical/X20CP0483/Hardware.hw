@@ -101,7 +101,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
-  <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" Version="0.0.1.225">
+  <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" Version="0.0.1.272">
     <Connection Connector="PLK1" TargetModule="Backlight2" TargetConnector="PLK2" NodeNumber="20">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.2" />
     </Connection>
