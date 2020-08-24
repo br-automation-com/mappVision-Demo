@@ -557,7 +557,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionLight[3].HW.ID AT %ID."Lightbar1".ModuleID;
 	Cyclic#1.::gVisionLight[3].HW.Variant AT %ID."Lightbar1".HardwareVariant;
 	Cyclic#1.::gVisionLight[3].HW.Firmware AT %ID."Lightbar1".FirmwareVersion;
-	Cyclic#1.::gVisionLight[3].HW.Ready AT %IX."Lightbar1".LightReady;
+	Cyclic#1.::gVisionLight[3].HW.Ready AT %IX."Lightbar1".Ready;
 	Cyclic#1.::gVisionLight[3].DAT.Status AT %ID."Lightbar1".Status;
 	Cyclic#1.::gVisionLight[3].DAT.FlashAcceptedCnt AT %IB."Lightbar1".AcceptedFlashCnt;
 	Cyclic#1.::gVisionLight[3].DAT.FlashCompletedCnt AT %IB."Lightbar1".CompletedFlashCnt;
