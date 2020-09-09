@@ -8,7 +8,8 @@ PROGRAM _INIT
 	gVisionNettime.CFG.AxisPeriod				:= 360; // Needs also to be set in the axis configuration
 	gVisionNettime.CFG.AxisPositionTrigger		:= 0;
 	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; 	// Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
-	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 4; 	// Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
+	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 4; 	// Number of powerlink cycles the trigger has to be send ahead
+														// For camera only 4 is good value, for backlight use 12 with a 800us Powerlink cylce
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
