@@ -3,7 +3,7 @@
   <header creationtool="B&amp;R Automation Studio" creationtoolversion="4.2" datatype="unknown" segtype="sentence" adminlang="en" srclang="en" o-tmf="TMX">
     <note>Do not change anything in this file, else the tmx-file will not be recognized as a valid system text anymore</note>
     <prop type="x-BR-TS:Namespace">BR/EventLog</prop>
-    <prop type="x-BR-TS:systemtextsig">NbjwMWIrlyBpKwW0fii6UResxIYcd3NVuEMfb/HG8pa9fw57Mq50HzBwWdngzErqDIojJVfab3Mm0c2dg5UT6R4Qh2I6FDpBX2JdkodKYA/jd+3aLiFCWVbpkjzEutof7rt+PC/Qy8gIu1NhpGQqxU2wQHWw/asxPNDlfCfA6/g=</prop>
+    <prop type="x-BR-TS:systemtextsig">Ui5CsCTw4ad4jYKTuJQICTnqDhj06v2PiGVGgC6eE4eSu548nh/mG0f8C8FfIQYAVBd8wXCcyIe321Oqk4dp44P/uGJJSsPfidfJTIKRjo77JrYZwKCM+3sMiBiEPOeLeD8KsRho3aLMC0PVC/jq3gr6QtNJjwbxYkLWPNhRErg=</prop>
   </header>
   <body>
     <tu tuid="-1064239099">
@@ -556,6 +556,22 @@
       </tuv>
       <tuv xml:lang="en">
         <seg>Entered task name "{2}" is too long and was truncated: "{3}"</seg>
+      </tuv>
+    </tu>
+    <tu tuid="-1064303598">
+      <tuv xml:lang="de">
+        <seg>Fehler beim Lesen des Passworts ({2}) aus der Konfiguration (Interner Fehler: {1})</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Error reading password ({2}) from configuration (Internal Error: {1})</seg>
+      </tuv>
+    </tu>
+    <tu tuid="-1064303597">
+      <tuv xml:lang="de">
+        <seg>Passwort ist ungültig</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Password is invalid</seg>
       </tuv>
     </tu>
   </body>

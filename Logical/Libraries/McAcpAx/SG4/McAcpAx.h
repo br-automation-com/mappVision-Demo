@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAcpAx 5.10.1 */
+/* McAcpAx 5.11.2 */
 
 #ifndef _MCACPAX_
 #define _MCACPAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAcpAx_VERSION
-#define _McAcpAx_VERSION 5.10.1
+#define _McAcpAx_VERSION 5.11.2
 #endif
 
 #include <bur/plctypes.h>
@@ -366,6 +366,21 @@ typedef enum McASAMEnum
 	mcASAM_SET_VAL_GEN = 1,
 	mcASAM_COMPL = 2
 } McASAMEnum;
+
+typedef enum McAPSMOutParEnum
+{	mcAPSMOP_ACOPOSTRAK = 1,
+	mcAPSMOP_USR_DEF = 2
+} McAPSMOutParEnum;
+
+typedef enum McAPSMOutParUsrDefCurLimEnum
+{	mcAPSMOPUDCL_NOT_USE = 0,
+	mcAPSMOPUDCL_USE = 1
+} McAPSMOutParUsrDefCurLimEnum;
+
+typedef enum McAPSMOutVOnEnum
+{	mcAPSMOVO_NO = 0,
+	mcAPSMOVO_YES = 1
+} McAPSMOutVOnEnum;
 
 typedef struct McAcpAxLoopFilterLowPassType
 {	float CutOffFrequency;
@@ -1352,6 +1367,43 @@ typedef struct McCfgAcpAxFeatType
 {	struct McAAFType AxisFeatures;
 } McCfgAcpAxFeatType;
 
+typedef struct McAPSMOutParACOPOStrakType
+{	float Voltage;
+	float CurrentLimit;
+	unsigned char CurrentLimitTime;
+} McAPSMOutParACOPOStrakType;
+
+typedef struct McAPSMOutParUsrDefCurLimUseType
+{	float CurrentLimit;
+	unsigned char CurrentLimitTime;
+} McAPSMOutParUsrDefCurLimUseType;
+
+typedef struct McAPSMOutParUsrDefCurLimType
+{	enum McAPSMOutParUsrDefCurLimEnum Type;
+	struct McAPSMOutParUsrDefCurLimUseType Used;
+} McAPSMOutParUsrDefCurLimType;
+
+typedef struct McAPSMOutParUsrDefType
+{	float Voltage;
+	struct McAPSMOutParUsrDefCurLimType CurrentLimitation;
+} McAPSMOutParUsrDefType;
+
+typedef struct McAPSMOutParType
+{	enum McAPSMOutParEnum Type;
+	struct McAPSMOutParACOPOStrakType ACOPOStrak;
+	struct McAPSMOutParUsrDefType UserDefined;
+} McAPSMOutParType;
+
+typedef struct McAPSMOutVOnType
+{	enum McAPSMOutVOnEnum Type;
+} McAPSMOutVOnType;
+
+typedef struct McCfgAcpAuxPwrSupModType
+{	plcstring AxisReference[251];
+	struct McAPSMOutParType OutputParameters;
+	struct McAPSMOutVOnType OutputVoltageOn;
+} McCfgAcpAuxPwrSupModType;
+
 typedef struct MC_BR_ControllerSetPar_AcpAx
 {
 	/* VAR_INPUT (analog) */
@@ -1389,6 +1441,40 @@ typedef struct MC_BR_AutoTuneFeedForward_AcpAx
 	plcbit CommandAborted;
 	plcbit Error;
 } MC_BR_AutoTuneFeedForward_AcpAx_typ;
+
+typedef struct MC_BR_ApsmPowerOn_AcpAx
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit CommandAborted;
+	plcbit Error;
+} MC_BR_ApsmPowerOn_AcpAx_typ;
+
+typedef struct MC_BR_ApsmPowerOff_AcpAx
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit CommandAborted;
+	plcbit Error;
+} MC_BR_ApsmPowerOff_AcpAx_typ;
 
 typedef struct MC_BR_InitHome_AcpAx
 {
@@ -1886,6 +1972,8 @@ typedef struct MC_BR_RdLoadSimInputData_AcpAx
 /* Prototyping of functions and function blocks */
 _BUR_PUBLIC void MC_BR_ControllerSetPar_AcpAx(struct MC_BR_ControllerSetPar_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_AutoTuneFeedForward_AcpAx(struct MC_BR_AutoTuneFeedForward_AcpAx* inst);
+_BUR_PUBLIC void MC_BR_ApsmPowerOn_AcpAx(struct MC_BR_ApsmPowerOn_AcpAx* inst);
+_BUR_PUBLIC void MC_BR_ApsmPowerOff_AcpAx(struct MC_BR_ApsmPowerOff_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_InitHome_AcpAx(struct MC_BR_InitHome_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_ProcessParID_AcpAx(struct MC_BR_ProcessParID_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_CyclicProcessParID_AcpAx(struct MC_BR_CyclicProcessParID_AcpAx* inst);

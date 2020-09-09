@@ -636,4 +636,49 @@ TYPE
 	McCfgAcpAxFeatType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_AX_FEAT*)
 		AxisFeatures : McAAFType; (*Features for an axis*)
 	END_STRUCT;
+	McAPSMOutParEnum :
+		( (*Output parameters selector setting*)
+		mcAPSMOP_ACOPOSTRAK := 1, (*ACOPOStrak - Output parameters for ACOPOStrak segments*)
+		mcAPSMOP_USR_DEF := 2 (*User defined - User defined output parameters*)
+		);
+	McAPSMOutParACOPOStrakType : STRUCT (*Type mcAPSMOP_ACOPOSTRAK settings*)
+		Voltage : REAL; (*Output voltage [V]*)
+		CurrentLimit : REAL; (*Output current limit [A]*)
+		CurrentLimitTime : USINT; (*Output current limit time [s]*)
+	END_STRUCT;
+	McAPSMOutParUsrDefCurLimEnum :
+		( (*Current limitation selector setting*)
+		mcAPSMOPUDCL_NOT_USE := 0, (*Not used - Current limited automatically to maximum*)
+		mcAPSMOPUDCL_USE := 1 (*Used - Current limited to specified value*)
+		);
+	McAPSMOutParUsrDefCurLimUseType : STRUCT (*Type mcAPSMOPUDCL_USE settings*)
+		CurrentLimit : REAL; (*Output current limit [A]*)
+		CurrentLimitTime : USINT; (*Output current limit time [s]*)
+	END_STRUCT;
+	McAPSMOutParUsrDefCurLimType : STRUCT (*Current limitation*)
+		Type : McAPSMOutParUsrDefCurLimEnum; (*Current limitation selector setting*)
+		Used : McAPSMOutParUsrDefCurLimUseType; (*Type mcAPSMOPUDCL_USE settings*)
+	END_STRUCT;
+	McAPSMOutParUsrDefType : STRUCT (*Type mcAPSMOP_USR_DEF settings*)
+		Voltage : REAL; (*Output voltage [V]*)
+		CurrentLimitation : McAPSMOutParUsrDefCurLimType; (*Current limitation*)
+	END_STRUCT;
+	McAPSMOutParType : STRUCT (*Output parameters selection*)
+		Type : McAPSMOutParEnum; (*Output parameters selector setting*)
+		ACOPOStrak : McAPSMOutParACOPOStrakType; (*Type mcAPSMOP_ACOPOSTRAK settings*)
+		UserDefined : McAPSMOutParUsrDefType; (*Type mcAPSMOP_USR_DEF settings*)
+	END_STRUCT;
+	McAPSMOutVOnEnum :
+		( (*Output voltage on selector setting*)
+		mcAPSMOVO_NO := 0, (*No - Output voltage off, switch on by FB call*)
+		mcAPSMOVO_YES := 1 (*Yes - Output voltage on*)
+		);
+	McAPSMOutVOnType : STRUCT (*Output voltage is on after start-up and error reset*)
+		Type : McAPSMOutVOnEnum; (*Output voltage on selector setting*)
+	END_STRUCT;
+	McCfgAcpAuxPwrSupModType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_AUX_PWR_SUP_MOD*)
+		AxisReference : STRING[250]; (*Name of the power supply module component*)
+		OutputParameters : McAPSMOutParType; (*Output parameters selection*)
+		OutputVoltageOn : McAPSMOutVOnType; (*Output voltage is on after start-up and error reset*)
+	END_STRUCT;
 END_TYPE

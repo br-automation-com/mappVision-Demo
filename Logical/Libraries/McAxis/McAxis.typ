@@ -94,6 +94,19 @@ TYPE
 		mcCAMSECTLAW_HARMONIC_COMBI := 8
 	);
 
+	McEventSrcEnum :
+	(
+		mcEVENT_SRC_TRIGGER1 := 0,	(*Use Trigger 1 as an event source*)
+		mcEVENT_SRC_TRIGGER2 := 1	(*Use Trigger 2 as an event source*)
+	);
+
+	McBrTriggerInfoStatusEnum :
+	(
+		mcTRG_STAT_WAITING := 0, (*Waiting for trigger event.*)
+		mcTRG_STAT_VALID := 1, (*A valid trigger event was detected.*)
+		mcTRG_STAT_MISSED := 2 (*No valid trigger event was detected in period.*)
+	);
+
 	(*Structure types*)
 
 	McLibraryInfoType : STRUCT
@@ -515,24 +528,6 @@ TYPE
 		MasterValueSource : McValueSrcEnum; (*Defines the source of the position to be read*)
 		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [measurement units of master/s]*)
 		Jerk : REAL; (**)
-	END_STRUCT;
-
-	McDigCamSwSwitchesParType : STRUCT
-		TrackNumber : INT; (*TrackNumber is the reference to the track (not evaluated since the function block controls only one track/output)*)
-		FirstOnPosition : ARRAY[0..16] OF LREAL; (*Lower limit at which the switch is on [PLCopen units]*)
-		LastOnPosition : ARRAY[0..16] OF LREAL; (*Upper limit at which the switch is on [PLCopen units]*)
-		Period : REAL; (*Defines the period if a non-periodic master axis is being used or the function block period does not match the master axis period*)
-	END_STRUCT;
-
-	McDigCamSwOutputsParType : STRUCT
-		Axis : REFERENCE TO McAxisType; (*Reference to an axis on the drive where the plug-in module is connected*)
-		VariableAddress : REFERENCE TO BOOL; (*Process variable where the cam switch output should be connected*)
-	END_STRUCT;
-
-	McDigCamSwTrackOptParType : STRUCT
-		OnCompensation : TIME; (*Compensation time used to switch on the output earlier*)
-		OffCompensation : TIME; (*Compensation time used to switch off the output earlier*)
-		Hysteresis : REAL; (*Interval from the switching point (in the positive and negative direction) during which the output is not switched until the axis leaves this area. This prevents switching from taking place several times around the switching point. [PLCopen units]*)
 	END_STRUCT;
 
 END_TYPE

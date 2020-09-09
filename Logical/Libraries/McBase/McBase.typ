@@ -75,8 +75,9 @@ TYPE
 
 	McEdgeEnum :
 	(
-		mcEDGE_POSITIVE,				 (*Selection for the rising edge*)
-		mcEDGE_NEGATIVE					 (*Selection for the falling edge*)
+		mcEDGE_POSITIVE, (*Selection for the rising edge*)
+		mcEDGE_NEGATIVE, (*Selection for the falling edge*)
+		mcEDGE_MIDDLE (* Middle position between positive and negative edge*)
 	);
 
 	McNetworkTypeEnum :
@@ -107,7 +108,7 @@ TYPE
 		mcTCS := 9,	 (*Tool coordinate system*)
 		mcJACS := 100	 (*Joint axes coordinate system*)
 	);
-	
+
 	McValueSrcEnum :
 	(
 		mcVALUE_SET, 					 (*Position setpoint value [Measurement units]*)
@@ -127,8 +128,7 @@ TYPE
 	(
 		mcPPM_READ,		 			(*Reads Parameterization*)
 		mcPPM_WRITE,	 			(*Write Parameterization*)
-		mcPPM_LOAD_FROM_CONFIG,		(*Load P from Config*)
-		mcPPM_SAVE_TO_CONFIG		(*Save P to Config*)
+		mcPPM_LOAD_FROM_CONFIG		(*Load P from Config*)
 	);
 
 	McProcessConfigModeEnum:

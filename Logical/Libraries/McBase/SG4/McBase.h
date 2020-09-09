@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.10.1 */
+/* McBase 5.11.2 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.10.1
+#define _McBase_VERSION 5.11.2
 #endif
 
 #include <bur/plctypes.h>
@@ -87,7 +87,8 @@ typedef enum McErrorCmdEnum
 
 typedef enum McEdgeEnum
 {	mcEDGE_POSITIVE,
-	mcEDGE_NEGATIVE
+	mcEDGE_NEGATIVE,
+	mcEDGE_MIDDLE
 } McEdgeEnum;
 
 typedef enum McNetworkTypeEnum
@@ -131,8 +132,7 @@ typedef enum McSwitchEnum
 typedef enum McProcessParamModeEnum
 {	mcPPM_READ,
 	mcPPM_WRITE,
-	mcPPM_LOAD_FROM_CONFIG,
-	mcPPM_SAVE_TO_CONFIG
+	mcPPM_LOAD_FROM_CONFIG
 } McProcessParamModeEnum;
 
 typedef enum McProcessConfigModeEnum
@@ -179,6 +179,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_ACP_DIG_IN = 11019,
 	mcCFG_ACP_SIM = 11020,
 	mcCFG_ACP_AX_FEAT = 11021,
+	mcCFG_ACP_AUX_PWR_SUP_MOD = 11030,
 	mcCFG_AX_FEAT_CAM_AUT_ACP = 11101,
 	mcCFG_AX_FEAT_CAM_LST = 11102,
 	mcCFG_AX_FEAT_A_IN = 11103,
@@ -239,6 +240,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_MS_2AX_CNC_YZ = 51203,
 	mcCFG_MS_3AX_CNC_XYZ = 51301,
 	mcCFG_MS_3AX_CNC_XZC = 51302,
+	mcCFG_MS_3AX_CNC_XZB = 51303,
 	mcCFG_MS_4AX_CNC_XYZB = 51401,
 	mcCFG_MS_4AX_CNC_XYZC = 51402,
 	mcCFG_MS_5AX_CNC_XYZCA = 51504,
@@ -734,14 +736,14 @@ typedef struct McCfgTransZType
 {	double Z;
 } McCfgTransZType;
 
-typedef struct McCfgTransYType
-{	double Y;
-} McCfgTransYType;
-
 typedef struct McCfgTransXZType
 {	double X;
 	double Z;
 } McCfgTransXZType;
+
+typedef struct McCfgTransYType
+{	double Y;
+} McCfgTransYType;
 
 typedef struct MC_BR_ProcessConfig
 {

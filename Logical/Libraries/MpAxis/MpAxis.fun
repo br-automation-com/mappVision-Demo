@@ -41,3 +41,43 @@ FUNCTION_BLOCK MpAxisBasic
 		Internal : {REDUND_UNREPLICABLE} MpComInternalDataType; (*Internal data*)
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MpAxisCoupling (*Flexibly sequence various (user-defined or predefined) cam profiles together*) (* $GROUP=mapp,$CAT=Multi Axis,$GROUPICON=Icon_mapp.png,$CATICON=Icon_MpAxis1.png *)
+	VAR_INPUT
+		MpLink : REFERENCE TO McAxisType; (*Connection to mapp, slave axis for the coupling*) (* *) (*#PAR#;*)
+		Enable : BOOL; (*Enables/Disables the function block*) (* *) (*#PAR#;*)
+		ErrorReset : BOOL; (*Resets function block errors*) (* *) (*#PAR#;*)
+		Parameters : REFERENCE TO MpAxisCouplingParType; (*Function block parameters*) (* *) (*#PAR#;*)
+		Update : BOOL; (*Update command for the parameters*) (* *) (*#PAR#;*)
+		MpLinkMaster : REFERENCE TO McAxisType; (*Master axis for the coupling*) (* *) (*#PAR#;*)
+		Gear : BOOL; (*Starts a Gear command*) (* *) (*#CMD#;*)
+		Cam : BOOL; (*Starts a Cam command*) (* *) (*#CMD#;*)
+		GearInPos : BOOL; (*Starts a Gear command*) (* *) (*#CMD#;*)
+		OffsetShift : BOOL; (*Starts a phase shift to the slave position (offset)
+*) (* *) (*#CMD#OPT#;*)
+		PhaseShift : BOOL; (*Starts a phase shift to the master position with which the slave is working (phase); the master remains unaffected
+*) (* *) (*#CMD#OPT#;*)
+		GetCamPosition : BOOL; (*Get position of master or slave axis based on defined cam*) (* *) (*#CMD#OPT#;*)
+		CamPrepare : BOOL; (*Initializes CamList*) (* *) (*#CMD#OPT#;*)
+		Recovery : BOOL; (*Recover to a defined cam position after a stop*) (* *) (*#CMD#OPT#;*)
+	END_VAR
+	VAR_OUTPUT
+		Active : BOOL; (*Indicates whether the function block is active*) (* *) (*#PAR#;*)
+		Error : BOOL; (*Indicates that the function block is in an error state or a command was not executed correctly*) (* *) (*#PAR#;*)
+		StatusID : DINT; (*Status information about the function block*) (* *) (*#PAR#;*)
+		UpdateDone : BOOL; (*Parameter update completed*) (* *) (*#PAR#;*)
+		CommandBusy : BOOL; (*Function block currently executing command*) (* *) (*#CMD#OPT#;*)
+		CommandAborted : BOOL; (*Function block interrupted while executing a command*) (* *) (*#CMD#OPT#;*)
+		InCompensation : BOOL; (*Axis currently performing a compensating movement*) (* *) (*#CMD#;*)
+		InSync : BOOL; (*Slave synchronous with the master*) (* *) (*#CMD#;*)
+		OffsetDone : BOOL; (*Shift to slave position performed successfully*) (* *) (*#CMD#OPT#;*)
+		PhasingDone : BOOL; (*Shift to the master position with which the slave is following performed successfully*) (* *) (*#CMD#OPT#;*)
+		RecoveryDone : BOOL; (*Rocvery executed successfully*) (* *) (*#CMD#OPT#;*)
+		GetCamPositionDone : BOOL; (*GetCamPosition executed successfully*) (* *) (*#CMD#OPT#;*)
+		CamPrepareDone : BOOL; (*CamPrepare executed successfully*) (* *) (*#CMD#OPT#;*)
+		Info : MpAxisCouplingInfoType; (*Additional information about the component*) (* *) (*#CMD#;*)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} MpComInternalDataType; (*Internal data*)
+	END_VAR
+END_FUNCTION_BLOCK
