@@ -4,7 +4,7 @@
 // - Download of the image in the browser
 // - Creates a html file to "resize" thei image for the mappview visualization (every size of the picuture matches the visu size)
 // - Draw crosshairs
-// Version 2.1
+// Version 2.2
 // --------------------------------------------------------------------------------------------------------------------
 PROGRAM _INIT
 	IF RemCfgImage.ConvertCycles = 0 THEN 							// Invalid --> use default values
