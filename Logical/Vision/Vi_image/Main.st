@@ -96,7 +96,7 @@ PROGRAM _CYCLIC
 			DirCreate_0.pDevice		:= ADR(gVisionImage.CFG.FileDevice);
 			DirCreate_0.pName		:= ADR(gVisionImage.CFG.DirName);
 			DirCreate_0();
-			IF DirCreate_0.status = 0 OR DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
+			IF DirCreate_0.status = ERR_OK OR DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
 				Step := VISTEP_REFRESH_IMG_LIST;
 			ELSIF DirCreate_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := DirCreate_0.status;
@@ -108,7 +108,7 @@ PROGRAM _CYCLIC
 			DirDeleteEx_0.pDevice	:= ADR(gVisionImage.CFG.FileDevice);
 			DirDeleteEx_0.pName		:= ADR(gVisionImage.CFG.DirName);
 			DirDeleteEx_0();
-			IF DirDeleteEx_0.status = 0 THEN
+			IF DirDeleteEx_0.status = ERR_OK THEN
 				Step := VISTEP_CREATE_DIR;
 			ELSIF DirDeleteEx_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := DirDeleteEx_0.status;
@@ -120,7 +120,7 @@ PROGRAM _CYCLIC
 			FileDelete_0.pDevice	:= ADR(gVisionImage.CFG.FileDevice);
 			FileDelete_0.pName 		:= ADR(FileNameComplete);
 			FileDelete_0();
-			IF FileDelete_0.status = 0 THEN
+			IF FileDelete_0.status = ERR_OK THEN
 				Step := VISTEP_REFRESH_IMG_LIST;
 			ELSIF FileDelete_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileDelete_0.status;
@@ -133,7 +133,7 @@ PROGRAM _CYCLIC
 			ViRefreshImageList_0.ImageList			:= ADR(visImageList);
 			ViRefreshImageList_0.visSelectedImage	:= ADR(visSelectedImage);
 			ViRefreshImageList_0();
-			IF ViRefreshImageList_0.Status = 0 THEN
+			IF ViRefreshImageList_0.Status = ERR_OK THEN
 				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			ELSIF ViRefreshImageList_0.Status <> ERR_FUB_BUSY THEN
@@ -148,7 +148,7 @@ PROGRAM _CYCLIC
 			ViDownloadImage_0.ImgName				:= visSelectedImage;
 			ViDownloadImage_0.visDownloadFileUrl	:= ADR(visDownloadFileUrl);
 			ViDownloadImage_0();
-			IF ViDownloadImage_0.Status = 0 THEN
+			IF ViDownloadImage_0.Status = ERR_OK THEN
 				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			ELSIF ViDownloadImage_0.Status <> ERR_FUB_BUSY THEN
@@ -162,7 +162,7 @@ PROGRAM _CYCLIC
 			ViSaveImgOnPlc_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
 			ViSaveImgOnPlc_0.CrossHairInfo		:= ADR(ViDrawCrosshair_0.CrossHairInfo);
 			ViSaveImgOnPlc_0();
-			IF ViSaveImgOnPlc_0.Status = 0 THEN
+			IF ViSaveImgOnPlc_0.Status = ERR_OK THEN
 				Step := VISTEP_REFRESH_IMG_LIST;
 			ELSIF ViSaveImgOnPlc_0.Status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := ViSaveImgOnPlc_0.Status;

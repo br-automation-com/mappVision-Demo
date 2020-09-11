@@ -10,11 +10,11 @@ FUNCTION_BLOCK ViDownloadImage
 		AsMemPartCreate_0.enable		:= TRUE;
 		AsMemPartCreate_0.len			:= MemSvgSize + 1000; // 1000 Bytes for AsMemPart stuff/header
 		AsMemPartCreate_0();
-		IF AsMemPartCreate_0.status = 0 THEN
+		IF AsMemPartCreate_0.status = ERR_OK THEN
 			// Svg mem for creating the svg file including the image
 			AsMemPartAllocClear_0.len	:= MemSvgSize;
 			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-			IF AsMemPartAllocClear_0.status = 0 THEN
+			IF AsMemPartAllocClear_0.status = ERR_OK THEN
 				MemSvgAdr 				:= AsMemPartAllocClear_0.mem;
 			END_IF
 		END_IF
@@ -36,7 +36,7 @@ FUNCTION_BLOCK ViDownloadImage
 			FileOpen_0.pDevice 	:= ADR(FileDevice);
 			FileOpen_0.pFile	:= ADR(FileName);
 			FileOpen_0();
-			IF FileOpen_0.status = 0 THEN
+			IF FileOpen_0.status = ERR_OK THEN
 				IF FileOpen_0.filelen <= MemSvgSize THEN // Make sure file fits into memory
 					brsmemset(MemSvgAdr, 0, MemSvgSize);
 					Step := 2;
@@ -54,7 +54,7 @@ FUNCTION_BLOCK ViDownloadImage
 			FileRead_0.len		:= FileOpen_0.filelen;
 			FileRead_0.pDest	:= MemSvgAdr;
 			FileRead_0();
-			IF FileRead_0.status = 0 THEN
+			IF FileRead_0.status = ERR_OK THEN
 				Step := 3;
 			ELSIF FileRead_0.status <> ERR_FUB_BUSY THEN
 				Status := FileRead_0.status;
@@ -64,7 +64,7 @@ FUNCTION_BLOCK ViDownloadImage
 			FileClose_0.enable	:= TRUE;
 			FileClose_0.ident	:= FileOpen_0.ident;
 			FileClose_0();
-			IF FileClose_0.status = 0 THEN
+			IF FileClose_0.status = ERR_OK THEN
 				Step := 4;
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
 				Status := FileClose_0.status;
@@ -103,7 +103,7 @@ FUNCTION_BLOCK ViDownloadImage
 
 			IF httpService_Download.status = ERR_FUB_BUSY AND visDownloadFileUrl = '' THEN // Set URL
 				brsstrcpy(ADR(visDownloadFileUrl), ADR(ImgName));
-			ELSIF httpService_Download.status = 0 AND NOT httpService_Download.send AND visDownloadFileUrl <> '' THEN // Start sending data
+			ELSIF httpService_Download.status = ERR_OK AND NOT httpService_Download.send AND visDownloadFileUrl <> '' THEN // Start sending data
 				httpService_Download.send := TRUE;
 			ELSIF httpService_Download.send THEN // Sending data in progress
 				Step := 6;

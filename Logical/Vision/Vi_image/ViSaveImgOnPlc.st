@@ -10,23 +10,23 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 		AsMemPartCreate_0.enable	:= TRUE;
 		AsMemPartCreate_0.len		:= MemInfo.UploadSize + MemInfo.SvgSize + MemInfo.CrosshSize + 1000; // 1000 Bytes for AsMemPart stuff/header
 		AsMemPartCreate_0();
-		IF AsMemPartCreate_0.status = 0 THEN
+		IF AsMemPartCreate_0.status = ERR_OK THEN
 			// Upload mem for loading the image from camera to plc
 			AsMemPartAllocClear_0.len		:= MemInfo.UploadSize;
 			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-			IF AsMemPartAllocClear_0.status = 0 THEN
+			IF AsMemPartAllocClear_0.status = ERR_OK THEN
 				MemInfo.UploadAdr			:= AsMemPartAllocClear_0.mem;
 			END_IF
 			// Svg mem for creating the svg file including the image
 			AsMemPartAllocClear_0.len		:= MemInfo.SvgSize;
 			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-			IF AsMemPartAllocClear_0.status = 0 THEN
+			IF AsMemPartAllocClear_0.status = ERR_OK THEN
 				MemInfo.SvgAdr 				:= AsMemPartAllocClear_0.mem;
 			END_IF
 			// Mem for creating the crosshaurs
 			AsMemPartAllocClear_0.len		:= MemInfo.CrosshSize;
 			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-			IF AsMemPartAllocClear_0.status = 0 THEN
+			IF AsMemPartAllocClear_0.status = ERR_OK THEN
 				MemInfo.CrosshAdr			:= AsMemPartAllocClear_0.mem;
 			END_IF
 		END_IF
@@ -127,7 +127,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			httpClient_0.responseDataSize	:= MemInfo.UploadSize;
 			httpClient_0.pRequestHeader		:= ADR(RequestHeader);
 			httpClient_0();
-			IF httpClient_0.status = 0 AND httpClient_0.responseDataLen <> 0 THEN
+			IF httpClient_0.status = ERR_OK AND httpClient_0.responseDataLen <> 0 THEN
 				UploadedImgSize				:= httpClient_0.responseDataLen;
 				httpClient_0(send := FALSE);
 				IF UploadedImgSize < 100 THEN // No image available. Hint: In case of no image there will be sent 86 Bytes with an html error text
@@ -165,7 +165,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			FileCreate_0.pDevice	:= ADR(CFG.FileDevice);
 			FileCreate_0.pFile		:= ADR(FileNameImg);
 			FileCreate_0();
-			IF FileCreate_0.status = 0 THEN
+			IF FileCreate_0.status = ERR_OK THEN
 				Step := 21;
 			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
 				Status := FileCreate_0.status;
@@ -178,7 +178,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			FileWrite_0.pSrc		:= MemInfo.UploadAdr;
 			FileWrite_0.len			:= UploadedImgSize;
 			FileWrite_0();
-			IF FileWrite_0.status = 0 THEN
+			IF FileWrite_0.status = ERR_OK THEN
 				Step := 22;
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
 				Status := FileWrite_0.status;
@@ -188,7 +188,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			FileClose_0.enable		:= TRUE;
 			FileClose_0.ident		:= FileCreate_0.ident;
 			FileClose_0();
-			IF FileClose_0.status = 0 THEN
+			IF FileClose_0.status = ERR_OK THEN
 				DiagTime.EndSaveBMPJPG := clock_ms() - DiagStartTime;
 				IF CFG.UploadSVG THEN
 					Step := 30;
@@ -311,7 +311,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			FileCreate_0.pDevice	:= ADR(CFG.FileDevice);
 			FileCreate_0.pFile		:= ADR(FileNameSvg);
 			FileCreate_0();
-			IF FileCreate_0.status = 0 THEN
+			IF FileCreate_0.status = ERR_OK THEN
 				Step := 51;
 			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
 				Status := FileCreate_0.status;
@@ -324,7 +324,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			FileWrite_0.pSrc		:= MemInfo.SvgAdr;
 			FileWrite_0.len			:= brsstrlen(MemInfo.SvgAdr);
 			FileWrite_0();
-			IF FileWrite_0.status = 0 THEN
+			IF FileWrite_0.status = ERR_OK THEN
 				Step := 52;
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
 				Status := FileWrite_0.status;
@@ -334,7 +334,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			FileClose_0.enable		:= TRUE;
 			FileClose_0.ident		:= FileCreate_0.ident;
 			FileClose_0();
-			IF FileClose_0.status = 0 THEN
+			IF FileClose_0.status = ERR_OK THEN
 				DiagTime.EndSVGSave := clock_ms() - DiagStartTime;
 				Status := 0;
 				Step := 0;

@@ -8,17 +8,17 @@ FUNCTION_BLOCK ViShowImgOnVC4
 		AsMemPartCreate_0.enable	:= TRUE;
 		AsMemPartCreate_0.len		:= MemInfo.UploadBmp8Size + MemInfo.Bmp24Size + 1000; // 1000 Bytes for AsMemPart stuff/header
 		AsMemPartCreate_0();
-		IF AsMemPartCreate_0.status = 0 THEN
+		IF AsMemPartCreate_0.status = ERR_OK THEN
 			// Upload mem for loading the image from camera to plc
 			AsMemPartAllocClear_0.len		:= MemInfo.UploadBmp8Size;
 			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-			IF AsMemPartAllocClear_0.status = 0 THEN
+			IF AsMemPartAllocClear_0.status = ERR_OK THEN
 				MemInfo.UploadBmp8Adr		:= AsMemPartAllocClear_0.mem;
 			END_IF
 			// Bmp24 mem for creating the new image
 			AsMemPartAllocClear_0.len		:= MemInfo.Bmp24Size;
 			AsMemPartAllocClear_0(enable := TRUE, ident := AsMemPartCreate_0.ident);
-			IF AsMemPartAllocClear_0.status = 0 THEN
+			IF AsMemPartAllocClear_0.status = ERR_OK THEN
 				MemInfo.Bmp24Adr 			:= AsMemPartAllocClear_0.mem;
 			END_IF
 		END_IF
@@ -71,7 +71,7 @@ FUNCTION_BLOCK ViShowImgOnVC4
 			httpClient_0.responseDataSize	:= MemInfo.UploadBmp8Size;
 			httpClient_0.pRequestHeader		:= ADR(RequestHeader);
 			httpClient_0();
-			IF httpClient_0.status = 0 AND httpClient_0.responseDataLen <> 0 THEN
+			IF httpClient_0.status = ERR_OK AND httpClient_0.responseDataLen <> 0 THEN
 				FileSizeIn8Bit				:= httpClient_0.responseDataLen;
 				httpClient_0(send := FALSE);
 				IF FileSizeIn8Bit < 100 THEN // No image available. Hint: In case of no image there will be sent 86 Bytes with an html error text

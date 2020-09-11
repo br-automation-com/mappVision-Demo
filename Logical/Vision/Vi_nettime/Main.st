@@ -27,25 +27,25 @@ PROGRAM _CYCLIC
 		END_IF
 		IF gVisionNettime.DAT.AxisVelocity > 0 THEN
 			TriggerPosDelta		:= gVisionNettime.CFG.AxisPositionTrigger - AxisPositionNow;
-			ELSE
+		ELSE
 			TriggerPosDelta		:= AxisPositionNow - gVisionNettime.CFG.AxisPositionTrigger;
 		END_IF
 		IF TriggerPosDelta < 0 THEN // modulo correction
-			TriggerPosDelta	:= TriggerPosDelta + gVisionNettime.CFG.AxisPeriod;
-			END_IF
+			TriggerPosDelta		:= TriggerPosDelta + gVisionNettime.CFG.AxisPeriod;
+		END_IF
 		TriggerTimeDelta_us := LREAL_TO_DINT((TriggerPosDelta / gVisionNettime.DAT.AxisVelocity) * 1000000);
-			// Wait for the moment that axis is in the send trigger window depend on delay by topology and the actual powerlink cycle
+		// Wait for the moment that axis is in the send trigger window depend on delay by topology and the actual powerlink cycle
 		IF (TriggerTimeDelta_us >= (gVisionNettime.CFG.VisionPreTrigger_Cycles)     * PowerlinkCycle_us) AND
 		   (TriggerTimeDelta_us <= (gVisionNettime.CFG.VisionPreTrigger_Cycles + 1) * PowerlinkCycle_us) THEN
 			gVisionNettime.DAT.NettimeNext_us	:= NettimeCurrent_us + TriggerTimeDelta_us;
 			gVisionNettime.DAT.NettimeDelta_us	:= TriggerTimeDelta_us;
-				// Transfer nettime to sensor and fire trigger
-				IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive THEN
-					gVisionSensor[visSelectedSensor].CMD.ImageTrigger	:= TRUE;
-					gVisionSensor[visSelectedSensor].DAT.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
-				ELSE
-					gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
-				END_IF
+			// Transfer nettime to sensor and fire trigger
+			IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive THEN
+				gVisionSensor[visSelectedSensor].CMD.ImageTrigger	:= TRUE;
+				gVisionSensor[visSelectedSensor].DAT.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
+			ELSE
+				gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
 			END_IF
 		END_IF
+	END_IF
 END_PROGRAM

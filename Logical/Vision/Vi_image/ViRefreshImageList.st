@@ -31,7 +31,7 @@ FUNCTION_BLOCK ViRefreshImageList
 			DirRead_0.pData 	:= ADR(dir_data);
 			DirRead_0.data_len 	:= SIZEOF(dir_data);
 			DirRead_0();
-			IF DirRead_0.status = 0 THEN
+			IF DirRead_0.status = ERR_OK THEN
 				// Make sure file is an image and we have space to store it
 				IF  brsstrcmp(ADR(dir_data.Filename) + brsstrlen(ADR(dir_data.Filename)) - 4, ADR('.bmp')) = 0 OR
 				    brsstrcmp(ADR(dir_data.Filename) + brsstrlen(ADR(dir_data.Filename)) - 4, ADR('.jpg')) = 0 OR
@@ -87,7 +87,7 @@ FUNCTION_BLOCK ViRefreshImageList
 			FileDelete_0.pDevice	:= ADR(VisionImage.CFG.FileDevice);
 			FileDelete_0.pName 		:= ADR(DeleteFileName);
 			FileDelete_0();
-			IF FileDelete_0.status = 0 THEN
+			IF FileDelete_0.status = ERR_OK THEN
 				Step := 0; // Refresh --> Read dir again, don't change the Status to 0!
 			ELSIF FileDelete_0.status <> ERR_FUB_BUSY THEN
 				Status := FileDelete_0.status;
