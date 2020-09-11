@@ -1,3 +1,6 @@
+Version 2.3 (Development)
+ - Added RouteInfo_Tool.ps1
+
 Version 2.2
 - Added new functionality to show images in every size on the webviewer widget on the mainpage
 - Improved repetitive mode

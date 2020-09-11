@@ -1,0 +1,8 @@
+This tool will automatically be executet by the AS before and/or after the build and will provide information for the needed routing.
+
+---------------------------------
+Using the tool Powershell
+---------------------------------
+Copy the following line and insert it without any change into: Project - Change Runtime Version - Build Events - Configuration Pre-Build Step (and/or Post-Bild Step)
+Powershell.exe -executionpolicy remotesigned -File "$(WIN32_AS_PROJECT_PATH)/Logical/Vision/RouteInfo_Tool.ps1" -ProjectPath "$(WIN32_AS_PROJECT_PATH)" -ProjectCfg "$(AS_CONFIGURATION)"
+If the tool is in antoher path only the path has to be adapted.

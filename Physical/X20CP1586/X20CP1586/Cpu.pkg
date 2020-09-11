@@ -19,7 +19,7 @@
   </Objects>
   <Configuration ModuleId="X20CP1586">
     <AutomationRuntime Version="A4.73" />
-    <Build GccVersion="4.1.2" />
+    <Build GccVersion="4.1.2" PostBuildStep="Powershell.exe -executionpolicy remotesigned -File &quot;$(WIN32_AS_PROJECT_PATH)/Logical/Vision/RouteInfo_Tool.ps1&quot; -ProjectPath &quot;$(WIN32_AS_PROJECT_PATH)&quot; -ProjectCfg &quot;$(AS_CONFIGURATION)&quot;" PreBuildStep="" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Safety SafetyRelease="0.0" />
     <Vc FirmwareVersion="V4.72.0" />
