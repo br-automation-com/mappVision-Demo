@@ -45,7 +45,7 @@ FUNCTION_BLOCK ViShowImgOnVC4
 			FileNameBmp24BitDir	:= 'web/CamImgVC4.bmp';
 			// Create URI and Host
 			URI := '/bmp';
-			Host := CFG.CameraIP;
+			Host := CFG.PlkIPWithoutNode;
 			brsitoa(PowerlinkNode, ADR(tmpStr1));
 			brsstrcat(ADR(Host), ADR(tmpStr1));
 			HTMLStreamContent := '<p>Please wait... image will be loaded...</p>';

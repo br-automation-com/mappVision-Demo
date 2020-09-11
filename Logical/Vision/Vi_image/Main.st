@@ -8,15 +8,15 @@
 // --------------------------------------------------------------------------------------------------------------------
 PROGRAM _INIT
 	IF RemCfgImage.ConvertCycles = 0 THEN 							// Invalid --> use default values
-		gVisionImage.CFG.FileDevice 	:= DEVICE_NAME;				// File device name where the images are stored
-		gVisionImage.CFG.DirName		:= 'Vision';				// Directory used for images
-		gVisionImage.CFG.CameraIP		:= '192.168.200.';			// IP adress of the camera (see PLK settings)
-		gVisionImage.CFG.EthDevice		:= 'IF2';					// Device path of the PLCs ETH address
-		gVisionImage.CFG.ConvertCycles	:= 10000;					// Conversioncycles per step (TK8 call). Use higer value on high performance CPU, use lower values on low performance CPU or in case of cycle time violations
-		gVisionImage.CFG.Format			:= 0;						// Image type, use 0 for JPEG, 1 for bitmap
-		gVisionImage.CFG.QualityJPG		:= 80;						// Quality for JPG images, larger numbers produce better images. Allowed values: 0 to 100, but values < ca 10 makes no sense
-		gVisionImage.CFG.UploadBmpJpg	:= TRUE;
-		gVisionImage.CFG.UploadSVG		:= TRUE;
+		gVisionImage.CFG.FileDevice 		:= DEVICE_NAME;				// File device name where the images are stored
+		gVisionImage.CFG.DirName			:= 'Vision';				// Directory used for images
+		gVisionImage.CFG.PlkIPWithoutNode	:= '192.168.200.';			// IP adress of the plk interface, where the camera is connected to (see PLK settings), without the node (last part). Example: "192.168.200.0"
+		gVisionImage.CFG.EthDevice			:= 'IF2';					// Device path of the PLCs ETH address
+		gVisionImage.CFG.ConvertCycles		:= 10000;					// Conversioncycles per step (TK8 call). Use higer value on high performance CPU, use lower values on low performance CPU or in case of cycle time violations
+		gVisionImage.CFG.Format				:= 0;						// Image type, use 0 for JPEG, 1 for bitmap
+		gVisionImage.CFG.QualityJPG			:= 80;						// Quality for JPG images, larger numbers produce better images. Allowed values: 0 to 100, but values < ca 10 makes no sense
+		gVisionImage.CFG.UploadBmpJpg		:= TRUE;
+		gVisionImage.CFG.UploadSVG			:= TRUE;
 	ELSE
 		brsmemcpy(ADR(gVisionImage.CFG), ADR(RemCfgImage), SIZEOF(RemCfgImage)); // Restore default values from remanent memory
 	END_IF
@@ -193,6 +193,7 @@ PROGRAM _CYCLIC
 		ViCreateWebDirFile_0.Enable				:= TRUE;
 		ViCreateWebDirFile_0.FileDevUser		:= gVisionImage.CFG.FileDevice;
 		ViCreateWebDirFile_0.EthDevice			:= gVisionImage.CFG.EthDevice;
+		ViCreateWebDirFile_0.PlkIPWithoutNode	:= gVisionImage.CFG.PlkIPWithoutNode;
 		ViCreateWebDirFile_0.visWebViewerPath	:= ADR(visWebViewerPath);
 		ViCreateWebDirFile_0();
 	END_IF

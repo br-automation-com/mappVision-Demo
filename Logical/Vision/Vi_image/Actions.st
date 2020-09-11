@@ -167,7 +167,7 @@ SvgTexts.ContentEnd :=
 </svg>';
 END_ACTION
 ACTION ACTION_CreateHtmlFile:
-HtmlFileContent :=
+HtmlFileContent1 :=
 '<!DOCTYPE html>
 <html lang="de">
 	<head>
@@ -211,7 +211,9 @@ HtmlFileContent :=
 					if (!results[2]) return "";
 					return decodeURIComponent(results[2].replace(/\+/g, " "));
 				}
-				var ImagePath 			= "http://192.168.200." + getParameterByName("node") + ":8080/jpg";
+				var ImagePath 			= "http://';
+HtmlFileContent2 :=
+'" + getParameterByName("node") + ":8080/jpg";
 				var ErrorImagePath 		= "VisionEye.png";
 				var UpdateInterval_ms 	= 200;
 				var MissingImgCtr		= 0;

@@ -140,6 +140,7 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		Enable : BOOL;
 		FileDevUser : STRING[80];
 		EthDevice : STRING[80];
+		PlkIPWithoutNode : STRING[80];
 		visWebViewerPath : REFERENCE TO STRING[80];
 	END_VAR
 	VAR_OUTPUT
@@ -150,6 +151,7 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		Step : INT;
 		DirInfo_0 : DirInfo;
 		DirCreate_0 : DirCreate;
+		FileDelete_0 : FileDelete;
 		FileCreate_0 : FileCreate;
 		FileWrite_0 : FileWrite;
 		FileClose_0 : FileClose;
@@ -164,7 +166,9 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		FileNameEyeSystem : STRING[80];
 		FileNameEyeUser : STRING[80];
 		EthIpAddr : STRING[80];
-		HtmlFileContent : STRING[3000];
+		HtmlFileContent1 : STRING[1500];
+		HtmlFileContent2 : STRING[1500];
+		FileWriteData : STRING[3100];
 	END_VAR
 END_FUNCTION_BLOCK
 

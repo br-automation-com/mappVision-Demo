@@ -21,7 +21,7 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		2: // Check if web directory already exists
 			DirInfo_0(enable := TRUE, pDevice := ADR(FileDevUser), pPath := ADR(DirNameWeb));
 			IF DirInfo_0.status = 0 THEN
-				Step := 10;
+				Step := 9;
 			ELSIF DirInfo_0.status = fiERR_DIR_NOT_EXIST THEN
 				Step := 3;
 			ELSIF DirInfo_0.status <> ERR_FUB_BUSY THEN
@@ -36,9 +36,20 @@ FUNCTION_BLOCK ViCreateWebDirFile
 				Status := DirCreate_0.status;
 				Step := 0;
 			END_IF
+		9: // Try to delete the html file. This is necessary, because of when settings are changed, the file needs to be recreated.
+			FileDelete_0(enable := TRUE, pDevice := ADR(FileDevUser), pName := ADR(FileNameVisImgHtml));
+			IF FileDelete_0.status = 0 OR FileDelete_0.status = fiERR_FILE_NOT_FOUND THEN
+				Step := 10;
+			ELSIF FileDelete_0.status <> ERR_FUB_BUSY THEN
+				Status := FileDelete_0.status;
+				Step := 0;
+			END_IF
 		10: // Check if html page exists
 			FileCreate_0(enable := TRUE, pDevice := ADR(FileDevUser), pFile := ADR(FileNameVisImgHtml));
 			IF FileCreate_0.status = 0 THEN
+				brsstrcpy(ADR(FileWriteData), ADR(HtmlFileContent1));
+				brsstrcat(ADR(FileWriteData), ADR(PlkIPWithoutNode));
+				brsstrcat(ADR(FileWriteData), ADR(HtmlFileContent2));
 				Step := 11;
 			ELSIF FileCreate_0.status = fiERR_EXIST THEN
 				Step := 20;
@@ -47,7 +58,7 @@ FUNCTION_BLOCK ViCreateWebDirFile
 				Step := 0;
 			END_IF
 		11: // Write content
-			FileWrite_0(enable := TRUE, ident := FileCreate_0.ident, offset := 0, pSrc := ADR(HtmlFileContent), len := brsstrlen(ADR(HtmlFileContent)));
+			FileWrite_0(enable := TRUE, ident := FileCreate_0.ident, offset := 0, pSrc := ADR(FileWriteData), len := brsstrlen(ADR(FileWriteData)));
 			IF FileWrite_0.status = 0 THEN
 				Step := 12;
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN

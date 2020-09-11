@@ -100,7 +100,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 			ELSE
 				brsstrcat(ADR(URI), ADR('bmp'));
 			END_IF
-			Host := CFG.CameraIP;
+			Host := CFG.PlkIPWithoutNode;
 			brsitoa(PowerlinkNode, ADR(tmpStr1));
 			brsstrcat(ADR(Host), ADR(tmpStr1));
 			DiagStartTime := clock_ms();
