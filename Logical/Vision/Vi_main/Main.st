@@ -92,11 +92,11 @@ PROGRAM _CYCLIC
 			gVisionSensor[idx].DAT.Exposure				:= gVisionSensor[idx].DAT.AutoSetupExposure;
 			gVisionSensor[idx].CMD.AutoSetupStartStop	:= FALSE;
 			AutoSetupRunning[idx]						:= FALSE;
-			TON_DelayAfterAutoSetup.IN					:= TRUE;
+			TON_DelayAfterAutoSetup[idx].IN					:= TRUE;
 		END_IF
-		TON_DelayAfterAutoSetup(PT := T#50ms);
-		IF TON_DelayAfterAutoSetup.Q THEN // After the camera tells it is ready, we need to wait still at least ca 20ms, otherwise it does not accept the trigger
-			TON_DelayAfterAutoSetup.IN := FALSE;
+		TON_DelayAfterAutoSetup[idx](PT := T#50ms);
+		IF TON_DelayAfterAutoSetup[idx].Q THEN // After the camera tells it is ready, we need to wait still at least ca 20ms, otherwise it does not accept the trigger
+			TON_DelayAfterAutoSetup[idx].IN := FALSE;
 			IF gVisionSensor[idx].HW.Ready AND NOT gVisionSensor[idx].DAT.ImageProcessingActive THEN
 				gVisionSensor[idx].DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 				gVisionSensor[idx].CMD.ImageTrigger	:= TRUE;
