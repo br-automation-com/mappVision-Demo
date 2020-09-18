@@ -1,4 +1,4 @@
-This tool will automatically be executet by the AS before and/or after the build and will provide information for the needed routing.
+This tool will automatically be executed by the AS before and/or after the build and will provide information for the needed routing.
 
 ---------------------------------
 Using the tool Powershell
