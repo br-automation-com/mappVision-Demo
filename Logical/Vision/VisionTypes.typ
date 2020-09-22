@@ -173,6 +173,47 @@ TYPE
 END_TYPE
 
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Color detection structures*)
+
+TYPE
+	typVisionColor : 	STRUCT 
+		CMD : typVisionColorCommand;
+		CFG : typVisionColorConfig;
+		DAT : typVisionColorData;
+	END_STRUCT;
+	typVisionColorCommand : 	STRUCT 
+		Evaluate : BOOL;
+		Teach : BOOL;
+	END_STRUCT;
+	typVisionColorConfig : 	STRUCT 
+		FlashColor1 : USINT := 1;
+		FlashColor2 : USINT := 2;
+		FlashColor3 : USINT := 3;
+		FlashColor4 : USINT := 4;
+		ProductName : ARRAY[1..MAX_NUM_PRODUCTS]OF STRING[80];
+		GrayValue1 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
+		GrayValue2 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
+		GrayValue3 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
+		GrayValue4 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
+		TeachingIndex : UINT(1..1000)  := 1;
+		MaxError : UINT := 100;
+		MinDifference : UINT := 10;
+	END_STRUCT;
+	typVisionColorData : 	STRUCT 
+		GrayValue1 : UINT;
+		GrayValue2 : UINT;
+		GrayValue3 : UINT;
+		GrayValue4 : UINT;
+		TotalError : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
+		LowError : UINT;
+		LowDistance : UINT;
+		LowIndex : UINT;
+		LowName : STRING[80];
+		Status : UINT;
+	END_STRUCT;
+END_TYPE
+
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Image upload structures*)
 
 TYPE

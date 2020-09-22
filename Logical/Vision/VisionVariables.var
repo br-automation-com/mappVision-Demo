@@ -6,6 +6,7 @@ VAR
 	gMatch : typMatchMain; (*Data that is specific for the match function*)
 	gMT : typMTMain; (*Data that is specific for the measurement function*)
 	gOCR : typOCRMain; (*Data that is specific for the OCR function*)
+	gVisionColor : typVisionColor;
 	gVisionImage : typVisionImage; (*Data for image handling*)
 	gVisionLight : ARRAY[1..MAX_NUM_LIGHTS] OF typLightMain; (*General Light  functions that are independent from the inspection function*)
 	gVisionNettime : typVisionNettime; (*Data for nettime calculation*)
@@ -23,6 +24,7 @@ VAR CONSTANT
 	MAX_NUM_CAMS : UINT := 5; (*Maximum number of camera's*)
 	MAX_NUM_LIGHTS : UINT := 5; (*Maximum number of light's*)
 	MAX_NUM_RESULTS : UINT := 10; (*Maximum number of results*)
+	MAX_NUM_PRODUCTS : UINT := 10; (*Maximum number of products for color detection*)
 	MAX_IDX_VA_LIST : UINT := 19; (*Maximum number of entrys in the Vision Application list*)
 	DEVICE_NAME : STRING[40] := 'VisionFileDevice'; (*File device where the images and recipes are stored*)
 	NETTIME_DEFAULT_DELAY : UDINT := 30000; (*This delay is used when software trigger is used and nettime is enabled*)

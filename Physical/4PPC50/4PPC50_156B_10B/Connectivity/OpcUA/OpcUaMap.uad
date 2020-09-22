@@ -47,6 +47,35 @@
         <Variable Name="gVisionLight" EnableArrayElements="True" />
         <Variable Name="gVisionNettime" AutomaticEnable="True" />
         <Variable Name="gVisionSensor" EnableArrayElements="True" />
+        <Variable Name="gVisionColor" AutomaticEnable="True">
+          <Variable Name="CMD" AutomaticEnable="True" />
+          <Variable Name="CFG" AutomaticEnable="True">
+            <Variable Name="FlashColor1" />
+            <Variable Name="FlashColor2" />
+            <Variable Name="FlashColor3" />
+            <Variable Name="FlashColor4" />
+            <Variable Name="ProductName" EnableArrayElements="True" />
+            <Variable Name="GrayValue1" EnableArrayElements="True" />
+            <Variable Name="GrayValue2" EnableArrayElements="True" />
+            <Variable Name="GrayValue3" EnableArrayElements="True" />
+            <Variable Name="GrayValue4" EnableArrayElements="True" />
+            <Variable Name="TeachingIndex" />
+            <Variable Name="MaxError" />
+            <Variable Name="MinDifference" />
+          </Variable>
+          <Variable Name="DAT" AutomaticEnable="True">
+            <Variable Name="GrayValue1" />
+            <Variable Name="GrayValue2" />
+            <Variable Name="GrayValue3" />
+            <Variable Name="GrayValue4" />
+            <Variable Name="TotalError" EnableArrayElements="True" />
+            <Variable Name="LowError" />
+            <Variable Name="LowDistance" />
+            <Variable Name="LowIndex" />
+            <Variable Name="LowName" />
+            <Variable Name="Status" />
+          </Variable>
+        </Variable>
       </GlobalVariables>
       <Task Name="Vi_main">
         <Variable Name="VisionSensor" AutomaticEnable="True" />
