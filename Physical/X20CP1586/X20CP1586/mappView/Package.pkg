@@ -14,6 +14,7 @@
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\OCR.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Lights.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Nettime.binding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Color.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\ImageArchiv.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Header.eventbinding</Object>
@@ -24,5 +25,6 @@
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\ImageArchiv.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Results.eventbinding</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Color.eventbinding</Object>
   </Objects>
 </Package>
