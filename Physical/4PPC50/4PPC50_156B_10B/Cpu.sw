@@ -14,7 +14,7 @@
   <TaskClass Name="Cyclic#8">
     <Task Name="Vi_main" Source="Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_light" Source="Vision.Vi_light.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vi_Color" Source="Vision.Vi_Color.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vi_color" Source="Vision.Vi_color.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_image" Source="Vision.Vi_image.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Recipe_01" Source="mappRecipe.Recipe_01.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="YourTask" Source="Vision.YourTask.prg" Memory="UserROM" Language="IEC" Debugging="true" />

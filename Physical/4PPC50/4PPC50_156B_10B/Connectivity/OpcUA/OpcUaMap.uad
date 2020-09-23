@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <OpcUaSource FileVersion="7" ArVersion="A4.73">
   <Aliases>
     <ACLAliases>
@@ -186,6 +186,10 @@
         <Variable Name="cmdAxisRun" />
         <Variable Name="MpAxisBasic_0" AutomaticEnable="True" />
         <Variable Name="cmdAxisErrorReset" />
+      </Task>
+      <Task Name="Vi_color">
+        <Variable Name="visSelectedProduct" />
+        <Variable Name="visTableNo" />
       </Task>
     </Module>
   </DefaultView>

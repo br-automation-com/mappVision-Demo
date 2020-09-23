@@ -2,10 +2,10 @@
 PROGRAM _INIT
 	// ---------------------------------------------------------------------------------------------------------------------
 	// Camera configuration
-	gVisionSensor[1].DAT.Gain := 1;							
-	gVisionSensor[1].DAT.Focus := 14000;
-	gVisionSensor[1].DAT.Exposure := 150;
-	gVisionSensor[1].DAT.ChromaticLock := TRUE;
+	gVisionSensor[VI_COLOR_SENSOR].DAT.Gain := 1;							
+	gVisionSensor[VI_COLOR_SENSOR].DAT.Focus := 14000;
+	gVisionSensor[VI_COLOR_SENSOR].DAT.Exposure := 150;
+	gVisionSensor[VI_COLOR_SENSOR].DAT.ChromaticLock := TRUE;
 	gBlob.EnhancedBlobInformation := TRUE;
 	 
 END_PROGRAM
@@ -19,8 +19,9 @@ PROGRAM _CYCLIC
 			IF gVisionColor.CMD.Evaluate OR gVisionColor.CMD.Teach THEN
 				idx := 1;
 				brsmemset(ADR(gVisionColor.DAT), 0, SIZEOF(gVisionColor.DAT));
+				gVisionColor.CFG.TeachingIndex := visSelectedProduct + 1;
 				gVisionColor.DAT.Status := ERR_FUB_BUSY;
-				gVisionSensor[1].DAT.Enable := TRUE;
+				gVisionSensor[VI_COLOR_SENSOR].DAT.Enable := TRUE;
 				Step := VISTEP_FLASH;
 			END_IF
 			// ---------------------------------------------------------------------------------------------------------------------
@@ -28,14 +29,14 @@ PROGRAM _CYCLIC
 		VISTEP_FLASH:
 			// Flash with all available colors
 			IF(idx = 1 AND gVisionColor.CFG.FlashColor1 <> 0) THEN
-				gVisionSensor[1].DAT.FlashColor := gVisionColor.CFG.FlashColor1;
+				gVisionSensor[VI_COLOR_SENSOR].DAT.FlashColor := gVisionColor.CFG.FlashColor1;
 			ELSIF(idx = 2 AND gVisionColor.CFG.FlashColor2 <> 0) THEN
-				gVisionSensor[1].DAT.FlashColor := gVisionColor.CFG.FlashColor2;
+				gVisionSensor[VI_COLOR_SENSOR].DAT.FlashColor := gVisionColor.CFG.FlashColor2;
 			ELSIF(idx = 3 AND gVisionColor.CFG.FlashColor3 <> 0) THEN
-				gVisionSensor[1].DAT.FlashColor := gVisionColor.CFG.FlashColor3;
+				gVisionSensor[VI_COLOR_SENSOR].DAT.FlashColor := gVisionColor.CFG.FlashColor3;
 			ELSIF(idx = 4 AND gVisionColor.CFG.FlashColor4 <> 0) THEN
-				gVisionSensor[1].DAT.FlashColor := gVisionColor.CFG.FlashColor4;
-			// Finish flashing when no color is set
+				gVisionSensor[VI_COLOR_SENSOR].DAT.FlashColor := gVisionColor.CFG.FlashColor4;
+				// Finish flashing when no color is set
 			ELSE
 				IF(gVisionColor.CMD.Teach) THEN
 					gVisionColor.CMD.Teach := FALSE;
@@ -46,19 +47,19 @@ PROGRAM _CYCLIC
 				RETURN;
 			END_IF
 			// Take new image with selected color
-			gVisionSensor[1].DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
-			gVisionSensor[1].CMD.ImageTrigger 	:= TRUE;
+			gVisionSensor[VI_COLOR_SENSOR].DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+			gVisionSensor[VI_COLOR_SENSOR].CMD.ImageTrigger 	:= TRUE;
 			IF(gVisionColor.CMD.Teach) THEN
 				Step := VISTEP_TEACH;
 			ELSE
 				Step := VISTEP_CHECK;
 			END_IF
-		// ---------------------------------------------------------------------------------------------------------------------
-		// Teach new color
+			// ---------------------------------------------------------------------------------------------------------------------
+			// Teach new color
 		VISTEP_TEACH:
 			// Wait for trigger to finish
-			IF(gVisionSensor[1].CMD.ImageTrigger = FALSE) THEN
-				IF(gVisionSensor[1].DAT.ResultCnt > 0)  THEN
+			IF(gVisionSensor[VI_COLOR_SENSOR].CMD.ImageTrigger = FALSE) THEN
+				IF(gVisionSensor[VI_COLOR_SENSOR].DAT.ResultCnt > 0)  THEN
 					IF(idx = 1) THEN
 						gVisionColor.CFG.GrayValue1[gVisionColor.CFG.TeachingIndex] := gBlob.MeanGrayValue[1];
 					ELSIF(idx = 2) THEN
@@ -78,14 +79,15 @@ PROGRAM _CYCLIC
 					END_IF
 				ELSE
 					gVisionColor.DAT.Status := ERR_VI_COLOR_IDENTIFY;
+					Step := VISTEP_ERR;
 				END_IF
 			END_IF
-		// ---------------------------------------------------------------------------------------------------------------------
-		// Check new product
+			// ---------------------------------------------------------------------------------------------------------------------
+			// Check new product
 		VISTEP_CHECK:
 			// Wait for trigger to finish
-			IF(gVisionSensor[1].CMD.ImageTrigger = FALSE) THEN
-				IF(gVisionSensor[1].DAT.ResultCnt > 0)  THEN
+			IF(gVisionSensor[VI_COLOR_SENSOR].CMD.ImageTrigger = FALSE) THEN
+				IF(gVisionSensor[VI_COLOR_SENSOR].DAT.ResultCnt > 0)  THEN
 					IF(idx = 1) THEN
 						gVisionColor.DAT.GrayValue1 := gBlob.MeanGrayValue[1];
 					ELSIF(idx = 2) THEN
@@ -107,10 +109,11 @@ PROGRAM _CYCLIC
 					END_IF
 				ELSE
 					gVisionColor.DAT.Status := ERR_VI_COLOR_IDENTIFY;
+					Step := VISTEP_ERR;
 				END_IF
 			END_IF
-		// ---------------------------------------------------------------------------------------------------------------------
-		// Check new product
+			// ---------------------------------------------------------------------------------------------------------------------
+			// Check new product
 		VISTEP_EVAL:
 			FOR idx:= 1 TO MAX_NUM_PRODUCTS DO
 				// Abort when product gray values are empty
@@ -144,21 +147,35 @@ PROGRAM _CYCLIC
 						EXIT;
 					END_IF
 					// Store next best product
-					IF(gVisionColor.DAT.LowIndex <> idx AND ABS(UINT_TO_INT(gVisionColor.DAT.TotalError[gVisionColor.DAT.LowIndex]) - gVisionColor.DAT.TotalError[idx]) < gVisionColor.DAT.LowDistance) THEN
+					IF(gVisionColor.DAT.LowIndex <> idx AND INT_TO_UINT(ABS(UINT_TO_INT(gVisionColor.DAT.TotalError[gVisionColor.DAT.LowIndex])) - gVisionColor.DAT.TotalError[idx]) < gVisionColor.DAT.LowDistance) THEN
 						gVisionColor.DAT.LowDistance := ABS(UINT_TO_INT(gVisionColor.DAT.TotalError[gVisionColor.DAT.LowIndex]) - gVisionColor.DAT.TotalError[idx]);
 					END_IF
 				END_FOR;
+				visSelectedProduct := gVisionColor.DAT.LowIndex - 1;
 			END_IF
-			
-			gVisionColor.CMD.Evaluate := FALSE;
-			Step := VISTEP_WAIT;
-		VISTEP_ERR: 
-			IF gVisionImage.CMD.ResetError THEN
-				gVisionImage.CMD.ResetError := FALSE;
-				gVisionImage.DAT.Status := 0;
+			// Make sure we dont exceed max error
+			IF(gVisionColor.DAT.LowError > gVisionColor.CFG.MaxError) THEN
+				gVisionColor.DAT.Status := ERR_VI_COLOR_MAX_ERROR;
+				Step := VISTEP_ERR;
+				// Make sure we have enough distance to next best value
+			ELSIF(gVisionColor.DAT.LowDistance < gVisionColor.CFG.MinDifference) THEN
+				gVisionColor.DAT.Status := ERR_VI_COLOR_MIN_DISTANCE;
+				Step := VISTEP_ERR;
+				// Make sure we dont exceed max error
+			ELSE
+				gVisionColor.CMD.Evaluate := FALSE;
 				Step := VISTEP_WAIT;
+			END_IF		
+			// ---------------------------------------------------------------------------------------------------------------------
+			// Error state
+		VISTEP_ERR: 
+			IF gVisionColor.CMD.ResetError THEN
+				gVisionColor.CMD.ResetError := FALSE;
+				gVisionColor.DAT.Status := 0;
+				Step := VISTEP_WAIT;
+			ELSE
+				brsmemset(ADR(gVisionColor.CMD), 0, SIZEOF(gVisionColor.CMD));
 			END_IF
-			brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));
 	END_CASE	 
 END_PROGRAM
 

@@ -182,34 +182,35 @@ TYPE
 		DAT : typVisionColorData;
 	END_STRUCT;
 	typVisionColorCommand : 	STRUCT 
-		Evaluate : BOOL;
-		Teach : BOOL;
+		Evaluate : BOOL; (*Evaluate new product and try to determine the color*)
+		Teach : BOOL; (*Teach a new product and store color information*)
+		ResetError : BOOL; (*Reset error state*)
 	END_STRUCT;
 	typVisionColorConfig : 	STRUCT 
-		FlashColor1 : USINT := 1;
-		FlashColor2 : USINT := 2;
-		FlashColor3 : USINT := 3;
-		FlashColor4 : USINT := 4;
-		ProductName : ARRAY[1..MAX_NUM_PRODUCTS]OF STRING[80];
-		GrayValue1 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
-		GrayValue2 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
-		GrayValue3 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
-		GrayValue4 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
-		TeachingIndex : UINT(1..1000)  := 1;
-		MaxError : UINT := 100;
-		MinDifference : UINT := 10;
+		FlashColor1 : USINT := 1; (*First flash color (red)*)
+		FlashColor2 : USINT := 2; (*Second flash color (green)*)
+		FlashColor3 : USINT := 3; (*Third flash color (blue)*)
+		FlashColor4 : USINT := 4; (*Fourth flash color (lime)*)
+		ProductName : ARRAY[1..MAX_NUM_PRODUCTS]OF STRING[80]; (*Name of the product*)
+		GrayValue1 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT; (*Mean gray value for first flash color*)
+		GrayValue2 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT; (*Mean gray value for second flash color*)
+		GrayValue3 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT; (*Mean gray value for third flash color*)
+		GrayValue4 : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT; (*Mean gray value for fourth flash color*)
+		TeachingIndex : UINT(1..1000)  := 1; (*Index that is currently taught*)
+		MaxError : UINT := 100; (*Maximum error for all gray values*)
+		MinDifference : UINT := 10; (*Minimum distance to next best value*)
 	END_STRUCT;
 	typVisionColorData : 	STRUCT 
-		GrayValue1 : UINT;
-		GrayValue2 : UINT;
-		GrayValue3 : UINT;
-		GrayValue4 : UINT;
-		TotalError : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT;
-		LowError : UINT;
-		LowDistance : UINT;
-		LowIndex : UINT;
-		LowName : STRING[80];
-		Status : UINT;
+		GrayValue1 : UINT; (*Current mean gray value for first flash color*)
+		GrayValue2 : UINT; (*Current mean gray value for second flash color*)
+		GrayValue3 : UINT; (*Current mean gray value for third flash color*)
+		GrayValue4 : UINT; (*Current mean gray value for fourth flash color*)
+		TotalError : ARRAY[1..MAX_NUM_PRODUCTS]OF UINT; (*Total error of mean gray value for all products*)
+		LowError : UINT; (*Lowest error found*)
+		LowDistance : UINT; (*Distance to next best value*)
+		LowIndex : UINT; (*Index of the best value*)
+		LowName : STRING[80]; (*Product name of the best value*)
+		Status : UINT; (*Status of color detection*)
 	END_STRUCT;
 END_TYPE
 

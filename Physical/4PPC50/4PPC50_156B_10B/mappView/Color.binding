@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Color_binding">
+	<Bindings>		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.MaxError" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorError" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.GrayValue1" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorResult1" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.GrayValue2" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorResult2" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.GrayValue3" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorResult3" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.MinDifference" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorDistance" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.TotalError" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="itemColorError" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.LowError" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorLowError" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.LowDistance" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorLowDistance" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.LowIndex" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorLowIndex" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.DAT.Status" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColorStatus" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.GrayValue4" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="itemColor4" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.GrayValue3" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="itemColor3" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.GrayValue2" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="itemColor2" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.GrayValue1" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="itemColor1" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.ProductName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="itemName" attribute="stringValue" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.FlashColor4" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColor4" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.FlashColor3" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColor3" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.FlashColor2" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColor2" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionColor.CFG.FlashColor1" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="numColor1" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_color:visSelectedProduct" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="tabBlob" attribute="selectedRow" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_color:visTableNo" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="ItemNo" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visEnableCommand" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="btnColorEvaluate" attribute="enable" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:visEnableCommand" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentColor" widgetRefId="btnColorTeach" attribute="enable" />
+		</Binding>
+	</Bindings>
+</BindingsSet>
