@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <OpcUaSource FileVersion="7" ArVersion="A4.73">
   <Aliases>
     <ACLAliases>
@@ -121,7 +121,6 @@
         </Variable>
         <Variable Name="visAutoArchiv" />
         <Variable Name="visEnableCommand" />
-        <Variable Name="visEnableVision" />
         <Variable Name="visImageTrigger" />
         <Variable Name="visRepetitiveMode" />
         <Variable Name="visSelectedCodeTypeDetected" EnableArrayElements="True" />

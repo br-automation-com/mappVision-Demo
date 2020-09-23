@@ -247,7 +247,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Fire trigger for camera image
 	// -----------------------------------------------------------------------------------------------------------
-	IF((visImageTrigger OR EDGEPOS(visEnableVision)) AND VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
+	IF((visImageTrigger OR EDGEPOS(VisionSensor.DAT.Enable)) AND VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
 		// Add default delay and fire trigger
 		VisionSensor.DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 		VisionSensor.CMD.ImageTrigger	:= TRUE;
@@ -269,11 +269,11 @@ PROGRAM _CYCLIC
 			END_IF
 		END_IF
 		DisableAutoArchiv := TRUE;
+		VisionSensor.DAT.Enable := FALSE;
 	ELSE
 		RepetitiveModeTimer.IN := TRUE;
 	END_IF
 	RepetitiveModeTimer(PT := T#200ms);
-	VisionSensor.DAT.Enable := visEnableVision AND NOT visRepetitiveMode;
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Get list of vision applications and components
@@ -329,7 +329,7 @@ PROGRAM _CYCLIC
 	IF EDGENEG(VisionSensor.DAT.ImageProcessingActive) THEN
 		gVisionImage.CMD.RefreshCrosshair := TRUE;
 	END_IF
-	gVisionImage.DAT.VisionDisabled := NOT visEnableVision;
+	gVisionImage.DAT.VisionDisabled := NOT VisionSensor.DAT.Enable;
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Save diagnostic data
