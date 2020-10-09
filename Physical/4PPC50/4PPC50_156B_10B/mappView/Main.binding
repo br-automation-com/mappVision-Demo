@@ -129,7 +129,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:visRepetitiveMode" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="value" />
 		</Binding>
-		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:visEnableRepetitive" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="enable" />
@@ -145,10 +144,6 @@
 		<Binding mode="twoWay">
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNoDown" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numCameraNo" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />

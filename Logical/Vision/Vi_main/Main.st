@@ -46,7 +46,7 @@ PROGRAM _CYCLIC
 		// Display camera status in hex - documenation is also in hex
 		// -----------------------------------------------------------------------------------------------------------
 		IF gVisionSensor[idx].DAT.Status = 0 THEN // Display only a single 0
-			gVisionSensor[idx].DAT.StatusText := '0';
+			gVisionSensor[idx].DAT.StatusText := 'Ready';
 		ELSIF gVisionSensor[idx].DAT.Status = 16#00000001 THEN
 			gVisionSensor[idx].DAT.StatusText := 'Image acquisition';
 		ELSIF gVisionSensor[idx].DAT.Status = 16#00000002 THEN

@@ -41,5 +41,9 @@
 			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.DIA.Status" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDIAG_Status" attribute="value" />
 		</Binding>
-	</Bindings>
+	<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="enable" />
+</Binding>
+</Bindings>
 </BindingsSet>
