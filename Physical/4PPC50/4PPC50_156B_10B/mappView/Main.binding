@@ -140,7 +140,7 @@
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.DetailsNo" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numCameraNo" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
