@@ -84,11 +84,9 @@ FUNCTION_BLOCK ViCreateWebDirFile
 			END_IF
 		21: // Copy VisionEye.png from mappView folder (System partition) to webserver dir
 			FileCopy_0(enable := TRUE, pSrcDev := ADR(FileDevSystem), pSrc := ADR(FileNameEyeSystem), pDestDev := ADR(FileDevUser), pDest := ADR(FileNameEyeUser));
-			IF FileCopy_0.status = ERR_OK OR FileCopy_0.status = fiERR_EXIST THEN
-				Step := 22;
-			ELSIF FileCopy_0.status <> ERR_FUB_BUSY THEN
+			IF FileCopy_0.status <> ERR_FUB_BUSY THEN
 				Status := FileCopy_0.status;
-				Step := 0;
+				Step := 22;
 			END_IF
 		22: // Delete DevLink
 			DevUnlink_0(enable := TRUE, handle := DevLink_0.handle);
