@@ -212,5 +212,11 @@ PROGRAM _CYCLIC
 		visVC4RefreshImg := FALSE;
 	END_IF
 	
+	// Refreh crosshairs when new image is available
+	IF EDGENEG(gVisionSensor[visSelectedSensor].CMD.ImageTrigger) THEN
+		gVisionImage.CMD.RefreshCrosshair := TRUE;
+	END_IF
+	gVisionImage.DAT.VisionDisabled := NOT gVisionSensor[visSelectedSensor].DAT.Enable;
+	
 	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
 END_PROGRAM

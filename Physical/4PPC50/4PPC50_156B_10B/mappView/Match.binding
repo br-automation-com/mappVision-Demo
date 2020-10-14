@@ -1,40 +1,40 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Match_binding">
 	<Bindings>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.ModelNumber" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.ModelNumber" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemModel" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.Score" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.Score" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemScore" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.PositionX" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.PositionX" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemPosX" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.PositionY" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.PositionY" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemPosY" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.Scale" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.Scale" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemScale" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.MinScore" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.MinScore" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="numMatchMinScore" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.MaxOverlap" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.MaxOverlap" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="numMatchMaxOverlap" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visTableNo" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="ItemNo" attribute="node" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:Match.Orientation" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:Match.Orientation" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemOrientation" attribute="node" />
 		</Binding>
 	</Bindings>

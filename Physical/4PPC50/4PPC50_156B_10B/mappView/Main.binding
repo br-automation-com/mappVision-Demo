@@ -126,15 +126,15 @@
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visRepetitiveMode" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visRepetitiveMode" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visEnableRepetitive" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableRepetitive" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="enable" />
 		</Binding>		
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:visEnableCommand" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visSensorEnableCommand" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -150,7 +150,7 @@
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNoUp" attribute="enable" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:VisionSensor.HW.Connected" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.Connected" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -160,6 +160,10 @@
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerQuery" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="query" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="enable" />
 		</Binding>
 	</Bindings>
 </BindingsSet>

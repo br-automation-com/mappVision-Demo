@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Navigation_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
 		<EventBinding id="EventBinding_1">
 			<Source xsi:type="clientSystem.Event" event="ContentLoaded" />
 			<Operand datatype="ANY_INT" name="VisionFunction">
-				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_main:VisionSensor.CFG.VisionFunction">
+				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_visu:VisionSensor.CFG.VisionFunction">
 					<Method xsi:type="opcUa.NodeAction.GetValue" />
 				</ReadTarget>
 			</Operand>
@@ -47,7 +47,7 @@
 				<Sequence>
 					<Step order="0">
 						<Action>
-							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visVaListRefresh">
+							<Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visVaListRefresh">
 								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 							</Target>
 						</Action>
@@ -70,7 +70,7 @@
 				</ReadTarget>
 			</Operand>
 			<Operand datatype="ANY_INT" name="VisionFunction">
-				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_main:VisionSensor.CFG.VisionFunction">
+				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_visu:VisionSensor.CFG.VisionFunction">
 					<Method xsi:type="opcUa.NodeAction.GetValue" />
 				</ReadTarget>
 			</Operand>

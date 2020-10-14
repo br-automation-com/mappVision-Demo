@@ -6,108 +6,109 @@
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsNo" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.PowerlinkNode" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.CFG.PowerlinkNode" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsPlkNode" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.Firmware" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.Firmware" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Firmware" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.Variant" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.Variant" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Variant" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableCommand" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visLightsEnableCommand" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="btnLightsTrigger" attribute="enable" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.Ready" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.Ready" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="StatusReady" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.Connected" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.Connected" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="StatusConnected" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.Status" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.Status" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsStatus" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.SerialNumber" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.SerialNumber" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_SerialNumber" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.ID" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.ID" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_ID" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.CFG.LightType" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.CFG.LightType" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="ddbLights" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashFailedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.FlashFailedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numFlashFailed" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashCompletedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.FlashCompletedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numFlashCompleted" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashAcceptedCnt" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.FlashAcceptedCnt" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numFlashAccepted" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.Exposure" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.Exposure" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsExposure" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.NettimeDelay" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.NettimeDelay" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsNettime" attribute="value" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visSelectedFlashColor" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
-		</Binding>
+		
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.TemperatureLED" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.TemperatureLED" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Temperature" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.HW.TemperatureControllerBoard" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.TemperatureControllerBoard" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Temperature1" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Temperature1" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="labLightTemperature1" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.FlashSegment" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.FlashSegment" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsFlashSegments" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="labLightsFlashSegments" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsFlashSegments" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsSetAngle" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:visEnableLightBarValues" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableLightBarValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="labLightsSetAngle" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_light:VisionLight.DAT.SetAngle" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.SetAngle" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsSetAngle" attribute="value" />
 		</Binding>
-	</Bindings>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_visu:visLightsFlashColor" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
+</Binding>
+</Bindings>
 </BindingsSet>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.4.67 SP?>
+<?AutomationStudio Version=4.7.5.60 SP?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
     <Task Name="Axis" Source="Vision.Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
@@ -13,7 +13,7 @@
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
     <Task Name="Vi_main" Source="Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vi_light" Source="Vision.Vi_light.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vi_visu" Source="Vision.Vi_visu.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_color" Source="Vision.Vi_color.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_image" Source="Vision.Vi_image.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Recipe_01" Source="mappRecipe.Recipe_01.prg" Memory="UserROM" Language="IEC" Debugging="true" />

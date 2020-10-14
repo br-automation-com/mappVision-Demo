@@ -1,48 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="MT_binding">
 	<Bindings>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[1]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[1]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results1" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[2]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[2]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results2" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[3]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[3]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results3" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[4]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[4]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results4" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[5]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[5]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results5" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[6]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[6]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results6" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[7]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[7]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results7" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[8]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[8]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results8" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[9]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[9]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results9" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.Result[10]" attribute="node" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[10]" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results10" attribute="node" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:MT.UseResultAsXY" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:MT.UseResultAsXY" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="btnMTuseXY" attribute="value" />
 		</Binding>
 	</Bindings>

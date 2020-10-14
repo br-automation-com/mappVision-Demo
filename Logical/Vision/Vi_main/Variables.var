@@ -1,22 +1,6 @@
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Main vision and data structures*)
-VAR
-	VisionSensor : REFERENCE TO typVisionMain; (*General vision functions that are independent from the inspection function*)
-	Match : REFERENCE TO typMatchMain; (*Data that is specific for the match function*)
-	CodeReader : REFERENCE TO typCodeReaderMain; (*Data that is specific for the code reader*)
-	MT : REFERENCE TO typMTMain; (*Data that is specific for the MT function*)
-	OCR : REFERENCE TO typOCRMain; (*Data that is specific for the OCR function*)
-	Blob : REFERENCE TO typBlobMain; (*Data that is specific for the blob function*)
-	tmpMatch : {REDUND_UNREPLICABLE} typMatchMain; (*Data that is specific for the match function*)
-	tmpCodeReader : {REDUND_UNREPLICABLE} typCodeReaderMain; (*Data that is specific for the code reader*)
-	tmpMT : {REDUND_UNREPLICABLE} typMTMain; (*Data that is specific for the OCR function*)
-	tmpOCR : {REDUND_UNREPLICABLE} typOCRMain; (*Data that is specific for the OCR function*)
-	tmpBlob : {REDUND_UNREPLICABLE} typBlobMain; (*Data that is specific for the blob function*)
-END_VAR
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Vision function blocks*)
 VAR
-	VaGetList_01 : VaGetList;
 	ViBaseLoadApplication_01 : ViBaseLoadApplication;
 	ViBaseSaveDiagData_01 : ViBaseSaveDiagData;
 	FDelete : FileDelete;
@@ -24,41 +8,20 @@ END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Local variables*)
 VAR
-	idx : UINT;
-	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
-	visEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
-	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
-	visEnableRepetitive : BOOL; (*Enable/Disable repetitive mode*)
-	visAutoArchiv : BOOL; (*Enable/Disable auto archiving of camera images*)
-	visImageTrigger : BOOL; (*Trigger new image*)
-	TriggerTimeout : ARRAY[1..MAX_NUM_CAMS] OF TON; (*Disable web reload when timed out*)
-	visVisionApplicationList : ARRAY[0..19] OF STRING[80]; (*Flash color string*)
-	visSelectedFlashColor : STRING[10]; (*Flash color string*)
-	visSelectedFlashColorOld : STRING[10]; (*Flash color string*)
-	visSelectedFlashSegment : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)
-	visSelectedFlashSegmentOld : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)
-	visRepetitiveMode : BOOL; (*Enable/Disable repetitive mode*)
-	RepetitiveModeTimer : TON; (*Timer for repetitive mode*)
-	DisableAutoArchiv : BOOL; (*Enable/Disable automatic archieving for images*)
+	idSensor : UINT := 1;
+	idLight : UINT := 1;
+	TriggerTimeoutSensor : ARRAY[1..MAX_NUM_CAMS] OF TON; (*Disable web reload when timed out*)
+	TriggerTimeoutLight : ARRAY[1..MAX_NUM_LIGHTS] OF TON; (*Disable web reload when timed out*)
 	AcquisitionFailedCntOld : ARRAY[1..MAX_NUM_CAMS] OF UDINT; (*Old aquisition failed counter*)
 	AcquisitionCompletedCntOld : ARRAY[1..MAX_NUM_CAMS] OF UDINT; (*Old aquisition completed counter*)
-	InitialSearchSensor : BOOL; (*Flag for first boot*)
 	AutoSetupRunning : ARRAY[1..MAX_NUM_CAMS] OF BOOL; (*Flag for auto setup running*)
-END_VAR
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Code Reader*)
-VAR
-	visSelectedCodeTypeDetected : ARRAY[1..MAX_NUM_RESULTS] OF STRING[80]; (*HMI helper string*)
-	visSelectedCodeTypeFromPLC : STRING[80]; (*HMI helper string*)
-	visSelectedCodeTypeToPLC : STRING[80]; (*HMI helper string*)
-	visCodeTypePresentDropDownValues : ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
+	FlashFailedCntOld : ARRAY[1..MAX_NUM_LIGHTS] OF USINT;
+	FlashCompletedCntOld : ARRAY[1..MAX_NUM_LIGHTS] OF USINT;
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Image, crosshair data and constants*)
 VAR
-	tmpStr1 : STRING[1000];
 	i : UINT;
-	visCameraStatus : STRING[30];
 END_VAR
 VAR CONSTANT
 	HexTab : STRING[16] := '0123456789ABCDEF';
@@ -70,5 +33,4 @@ VAR CONSTANT
 END_VAR
 VAR
 	TON_DelayAfterAutoSetup : ARRAY[1..MAX_NUM_CAMS] OF TON;
-	visVaListRefresh : BOOL;
 END_VAR

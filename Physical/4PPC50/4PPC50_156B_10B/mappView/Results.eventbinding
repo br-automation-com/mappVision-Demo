@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Results_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
     <EventBinding id="EventBinding_3">
       <Source xsi:type="widgets.brease.DropDownBox.Event" contentRefId="contentCodeReader" widgetRefId="CodeReaderTypePreset" event="SelectedIndexChanged" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visSelectedCodeTypeToPLC">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visSelectedCodeTypeToPLC">
             <Method xsi:type="opcUa.NodeAction.SetValueString" value="=selectedValue" />
           </Target>
         </Action>

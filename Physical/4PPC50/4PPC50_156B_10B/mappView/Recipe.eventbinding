@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Recipe_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
 		<!-- Refresh vision application list />--> 
@@ -6,7 +6,7 @@
 			<Source contentRefId="contentRecipe" widgetRefId="btnVaRefresh" xsi:type="widgets.brease.Button.Event" event="Click" /> 
 			<EventHandler> 
 				<Action> 
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:visVaListRefresh" > 
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visVaListRefresh" > 
 						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" /> 
 					</Target> 
 				</Action> 
@@ -27,7 +27,7 @@
 					<!-- Set vision application name />--> 
 					<Step order="0"> 
 						<Action> 
-							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.FCT.ApplicationName" > 
+							<Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:VisionSensor.FCT.ApplicationName" > 
 								<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstVaAppNames" /> 
 							</Target> 
 						</Action> 
@@ -35,7 +35,7 @@
 					<!-- Set load vision application name />--> 
 					<Step order="1"> 
 						<Action> 
-							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:VisionSensor.CMD.VaSwitchApplication" > 
+							<Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:VisionSensor.CMD.VaSwitchApplication" > 
 								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" /> 
 							</Target> 
 						</Action> 

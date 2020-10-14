@@ -27,7 +27,11 @@ FUNCTION_BLOCK ViDrawCrosshair
 		IF visCrossHair.ShowCrosshair THEN
 			// Handle details no
 			IF visCrossHair.DetailsNo < 1 THEN
-				visCrossHair.DetailsNo := VisionSensor.DAT.ResultCnt;
+				IF VisionSensor.DAT.ResultCnt > 0 THEN 
+					visCrossHair.DetailsNo := VisionSensor.DAT.ResultCnt;
+				ELSE
+					visCrossHair.DetailsNo := 1;
+				END_IF
 			END_IF
 			IF visCrossHair.DetailsNo > VisionSensor.DAT.ResultCnt THEN
 				visCrossHair.DetailsNo := 1;

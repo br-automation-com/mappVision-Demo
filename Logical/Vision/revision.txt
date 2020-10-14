@@ -1,6 +1,7 @@
 Version 2.3 (Development)
  - Added RouteInfo_Tool.ps1
  - Added color detection first version
+ - Split up main task into main and visu, integrated light task into main and visu
 
 Version 2.2
 - Added new functionality to show images in every size on the webviewer widget on the mainpage
