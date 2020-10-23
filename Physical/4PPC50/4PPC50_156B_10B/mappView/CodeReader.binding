@@ -9,9 +9,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.GradingEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="btnCodeReaderGrading" attribute="value" />
 		</Binding>
-		
-		
-		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedCodeTypeFromPLC" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderTypePreset" attribute="selectedValue" />
@@ -24,8 +21,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.ParameterOptimization" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderParamOptimization" attribute="selectedIndex" />
 		</Binding>
-		
-		
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="ItemNo" attribute="node" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Footer_binding">
 	<Bindings>
 		<Binding mode="oneWay">
@@ -33,7 +33,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.CMD.AutoSetupStartStop" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnAutoSetup" attribute="value" />
 		</Binding>
-		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visSensorEnableCommand" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="enable" />
@@ -150,9 +149,17 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedFlashSegment[3]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsBottom" attribute="value" />
 		</Binding>
-	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.Enable" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.Enable" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DIA.DiagName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="txtDiagName" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DIA.Status" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDIAG_Status" attribute="value" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

@@ -65,7 +65,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.NettimeDelay" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="txtLightsNettime" attribute="value" />
 		</Binding>
-		
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.HW.TemperatureLED" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numHW_Temperature" attribute="node" />
@@ -106,9 +105,9 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionLight.DAT.SetAngle" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsSetAngle" attribute="value" />
 		</Binding>
-	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_visu:visLightsFlashColor" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
-</Binding>
-</Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:visLightsFlashColor" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

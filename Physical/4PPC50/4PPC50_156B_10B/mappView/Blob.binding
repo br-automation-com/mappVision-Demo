@@ -33,7 +33,6 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.EnhancedBlobInformation" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobEnhancedBlobInfo" attribute="value" />
 		</Binding>
-		
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="ItemNo" attribute="node" />
