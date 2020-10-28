@@ -33,7 +33,7 @@ PROGRAM _CYCLIC
 		gVisionSensor[idSensor].DAT.StatusText := 'Cam CPU not ready';
 	ELSIF gVisionSensor[idSensor].DAT.Status = 16#00001000 THEN
 		gVisionSensor[idSensor].DAT.StatusText := 'Cam sensor not ready';
-	ELSIF gVisionSensor[idSensor].DAT.Status = 16#02000000 THEN
+	ELSIF gVisionSensor[idSensor].DAT.Status = 16#01000000 OR gVisionSensor[idSensor].DAT.Status = 16#02000000 OR gVisionSensor[idSensor].DAT.Status = 16#03000000 THEN
 		gVisionSensor[idSensor].DAT.StatusText := 'OS check/update';
 	ELSIF gVisionSensor[idSensor].DAT.Status = 16#80000000 THEN
 		gVisionSensor[idSensor].DAT.StatusText := 'Vision cockpit active';
