@@ -8,10 +8,10 @@
   <Project StoreRuntimeInProject="false" />
   <Variables DefaultInitValue="0" DefaultRetain="false" DefaultVolatile="true" />
   <TechnologyPackages>
-    <mapp Version="5.11.2" />
-    <mappCockpit Version="5.11.0" />
-    <mappMotion McAcpDrv="5.11.2" McAcpSim="5.11.2" McAcpSys="5.11.2" Version="5.11.2" />
-    <mappView Version="5.11.3" />
-    <mappVision Version="5.11.1" />
+    <mapp Version="5.12.1" />
+    <mappCockpit Version="5.12.0" />
+    <mappMotion McAcpDrv="5.12.2" McAcpSim="5.12.2" McAcpSys="5.12.2" Version="5.12.2" />
+    <mappView Version="5.12.1" />
+    <mappVision Version="5.12.1" />
   </TechnologyPackages>
 </Project>

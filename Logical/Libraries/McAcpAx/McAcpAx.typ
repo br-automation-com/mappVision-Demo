@@ -379,6 +379,7 @@ TYPE
 		IntegrationTime : REAL; (*Estimated integral action time [s]*)
 		FilterTime : REAL; (*Filter time constant [s]*)
 		LoopFilter1 : McAcpAxLoopFilterParType; (*LoopFilter1 settings*)
+		PhaseCrossoverFrequency : REAL; (*Phase crossover frequency of the controlled system [Hz]*)
 	END_STRUCT;
 
 	McAcpAxAutoTuneLoopFilterOutType : STRUCT
@@ -566,7 +567,7 @@ TYPE
 	    PosVelocityTriggerParID : UINT; (*ParID controls the addition of velocity "CyclicVelocity" or the value of "VelocityParID"*)
 	    NegVelocityTriggerParID : UINT; (*ParID controls the subtraction of velocity "CyclicVelocity" or the value of "VelocityParID"*)
 	END_STRUCT;
-	
+
 	McAcpAxLoadSimInputDataType : STRUCT
 		Position : LREAL; (*Position value [rad]*)
 		Velocity : REAL; (*Velocity value [rad/s]*)

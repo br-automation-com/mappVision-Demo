@@ -122,4 +122,146 @@ TYPE
 	McCfgAxMoveLimType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_MOVE_LIM*)
 		MovementLimits : McAMLType; (*Various limit values that will be considered for axis movements*)
 	END_STRUCT;
+	McAFDCSTypEnum :
+		( (*Digital cam switch type selector setting*)
+		mcAFDCST_ACP := 0 (*ACOPOS - ACOPOS specific part is used*)
+		);
+	McAFDCSTypAcpValSrcRTOAEnum :
+		( (*Reference to other axis selector setting*)
+		mcAFDCSTAVSRTOA_NOT_USE := 0, (*Not used -*)
+		mcAFDCSTAVSRTOA_USE := 1 (*Used -*)
+		);
+	McAFDCSTypAcpValSrcRTOAUseType : STRUCT (*Type mcAFDCSTAVSRTOA_USE settings*)
+		AxisReference : McCfgReferenceType; (*Name of the referenced axis component*)
+	END_STRUCT;
+	McAFDCSTypAcpValSrcRTOAType : STRUCT (*Another axis then the output axis is used as value source*)
+		Type : McAFDCSTypAcpValSrcRTOAEnum; (*Reference to other axis selector setting*)
+		Used : McAFDCSTypAcpValSrcRTOAUseType; (*Type mcAFDCSTAVSRTOA_USE settings*)
+	END_STRUCT;
+	McAFDCSTypAcpValSrcParIDEnum :
+		( (*ParID selector setting*)
+		mcAFDCSTAVSP_NOT_USE := 1, (*Not used - Not used*)
+		mcAFDCSTAVSP_USE := 2 (*Used - ParID used*)
+		);
+	McAFDCSTypAcpValSrcParIDUseType : STRUCT (*Type mcAFDCSTAVSP_USE settings*)
+		ParID : UINT; (*ParID which is used as value source*)
+	END_STRUCT;
+	McAFDCSTypAcpValSrcParIDType : STRUCT (*ParID used as Value source*)
+		Type : McAFDCSTypAcpValSrcParIDEnum; (*ParID selector setting*)
+		Used : McAFDCSTypAcpValSrcParIDUseType; (*Type mcAFDCSTAVSP_USE settings*)
+	END_STRUCT;
+	McAFDCSTypAcpValSrcType : STRUCT (*Value source for generating the cam switches*)
+		ReferenceToOtherAxis : McAFDCSTypAcpValSrcRTOAType; (*Another axis then the output axis is used as value source*)
+		ParID : McAFDCSTypAcpValSrcParIDType; (*ParID used as Value source*)
+	END_STRUCT;
+	McAFDCSTypAcpOutEnum :
+		( (*Output selector setting*)
+		mcAFDCSTAO_ACP_HW := 0, (*ACOPOS hardware - ACOPOS hardware is used*)
+		mcAFDCSTAO_ACP_PARID := 1 (*ACOPOS ParID - A destination ParID on an ACOPOS axis is used*)
+		);
+	McAFDCSTypAcpOutAcpHwProdFamEnum :
+		( (*ACOPOS product family selector setting*)
+		mcAFDCSTAOAHPF_ACP := 0, (*ACOPOS -*)
+		mcAFDCSTAOAHPF_ACPM := 1, (*ACOPOSmulti -*)
+		mcAFDCSTAOAHPF_ACP_P3 := 2 (*ACOPOS P3 -*)
+		);
+	McAFDCSACOPOSDigOutEnum :
+		( (*Digital output selector setting*)
+		mcAFDCSACOPOSDO_SS2X111 := 0, (*SS2.X11.1 -*)
+		mcAFDCSACOPOSDO_SS2X112 := 1, (*SS2.X11.2 -*)
+		mcAFDCSACOPOSDO_SS2X113 := 2, (*SS2.X11.3 -*)
+		mcAFDCSACOPOSDO_SS2X114 := 3, (*SS2.X11.4 -*)
+		mcAFDCSACOPOSDO_SS2X115 := 4, (*SS2.X11.5 -*)
+		mcAFDCSACOPOSDO_SS2X116 := 5, (*SS2.X11.6 -*)
+		mcAFDCSACOPOSDO_SS2X117 := 6, (*SS2.X11.7 -*)
+		mcAFDCSACOPOSDO_SS2X118 := 7, (*SS2.X11.8 -*)
+		mcAFDCSACOPOSDO_SS2X119 := 8, (*SS2.X11.9 -*)
+		mcAFDCSACOPOSDO_SS2X1110 := 9, (*SS2.X11.10 -*)
+		mcAFDCSACOPOSDO_SS3X111 := 10, (*SS3.X11.1 -*)
+		mcAFDCSACOPOSDO_SS3X112 := 11, (*SS3.X11.2 -*)
+		mcAFDCSACOPOSDO_SS3X113 := 12, (*SS3.X11.3 -*)
+		mcAFDCSACOPOSDO_SS3X114 := 13, (*SS3.X11.4 -*)
+		mcAFDCSACOPOSDO_SS3X115 := 14, (*SS3.X11.5 -*)
+		mcAFDCSACOPOSDO_SS3X116 := 15, (*SS3.X11.6 -*)
+		mcAFDCSACOPOSDO_SS3X117 := 16, (*SS3.X11.7 -*)
+		mcAFDCSACOPOSDO_SS3X118 := 17, (*SS3.X11.8 -*)
+		mcAFDCSACOPOSDO_SS3X119 := 18, (*SS3.X11.9 -*)
+		mcAFDCSACOPOSDO_SS3X1110 := 19, (*SS3.X11.10 -*)
+		mcAFDCSACOPOSDO_SS4X111 := 20, (*SS4.X11.1 -*)
+		mcAFDCSACOPOSDO_SS4X112 := 21, (*SS4.X11.2 -*)
+		mcAFDCSACOPOSDO_SS4X113 := 22, (*SS4.X11.3 -*)
+		mcAFDCSACOPOSDO_SS4X114 := 23, (*SS4.X11.4 -*)
+		mcAFDCSACOPOSDO_SS4X115 := 24, (*SS4.X11.5 -*)
+		mcAFDCSACOPOSDO_SS4X116 := 25, (*SS4.X11.6 -*)
+		mcAFDCSACOPOSDO_SS4X117 := 26, (*SS4.X11.7 -*)
+		mcAFDCSACOPOSDO_SS4X118 := 27, (*SS4.X11.8 -*)
+		mcAFDCSACOPOSDO_SS4X119 := 28, (*SS4.X11.9 -*)
+		mcAFDCSACOPOSDO_SS4X1110 := 29 (*SS4.X11.10 -*)
+		);
+	McAFDCSACOPOSDigOutType : STRUCT
+		Type : McAFDCSACOPOSDigOutEnum; (*Digital output selector setting*)
+	END_STRUCT;
+	McAFDCSACOPOSType : STRUCT (*Type mcAFDCSTAOAHPF_ACP settings*)
+		DigitalOutput : McAFDCSACOPOSDigOutType;
+	END_STRUCT;
+	McAFDCSACOPOSmultiDigOutEnum :
+		( (*Digital output selector setting*)
+		mcAFDCSACOPOSMULTIDO_SS1X111 := 0, (*SS1.X11.1 -*)
+		mcAFDCSACOPOSMULTIDO_SS1X113 := 1, (*SS1.X11.3 -*)
+		mcAFDCSACOPOSMULTIDO_SS1X115 := 2, (*SS1.X11.5 -*)
+		mcAFDCSACOPOSMULTIDO_SS1X116 := 3 (*SS1.X11.6 -*)
+		);
+	McAFDCSACOPOSmultiDigOutType : STRUCT
+		Type : McAFDCSACOPOSmultiDigOutEnum; (*Digital output selector setting*)
+	END_STRUCT;
+	McAFDCSACOPOSmultiType : STRUCT (*Type mcAFDCSTAOAHPF_ACPM settings*)
+		DigitalOutput : McAFDCSACOPOSmultiDigOutType;
+	END_STRUCT;
+	McAFDCSACOPOSP3DigOutEnum :
+		( (*Digital output selector setting*)
+		mcAFDCSACOPOSP3DO_SS1X41E1 := 0, (*SS1.X41E.1 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E2 := 1, (*SS1.X41E.2 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E3 := 2, (*SS1.X41E.3 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E4 := 3, (*SS1.X41E.4 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E5 := 4, (*SS1.X41E.5 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E6 := 5, (*SS1.X41E.6 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E7 := 6, (*SS1.X41E.7 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E8 := 7, (*SS1.X41E.8 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E9 := 8, (*SS1.X41E.9 -*)
+		mcAFDCSACOPOSP3DO_SS1X41E10 := 9 (*SS1.X41E.10 -*)
+		);
+	McAFDCSACOPOSP3DigOutType : STRUCT
+		Type : McAFDCSACOPOSP3DigOutEnum; (*Digital output selector setting*)
+	END_STRUCT;
+	McAFDCSACOPOSP3Type : STRUCT (*Type mcAFDCSTAOAHPF_ACP_P3 settings*)
+		DigitalOutput : McAFDCSACOPOSP3DigOutType;
+	END_STRUCT;
+	McAFDCSTypAcpOutAcpHwProdFamType : STRUCT
+		Type : McAFDCSTypAcpOutAcpHwProdFamEnum; (*ACOPOS product family selector setting*)
+		ACOPOS : McAFDCSACOPOSType; (*Type mcAFDCSTAOAHPF_ACP settings*)
+		ACOPOSmulti : McAFDCSACOPOSmultiType; (*Type mcAFDCSTAOAHPF_ACPM settings*)
+		ACOPOSP3 : McAFDCSACOPOSP3Type; (*Type mcAFDCSTAOAHPF_ACP_P3 settings*)
+	END_STRUCT;
+	McAFDCSTypAcpOutAcpHwType : STRUCT (*Type mcAFDCSTAO_ACP_HW settings*)
+		ProductFamily : McAFDCSTypAcpOutAcpHwProdFamType;
+	END_STRUCT;
+	McAFDCSTypAcpOutAcpParIDType : STRUCT (*Type mcAFDCSTAO_ACP_PARID settings*)
+		ParID : UINT;
+	END_STRUCT;
+	McAFDCSTypAcpOutType : STRUCT (*Target of the output value*)
+		Type : McAFDCSTypAcpOutEnum; (*Output selector setting*)
+		ACOPOSHardware : McAFDCSTypAcpOutAcpHwType; (*Type mcAFDCSTAO_ACP_HW settings*)
+		ACOPOSParID : McAFDCSTypAcpOutAcpParIDType; (*Type mcAFDCSTAO_ACP_PARID settings*)
+	END_STRUCT;
+	McAFDCSTypAcpType : STRUCT (*Type mcAFDCST_ACP settings*)
+		ValueSource : McAFDCSTypAcpValSrcType; (*Value source for generating the cam switches*)
+		Output : McAFDCSTypAcpOutType; (*Target of the output value*)
+	END_STRUCT;
+	McAFDCSTypType : STRUCT (*Type of the digital output configuration*)
+		Type : McAFDCSTypEnum; (*Digital cam switch type selector setting*)
+		ACOPOS : McAFDCSTypAcpType; (*Type mcAFDCST_ACP settings*)
+	END_STRUCT;
+	McCfgAxFeatDigCamSwType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_DIG_CAM_SW*)
+		DigitalCamSwitchType : McAFDCSTypType; (*Type of the digital output configuration*)
+	END_STRUCT;
 END_TYPE

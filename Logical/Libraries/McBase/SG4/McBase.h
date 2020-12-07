@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.11.2 */
+/* McBase 5.12.2 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.11.2
+#define _McBase_VERSION 5.12.2
 #endif
 
 #include <bur/plctypes.h>
@@ -132,7 +132,8 @@ typedef enum McSwitchEnum
 typedef enum McProcessParamModeEnum
 {	mcPPM_READ,
 	mcPPM_WRITE,
-	mcPPM_LOAD_FROM_CONFIG
+	mcPPM_LOAD_FROM_CONFIG,
+	mcPPM_SAVE_TO_CONFIG
 } McProcessParamModeEnum;
 
 typedef enum McProcessConfigModeEnum
@@ -167,6 +168,8 @@ typedef enum McCfgTypeEnum
 	mcCFG_AX_MOVE_LIM = 10012,
 	mcCFG_AX_FEAT_CAM_AUT_CMN = 10101,
 	mcCFG_AX_FEAT_PROF_GEN = 10102,
+	mcCFG_AX_FEAT_DIG_CAM_SW = 10103,
+	mcCFG_AX_FEAT_CAM_LST = 11102,
 	mcCFG_ACP_AX = 11000,
 	mcCFG_ACP_AX_REF = 11011,
 	mcCFG_ACP_MECH_ELM = 11012,
@@ -180,9 +183,18 @@ typedef enum McCfgTypeEnum
 	mcCFG_ACP_SIM = 11020,
 	mcCFG_ACP_AX_FEAT = 11021,
 	mcCFG_ACP_AUX_PWR_SUP_MOD = 11030,
+	mcCFG_ACP_PSM_PWR_SEC = 11031,
+	mcCFG_ACP_PWR_SUP = 11040,
+	mcCFG_ACP_ENC = 11045,
+	mcCFG_ACP_VIRT_AX = 11050,
+	mcCFG_ACP_VIRT_AX_REF = 11051,
+	mcCFG_ACP_VIRT_HOME = 11052,
+	mcCFG_ACP_VIRT_JERK_FLTR = 11053,
+	mcCFG_ACP_VIRT_AX_FEAT = 11054,
+	mcCFG_ACP_CH_FEAT = 11060,
 	mcCFG_AX_FEAT_CAM_AUT_ACP = 11101,
-	mcCFG_AX_FEAT_CAM_LST = 11102,
 	mcCFG_AX_FEAT_A_IN = 11103,
+	mcCFG_AX_FEAT_ACP_PAR_TBL = 11104,
 	mcCFG_STP_AX = 13000,
 	mcCFG_STP_AX_REF = 13011,
 	mcCFG_STP_AX_MECH_ELM = 13012,
@@ -807,6 +819,10 @@ typedef struct MC_BR_GetCoordSystemIdent
 } MC_BR_GetCoordSystemIdent_typ;
 
 typedef McAxisType McPsmAxisType;
+
+typedef McAxisType McApsmAxisType;
+
+typedef McAxisType McConvoyType;
 
 typedef plcstring McCfgString250Type[251];
 

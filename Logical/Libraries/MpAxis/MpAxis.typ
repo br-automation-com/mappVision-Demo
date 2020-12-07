@@ -81,7 +81,8 @@ TYPE
 		mcAXIS_CMD_OFFSET_SHIFT,
 		mcAXIS_CMD_PHASE_SHIFT,
 		mcAXIS_CMD_GET_CAM_POSITION,
-		mcAXIS_CMD_CAM_PREPARE
+		mcAXIS_CMD_CAM_PREPARE,
+		mcAXIS_CMD_CAM_RECOVERY
 		);
 	MpAxisOffsetParType : 	STRUCT 
 		Shift : LREAL; (*Offset shift for slave axis [Measurement Units des Slaves]*)
@@ -108,6 +109,7 @@ Parameters left at default values disable the associated optional functions.*)
 		ActualPhaseShift : LREAL; (*Phase shift currently being executed [Measurement units].
 *)
 		GetCamPosition : MpAxisGetCamPositionInfoType; (*GetCamPosition command result*)
+		Recovery : MpAxisRecoveryInfoType; (*Recovery command related information*)
 		Diag : MpAxisDiagExtType; (*Diagnostic structure for the status ID*)
 	END_STRUCT;
 	MpAxisGetCamPositionModeEnum : 
@@ -141,6 +143,7 @@ Parameters left at default values disable the associated optional functions.*)
 		Phasing : MpAxisPhasingParType := (0); (*Phasing parameters*)
 		GetCamPosition : MpAxisGetCamPositionParType; (*GetCamPosition parameters*)
 		CamList : ARRAY[0..13]OF MpAxisCamListType; (*List of cam to be send to drive. As alternative cam defined in axis cam list feature can be used*)
+		Recovery : MpAxisCouplingRecoveryParType;
 	END_STRUCT;
 	MpAxisGetCamPositionInfoType : 	STRUCT 
 		MasterPosition : LREAL; (*GetCamPosition resulting master position*)
@@ -162,6 +165,7 @@ Parameters left at default values disable the associated optional functions.*)
 		Options : McAdvBrCamInParType; (*Structure for using optional  functions
 Note:
 Parameters left at default values disable the associated optional functions.*)
+		Mode : MpAxisCamStartModeEnum; (*Mode of Cam command execution*)
 	END_STRUCT;
 	MpAxisGearInPosParType : 	STRUCT 
 		RatioNumerator : DINT := 36000; (*Gear ratio numerator*)
@@ -206,5 +210,21 @@ Parameters left at default values disable the associated optional functions.*)
 	MpAxisCamListType : 	STRUCT 
 		Index : UINT;
 		Cam : McCamDefineType;
+	END_STRUCT;
+	MpAxisCamStartModeEnum : 
+		(
+		mcAXIS_CAM_START_ENTER_CAM, (* Mode for starting Cam from start*)
+		mcAXIS_CAM_START_RESTART (* Mode for restarting previously running Cam*)
+		);
+	MpAxisCouplingRecoveryParType : 	STRUCT 
+		Mode : McCamAutPrepRestartModeEnum; (* Mode of repositioning*)
+		Velocity : REAL; (* Maximum velocity*)
+		Acceleration : REAL; (* Maximum acceleration*)
+		Deceleration : REAL; (* Maximum deceleration*)
+		Jerk : REAL; (* Maximum jerk*)
+		Options : McAdvCamAutPrepRestartParType; (* Recovery optional parameters*)
+	END_STRUCT;
+	MpAxisRecoveryInfoType : 	STRUCT 
+		RestartPosition : LREAL; (* Resulting restart position*)
 	END_STRUCT;
 END_TYPE

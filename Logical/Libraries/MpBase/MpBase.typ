@@ -25,16 +25,16 @@ TYPE
 		mpCOM_SEV_WARNING := 2, (*Severity: Warning*)
 		mpCOM_SEV_ERROR := 3 (*Severity: Error*)
 		);
-	MpComIdentType : 	STRUCT 
-		Internal : ARRAY[0..1]OF UDINT; (*For internal use only*)
+	MpComIdentType : {REDUND_UNREPLICABLE} 	STRUCT 
+		Internal : {REDUND_UNREPLICABLE} ARRAY[0..1]OF UDINT; (*For internal use only*)
 	END_STRUCT;
-	MpComInternalDataType : 	STRUCT 
-		pObject : UDINT;
-		State : UDINT;
+	MpComInternalDataType : {REDUND_UNREPLICABLE} 	STRUCT 
+		pObject : {REDUND_UNREPLICABLE} UDINT;
+		State : {REDUND_UNREPLICABLE} UDINT;
 	END_STRUCT;
-	MpComConfigInternalType : 	STRUCT 
-		pObject : UDINT;
-		State : DINT;
+	MpComConfigInternalType : {REDUND_UNREPLICABLE} 	STRUCT 
+		pObject : {REDUND_UNREPLICABLE} UDINT;
+		State : {REDUND_UNREPLICABLE} DINT;
 	END_STRUCT;
 	MpComInternalIDType : 	STRUCT 
 		ID : DINT; (*Status ID*)

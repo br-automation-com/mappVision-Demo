@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpAxis 5.11.2 */
+/* MpAxis 5.12.2 */
 
 #ifndef _MPAXIS_
 #define _MPAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpAxis_VERSION
-#define _MpAxis_VERSION 5.11.2
+#define _MpAxis_VERSION 5.12.2
 #endif
 
 #include <bur/plctypes.h>
@@ -66,7 +66,8 @@ typedef enum MpAxisExecutingCmdEnum
 	mcAXIS_CMD_OFFSET_SHIFT,
 	mcAXIS_CMD_PHASE_SHIFT,
 	mcAXIS_CMD_GET_CAM_POSITION,
-	mcAXIS_CMD_CAM_PREPARE
+	mcAXIS_CMD_CAM_PREPARE,
+	mcAXIS_CMD_CAM_RECOVERY
 } MpAxisExecutingCmdEnum;
 
 typedef enum MpAxisGetCamPositionModeEnum
@@ -74,6 +75,11 @@ typedef enum MpAxisGetCamPositionModeEnum
 	mcAXIS_GET_CAM_POSITION_MASTER,
 	mcAXIS_MOVE_CAM_POSITION_SLAVE
 } MpAxisGetCamPositionModeEnum;
+
+typedef enum MpAxisCamStartModeEnum
+{	mcAXIS_CAM_START_ENTER_CAM,
+	mcAXIS_CAM_START_RESTART
+} MpAxisCamStartModeEnum;
 
 typedef struct MpAxisHomingType
 {	enum McHomingModeEnum Mode;
@@ -175,6 +181,10 @@ typedef struct MpAxisGetCamPositionInfoType
 	double SlavePosition;
 } MpAxisGetCamPositionInfoType;
 
+typedef struct MpAxisRecoveryInfoType
+{	double RestartPosition;
+} MpAxisRecoveryInfoType;
+
 typedef struct MpAxisCouplingInfoType
 {	plcbit SlaveReady;
 	plcbit MasterReady;
@@ -182,6 +192,7 @@ typedef struct MpAxisCouplingInfoType
 	double ActualOffsetShift;
 	double ActualPhaseShift;
 	struct MpAxisGetCamPositionInfoType GetCamPosition;
+	struct MpAxisRecoveryInfoType Recovery;
 	struct MpAxisDiagExtType Diag;
 } MpAxisCouplingInfoType;
 
@@ -220,6 +231,7 @@ typedef struct MpAxisCamParType
 	signed long MasterScaling;
 	signed long SlaveScaling;
 	struct McAdvBrCamInParType Options;
+	enum MpAxisCamStartModeEnum Mode;
 } MpAxisCamParType;
 
 typedef struct MpAxisGearInPosParType
@@ -242,6 +254,15 @@ typedef struct MpAxisCamListType
 	struct McCamDefineType Cam;
 } MpAxisCamListType;
 
+typedef struct MpAxisCouplingRecoveryParType
+{	enum McCamAutPrepRestartModeEnum Mode;
+	float Velocity;
+	float Acceleration;
+	float Deceleration;
+	float Jerk;
+	struct McAdvCamAutPrepRestartParType Options;
+} MpAxisCouplingRecoveryParType;
+
 typedef struct MpAxisCouplingParType
 {	struct MpAxisGearParType Gear;
 	struct MpAxisCamParType Cam;
@@ -250,6 +271,7 @@ typedef struct MpAxisCouplingParType
 	struct MpAxisPhasingParType Phasing;
 	struct MpAxisGetCamPositionParType GetCamPosition;
 	struct MpAxisCamListType CamList[14];
+	struct MpAxisCouplingRecoveryParType Recovery;
 } MpAxisCouplingParType;
 
 typedef struct MpAxisBasic

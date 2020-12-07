@@ -490,3 +490,36 @@ FUNCTION_BLOCK MC_BR_RdLoadSimInputData_AcpAx (* This function block provides th
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_BR_ApsmPowerOn_AcpAx (* This function block switches on the output of an ACOPOS auxiliary power supply module*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType; (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*Indicates whether the output is on*)
+		Busy : BOOL; (*Function block is active and must continue to be called.*)
+		CommandAborted : BOOL; (*Command aborted by another command.*)
+		Error : BOOL; (*Execution error*)
+		ErrorID : DINT; (*Error number*)
+	END_VAR
+	VAR
+		Internal : McInternalType;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_ApsmPowerOff_AcpAx (* This function block switches off the output of an ACOPOS auxiliary power supply module*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType; (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*Indicates whether the output is off*)
+		Busy : BOOL; (*Function block is active and must continue to be called.*)
+		CommandAborted : BOOL; (*Command aborted by another command.*)
+		Error : BOOL; (*Execution error*)
+		ErrorID : DINT; (*Error number*)
+	END_VAR
+	VAR
+		Internal : McInternalType;
+	END_VAR
+END_FUNCTION_BLOCK

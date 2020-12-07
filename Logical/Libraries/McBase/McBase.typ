@@ -128,7 +128,8 @@ TYPE
 	(
 		mcPPM_READ,		 			(*Reads Parameterization*)
 		mcPPM_WRITE,	 			(*Write Parameterization*)
-		mcPPM_LOAD_FROM_CONFIG		(*Load P from Config*)
+		mcPPM_LOAD_FROM_CONFIG,		(*Load P from Config*)
+		mcPPM_SAVE_TO_CONFIG		(*Save P to Config*)
 	);
 
 	McProcessConfigModeEnum:
@@ -234,7 +235,11 @@ TYPE
 		seqNo : DINT; (**)
 	END_STRUCT;
 
-	McPsmAxisType :McAxisType; (**)
+	McPsmAxisType : McAxisType; (**)
+
+	McApsmAxisType : McAxisType; (**)
+
+	McConvoyType : McAxisType; (**)
 
 	McAxesGroupType : 	STRUCT
 		controlif : REFERENCE TO McInternalAxesGroupIfType; (**)

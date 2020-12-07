@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAcpAx 5.11.2 */
+/* McAcpAx 5.12.2 */
 
 #ifndef _MCACPAX_
 #define _MCACPAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAcpAx_VERSION
-#define _McAcpAx_VERSION 5.11.2
+#define _McAcpAx_VERSION 5.12.2
 #endif
 
 #include <bur/plctypes.h>
@@ -382,6 +382,397 @@ typedef enum McAPSMOutVOnEnum
 	mcAPSMOVO_YES = 1
 } McAPSMOutVOnEnum;
 
+typedef enum McAPSPwrSupEnum
+{	mcAPSPS_AC = 0,
+	mcAPSPS_DC_PWR_SUP_MOD_REF = 1,
+	mcAPSPS_DC_BUS_V = 2,
+	mcAPSPS_ETA_SYS_FOR_TR_ONLY = 3
+} McAPSPwrSupEnum;
+
+typedef enum McAPSPwrSupACSngPhOpEnum
+{	mcAPSPSASPO_NOT_USE = 0,
+	mcAPSPSASPO_USE = 1
+} McAPSPwrSupACSngPhOpEnum;
+
+typedef enum McAEEncX6AIfTypEnum
+{	mcAEX6AIT_ENDAT = 0,
+	mcAEX6AIT_SSI = 1,
+	mcAEX6AIT_SIN = 2,
+	mcAEX6AIT_INCR = 3,
+	mcAEX6AIT_LINMOT = 4,
+	mcAEX6AIT_RES = 5
+} McAEEncX6AIfTypEnum;
+
+typedef enum McAEX6ASSSIFrmCfgStatBit1Enum
+{	mcAEX6ASSFCSB1_NOT_AVL = 0,
+	mcAEX6ASSFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX6ASSFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX6ASSFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX6ASSFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX6ASSSIFrmCfgStatBit1Enum;
+
+typedef enum McAEX6ASSSIFrmCfgStatBit2Enum
+{	mcAEX6ASSFCSB2_NOT_AVL = 0,
+	mcAEX6ASSFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX6ASSFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX6ASSFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX6ASSFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX6ASSSIFrmCfgStatBit2Enum;
+
+typedef enum McAEX6ASSSIFrmCfgSSIDatCEnum
+{	mcAEX6ASSFCSDC_GRAY = 0,
+	mcAEX6ASSFCSDC_BIN = 1
+} McAEX6ASSSIFrmCfgSSIDatCEnum;
+
+typedef enum McAEX6ASSSIFrmCfgSSIParCkEnum
+{	mcAEX6ASSFCSPC_SSI_PAR_CK_ODD = 0,
+	mcAEX6ASSFCSPC_SSI_PAR_CK_EVEN = 1,
+	mcAEX6ASSFCSPC_OFF = 2
+} McAEX6ASSSIFrmCfgSSIParCkEnum;
+
+typedef enum McAEX6AIMaxExpectedOutFreqEnum
+{	mcAEX6AIMEOF_MEOF_25000 = 0,
+	mcAEX6AIMEOF_MEOF_50000 = 1,
+	mcAEX6AIMEOF_MEOF_100000 = 2,
+	mcAEX6AIMEOF_MEOF_200000 = 3
+} McAEX6AIMaxExpectedOutFreqEnum;
+
+typedef enum McAEEncX6BIfTypEnum
+{	mcAEX6BIT_ENDAT = 0,
+	mcAEX6BIT_SSI = 1,
+	mcAEX6BIT_SIN = 2,
+	mcAEX6BIT_INCR = 3,
+	mcAEX6BIT_LINMOT = 4,
+	mcAEX6BIT_RES = 5
+} McAEEncX6BIfTypEnum;
+
+typedef enum McAEX6BSSSIFrmCfgStatBit1Enum
+{	mcAEX6BSSFCSB1_NOT_AVL = 0,
+	mcAEX6BSSFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX6BSSFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX6BSSFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX6BSSFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX6BSSSIFrmCfgStatBit1Enum;
+
+typedef enum McAEX6BSSSIFrmCfgStatBit2Enum
+{	mcAEX6BSSFCSB2_NOT_AVL = 0,
+	mcAEX6BSSFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX6BSSFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX6BSSFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX6BSSFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX6BSSSIFrmCfgStatBit2Enum;
+
+typedef enum McAEX6BSSSIFrmCfgSSIDatCEnum
+{	mcAEX6BSSFCSDC_GRAY = 0,
+	mcAEX6BSSFCSDC_BIN = 1
+} McAEX6BSSSIFrmCfgSSIDatCEnum;
+
+typedef enum McAEX6BSSSIFrmCfgSSIParCkEnum
+{	mcAEX6BSSFCSPC_SSI_PAR_CK_ODD = 0,
+	mcAEX6BSSFCSPC_SSI_PAR_CK_EVEN = 1,
+	mcAEX6BSSFCSPC_OFF = 2
+} McAEX6BSSSIFrmCfgSSIParCkEnum;
+
+typedef enum McAEX6BIMaxExpectedOutFreqEnum
+{	mcAEX6BIMEOF_MEOF_25000 = 0,
+	mcAEX6BIMEOF_MEOF_50000 = 1,
+	mcAEX6BIMEOF_MEOF_100000 = 2,
+	mcAEX6BIMEOF_MEOF_200000 = 3
+} McAEX6BIMaxExpectedOutFreqEnum;
+
+typedef enum McAEEncX41IfTypEnum
+{	mcAEX41IT_NOT_USE = 0,
+	mcAEX41IT_BISS = 1,
+	mcAEX41IT_SSI = 2,
+	mcAEX41IT_ENDAT = 3,
+	mcAEX41IT_HIPERFACE_DSL = 4,
+	mcAEX41IT_TFMT = 5
+} McAEEncX41IfTypEnum;
+
+typedef enum McAEX41BPwrSupEnum
+{	mcAEX41BPS_EXT = 0,
+	mcAEX41BPS_PS_5_V = 1,
+	mcAEX41BPS_PS_12_V = 2
+} McAEX41BPwrSupEnum;
+
+typedef enum McAEX41BBiSSFrmCfgStatBit1Enum
+{	mcAEX41BBFCSB1_NOT_AVL = 0,
+	mcAEX41BBFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX41BBFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX41BBFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX41BBFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX41BBiSSFrmCfgStatBit1Enum;
+
+typedef enum McAEX41BBiSSFrmCfgStatBit2Enum
+{	mcAEX41BBFCSB2_NOT_AVL = 0,
+	mcAEX41BBFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX41BBFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX41BBFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX41BBFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX41BBiSSFrmCfgStatBit2Enum;
+
+typedef enum McAEX41SPwrSupEnum
+{	mcAEX41SPS_EXT = 0,
+	mcAEX41SPS_PS_5_V = 1,
+	mcAEX41SPS_PS_12_V = 2
+} McAEX41SPwrSupEnum;
+
+typedef enum McAEX41SSSIFrmCfgStatBit1Enum
+{	mcAEX41SSFCSB1_NOT_AVL = 0,
+	mcAEX41SSFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX41SSFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX41SSFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX41SSFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX41SSSIFrmCfgStatBit1Enum;
+
+typedef enum McAEX41SSSIFrmCfgStatBit2Enum
+{	mcAEX41SSFCSB2_NOT_AVL = 0,
+	mcAEX41SSFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX41SSFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX41SSFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX41SSFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX41SSSIFrmCfgStatBit2Enum;
+
+typedef enum McAEX41SSSIFrmCfgSSIDatCEnum
+{	mcAEX41SSFCSDC_GRAY = 0,
+	mcAEX41SSFCSDC_BIN = 1
+} McAEX41SSSIFrmCfgSSIDatCEnum;
+
+typedef enum McAEX41SSSIFrmCfgSSIParCkEnum
+{	mcAEX41SSFCSPC_SSI_PAR_CK_ODD = 0,
+	mcAEX41SSFCSPC_SSI_PAR_CK_EVEN = 1,
+	mcAEX41SSFCSPC_OFF = 2
+} McAEX41SSSIFrmCfgSSIParCkEnum;
+
+typedef enum McAEEncX42IfTypEnum
+{	mcAEX42IT_NOT_USE = 0,
+	mcAEX42IT_BISS = 1,
+	mcAEX42IT_SSI = 2,
+	mcAEX42IT_ENDAT = 3,
+	mcAEX42IT_HIPERFACE_DSL = 4,
+	mcAEX42IT_TFMT = 5
+} McAEEncX42IfTypEnum;
+
+typedef enum McAEX42BPwrSupEnum
+{	mcAEX42BPS_EXT = 0,
+	mcAEX42BPS_PS_5_V = 1,
+	mcAEX42BPS_PS_12_V = 2
+} McAEX42BPwrSupEnum;
+
+typedef enum McAEX42BBiSSFrmCfgStatBit1Enum
+{	mcAEX42BBFCSB1_NOT_AVL = 0,
+	mcAEX42BBFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX42BBFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX42BBFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX42BBFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX42BBiSSFrmCfgStatBit1Enum;
+
+typedef enum McAEX42BBiSSFrmCfgStatBit2Enum
+{	mcAEX42BBFCSB2_NOT_AVL = 0,
+	mcAEX42BBFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX42BBFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX42BBFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX42BBFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX42BBiSSFrmCfgStatBit2Enum;
+
+typedef enum McAEX42SPwrSupEnum
+{	mcAEX42SPS_EXT = 0,
+	mcAEX42SPS_PS_5_V = 1,
+	mcAEX42SPS_PS_12_V = 2
+} McAEX42SPwrSupEnum;
+
+typedef enum McAEX42SSSIFrmCfgStatBit1Enum
+{	mcAEX42SSFCSB1_NOT_AVL = 0,
+	mcAEX42SSFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX42SSFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX42SSFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX42SSFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX42SSSIFrmCfgStatBit1Enum;
+
+typedef enum McAEX42SSSIFrmCfgStatBit2Enum
+{	mcAEX42SSFCSB2_NOT_AVL = 0,
+	mcAEX42SSFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX42SSFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX42SSFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX42SSFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX42SSSIFrmCfgStatBit2Enum;
+
+typedef enum McAEX42SSSIFrmCfgSSIDatCEnum
+{	mcAEX42SSFCSDC_GRAY = 0,
+	mcAEX42SSFCSDC_BIN = 1
+} McAEX42SSSIFrmCfgSSIDatCEnum;
+
+typedef enum McAEX42SSSIFrmCfgSSIParCkEnum
+{	mcAEX42SSFCSPC_SSI_PAR_CK_ODD = 0,
+	mcAEX42SSFCSPC_SSI_PAR_CK_EVEN = 1,
+	mcAEX42SSFCSPC_OFF = 2
+} McAEX42SSSIFrmCfgSSIParCkEnum;
+
+typedef enum McAEEncX43IfTypEnum
+{	mcAEX43IT_NOT_USE = 0,
+	mcAEX43IT_BISS = 1,
+	mcAEX43IT_SSI = 2,
+	mcAEX43IT_ENDAT = 3,
+	mcAEX43IT_HIPERFACE_DSL = 4,
+	mcAEX43IT_TFMT = 5
+} McAEEncX43IfTypEnum;
+
+typedef enum McAEX43BPwrSupEnum
+{	mcAEX43BPS_EXT = 0,
+	mcAEX43BPS_PS_5_V = 1,
+	mcAEX43BPS_PS_12_V = 2
+} McAEX43BPwrSupEnum;
+
+typedef enum McAEX43BBiSSFrmCfgStatBit1Enum
+{	mcAEX43BBFCSB1_NOT_AVL = 0,
+	mcAEX43BBFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX43BBFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX43BBFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX43BBFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX43BBiSSFrmCfgStatBit1Enum;
+
+typedef enum McAEX43BBiSSFrmCfgStatBit2Enum
+{	mcAEX43BBFCSB2_NOT_AVL = 0,
+	mcAEX43BBFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX43BBFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX43BBFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX43BBFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX43BBiSSFrmCfgStatBit2Enum;
+
+typedef enum McAEX43SPwrSupEnum
+{	mcAEX43SPS_EXT = 0,
+	mcAEX43SPS_PS_5_V = 1,
+	mcAEX43SPS_PS_12_V = 2
+} McAEX43SPwrSupEnum;
+
+typedef enum McAEX43SSSIFrmCfgStatBit1Enum
+{	mcAEX43SSFCSB1_NOT_AVL = 0,
+	mcAEX43SSFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX43SSFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX43SSFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX43SSFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX43SSSIFrmCfgStatBit1Enum;
+
+typedef enum McAEX43SSSIFrmCfgStatBit2Enum
+{	mcAEX43SSFCSB2_NOT_AVL = 0,
+	mcAEX43SSFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX43SSFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX43SSFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX43SSFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX43SSSIFrmCfgStatBit2Enum;
+
+typedef enum McAEX43SSSIFrmCfgSSIDatCEnum
+{	mcAEX43SSFCSDC_GRAY = 0,
+	mcAEX43SSFCSDC_BIN = 1
+} McAEX43SSSIFrmCfgSSIDatCEnum;
+
+typedef enum McAEX43SSSIFrmCfgSSIParCkEnum
+{	mcAEX43SSFCSPC_SSI_PAR_CK_ODD = 0,
+	mcAEX43SSFCSPC_SSI_PAR_CK_EVEN = 1,
+	mcAEX43SSFCSPC_OFF = 2
+} McAEX43SSSIFrmCfgSSIParCkEnum;
+
+typedef enum McAEEncX11AIfTypEnum
+{	mcAEX11AIT_ENDAT = 0,
+	mcAEX11AIT_SSI_SIN = 1,
+	mcAEX11AIT_SSI = 2,
+	mcAEX11AIT_BISS = 3,
+	mcAEX11AIT_SIN = 4,
+	mcAEX11AIT_SIN_W_DCM = 5,
+	mcAEX11AIT_HIPERFACE = 6
+} McAEEncX11AIfTypEnum;
+
+typedef enum McAEX11ASSSSIFrmCfgStatBit1Enum
+{	mcAEX11ASSFCSB1_NOT_AVL = 0,
+	mcAEX11ASSFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX11ASSFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX11ASSFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX11ASSFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX11ASSSSIFrmCfgStatBit1Enum;
+
+typedef enum McAEX11ASSSSIFrmCfgStatBit2Enum
+{	mcAEX11ASSFCSB2_NOT_AVL = 0,
+	mcAEX11ASSFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX11ASSFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX11ASSFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX11ASSFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX11ASSSSIFrmCfgStatBit2Enum;
+
+typedef enum McAEX11ASSSSIFrmCfgSSIDatCEnum
+{	mcAEX11ASSFCSDC_GRAY = 0,
+	mcAEX11ASSFCSDC_BIN = 1
+} McAEX11ASSSSIFrmCfgSSIDatCEnum;
+
+typedef enum McAEX11ASSSSIFrmCfgSSIParCkEnum
+{	mcAEX11ASSFCSPC_SSI_PAR_CK_ODD = 0,
+	mcAEX11ASSFCSPC_SSI_PAR_CK_EVEN = 1,
+	mcAEX11ASSFCSPC_OFF = 2
+} McAEX11ASSSSIFrmCfgSSIParCkEnum;
+
+typedef enum McAEX11ASSSIFrmCfgStatBit1Enum
+{	mcAEX11ASFCSB1_NOT_AVL = 0,
+	mcAEX11ASFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX11ASFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX11ASFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX11ASFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX11ASSSIFrmCfgStatBit1Enum;
+
+typedef enum McAEX11ASSSIFrmCfgStatBit2Enum
+{	mcAEX11ASFCSB2_NOT_AVL = 0,
+	mcAEX11ASFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX11ASFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX11ASFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX11ASFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX11ASSSIFrmCfgStatBit2Enum;
+
+typedef enum McAEX11ASSSIFrmCfgSSIDatCEnum
+{	mcAEX11ASFCSDC_GRAY = 0,
+	mcAEX11ASFCSDC_BIN = 1
+} McAEX11ASSSIFrmCfgSSIDatCEnum;
+
+typedef enum McAEX11ASSSIFrmCfgSSIParCkEnum
+{	mcAEX11ASFCSPC_SSI_PAR_CK_ODD = 0,
+	mcAEX11ASFCSPC_SSI_PAR_CK_EVEN = 1,
+	mcAEX11ASFCSPC_OFF = 2
+} McAEX11ASSSIFrmCfgSSIParCkEnum;
+
+typedef enum McAEX11ABBiSSFrmCfgStatBit1Enum
+{	mcAEX11ABBFCSB1_NOT_AVL = 0,
+	mcAEX11ABBFCSB1_ERR_BIT_ACT_HIGH = 1,
+	mcAEX11ABBFCSB1_ERR_BIT_ACT_LOW = 2,
+	mcAEX11ABBFCSB1_WAR_BIT_ACT_HIGH = 3,
+	mcAEX11ABBFCSB1_WAR_BIT_ACT_LOW = 4
+} McAEX11ABBiSSFrmCfgStatBit1Enum;
+
+typedef enum McAEX11ABBiSSFrmCfgStatBit2Enum
+{	mcAEX11ABBFCSB2_NOT_AVL = 0,
+	mcAEX11ABBFCSB2_ERR_BIT_ACT_HIGH = 1,
+	mcAEX11ABBFCSB2_ERR_BIT_ACT_LOW = 2,
+	mcAEX11ABBFCSB2_WAR_BIT_ACT_HIGH = 3,
+	mcAEX11ABBFCSB2_WAR_BIT_ACT_LOW = 4
+} McAEX11ABBiSSFrmCfgStatBit2Enum;
+
+typedef enum McAEEncIfTypEnum
+{	mcAEIT_ENDAT = 0
+} McAEEncIfTypEnum;
+
+typedef enum McAVAVirtAxEnum
+{	mcAVAVA_NOT_USE = 0,
+	mcAVAVA_USE = 1
+} McAVAVirtAxEnum;
+
+typedef enum McAVAVirtAxUseHomeModEnum
+{	mcAVAVAUHM_DIR = 0,
+	mcAVAVAUHM_RES_POS = 1,
+	mcAVAVAUHM_NOT_USE = 100
+} McAVAVirtAxUseHomeModEnum;
+
+typedef enum McAVHHomeModEnum
+{	mcAVHHM_DIR = 0,
+	mcAVHHM_RES_POS = 1,
+	mcAVHHM_NOT_USE = 100
+} McAVHHomeModEnum;
+
 typedef struct McAcpAxLoopFilterLowPassType
 {	float CutOffFrequency;
 } McAcpAxLoopFilterLowPassType;
@@ -612,6 +1003,7 @@ typedef struct McAcpAxAutoTuneSpeedCtrlOutType
 	float IntegrationTime;
 	float FilterTime;
 	struct McAcpAxLoopFilterParType LoopFilter1;
+	float PhaseCrossoverFrequency;
 } McAcpAxAutoTuneSpeedCtrlOutType;
 
 typedef struct McAcpAxAutoTuneLoopFilterOutType
@@ -1404,6 +1796,430 @@ typedef struct McCfgAcpAuxPwrSupModType
 	struct McAPSMOutVOnType OutputVoltageOn;
 } McCfgAcpAuxPwrSupModType;
 
+typedef struct McAPSMPSPwrSecType
+{	plcstring AxisReference[251];
+} McAPSMPSPwrSecType;
+
+typedef struct McCfgAcpPSMPwrSecType
+{	struct McAPSMPSPwrSecType PowerSection;
+} McCfgAcpPSMPwrSecType;
+
+typedef struct McAPSPwrSupACSngPhOpUseType
+{	float SupplyVoltage;
+} McAPSPwrSupACSngPhOpUseType;
+
+typedef struct McAPSPwrSupACSngPhOpType
+{	enum McAPSPwrSupACSngPhOpEnum Type;
+	struct McAPSPwrSupACSngPhOpUseType Used;
+} McAPSPwrSupACSngPhOpType;
+
+typedef struct McAPSPwrSupACType
+{	struct McAPSPwrSupACSngPhOpType SinglePhaseOperation;
+} McAPSPwrSupACType;
+
+typedef struct McAPSPwrSupDCPwrSupModRefType
+{	plcstring PowerSupplyModuleReference[251];
+} McAPSPwrSupDCPwrSupModRefType;
+
+typedef struct McAPSPwrSupDCBusVType
+{	unsigned short BusVoltage;
+} McAPSPwrSupDCBusVType;
+
+typedef struct McAPSPwrSupType
+{	enum McAPSPwrSupEnum Type;
+	struct McAPSPwrSupACType AC;
+	struct McAPSPwrSupDCPwrSupModRefType DCPowerSupplyModuleReference;
+	struct McAPSPwrSupDCBusVType DCBusVoltage;
+} McAPSPwrSupType;
+
+typedef struct McCfgAcpPwrSupType
+{	struct McAPSPwrSupType PowerSupply;
+} McCfgAcpPwrSupType;
+
+typedef struct McAEX6ASSSIFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX6ASSSIFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX6ASSSIFrmCfgStatBit2Enum StatusBit2;
+	enum McAEX6ASSSIFrmCfgSSIDatCEnum SSIDataCode;
+	enum McAEX6ASSSIFrmCfgSSIParCkEnum SSIParityCheck;
+} McAEX6ASSSIFrmCfgType;
+
+typedef struct McAEX6ASType
+{	struct McAEX6ASSSIFrmCfgType SSIFrameConfiguration;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX6ASType;
+
+typedef struct McAEX6ASinType
+{	unsigned long LinesPerEncoderRevolution;
+} McAEX6ASinType;
+
+typedef struct McAEX6AIType
+{	unsigned long LinesPerEncoderRevolution;
+	enum McAEX6AIMaxExpectedOutFreqEnum MaxExpectedOutputFrequency;
+	unsigned short IgnoreCheck;
+} McAEX6AIType;
+
+typedef struct McAEX6ALinMotType
+{	unsigned long IncrementsPerEncoderRevolution;
+} McAEX6ALinMotType;
+
+typedef struct McAEX6AResType
+{	unsigned char PolepairsPerEncoderRevolution;
+} McAEX6AResType;
+
+typedef struct McAEEncX6AIfTypType
+{	enum McAEEncX6AIfTypEnum Type;
+	struct McAEX6ASType SSI;
+	struct McAEX6ASinType Sine;
+	struct McAEX6AIType Incremental;
+	struct McAEX6ALinMotType LinMot;
+	struct McAEX6AResType Resolver;
+} McAEEncX6AIfTypType;
+
+typedef struct McAEEncX6AType
+{	struct McAEEncX6AIfTypType InterfaceType;
+} McAEEncX6AType;
+
+typedef struct McAEX6BSSSIFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX6BSSSIFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX6BSSSIFrmCfgStatBit2Enum StatusBit2;
+	enum McAEX6BSSSIFrmCfgSSIDatCEnum SSIDataCode;
+	enum McAEX6BSSSIFrmCfgSSIParCkEnum SSIParityCheck;
+} McAEX6BSSSIFrmCfgType;
+
+typedef struct McAEX6BSType
+{	struct McAEX6BSSSIFrmCfgType SSIFrameConfiguration;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX6BSType;
+
+typedef struct McAEX6BSinType
+{	unsigned long LinesPerEncoderRevolution;
+} McAEX6BSinType;
+
+typedef struct McAEX6BIType
+{	unsigned long LinesPerEncoderRevolution;
+	enum McAEX6BIMaxExpectedOutFreqEnum MaxExpectedOutputFrequency;
+	unsigned short IgnoreCheck;
+} McAEX6BIType;
+
+typedef struct McAEX6BLinMotType
+{	unsigned long IncrementsPerEncoderRevolution;
+} McAEX6BLinMotType;
+
+typedef struct McAEX6BResType
+{	unsigned char PolepairsPerEncoderRevolution;
+} McAEX6BResType;
+
+typedef struct McAEEncX6BIfTypType
+{	enum McAEEncX6BIfTypEnum Type;
+	struct McAEX6BSType SSI;
+	struct McAEX6BSinType Sine;
+	struct McAEX6BIType Incremental;
+	struct McAEX6BLinMotType LinMot;
+	struct McAEX6BResType Resolver;
+} McAEEncX6BIfTypType;
+
+typedef struct McAEEncX6BType
+{	struct McAEEncX6BIfTypType InterfaceType;
+} McAEEncX6BType;
+
+typedef struct McAEX41BBiSSFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX41BBiSSFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX41BBiSSFrmCfgStatBit2Enum StatusBit2;
+} McAEX41BBiSSFrmCfgType;
+
+typedef struct McAEX41BType
+{	enum McAEX41BPwrSupEnum PowerSupply;
+	struct McAEX41BBiSSFrmCfgType BiSSFrameConfiguration;
+	unsigned long CRCPolynomial;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX41BType;
+
+typedef struct McAEX41SSSIFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX41SSSIFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX41SSSIFrmCfgStatBit2Enum StatusBit2;
+	enum McAEX41SSSIFrmCfgSSIDatCEnum SSIDataCode;
+	enum McAEX41SSSIFrmCfgSSIParCkEnum SSIParityCheck;
+} McAEX41SSSIFrmCfgType;
+
+typedef struct McAEX41SType
+{	enum McAEX41SPwrSupEnum PowerSupply;
+	struct McAEX41SSSIFrmCfgType SSIFrameConfiguration;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX41SType;
+
+typedef struct McAEEncX41IfTypType
+{	enum McAEEncX41IfTypEnum Type;
+	struct McAEX41BType BiSS;
+	struct McAEX41SType SSI;
+} McAEEncX41IfTypType;
+
+typedef struct McAEEncX41Type
+{	struct McAEEncX41IfTypType InterfaceType;
+} McAEEncX41Type;
+
+typedef struct McAEX42BBiSSFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX42BBiSSFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX42BBiSSFrmCfgStatBit2Enum StatusBit2;
+} McAEX42BBiSSFrmCfgType;
+
+typedef struct McAEX42BType
+{	enum McAEX42BPwrSupEnum PowerSupply;
+	struct McAEX42BBiSSFrmCfgType BiSSFrameConfiguration;
+	unsigned long CRCPolynomial;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX42BType;
+
+typedef struct McAEX42SSSIFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX42SSSIFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX42SSSIFrmCfgStatBit2Enum StatusBit2;
+	enum McAEX42SSSIFrmCfgSSIDatCEnum SSIDataCode;
+	enum McAEX42SSSIFrmCfgSSIParCkEnum SSIParityCheck;
+} McAEX42SSSIFrmCfgType;
+
+typedef struct McAEX42SType
+{	enum McAEX42SPwrSupEnum PowerSupply;
+	struct McAEX42SSSIFrmCfgType SSIFrameConfiguration;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX42SType;
+
+typedef struct McAEEncX42IfTypType
+{	enum McAEEncX42IfTypEnum Type;
+	struct McAEX42BType BiSS;
+	struct McAEX42SType SSI;
+} McAEEncX42IfTypType;
+
+typedef struct McAEEncX42Type
+{	struct McAEEncX42IfTypType InterfaceType;
+} McAEEncX42Type;
+
+typedef struct McAEX43BBiSSFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX43BBiSSFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX43BBiSSFrmCfgStatBit2Enum StatusBit2;
+} McAEX43BBiSSFrmCfgType;
+
+typedef struct McAEX43BType
+{	enum McAEX43BPwrSupEnum PowerSupply;
+	struct McAEX43BBiSSFrmCfgType BiSSFrameConfiguration;
+	unsigned long CRCPolynomial;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX43BType;
+
+typedef struct McAEX43SSSIFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX43SSSIFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX43SSSIFrmCfgStatBit2Enum StatusBit2;
+	enum McAEX43SSSIFrmCfgSSIDatCEnum SSIDataCode;
+	enum McAEX43SSSIFrmCfgSSIParCkEnum SSIParityCheck;
+} McAEX43SSSIFrmCfgType;
+
+typedef struct McAEX43SType
+{	enum McAEX43SPwrSupEnum PowerSupply;
+	struct McAEX43SSSIFrmCfgType SSIFrameConfiguration;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX43SType;
+
+typedef struct McAEEncX43IfTypType
+{	enum McAEEncX43IfTypEnum Type;
+	struct McAEX43BType BiSS;
+	struct McAEX43SType SSI;
+} McAEEncX43IfTypType;
+
+typedef struct McAEEncX43Type
+{	struct McAEEncX43IfTypType InterfaceType;
+} McAEEncX43Type;
+
+typedef struct McAEX11ASSSSIFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX11ASSSSIFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX11ASSSSIFrmCfgStatBit2Enum StatusBit2;
+	enum McAEX11ASSSSIFrmCfgSSIDatCEnum SSIDataCode;
+	enum McAEX11ASSSSIFrmCfgSSIParCkEnum SSIParityCheck;
+} McAEX11ASSSSIFrmCfgType;
+
+typedef struct McAEX11ASSType
+{	struct McAEX11ASSSSIFrmCfgType SSIFrameConfiguration;
+	unsigned long LinesPerEncoderRevolution;
+	signed long PositionValuesEncoderRevolution;
+	signed long SerialPositionPhaseShift;
+	signed long BaudRate;
+} McAEX11ASSType;
+
+typedef struct McAEX11ASSSIFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX11ASSSIFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX11ASSSIFrmCfgStatBit2Enum StatusBit2;
+	enum McAEX11ASSSIFrmCfgSSIDatCEnum SSIDataCode;
+	enum McAEX11ASSSIFrmCfgSSIParCkEnum SSIParityCheck;
+} McAEX11ASSSIFrmCfgType;
+
+typedef struct McAEX11ASType
+{	struct McAEX11ASSSIFrmCfgType SSIFrameConfiguration;
+	unsigned long IncrementsPerEncoderRevolution;
+	signed long BaudRate;
+} McAEX11ASType;
+
+typedef struct McAEX11ABBiSSFrmCfgType
+{	unsigned char NumberOfLeadingZeros;
+	unsigned char NumberOfPositionBits;
+	unsigned char NumberOfTrailingZeros;
+	enum McAEX11ABBiSSFrmCfgStatBit1Enum StatusBit1;
+	enum McAEX11ABBiSSFrmCfgStatBit2Enum StatusBit2;
+} McAEX11ABBiSSFrmCfgType;
+
+typedef struct McAEX11ABType
+{	struct McAEX11ABBiSSFrmCfgType BiSSFrameConfiguration;
+	unsigned long CRCPolynomial;
+	unsigned long IncrementsPerEncoderRevolution;
+} McAEX11ABType;
+
+typedef struct McAEX11ASinType
+{	unsigned long LinesPerEncoderRevolution;
+} McAEX11ASinType;
+
+typedef struct McAEX11ASinWDCMType
+{	unsigned long LinesPerEncoderRevolution;
+	unsigned long DCMBasicDistance;
+	signed long DCMBasicDifference;
+} McAEX11ASinWDCMType;
+
+typedef struct McAEEncX11AIfTypType
+{	enum McAEEncX11AIfTypEnum Type;
+	struct McAEX11ASSType SSISine;
+	struct McAEX11ASType SSI;
+	struct McAEX11ABType BiSS;
+	struct McAEX11ASinType Sine;
+	struct McAEX11ASinWDCMType SineWithDCM;
+} McAEEncX11AIfTypType;
+
+typedef struct McAEEncX11AType
+{	struct McAEEncX11AIfTypType InterfaceType;
+} McAEEncX11AType;
+
+typedef struct McAEEncIfTypType
+{	enum McAEEncIfTypEnum Type;
+} McAEEncIfTypType;
+
+typedef struct McAEEncType
+{	struct McAEEncIfTypType InterfaceType;
+} McAEEncType;
+
+typedef struct McCfgAcpEncType
+{	struct McAEEncX6AType EncoderX6A;
+	struct McAEEncX6BType EncoderX6B;
+	struct McAEEncX41Type EncoderX41;
+	struct McAEEncX42Type EncoderX42;
+	struct McAEEncX43Type EncoderX43;
+	struct McAEEncX11AType EncoderX11A;
+	struct McAEEncType Encoder;
+} McCfgAcpEncType;
+
+typedef struct McAVAVirtAxUseHomeModDirType
+{	double Position;
+} McAVAVirtAxUseHomeModDirType;
+
+typedef struct McAVAVirtAxUseHomeModType
+{	enum McAVAVirtAxUseHomeModEnum Type;
+	struct McAVAVirtAxUseHomeModDirType Direct;
+} McAVAVirtAxUseHomeModType;
+
+typedef struct McAVAVirtAxUseHomeType
+{	struct McAVAVirtAxUseHomeModType Mode;
+	plcstring RestorePositionVariable[251];
+} McAVAVirtAxUseHomeType;
+
+typedef struct McAVAVirtAxUseType
+{	struct McCfgReferenceType AxisReference;
+	struct McAVAVirtAxUseHomeType Homing;
+	struct McAJFType JerkFilter;
+	struct McAAFType AxisFeatures;
+} McAVAVirtAxUseType;
+
+typedef struct McAVAVirtAxType
+{	enum McAVAVirtAxEnum Type;
+	struct McAVAVirtAxUseType Used;
+} McAVAVirtAxType;
+
+typedef struct McCfgAcpVirtAxType
+{	struct McAVAVirtAxType VirtualAxis;
+} McCfgAcpVirtAxType;
+
+typedef struct McCfgAcpVirtAxRefType
+{	struct McCfgReferenceType AxisReference;
+} McCfgAcpVirtAxRefType;
+
+typedef struct McAVHHomeModDirType
+{	double Position;
+} McAVHHomeModDirType;
+
+typedef struct McAVHHomeModType
+{	enum McAVHHomeModEnum Type;
+	struct McAVHHomeModDirType Direct;
+} McAVHHomeModType;
+
+typedef struct McAVHHomeType
+{	struct McAVHHomeModType Mode;
+	plcstring RestorePositionVariable[251];
+} McAVHHomeType;
+
+typedef struct McCfgAcpVirtHomeType
+{	struct McAVHHomeType Homing;
+} McCfgAcpVirtHomeType;
+
+typedef struct McCfgAcpVirtJerkFltrType
+{	struct McAJFType JerkFilter;
+} McCfgAcpVirtJerkFltrType;
+
+typedef struct McCfgAcpVirtAxFeatType
+{	struct McAAFType AxisFeatures;
+} McCfgAcpVirtAxFeatType;
+
+typedef struct McACFChFeatType
+{	struct McCfgUnboundedArrayType FeatureReference;
+} McACFChFeatType;
+
+typedef struct McCfgAcpChFeatType
+{	struct McACFChFeatType ChannelFeatures;
+} McCfgAcpChFeatType;
+
+typedef struct McCfgAxFeatAcpParTblType
+{	plcstring ACOPOSParameterTableReference[251];
+} McCfgAxFeatAcpParTblType;
+
 typedef struct MC_BR_ControllerSetPar_AcpAx
 {
 	/* VAR_INPUT (analog) */
@@ -1441,40 +2257,6 @@ typedef struct MC_BR_AutoTuneFeedForward_AcpAx
 	plcbit CommandAborted;
 	plcbit Error;
 } MC_BR_AutoTuneFeedForward_AcpAx_typ;
-
-typedef struct MC_BR_ApsmPowerOn_AcpAx
-{
-	/* VAR_INPUT (analog) */
-	struct McAxisType* Axis;
-	/* VAR_OUTPUT (analog) */
-	signed long ErrorID;
-	/* VAR (analog) */
-	struct McInternalType Internal;
-	/* VAR_INPUT (digital) */
-	plcbit Execute;
-	/* VAR_OUTPUT (digital) */
-	plcbit Done;
-	plcbit Busy;
-	plcbit CommandAborted;
-	plcbit Error;
-} MC_BR_ApsmPowerOn_AcpAx_typ;
-
-typedef struct MC_BR_ApsmPowerOff_AcpAx
-{
-	/* VAR_INPUT (analog) */
-	struct McAxisType* Axis;
-	/* VAR_OUTPUT (analog) */
-	signed long ErrorID;
-	/* VAR (analog) */
-	struct McInternalType Internal;
-	/* VAR_INPUT (digital) */
-	plcbit Execute;
-	/* VAR_OUTPUT (digital) */
-	plcbit Done;
-	plcbit Busy;
-	plcbit CommandAborted;
-	plcbit Error;
-} MC_BR_ApsmPowerOff_AcpAx_typ;
 
 typedef struct MC_BR_InitHome_AcpAx
 {
@@ -1967,13 +2749,45 @@ typedef struct MC_BR_RdLoadSimInputData_AcpAx
 	plcbit Error;
 } MC_BR_RdLoadSimInputData_AcpAx_typ;
 
+typedef struct MC_BR_ApsmPowerOn_AcpAx
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit CommandAborted;
+	plcbit Error;
+} MC_BR_ApsmPowerOn_AcpAx_typ;
+
+typedef struct MC_BR_ApsmPowerOff_AcpAx
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit CommandAborted;
+	plcbit Error;
+} MC_BR_ApsmPowerOff_AcpAx_typ;
+
 
 
 /* Prototyping of functions and function blocks */
 _BUR_PUBLIC void MC_BR_ControllerSetPar_AcpAx(struct MC_BR_ControllerSetPar_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_AutoTuneFeedForward_AcpAx(struct MC_BR_AutoTuneFeedForward_AcpAx* inst);
-_BUR_PUBLIC void MC_BR_ApsmPowerOn_AcpAx(struct MC_BR_ApsmPowerOn_AcpAx* inst);
-_BUR_PUBLIC void MC_BR_ApsmPowerOff_AcpAx(struct MC_BR_ApsmPowerOff_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_InitHome_AcpAx(struct MC_BR_InitHome_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_ProcessParID_AcpAx(struct MC_BR_ProcessParID_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_CyclicProcessParID_AcpAx(struct MC_BR_CyclicProcessParID_AcpAx* inst);
@@ -1999,6 +2813,8 @@ _BUR_PUBLIC void MC_BR_RdLoadSimTorque_AcpAx(struct MC_BR_RdLoadSimTorque_AcpAx*
 _BUR_PUBLIC void MC_BR_WrLoadSimPosition_AcpAx(struct MC_BR_WrLoadSimPosition_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_WrLoadSimTwoEncPos_AcpAx(struct MC_BR_WrLoadSimTwoEncPos_AcpAx* inst);
 _BUR_PUBLIC void MC_BR_RdLoadSimInputData_AcpAx(struct MC_BR_RdLoadSimInputData_AcpAx* inst);
+_BUR_PUBLIC void MC_BR_ApsmPowerOn_AcpAx(struct MC_BR_ApsmPowerOn_AcpAx* inst);
+_BUR_PUBLIC void MC_BR_ApsmPowerOff_AcpAx(struct MC_BR_ApsmPowerOff_AcpAx* inst);
 
 
 #ifdef __cplusplus
