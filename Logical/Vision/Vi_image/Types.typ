@@ -58,16 +58,17 @@ TYPE
 		ShowCrosshair : BOOL := TRUE; (*Enable/Disable cross hairs*)
 	END_STRUCT;
 	typCrossHairCfg : 	STRUCT 
-		Scale : REAL; (*Scale size of the cross hair*)
-		PixelRatio : REAL; (*Position value for one pixel*)
-		Size : USINT; (*Size of the cross hair in pixel*)
-		Font : USINT;
+		Scale : REAL := 1; (*Scale size of the cross hair*)
+		PixelRatio : REAL := 100; (*Position value for one pixel*)
+		Size : USINT := 80; (*Size of the cross hair in pixel*)
+		Font : USINT := 35;
 	END_STRUCT;
 	typCrossHairInfo : 	STRUCT 
 		CrosshairTopLeftX : REAL; (*top left position of the crosshair in pixels*)
 		CrosshairTopLeftY : REAL; (*top left position of the crosshair in pixels*)
 		CrosshairRotateCenter : REAL; (*crosshair rotation around center in degrees*)
 		CrosshairSizeScaled : REAL; (*crosshair size in pixel (in both directions)*)
+		CrosshairScale : REAL;
 		DataVis : STRING[80];
 		Data : STRING[400];
 		Text : STRING[1000];
