@@ -289,7 +289,16 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 					brsstrcat(MemInfo.CrosshAdr, ADR(') rotate('));
 					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairRotateCenter), ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
-					brsstrcat(MemInfo.CrosshAdr, ADR(',40,40)"'));
+					brsstrcat(MemInfo.CrosshAdr, ADR(','));
+					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairSizeScaled / 2), ADR(tmpStr1));
+					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
+					brsstrcat(MemInfo.CrosshAdr, ADR(','));
+					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
+					brsstrcat(MemInfo.CrosshAdr, ADR(') scale('));
+					brsitoa(REAL_TO_DINT(CrossHairInfo[i].CrosshairScale), ADR(tmpStr1));
+					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
+					brsstrcat(MemInfo.CrosshAdr, ADR(','));
+					brsstrcat(MemInfo.CrosshAdr, ADR(tmpStr1));
 					brsstrcat(MemInfo.CrosshAdr, ADR(SvgTexts.ContentCrossHairEnd));
 				END_IF
 			END_FOR

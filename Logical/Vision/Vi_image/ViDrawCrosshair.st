@@ -84,6 +84,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 							visCrossHair.SvgVisible[idx] := TRUE;
 							
 							// Calculate cross information
+							CrossHairInfo[idx].CrosshairScale			:= visCrossHair.CFG.Scale;
 							CrossHairInfo[idx].CrosshairSizeScaled		:= USINT_TO_REAL(visCrossHair.CFG.Size) * visCrossHair.CFG.Scale;
 							CrossHairInfo[idx].CrosshairTopLeftX		:= CrosshairPositionX / visCrossHair.CFG.PixelRatio - CrossHairInfo[idx].CrosshairSizeScaled / 2.0;
 							CrossHairInfo[idx].CrosshairTopLeftY		:= CrosshairPositionY / visCrossHair.CFG.PixelRatio - CrossHairInfo[idx].CrosshairSizeScaled / 2.0;

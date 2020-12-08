@@ -71,7 +71,7 @@ SvgTexts.ContentEndJS :=
 				for(i = 0; i < amountElements; i++) {
 					indices[i].textContent = i + 1;
 					let transformValues = blueCrosshairs[i].getAttribute("transform").match(/-?[\d.]+/g);
-					indices[i].setAttribute("x", parseInt(transformValues[0]) + 85);
+					indices[i].setAttribute("x", parseInt(transformValues[0]) + 135);
 					indices[i].setAttribute("y", parseInt(transformValues[1]) + 35 );
 				}
 				//set visibility of information text
@@ -125,7 +125,7 @@ SvgTexts.ContentCrossHairBegin :=
 SvgTexts.ContentCrossHairMiddle :=
 ')" transform="translate(';
 SvgTexts.ContentCrossHairEnd :=
-'/>
+')"/>
 ';
 SvgTexts.ContentCrossHairRed :=
 '
