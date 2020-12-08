@@ -197,7 +197,7 @@ PROGRAM _CYCLIC
 		ViCreateWebDirFile_0.visWebViewerPath	:= ADR(visWebViewerPath);
 		ViCreateWebDirFile_0();
 	END_IF
-	visWebViewerQuery := 'jpg?q=30&node=';
+	visWebViewerQuery := 'q=30&node=';
 	brsitoa(gVisionSensor[visSelectedSensor].CFG.PowerlinkNode, ADR(tmpStr));
 	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
 	
