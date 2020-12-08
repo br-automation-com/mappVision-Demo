@@ -243,6 +243,8 @@ TYPE
 		QualityJPG : USINT;
 		UploadBmpJpg : BOOL;
 		UploadSVG : BOOL;
+		MainPageQualityJPG : USINT; (*quality of the jpg image on the main page. min:0, max:100, good value: 30*)
+		ImageRotation_deg : UINT; (*rotation of the whole image, steps in degree*)
 	END_STRUCT;
 	typVisionImageData : 	STRUCT 
 		Images : ARRAY[0..19]OF STRING[80];

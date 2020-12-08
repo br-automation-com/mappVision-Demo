@@ -219,6 +219,7 @@ HtmlFileContent2 :=
 				var MissingImgCtr		= 0;
 				function updateImage() {
 					document.getElementById("imgCamera").setAttribute("src", ImagePath + "?q=" + getParameterByName("q") + "&" + Math.random());
+					document.getElementById("imgCamera").setAttribute("style", "transform: rotate(" + getParameterByName("rot") + "deg);");
 					var img = document.getElementById("imgCamera");
 					if(img.naturalHeight !== 0 ) {
 						MissingImgCtr = 0;

@@ -17,6 +17,8 @@ PROGRAM _INIT
 		gVisionImage.CFG.QualityJPG			:= 80;						// Quality for JPG images, larger numbers produce better images. Allowed values: 0 to 100, but values < ca 10 makes no sense
 		gVisionImage.CFG.UploadBmpJpg		:= TRUE;
 		gVisionImage.CFG.UploadSVG			:= TRUE;
+		gVisionImage.CFG.ImageRotation_deg	:= 0;
+		gVisionImage.CFG.MainPageQualityJPG	:= 30;
 	ELSE
 		brsmemcpy(ADR(gVisionImage.CFG), ADR(RemCfgImage), SIZEOF(RemCfgImage)); // Restore default values from remanent memory
 	END_IF
@@ -197,8 +199,14 @@ PROGRAM _CYCLIC
 		ViCreateWebDirFile_0.visWebViewerPath	:= ADR(visWebViewerPath);
 		ViCreateWebDirFile_0();
 	END_IF
-	visWebViewerQuery := 'q=30&node=';
+	visWebViewerQuery := 'q=';
+	brsitoa(gVisionImage.CFG.MainPageQualityJPG, ADR(tmpStr));
+	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
+	brsstrcat(ADR(visWebViewerQuery), ADR('&node='));
 	brsitoa(gVisionSensor[visSelectedSensor].CFG.PowerlinkNode, ADR(tmpStr));
+	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
+	brsstrcat(ADR(visWebViewerQuery), ADR('&rot='));
+	brsitoa(gVisionImage.CFG.ImageRotation_deg, ADR(tmpStr));
 	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
 	
 	// Show camera image on VC4 visualization
