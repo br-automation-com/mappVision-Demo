@@ -117,10 +117,10 @@ FUNCTION_BLOCK ViDrawCrosshair
 		idx : UINT;
 		SelectedSensorOld : UINT;
 		Blob : REFERENCE TO typBlobMain;
-		Match : REFERENCE TO typMatchMain;
 		CodeReader : REFERENCE TO typCodeReaderMain;
-		OCR : REFERENCE TO typOCRMain;
+		Match : REFERENCE TO typMatchMain;
 		MT : REFERENCE TO typMTMain;
+		OCR : REFERENCE TO typOCRMain;
 		DetailsNoOld : USINT;
 		ShowCrosshairOld : BOOL;
 		CrosshairModelNumber : USINT;
