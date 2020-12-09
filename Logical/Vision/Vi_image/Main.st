@@ -208,7 +208,17 @@ PROGRAM _CYCLIC
 	brsstrcat(ADR(visWebViewerQuery), ADR('&rot='));
 	brsitoa(gVisionImage.CFG.ImageRotation_deg, ADR(tmpStr));
 	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
-	
+	CASE gVisionImage.CFG.ImageRotation_deg OF
+		0:		imgScale := 1.0;
+		90:		imgScale := 1024.0/1280.0;
+		180:	imgScale := 1.0;
+		270:	imgScale := 1024.0/1280.0;
+	ELSE
+		imgScale := 1.0;
+	END_CASE
+	brsstrcat(ADR(visWebViewerQuery), ADR('&scale='));
+	brsftoa(imgScale, ADR(tmpStr));
+	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
 	// Show camera image on VC4 visualization
 	ViShowImgOnVC4_0.Enable				:= ViCreateWebDirFile_0.Done; // Wait until the directory "web" is created
 	ViShowImgOnVC4_0.RefreshImage		:= visVC4RefreshImg;

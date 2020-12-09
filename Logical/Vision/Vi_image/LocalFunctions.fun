@@ -167,8 +167,8 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		FileNameEyeUser : STRING[80];
 		EthIpAddr : STRING[80];
 		HtmlFileContent1 : STRING[1500];
-		HtmlFileContent2 : STRING[1500];
-		FileWriteData : STRING[3100];
+		HtmlFileContent2 : STRING[2000];
+		FileWriteData : STRING[3600];
 	END_VAR
 END_FUNCTION_BLOCK
 
