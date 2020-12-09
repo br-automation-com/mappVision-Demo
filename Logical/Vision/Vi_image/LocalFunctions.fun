@@ -108,6 +108,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 		VisionSensor : REFERENCE TO typVisionMain;
 		CodeTypes : REFERENCE TO ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
 		VisionDisabled : BOOL;
+		ImageRotation_deg : UINT;
 		visCrossHair : REFERENCE TO typCrossHair;
 	END_VAR
 	VAR_OUTPUT
@@ -123,10 +124,13 @@ FUNCTION_BLOCK ViDrawCrosshair
 		OCR : REFERENCE TO typOCRMain;
 		DetailsNoOld : USINT;
 		ShowCrosshairOld : BOOL;
-		CrosshairModelNumber : USINT;
-		CrosshairPositionX : REAL;
-		CrosshairPositionY : REAL;
-		CrosshairOrientation : INT;
+		ImageRotation_degOld : UINT;
+		ResultModelNumber : USINT;
+		ResultPositionX : REAL;
+		ResultPositionY : REAL;
+		ResultOrientation : REAL;
+		CrosshSize : REAL;
+		ScaleVertical : REAL;
 		svgTrafo : STRING[200];
 		svgContent : STRING[1000];
 		tmpStr : STRING[100];

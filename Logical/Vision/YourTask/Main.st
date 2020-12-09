@@ -10,30 +10,41 @@ PROGRAM _INIT
 	// Vision sensor configuration
 	// -----------------------------------------------------------------------------------------------------------	
 	// Configuration for blob
-	gVisionSensor[1].CFG.VisionFunction	:= enumBlob;		// Used to run specific code for this vision function
-	gVisionSensor[1].CFG.PowerlinkNode	:= 1;				// Powerlink node number
-	gVisionSensor[1].CFG.DataStructure	:= ADR(gBlob);		// Global structures that holds all data related to this function
-	gVisionSensor[1].CFG.ComponentLink	:= gCameraBlob;		// Vision component name defined under mappVision in the configuration view
+	gVisionSensor[1].CFG.VisionFunction		:= enumBlob;		// Used to run specific code for this vision function
+	gVisionSensor[1].CFG.PowerlinkNode		:= 1;				// Powerlink node number
+	gVisionSensor[1].CFG.DataStructure		:= ADR(gBlob);		// Global structures that holds all data related to this function
+	gVisionSensor[1].CFG.ComponentLink		:= gCameraBlob;		// Vision component name defined under mappVision in the configuration view
+	gVisionSensor[1].CFG.ResolutionWidth_X	:= 1280;
+	gVisionSensor[1].CFG.ResolutionHeight_Y	:= 1024;
 	// Configuration for code reader
-	gVisionSensor[2].CFG.VisionFunction	:= enumCoderReader;
-	gVisionSensor[2].CFG.PowerlinkNode	:= 2;
-	gVisionSensor[2].CFG.DataStructure	:= ADR(gCodeReader);
-	gVisionSensor[2].CFG.ComponentLink	:= gCameraCodeReading;
+	gVisionSensor[2].CFG.VisionFunction		:= enumCoderReader;
+	gVisionSensor[2].CFG.PowerlinkNode		:= 2;
+	gVisionSensor[2].CFG.DataStructure		:= ADR(gCodeReader);
+	gVisionSensor[2].CFG.ComponentLink		:= gCameraCodeReading;
+	gVisionSensor[2].CFG.ResolutionWidth_X	:= 1280;
+	gVisionSensor[2].CFG.ResolutionHeight_Y	:= 1024;
 	// Configuration for match
-	gVisionSensor[3].CFG.VisionFunction	:= enumMatch;
-	gVisionSensor[3].CFG.PowerlinkNode	:= 3;
-	gVisionSensor[3].CFG.DataStructure	:= ADR(gMatch);
-	gVisionSensor[3].CFG.ComponentLink	:= gCameraMatch;
+	gVisionSensor[3].CFG.VisionFunction		:= enumMatch;
+	gVisionSensor[3].CFG.PowerlinkNode		:= 3;
+	gVisionSensor[3].CFG.DataStructure		:= ADR(gMatch);
+	gVisionSensor[3].CFG.ComponentLink		:= gCameraMatch;
+	gVisionSensor[3].CFG.ResolutionWidth_X	:= 1280;
+	gVisionSensor[3].CFG.ResolutionHeight_Y	:= 1024;
 	// Configuration for meaurement
-	gVisionSensor[4].CFG.VisionFunction	:= enumMeasurement;
-	gVisionSensor[4].CFG.PowerlinkNode	:= 4;
-	gVisionSensor[4].CFG.DataStructure	:= ADR(gMT);
-	gVisionSensor[4].CFG.ComponentLink	:= gCameraMeasurement;
+	gVisionSensor[4].CFG.VisionFunction		:= enumMeasurement;
+	gVisionSensor[4].CFG.PowerlinkNode		:= 4;
+	gVisionSensor[4].CFG.DataStructure		:= ADR(gMT);
+	gVisionSensor[4].CFG.ComponentLink		:= gCameraMeasurement;
+	gVisionSensor[4].CFG.ResolutionWidth_X	:= 1280;
+	gVisionSensor[4].CFG.ResolutionHeight_Y	:= 1024;
 	// Configuration for OCR
-	gVisionSensor[5].CFG.VisionFunction	:= enumOCR;
-	gVisionSensor[5].CFG.PowerlinkNode	:= 5;
-	gVisionSensor[5].CFG.DataStructure	:= ADR(gOCR);
-	gVisionSensor[5].CFG.ComponentLink	:= gCameraOCR;
+	gVisionSensor[5].CFG.VisionFunction		:= enumOCR;
+	gVisionSensor[5].CFG.PowerlinkNode		:= 5;
+	gVisionSensor[5].CFG.DataStructure		:= ADR(gOCR);
+	gVisionSensor[5].CFG.ComponentLink		:= gCameraOCR;
+	gVisionSensor[5].CFG.ResolutionWidth_X	:= 1280;
+	gVisionSensor[5].CFG.ResolutionHeight_Y	:= 1024;
+
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Lights configuration

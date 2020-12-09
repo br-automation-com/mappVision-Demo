@@ -7,7 +7,6 @@ VAR RETAIN
 END_VAR
 VAR
 	tmpStr : STRING[80];
-	imgScale : REAL;
 END_VAR
 (**)
 (*Filehandling*)
@@ -29,7 +28,6 @@ END_VAR
 (**)
 (*mappView connected variables*)
 VAR
-	visAutoArchiv : USINT;
 	visSelectedImageOld : STRING[80];
 	visSelectedImage : STRING[80];
 	visImagePath : STRING[80];

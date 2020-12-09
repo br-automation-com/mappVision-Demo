@@ -22,6 +22,8 @@ TYPE
 		PowerlinkNode : USINT;
 		DataStructure : UDINT;
 		ComponentLink : ViComponentType;
+		ResolutionWidth_X : UINT; (*Nr of sensor pixels in x direction (width). Is always bigger than height*)
+		ResolutionHeight_Y : UINT; (*Nr of sensor pixels in y direction (height). Is always smaller than width*)
 	END_STRUCT;
 	typVisionFunction : 	STRUCT 
 		ApplicationName : STRING[40];
