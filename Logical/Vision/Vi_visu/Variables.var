@@ -65,9 +65,6 @@ VAR
 	i : UINT;
 	visCameraStatus : STRING[30];
 END_VAR
-VAR CONSTANT
-	HexTab : STRING[16] := '0123456789ABCDEF';
-END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Error numbers*)
 VAR CONSTANT

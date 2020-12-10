@@ -6,8 +6,8 @@
         <Property ID="WebServerPort" Value="81" />
       </Selector>
       <Property ID="MaxClientConnections" Value="4" />
-      <Property ID="MaxBRClientConnections" Value="2" />
-      <Selector ID="ClientConnectionsLicensingMode" Value="LicensingModeConfiguredMaxClients" />
+      <Property ID="MaxBRClientConnections" Value="0" />
+      <Selector ID="AuthenticationMode" Value="AuthenticationModeRbac" />
       <Group ID="TcpProxyConf">
         <Selector ID="InsecureMode" Value="1" />
       </Group>
@@ -33,6 +33,9 @@
         <Property ID="preserveOldValues" Value="TRUE" />
       </Group>
       <Property ID="defaultVisu" Value="visVision" />
+      <Group ID="Widget">
+        <Selector ID="renderingPolicy" Value="1" />
+      </Group>
     </Group>
   </Element>
 </Configuration>

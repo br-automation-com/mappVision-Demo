@@ -124,7 +124,6 @@
       </Task>
       <Task Name="Vi_color">
         <Variable Name="visSelectedProduct" />
-        <Variable Name="visTableNo" />
       </Task>
       <Task Name="Vi_visu">
         <Variable Name="visCameraStatus" />
