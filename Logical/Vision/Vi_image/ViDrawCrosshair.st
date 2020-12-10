@@ -177,7 +177,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 							END_IF
 							visCrossHair.SvgContent[idx] := svgContent;
 							
-							// Create details information to show in the top left corner
+							// Create details information to show in the top left or right corner
 							brsstrcat(ADR(svgContent), ADR('<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="10"> '));
 							CrossHairInfo[1].DataVis	:= '';
 							CrossHairInfo[idx].Data		:= '';
@@ -260,30 +260,28 @@ FUNCTION_BLOCK ViDrawCrosshair
 								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('0, 0, '));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"none", "none", '));
 							END_IF
-							// Add detail information for OCR
+							// Add detail information for OCR and CodeReader
 							IF VisionSensor.CFG.VisionFunction = enumOCR THEN
 								CrosshairDetailsValue(ADR(svgContent),  ADR('Grading: '), OCR.Grading[idx], TextAlignment);
 								CrosshairDetailsText(ADR(svgContent),  ADR('Text: '), ADR(OCR.Text[idx]), TextAlignment);
-								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, 1, '));
+								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, 0, 1, ')); // Grading, Code Type, Text
 								brsitoa(OCR.Grading[idx], ADR(tmpStr));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(tmpStr));
-								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(', "'));
+								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(', "none", "'));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(OCR.Text[idx]));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('", '));
-							ELSE
-								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('0, 0, '));
-								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"none", "none", '));
-							END_IF
-							// Add detail information for code reader
-							IF VisionSensor.CFG.VisionFunction = enumCoderReader THEN
+							ELSIF VisionSensor.CFG.VisionFunction = enumCoderReader THEN
 								CrosshairDetailsText(ADR(svgContent),  ADR('Code: '), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]), TextAlignment);
-								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, '));
-								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"'));
+								CrosshairDetailsText(ADR(svgContent),  ADR('Text: '), ADR(CodeReader.BarcodeText[idx]), TextAlignment);
+								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('0, 1, 1, ')); // Grading, Code Type, Text
+								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"none", "'));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
+								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('", "'));
+								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(CodeReader.BarcodeText[idx]));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('", '));
 							ELSE
-								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('0, '));
-								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"none", '));
+								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('0, 0, 0, '));
+								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"none", "none", "none", '));
 							END_IF
 							brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('0')); // For the not used "Result"
 							brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"none"')); // For the not used "Result"

@@ -48,7 +48,7 @@ SvgTexts.ContentBeginJS :=
 			var blueCrosshairs, redCrosshair, indices, infoTxt;
 			var amountElements;
 			var actIndex = 1;
-			var textInfo = ["Module ID: ", "Pos X: ", "Pos Y: ", "Orientation: ", "Clipped: ", "Gray: ", "Length: ", "Width: ", "Area: ", "Score: ", "Scale: ", "Grading: ", "Text: ", "Code Type: ", "Result: "];
+			var textInfo = ["Model ID: ", "Pos X: ", "Pos Y: ", "Orientation: ", "Clipped: ", "Gray: ", "Length: ", "Width: ", "Area: ", "Score: ", "Scale: ", "Grading: ", "Code Type: ", "Text: ", "Result: "];
 			var visTextInfo = [';
 SvgTexts.ContentBetween1 :=
 '];
@@ -71,7 +71,7 @@ SvgTexts.ContentEndJS :=
 				for(i = 0; i < amountElements; i++) {
 					indices[i].textContent = i + 1;
 					let transformValues = blueCrosshairs[i].getAttribute("transform").match(/-?[\d.]+/g);
-					indices[i].setAttribute("x", parseInt(transformValues[0]) + 135);
+					indices[i].setAttribute("x", parseInt(transformValues[0]) + 85);
 					indices[i].setAttribute("y", parseInt(transformValues[1]) + 35 );
 				}
 				//set visibility of information text
