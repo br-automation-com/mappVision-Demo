@@ -39,6 +39,7 @@ VAR
 	visWebViewerPath : STRING[80];
 	visWebViewerQuery : STRING[80];
 	visVC4RefreshImg : BOOL;
+	visImageRotation : USINT;
 END_VAR
 (**)
 (*Constants*)

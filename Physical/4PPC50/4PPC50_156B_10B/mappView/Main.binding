@@ -165,5 +165,9 @@
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="enable" />
 		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_image:visImageRotation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="DropDownBoxImgRotation" attribute="selectedIndex" />
+		</Binding>
 	</Bindings>
 </BindingsSet>

@@ -10,6 +10,7 @@
     </Group>
     <Group ID="TargetFiles">
       <Property ID="TargetFile[1]" Value="mappView.Resources.Texts.UnitTexts.tmx" />
+      <Property ID="TargetFile[2]" Value="mappView.Resources.Texts.RotationTexts.tmx" />
     </Group>
   </Element>
 </Configuration>

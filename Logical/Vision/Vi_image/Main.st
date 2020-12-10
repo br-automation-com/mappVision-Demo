@@ -220,6 +220,9 @@ PROGRAM _CYCLIC
 	END_CASE
 	brsstrcat(ADR(visWebViewerQuery), ADR(tmpStr));
 	
+	// Main page image rotation
+	gVisionImage.CFG.ImageRotation_deg := visImageRotation * 90;
+	
 	// Show camera image on VC4 visualization
 	ViShowImgOnVC4_0.Enable				:= ViCreateWebDirFile_0.Done; // Wait until the directory "web" is created
 	ViShowImgOnVC4_0.RefreshImage		:= visVC4RefreshImg;

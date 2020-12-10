@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
+<?AutomationStudio Version=4.7.5.60 SP?>
 <Package SubType="TextsPackage" PackageType="TextsPackage" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="File">UnitTexts.tmx</Object>
+    <Object Type="File">RotationTexts.tmx</Object>
   </Objects>
 </Package>

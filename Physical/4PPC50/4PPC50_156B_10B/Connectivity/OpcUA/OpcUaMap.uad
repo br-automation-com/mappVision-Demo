@@ -92,6 +92,7 @@
         <Variable Name="visImageList" EnableArrayElements="True" />
         <Variable Name="visWebViewerPath" />
         <Variable Name="visWebViewerQuery" />
+        <Variable Name="visImageRotation" />
       </Task>
       <Task Name="Recipe_01">
         <Variable Name="RECIPE" AutomaticEnable="True">
