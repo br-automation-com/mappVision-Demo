@@ -18,10 +18,11 @@ FUNCTION_BLOCK ViDrawCrosshair
 	END_IF
 	
 	// Draw cross hairs
-	IF CmdRefreshCrosshair OR (visCrossHair.ShowCrosshair <> ShowCrosshairOld) OR (visCrossHair.DetailsNo <> DetailsNoOld) OR (SelectedSensor <> SelectedSensorOld) OR (ImageRotation_deg <> ImageRotation_degOld) THEN
+	IF CmdRefreshCrosshair OR (visCrossHair.ShowCrosshair <> ShowCrosshairOld) OR (visCrossHair.DetailsNo <> DetailsNoOld) OR (SelectedSensor <> SelectedSensorOld) OR (ImageRotation_deg <> ImageRotation_degOld) OR (TextAlignment <> TextAlignmentOld) THEN
 		ShowCrosshairOld		:= visCrossHair.ShowCrosshair;
 		SelectedSensorOld		:= SelectedSensor;
 		ImageRotation_degOld	:= ImageRotation_deg;
+		TextAlignmentOld		:= TextAlignment;
 		// First delete transformation and make everything invisible
 		brsmemset(ADR(visCrossHair.SvgTransformation), 0, SIZEOF(visCrossHair.SvgTransformation));
 		brsmemset(ADR(visCrossHair.SvgVisible), 0, SIZEOF(visCrossHair.SvgVisible));
@@ -137,7 +138,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 							brsstrcat(ADR(svgTrafo), ADR(']}]'));
 							visCrossHair.SvgTransformation[idx] := svgTrafo;
 							
-							// Add text data to selected cross hair
+							// Add text data to selected cross hair (small index number)
 							IF visCrossHair.DetailsNo = idx THEN
 								svgContent := '<text class="cText" fill="red " font-size="22" font-family="Helvetica, Arial, sans-serif"><tspan class="text" x="';
 							ELSE
@@ -182,7 +183,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 							CrossHairInfo[idx].Data		:= '';
 							// Add model ID information for blob and match
 							IF VisionSensor.CFG.VisionFunction = enumBlob OR VisionSensor.CFG.VisionFunction = enumMatch THEN
-								CrosshairDetailsText(ADR(svgContent),  ADR('Model ID: '), ResultModelNumber);
+								CrosshairDetailsValue(ADR(svgContent),  ADR('Model ID: '), ResultModelNumber, TextAlignment);
 								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, '));
 								brsitoa(ResultModelNumber, ADR(tmpStr));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(tmpStr));
@@ -192,8 +193,8 @@ FUNCTION_BLOCK ViDrawCrosshair
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"none", '));
 							END_IF
 							// Add X and Y position information
-							CrosshairDetailsText(ADR(svgContent),  ADR('Pos X: '), ResultPositionX);
-							CrosshairDetailsText(ADR(svgContent),  ADR('Pos Y: '), ResultPositionY);
+							CrosshairDetailsValue(ADR(svgContent),  ADR('Pos X: '), ResultPositionX, TextAlignment);
+							CrosshairDetailsValue(ADR(svgContent),  ADR('Pos Y: '), ResultPositionY, TextAlignment);
 							brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, 1, '));
 							brsftoa(ResultPositionX, ADR(tmpStr));
 							brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(tmpStr));
@@ -203,7 +204,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 							brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(', '));
 							// Add orientation information
 							IF VisionSensor.CFG.VisionFunction <> enumMeasurement THEN
-								CrosshairDetailsText(ADR(svgContent),  ADR('Orientation: '), ResultOrientation);
+								CrosshairDetailsValue(ADR(svgContent),  ADR('Orientation: '), ResultOrientation, TextAlignment);
 								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, '));
 								brsftoa(ResultOrientation, ADR(tmpStr));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(tmpStr));
@@ -215,11 +216,11 @@ FUNCTION_BLOCK ViDrawCrosshair
 							// Add detail information for blob
 							IF VisionSensor.CFG.VisionFunction = enumBlob THEN
 								IF Blob.EnhancedBlobInformation = 1 THEN // Only access the Pointer Blob if it really exists. So don't combine this line of code with the line before
-									CrosshairDetailsText(ADR(svgContent),  ADR('Clipped: '), Blob.Clipped[idx]);
-									CrosshairDetailsText(ADR(svgContent),  ADR('Gray: '), Blob.MeanGrayValue[idx]);
-									CrosshairDetailsText(ADR(svgContent),  ADR('Length: '), UDINT_TO_REAL(Blob.Length[idx])/visCrossHair.CFG.PixelRatio);
-									CrosshairDetailsText(ADR(svgContent),  ADR('Width: '), UDINT_TO_REAL(Blob.Width[idx])/visCrossHair.CFG.PixelRatio);
-									CrosshairDetailsText(ADR(svgContent),  ADR('Area: '), UDINT_TO_REAL(Blob.Area[idx])/visCrossHair.CFG.PixelRatio);
+									CrosshairDetailsValue(ADR(svgContent),  ADR('Clipped: '), Blob.Clipped[idx], TextAlignment);
+									CrosshairDetailsValue(ADR(svgContent),  ADR('Gray: '), Blob.MeanGrayValue[idx], TextAlignment);
+									CrosshairDetailsValue(ADR(svgContent),  ADR('Length: '), UDINT_TO_REAL(Blob.Length[idx])/visCrossHair.CFG.PixelRatio, TextAlignment);
+									CrosshairDetailsValue(ADR(svgContent),  ADR('Width: '), UDINT_TO_REAL(Blob.Width[idx])/visCrossHair.CFG.PixelRatio, TextAlignment);
+									CrosshairDetailsValue(ADR(svgContent),  ADR('Area: '), UDINT_TO_REAL(Blob.Area[idx])/visCrossHair.CFG.PixelRatio, TextAlignment);
 									brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, 1, 1, 1, 1, '));
 									brsitoa(Blob.Clipped[idx], ADR(tmpStr));
 									brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(tmpStr));
@@ -246,8 +247,8 @@ FUNCTION_BLOCK ViDrawCrosshair
 							END_IF
 							// Add detail information for match
 							IF VisionSensor.CFG.VisionFunction = enumMatch THEN
-								CrosshairDetailsText(ADR(svgContent),  ADR('Score: '), Match.Score[idx]);
-								CrosshairDetailsText(ADR(svgContent),  ADR('Scale: '), Match.Scale[idx]);
+								CrosshairDetailsValue(ADR(svgContent),  ADR('Score: '), Match.Score[idx], TextAlignment);
+								CrosshairDetailsValue(ADR(svgContent),  ADR('Scale: '), Match.Scale[idx], TextAlignment);
 								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, 1, '));
 								brsitoa(Match.Score[idx], ADR(tmpStr));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(tmpStr));
@@ -261,11 +262,8 @@ FUNCTION_BLOCK ViDrawCrosshair
 							END_IF
 							// Add detail information for OCR
 							IF VisionSensor.CFG.VisionFunction = enumOCR THEN
-								CrosshairDetailsText(ADR(svgContent),  ADR('Grading: '), OCR.Grading[idx]);
-								brsstrcat(ADR(svgContent), ADR('<tspan class="text" x="10" dy="32">'));
-								brsstrcat(ADR(svgContent), ADR('Text: '));
-								brsstrcat(ADR(svgContent), ADR(OCR.Text[idx]));
-								brsstrcat(ADR(svgContent), ADR('</tspan> '));
+								CrosshairDetailsValue(ADR(svgContent),  ADR('Grading: '), OCR.Grading[idx], TextAlignment);
+								CrosshairDetailsText(ADR(svgContent),  ADR('Text: '), ADR(OCR.Text[idx]), TextAlignment);
 								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, 1, '));
 								brsitoa(OCR.Grading[idx], ADR(tmpStr));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(tmpStr));
@@ -278,10 +276,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 							END_IF
 							// Add detail information for code reader
 							IF VisionSensor.CFG.VisionFunction = enumCoderReader THEN
-								brsstrcat(ADR(svgContent), ADR('<tspan class="text" x="10" dy="32">'));
-								brsstrcat(ADR(svgContent), ADR('Code: '));
-								brsstrcat(ADR(svgContent), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
-								brsstrcat(ADR(svgContent), ADR('</tspan> '));
+								CrosshairDetailsText(ADR(svgContent),  ADR('Code: '), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]), TextAlignment);
 								brsstrcat(ADR(CrossHairInfo[1].DataVis), ADR('1, '));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR('"'));
 								brsstrcat(ADR(CrossHairInfo[idx].Data), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[idx], MAX_NUM_CODETYPES)]));
@@ -305,7 +300,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 						brsitoa(idx*40, ADR(tmpStr));
 						brsstrcat(ADR(svgContent), ADR(tmpStr));
 						brsstrcat(ADR(svgContent), ADR('"> '));
-						CrosshairDetailsText(ADR(svgContent),  ADR('Result:'), UDINT_TO_REAL(MT.Result[idx])/1000);
+						CrosshairDetailsValue(ADR(svgContent),  ADR('Result:'), UDINT_TO_REAL(MT.Result[idx])/1000, TextAlignment);
 						brsstrcat(ADR(svgContent), ADR('</text>'));
 						visCrossHair.SvgContent[idx] := svgContent;
 						brsstrcpy(ADR(CrossHairInfo[1].DataVis), ADR('0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1'));

@@ -187,6 +187,7 @@ PROGRAM _CYCLIC
 	ViDrawCrosshair_0.CodeTypes				:= ADR(CodeTypes);
 	ViDrawCrosshair_0.VisionDisabled		:= gVisionImage.DAT.VisionDisabled;
 	ViDrawCrosshair_0.ImageRotation_deg		:= gVisionImage.CFG.ImageRotation_deg;
+	ViDrawCrosshair_0.TextAlignment			:= visTextAlignment;
 	ViDrawCrosshair_0.visCrossHair			:= ADR(visCrossHair);
 	ViDrawCrosshair_0();
 	gVisionImage.CMD.RefreshCrosshair		:= FALSE;

@@ -3,6 +3,7 @@ Version 2.3 (Development)
  - Added color detection first version
  - Split up main task into main and visu, integrated light task into main and visu
  - Added funkctionality to rotate the image on the main page
+ - Click on the image on the main page toggles now the textposition (crosshair-details) from left to right
 
 Version 2.2
 - Added new functionality to show images in every size on the webviewer widget on the mainpage

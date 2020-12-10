@@ -21,6 +21,16 @@
 					</Target>
 				</Action>
 			</EventHandler>
-		</EventBinding>				
+		</EventBinding>
+		<EventBinding id="contentMain.Rectangle1.Click">
+			<Source contentRefId="contentMain" widgetRefId="RectangleFront" xsi:type="widgets.brease.Rectangle.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visTextAlignment">
+						<Method xsi:type="opcUa.NodeAction.ToggleValueBool"/>
+					</Target>
+ 				</Action>
+			</EventHandler>
+		</EventBinding>
 	</Bindings>
 </EventBindingSet>

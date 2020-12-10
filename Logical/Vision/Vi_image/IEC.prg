@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.4.67 SP?>
+<?AutomationStudio Version=4.7.5.60 SP?>
 <Program SubType="IEC" xmlns="http://br-automation.co.at/AS/Program">
   <Files>
     <File Description="Init, cyclic, exit code">Main.st</File>
@@ -13,6 +13,6 @@
     <File>ViDrawCrosshair.st</File>
     <File>ViCreateWebDirFile.st</File>
     <File>ViShowImgOnVC4.st</File>
-    <File>CrosshairDetailsText.st</File>
+    <File>CrosshairDetails.st</File>
   </Files>
 </Program>
