@@ -15,12 +15,12 @@ This is a demo application for B&R vision camera. It is devloped and maintained 
 ## Requirements (current used versions)
 Should also work with newer and some older versions
 * Automation Studio 4.7
-* mappView 5.11.2
-* mappVision 5.11.0
+* mappView 5.12
+* mappVision 5.12
 * Automation Runtime A4.73
-* mappMotion 5.11.2 (for nettime functions in combination with the included axis)
-* mappCockpit 5.11.0 (for mappMotion)
-* mappServices 5.11.2 (for mappRecipe)
+* mappMotion 5.12 (for nettime functions in combination with the included axis)
+* mappCockpit 5.12 (for mappMotion)
+* mappServices 5.12 (for mappRecipe)
 
 Recommended task class is #8 with a 10ms cycle time. For the nettime and axis tasks use #1
 
@@ -29,7 +29,16 @@ Recommended task class is #8 with a 10ms cycle time. For the nettime and axis ta
 You can find details in the project in "revision.txt"
 
 #### Version 2.2
-- A lot of improvements, check the revision.txt for details
+- Added new functionality to show images in every size on the webviewer widget on the mainpage
+- Improved repetitive mode
+- SVG files save now all information. It is possible to click on the crosshairs to show the details
+- Added diagnostic data creation
+- Updated recipe management
+- Changed public arrays start index to 0 to avoid issues with C task
+- Added a VC4 visualization
+- Added functionality to show the image on the VC4 visualization (documentation still missing)
+- After boot the first found light will be selected
+- Some additional improvements, code optimizations & bug fixes
 
 #### Version 2.1
 - First public release
