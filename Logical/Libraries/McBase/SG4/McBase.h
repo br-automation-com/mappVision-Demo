@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.12.2 */
+/* McBase 5.13.0 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.12.2
+#define _McBase_VERSION 5.13.0
 #endif
 
 #include <bur/plctypes.h>
@@ -170,6 +170,9 @@ typedef enum McCfgTypeEnum
 	mcCFG_AX_FEAT_PROF_GEN = 10102,
 	mcCFG_AX_FEAT_DIG_CAM_SW = 10103,
 	mcCFG_AX_FEAT_CAM_LST = 11102,
+	mcCFG_MOT_SYN = 10500,
+	mcCFG_MOT_INDUCT = 10501,
+	mcCFG_IO_PL_IN_CARD = 10510,
 	mcCFG_ACP_AX = 11000,
 	mcCFG_ACP_AX_REF = 11011,
 	mcCFG_ACP_MECH_ELM = 11012,
@@ -244,6 +247,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_ASM_FEAT_SH_TRACE = 31103,
 	mcCFG_ASM_FEAT_SH_AUT_ATT = 31104,
 	mcCFG_ASM_FEAT_LOC_LIM = 31105,
+	mcCFG_ASM_FEAT_EX_SEG = 31106,
 	mcCFG_SEC_COMP = 31301,
 	mcCFG_SEC_SUB = 31302,
 	mcCFG_MS_CUS_STD = 50001,
@@ -261,8 +265,10 @@ typedef enum McCfgTypeEnum
 	mcCFG_MS_2AX_DELTA_A = 52121,
 	mcCFG_MS_3AX_DELTA_A = 52131,
 	mcCFG_MS_3AX_DELTA_XZB = 52132,
+	mcCFG_MS_3AX_DELTA_B = 52133,
 	mcCFG_MS_4AX_DELTA_A = 52141,
 	mcCFG_MS_4AX_DELTA_B = 52142,
+	mcCFG_MS_4AX_DELTA_C = 52143,
 	mcCFG_MS_5AX_DELTA_A = 52151,
 	mcCFG_MS_3AX_ROB_A = 52301,
 	mcCFG_MS_4AX_ROB_A = 52401,
@@ -437,6 +443,10 @@ typedef struct McInternalAxesGroupIfType
 {	plcdword vtable;
 } McInternalAxesGroupIfType;
 
+typedef struct McInternalTrackingPathIfType
+{	plcdword vtable;
+} McInternalTrackingPathIfType;
+
 typedef struct McExec1InternalType
 {	unsigned short i_serno;
 	unsigned short i_state;
@@ -454,6 +464,11 @@ typedef struct McAxesGroupType
 {	struct McInternalAxesGroupIfType* controlif;
 	struct McInternalMappLinkType mappLinkInternal;
 } McAxesGroupType;
+
+typedef struct McTrackingPathType
+{	struct McInternalTrackingPathIfType* controlif;
+	struct McInternalMappLinkType mappLinkInternal;
+} McTrackingPathType;
 
 typedef struct McGetCoordSystemIdentParType
 {	struct McAxesGroupType* AxesGroup;

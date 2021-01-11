@@ -240,6 +240,7 @@ TYPE
 		DirName : STRING[80];
 		PlkIPWithoutNode : STRING[80];
 		EthDevice : STRING[80];
+		EthIP : STRING[80];
 		ConvertCycles : UDINT;
 		Format : USINT; (*0: jpg. 1: bmp*)
 		QualityJPG : USINT;

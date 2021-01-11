@@ -146,6 +146,7 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		Enable : BOOL;
 		FileDevUser : STRING[80];
 		EthDevice : STRING[80];
+		EthIP : STRING[80];
 		PlkIPWithoutNode : STRING[80];
 		visWebViewerPath : REFERENCE TO STRING[80];
 	END_VAR

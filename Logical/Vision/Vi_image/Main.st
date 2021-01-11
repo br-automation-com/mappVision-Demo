@@ -27,6 +27,12 @@ PROGRAM _INIT
 	// Call FBKs which interanally alloc memory once in the INIT
 	ViDownloadImage_0();
 	ViSaveImgOnPlc_0();
+	// Get IP address
+	CfgGetIPAddr_0.enable := TRUE;
+	CfgGetIPAddr_0.Len := SIZEOF(gVisionImage.CFG.EthIP);
+	CfgGetIPAddr_0.pDevice := ADR(gVisionImage.CFG.EthDevice);
+	CfgGetIPAddr_0.pIPAddr := ADR(gVisionImage.CFG.EthIP);
+	CfgGetIPAddr_0();
 END_PROGRAM
 PROGRAM _CYCLIC
 	CASE Step OF
@@ -197,6 +203,7 @@ PROGRAM _CYCLIC
 		ViCreateWebDirFile_0.Enable				:= TRUE;
 		ViCreateWebDirFile_0.FileDevUser		:= gVisionImage.CFG.FileDevice;
 		ViCreateWebDirFile_0.EthDevice			:= gVisionImage.CFG.EthDevice;
+		ViCreateWebDirFile_0.EthIP				:= gVisionImage.CFG.EthIP;
 		ViCreateWebDirFile_0.PlkIPWithoutNode	:= gVisionImage.CFG.PlkIPWithoutNode;
 		ViCreateWebDirFile_0.visWebViewerPath	:= ADR(visWebViewerPath);
 		ViCreateWebDirFile_0();

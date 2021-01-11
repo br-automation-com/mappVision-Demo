@@ -114,6 +114,19 @@ TYPE
 		mcTRG_STAT_MISSED := 2 (*No valid trigger event was detected in period.*)
 	);
 
+	McDisableModeEnum :
+	(
+		mcDISABLE_DEFAULT := 0, (*Switch to default setting at disable*)
+		mcDISABLE_KEEP_VALUE := 1 (*Keep value at disable*)
+	);
+
+	McEventMoveModeEnum :
+	(
+		mcEVENT_ONCE := 0, (* Single start of a movement after an event *)
+		mcEVENT_CYCLIC := 1, (* Cyclic start of a movement during standstill. Note: Not applicable for FB MC_BR_EventMoveVelocity. *)
+		mcEVENT_CYCLIC_ALL_EVENTS := 2 (* Cyclic start of a movement for all events *)
+	);
+
 	(*Structure types*)
 
 	McLibraryInfoType : STRUCT
@@ -135,6 +148,7 @@ TYPE
 		StartupCount : UDINT; (*Number of times the drive was started up since the last PLC start*)
 		CommunicationState : McCommunicationStateEnum; (*State of network communication*)
 		PLCopenState :  McAxisPLCopenStateEnum; (*Extended PLCopen state*)
+		InMotion : BOOL; (*Controlled movement on the axis*)
 	END_STRUCT;
 
 	McAdvVelCtrlParType : STRUCT
@@ -607,5 +621,9 @@ TYPE
 		mcPREP_RESTART_NEGATIVE_WINDOW, (* Slave moves to "RestartPosition" by the shortest distance when distance is smaller than "ToleranceWindow", otherwise only in negative direction*)
 		mcPREP_RESTART_GET_POSITION (* "RestartPosition" is output, no movement is performed*)
 	);
+
+	McAdvCyclicTorqueFFParType : STRUCT
+		DisableMode : McDisableModeEnum; (*Defines the behavior at disable*)
+	END_STRUCT;
 
 END_TYPE

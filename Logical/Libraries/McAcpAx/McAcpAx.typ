@@ -567,13 +567,7 @@ TYPE
 	    PosVelocityTriggerParID : UINT; (*ParID controls the addition of velocity "CyclicVelocity" or the value of "VelocityParID"*)
 	    NegVelocityTriggerParID : UINT; (*ParID controls the subtraction of velocity "CyclicVelocity" or the value of "VelocityParID"*)
 	END_STRUCT;
-
-	McAcpAxLoadSimInputDataType : STRUCT
-		Position : LREAL; (*Position value [rad]*)
-		Velocity : REAL; (*Velocity value [rad/s]*)
- 		Acceleration : REAL; (*Acceleration value [rad/s²] Note: This structure element is not supported currently, and always the value "0.0" is output*)
-	END_STRUCT;
-
+	
 	McAcpAxCtrlParType : STRUCT
 		Mode : McAcpAxCtrlModeEnum; (*Controller mode*)
 		PositionController : McAcpAxPosCtrlParType; (*Structure of the parameters for the position controller*)
@@ -584,6 +578,12 @@ TYPE
 	
 	McAcpAxAdvAutoTuneFeedFwdType : STRUCT
 	    ExcitationSignal : McAcpAxAutoTuneExSignalType; (*Parameter for excitation signal*)
+	END_STRUCT;
+
+	McAcpAxLoadSimInputDataType : STRUCT
+		Position : LREAL; (*Position value [rad]*)
+		Velocity : REAL; (*Velocity value [rad/s]*)
+ 		Acceleration : REAL; (*Acceleration value [rad/s²] Note: This structure element is not supported currently, and always the value "0.0" is output*)
 	END_STRUCT;
 
 END_TYPE
