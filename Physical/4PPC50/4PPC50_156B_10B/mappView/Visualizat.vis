@@ -22,6 +22,7 @@
 		<BindingsSet refId="Match_binding" />
 		<BindingsSet refId="OCR_binding" />
 		<BindingsSet refId="MT_binding" />
+		<BindingsSet refId="Pixel_binding" />
 		<BindingsSet refId="Nettime_binding" />
 		<BindingsSet refId="Color_binding" />
 		<BindingsSet refId="Lights_binding" />
@@ -49,6 +50,7 @@
 		<Content refId="contentMT" preCache="false"/>
 		<Content refId="contentOCR" preCache="false"/>
 		<Content refId="contentCodeReader" preCache="false"/>
+		<Content refId="contentPixel" preCache="false"/>
 	</Contents>
 	<SnippetsSets>
 		<!--<SnippetsSet refId=""/>-->

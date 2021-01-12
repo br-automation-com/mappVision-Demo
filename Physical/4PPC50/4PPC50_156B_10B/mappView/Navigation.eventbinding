@@ -43,6 +43,13 @@
 					</Target>
 				</Action>
 			</EventHandler>
+			<EventHandler condition="VisionFunction=6 AND contentId=&quot;contentResult&quot;">
+				<Action>
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentPixel" pageId="pageResult" areaId="AreaContent" />
+					</Target>
+				</Action>
+			</EventHandler>
 			<EventHandler condition="contentId=&quot;contentRecipe&quot;">
 				<Sequence>
 					<Step order="0">

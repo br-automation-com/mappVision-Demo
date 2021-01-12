@@ -44,7 +44,13 @@ PROGRAM _INIT
 	gVisionSensor[5].CFG.ComponentLink		:= gCameraOCR;
 	gVisionSensor[5].CFG.ResolutionWidth_X	:= 1280;
 	gVisionSensor[5].CFG.ResolutionHeight_Y	:= 1024;
-
+	// Configuration for PixelCounter
+	gVisionSensor[6].CFG.VisionFunction		:= enumPixelCounter;
+	gVisionSensor[6].CFG.PowerlinkNode		:= 6;
+	gVisionSensor[6].CFG.DataStructure		:= ADR(gPixel);
+	gVisionSensor[6].CFG.ComponentLink		:= gCameraPxl;
+	gVisionSensor[6].CFG.ResolutionWidth_X	:= 1280;
+	gVisionSensor[6].CFG.ResolutionHeight_Y	:= 1024;
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Lights configuration

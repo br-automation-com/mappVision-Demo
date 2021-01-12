@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<OpcUaSource FileVersion="7" ArVersion="A4.73">
+<?AutomationStudio FileVersion="4.9"?>
+<OpcUaSource FileVersion="7" ArVersion="C4.90">
   <Aliases>
     <ACLAliases>
       <ACL Id="1">
@@ -76,6 +77,7 @@
             <Variable Name="Status" />
           </Variable>
         </Variable>
+        <Variable Name="gCameraPxl" AutomaticEnable="True" />
       </GlobalVariables>
       <Task Name="Vi_main" />
       <Task Name="Vi_image">
@@ -190,6 +192,19 @@
         <Variable Name="visSensorFlashColor" />
         <Variable Name="visEnableLightBarValues" />
         <Variable Name="visAutoArchiv" />
+        <Variable Name="Pixel" AutomaticEnable="True">
+          <Variable Name="ModelNumber" EnableArrayElements="True" />
+          <Variable Name="NumPixels" EnableArrayElements="True" />
+          <Variable Name="MinGray" EnableArrayElements="True" />
+          <Variable Name="MaxGray" EnableArrayElements="True" />
+          <Variable Name="MeanGray" EnableArrayElements="True" />
+          <Variable Name="DeviationGray" EnableArrayElements="True" />
+          <Variable Name="MedianGray" EnableArrayElements="True" />
+          <Variable Name="ModelArea" EnableArrayElements="True" />
+          <Variable Name="NumConnectedComponents" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" />
+          <Variable Name="PositionY" EnableArrayElements="True" />
+        </Variable>
       </Task>
     </Module>
   </DefaultView>

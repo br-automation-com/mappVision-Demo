@@ -122,6 +122,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 		CodeReader : REFERENCE TO typCodeReaderMain;
 		Match : REFERENCE TO typMatchMain;
 		MT : REFERENCE TO typMTMain;
+		Pixel : REFERENCE TO typPixelMain;
 		OCR : REFERENCE TO typOCRMain;
 		DetailsNoOld : USINT;
 		ShowCrosshairOld : BOOL;

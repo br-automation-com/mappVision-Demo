@@ -67,7 +67,7 @@
     <Connection Connector="PLK1" TargetModule="Backlight2" TargetConnector="PLK2" NodeNumber="50">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="Lightbar1" TargetConnector="PLK1" NodeNumber="50">
+    <Connection Connector="PLK2" TargetModule="PixelCounter" TargetConnector="PLK1" NodeNumber="50">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
   </Module>
@@ -166,7 +166,7 @@
     <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
   <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" Version="0.0.1.334">
-    <Connection Connector="PLK1" TargetModule="8AC114.60-2" TargetConnector="PLK2" NodeNumber="20">
+    <Connection Connector="PLK1" TargetModule="PixelCounter" TargetConnector="PLK2" NodeNumber="20">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -201,5 +201,15 @@
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraOCR" />
+  </Module>
+  <Module Name="PixelCounter" Type="VSS112Q22.041P-000" Version="1.2.0.341">
+    <Connection Connector="PLK1" TargetModule="8AC114.60-2" TargetConnector="PLK2" NodeNumber="6">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="Lightbar1" TargetConnector="PLK1" NodeNumber="6">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
 </Hardware>

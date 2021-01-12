@@ -12,6 +12,8 @@ FUNCTION_BLOCK ViDrawCrosshair
 				MT ACCESS VisionSensor.CFG.DataStructure;
 			enumOCR:
 				OCR ACCESS VisionSensor.CFG.DataStructure;
+			enumPixelCounter:
+				Pixel ACCESS VisionSensor.CFG.DataStructure;
 		END_CASE
 	ELSE
 		RETURN;
@@ -58,6 +60,10 @@ FUNCTION_BLOCK ViDrawCrosshair
 							ResultPositionX		:= UDINT_TO_REAL(Blob.PositionX[idx]) / visCrossHair.CFG.PixelRatio;
 							ResultPositionY		:= UDINT_TO_REAL(Blob.PositionY[idx]) / visCrossHair.CFG.PixelRatio;
 							ResultOrientation	:= Blob.Orientation[idx] / visCrossHair.CFG.PixelRatio;
+						enumPixelCounter:
+							ResultModelNumber	:= Pixel.ModelNumber[idx];
+							ResultPositionX		:= UDINT_TO_REAL(Pixel.PositionX[idx]) / visCrossHair.CFG.PixelRatio;
+							ResultPositionY		:= UDINT_TO_REAL(Pixel.PositionY[idx]) / visCrossHair.CFG.PixelRatio;
 						enumCoderReader:
 							ResultPositionX		:= UDINT_TO_REAL(CodeReader.PositionX[idx]) / visCrossHair.CFG.PixelRatio;
 							ResultPositionY		:= UDINT_TO_REAL(CodeReader.PositionY[idx]) / visCrossHair.CFG.PixelRatio;
