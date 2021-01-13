@@ -64,7 +64,7 @@
     <Parameter ID="SimulationModeOnACOPOS" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="NotUsed" />
   </Module>
   <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
-    <Connection Connector="PLK1" TargetModule="OCR" TargetConnector="PLK2" NodeNumber="10">
+    <Connection Connector="PLK1" TargetModule="PixelCounter" TargetConnector="PLK2" NodeNumber="10">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Connection Connector="PLK2" TargetModule="Backlight2" TargetConnector="PLK1" NodeNumber="10">
@@ -83,7 +83,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
-  <Module Name="Blob" Type="VSS112Q22.041P-000" Version="1.1.0.284">
+  <Module Name="Blob" Type="VSS112Q22.041P-000" Version="1.2.0.341">
     <Connection Connector="PLK1" TargetModule="X20CP1586" TargetConnector="IF3" NodeNumber="1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -93,7 +93,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
-  <Module Name="CodeReader" Type="VSS112Q22.041P-000" Version="1.1.0.284">
+  <Module Name="CodeReader" Type="VSS112Q22.041P-000" Version="1.2.0.341">
     <Connection Connector="PLK1" TargetModule="Measurement" TargetConnector="PLK2" NodeNumber="2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -113,7 +113,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
-  <Module Name="Match" Type="VSS112Q22.041P-000" Version="1.1.0.284">
+  <Module Name="Match" Type="VSS112Q22.041P-000" Version="1.2.0.341">
     <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="3">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -123,7 +123,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMatch" />
   </Module>
-  <Module Name="Measurement" Type="VSS112Q22.041P-000" Version="1.1.0.284">
+  <Module Name="Measurement" Type="VSS112Q22.041P-000" Version="1.2.0.341">
     <Connection Connector="PLK1" TargetModule="Blob" TargetConnector="PLK2" NodeNumber="4">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -133,15 +133,25 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
   </Module>
-  <Module Name="OCR" Type="VSS112Q22.041P-000" Version="1.1.0.284">
+  <Module Name="OCR" Type="VSS112Q22.041P-000" Version="1.2.0.341">
     <Connection Connector="PLK1" TargetModule="Match" TargetConnector="PLK2" NodeNumber="5">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="Backlight1" TargetConnector="PLK1" NodeNumber="5">
+    <Connection Connector="PLK2" TargetModule="PixelCounter" TargetConnector="PLK1" NodeNumber="5">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraOCR" />
+  </Module>
+  <Module Name="PixelCounter" Type="VSS112Q22.041P-000" Version="1.2.0.341">
+    <Connection Connector="PLK1" TargetModule="OCR" TargetConnector="PLK2" NodeNumber="6">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="Backlight1" TargetConnector="PLK1" NodeNumber="6">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
   <Module Name="X20CP1586" Type="X20CP1586" Version="1.8.1.0">
     <Connector Name="IF2">
