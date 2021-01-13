@@ -18,6 +18,7 @@ END_VAR
 (**)
 (*Internal FBKs*)
 VAR
+	CfgGetIPAddr_0 : CfgGetIPAddr;
 	ViDownloadImage_0 : ViDownloadImage;
 	ViSaveImgOnPlc_0 : ViSaveImgOnPlc;
 	ViRefreshImageList_0 : ViRefreshImageList;

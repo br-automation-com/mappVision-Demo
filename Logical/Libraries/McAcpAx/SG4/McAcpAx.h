@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAcpAx 5.12.2 */
+/* McAcpAx 5.13.0 */
 
 #ifndef _MCACPAX_
 #define _MCACPAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAcpAx_VERSION
-#define _McAcpAx_VERSION 5.12.2
+#define _McAcpAx_VERSION 5.13.0
 #endif
 
 #include <bur/plctypes.h>
@@ -1192,12 +1192,6 @@ typedef struct McAcpAxAdvOffsetParType
 	unsigned short NegVelocityTriggerParID;
 } McAcpAxAdvOffsetParType;
 
-typedef struct McAcpAxLoadSimInputDataType
-{	double Position;
-	float Velocity;
-	float Acceleration;
-} McAcpAxLoadSimInputDataType;
-
 typedef struct McAcpAxCtrlParType
 {	enum McAcpAxCtrlModeEnum Mode;
 	struct McAcpAxPosCtrlParType PositionController;
@@ -1209,6 +1203,12 @@ typedef struct McAcpAxCtrlParType
 typedef struct McAcpAxAdvAutoTuneFeedFwdType
 {	struct McAcpAxAutoTuneExSignalType ExcitationSignal;
 } McAcpAxAdvAutoTuneFeedFwdType;
+
+typedef struct McAcpAxLoadSimInputDataType
+{	double Position;
+	float Velocity;
+	float Acceleration;
+} McAcpAxLoadSimInputDataType;
 
 typedef struct McAMEType
 {	struct McCfgGearBoxType Gearbox;

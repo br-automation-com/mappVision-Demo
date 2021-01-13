@@ -92,7 +92,8 @@ TYPE
 		enumCoderReader,
 		enumMatch,
 		enumMeasurement,
-		enumOCR
+		enumOCR,
+		enumPixelCounter
 		);
 END_TYPE
 
@@ -240,6 +241,7 @@ TYPE
 		DirName : STRING[80];
 		PlkIPWithoutNode : STRING[80];
 		EthDevice : STRING[80];
+		EthIP : STRING[80];
 		ConvertCycles : UDINT;
 		Format : USINT; (*0: jpg. 1: bmp*)
 		QualityJPG : USINT;
@@ -306,6 +308,20 @@ TYPE
 		PositionX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 		PositionY : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 		Orientation : ARRAY[1..MAX_NUM_RESULTS]OF INT;
+	END_STRUCT;
+	typPixelMain : 	STRUCT  (*OCR function structures*)
+		EnhancedPixelCounterInformation : BOOL := FALSE;
+		ModelNumber : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
+		NumPixels : ARRAY[1..MAX_NUM_RESULTS]OF UDINT;
+		MinGray : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
+		MaxGray : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
+		MeanGray : ARRAY[1..MAX_NUM_RESULTS]OF UINT;
+		DeviationGray : ARRAY[1..MAX_NUM_RESULTS]OF UINT;
+		MedianGray : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
+		ModelArea : ARRAY[1..MAX_NUM_RESULTS]OF UDINT;
+		NumConnectedComponents : ARRAY[1..MAX_NUM_RESULTS]OF UINT;
+		PositionX : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
+		PositionY : ARRAY[1..MAX_NUM_RESULTS]OF DINT;
 	END_STRUCT;
 	typMTMain : 	STRUCT  (*MT function structures*)
 		UseResultAsXY : BOOL;

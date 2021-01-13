@@ -122,6 +122,7 @@ FUNCTION_BLOCK ViDrawCrosshair
 		CodeReader : REFERENCE TO typCodeReaderMain;
 		Match : REFERENCE TO typMatchMain;
 		MT : REFERENCE TO typMTMain;
+		Pixel : REFERENCE TO typPixelMain;
 		OCR : REFERENCE TO typOCRMain;
 		DetailsNoOld : USINT;
 		ShowCrosshairOld : BOOL;
@@ -146,6 +147,7 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		Enable : BOOL;
 		FileDevUser : STRING[80];
 		EthDevice : STRING[80];
+		EthIP : STRING[80];
 		PlkIPWithoutNode : STRING[80];
 		visWebViewerPath : REFERENCE TO STRING[80];
 	END_VAR

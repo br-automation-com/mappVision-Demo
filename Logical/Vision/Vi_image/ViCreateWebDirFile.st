@@ -48,7 +48,7 @@ FUNCTION_BLOCK ViCreateWebDirFile
 			FileCreate_0(enable := TRUE, pDevice := ADR(FileDevUser), pFile := ADR(FileNameVisImgHtml));
 			IF FileCreate_0.status = ERR_OK THEN
 				brsstrcpy(ADR(FileWriteData), ADR(HtmlFileContent1));
-				brsstrcat(ADR(FileWriteData), ADR(PlkIPWithoutNode));
+				brsstrcat(ADR(FileWriteData), ADR(EthIP));
 				brsstrcat(ADR(FileWriteData), ADR(HtmlFileContent2));
 				Step := 11;
 			ELSIF FileCreate_0.status = fiERR_EXIST THEN

@@ -1125,7 +1125,7 @@ FUNCTION_BLOCK MC_DigitalCamSwitch (*This fb is analogous to switches on a shaft
     END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK MC_AbortTrigger (* This function block stops an active latch command (triggered by (BR_)TouchProbe FBs)*)
+FUNCTION_BLOCK MC_AbortTrigger (*Stops an active latch command (triggered by MC_TouchProbe FB)*)
     VAR_INPUT
         Axis : REFERENCE TO McAxisType; (*Axis reference*)
         TriggerInput : McTriggerType; (*Trigger input definition*)
@@ -1194,6 +1194,24 @@ FUNCTION_BLOCK MC_BR_TouchProbe (*This function block captures the value from a 
     END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_BR_CyclicTorqueFeedForward (*feeds forward a cyclically transferred torque*)
+    VAR_INPUT
+        Axis : REFERENCE TO McAxisType; (*axis reference*)
+        Enable : BOOL; (*FB is active as long as input is set*)
+        InterpolationMode : McIplModeEnum; (*interpolation mode of cyclic value on receiving drive*)
+        AdvancedParameters : McAdvCyclicTorqueFFParType; (*additional input parameters for optional use with the function block.*)
+        CyclicTorque : REAL; (*cyclic feed forward torque that is transferred to the axis*)
+    END_VAR
+    VAR_OUTPUT
+        Valid : BOOL; (*initialization complete, feed forward torque is beeing transferred cyclically*)
+        Busy : BOOL; (*FB is active and needs to be called*)
+        Error : BOOL; (*error occurred during operation*)
+        ErrorID : DINT; (*error number*)
+    END_VAR
+    VAR
+        Internal : McInternalType;(*internal variable*)
+    END_VAR
+END_FUNCTION_BLOCK
 
 FUNCTION_BLOCK MC_BR_CamAutomatPrepareRestart (*commands a motion to a aborted cam automat position*)
 	VAR_INPUT
@@ -1213,10 +1231,28 @@ FUNCTION_BLOCK MC_BR_CamAutomatPrepareRestart (*commands a motion to a aborted c
 		CommandAborted : BOOL; (*Command was aborted by another command*)
 		Error : BOOL; (*error occurred during operation*)
 		ErrorID : DINT; (*error number*)
-		RestartPosition : LREAL; (* Restart position*)
+		RestartPosition : LREAL; (*Restart position*)
 	END_VAR
 	VAR
 		Internal : McInternalType; (*internal variable*)
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_BR_CheckRestorePositionData (*checks the data for a permanent variable that can be used to save and restore the axis position*)
+    VAR_INPUT
+        Axis : REFERENCE TO McAxisType; (*Axis reference*)
+        Execute : BOOL; (*Execution of this FB is started on rising edge of the input*)
+        DataAddress : UDINT; (*Address of a permanent variable of type McAcpAxRestorePosType or McStpAxRestorePosType*)
+    END_VAR
+    VAR_OUTPUT
+        Done : BOOL; (*Execution successful. FB finished*)
+        Busy : BOOL; (*FB is active and needs to be called*)
+        Error : BOOL; (*Error occurred during operation*)
+        ErrorID : DINT; (*Error number*)
+        DataInUse : BOOL; (*Indicates that the DataAddress for restoring the axis position is in use*)
+        DataValid : BOOL; (*Indicates that the data in the permanent variable for restoring the axis position is valid*)
+    END_VAR
+    VAR
+        Internal : McInternalType; (*Internal variable*)
+    END_VAR
+END_FUNCTION_BLOCK

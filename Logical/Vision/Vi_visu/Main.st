@@ -13,7 +13,8 @@ PROGRAM _INIT
 	Match ACCESS ADR(tmpMatch);
 	MT ACCESS ADR(tmpMT);
 	OCR ACCESS ADR(tmpOCR);
-
+	Pixel ACCESS ADR(tmpPixel);
+	
 	// Map global structure to local reference
 	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
 
@@ -74,6 +75,7 @@ PROGRAM _CYCLIC
 			enumMatch:			Match ACCESS VisionSensor.CFG.DataStructure;
 			enumMeasurement:	MT ACCESS VisionSensor.CFG.DataStructure;
 			enumOCR:			OCR ACCESS VisionSensor.CFG.DataStructure;
+			enumPixelCounter:	Pixel ACCESS VisionSensor.CFG.DataStructure;
 		END_CASE
 	ELSE
 		RETURN;

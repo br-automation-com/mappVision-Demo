@@ -171,7 +171,7 @@ TYPE
 	McACMPCFFFFwdEnum :
 		( (*Feed forward selector setting*)
 		mcACMPCFFFF_STD := 0, (*Standard - Based on several parameters the torque feed forward calculation is done on the axis*)
-		mcACMPCFFFF_CYC_VAL_FROM_AX_GRP := 1 (*Cyclic value from axes group - The torque feed forward calculation is done by the axes group on the PLC and the value is forwarded to the axis*)
+		mcACMPCFFFF_CYC_VAL_FROM_AX_GRP := 1 (*Cyclic value from axes group - The torque feed forward calculation is done by the axes group or the application on the PLC and the value is forwarded to the axis*)
 		);
 	McACMPCFFFFwdStdType : STRUCT (*Type mcACMPCFFFF_STD settings*)
 		TorqueLoad : REAL; (*Load torque [Nm]*)

@@ -8,11 +8,13 @@ VAR
 	MT : REFERENCE TO typMTMain; (*Data that is specific for the MT function*)
 	OCR : REFERENCE TO typOCRMain; (*Data that is specific for the OCR function*)
 	Blob : REFERENCE TO typBlobMain; (*Data that is specific for the blob function*)
+	Pixel : REFERENCE TO typPixelMain; (*Data that is specific for the blob function*)
 	tmpMatch : {REDUND_UNREPLICABLE} typMatchMain; (*Data that is specific for the match function*)
 	tmpCodeReader : {REDUND_UNREPLICABLE} typCodeReaderMain; (*Data that is specific for the code reader*)
 	tmpMT : {REDUND_UNREPLICABLE} typMTMain; (*Data that is specific for the OCR function*)
 	tmpOCR : {REDUND_UNREPLICABLE} typOCRMain; (*Data that is specific for the OCR function*)
 	tmpBlob : {REDUND_UNREPLICABLE} typBlobMain; (*Data that is specific for the blob function*)
+	tmpPixel : {REDUND_UNREPLICABLE} typPixelMain; (*Data that is specific for the blob function*)
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Vision function blocks*)

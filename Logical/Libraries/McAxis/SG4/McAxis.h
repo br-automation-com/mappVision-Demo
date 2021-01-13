@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxis 5.12.2 */
+/* McAxis 5.13.0 */
 
 #ifndef _MCAXIS_
 #define _MCAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxis_VERSION
-#define _McAxis_VERSION 5.12.2
+#define _McAxis_VERSION 5.13.0
 #endif
 
 #include <bur/plctypes.h>
@@ -130,6 +130,17 @@ typedef enum McBrTriggerInfoStatusEnum
 	mcTRG_STAT_VALID = 1,
 	mcTRG_STAT_MISSED = 2
 } McBrTriggerInfoStatusEnum;
+
+typedef enum McDisableModeEnum
+{	mcDISABLE_DEFAULT = 0,
+	mcDISABLE_KEEP_VALUE = 1
+} McDisableModeEnum;
+
+typedef enum McEventMoveModeEnum
+{	mcEVENT_ONCE = 0,
+	mcEVENT_CYCLIC = 1,
+	mcEVENT_CYCLIC_ALL_EVENTS = 2
+} McEventMoveModeEnum;
 
 typedef enum McShiftModeEnum
 {	mcSHIFT_ABSOLUTE,
@@ -417,6 +428,7 @@ typedef struct McAddInfoType
 	unsigned long StartupCount;
 	enum McCommunicationStateEnum CommunicationState;
 	enum McAxisPLCopenStateEnum PLCopenState;
+	plcbit InMotion;
 } McAddInfoType;
 
 typedef struct McAdvVelCtrlParType
@@ -711,6 +723,10 @@ typedef struct McDigCamSwOptionsParType
 typedef struct McAdvCamAutPrepRestartParType
 {	double ToleranceWindow;
 } McAdvCamAutPrepRestartParType;
+
+typedef struct McAdvCyclicTorqueFFParType
+{	enum McDisableModeEnum DisableMode;
+} McAdvCyclicTorqueFFParType;
 
 typedef struct McABTLinBdType
 {	enum McCfgLocLenUnitEnum MeasurementUnit;
@@ -2099,6 +2115,25 @@ typedef struct MC_BR_TouchProbe
 	plcbit Error;
 } MC_BR_TouchProbe_typ;
 
+typedef struct MC_BR_CyclicTorqueFeedForward
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	enum McIplModeEnum InterpolationMode;
+	struct McAdvCyclicTorqueFFParType AdvancedParameters;
+	float CyclicTorque;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Enable;
+	/* VAR_OUTPUT (digital) */
+	plcbit Valid;
+	plcbit Busy;
+	plcbit Error;
+} MC_BR_CyclicTorqueFeedForward_typ;
+
 typedef struct MC_BR_CamAutomatPrepareRestart
 {
 	/* VAR_INPUT (analog) */
@@ -2123,6 +2158,25 @@ typedef struct MC_BR_CamAutomatPrepareRestart
 	plcbit CommandAborted;
 	plcbit Error;
 } MC_BR_CamAutomatPrepareRestart_typ;
+
+typedef struct MC_BR_CheckRestorePositionData
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	unsigned long DataAddress;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+	plcbit DataInUse;
+	plcbit DataValid;
+} MC_BR_CheckRestorePositionData_typ;
 
 
 
@@ -2182,7 +2236,9 @@ _BUR_PUBLIC void MC_DigitalCamSwitch(struct MC_DigitalCamSwitch* inst);
 _BUR_PUBLIC void MC_AbortTrigger(struct MC_AbortTrigger* inst);
 _BUR_PUBLIC void MC_TouchProbe(struct MC_TouchProbe* inst);
 _BUR_PUBLIC void MC_BR_TouchProbe(struct MC_BR_TouchProbe* inst);
+_BUR_PUBLIC void MC_BR_CyclicTorqueFeedForward(struct MC_BR_CyclicTorqueFeedForward* inst);
 _BUR_PUBLIC void MC_BR_CamAutomatPrepareRestart(struct MC_BR_CamAutomatPrepareRestart* inst);
+_BUR_PUBLIC void MC_BR_CheckRestorePositionData(struct MC_BR_CheckRestorePositionData* inst);
 
 
 #ifdef __cplusplus

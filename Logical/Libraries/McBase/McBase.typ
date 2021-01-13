@@ -220,6 +220,10 @@ TYPE
 		vtable : DWORD; (**)
 	END_STRUCT;
 
+	McInternalTrackingPathIfType : 	STRUCT  (*Partial interface type (C only)*)
+		vtable : DWORD; (**)
+	END_STRUCT;
+
 	McExec1InternalType : STRUCT (*Internal structure-types for FB-processing*)
 		i_serno : UINT;
 		i_state : UINT;
@@ -243,6 +247,11 @@ TYPE
 
 	McAxesGroupType : 	STRUCT
 		controlif : REFERENCE TO McInternalAxesGroupIfType; (**)
+		mappLinkInternal : McInternalMappLinkType; (**)
+	END_STRUCT;
+
+	McTrackingPathType : 	STRUCT
+		controlif : REFERENCE TO McInternalTrackingPathIfType; (**)
 		mappLinkInternal : McInternalMappLinkType; (**)
 	END_STRUCT;
 

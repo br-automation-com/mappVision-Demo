@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet id="Pixel_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.NumPixels" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemNumPixels" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.MinGray" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMinGray" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.MaxGray" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMaxGray" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.MeanGray" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMeanGray" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.DeviationGray" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemDeviationGray" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.PositionX" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemPositionX" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.ModelArea" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemModelArea" attribute="node" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.NumConnectedComponents" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemNumConnectedComponents" attribute="node" />
+		</Binding>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="ItemNo" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.PositionY" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemPositionY" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.ModelNumber" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemModel" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.EnhancedPixelCounterInformation" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="btnPixelEnhancedPixelInfo" attribute="value" />
+</Binding>
+</Bindings>
+</BindingsSet>
