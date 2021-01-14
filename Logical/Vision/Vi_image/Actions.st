@@ -209,7 +209,7 @@ HtmlFileContent1 :=
 				}
 				var ImagePath 			= "http://';
 HtmlFileContent2 :=
-'" + ":8888/jpg";
+':8888/jpg";
 				var ErrorImagePath 		= "VisionEye.png";
 				var UpdateInterval_ms 	= 200;
 				var MissingImgCtr		= 0;
