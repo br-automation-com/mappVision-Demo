@@ -161,7 +161,7 @@
       <Parameter ID="SubnetMask" Value="255.255.255.0" />
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Visu" />
-      <Parameter ID="VncKeyMappingFile1" Value="VC\PS2-Keyboard.dis" />
+      <Parameter ID="VncKeyMappingFile1" Value="" />
     </Connector>
     <Connector Name="IF3">
       <Parameter ID="MtuSize" Value="1500" />
