@@ -1,4 +1,7 @@
 VAR_CONFIG
+	Cyclic#1.::NettimeCurrent_us AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
+	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP0483".IF3.NettimeSoC;
+	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP1586".IF3.NettimeSoC;
 	Cyclic#1.::gVisionSensor[1].HW.Connected AT %IX."Blob".ModuleOk;
 	Cyclic#1.::gVisionSensor[1].HW.SerialNumber AT %ID."Blob".SerialNumber;
 	Cyclic#1.::gVisionSensor[1].HW.ID AT %ID."Blob".ModuleID;
@@ -571,10 +574,6 @@ VAR_CONFIG
 	Cyclic#1.::gVisionLight[3].DAT.Exposure AT %QD."Lightbar1".ExposureTime01;
 	Cyclic#1.::gVisionLight[3].DAT.FlashColor AT %QB."Lightbar1".FlashColor01;
 	Cyclic#1.::gVisionLight[3].DAT.SetAngle AT %QW."Lightbar1".SetAngleTotal;
-	Cyclic#1.::NettimeCurrent_us AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
-	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP0483".IF3.NettimeSoC;
-	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP1586".IF3.NettimeSoC;
-	Cyclic#1.::gVisionLight[3].DAT.FlashSegment AT %QW."Lightbar1".FlashSegment01;
 	Cyclic#1.::gVisionSensor[6].HW.Connected AT %IX."PixelCounter".ModuleOk;
 	Cyclic#1.::gVisionSensor[6].HW.SerialNumber AT %ID."PixelCounter".SerialNumber;
 	Cyclic#1.::gVisionSensor[6].HW.ID AT %ID."PixelCounter".ModuleID;
