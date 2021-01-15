@@ -2,7 +2,8 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Cpu xmlns="http://br-automation.co.at/AS/Cpu">
   <Objects>
-    <Object Type="File" Description="Software configuration">Cpu.sw</Object>
+    <Object Type="File" Description="Software configuration" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\Cpu.sw</Object>
+	<Object Type="File" Description="Software configuration">CpuVC4.sw</Object>
     <Object Type="File" Description="Permanent variables" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\Cpu.per</Object>
     <Object Type="File" Description="I/O mapping" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\IoMap.iom</Object>
     <Object Type="File" Description="Variable mapping" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\PvMap.vvm</Object>
