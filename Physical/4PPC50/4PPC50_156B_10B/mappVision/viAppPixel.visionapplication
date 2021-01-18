@@ -13,19 +13,19 @@
         <Property ID="ChannelID" Value="EnhancedPixelCounterInformation" />
       </Group>
       <Group ID="Input[3]">
-        <Property ID="ChannelID" Value="OffsetROIX" />
+        <Property ID="ChannelID" Value="OffsetRoiX" />
       </Group>
       <Group ID="Input[4]">
-        <Property ID="ChannelID" Value="OffsetROIY" />
+        <Property ID="ChannelID" Value="OffsetRoiY" />
       </Group>
       <Group ID="Input[5]">
-        <Property ID="ChannelID" Value="OffsetROIOrientation" />
+        <Property ID="ChannelID" Value="OffsetRoiOrientation" />
       </Group>
       <Group ID="Input[6]">
-        <Property ID="ChannelID" Value="OffsetROIRotCenterX" />
+        <Property ID="ChannelID" Value="OffsetRoiRotationCenterX" />
       </Group>
       <Group ID="Input[7]">
-        <Property ID="ChannelID" Value="OffsetROIRotCenterY" />
+        <Property ID="ChannelID" Value="OffsetRoiRotationCenterY" />
       </Group>
     </Group>
     <Group ID="ImgProcessingVariables" />
@@ -70,27 +70,27 @@
             </Group>
             <Group ID="OffsetROIX">
               <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="OffsetROIX" />
+                <Property ID="IoParameter" Value="OffsetRoiX" />
               </Selector>
             </Group>
             <Group ID="OffsetROIY">
               <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="OffsetROIY" />
+                <Property ID="IoParameter" Value="OffsetRoiY" />
               </Selector>
             </Group>
             <Group ID="OffsetROIOrientation">
               <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="OffsetROIOrientation" />
+                <Property ID="IoParameter" Value="OffsetRoiOrientation" />
               </Selector>
             </Group>
             <Group ID="OffsetROIRotCenterX">
               <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="OffsetROIRotCenterX" />
+                <Property ID="IoParameter" Value="OffsetRoiRotationCenterX" />
               </Selector>
             </Group>
             <Group ID="OffsetROIRotCenterY">
               <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="OffsetROIRotCenterY" />
+                <Property ID="IoParameter" Value="OffsetRoiRotationCenterY" />
               </Selector>
             </Group>
           </Group>
