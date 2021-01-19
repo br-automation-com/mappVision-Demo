@@ -15,6 +15,7 @@
       <Parameter ID="InternetAddress" Value="10.49.140.161" />
       <Parameter ID="SubnetMask" Value="255.255.255.0" />
       <Parameter ID="InaNodeNumber" Value="212" />
+      <Parameter ID="ActivateSnmp" Value="2" />
     </Connector>
     <Connector Name="IF3">
       <Parameter ID="AssignedOperatingSystem" Value="ARemb" />

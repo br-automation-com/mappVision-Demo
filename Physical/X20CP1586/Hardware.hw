@@ -162,6 +162,7 @@
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Visu" />
       <Parameter ID="VncKeyMappingFile1" Value="" />
+      <Parameter ID="ActivateSnmp" Value="2" />
     </Connector>
     <Connector Name="IF3">
       <Parameter ID="MtuSize" Value="1500" />
