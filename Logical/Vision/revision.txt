@@ -1,4 +1,4 @@
-Version 2.3 (Development)
+Version 2.3
  - Added RouteInfo_Tool.ps1
  - Added color detection first version
  - Split up main task into main and visu, integrated light task into main and visu

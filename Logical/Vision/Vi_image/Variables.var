@@ -9,9 +9,18 @@ VAR
 	tmpStr : STRING[80];
 END_VAR
 (**)
-(*Filehandling*)
+(*Proxy variables*)
+VAR
+	nodeSTR : STRING[80];
+	ipSTR : STRING[80];
+	TcpForward_0 : TcpForward;
+END_VAR
+(**)
 VAR
 	DirCreate_0 : DirCreate;
+END_VAR
+(*Filehandling*)
+VAR
 	DirDeleteEx_0 : DirDeleteEx;
 	FileDelete_0 : FileDelete;
 END_VAR

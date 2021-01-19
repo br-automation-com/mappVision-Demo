@@ -33,6 +33,10 @@ PROGRAM _INIT
 	CfgGetIPAddr_0.pDevice		:= ADR(gVisionImage.CFG.EthDevice);
 	CfgGetIPAddr_0.pIPAddr		:= ADR(gVisionImage.CFG.EthIP);
 	CfgGetIPAddr_0();
+	// Proxy server settings
+	TcpForward_0.ServerPort := 8888;
+	TcpForward_0.ConnectToPort := 8080 ; 			
+	TcpForward_0.Enable := TRUE ;
 END_PROGRAM
 PROGRAM _CYCLIC
 	CASE Step OF
@@ -185,6 +189,13 @@ PROGRAM _CYCLIC
 			END_IF
 			brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));
 	END_CASE
+	
+	// Proxy server cyclic call
+	ipSTR := '192.168.200.';
+	brsitoa(visSelectedSensor, ADR(nodeSTR));
+	brsstrcat(ADR(ipSTR), ADR(nodeSTR));
+	TcpForward_0.ConnectToIp := ipSTR; 				
+	TcpForward_0();
 
 	// Draw the crosshairs on the mainpage
 	ViDrawCrosshair_0.SelectedSensor		:= visSelectedSensor;

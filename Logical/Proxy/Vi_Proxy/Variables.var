@@ -1,5 +1,0 @@
-VAR
-	nodeSTR : STRING[80];
-	ipSTR : STRING[80];
-	TcpForward_0 : TcpForward;
-END_VAR
