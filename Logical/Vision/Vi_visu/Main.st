@@ -147,7 +147,9 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF((visImageTrigger OR EDGEPOS(VisionSensor.DAT.Enable)) AND VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive) THEN
 		// Add default delay and fire trigger
-		VisionSensor.DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+		IF NETTIME_ENABLE THEN
+			VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+		END_IF
 		VisionSensor.CMD.ImageTrigger	:= TRUE;
 		visImageTrigger					:= FALSE;
 		VisionSensor.DAT.Active			:= TRUE;
@@ -173,8 +175,10 @@ PROGRAM _CYCLIC
 		RepetitiveModeTimer.IN := TRUE;
 		IF RepetitiveModeTimer.Q THEN
 			IF VisionSensor.HW.Ready AND NOT VisionSensor.DAT.ImageProcessingActive THEN
+				IF NETTIME_ENABLE THEN
+					VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+				END_IF
 				RepetitiveModeTimer.IN := FALSE;
-				VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 				VisionSensor.CMD.ImageTrigger := TRUE;
 			END_IF
 		END_IF
@@ -258,7 +262,9 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	IF(visLightsTrigger AND VisionLight.HW.Ready) THEN
 		// Add default delay and fire trigger
-		VisionLight.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+		IF NETTIME_ENABLE THEN
+			VisionLight.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+		END_IF
 		VisionLight.CMD.FlashTrigger := TRUE;
 		visLightsTrigger := FALSE;
 	END_IF

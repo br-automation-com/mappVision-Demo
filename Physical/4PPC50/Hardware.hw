@@ -131,7 +131,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="gCameraBlob" />
+    <Parameter ID="VisionConfig" Value="" />
   </Module>
   <Module Name="Backlight2" Type="VSLB11F00.54DP-000" Version="1.1.0.326">
     <Connection Connector="PLK1" TargetModule="Backlight1" TargetConnector="PLK2">
@@ -141,7 +141,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="gCameraBlob" />
+    <Parameter ID="VisionConfig" Value="" />
   </Module>
   <Module Name="Blob" Type="VSS112Q22.041P-000" Version="1.2.0.341">
     <Connection Connector="PLK1" TargetModule="4PPC50_156B_10B" TargetConnector="IF1" NodeNumber="1">
@@ -171,7 +171,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="gCameraBlob" />
+    <Parameter ID="VisionConfig" Value="" />
   </Module>
   <Module Name="Match" Type="VSS112Q22.041P-000" Version="1.2.0.341">
     <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="3">

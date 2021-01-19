@@ -29,13 +29,6 @@
       </Group>
     </Group>
     <Group ID="ImgProcessingVariables" />
-    <Group ID="ImageAcquisition">
-      <Group ID="AcquisitionConfiguration">
-        <Selector ID="TriggerSource">
-          <Property ID="TriggerDelay" Value="1" />
-        </Selector>
-      </Group>
-    </Group>
     <Group ID="VisionFunctionSet">
       <Group ID="VfInstance[1]">
         <Property ID="VfName" Value="PixelCounter" />

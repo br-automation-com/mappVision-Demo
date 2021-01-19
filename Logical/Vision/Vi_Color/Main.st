@@ -47,7 +47,9 @@ PROGRAM _CYCLIC
 				RETURN;
 			END_IF
 			// Take new image with selected color
-			gVisionSensor[VI_COLOR_SENSOR].DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+			IF NETTIME_ENABLE THEN
+				gVisionSensor[VI_COLOR_SENSOR].DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+			END_IF
 			gVisionSensor[VI_COLOR_SENSOR].CMD.ImageTrigger 	:= TRUE;
 			IF(gVisionColor.CMD.Teach) THEN
 				Step := VISTEP_TEACH;

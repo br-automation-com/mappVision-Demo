@@ -71,7 +71,9 @@ PROGRAM _CYCLIC
 	IF TON_DelayAfterAutoSetup[idSensor].Q THEN // After the camera tells it is ready, we need to wait still at least ca 20ms, otherwise it does not accept the trigger
 		TON_DelayAfterAutoSetup[idSensor].IN := FALSE;
 		IF gVisionSensor[idSensor].HW.Ready AND NOT gVisionSensor[idSensor].DAT.ImageProcessingActive THEN
-			gVisionSensor[idSensor].DAT.NettimeDelay	:= NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+			IF NETTIME_ENABLE THEN
+				gVisionSensor[idSensor].DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
+			END_IF
 			gVisionSensor[idSensor].CMD.ImageTrigger	:= TRUE;
 			gVisionSensor[idSensor].DAT.Active			:= TRUE;
 		END_IF
