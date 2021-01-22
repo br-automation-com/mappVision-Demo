@@ -5,7 +5,7 @@
 
 <a name="Introduction"></a>
 ## Introduction
-This is a demo application for B&R vision camera. It is devloped and maintained by vision enthusiasts and is not and official B&R product. For a detailed description see this [**documentation**](Logical/Documentation/Vision%20Demo%20Application.pdf). Download the latest release from [**here.**](../../releases)
+This is a demo application for B&R vision camera. It is devloped and maintained by vision enthusiasts and is not and official B&R product. For a detailed description see this [**documentation**](Logical/Documentation/Vision%20Demo%20Application.pdf). 
 
 **Note:** For better alignment between the index number and IO names most arrays start at index 1 (not 0). This can cause issues with C Task since these tasks do not support arrays starting at index 1. Most arrays can be redefined starting with 0 without any issues from a code perspective but it will cause an empty line in the mappView result tables.
 
@@ -14,13 +14,9 @@ This is a demo application for B&R vision camera. It is devloped and maintained 
 <a name="Requirements"></a>
 ## Requirements (current used versions)
 Should also work with newer and some older versions
-* Automation Studio 4.7
-* mappView 5.12
-* mappVision 5.12
-* Automation Runtime A4.73
-* mappMotion 5.12 (for nettime functions in combination with the included axis)
-* mappCockpit 5.12 (for mappMotion)
-* mappServices 5.12 (for mappRecipe)
+* Automation Studio 4.9
+* mapp 5.13
+* Automation Runtime C4.90
 
 Recommended task class is #8 with a 10ms cycle time. For the nettime and axis tasks use #1
 
@@ -28,6 +24,16 @@ Recommended task class is #8 with a 10ms cycle time. For the nettime and axis ta
 ## Revision History
 You can find details in the project in "revision.txt"
 
+#### Version 2.3
+ - Added RouteInfo_Tool.ps1
+ - Added color detection first version
+ - Split up main task into main and visu, integrated light task into main and visu
+ - Added funkctionality to rotate the image on the main page
+ - Click on the image on the main page toggles now the textposition (crosshair-details) from left to right
+ - CodeReader and OCR Text will be shown on the main page and saved in SVG file
+ - Added proxy task to eliminate routing batch file
+ - Added Pixel Counter hardware and code
+ 
 #### Version 2.2
 - Added new functionality to show images in every size on the webviewer widget on the mainpage
 - Improved repetitive mode
