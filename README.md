@@ -1,5 +1,6 @@
 ## Table of Contents
 * [Introduction](#Introduction)
+* [Features](#Features)
 * [Requirements](#Requirements)
 * [Revision History](#Revision-History)
 
@@ -10,6 +11,22 @@ This is a demo application for B&R vision camera. It is devloped and maintained 
 **Note:** For better alignment between the index number and IO names most arrays start at index 1 (not 0). This can cause issues with C Task since these tasks do not support arrays starting at index 1. Most arrays can be redefined starting with 0 without any issues from a code perspective but it will cause an empty line in the mappView result tables.
 
 ![](Logical/Documentation/screenshot.png)
+
+<a name="Features"></a>
+## Features
+This vision sample contains a lot of functions that are not included in the mappVision HMI (Vision cockpit). These include:
+- Easy-to-use mappView visualization
+- All IO data points of the camera are connected to the visualization
+- Image archive to save the images
+    - different formats available (jpg, bmp, svg)
+    - selection of quality levels for compressed images (jpg)
+    - Embedded crosshairs in the image (svg)
+- Rotation of the image on the main page
+- fast repetitive mode (5 fps/200ms)
+- Simultaneous use of several cameras in one visualization
+- Use of the nettime function together with axes
+- Integration of Lightbar and Backligt
+- Recipe management for the used parameters
 
 <a name="Requirements"></a>
 ## Requirements (current used versions)
