@@ -7,6 +7,7 @@ PROGRAM _INIT
 	gVisionSensor[VI_COLOR_SENSOR].DAT.Exposure := 150;
 	gVisionSensor[VI_COLOR_SENSOR].DAT.ChromaticLock := TRUE;
 	gBlob.EnhancedBlobInformation := TRUE;
+	visTableNo;
 	 
 END_PROGRAM
 
