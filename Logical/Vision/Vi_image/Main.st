@@ -36,7 +36,6 @@ PROGRAM _INIT
 	// Proxy server settings
 	TcpForward_0.ServerPort := 8888;
 	TcpForward_0.ConnectToPort := 8080 ; 			
-	TcpForward_0.Enable := TRUE ;
 END_PROGRAM
 PROGRAM _CYCLIC
 	CASE Step OF
@@ -190,11 +189,16 @@ PROGRAM _CYCLIC
 			brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));
 	END_CASE
 	
-	// Proxy server cyclic call
-	ipSTR := '192.168.200.';
+	// Proxy server cyclic call ( Only needed for information. ) 
+	ipSTR := gVisionImage.CFG.PlkIPWithoutNode;
 	brsitoa(visSelectedSensor, ADR(nodeSTR));
 	brsstrcat(ADR(ipSTR), ADR(nodeSTR));
-	TcpForward_0.ConnectToIp := ipSTR; 				
+	IF brsstrcmp( ADR( TcpForward_0.ConnectToIp ),ADR( ipSTR )) <> 0 THEN
+		TcpForward_0.ConnectToIp := ipSTR ;
+		TcpForward_0.Enable := FALSE ;	
+	ELSE
+		TcpForward_0.Enable := gVisionSensor[visSelectedSensor].HW.Connected ; // Only enable if its connected
+	END_IF
 	TcpForward_0();
 
 	// Draw the crosshairs on the mainpage
@@ -256,4 +260,13 @@ PROGRAM _CYCLIC
 	gVisionImage.DAT.VisionDisabled := NOT gVisionSensor[visSelectedSensor].DAT.Enable;
 	
 	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
+END_PROGRAM
+
+
+PROGRAM _EXIT
+  
+	(* After download make sure to close this connection. If this is not closed the functionblock cant retrieve the new information *)
+	TcpForward_0.Enable := FALSE;
+	TcpForward_0();
+    
 END_PROGRAM
