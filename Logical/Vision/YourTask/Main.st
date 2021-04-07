@@ -8,7 +8,8 @@
 PROGRAM _INIT
 	// -----------------------------------------------------------------------------------------------------------
 	// Vision sensor configuration
-	// -----------------------------------------------------------------------------------------------------------	
+	// -----------------------------------------------------------------------------------------------------------
+	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
 	// Configuration for blob
 	gVisionSensor[1].CFG.VisionFunction		:= enumBlob;		// Used to run specific code for this vision function
 	gVisionSensor[1].CFG.PowerlinkNode		:= 1;				// Powerlink node number

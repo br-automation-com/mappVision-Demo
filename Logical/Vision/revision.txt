@@ -1,3 +1,10 @@
+Next Version
+- Update recipe managment to V1.0
+- Updated constant for code reader parameter "ParameterMode"
+- Fix ViColor
+- Make it possible to change connections
+- Updated to official 5.13 versions and official lightbar upgrade
+
 Version 2.3
  - Added RouteInfo_Tool.ps1
  - Added color detection first version
