@@ -90,11 +90,18 @@ PROGRAM _CYCLIC
 	// Code Reader - selected/detected types
 	// -----------------------------------------------------------------------------------------------------------
 	IF VisionSensor.CFG.VisionFunction = enumCoderReader THEN
-		IF(visSelectedCodeTypeToPLC <> '') THEN
-			CodeReader.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypeToPLC)));
-			visSelectedCodeTypeToPLC := '';
+		IF visSelectedCodeType <> visSelectedCodeTypeOld THEN
+			CodeReader.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeType)));
+		ELSE
+			brsitoa(CodeReader.CodeType, ADR(visSelectedCodeType));
 		END_IF
-		brsitoa(CodeReader.CodeType, ADR(visSelectedCodeTypeFromPLC));
+		visSelectedCodeTypeOld := visSelectedCodeType;
+		IF visSelectedParameterMode <> visSelectedParameterModeOld THEN
+			CodeReader.ParameterMode := UDINT_TO_USINT(brsatoi(ADR(visSelectedParameterMode)));
+		ELSE
+			brsitoa(CodeReader.ParameterMode, ADR(visSelectedParameterMode));
+		END_IF
+		visSelectedParameterModeOld := visSelectedParameterMode;
 		FOR i := 1 TO MAX_NUM_RESULTS DO
 			IF CodeReader.BarcodeType[i] <> 0 THEN
 				brsstrcpy(ADR(visSelectedCodeTypeDetected[i]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[i], MAX_NUM_CODETYPES)]));

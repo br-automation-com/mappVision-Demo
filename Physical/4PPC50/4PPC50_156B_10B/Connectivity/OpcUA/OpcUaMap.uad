@@ -138,8 +138,6 @@
         <Variable Name="VisionSensor" AutomaticEnable="True" />
         <Variable Name="visRepetitiveMode" />
         <Variable Name="visSelectedCodeTypeDetected" />
-        <Variable Name="visSelectedCodeTypeFromPLC" />
-        <Variable Name="visSelectedCodeTypeToPLC" />
         <Variable Name="visSelectedFlashSegment" EnableArrayElements="True" />
         <Variable Name="visTableNo" />
         <Variable Name="visVaListRefresh" />
@@ -206,6 +204,8 @@
           <Variable Name="PositionX" EnableArrayElements="True" />
           <Variable Name="PositionY" EnableArrayElements="True" />
         </Variable>
+        <Variable Name="visSelectedCodeType" />
+        <Variable Name="visSelectedParameterMode" />
       </Task>
     </Module>
   </DefaultView>

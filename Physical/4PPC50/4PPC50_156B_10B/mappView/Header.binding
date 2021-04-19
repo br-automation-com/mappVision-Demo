@@ -27,7 +27,7 @@
 		</Binding>
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.CFG.VisionFunction" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="DropDownBox1" attribute="selectedIndex" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="DropDownBoxFunction" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:visSelectedSensor" attribute="value" />

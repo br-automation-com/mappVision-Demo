@@ -10,12 +10,12 @@
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="btnCodeReaderGrading" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedCodeTypeFromPLC" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedCodeType" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderTypePreset" attribute="selectedValue" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.ParameterMode" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderParamMode" attribute="selectedIndex" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedParameterMode" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderParamMode" attribute="selectedValue" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.ParameterOptimization" attribute="value" />

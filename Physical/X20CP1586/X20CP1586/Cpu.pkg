@@ -3,7 +3,7 @@
 <Cpu xmlns="http://br-automation.co.at/AS/Cpu">
   <Objects>
     <Object Type="File" Description="Software configuration" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\Cpu.sw</Object>
-	<Object Type="File" Description="Software configuration">CpuVC4.sw</Object>
+    <Object Type="File" Description="Software configuration">CpuVC4.sw</Object>
     <Object Type="File" Description="Permanent variables" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\Cpu.per</Object>
     <Object Type="File" Description="I/O mapping" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\IoMap.iom</Object>
     <Object Type="File" Description="Variable mapping" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\PvMap.vvm</Object>
@@ -22,6 +22,7 @@
     <Build GccVersion="6.3.0" PostBuildStep="Powershell.exe -executionpolicy remotesigned -File &quot;$(WIN32_AS_PROJECT_PATH)/Logical/Vision/RouteInfo_Tool.ps1&quot; -ProjectPath &quot;$(WIN32_AS_PROJECT_PATH)&quot; -ProjectCfg &quot;$(AS_CONFIGURATION)&quot;" PreBuildStep="" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Safety SafetyRelease="0.0" />
+    <Transfer SavedOfflineInstallationFolder="" SavedPipDestinationFolder="" SavedRuntimeUtilityCenterPackagePath="" />
     <Vc FirmwareVersion="V4.72.2" />
     <OnlineConfiguration Name="X20CP1586_2" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=251" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.100 /REPO=11159 /ANSL=1 /PT=11169" Description="" />
   </Configuration>

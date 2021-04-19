@@ -55,8 +55,10 @@ END_VAR
 (*Code Reader*)
 VAR
 	visSelectedCodeTypeDetected : ARRAY[1..MAX_NUM_RESULTS] OF STRING[80]; (*HMI helper string*)
-	visSelectedCodeTypeFromPLC : STRING[80]; (*HMI helper string*)
-	visSelectedCodeTypeToPLC : STRING[80]; (*HMI helper string*)
+	visSelectedCodeType : STRING[80]; (*HMI helper string*)
+	visSelectedCodeTypeOld : STRING[80]; (*HMI helper string*)
+	visSelectedParameterMode : STRING[80]; (*HMI helper string*)
+	visSelectedParameterModeOld : STRING[80]; (*HMI helper string*)
 	visCodeTypePresentDropDownValues : ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
