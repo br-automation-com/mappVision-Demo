@@ -207,6 +207,26 @@
         <Variable Name="visSelectedCodeType" />
         <Variable Name="visSelectedParameterMode" />
       </Task>
+      <Task Name="Vi_Optics">
+        <Variable Name="Binning" />
+        <Variable Name="cmdReadCameraInfo" />
+        <Variable Name="DepthOfField_mm" />
+        <Variable Name="DepthOfFieldFarPos_mm" />
+        <Variable Name="DepthOfFieldNearPos_mm" />
+        <Variable Name="Distance_mm" />
+        <Variable Name="FieldOfView_X_mm" />
+        <Variable Name="FieldOfView_Y_mm" />
+        <Variable Name="FocalLength_mm" />
+        <Variable Name="Lens" />
+        <Variable Name="MaxObjectDist_mm" />
+        <Variable Name="MinObjectDist_mm" />
+        <Variable Name="OrderNr" />
+        <Variable Name="Resolution_mmPerPx" />
+        <Variable Name="ResolutionX" />
+        <Variable Name="ResolutionY" />
+        <Variable Name="Sensor" />
+        <Variable Name="ValidDistance" />
+      </Task>
     </Module>
   </DefaultView>
 </OpcUaSource>

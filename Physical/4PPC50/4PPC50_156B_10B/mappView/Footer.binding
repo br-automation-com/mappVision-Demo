@@ -161,5 +161,65 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DIA.Status" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDIAG_Status" attribute="value" />
 		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:cmdReadCameraInfo" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnReadValues" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:Distance_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDistance" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:Lens" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxLens" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:Sensor" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxSensor" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:Binning" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxBinning" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:MaxObjectDist_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxLensDistance" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:MinObjectDist_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMinLensDistance" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:DepthOfFieldNearPos_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numNearDistance" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:ValidDistance" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnValidDistance" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:DepthOfFieldFarPos_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFarDistance" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:FieldOfView_X_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFoV_X" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:DepthOfField_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDepthOfField" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:Resolution_mmPerPx" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numResolution" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:FieldOfView_Y_mm" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFoV_Y" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_Optics:OrderNr" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="txtCameraOrderNr" attribute="value" />
+		</Binding>
 	</Bindings>
 </BindingsSet>

@@ -18,6 +18,7 @@
     <Task Name="Vi_image" Source="Vision.Vi_image.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Recipe_01" Source="mappRecipe.Recipe_01.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="YourTask" Source="Vision.YourTask.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vi_Optics" Source="Vision.Vi_Optics.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <DataObjects>
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />
@@ -54,11 +55,11 @@
     <BinaryObject Name="vccurl" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcrt" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcnet" Source="" Memory="UserROM" Language="Binary" />
-    <BinaryObject Name="vcpfgen" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Visu02" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcbclass" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcdsint" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vccovl" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpfx20" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viAppOCR" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Settings" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="iomap" Source="" Memory="UserROM" Language="Binary" />
@@ -86,6 +87,7 @@
     <BinaryObject Name="viAppBlob2" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viAppPixel" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viCompPxl" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpfgen" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viAppBlob" Source="" Memory="UserROM" Language="Binary" />
   </Binaries>
   <Libraries>
@@ -123,5 +125,6 @@
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="vcresman" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="dataobj" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="ashw" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

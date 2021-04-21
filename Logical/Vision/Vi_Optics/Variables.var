@@ -1,0 +1,65 @@
+(*Read camera ordernumber*)
+VAR
+	cmdReadCameraInfo : BOOL;
+	DiagCreateInfo_0 : DiagCreateInfo;
+	DiagGetNumInfo_0 : DiagGetNumInfo;
+	DiagGetStrInfo_0 : DiagGetStrInfo;
+	DiagDisposeInfo_0 : DiagDisposeInfo;
+	OrderNr : STRING[80];
+	ReadStep : INT;
+	Index : UDINT;
+	pChar : REFERENCE TO USINT;
+END_VAR
+(**)
+(*Inputs*)
+VAR
+	Distance_mm : LREAL; (*Distance object to camera front glass*)
+	Sensor : USINT;
+	Lens : USINT;
+	Binning : BOOL;
+END_VAR
+(**)
+(*Sensor and lens depending values*)
+VAR
+	PixelSize_um : LREAL;
+	ResolutionX : INT;
+	ResolutionY : INT;
+	FocalLength_mm : LREAL;
+	MinObjectDist_mm : LREAL;
+	MaxObjectDist_mm : LREAL;
+	Aperture : LREAL;
+END_VAR
+(**)
+(*Internal*)
+VAR
+	DistanceLens_mm : LREAL;
+	PixelSizeBinning_um : LREAL;
+	CircleOfConfusion_mm : LREAL;
+	HyperFocalDistance_mm : LREAL;
+END_VAR
+(**)
+(*Outputs (calculated)*)
+VAR
+	ValidDistance : BOOL;
+	DepthOfFieldNearPos_mm : LREAL;
+	DepthOfFieldFarPos_mm : LREAL;
+	DepthOfField_mm : LREAL;
+	FieldOfView_X_mm : LREAL;
+	FieldOfView_Y_mm : LREAL;
+	Resolution_mmPerPx : LREAL;
+END_VAR
+(**)
+(*Constants*)
+VAR CONSTANT
+	DISTANCE_FRONTGLASS_LENS_MM : LREAL := 15.0;
+	SENSOR_1_3_MP : USINT := 0;
+	SENSOR_3_5_MP : USINT := 1;
+	SENSOR_5_3_MP : USINT := 2;
+	LENS_4_6 : USINT := 0;
+	LENS_6_0 : USINT := 1;
+	LENS_8_0 : USINT := 2;
+	LENS_12_0 : USINT := 3;
+	LENS_16_0 : USINT := 4;
+	LENS_25_0 : USINT := 5;
+	LENS_12_0_MACRO : USINT := 6;
+END_VAR

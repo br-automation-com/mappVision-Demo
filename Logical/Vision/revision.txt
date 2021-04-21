@@ -4,6 +4,7 @@ Next Version
 - Fix ViColor
 - Make it possible to change connections
 - Updated to official 5.13 versions and official lightbar upgrade
+- Vi_Optics added
 
 Version 2.3
  - Added RouteInfo_Tool.ps1
