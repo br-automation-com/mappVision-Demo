@@ -78,7 +78,7 @@
         <Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Temperature" top="164" left="154" height="25" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faDiagnostics" top="0" left="640" width="300" height="150" zIndex="44" buttonOffset="20" docking="bottom" showOnTop="true" text="Diagnostics" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faDiagnostics" top="0" left="640" width="300" height="290" zIndex="44" buttonOffset="20" docking="bottom" showOnTop="true" text="Diagnostics" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="Label15" top="24" left="14" width="96" height="25" zIndex="0" text="File Name" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.TextInput" id="txtDiagName" top="19" left="114" width="175" zIndex="1" />
