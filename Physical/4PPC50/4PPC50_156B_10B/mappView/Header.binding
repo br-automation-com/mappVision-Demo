@@ -15,7 +15,7 @@
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visCameraStatus" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraStatus1" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="txtCameraStatus" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.CockpitIsActive" attribute="value" />
