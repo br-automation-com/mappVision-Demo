@@ -19,6 +19,31 @@ VAR
 	FlashCompletedCntOld : ARRAY[1..MAX_NUM_LIGHTS] OF USINT;
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Camera info*)
+VAR
+	DiagCreateInfo_0 : DiagCreateInfo;
+	DiagGetNumInfo_0 : DiagGetNumInfo;
+	DiagGetStrInfo_0 : DiagGetStrInfo;
+	DiagDisposeInfo_0 : DiagDisposeInfo;
+	OpticsReadStep : ARRAY[0..MAX_NUM_CAMS] OF USINT;
+	Index : UDINT;
+	pChar : REFERENCE TO USINT;
+END_VAR
+(*Constants*)
+VAR CONSTANT
+	DISTANCE_FRONTGLASS_LENS_MM : LREAL := 15.0;
+	SENSOR_1_3_MP : USINT := 0;
+	SENSOR_3_5_MP : USINT := 1;
+	SENSOR_5_3_MP : USINT := 2;
+	LENS_4_6 : USINT := 0;
+	LENS_6_0 : USINT := 1;
+	LENS_8_0 : USINT := 2;
+	LENS_12_0 : USINT := 3;
+	LENS_16_0 : USINT := 4;
+	LENS_25_0 : USINT := 5;
+	LENS_12_0_MACRO : USINT := 6;
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Image, crosshair data and constants*)
 VAR
 	i : UINT;

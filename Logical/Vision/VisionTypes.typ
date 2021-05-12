@@ -8,6 +8,7 @@ TYPE
 		DAT : typVisionData;
 		FCT : typVisionFunction;
 		DIA : typVisionDiag;
+		OPT : typVisionOptics;
 		HW : typVisionHW;
 	END_STRUCT;
 	typVisionCommand : 	STRUCT 
@@ -16,6 +17,7 @@ TYPE
 		AutoSetupStartStop : BOOL;
 		VaSwitchApplication : BOOL;
 		SaveDiagData : BOOL;
+		ReadCameraInfo : BOOL;
 	END_STRUCT;
 	typVisionConfig : 	STRUCT 
 		VisionFunction : enumVisionFunction;
@@ -69,6 +71,31 @@ TYPE
 		Status : UDINT;
 		StatusText : STRING[30];
 		Active : BOOL;
+	END_STRUCT;
+	typVisionOptics : 	STRUCT 
+		OrderNr : STRING[40];
+		Binning : BOOL;
+		ResolutionX : INT;
+		ResolutionY : INT;
+		Lens : USINT;
+		Sensor : USINT;
+		ValidDistance : BOOL;
+		Distance_mm : LREAL;
+		DistanceLens_mm : LREAL;
+		HyperFocalDistance_mm : LREAL;
+		PixelSize_um : LREAL;
+		PixelSizeBinning_um : LREAL;
+		FocalLength_mm : LREAL;
+		MinObjectDist_mm : LREAL;
+		MaxObjectDist_mm : LREAL;
+		Aperture : LREAL;
+		CircleOfConfusion_mm : LREAL;
+		DepthOfFieldNearPos_mm : LREAL;
+		DepthOfFieldFarPos_mm : LREAL;
+		DepthOfField_mm : LREAL;
+		FieldOfView_X_mm : LREAL;
+		FieldOfView_Y_mm : LREAL;
+		Resolution_mmPerPx : LREAL;
 	END_STRUCT;
 	typVisionHW : 	STRUCT 
 		Connected : BOOL;

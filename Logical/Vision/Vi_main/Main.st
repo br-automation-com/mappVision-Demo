@@ -171,6 +171,213 @@ PROGRAM _CYCLIC
 		RETURN;
 	END_IF
 	
+	// -----------------------------------------------------------------------------------------------------------
+	// Read camera info
+	// -----------------------------------------------------------------------------------------------------------
+	CASE OpticsReadStep[idSensor] OF 
+		// -----------------------------------------------------------------------------------------------------------
+		// Wait
+		0: 
+			IF gVisionSensor[idSensor].CMD.ReadCameraInfo THEN
+				gVisionSensor[idSensor].OPT.OrderNr	:= '';
+				Index := 0;
+				OpticsReadStep[idSensor]	:= 1;
+			END_IF
+			// -----------------------------------------------------------------------------------------------------------
+			// Create DiagInformation
+		1: 
+			DiagCreateInfo_0.enable			:= TRUE;
+			DiagCreateInfo_0.infoKind		:= asdiagPLUGGED;
+			DiagCreateInfo_0();
+			IF DiagCreateInfo_0.status = 0 THEN
+				OpticsReadStep[idSensor] := 2;
+			ELSIF DiagCreateInfo_0.status <> ERR_FUB_BUSY THEN
+				OpticsReadStep[idSensor] := 90;
+			END_IF
+			// -----------------------------------------------------------------------------------------------------------
+			// Read HW-ID and compare with selected camera
+		2: 
+			DiagGetNumInfo_0.enable			:= TRUE;
+			DiagGetNumInfo_0.ident			:= DiagCreateInfo_0.ident;
+			DiagGetNumInfo_0.index			:= Index;
+			DiagGetNumInfo_0.infoCode		:= asdiagPLUGGED_MODNO;
+			DiagGetNumInfo_0();
+			IF DiagGetNumInfo_0.status = 0 THEN
+				IF DiagGetNumInfo_0.value = gVisionSensor[visSelectedSensor].HW.ID THEN
+					OpticsReadStep[idSensor] := 3;
+				ELSE
+					Index := Index + 1;
+					IF Index >= DiagCreateInfo_0.nrEntries THEN
+						OpticsReadStep[idSensor] := 91;
+					END_IF
+				END_IF
+			ELSIF DiagGetNumInfo_0.status <> ERR_FUB_BUSY THEN
+				OpticsReadStep[idSensor] := 92;
+			END_IF
+			// -----------------------------------------------------------------------------------------------------------
+			// Read ordernumber
+		3: 
+			DiagGetStrInfo_0.enable			:= TRUE;
+			DiagGetStrInfo_0.ident			:= DiagCreateInfo_0.ident;
+			DiagGetStrInfo_0.index			:= Index;
+			DiagGetStrInfo_0.infoCode		:= asdiagPLUGGED_MODULE;
+			DiagGetStrInfo_0.pBuffer		:= ADR(gVisionSensor[idSensor].OPT.OrderNr);
+			DiagGetStrInfo_0.bufferLen		:= SIZEOF(gVisionSensor[idSensor].OPT.OrderNr) - 1;
+			DiagGetStrInfo_0();
+			IF DiagGetStrInfo_0.status = 0 THEN
+				OpticsReadStep[idSensor] := 10;
+			ELSIF DiagGetStrInfo_0.status <> ERR_FUB_BUSY THEN
+				OpticsReadStep[idSensor] := 93;
+			END_IF
+			// -----------------------------------------------------------------------------------------------------------
+			// Release info function block
+		10:
+			DiagDisposeInfo_0.enable		:= TRUE;
+			DiagDisposeInfo_0.ident			:= DiagCreateInfo_0.ident;
+			DiagDisposeInfo_0();
+			IF DiagDisposeInfo_0.status = 0 THEN
+				OpticsReadStep[idSensor] := 20;
+			ELSIF DiagDisposeInfo_0.status <> ERR_FUB_BUSY THEN
+				OpticsReadStep[idSensor] := 94;
+			END_IF
+			// -----------------------------------------------------------------------------------------------------------
+			// Get the info to the actual camara
+		20: 
+			IF brsstrlen(ADR(gVisionSensor[idSensor].OPT.OrderNr)) = 18 THEN
+				pChar ACCESS ADR(gVisionSensor[idSensor].OPT.OrderNr) + 8; 	// Letter for Sensor
+				CASE pChar OF
+					16#31:  gVisionSensor[idSensor].OPT.Sensor := SENSOR_1_3_MP; // ASCII '1'
+					16#32:  gVisionSensor[idSensor].OPT.Sensor := SENSOR_1_3_MP; // ASCII '2'
+					16#34:  gVisionSensor[idSensor].OPT.Sensor := SENSOR_3_5_MP; // ASCII '4'
+					16#35:  gVisionSensor[idSensor].OPT.Sensor := SENSOR_5_3_MP; // ASCII '5'
+					ELSE
+						OpticsReadStep[idSensor] := 95;
+				END_CASE
+				pChar ACCESS ADR(gVisionSensor[idSensor].OPT.OrderNr) + 10; // first letter for optics (0 or M)
+				CASE pChar OF
+					16#30:  gVisionSensor[idSensor].OPT.Lens := LENS_4_6; // ASCII '0'
+					16#4D:  gVisionSensor[idSensor].OPT.Lens := LENS_12_0_MACRO; // ASCII 'M'
+					ELSE
+						OpticsReadStep[idSensor] := 96;
+				END_CASE
+				pChar ACCESS ADR(gVisionSensor[idSensor].OPT.OrderNr) + 11; // second letter for optics
+				CASE pChar OF
+					16#30:  gVisionSensor[idSensor].OPT.Lens := LENS_4_6; // ASCII '0' // no optics
+					16#32:  gVisionSensor[idSensor].OPT.Lens := LENS_4_6; // ASCII '2'
+					16#33:  gVisionSensor[idSensor].OPT.Lens := LENS_6_0; // ASCII '3'
+					16#34:  gVisionSensor[idSensor].OPT.Lens := LENS_8_0; // ASCII '4'
+					16#35: // ASCII '5'
+					IF gVisionSensor[idSensor].OPT.Lens = LENS_12_0_MACRO THEN
+						// do noting, already selected
+					ELSE
+						gVisionSensor[idSensor].OPT.Lens := LENS_12_0;
+					END_IF
+					16#36:  gVisionSensor[idSensor].OPT.Lens := LENS_16_0; // ASCII '6'
+					16#37:  gVisionSensor[idSensor].OPT.Lens := LENS_25_0; // ASCII '7'
+					ELSE
+						OpticsReadStep[idSensor] := 97;
+				END_CASE
+				gVisionSensor[idSensor].CMD.ReadCameraInfo := FALSE;
+				OpticsReadStep[idSensor] := 0;
+			ELSE
+				OpticsReadStep[idSensor] := 98;
+			END_IF
+		90..99: // auto reset errors
+			gVisionSensor[idSensor].CMD.ReadCameraInfo := FALSE;
+			OpticsReadStep[idSensor] := 0;
+	END_CASE
+
+	// -----------------------------------------------------------------------------------------------------------
+	// Set sensor parameter
+	CASE gVisionSensor[idSensor].OPT.Sensor OF
+		SENSOR_1_3_MP:
+			gVisionSensor[idSensor].OPT.PixelSize_um		:= 4.8;
+			gVisionSensor[idSensor].OPT.ResolutionX			:= 1280;
+			gVisionSensor[idSensor].OPT.ResolutionY			:= 1024;
+		SENSOR_3_5_MP:
+			gVisionSensor[idSensor].OPT.PixelSize_um		:= 3.2;
+			gVisionSensor[idSensor].OPT.ResolutionX			:= 2112;
+			gVisionSensor[idSensor].OPT.ResolutionY			:= 1664;
+		SENSOR_5_3_MP:
+			gVisionSensor[idSensor].OPT.PixelSize_um		:= 3.2;
+			gVisionSensor[idSensor].OPT.ResolutionX			:= 2592;
+			gVisionSensor[idSensor].OPT.ResolutionY			:= 2048;
+	END_CASE
+	
+	// -----------------------------------------------------------------------------------------------------------
+	// Set lens parameter
+	CASE gVisionSensor[idSensor].OPT.Lens OF
+		LENS_4_6:
+			gVisionSensor[idSensor].OPT.FocalLength_mm		:= 4.6;
+			gVisionSensor[idSensor].OPT.MinObjectDist_mm	:= 25;
+			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 65550;
+			gVisionSensor[idSensor].OPT.Aperture			:= 3.5;
+		LENS_6_0:
+			gVisionSensor[idSensor].OPT.FocalLength_mm		:= 6.0;
+			gVisionSensor[idSensor].OPT.MinObjectDist_mm	:= 50;
+			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 65550;
+			gVisionSensor[idSensor].OPT.Aperture			:= 3.5;
+		LENS_8_0:
+			gVisionSensor[idSensor].OPT.FocalLength_mm		:= 8.0;
+			gVisionSensor[idSensor].OPT.MinObjectDist_mm	:= 50;
+			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 65500;
+			gVisionSensor[idSensor].OPT.Aperture			:= 3.5;
+		LENS_12_0:
+			gVisionSensor[idSensor].OPT.FocalLength_mm		:= 12.0;
+			gVisionSensor[idSensor].OPT.MinObjectDist_mm	:= 75;
+			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 5000;
+			gVisionSensor[idSensor].OPT.Aperture			:= 4.0;
+		LENS_16_0:
+			gVisionSensor[idSensor].OPT.FocalLength_mm		:= 16.0;
+			gVisionSensor[idSensor].OPT.MinObjectDist_mm	:= 100;
+			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 1500;
+			gVisionSensor[idSensor].OPT.Aperture			:= 4.0;
+		LENS_25_0:
+			gVisionSensor[idSensor].OPT.FocalLength_mm		:= 25.0;
+			gVisionSensor[idSensor].OPT.MinObjectDist_mm	:= 250;
+			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 1500;
+			gVisionSensor[idSensor].OPT.Aperture			:= 4.0;
+		LENS_12_0_MACRO:
+			gVisionSensor[idSensor].OPT.FocalLength_mm		:= 12.0;
+			gVisionSensor[idSensor].OPT.MinObjectDist_mm	:= 35;
+			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 65;
+			gVisionSensor[idSensor].OPT.Aperture			:= 4.0;
+	END_CASE
+	gVisionSensor[idSensor].OPT.Distance_mm := gVisionSensor[idSensor].DAT.Focus/100;
+	gVisionSensor[idSensor].OPT.ValidDistance := gVisionSensor[idSensor].OPT.Distance_mm >= gVisionSensor[idSensor].OPT.MinObjectDist_mm AND gVisionSensor[idSensor].OPT.Distance_mm <= gVisionSensor[idSensor].OPT.MaxObjectDist_mm;
+	IF gVisionSensor[idSensor].OPT.ValidDistance THEN
+		gVisionSensor[idSensor].OPT.DistanceLens_mm				:= gVisionSensor[idSensor].OPT.Distance_mm + DISTANCE_FRONTGLASS_LENS_MM; // The lens is 15mm behind the front glass
+		IF gVisionSensor[idSensor].OPT.Binning THEN
+			gVisionSensor[idSensor].OPT.PixelSizeBinning_um		:= gVisionSensor[idSensor].OPT.PixelSize_um * 2;
+		ELSE
+			gVisionSensor[idSensor].OPT.PixelSizeBinning_um		:= gVisionSensor[idSensor].OPT.PixelSize_um * 1;
+		END_IF
+		gVisionSensor[idSensor].OPT.CircleOfConfusion_mm		:= gVisionSensor[idSensor].OPT.PixelSizeBinning_um * 1 * SQRT(2.0) / 1000.0;
+		gVisionSensor[idSensor].OPT.HyperFocalDistance_mm		:= (gVisionSensor[idSensor].OPT.FocalLength_mm * gVisionSensor[idSensor].OPT.FocalLength_mm) / (gVisionSensor[idSensor].OPT.Aperture * gVisionSensor[idSensor].OPT.CircleOfConfusion_mm) + gVisionSensor[idSensor].OPT.FocalLength_mm;
+		gVisionSensor[idSensor].OPT.DepthOfFieldNearPos_mm		:= (gVisionSensor[idSensor].OPT.DistanceLens_mm * gVisionSensor[idSensor].OPT.HyperFocalDistance_mm - gVisionSensor[idSensor].OPT.FocalLength_mm) / (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm + gVisionSensor[idSensor].OPT.DistanceLens_mm - 2 * gVisionSensor[idSensor].OPT.FocalLength_mm) - DISTANCE_FRONTGLASS_LENS_MM;
+		IF gVisionSensor[idSensor].OPT.DistanceLens_mm < gVisionSensor[idSensor].OPT.HyperFocalDistance_mm THEN
+			gVisionSensor[idSensor].OPT.DepthOfFieldFarPos_mm	:= gVisionSensor[idSensor].OPT.DistanceLens_mm * (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm - gVisionSensor[idSensor].OPT.FocalLength_mm) / (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm - gVisionSensor[idSensor].OPT.DistanceLens_mm) - DISTANCE_FRONTGLASS_LENS_MM;
+			gVisionSensor[idSensor].OPT.DepthOfField_mm			:= gVisionSensor[idSensor].OPT.DepthOfFieldFarPos_mm - gVisionSensor[idSensor].OPT.DepthOfFieldNearPos_mm;
+		ELSE
+			gVisionSensor[idSensor].OPT.DepthOfFieldFarPos_mm	:= -1; // Means "infinite"
+			gVisionSensor[idSensor].OPT.DepthOfField_mm			:= -1; // Means "infinite"
+		END_IF
+		gVisionSensor[idSensor].OPT.FieldOfView_X_mm			:= gVisionSensor[idSensor].OPT.PixelSizeBinning_um / 1000 * gVisionSensor[idSensor].OPT.ResolutionX *(gVisionSensor[idSensor].OPT.DistanceLens_mm / gVisionSensor[idSensor].OPT.FocalLength_mm - 1.0);
+		gVisionSensor[idSensor].OPT.FieldOfView_Y_mm			:= gVisionSensor[idSensor].OPT.PixelSizeBinning_um / 1000 * gVisionSensor[idSensor].OPT.ResolutionY *(gVisionSensor[idSensor].OPT.DistanceLens_mm / gVisionSensor[idSensor].OPT.FocalLength_mm - 1.0);
+		gVisionSensor[idSensor].OPT.Resolution_mmPerPx			:= gVisionSensor[idSensor].OPT.FieldOfView_X_mm / gVisionSensor[idSensor].OPT.ResolutionX;
+	ELSE
+		gVisionSensor[idSensor].OPT.PixelSizeBinning_um	:= 0;
+		gVisionSensor[idSensor].OPT.DistanceLens_mm				:= 0;
+		gVisionSensor[idSensor].OPT.CircleOfConfusion_mm		:= 0;
+		gVisionSensor[idSensor].OPT.HyperFocalDistance_mm		:= 0;
+		gVisionSensor[idSensor].OPT.DepthOfFieldNearPos_mm		:= 0;
+		gVisionSensor[idSensor].OPT.DepthOfFieldFarPos_mm		:= 0;
+		gVisionSensor[idSensor].OPT.DepthOfField_mm				:= 0;
+		gVisionSensor[idSensor].OPT.FieldOfView_X_mm			:= 0;
+		gVisionSensor[idSensor].OPT.FieldOfView_Y_mm			:= 0;
+		gVisionSensor[idSensor].OPT.Resolution_mmPerPx			:= 0;
+	END_IF
+	
 	// Proceed with next sensor
 	idSensor := idSensor + 1;
 	IF (idSensor > MAX_NUM_CAMS) THEN
@@ -207,4 +414,6 @@ PROGRAM _CYCLIC
 	IF (idLight > MAX_NUM_LIGHTS) THEN
 		idLight := 1;
 	END_IF
+	
+
 END_PROGRAM
