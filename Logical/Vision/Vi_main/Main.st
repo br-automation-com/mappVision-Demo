@@ -277,6 +277,7 @@ PROGRAM _CYCLIC
 					ELSE
 						OpticsReadStep[idSensor] := 97;
 				END_CASE
+				gVisionSensor[idSensor].OPT.Distance_mm := gVisionSensor[idSensor].DAT.Focus/100;
 				gVisionSensor[idSensor].CMD.ReadCameraInfo := FALSE;
 				OpticsReadStep[idSensor] := 0;
 			ELSE
@@ -343,7 +344,6 @@ PROGRAM _CYCLIC
 			gVisionSensor[idSensor].OPT.MaxObjectDist_mm	:= 65;
 			gVisionSensor[idSensor].OPT.Aperture			:= 4.0;
 	END_CASE
-	gVisionSensor[idSensor].OPT.Distance_mm := gVisionSensor[idSensor].DAT.Focus/100;
 	gVisionSensor[idSensor].OPT.ValidDistance := gVisionSensor[idSensor].OPT.Distance_mm >= gVisionSensor[idSensor].OPT.MinObjectDist_mm AND gVisionSensor[idSensor].OPT.Distance_mm <= gVisionSensor[idSensor].OPT.MaxObjectDist_mm;
 	IF gVisionSensor[idSensor].OPT.ValidDistance THEN
 		gVisionSensor[idSensor].OPT.DistanceLens_mm				:= gVisionSensor[idSensor].OPT.Distance_mm + DISTANCE_FRONTGLASS_LENS_MM; // The lens is 15mm behind the front glass
@@ -354,7 +354,7 @@ PROGRAM _CYCLIC
 		END_IF
 		gVisionSensor[idSensor].OPT.CircleOfConfusion_mm		:= gVisionSensor[idSensor].OPT.PixelSizeBinning_um * 1 * SQRT(2.0) / 1000.0;
 		gVisionSensor[idSensor].OPT.HyperFocalDistance_mm		:= (gVisionSensor[idSensor].OPT.FocalLength_mm * gVisionSensor[idSensor].OPT.FocalLength_mm) / (gVisionSensor[idSensor].OPT.Aperture * gVisionSensor[idSensor].OPT.CircleOfConfusion_mm) + gVisionSensor[idSensor].OPT.FocalLength_mm;
-		gVisionSensor[idSensor].OPT.DepthOfFieldNearPos_mm		:= (gVisionSensor[idSensor].OPT.DistanceLens_mm * gVisionSensor[idSensor].OPT.HyperFocalDistance_mm - gVisionSensor[idSensor].OPT.FocalLength_mm) / (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm + gVisionSensor[idSensor].OPT.DistanceLens_mm - 2 * gVisionSensor[idSensor].OPT.FocalLength_mm) - DISTANCE_FRONTGLASS_LENS_MM;
+		gVisionSensor[idSensor].OPT.DepthOfFieldNearPos_mm		:= gVisionSensor[idSensor].OPT.DistanceLens_mm * (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm - gVisionSensor[idSensor].OPT.FocalLength_mm) / (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm + gVisionSensor[idSensor].OPT.DistanceLens_mm - 2 * gVisionSensor[idSensor].OPT.FocalLength_mm) - DISTANCE_FRONTGLASS_LENS_MM;
 		IF gVisionSensor[idSensor].OPT.DistanceLens_mm < gVisionSensor[idSensor].OPT.HyperFocalDistance_mm THEN
 			gVisionSensor[idSensor].OPT.DepthOfFieldFarPos_mm	:= gVisionSensor[idSensor].OPT.DistanceLens_mm * (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm - gVisionSensor[idSensor].OPT.FocalLength_mm) / (gVisionSensor[idSensor].OPT.HyperFocalDistance_mm - gVisionSensor[idSensor].OPT.DistanceLens_mm) - DISTANCE_FRONTGLASS_LENS_MM;
 			gVisionSensor[idSensor].OPT.DepthOfField_mm			:= gVisionSensor[idSensor].OPT.DepthOfFieldFarPos_mm - gVisionSensor[idSensor].OPT.DepthOfFieldNearPos_mm;
