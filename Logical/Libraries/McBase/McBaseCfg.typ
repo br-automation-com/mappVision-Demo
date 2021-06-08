@@ -3,6 +3,7 @@ TYPE
 	McCfgTypeEnum :
 		( (*Configuration system enum*)
 		mcCFG_NONE := 0, (*None -*)
+		mcCFG_MMCFG := 10, (*Associated with data type McCfgMMCfgType*)
 		mcCFG_WS := 800, (*Associated with data type McCfgWorkspaceType*)
 		mcCFG_TOOLTBL := 900, (*Tooltable -*)
 		mcCFG_FRMTBL := 1000, (*Associated with data type McCfgFrmTblType*)
@@ -46,6 +47,19 @@ TYPE
 		mcCFG_AX_FEAT_CAM_AUT_ACP := 11101, (*AxisFeatureCamAutAcopos -*)
 		mcCFG_AX_FEAT_A_IN := 11103, (*AxisFeatureAInput -*)
 		mcCFG_AX_FEAT_ACP_PAR_TBL := 11104, (*Associated with data type McCfgAxFeatAcpParTblType*)
+		mcCFG_PURE_V_AX := 12000, (*Associated with data type McCfgPureVAxType*)
+		mcCFG_PURE_V_AX_REF := 12011, (*Associated with data type McCfgPureVAxRefType*)
+		mcCFG_PURE_V_AX_HOME := 12012, (*Associated with data type McCfgPureVAxHomeType*)
+		mcCFG_PURE_V_AX_JERK_FLTR := 12013, (*Associated with data type McCfgPureVAxJerkFltrType*)
+		mcCFG_PURE_V_AX_FEAT := 12014, (*Associated with data type McCfgPureVAxFeatType*)
+		mcCFG_PURE_V_AX_MECH_ELM := 12015, (*Associated with data type McCfgPureVAxMechElmType*)
+		mcCFG_PURE_V_AX_ENC_LINK := 12016, (*Associated with data type McCfgPureVAxEncLinkType*)
+		mcCFG_PURE_V_AX_CTRL := 12017, (*Associated with data type McCfgPureVAxCtrlType*)
+		mcCFG_PURE_V_AX_STOP_REAC := 12018, (*Associated with data type McCfgPureVAxStopReacType*)
+		mcCFG_PURE_V_AX_MOVE_ERR_LIM := 12019, (*Associated with data type McCfgPureVAxMoveErrLimType*)
+		mcCFG_PURE_V_AX_DIG_IN := 12020, (*Associated with data type McCfgPureVAxDigInType*)
+		mcCFG_PURE_V_AX_STAT_IN := 12021, (*Associated with data type McCfgPureVAxStatInType*)
+		mcCFG_PURE_V_AX_CTRL_OUT := 12022, (*Associated with data type McCfgPureVAxCtrlOutType*)
 		mcCFG_STP_AX := 13000, (*Associated with data type McCfgStpAxType*)
 		mcCFG_STP_AX_REF := 13011, (*Associated with data type McCfgStpAxRefType*)
 		mcCFG_STP_AX_MECH_ELM := 13012, (*Associated with data type McCfgStpAxMechElmType*)
@@ -60,10 +74,22 @@ TYPE
 		mcCFG_STP_AX_DIG_OUT := 13021, (*Associated with data type McCfgStpAxDigOutType*)
 		mcCFG_STP_AX_FEAT := 13022, (*Associated with data type McCfgStpAxFeatType*)
 		mcCFG_STP_ENC := 13100, (*Associated with data type McCfgStpEncType*)
+		mcCFG_DS402_AX := 13500, (*Associated with data type McCfgDS402AxType*)
+		mcCFG_DS402_INV_AX := 13501, (*Associated with data type McCfgDS402InvAxType*)
+		mcCFG_DS402_AX_REF := 13511, (*Associated with data type McCfgDS402AxRefType*)
+		mcCFG_DS402_AX_MECH_ELM := 13512, (*Associated with data type McCfgDS402AxMechElmType*)
+		mcCFG_DS402_AX_ENC_SET := 13513, (*Associated with data type McCfgDS402AxEncSetType*)
+		mcCFG_DS402_AX_POS_ACT_VAL_RNG := 13514, (*Associated with data type McCfgDS402AxPosActValRngType*)
+		mcCFG_DS402_AX_CYC_SET_VAL_MOD := 13515, (*Associated with data type McCfgDS402AxCycSetValModType*)
+		mcCFG_DS402_AX_FEAT := 13516, (*Associated with data type McCfgDS402AxFeatType*)
+		mcCFG_ACP_INV_AX := 13600, (*Associated with data type McCfgAcpInvAxType*)
+		mcCFG_ACP_INV_AX_REF := 13611, (*Associated with data type McCfgAcpInvAxRefType*)
+		mcCFG_ACP_INV_AX_MECH_ELM := 13612, (*Associated with data type McCfgAcpInvAxMechElmType*)
 		mcCFG_AXGRP_ADMIN := 20000, (*Associated with data type McCfgAxGrpAdminType*)
 		mcCFG_AXGRP_FEAT_HOME_ORD := 20101, (*Associated with data type McCfgAxGrpFeatHomeOrdType*)
 		mcCFG_AXGRP_FEAT_PWR_ON_ORD := 20102, (*Associated with data type McCfgAxGrpFeatPwrOnOrdType*)
 		mcCFG_AXGRP_FEAT_EX_SNG_AX := 20103, (*Associated with data type McCfgAxGrpFeatExSngAxType*)
+		mcCFG_AXGRP_FEAT_SHR_BRK_SIG := 20104, (*Associated with data type McCfgAxGrpFeatShrBrkSigType*)
 		mcCFG_AXGRP_PATHGEN := 21000, (*Associated with data type McCfgAxGrpPathGenType*)
 		mcCFG_AXGRP_PATHGEN_BASE_SET := 21013, (*Associated with data type McCfgAxGrpPathGenBaseSetType*)
 		mcCFG_AXGRP_FEAT_PRG := 21101, (*Associated with data type McCfgAxGrpFeatPrgType*)
@@ -90,14 +116,18 @@ TYPE
 		mcCFG_AXGRP_FEAT_PATH_PREVIEW := 21122, (*Associated with data type McCfgAxGrpFeatPathPreviewType*)
 		mcCFG_AXGRP_FEAT_TAN_TOOL := 21124, (*Associated with data type McCfgAxGrpFeatTanToolType*)
 		mcCFG_AXGRP_FEAT_REV_MOVE := 21125, (*Associated with data type McCfgAxGrpFeatRevMoveType*)
+		mcCFG_ASM := 31000, (*Associated with data type McCfgAsmType*)
 		mcCFG_ASM_FEAT_CPLG := 31101, (*Associated with data type McCfgAsmFeatCplgType*)
 		mcCFG_ASM_FEAT_SIM_SH_DEF := 31102, (*Associated with data type McCfgAsmFeatSimShDefType*)
 		mcCFG_ASM_FEAT_SH_TRACE := 31103, (*Associated with data type McCfgAsmFeatShTraceType*)
 		mcCFG_ASM_FEAT_SH_AUT_ATT := 31104, (*Associated with data type McCfgAsmFeatShAutAttType*)
 		mcCFG_ASM_FEAT_LOC_LIM := 31105, (*Associated with data type McCfgAsmFeatLocLimType*)
 		mcCFG_ASM_FEAT_EX_SEG := 31106, (*Associated with data type McCfgAsmFeatExSegType*)
+		mcCFG_ASM_FEAT_SH_SHP_REG := 31107, (*Associated with data type McCfgAsmFeatShShpRegType*)
 		mcCFG_SEC_COMP := 31301, (*Associated with data type McCfgSecCompType*)
 		mcCFG_SEC_SUB := 31302, (*Associated with data type McCfgSecSubType*)
+		mcCFG_SH_STEREO_TYP := 31400, (*ShuttleStereoType -*)
+		mcCFG_SEG := 31500, (*Segment -*)
 		mcCFG_MS_CUS_STD := 50001, (*Associated with data type McCfgMSCusStdType*)
 		mcCFG_MS_2AX_CNC_XY := 51201, (*Associated with data type McCfgMS2AxCncXYType*)
 		mcCFG_MS_2AX_CNC_XZ := 51202, (*Associated with data type McCfgMS2AxCncXZType*)
@@ -123,7 +153,8 @@ TYPE
 		mcCFG_MS_4AX_ROB_B := 52402, (*Associated with data type McCfgMS4AxRobBType*)
 		mcCFG_MS_5AX_ROB_A := 52501, (*Associated with data type McCfgMS5AxRobAType*)
 		mcCFG_MS_6AX_ROB_A := 52601, (*Associated with data type McCfgMS6AxRobAType*)
-		mcCFG_MS_6AX_ROB_B := 52602 (*Associated with data type McCfgMS6AxRobBType*)
+		mcCFG_MS_6AX_ROB_B := 52602, (*Associated with data type McCfgMS6AxRobBType*)
+		mcCFG_MS_6AX_ROB_C := 52603 (*Associated with data type McCfgMS6AxRobCType*)
 		);
 	McCfgUnboundedArrayType : STRUCT (*General purpose datatype*)
 		NumberOfElements : UDINT;
@@ -133,6 +164,77 @@ TYPE
 	McCfgReferenceType : STRUCT (*General purpose datatype*)
 		Name : STRING[250];
 		ConfigType : McCfgTypeEnum;
+	END_STRUCT;
+	McMMCLogSelEnum :
+		( (*Selective logging selector setting*)
+		mcMMCLS_NOT_USE := 0, (*Not used -*)
+		mcMMCLS_USE := 1 (*Used -*)
+		);
+	McCfgVisEnum :
+		( (*Component state change logger entries (PLCopen state)*)
+		mcCV_VIS := 0, (*Visible*)
+		mcCV_SUP := 1 (*Suppressed*)
+		);
+	McMMCLogSelUseAdmCmdEnum :
+		( (*Administrative commands selector setting*)
+		mcMMCLSUAC_VIS := 0, (*Visible - This command group of logger entries will be visible*)
+		mcMMCLSUAC_SUP := 1, (*Suppressed - This command group of logger entries will be suppressed*)
+		mcMMCLSUAC_SEL := 2 (*Selective - Defines which sections of this command group should be visible*)
+		);
+	McMMCLogSelUseAdmCmdSelType : STRUCT (*Type mcMMCLSUAC_SEL settings*)
+		CallerInstance : McCfgVisEnum; (*Logging of the caller instance entries*)
+		ComponentResponse : McCfgVisEnum; (*Logging of component response entries*)
+		AdditionalInformation : McCfgVisEnum; (*Logging of additional information entries*)
+	END_STRUCT;
+	McMMCLogSelUseAdmCmdType : STRUCT (*Administrative logger entries*)
+		Type : McMMCLogSelUseAdmCmdEnum; (*Administrative commands selector setting*)
+		Selective : McMMCLogSelUseAdmCmdSelType; (*Type mcMMCLSUAC_SEL settings*)
+	END_STRUCT;
+	McMMCLogSelUseMoveCmdEnum :
+		( (*Movement commands selector setting*)
+		mcMMCLSUMC_VIS := 0, (*Visible - This command group of logger entries will be visible*)
+		mcMMCLSUMC_SUP := 1, (*Suppressed - This command group of logger entries will be suppressed*)
+		mcMMCLSUMC_SEL := 2 (*Selective - Defines which sections of this command group should be visible*)
+		);
+	McMMCLogSelUseMoveCmdSelType : STRUCT (*Type mcMMCLSUMC_SEL settings*)
+		CallerInstance : McCfgVisEnum; (*Logging of the caller instance entries*)
+		ComponentResponse : McCfgVisEnum; (*Logging of component response entries*)
+		AdditionalInformation : McCfgVisEnum; (*Logging of additional information entries*)
+	END_STRUCT;
+	McMMCLogSelUseMoveCmdType : STRUCT (*Movement logger entries*)
+		Type : McMMCLogSelUseMoveCmdEnum; (*Movement commands selector setting*)
+		Selective : McMMCLogSelUseMoveCmdSelType; (*Type mcMMCLSUMC_SEL settings*)
+	END_STRUCT;
+	McMMCLogSelUseInfoCmdEnum :
+		( (*Informational commands selector setting*)
+		mcMMCLSUIC_VIS := 0, (*Visible - This command group of logger entries will be visible*)
+		mcMMCLSUIC_SUP := 1, (*Suppressed - This command group of logger entries will be suppressed*)
+		mcMMCLSUIC_SEL := 2 (*Selective - Defines which sections of this command group should be visible*)
+		);
+	McMMCLogSelUseInfoCmdSelType : STRUCT (*Type mcMMCLSUIC_SEL settings*)
+		CallerInstance : McCfgVisEnum; (*Logging of the caller instance entries*)
+		ComponentResponse : McCfgVisEnum; (*Logging of component response entries*)
+		AdditionalInformation : McCfgVisEnum; (*Logging of additional information entries*)
+	END_STRUCT;
+	McMMCLogSelUseInfoCmdType : STRUCT (*Status information logger entries*)
+		Type : McMMCLogSelUseInfoCmdEnum; (*Informational commands selector setting*)
+		Selective : McMMCLogSelUseInfoCmdSelType; (*Type mcMMCLSUIC_SEL settings*)
+	END_STRUCT;
+	McMMCLogSelUseType : STRUCT (*Type mcMMCLS_USE settings*)
+		StateChange : McCfgVisEnum; (*Component state change logger entries (PLCopen state)*)
+		AdministrativeCommands : McMMCLogSelUseAdmCmdType; (*Administrative logger entries*)
+		MovementCommands : McMMCLogSelUseMoveCmdType; (*Movement logger entries*)
+		InformationalCommands : McMMCLogSelUseInfoCmdType; (*Status information logger entries*)
+	END_STRUCT;
+	McMMCLogSelType : STRUCT (*Define which logging areas should be visible*)
+		Type : McMMCLogSelEnum; (*Selective logging selector setting*)
+		Used : McMMCLogSelUseType; (*Type mcMMCLS_USE settings*)
+	END_STRUCT;
+	McMMCLogType : STRUCT
+		Selective : McMMCLogSelType; (*Define which logging areas should be visible*)
+	END_STRUCT;
+	McCfgMMCfgType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_MMCFG*)
+		Logger : McMMCLogType;
 	END_STRUCT;
 	McCfgTransXYZType : STRUCT (*Translation parameters*)
 		X : LREAL; (*Translation in X direction [measurement units]*)

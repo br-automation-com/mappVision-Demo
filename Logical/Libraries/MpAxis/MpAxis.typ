@@ -82,7 +82,11 @@ TYPE
 		mcAXIS_CMD_PHASE_SHIFT,
 		mcAXIS_CMD_GET_CAM_POSITION,
 		mcAXIS_CMD_CAM_PREPARE,
-		mcAXIS_CMD_CAM_RECOVERY
+		mcAXIS_CMD_CAM_RECOVERY,
+		mcAXIS_CMD_CAM_SEQUENCE,
+		mcAXIS_CMD_PARLOCK,
+		mcAXIS_CMD_GET_SEQUENCE,
+		mcAXIS_CMD_SET_SEQUENCE
 		);
 	MpAxisOffsetParType : 	STRUCT 
 		Shift : LREAL; (*Offset shift for slave axis [Measurement Units des Slaves]*)
@@ -91,6 +95,7 @@ TYPE
 		Options : McAdvOffsetParType; (*Structure for using optional  functions
 Note:
 Parameters left at default values disable the associated optional functions.*)
+		CmdIndependentActivation : BOOL := FALSE; (*Allow to activate the Offset functionality independently from OffsetShift command to avoid latency in shift functionalilty when command is set*)
 	END_STRUCT;
 	MpAxisPhasingParType : 	STRUCT 
 		Shift : LREAL; (*Phase shift in the master position of the slave axis [Measurement units].*)
@@ -99,6 +104,7 @@ Parameters left at default values disable the associated optional functions.*)
 		Options : McAdvPhasingParType; (*Structure for using optional  functions
 Note:
 Parameters left at default values disable the associated optional functions.*)
+		CmdIndependentActivation : BOOL := FALSE; (*Allow to activate the Phasing functionality independently from PhaseShift command to avoid latency in shift functionalilty when command is set*)
 	END_STRUCT;
 	MpAxisCouplingInfoType : 	STRUCT 
 		SlaveReady : BOOL; (*Slave axis ready for operation (Powered + IsHomed( when needed ))*)
@@ -111,6 +117,8 @@ Parameters left at default values disable the associated optional functions.*)
 		GetCamPosition : MpAxisGetCamPositionInfoType; (*GetCamPosition command result*)
 		Recovery : MpAxisRecoveryInfoType; (*Recovery command related information*)
 		Diag : MpAxisDiagExtType; (*Diagnostic structure for the status ID*)
+		OffsetValid : BOOL; (*Offset functionality is active and valid*)
+		PhasingValid : BOOL; (*Phasing functionality is active and valid*)
 	END_STRUCT;
 	MpAxisGetCamPositionModeEnum : 
 		(
@@ -134,6 +142,38 @@ Parameters left at default values disable the associated optional functions.*)
 		Deceleration : REAL := 50.0; (*Deceleration for movement to cam slave position[Measurement units/s]*)
 		Jerk : REAL; (*Jerk for movement to cam slave position[Measurement units/s]*)
 		Direction : McDirectionEnum := mcDIR_POSITIVE; (*Direction of movement *)
+	END_STRUCT;
+	MpAxisCamSequencerInfoType : 	STRUCT 
+		SlaveReady : BOOL; (*Slave axis ready for operation (Powered + IsHomed( when needed ))*)
+		MasterReady : BOOL; (*Master axis ready for operation (CommunicationReady)*)
+		OffsetValid : BOOL; (*Offset functionality is active and valid*)
+		ActualOffsetShift : LREAL; (*Offset shift currently being executed [Measurement units]*)
+		PhasingValid : BOOL; (*Phasing functionality is active and valid*)
+		ActualPhaseShift : LREAL; (*Phase shift currently being executed [Measurement units].
+*)
+		Diag : MpAxisDiagExtType; (*Diagnostic structure for the status ID*)
+	END_STRUCT;
+	MpAxisCamSequencerParType : 	STRUCT 
+		Deceleration : REAL := 0.0; (*Deceleration for Halting CamAutomat in case of sequence end*)
+		CamSequence : MpAxisCamSequenceDataType; (*Cam sequence parameters*)
+		ParLockCommand : McCamAutParLockCmdEnum := mcCAMAUT_NO_LOCK; (*ParLock parameters*)
+		Offset : MpAxisOffsetParType; (*Offset parameters*)
+		Phasing : MpAxisPhasingParType := (0); (*Phasing parameters*)
+		CamList : ARRAY[0..13]OF MpAxisCamListType; (*List of cam to be send to drive. As alternative cam defined in axis cam list feature can be used*)
+	END_STRUCT;
+	MpAxisCamSequenceDataType : 	STRUCT 
+		Data : McCamAutDefineType; (*Cam sequence definition*)
+		Get : MpAxisCamSequenceGetType; (*Get data sequence parameters*)
+		Set : MpAxisCamSequenceSetType; (*Set  data sequence parameters*)
+	END_STRUCT;
+	MpAxisCamSequenceSetType : 	STRUCT 
+		Mode : MpAxisSequenceSetModeEnum := mcAXIS_CAM_SEQ_SET_INACTIVE; (*Defines Set cam sequence behaviour*)
+		Command : McCamAutSetParCmdEnum; (*Definition of Set command type*)
+		UpdateCamList : BOOL; (*Update CamList on Update*)
+	END_STRUCT;
+	MpAxisCamSequenceGetType : 	STRUCT 
+		Command : McCamAutGetParCmdEnum; (*Define behaviour of parameter sequence get command*)
+		GetOnEnable : BOOL := FALSE; (*Get Sequence on Fb Enable*)
 	END_STRUCT;
 	MpAxisCouplingParType : 	STRUCT 
 		Gear : MpAxisGearParType := (0); (*Gear parameters*)
@@ -208,14 +248,9 @@ Note:
 Parameters left at default values disable the associated optional functions.*)
 	END_STRUCT;
 	MpAxisCamListType : 	STRUCT 
-		Index : UINT;
-		Cam : McCamDefineType;
+		Index : UINT; (*Index to be set for a Cam*)
+		Cam : McCamDefineType; (*Cam definition*)
 	END_STRUCT;
-	MpAxisCamStartModeEnum : 
-		(
-		mcAXIS_CAM_START_ENTER_CAM, (* Mode for starting Cam from start*)
-		mcAXIS_CAM_START_RESTART (* Mode for restarting previously running Cam*)
-		);
 	MpAxisCouplingRecoveryParType : 	STRUCT 
 		Mode : McCamAutPrepRestartModeEnum; (* Mode of repositioning*)
 		Velocity : REAL; (* Maximum velocity*)
@@ -224,6 +259,17 @@ Parameters left at default values disable the associated optional functions.*)
 		Jerk : REAL; (* Maximum jerk*)
 		Options : McAdvCamAutPrepRestartParType; (* Recovery optional parameters*)
 	END_STRUCT;
+	MpAxisSequenceSetModeEnum : 
+		(
+		mcAXIS_CAM_SEQ_SET_INACTIVE, (*Setting of Cam Sequence Data not active*)
+		mcAXIS_CAM_SEQ_SET_ON_UPDATE, (*Setting of Cam Sequence Data active on Update*)
+		mcAXIS_CAM_SEQ_SET_ON_START (*Setting of Cam Sequence Data active on Update and on command Start (StartSequence/Continue)*)
+		);
+	MpAxisCamStartModeEnum : 
+		(
+		mcAXIS_CAM_START_ENTER_CAM, (* Mode for starting Cam from start*)
+		mcAXIS_CAM_START_RESTART (* Mode for restarting previously running Cam*)
+		);
 	MpAxisRecoveryInfoType : 	STRUCT 
 		RestartPosition : LREAL; (* Resulting restart position*)
 	END_STRUCT;

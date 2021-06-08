@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAcpAx 5.13.2 */
+/* McAcpAx 5.14.2 */
 
 #ifndef _MCACPAX_
 #define _MCACPAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAcpAx_VERSION
-#define _McAcpAx_VERSION 5.13.2
+#define _McAcpAx_VERSION 5.14.2
 #endif
 
 #include <bur/plctypes.h>
@@ -333,7 +333,19 @@ typedef enum McADIAllSrcEnum
 	mcADIAS_DIG_IN_SS1X41X7 = 9,
 	mcADIAS_DIG_IN_SS1X41X8 = 10,
 	mcADIAS_DIG_IN_SS1X41X9 = 11,
-	mcADIAS_DIG_IN_SS1X41X10 = 12
+	mcADIAS_DIG_IN_SS1X41X10 = 12,
+	mcADIAS_DIG_IN_X23ATRG_1 = 13,
+	mcADIAS_DIG_IN_X23ATRG_2 = 14,
+	mcADIAS_DIG_IN_X24A_TRIGGER2 = 15,
+	mcADIAS_DIG_IN_X2TRG_1 = 16,
+	mcADIAS_DIG_IN_X2TRG_2 = 17,
+	mcADIAS_DIG_IN_X1TRG_1 = 18,
+	mcADIAS_DIG_IN_X1TRG_2 = 19,
+	mcADIAS_DIG_IN_X1REF_SW = 20,
+	mcADIAS_DIG_IN_X1POS_HW_LIM = 21,
+	mcADIAS_DIG_IN_X1NEG_HW_LIM = 22,
+	mcADIAS_FOR_BY_FUN_BLK = 23,
+	mcADIAS_VAR = 24
 } McADIAllSrcEnum;
 
 typedef enum McADILvlEnum
@@ -486,7 +498,8 @@ typedef enum McAEEncX41IfTypEnum
 	mcAEX41IT_SSI = 2,
 	mcAEX41IT_ENDAT = 3,
 	mcAEX41IT_HIPERFACE_DSL = 4,
-	mcAEX41IT_TFMT = 5
+	mcAEX41IT_TFMT = 5,
+	mcAEX41IT_MOT_DAT_IF = 6
 } McAEEncX41IfTypEnum;
 
 typedef enum McAEX41BPwrSupEnum
@@ -550,7 +563,8 @@ typedef enum McAEEncX42IfTypEnum
 	mcAEX42IT_SSI = 2,
 	mcAEX42IT_ENDAT = 3,
 	mcAEX42IT_HIPERFACE_DSL = 4,
-	mcAEX42IT_TFMT = 5
+	mcAEX42IT_TFMT = 5,
+	mcAEX42IT_MOT_DAT_IF = 6
 } McAEEncX42IfTypEnum;
 
 typedef enum McAEX42BPwrSupEnum
@@ -614,7 +628,8 @@ typedef enum McAEEncX43IfTypEnum
 	mcAEX43IT_SSI = 2,
 	mcAEX43IT_ENDAT = 3,
 	mcAEX43IT_HIPERFACE_DSL = 4,
-	mcAEX43IT_TFMT = 5
+	mcAEX43IT_TFMT = 5,
+	mcAEX43IT_MOT_DAT_IF = 6
 } McAEEncX43IfTypEnum;
 
 typedef enum McAEX43BPwrSupEnum
@@ -1578,8 +1593,13 @@ typedef struct McAJFType
 	struct McAJFUseType Used;
 } McAJFType;
 
+typedef struct McADIAllSrcVarType
+{	plcstring PVMapping[251];
+} McADIAllSrcVarType;
+
 typedef struct McADIHomeSwSrcType
 {	enum McADIAllSrcEnum Type;
+	struct McADIAllSrcVarType Variable;
 } McADIHomeSwSrcType;
 
 typedef struct McADIHomeSwType
@@ -1589,6 +1609,7 @@ typedef struct McADIHomeSwType
 
 typedef struct McADIPosLimSwSrcType
 {	enum McADIAllSrcEnum Type;
+	struct McADIAllSrcVarType Variable;
 } McADIPosLimSwSrcType;
 
 typedef struct McADIPosLimSwType
@@ -1598,6 +1619,7 @@ typedef struct McADIPosLimSwType
 
 typedef struct McADINegLimSwSrcType
 {	enum McADIAllSrcEnum Type;
+	struct McADIAllSrcVarType Variable;
 } McADINegLimSwSrcType;
 
 typedef struct McADINegLimSwType
@@ -1607,6 +1629,7 @@ typedef struct McADINegLimSwType
 
 typedef struct McADITrg1SrcType
 {	enum McADIAllSrcEnum Type;
+	struct McADIAllSrcVarType Variable;
 } McADITrg1SrcType;
 
 typedef struct McADITrg1Type
@@ -1616,6 +1639,7 @@ typedef struct McADITrg1Type
 
 typedef struct McADITrg2SrcType
 {	enum McADIAllSrcEnum Type;
+	struct McADIAllSrcVarType Variable;
 } McADITrg2SrcType;
 
 typedef struct McADITrg2Type

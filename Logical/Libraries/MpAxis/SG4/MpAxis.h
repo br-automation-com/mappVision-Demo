@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpAxis 5.13.2 */
+/* MpAxis 5.14.2 */
 
 #ifndef _MPAXIS_
 #define _MPAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpAxis_VERSION
-#define _MpAxis_VERSION 5.13.2
+#define _MpAxis_VERSION 5.14.2
 #endif
 
 #include <bur/plctypes.h>
@@ -67,7 +67,11 @@ typedef enum MpAxisExecutingCmdEnum
 	mcAXIS_CMD_PHASE_SHIFT,
 	mcAXIS_CMD_GET_CAM_POSITION,
 	mcAXIS_CMD_CAM_PREPARE,
-	mcAXIS_CMD_CAM_RECOVERY
+	mcAXIS_CMD_CAM_RECOVERY,
+	mcAXIS_CMD_CAM_SEQUENCE,
+	mcAXIS_CMD_PARLOCK,
+	mcAXIS_CMD_GET_SEQUENCE,
+	mcAXIS_CMD_SET_SEQUENCE
 } MpAxisExecutingCmdEnum;
 
 typedef enum MpAxisGetCamPositionModeEnum
@@ -75,6 +79,12 @@ typedef enum MpAxisGetCamPositionModeEnum
 	mcAXIS_GET_CAM_POSITION_MASTER,
 	mcAXIS_MOVE_CAM_POSITION_SLAVE
 } MpAxisGetCamPositionModeEnum;
+
+typedef enum MpAxisSequenceSetModeEnum
+{	mcAXIS_CAM_SEQ_SET_INACTIVE,
+	mcAXIS_CAM_SEQ_SET_ON_UPDATE,
+	mcAXIS_CAM_SEQ_SET_ON_START
+} MpAxisSequenceSetModeEnum;
 
 typedef enum MpAxisCamStartModeEnum
 {	mcAXIS_CAM_START_ENTER_CAM,
@@ -158,6 +168,7 @@ typedef struct MpAxisOffsetParType
 	float Velocity;
 	float Acceleration;
 	struct McAdvOffsetParType Options;
+	plcbit CmdIndependentActivation;
 } MpAxisOffsetParType;
 
 typedef struct MpAxisPhasingParType
@@ -165,6 +176,7 @@ typedef struct MpAxisPhasingParType
 	float Velocity;
 	float Acceleration;
 	struct McAdvPhasingParType Options;
+	plcbit CmdIndependentActivation;
 } MpAxisPhasingParType;
 
 typedef struct MpAxisCamInfoType
@@ -194,6 +206,8 @@ typedef struct MpAxisCouplingInfoType
 	struct MpAxisGetCamPositionInfoType GetCamPosition;
 	struct MpAxisRecoveryInfoType Recovery;
 	struct MpAxisDiagExtType Diag;
+	plcbit OffsetValid;
+	plcbit PhasingValid;
 } MpAxisCouplingInfoType;
 
 typedef struct MpAxisGetCamPositionMoveParType
@@ -214,6 +228,47 @@ typedef struct MpAxisGetCamPositionParType
 	double MasterStartPosition;
 	struct MpAxisGetCamPositionMoveParType Move;
 } MpAxisGetCamPositionParType;
+
+typedef struct MpAxisCamSequencerInfoType
+{	plcbit SlaveReady;
+	plcbit MasterReady;
+	plcbit OffsetValid;
+	double ActualOffsetShift;
+	plcbit PhasingValid;
+	double ActualPhaseShift;
+	struct MpAxisDiagExtType Diag;
+} MpAxisCamSequencerInfoType;
+
+typedef struct MpAxisCamSequenceGetType
+{	enum McCamAutGetParCmdEnum Command;
+	plcbit GetOnEnable;
+} MpAxisCamSequenceGetType;
+
+typedef struct MpAxisCamSequenceSetType
+{	enum MpAxisSequenceSetModeEnum Mode;
+	enum McCamAutSetParCmdEnum Command;
+	plcbit UpdateCamList;
+} MpAxisCamSequenceSetType;
+
+typedef struct MpAxisCamSequenceDataType
+{	struct McCamAutDefineType Data;
+	struct MpAxisCamSequenceGetType Get;
+	struct MpAxisCamSequenceSetType Set;
+} MpAxisCamSequenceDataType;
+
+typedef struct MpAxisCamListType
+{	unsigned short Index;
+	struct McCamDefineType Cam;
+} MpAxisCamListType;
+
+typedef struct MpAxisCamSequencerParType
+{	float Deceleration;
+	struct MpAxisCamSequenceDataType CamSequence;
+	enum McCamAutParLockCmdEnum ParLockCommand;
+	struct MpAxisOffsetParType Offset;
+	struct MpAxisPhasingParType Phasing;
+	struct MpAxisCamListType CamList[14];
+} MpAxisCamSequencerParType;
 
 typedef struct MpAxisGearParType
 {	signed long RatioNumerator;
@@ -248,11 +303,6 @@ typedef struct MpAxisGearInPosParType
 	float Jerk;
 	struct McAdvGearInPosParType Options;
 } MpAxisGearInPosParType;
-
-typedef struct MpAxisCamListType
-{	unsigned short Index;
-	struct McCamDefineType Cam;
-} MpAxisCamListType;
 
 typedef struct MpAxisCouplingRecoveryParType
 {	enum McCamAutPrepRestartModeEnum Mode;
@@ -317,6 +367,54 @@ typedef struct MpAxisBasic
 	plcbit BrakeReleased;
 } MpAxisBasic_typ;
 
+typedef struct MpAxisCamSequencer
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* MpLink;
+	struct MpAxisCamSequencerParType* Parameters;
+	struct McAxisType* MpLinkMaster;
+	/* VAR_OUTPUT (analog) */
+	signed long StatusID;
+	unsigned char ActualStateIndex;
+	unsigned short ActualStateCamIndex;
+	struct MpAxisCamSequencerInfoType Info;
+	/* VAR (analog) */
+	struct MpComInternalDataType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Enable;
+	plcbit ErrorReset;
+	plcbit Update;
+	plcbit Signal1;
+	plcbit Signal2;
+	plcbit Signal3;
+	plcbit Signal4;
+	plcbit StartSequence;
+	plcbit Continue;
+	plcbit EndSequence;
+	plcbit GetSequence;
+	plcbit ParLock;
+	plcbit OffsetShift;
+	plcbit PhaseShift;
+	plcbit CamPrepare;
+	plcbit Recovery;
+	/* VAR_OUTPUT (digital) */
+	plcbit Active;
+	plcbit Error;
+	plcbit UpdateDone;
+	plcbit Running;
+	plcbit Standby;
+	plcbit InCompensation;
+	plcbit InCam;
+	plcbit CommandBusy;
+	plcbit CommandAborted;
+	plcbit GetSequenceDone;
+	plcbit ParLockDone;
+	plcbit OffsetDone;
+	plcbit PhasingDone;
+	plcbit CamPrepareDone;
+	plcbit RecoveryDone;
+} MpAxisCamSequencer_typ;
+
 typedef struct MpAxisCoupling
 {
 	/* VAR_INPUT (analog) */
@@ -359,6 +457,7 @@ typedef struct MpAxisCoupling
 
 /* Prototyping of functions and function blocks */
 _BUR_PUBLIC void MpAxisBasic(struct MpAxisBasic* inst);
+_BUR_PUBLIC void MpAxisCamSequencer(struct MpAxisCamSequencer* inst);
 _BUR_PUBLIC void MpAxisCoupling(struct MpAxisCoupling* inst);
 
 

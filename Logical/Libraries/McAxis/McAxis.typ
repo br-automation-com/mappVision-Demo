@@ -2,27 +2,13 @@ TYPE
 
     (*Enum types*)
 
-    McBrakeCmdEnum :
-	(
-		mcBRAKE_CLOSE,					 (*Engages the brake*)
-		mcBRAKE_OPEN,					 (*Releases the brake*)
-		mcBRAKE_GET_STATUS				 (*Reads out the current brake status*)
-	);
-
-	McBrakeStatusEnum :
-	(
-		mcBRAKE_STATUS_NOT_PROVIDED,	 (*Commands was not *)
-		mcBRAKE_CLOSED,					 (*Holding brake engaged*)
-		mcBRAKE_OPENED					 (*Holding brake released*)
-	);
-
 	McDirectionEnum :
 	(
-		mcDIR_POSITIVE,					 (*Movement only in the positive direction  *)
+		mcDIR_POSITIVE,					 (*Movement only in the positive direction *)
 		mcDIR_NEGATIVE,					 (*Movement only in the negative direction*)
 		mcDIR_CURRENT,					 (*Movement in the direction of the active movement*)
 		mcDIR_SHORTEST_WAY,				 (*Movement with the shortest distance to the target, either in positive or negative direction. The movement will be in the positive direction if the distance is the same in both directions*)
-		mcDIR_EXCEED_PERIOD := 8,		 (*The end position can be located outside of the axis period. The axis period can be exited in the negative direction if the end position is also negative.  *)
+		mcDIR_EXCEED_PERIOD := 8,		 (*The end position can be located outside of the axis period. The axis period can be exited in the negative direction if the end position is also negative*)
 		mcDIR_UNDEFINED,				 (*Movement in undefined direction*)
 		mcDIR_BOTH						 (*Movement in both directions*)
 	);
@@ -38,20 +24,20 @@ TYPE
 	McPlcopenParEnum :
 	(
 		mcPAR_COMMANDED_AX_POSITION := 1, 	 (*Target position for the movement [Measurement units]*)
-		mcPAR_SW_LIMIT_POSITIVE,		 (*not currently available*)
-		mcPAR_SW_LIMIT_NEGATIVE,		 (*not currently available*)
-		mcPAR_ENABLE_LIMIT_POSITIVE,	 (*not currently available*)
-		mcPAR_ENABLE_LIMIT_NEGATIVE,	 (*not currently available*)
-		mcPAR_ENABLE_POS_LAG_MONITORING, (*not currently available*)
-		mcPAR_MAX_AX_POSITION_LAG,		 (*not currently available*)
-		mcPAR_MAX_AX_VELOCITY_SYSTEM,	 (*not currently available*)
-		mcPAR_MAX_AX_VELOCITY_APPL,		 (*not currently available*)
+		mcPAR_SW_LIMIT_POSITIVE,		 (*Currently not available*)
+		mcPAR_SW_LIMIT_NEGATIVE,		 (*Currently not available*)
+		mcPAR_ENABLE_LIMIT_POSITIVE,	 (*Currently not available*)
+		mcPAR_ENABLE_LIMIT_NEGATIVE,	 (*Currently not available*)
+		mcPAR_ENABLE_POS_LAG_MONITORING, (*Currently not available*)
+		mcPAR_MAX_AX_POSITION_LAG,		 (*Currently not available*)
+		mcPAR_MAX_AX_VELOCITY_SYSTEM,	 (*Currently not available*)
+		mcPAR_MAX_AX_VELOCITY_APPL,		 (*Currently not available*)
 		mcPAR_ACTUAL_AX_VELOCITY,  		 (*Current speed [Measurement units/s]*)
-		mcPAR_COMMANDED_AX_VELOCITY,	 (*not currently available*)
-		mcPAR_MAX_AX_ACCELERATION_SYSTEM,	 (*not currently available*)
-		mcPAR_MAX_AX_ACCELERATION_APPL,	 (*not currently available*)
-		mcPAR_MAX_AX_DECELERATION_SYSTEM,	 (*not currently available*)
-		mcPAR_MAX_AX_DECELERATION_APPL,	 (*not currently available*)
+		mcPAR_COMMANDED_AX_VELOCITY,	 (*Currently not available*)
+		mcPAR_MAX_AX_ACCELERATION_SYSTEM,	 (*Currently not available*)
+		mcPAR_MAX_AX_ACCELERATION_APPL,	 (*Currently not available*)
+		mcPAR_MAX_AX_DECELERATION_SYSTEM,	 (*Currently not available*)
+		mcPAR_MAX_AX_DECELERATION_APPL,	 (*Currently not available*)
 		mcPAR_MAX_AX_JERK,			(*Maximum jerk of the axis*)
 		mcPAR_AX_PERIOD := 1008,     (*The range of values of the axis position is [0, period] in [Measurement units]*)
 		mcPAR_HOMING_OFFSET := 1019, 	 (*Homing offset [Measurement units]. Cannot be read before the first homing procedure*)
@@ -102,16 +88,16 @@ TYPE
 
 	McBrTouchProbeModeEnum :
 	(
-		mcTP_MODE_WITHOUT_PERIOD := 4, (*Do not use axis or window period.*)
-		mcTP_MODE_SHIFT_FROM_RESULT := 49, (*Shift window from detected trigger position.*)
-		mcTP_MODE_SHIFT_FROM_EXPECTED := 50 (*Shift window from expected trigger position.*)
+		mcTP_MODE_WITHOUT_PERIOD := 4, (*Do not use axis or window period*)
+		mcTP_MODE_SHIFT_FROM_RESULT := 49, (*Shift window from detected trigger position*)
+		mcTP_MODE_SHIFT_FROM_EXPECTED := 50 (*Shift window from expected trigger position*)
 	);
 
 	McBrTriggerInfoStatusEnum :
 	(
-		mcTRG_STAT_WAITING := 0, (*Waiting for trigger event.*)
-		mcTRG_STAT_VALID := 1, (*A valid trigger event was detected.*)
-		mcTRG_STAT_MISSED := 2 (*No valid trigger event was detected in period.*)
+		mcTRG_STAT_WAITING := 0, (*Waiting for trigger event*)
+		mcTRG_STAT_VALID := 1, (*A valid trigger event was detected*)
+		mcTRG_STAT_MISSED := 2 (*No valid trigger event was detected in period*)
 	);
 
 	McDisableModeEnum :
@@ -122,9 +108,9 @@ TYPE
 
 	McEventMoveModeEnum :
 	(
-		mcEVENT_ONCE := 0, (* Single start of a movement after an event *)
-		mcEVENT_CYCLIC := 1, (* Cyclic start of a movement during standstill. Note: Not applicable for FB MC_BR_EventMoveVelocity. *)
-		mcEVENT_CYCLIC_ALL_EVENTS := 2 (* Cyclic start of a movement for all events *)
+		mcEVENT_ONCE := 0, (*Single start of a movement after an event*)
+		mcEVENT_CYCLIC := 1, (*Cyclic start of a movement during standstill. Note: Not applicable for FB MC_BR_EventMoveVelocity*)
+		mcEVENT_CYCLIC_ALL_EVENTS := 2 (*Cyclic start of a movement for all events*)
 	);
 
 	(*Structure types*)
@@ -152,9 +138,9 @@ TYPE
 	END_STRUCT;
 
 	McAdvVelCtrlParType : STRUCT
-		Acceleration : REAL; (*Maximum acceleration [Measurement units/sï¿½]*)
-		Deceleration : REAL; (*Maximum deceleration [Measurement units/sï¿½]*)
-		Jerk : REAL; (*Maximum jerk [measurement units / sï¿½]*)
+		Acceleration : REAL; (*Maximum acceleration [Measurement units/s²]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units/s²]*)
+		Jerk : REAL; (*Maximum jerk [Measurement units/s³]*)
 	END_STRUCT;
 
 	McShiftModeEnum:
@@ -197,25 +183,25 @@ TYPE
 	McAdvOffsetParType : STRUCT
 		ShiftMode : McShiftModeEnum; (*Defines how the value on input "XxxShift" should be used*)
 		ProfileBase : McProfileBaseEnum; (*Defines the profile base for the offset as a time or position value*)
-		ProfileBaseMaxVelocity : REAL; (*Maximum speed of profile base during offset [Measurement units]*)
+		ProfileBaseMaxVelocity : REAL; (*Maximum speed of profile base during offset [Measurement units/s]*)
 		DistanceParameters : McAdvShiftDistanceParType ; (*Distance to the offset [Measurement units]*)
 		ZoneParameters : McAdvShiftZoneParType ; (*Position range in which the offset occurs [Measurement units]*)
 	END_STRUCT;
 
 	McAdvGearInParType : STRUCT
-		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [measurement units of master / s]*)
+		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
 	END_STRUCT;
 
 	McAdvGearInPosParType : STRUCT
-		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [measurement units of master / s]*)
+		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
 	END_STRUCT;
 
 	McAdvCamInParType : STRUCT
 		Periodic : BOOL; (*TRUE -> Cam is executed periodically; FALSE -> Cam is executed just once*)
-		Velocity : REAL; (*Velocity which is used for the movement to the start position*)
-		Acceleration : REAL; (*Acceleration which is used for the movement to the start position*)
-		Deceleration : REAL; (*Deceleration which is used for the movement to the start position*)
-		Jerk : REAL; (*Maximum jerk during the "move to start" movement [measurement units of slave/s3]*)
+		Velocity : REAL; (*Velocity which is used for the movement to the start position [Measurement units of slave/s]*)
+		Acceleration : REAL; (*Acceleration which is used for the movement to the start position [Measurement units of slave/s²]*)
+		Deceleration : REAL; (*Deceleration which is used for the movement to the start position [Measurement units of slave/s²]*)
+		Jerk : REAL; (*Maximum jerk during the "move to start" movement [Measurement units of slave/s³]*)
 	END_STRUCT;
 
 	McCamAutCrossLeftBoundEnum:
@@ -384,28 +370,29 @@ TYPE
 	END_STRUCT;
 
 	McCamAutCompParType : STRUCT
-	    MasterCompDistance : LREAL; (*Compensation distance for the master axis [measurement units of master]*)
-	    SlaveCompDistance : LREAL; (*Compensation distance for the slave axis [measurement units of slave]*)
-	    MasterCamLeadIn : LREAL; (*Relative position at which the master axis enters the state [measurement units of master]*)
-	    MinMasterCompDistance : LREAL; (*Minimum compensation distance for the master axis [measurement units of master]*)
-	    MinSlaveCompDistance : LREAL; (*Minimum compensation distance for the slave axis [slave measurement unit]*)
-	    MaxSlaveCompDistance : LREAL; (*Maximum compensation distance for the slave axis [slave measurement unit]*)
-	    MinSlaveCompVelocity : REAL; (*Minimum velocity of the slave axis during compensation [measurement units of slave / s]*)
-	    MaxSlaveCompVelocity : REAL; (*Maximum velocity of the slave axis during compensation [measurement units of slave / s]*)
-	    MaxSlaveCompAccel1 : REAL; (*Maximum acceleration of the slave axis during compensation phase 1 [measurement units of slave / sï¿½]*)
-	    MaxSlaveCompAccel2 : REAL; (*Maximum acceleration of the slave axis during compensation phase 2 [measurement units of slave / sï¿½]*)
+	    MasterCompDistance : LREAL; (*Compensation distance for the master axis [Measurement units of master]*)
+	    SlaveCompDistance : LREAL; (*Compensation distance for the slave axis [Measurement units of slave]*)
+	    MasterCamLeadIn : LREAL; (*Relative position at which the master axis enters the state [Measurement units of master]*)
+	    MinMasterCompDistance : LREAL; (*Minimum compensation distance for the master axis [Measurement units of master]*)
+	    MinSlaveCompDistance : LREAL; (*Minimum compensation distance for the slave axis [Measurement units of slave]*)
+	    MaxSlaveCompDistance : LREAL; (*Maximum compensation distance for the slave axis [Measurement units of slave]*)
+	    MinSlaveCompVelocity : REAL; (*Minimum velocity of the slave axis during compensation [Measurement units of slave/s]*)
+	    MaxSlaveCompVelocity : REAL; (*Maximum velocity of the slave axis during compensation [Measurement units of slave/s]*)
+	    MaxSlaveCompAccel1 : REAL; (*Maximum acceleration of the slave axis during compensation phase 1 [Measurement units of slave/s²]*)
+	    MaxSlaveCompAccel2 : REAL; (*Maximum acceleration of the slave axis during compensation phase 2 [Measurement units of slave/s²]*)
 	    SlaveCompJoltTime : REAL; (*Jerk time of the slave axis during compensation [s]*)
+	    SlaveCompJerk : REAL; (*Jerk of the slave axis during compensation [Measurement units of slave/s³]*)
 	END_STRUCT;
 
 	McCamAutMasterAxisType : STRUCT
 		Axis : REFERENCE TO McAxisType; (*Axis reference of master axis*)
 		ValueSource : McValueSrcEnum ; (*Defines the source of the position to be read*)
-		MaxVelocity : REAL; (*Maximum velocity of the master axis [measurement units of master / s]*)
+		MaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
 	END_STRUCT;
 
 	McCamAutMasterVarType : STRUCT
 		VariableAddress  :  REFERENCE TO LREAL; (*Address of the process variable*)
-		MaxVelocity : REAL; (*Maximum velocity of the master axis [measurement units of master / s]*)
+		MaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
 	END_STRUCT;
 
 	McCamAutAxisType : STRUCT
@@ -460,18 +447,18 @@ TYPE
 		AdditiveAxes : McCamAutAddAxesType; (*Parameter for additive axes*)
 	    MasterStartPosMode : McCamAutMaStartPosModeEnum; (*Mode for event type mcEVENT_START_POSITION*)
 	    ControlSettings : McCamAutCtrlSettingsType; (*Control settings for cam automat*)
-	    StartIntervalPos1 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS1 [measurement units of master]*)
-	    StartIntervalPos2 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS2 [measurement units of master]*)
-	    StartIntervalPos3 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS3 [measurement units of master]*)
-	    StartIntervalPos4 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS4 [measurement units of master]*)
+	    StartIntervalPos1 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS1 [Measurement units of master]*)
+	    StartIntervalPos2 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS2 [Measurement units of master]*)
+	    StartIntervalPos3 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS3 [Measurement units of master]*)
+	    StartIntervalPos4 : LREAL; (*Relative starting positions of the master axis in the interval for generating event mcEVENT_START_IV_POS4 [Measurement units of master]*)
 	END_STRUCT;
 
 	McCamAutMasterParType : STRUCT
 	    MasterSource : McCamAutCouplingSourceEnum; (*Source to be used as master*)
 	    MasterAxis : McCamAutMasterAxisType; (*Master axis*)
 	    MasterVariable : McCamAutMasterVarType; (*Process variable specifying the master position*)
-	    MasterStartPosition : LREAL; (*Starting position of the master axis [measurement units of master]*)
-	    MasterStartInterval : LREAL; (*Starting interval of the master axis [measurement units of master]*)
+	    MasterStartPosition : LREAL; (*Starting position of the master axis [Measurement units of master]*)
+	    MasterStartInterval : LREAL; (*Starting interval of the master axis [Measurement units of master]*)
 	END_STRUCT;
 
 	McCamAutCommonParType : STRUCT
@@ -486,10 +473,11 @@ TYPE
 
 	McCamAutDefineType : STRUCT
 	    DataObjectName : STRING[32]; (*Name of the cam automat configuration object*)
-	    DataAddress : UDINT; (*Address of a variable of data type McCamAutParType*)
+	    DataAddress : UDINT; (*Address of a variable of data type McCamAutParType or McAcpAxCamAutParType*)
+		DataSize: UDINT; (*Address of the cam data, 0 considered as use of McCamAutParType"*)
 	END_STRUCT;
 
-	McPolynomialDataType : STRUCT  (*structure with polynomial coefficient*)
+	McPolynomialDataType : STRUCT  (*Structure with polynomial coefficient*)
 		A : REAL; (*Polynomial coefficient*)
 		B : REAL; (*Polynomial coefficient*)
 		C : REAL; (*Polynomial coefficient*)
@@ -501,7 +489,7 @@ TYPE
 		Reserve : UDINT; (*= 0 (Reserve)*)
 	END_STRUCT;
 
-	McCamDataType : STRUCT  (*structure with cam data*)
+	McCamDataType : STRUCT  (*Structure with cam data*)
 		MasterPeriod : DINT; (*Length of the master period*)
 		SlavePeriod : DINT; (*Length of the slave period*)
 		PolynomialNumber : UDINT; (*Number of polynomials: 1..128*)
@@ -534,12 +522,13 @@ TYPE
  	END_STRUCT;
 
  	McAdvCamInLeadInOutParType : STRUCT
-		MasterOffset : LREAL; (*Master position in the cam at which the lead-in movement ends or the lead-out movement starts [measurement units of master]*)
-		MasterDistance : LREAL; (*Master compensation distance outside the cam for lead-in or lead-out movement [measurement units of master]*)
-		SlaveDistance : LREAL; (*Slave compensation distance for the lead-in or lead-out movement [measurement units of slave]*)
+		MasterOffset : LREAL; (*Master position in the cam at which the lead-in movement ends or the lead-out movement starts [Measurement units of master]*)
+		MasterDistance : LREAL; (*Master compensation distance outside the cam for lead-in or lead-out movement [Measurement units of master]*)
+		SlaveDistance : LREAL; (*Slave compensation distance for the lead-in or lead-out movement [Measurement units of slave]*)
 		CamID : UINT; (*ID of the cam for the lead-in or lead-out movement*)
 		MasterScaling : DINT; (*Master gauge factor for the lead-in or lead-out cam*)
 		SlaveScaling : DINT; (*Slave gauge factor for the lead-in or lead-out cam*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
 	END_STRUCT;
 
 	McAdvBrCamInParType : STRUCT
@@ -547,8 +536,9 @@ TYPE
 		LeadIn : McAdvCamInLeadInOutParType; (*Parameters for lead-in movement*)
 		LeadOut : McAdvCamInLeadInOutParType; (*Parameters for lead-out-movement*)
 		MasterValueSource : McValueSrcEnum; (*Defines the source of the position to be read*)
-		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [measurement units of master/s]*)
-		Jerk : REAL; (**)
+		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
 	END_STRUCT;
 
 	McTriggerType : STRUCT
@@ -559,25 +549,25 @@ TYPE
 	END_STRUCT;
 
 	McBrTriggerType : STRUCT
-		ValueSource : McValueSrcEnum; (*Data value source selection.*)
-		EventSource : McEventSrcEnum; (*Trigger event source selection.*)
-		Edge : McEdgeEnum; (*Trigger event edge selection.*)
-		MinWidth : LREAL; (*Minimum trigger event width for the event to be considered valid [measurement units].*)
-		MaxWidth : LREAL; (*Maximum trigger event width for the event to be considered valid [measurement units].*)
-		SensorDelay : REAL; (*Trigger event signal sensor delay [s].*)
-		DisableWidthEvaluationAtStart : BOOL; (*Ignore width monitoring if the function block is enabled on the high level of the trigger signal.*)
+		ValueSource : McValueSrcEnum; (*Data value source selection*)
+		EventSource : McEventSrcEnum; (*Trigger event source selection*)
+		Edge : McEdgeEnum; (*Trigger event edge selection*)
+		MinWidth : LREAL; (*Minimum trigger event width for the event to be considered valid [Measurement units]*)
+		MaxWidth : LREAL; (*Maximum trigger event width for the event to be considered valid [Measurement units]*)
+		SensorDelay : REAL; (*Trigger event signal sensor delay [s]*)
+		DisableWidthEvaluationAtStart : BOOL; (*Ignore width monitoring if the function block is enabled on the high level of the trigger signal*)
 	END_STRUCT;
 
 	McAdvBrTouchProbeParType : STRUCT
-		UseFirstTriggerPosition : BOOL; (*Capture position upon first trigger event.*)
-		UseAxisPeriod : BOOL; (*Use axis period for window period.*)
-		UpdatePeriod : BOOL; (*Detect and adapt to change of input "Period".*)
-		ReadTriggerWidth : BOOL; (*Enable reading and updating the "TriggerInfo.Width" value.*)
+		UseFirstTriggerPosition : BOOL; (*Capture position upon first trigger event*)
+		UseAxisPeriod : BOOL; (*Use axis period for window period*)
+		UpdatePeriod : BOOL; (*Detect and adapt to change of input "Period"*)
+		ReadTriggerWidth : BOOL; (*Enable reading and updating the "TriggerInfo.Width" value*)
 	END_STRUCT;
 
 	McBrTriggerInfoType : STRUCT
-		Width : LREAL; (*Measured width (size) of the trigger event [measurement units].*)
-		Status : McBrTriggerInfoStatusEnum; (* Status of the trigger event.*)
+		Width : LREAL; (*Measured width (size) of the trigger event [Measurement units]*)
+		Status : McBrTriggerInfoStatusEnum; (*Status of the trigger event*)
 	END_STRUCT;
 
 	McDigCamSwitchOptionsParType : STRUCT
@@ -600,30 +590,107 @@ TYPE
 		OnCompensation : REAL; (*Compensation time for the switch-on delay [s]*)
 		OffCompensation : REAL; (*Compensation time for the switch-off delay [s]*)
 		Filter : REAL; (*Filter time constant (for speed generation to compensate for switching delays) [s]*)
-		Hysteresis : REAL; (*Interval from the switching point (in the positive and negative direction) during which the output is not switched until the axis leaves this area. This prevents switching from taking place several times around the switching point. [Measurement units]*)
-		DisableNegativeDirection : BOOL; (*If this input is set, switching edges are only generated if the master axis is moving in the positive direction.*)
+		Hysteresis : REAL; (*Interval from the switching point (in the positive and negative direction) during which the output is not switched until the axis leaves this area. This prevents switching from taking place several times around the switching point [Measurement units]*)
+		DisableNegativeDirection : BOOL; (*If this input is set, switching edges are only generated if the master axis is moving in the positive direction*)
 	END_STRUCT;
 
 	McDigCamSwOptionsParType : STRUCT
-		FeatureName : STRING[250]; (*Name of the "Digital cam switch" feature The feature must be assigned to the axis as well inside the hardware configuration.*)
+		FeatureName : STRING[250]; (*Name of the "Digital cam switch" feature The feature must be assigned to the axis as well inside the hardware configuration*)
 	END_STRUCT;
 
 	McAdvCamAutPrepRestartParType : STRUCT
-	 	ToleranceWindow : LREAL; (* Tolerance window, used by several prepare restart modes [Measurement units]*)
+	 	ToleranceWindow : LREAL; (*Tolerance window, used by several prepare restart modes [Measurement units]*)
 	END_STRUCT;
 
 	McCamAutPrepRestartModeEnum:
 	(
-		mcPREP_RESTART_POSITIVE, (* Slave axis moves to "RestartPosition" only in positive direction*)
-		mcPREP_RESTART_NEGATIVE, (* Slave axis moves to "RestartPosition" only in negative direction*)
-		mcPREP_RESTART_SHORTEST_WAY, (* Slave axis moves to "RestartPosition" by the shortest distance*)
-		mcPREP_RESTART_POSITIVE_WINDOW, (* Slave moves to "RestartPosition" by the shortest distance when distance is smaller than "ToleranceWindow", otherwise only in positive direction*)
-		mcPREP_RESTART_NEGATIVE_WINDOW, (* Slave moves to "RestartPosition" by the shortest distance when distance is smaller than "ToleranceWindow", otherwise only in negative direction*)
-		mcPREP_RESTART_GET_POSITION (* "RestartPosition" is output, no movement is performed*)
+		mcPREP_RESTART_POSITIVE, (*Slave axis moves to "RestartPosition" only in positive direction*)
+		mcPREP_RESTART_NEGATIVE, (*Slave axis moves to "RestartPosition" only in negative direction*)
+		mcPREP_RESTART_SHORTEST_WAY, (*Slave axis moves to "RestartPosition" by the shortest distance*)
+		mcPREP_RESTART_POSITIVE_WINDOW, (*Slave moves to "RestartPosition" by the shortest distance when distance is smaller than "ToleranceWindow", otherwise only in positive direction*)
+		mcPREP_RESTART_NEGATIVE_WINDOW, (*Slave moves to "RestartPosition" by the shortest distance when distance is smaller than "ToleranceWindow", otherwise only in negative direction*)
+		mcPREP_RESTART_GET_POSITION (*"RestartPosition" is output, no movement is performed*)
 	);
 
 	McAdvCyclicTorqueFFParType : STRUCT
 		DisableMode : McDisableModeEnum; (*Defines the behavior at disable*)
 	END_STRUCT;
+
+	McAdvBrCamTransLeadInOutParType : STRUCT
+		MasterDistance : LREAL; (*Master compensation distance outside the cam for lead-in or lead-out movement [Measurement units of master]*)
+		SlaveDistance : LREAL; (*Slave compensation distance for the lead-in or lead-out movement [Measurement units of slave]*)
+		MasterOffset : LREAL; (*Master position in the cam at which the lead-in movement ends or the lead-out movement starts [Measurement units of master]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
+	END_STRUCT;
+
+	McAdvBrCamDwellParType : STRUCT
+		LeadIn : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-in movement*)
+		LeadOut : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-out movement*)
+		MasterValueSource : McValueSrcEnum; (*Defines the source of the master axis position to be used*)
+		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
+	END_STRUCT;
+
+	McAdvBrAutoCamDwellParType : STRUCT
+		LeadIn : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-in movement*)
+		LeadOut : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-out movement*)
+		MasterValueSource : McValueSrcEnum; (*Defines the source of the master axis position to be used*)
+		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
+	END_STRUCT;
+
+	McAdvBrCamTransCamModeEnum:
+	(
+		mcCAM_MODE_DISTANCE_BASED, (*Constant master distance*)
+		mcCAM_MODE_TIME_BASED (*Constant time*)
+	);
+
+	McAdvBrCamTransTransModeEnum:
+	(
+		mcCAM_TRANS_MODE_OFF, (*Only the synchronous cam is repeated cyclically*)
+		mcCAM_TRANS_MODE_ON, (*The synchronous cam - compensating movement (transition) sequence is repeated cyclically*)
+		mcCAM_TRANS_MODE_OFF_LEAD_IN , (*The synchronous cam is repeated cyclically and lead-in movement is performed before entering cam. No lead-out movement is executed*)
+		mcCAM_TRANS_MODE_OFF_LEAD_OUT, (*The synchronous cam is repeated cyclically and lead-out movement is performed when exiting the cam. No lead-in movement is executed*)
+		mcCAM_TRANS_MODE_OFF_LEAD_IN_OUT, (*The synchronous cam is repeated cyclically. Lead-in movement is performed before entering the cam. Lead-out movement is performed when exiting the cam*)
+		mcCAM_TRANS_MODE_ON_LEAD_IN, (*In this mode, the synchronous cam - compensating movement (transition) sequence is repeated cyclically. Lead-in movement is performed before entering the cam. No lead-out movement is performed*)
+		mcCAM_TRANS_MODE_ON_LEAD_OUT, (*The synchronous cam - compensating movement (transition) sequence is repeated cyclically. Lead-out movement is performed when exiting the cam. No lead-in movement is performed*)
+		mcCAM_TRANS_MODE_ON_LEAD_IN_OUT (*The synchronous cam - compensating movement (transition) sequence is repeated cyclically. Lead-in movement is performed before entering the cam. Lead-out movement is performed when exiting the cam*)
+	);
+
+	McAdvBrCamTransitionParType : STRUCT
+		LeadIn : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-in movement*)
+		LeadOut : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-out movement*)
+		MasterValueSource : McValueSrcEnum; (*Defines the source of the master axis position to be used*)
+		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
+		CamTime : REAL; (*Time for the synchronous curve [s]*)
+		CamMode : McAdvBrCamTransCamModeEnum; (*Mode for synchronous curve*)
+		TransitionMode :  McAdvBrCamTransTransModeEnum; (*Mode for compensation phases*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
+	END_STRUCT;
+
+	McBrAdvCamSaveDatObjType : STRUCT
+		DataObjectVersion : UINT; (*Version of the saved data object (four digits)*)
+	END_STRUCT;
+
+	McEventType : STRUCT
+		Event : McEventSrcEnum; (*Event source selection*)
+		Edge : McEdgeEnum; (*Defines if the rising or falling edge should be used for the event*)
+	END_STRUCT;
+
+	McAdvEventMoveParType : STRUCT
+		Mode : McEventMoveModeEnum; (*Operation mode*)
+	END_STRUCT;
+
+	McDigitalInputsPvIfType : STRUCT
+        HomingSwitch : BOOL; (*Variable for homing switch input functionality*)
+        PositiveLimitSwitch : BOOL; (*Variable for positive limit switch input functionality*)
+        NegativeLimitSwitch : BOOL; (*Variable for negative limit switch input functionality*)
+        Trigger1 : BOOL; (*Variable for trigger 1 input functionality*)
+        Trigger2 : BOOL; (*Variable for trigger 2 input functionality*)
+        Quickstop : BOOL; (*Variable for quickstop input functionality*)
+    END_STRUCT;
 
 END_TYPE

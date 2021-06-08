@@ -3,7 +3,7 @@
   <header creationtool="B&amp;R Automation Studio" creationtoolversion="4.2" datatype="unknown" segtype="sentence" adminlang="en" srclang="en" o-tmf="TMX">
     <note>Do not change anything in this file, else the tmx-file will not be recognized as a valid system text anymore</note>
     <prop type="x-BR-TS:Namespace">BR/EventLog</prop>
-    <prop type="x-BR-TS:systemtextsig">Ui5CsCTw4ad4jYKTuJQICTnqDhj06v2PiGVGgC6eE4eSu548nh/mG0f8C8FfIQYAVBd8wXCcyIe321Oqk4dp44P/uGJJSsPfidfJTIKRjo77JrYZwKCM+3sMiBiEPOeLeD8KsRho3aLMC0PVC/jq3gr6QtNJjwbxYkLWPNhRErg=</prop>
+    <prop type="x-BR-TS:systemtextsig">Mzhk03tnw3xYWSI29K9E3uKPV7pgW1OPZYVd8NKI18XYaCuX3RTv1lBxVEQZoQft1Iuj3RAQPzjrClWzRv8GV+DEqJoRI63MvSCnvcXPNbfmODqz/PrLPPNFAfB0c/z9Wlp/y3GcLVSEYGvA9tYwlNTmitC7tDaMSZbhqO/LTI4=</prop>
   </header>
   <body>
     <tu tuid="-1064239099">
@@ -318,6 +318,22 @@
         <seg>Invalid Unit-definition {3:2}</seg>
       </tuv>
     </tu>
+    <tu tuid="-1064303079">
+      <tuv xml:lang="de">
+        <seg>Einheiten-Übersetzung {2} ungültig</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Unit-translation {2} is invalid</seg>
+      </tuv>
+    </tu>
+    <tu tuid="-1064303077">
+      <tuv xml:lang="de">
+        <seg>Variable {2} für Einheiten-Übersetzun nicht gefunden oder fehlerhaft</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Variable {2} for unit-translation not found or invalid</seg>
+      </tuv>
+    </tu>
     <tu tuid="-1064303060">
       <tuv xml:lang="de">
         <seg>Keine PV an angegebener Adresse gefunden (Fehlerursache: {1})</seg>
@@ -475,7 +491,7 @@
         <seg>Ungültige Query-Update PV {2}</seg>
       </tuv>
       <tuv xml:lang="en">
-        <seg>Invalid query-update-pV {2}</seg>
+        <seg>Invalid Query-Update PV {2}</seg>
       </tuv>
     </tu>
     <tu tuid="-1064239102">
@@ -572,6 +588,14 @@
       </tuv>
       <tuv xml:lang="en">
         <seg>Password is invalid</seg>
+      </tuv>
+    </tu>
+    <tu tuid="-1064303596">
+      <tuv xml:lang="de">
+        <seg>Es konnte nicht genügend Speicher allokiert werden</seg>
+      </tuv>
+      <tuv xml:lang="en">
+        <seg>Failed to allocated sufficient memory</seg>
       </tuv>
     </tu>
   </body>

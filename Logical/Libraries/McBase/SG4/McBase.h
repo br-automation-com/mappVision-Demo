@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.13.2 */
+/* McBase 5.14.2 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.13.2
+#define _McBase_VERSION 5.14.2
 #endif
 
 #include <bur/plctypes.h>
@@ -51,6 +51,18 @@ typedef enum McBufferModeEnum
 	mcBLENDING_HIGH
 } McBufferModeEnum;
 
+typedef enum McBrakeCmdEnum
+{	mcBRAKE_CLOSE,
+	mcBRAKE_OPEN,
+	mcBRAKE_GET_STATUS
+} McBrakeCmdEnum;
+
+typedef enum McBrakeStatusEnum
+{	mcBRAKE_STATUS_NOT_PROVIDED,
+	mcBRAKE_CLOSED,
+	mcBRAKE_OPENED
+} McBrakeStatusEnum;
+
 typedef enum McHomingModeEnum
 {	mcHOMING_DIRECT = 0,
 	mcHOMING_SWITCH_GATE,
@@ -66,6 +78,11 @@ typedef enum McHomingModeEnum
 	mcHOMING_INIT,
 	mcHOMING_RESTORE_POSITION
 } McHomingModeEnum;
+
+typedef enum McStopModeEnum
+{	mcSTOPMODE_JERK_LIMIT,
+	mcSTOPMODE_NO_JERK_LIMIT
+} McStopModeEnum;
 
 typedef enum McIplModeEnum
 {	mcIPLM_DEFAULT,
@@ -113,6 +130,7 @@ typedef enum McCoordinateSystemEnum
 	mcSCS4 = 6,
 	mcSCS5 = 7,
 	mcTCS = 9,
+	mcGCS = 10,
 	mcJACS = 100
 } McCoordinateSystemEnum;
 
@@ -155,6 +173,7 @@ typedef enum McCommunicationStateEnum
 
 typedef enum McCfgTypeEnum
 {	mcCFG_NONE = 0,
+	mcCFG_MMCFG = 10,
 	mcCFG_WS = 800,
 	mcCFG_TOOLTBL = 900,
 	mcCFG_FRMTBL = 1000,
@@ -198,6 +217,19 @@ typedef enum McCfgTypeEnum
 	mcCFG_AX_FEAT_CAM_AUT_ACP = 11101,
 	mcCFG_AX_FEAT_A_IN = 11103,
 	mcCFG_AX_FEAT_ACP_PAR_TBL = 11104,
+	mcCFG_PURE_V_AX = 12000,
+	mcCFG_PURE_V_AX_REF = 12011,
+	mcCFG_PURE_V_AX_HOME = 12012,
+	mcCFG_PURE_V_AX_JERK_FLTR = 12013,
+	mcCFG_PURE_V_AX_FEAT = 12014,
+	mcCFG_PURE_V_AX_MECH_ELM = 12015,
+	mcCFG_PURE_V_AX_ENC_LINK = 12016,
+	mcCFG_PURE_V_AX_CTRL = 12017,
+	mcCFG_PURE_V_AX_STOP_REAC = 12018,
+	mcCFG_PURE_V_AX_MOVE_ERR_LIM = 12019,
+	mcCFG_PURE_V_AX_DIG_IN = 12020,
+	mcCFG_PURE_V_AX_STAT_IN = 12021,
+	mcCFG_PURE_V_AX_CTRL_OUT = 12022,
 	mcCFG_STP_AX = 13000,
 	mcCFG_STP_AX_REF = 13011,
 	mcCFG_STP_AX_MECH_ELM = 13012,
@@ -212,10 +244,22 @@ typedef enum McCfgTypeEnum
 	mcCFG_STP_AX_DIG_OUT = 13021,
 	mcCFG_STP_AX_FEAT = 13022,
 	mcCFG_STP_ENC = 13100,
+	mcCFG_DS402_AX = 13500,
+	mcCFG_DS402_INV_AX = 13501,
+	mcCFG_DS402_AX_REF = 13511,
+	mcCFG_DS402_AX_MECH_ELM = 13512,
+	mcCFG_DS402_AX_ENC_SET = 13513,
+	mcCFG_DS402_AX_POS_ACT_VAL_RNG = 13514,
+	mcCFG_DS402_AX_CYC_SET_VAL_MOD = 13515,
+	mcCFG_DS402_AX_FEAT = 13516,
+	mcCFG_ACP_INV_AX = 13600,
+	mcCFG_ACP_INV_AX_REF = 13611,
+	mcCFG_ACP_INV_AX_MECH_ELM = 13612,
 	mcCFG_AXGRP_ADMIN = 20000,
 	mcCFG_AXGRP_FEAT_HOME_ORD = 20101,
 	mcCFG_AXGRP_FEAT_PWR_ON_ORD = 20102,
 	mcCFG_AXGRP_FEAT_EX_SNG_AX = 20103,
+	mcCFG_AXGRP_FEAT_SHR_BRK_SIG = 20104,
 	mcCFG_AXGRP_PATHGEN = 21000,
 	mcCFG_AXGRP_PATHGEN_BASE_SET = 21013,
 	mcCFG_AXGRP_FEAT_PRG = 21101,
@@ -242,14 +286,18 @@ typedef enum McCfgTypeEnum
 	mcCFG_AXGRP_FEAT_PATH_PREVIEW = 21122,
 	mcCFG_AXGRP_FEAT_TAN_TOOL = 21124,
 	mcCFG_AXGRP_FEAT_REV_MOVE = 21125,
+	mcCFG_ASM = 31000,
 	mcCFG_ASM_FEAT_CPLG = 31101,
 	mcCFG_ASM_FEAT_SIM_SH_DEF = 31102,
 	mcCFG_ASM_FEAT_SH_TRACE = 31103,
 	mcCFG_ASM_FEAT_SH_AUT_ATT = 31104,
 	mcCFG_ASM_FEAT_LOC_LIM = 31105,
 	mcCFG_ASM_FEAT_EX_SEG = 31106,
+	mcCFG_ASM_FEAT_SH_SHP_REG = 31107,
 	mcCFG_SEC_COMP = 31301,
 	mcCFG_SEC_SUB = 31302,
+	mcCFG_SH_STEREO_TYP = 31400,
+	mcCFG_SEG = 31500,
 	mcCFG_MS_CUS_STD = 50001,
 	mcCFG_MS_2AX_CNC_XY = 51201,
 	mcCFG_MS_2AX_CNC_XZ = 51202,
@@ -275,8 +323,37 @@ typedef enum McCfgTypeEnum
 	mcCFG_MS_4AX_ROB_B = 52402,
 	mcCFG_MS_5AX_ROB_A = 52501,
 	mcCFG_MS_6AX_ROB_A = 52601,
-	mcCFG_MS_6AX_ROB_B = 52602
+	mcCFG_MS_6AX_ROB_B = 52602,
+	mcCFG_MS_6AX_ROB_C = 52603
 } McCfgTypeEnum;
+
+typedef enum McMMCLogSelEnum
+{	mcMMCLS_NOT_USE = 0,
+	mcMMCLS_USE = 1
+} McMMCLogSelEnum;
+
+typedef enum McCfgVisEnum
+{	mcCV_VIS = 0,
+	mcCV_SUP = 1
+} McCfgVisEnum;
+
+typedef enum McMMCLogSelUseAdmCmdEnum
+{	mcMMCLSUAC_VIS = 0,
+	mcMMCLSUAC_SUP = 1,
+	mcMMCLSUAC_SEL = 2
+} McMMCLogSelUseAdmCmdEnum;
+
+typedef enum McMMCLogSelUseMoveCmdEnum
+{	mcMMCLSUMC_VIS = 0,
+	mcMMCLSUMC_SUP = 1,
+	mcMMCLSUMC_SEL = 2
+} McMMCLogSelUseMoveCmdEnum;
+
+typedef enum McMMCLogSelUseInfoCmdEnum
+{	mcMMCLSUIC_VIS = 0,
+	mcMMCLSUIC_SUP = 1,
+	mcMMCLSUIC_SEL = 2
+} McMMCLogSelUseInfoCmdEnum;
 
 typedef enum McWSHalfSpcPlEnum
 {	mcWSHSP_PL_XY = 0,
@@ -435,6 +512,10 @@ typedef struct McInternalMappLinkType
 {	unsigned long Internal[2];
 } McInternalMappLinkType;
 
+typedef struct McInternalMotionCfgIfType
+{	plcdword vtable;
+} McInternalMotionCfgIfType;
+
 typedef struct McInternalAxisIfType
 {	plcdword vtable;
 } McInternalAxisIfType;
@@ -453,6 +534,11 @@ typedef struct McExec1InternalType
 	signed long Result;
 	unsigned long pInfo;
 } McExec1InternalType;
+
+typedef struct McMotionCfgType
+{	struct McInternalMotionCfgIfType* controlif;
+	struct McInternalMappLinkType mappLinkInternal;
+} McMotionCfgType;
 
 typedef struct McAxisType
 {	struct McInternalAxisIfType* controlif;
@@ -488,6 +574,59 @@ typedef struct McCfgReferenceType
 {	plcstring Name[251];
 	enum McCfgTypeEnum ConfigType;
 } McCfgReferenceType;
+
+typedef struct McMMCLogSelUseAdmCmdSelType
+{	enum McCfgVisEnum CallerInstance;
+	enum McCfgVisEnum ComponentResponse;
+	enum McCfgVisEnum AdditionalInformation;
+} McMMCLogSelUseAdmCmdSelType;
+
+typedef struct McMMCLogSelUseAdmCmdType
+{	enum McMMCLogSelUseAdmCmdEnum Type;
+	struct McMMCLogSelUseAdmCmdSelType Selective;
+} McMMCLogSelUseAdmCmdType;
+
+typedef struct McMMCLogSelUseMoveCmdSelType
+{	enum McCfgVisEnum CallerInstance;
+	enum McCfgVisEnum ComponentResponse;
+	enum McCfgVisEnum AdditionalInformation;
+} McMMCLogSelUseMoveCmdSelType;
+
+typedef struct McMMCLogSelUseMoveCmdType
+{	enum McMMCLogSelUseMoveCmdEnum Type;
+	struct McMMCLogSelUseMoveCmdSelType Selective;
+} McMMCLogSelUseMoveCmdType;
+
+typedef struct McMMCLogSelUseInfoCmdSelType
+{	enum McCfgVisEnum CallerInstance;
+	enum McCfgVisEnum ComponentResponse;
+	enum McCfgVisEnum AdditionalInformation;
+} McMMCLogSelUseInfoCmdSelType;
+
+typedef struct McMMCLogSelUseInfoCmdType
+{	enum McMMCLogSelUseInfoCmdEnum Type;
+	struct McMMCLogSelUseInfoCmdSelType Selective;
+} McMMCLogSelUseInfoCmdType;
+
+typedef struct McMMCLogSelUseType
+{	enum McCfgVisEnum StateChange;
+	struct McMMCLogSelUseAdmCmdType AdministrativeCommands;
+	struct McMMCLogSelUseMoveCmdType MovementCommands;
+	struct McMMCLogSelUseInfoCmdType InformationalCommands;
+} McMMCLogSelUseType;
+
+typedef struct McMMCLogSelType
+{	enum McMMCLogSelEnum Type;
+	struct McMMCLogSelUseType Used;
+} McMMCLogSelType;
+
+typedef struct McMMCLogType
+{	struct McMMCLogSelType Selective;
+} McMMCLogType;
+
+typedef struct McCfgMMCfgType
+{	struct McMMCLogType Logger;
+} McCfgMMCfgType;
 
 typedef struct McCfgTransXYZType
 {	double X;

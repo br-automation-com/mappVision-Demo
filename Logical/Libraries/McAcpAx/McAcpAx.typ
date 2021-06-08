@@ -176,10 +176,10 @@ TYPE
 		Position : LREAL; (*Absolute position or homing offset when homing signal [Measurement units] occurs*)
 		StartVelocity : REAL; (*Velocity for reference switch search [Measurement units/s]*)
 		HomingVelocity : REAL; (*Velocity (after reaching reference switch) [Measurement units/s]*)
-		Acceleration : REAL; (*Maximum acceleration [Measurement units/s]*)
+		Acceleration : REAL; (*Maximum acceleration [Measurement units/s²]*)
 		SwitchEdge : McDirectionEnum; (*Edge of reference switch*)
 		StartDirection : McDirectionEnum; (*Start direction for searching the reference edge*)
-		HomingDirection : McDirectionEnum; (*Direction for homing (after reaching reference switch) *)
+		HomingDirection : McDirectionEnum; (*Direction for homing (after reaching reference switch)*)
 		ReferencePulse : McSwitchEnum; (*The encoder's reference pulse is used for homing*)
 		KeepDirection : McSwitchEnum; (*The direction of movement is or is not permitted to be changed during the homing procedure*)
 		ReferencePulseBlockingDistance : REAL; (*Distance for blocking activation of "triggering reference pulse" [Measurement units]*)
@@ -217,15 +217,15 @@ TYPE
 	END_STRUCT;
 
 	McAcpAxBrakeParType : STRUCT
-		AutomaticControl : McSwitchEnum := mcSWITCH_ON; (*Automatic control on/off (Default setting: *)
-		RestrictedBrakeControl : McSwitchEnum := mcSWITCH_ON; (*Holding brake can only be applied and released (Default setting: *)
-		ControlMonitoring : McSwitchEnum := mcSWITCH_ON; (*Enables/disables control monitoring (Default setting: *)
-		MovementMonitoring : McSwitchEnum := mcSWITCH_ON; (*Enables/disables movement monitoring (Default setting: *)
-		VoltageMonitoring : McSwitchEnum := mcSWITCH_ON; (*Enables/disables monitoring of external voltage over 24 V (Default setting: *)
-		TestAtPowerOn : McSwitchEnum := mcSWITCH_OFF; (*Enables/disables automatic torque testing when the controller is switched on (Default setting: *)
-		TestAtPowerOff : McSwitchEnum := mcSWITCH_OFF; (*Enables/disables automatic torque testing when the controller is switched off (Default setting: *)
-		AutomaticInductionStop : McSwitchEnum := mcSWITCH_ON; (*Enables/disables automatic induction stop (Default setting: *)
-		EnableSBTRequestBySMC : McSwitchEnum := mcSWITCH_OFF; (*Enables the automatic safe brake test requested and monitored by module SafeMC (Default setting: *)
+		AutomaticControl : McSwitchEnum := mcSWITCH_ON; (*Automatic control on/off (Default setting:*)
+		RestrictedBrakeControl : McSwitchEnum := mcSWITCH_ON; (*Holding brake can only be applied and released (Default setting:*)
+		ControlMonitoring : McSwitchEnum := mcSWITCH_ON; (*Enables/disables control monitoring (Default setting:*)
+		MovementMonitoring : McSwitchEnum := mcSWITCH_ON; (*Enables/disables movement monitoring (Default setting:*)
+		VoltageMonitoring : McSwitchEnum := mcSWITCH_ON; (*Enables/disables monitoring of external voltage over 24 V (Default setting:*)
+		TestAtPowerOn : McSwitchEnum := mcSWITCH_OFF; (*Enables/disables automatic torque testing when the controller is switched on (Default setting:*)
+		TestAtPowerOff : McSwitchEnum := mcSWITCH_OFF; (*Enables/disables automatic torque testing when the controller is switched off (Default setting:*)
+		AutomaticInductionStop : McSwitchEnum := mcSWITCH_ON; (*Enables/disables automatic induction stop (Default setting:*)
+		EnableSBTRequestBySMC : McSwitchEnum := mcSWITCH_OFF; (*Enables the automatic safe brake test requested and monitored by module SafeMC (Default setting:*)
 		ControlMonitoringFilterTime : REAL := 0.5; (*Time after which an error is reported after control monitoring is enabled. [s] (Default setting: 0.5)*)
 	END_STRUCT;
 
@@ -409,8 +409,8 @@ TYPE
 	    FilterTimeMode : McAcpAxFilterTimeModeEnum; (*Mode for taking the filter time constant into account*)
 	    IntegrationTimeMode : McAcpAxIntegrationTimeModeEnum; (*Mode for taking integral action time into account*)
 	    OperatingPoint : McAcpAxAutoTuneOperatPointEnum; (*Selects the operating point for autotuning*)
-	    Velocity : REAL; (*Maximum velocity applied during autotuning if "OperatingPoint = *)
-	    Acceleration : REAL; (*Acceleration applied during autotuning if "OperatingPoint = *)
+	    Velocity : REAL; (*Maximum velocity applied during autotuning if "OperatingPoint =*)
+	    Acceleration : REAL; (*Acceleration applied during autotuning if "OperatingPoint =*)
 	    MaxProportionalGain : REAL := 2000; (*Maximum proportional gain [As]*)
 	    ProportionalGainPercent : REAL := 100; (*Percentage of the proportional gain determined during autotuning that will be used for the control parameters [%]*)
 	    ResonanceFactor : REAL := 2; (*Factor for detecting resonance*)
@@ -421,16 +421,16 @@ TYPE
 
 	McAcpAxAdvAutoTuneLoopFilterType : STRUCT
 	    OperatingPoint : McAcpAxAutoTuneOperatPointEnum; (*Selects the operating point for autotuning*)
-	    Velocity : REAL; (*Maximum velocity applied during autotuning if "OperatingPoint = *)
-	    Acceleration : REAL; (*Acceleration applied during autotuning if "OperatingPoint = *)
+	    Velocity : REAL; (*Maximum velocity applied during autotuning if "OperatingPoint =*)
+	    Acceleration : REAL; (*Acceleration applied during autotuning if "OperatingPoint =*)
 	    ResonanceFactor : REAL := 2; (*Factor for detecting resonance*)
 	    ExcitationSignal : McAcpAxAutoTuneExSignalType; (*Parameter for excitation signal*)
 	END_STRUCT;
 
 	McAcpAxAdvAutoTunePosCtrlType : STRUCT
 	    OperatingPoint : McAcpAxAutoTuneOperatPointEnum; (*Selects the operating point for autotuning*)
-	    Velocity : REAL; (*Maximum velocity applied during autotuning if "OperatingPoint = *)
-	    Acceleration : REAL; (*Acceleration applied during autotuning if "OperatingPoint = *)
+	    Velocity : REAL; (*Maximum velocity applied during autotuning if "OperatingPoint =*)
+	    Acceleration : REAL; (*Acceleration applied during autotuning if "OperatingPoint =*)
 	    MaxProportionalGain : REAL := 2000; (*Maximum proportional gain [As]*)
 	    ProportionalGainPercent : REAL := 100; (*Percentage of the proportional gain determined during autotuning that will be used for the control parameters [%]*)
 	    ExcitationSignal : McAcpAxAutoTuneExSignalType; (*Parameter for excitation signal*)
@@ -452,23 +452,23 @@ TYPE
 	END_STRUCT;
 
 	McAcpAxCamAutCompParType : STRUCT
-	    MasterCompDistance : LREAL; (*Compensation distance for the master axis [measurement units of master]*)
-	    SlaveCompDistance : LREAL; (*Compensation distance for the slave axis [measurement units of slave]*)
-	    MasterCamLeadIn : LREAL; (*Relative position at which the master axis enters the state [measurement units of master]*)
-	    MinMasterCompDistance : LREAL; (*Minimum compensation distance for the master axis [measurement units of master]*)
-	    MinSlaveCompDistance : LREAL; (*Minimum compensation distance for the slave axis [slave measurement unit]*)
-	    MaxSlaveCompDistance : LREAL; (*Maximum compensation distance for the slave axis [slave measurement unit]*)
-	    MinSlaveCompVelocity : REAL; (*Minimum velocity of the slave axis during compensation [measurement units of slave / s]*)
-	    MaxSlaveCompVelocity : REAL; (*Maximum velocity of the slave axis during compensation [measurement units of slave / s]*)
-	    MaxSlaveCompAccel1 : REAL; (*Maximum acceleration of the slave axis during compensation phase 1 [measurement units of slave / s²]*)
-	    MaxSlaveCompAccel2 : REAL; (*Maximum acceleration of the slave axis during compensation phase 2 [measurement units of slave / s²]*)
+	    MasterCompDistance : LREAL; (*Compensation distance for the master axis [Measurement units of master]*)
+	    SlaveCompDistance : LREAL; (*Compensation distance for the slave axis [Measurement units of slave]*)
+	    MasterCamLeadIn : LREAL; (*Relative position at which the master axis enters the state [Measurement units of master]*)
+	    MinMasterCompDistance : LREAL; (*Minimum compensation distance for the master axis [Measurement units of master]*)
+	    MinSlaveCompDistance : LREAL; (*Minimum compensation distance for the slave axis [Measurement units of slave]*)
+	    MaxSlaveCompDistance : LREAL; (*Maximum compensation distance for the slave axis [Measurement units of slave]*)
+	    MinSlaveCompVelocity : REAL; (*Minimum velocity of the slave axis during compensation [Measurement units of slave/s]*)
+	    MaxSlaveCompVelocity : REAL; (*Maximum velocity of the slave axis during compensation [Measurement units of slave/s]*)
+	    MaxSlaveCompAccel1 : REAL; (*Maximum acceleration of the slave axis during compensation phase 1 [Measurement units of slave/s²]*)
+	    MaxSlaveCompAccel2 : REAL; (*Maximum acceleration of the slave axis during compensation phase 2 [Measurement units of slave/s²]*)
 	    SlaveCompJoltTime : REAL; (*Jerk time of the slave axis during compensation [s]*)
 	END_STRUCT;
 
 	McAcpAxCamAutAdvStateParType : STRUCT
-	    RepeatCounterInit : UINT; (*Starting value of state repetitions for event *)
+	    RepeatCounterInit : UINT; (*Starting value of state repetitions for event*)
 	    RepeatCounterSetTransfer : McSwitchEnum; (*"RepeatCounterInit" is transferred*)
-	    RepeatCounterSet : UINT; (*State repetitions counter for event *)
+	    RepeatCounterSet : UINT; (*State repetitions counter for event*)
 	    MasterAxis : REFERENCE TO McAxisType; (*Master axis for this state*)
 	    MasterParID : UINT; (*Parameter ID of the master axis for this state*)
 	END_STRUCT;
@@ -484,8 +484,8 @@ TYPE
 	END_STRUCT;
 
 	McAcpAxCamAutCtrlSettingsType : STRUCT
-	    CrossLeftBoundary : McCamAutCrossLeftBoundEnum; (*Function on the left cam edge during backward movement of the master without event *)
-	    CamChangeImmediately : McCamAutCamChangeImmedEnum; (*Direction of the cam change on event transition *)
+	    CrossLeftBoundary : McCamAutCrossLeftBoundEnum; (*Function on the left cam edge during backward movement of the master without event*)
+	    CamChangeImmediately : McCamAutCamChangeImmedEnum; (*Direction of the cam change on event transition*)
 	END_STRUCT;
 
 	McAcpAxCamAutMsgSettingsType : STRUCT
@@ -496,12 +496,12 @@ TYPE
 	McAcpAxCamAutTriggerAndLatchType : STRUCT
 	    Trigger1Delay : REAL; (*Trigger1 delay time [s] to compensate for a signal delay*)
 	    Trigger2Delay : REAL; (*Trigger2 delay time [s] to compensate for a signal delay*)
-	    SlaveLatchParID : UINT; (*Parameter ID for the latch value of the slave axis *)
+	    SlaveLatchParID : UINT; (*Parameter ID for the latch value of the slave axis*)
 	END_STRUCT;
 
 	McAcpAxCamAutStartStateParType : STRUCT
 	    StartState : USINT; (*State in which the cam automat is started*)
-	    MasterStartRelPos : LREAL; (*Master position within the starting state at which the cam automat is started [measurements units of the master]*)
+	    MasterStartRelPos : LREAL; (*Master position within the starting state at which the cam automat is started [Measurements units of the master]*)
 	END_STRUCT;
 
 	McAcpAxCamAutAddAxesType : STRUCT
@@ -518,7 +518,7 @@ TYPE
 	McAcpAxCamAutAdvParType : STRUCT
 		StartStateParam : McAcpAxCamAutStartStateParType; (*Parameter used for starting directly from a state*)
 		AdditiveAxes : McAcpAxCamAutAddAxesType; (*Parameter for additive axes*)
-	    MasterStartPosMode : McCamAutMaStartPosModeEnum; (*Mode for event type *)
+	    MasterStartPosMode : McCamAutMaStartPosModeEnum; (*Mode for event type*)
 	    ControlSettings : McAcpAxCamAutCtrlSettingsType; (*Control settings for cam automat*)
 	    MessageSettings : McAcpAxCamAutMsgSettingsType; (*Settings for warnings and error messages*)
 	    TriggerAndLatch : McAcpAxCamAutTriggerAndLatchType; (*Settings for triggering delay times and for latch value*)
@@ -536,9 +536,9 @@ TYPE
 	McAcpAxCamAutMasterParType : STRUCT
 	    MasterAxis : REFERENCE TO McAxisType; (*Axis reference of the master axis*)
 	    MasterParID : UINT; (*ParID of the master axis*)
-	    MasterStartPosition : LREAL; (*Starting position of the master axis [measurement units of master]*)
-	    MasterStartInterval : LREAL; (*Starting interval of the master axis [measurement units of master]*)
-	    MaxMasterVelocity : REAL; (*Maximum velocity of the master axis [measurement units of master] *)
+	    MasterStartPosition : LREAL; (*Starting position of the master axis [Measurement units of master]*)
+	    MasterStartInterval : LREAL; (*Starting interval of the master axis [Measurement units of master]*)
+	    MaxMasterVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
 	END_STRUCT;
 
 	McAcpAxCamAutCommonParType : STRUCT

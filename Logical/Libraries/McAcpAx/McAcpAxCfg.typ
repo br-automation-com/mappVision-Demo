@@ -458,10 +458,26 @@ TYPE
 		mcADIAS_DIG_IN_SS1X41X7 := 9, (*Digital in SS1.X41x.7 -*)
 		mcADIAS_DIG_IN_SS1X41X8 := 10, (*Digital in SS1.X41x.8 -*)
 		mcADIAS_DIG_IN_SS1X41X9 := 11, (*Digital in SS1.X41x.9 -*)
-		mcADIAS_DIG_IN_SS1X41X10 := 12 (*Digital in SS1.X41x.10 -*)
+		mcADIAS_DIG_IN_SS1X41X10 := 12, (*Digital in SS1.X41x.10 -*)
+		mcADIAS_DIG_IN_X23ATRG_1 := 13, (*Digital in X23A.Trigger 1 -*)
+		mcADIAS_DIG_IN_X23ATRG_2 := 14, (*Digital in X23A.Trigger 2 -*)
+		mcADIAS_DIG_IN_X24A_TRIGGER2 := 15, (*Digital in X24A Trigger2 -*)
+		mcADIAS_DIG_IN_X2TRG_1 := 16, (*Digital in X2.Trigger 1 -*)
+		mcADIAS_DIG_IN_X2TRG_2 := 17, (*Digital in X2.Trigger 2 -*)
+		mcADIAS_DIG_IN_X1TRG_1 := 18, (*Digital in X1.Trigger 1 -*)
+		mcADIAS_DIG_IN_X1TRG_2 := 19, (*Digital in X1.Trigger 2 -*)
+		mcADIAS_DIG_IN_X1REF_SW := 20, (*Digital in X1.Reference switch -*)
+		mcADIAS_DIG_IN_X1POS_HW_LIM := 21, (*Digital in X1.Positive HW limit -*)
+		mcADIAS_DIG_IN_X1NEG_HW_LIM := 22, (*Digital in X1.Negative HW limit -*)
+		mcADIAS_FOR_BY_FUN_BLK := 23, (*Force by function block -*)
+		mcADIAS_VAR := 24 (*Variable -*)
 		);
+	McADIAllSrcVarType : STRUCT (*Type mcADIAS_VAR settings*)
+		PVMapping : STRING[250];
+	END_STRUCT;
 	McADIHomeSwSrcType : STRUCT (*Source of the digital input hardware which is used for this functionality*)
 		Type : McADIAllSrcEnum; (*Source selector setting*)
+		Variable : McADIAllSrcVarType; (*Type mcADIAS_VAR settings*)
 	END_STRUCT;
 	McADILvlEnum :
 		( (*Level of the digital input hardware which leads to an active level of the functionality*)
@@ -474,6 +490,7 @@ TYPE
 	END_STRUCT;
 	McADIPosLimSwSrcType : STRUCT (*Source of the digital input hardware which is used for this functionality*)
 		Type : McADIAllSrcEnum; (*Source selector setting*)
+		Variable : McADIAllSrcVarType; (*Type mcADIAS_VAR settings*)
 	END_STRUCT;
 	McADIPosLimSwType : STRUCT (*Positive limit switch input functionality*)
 		Source : McADIPosLimSwSrcType; (*Source of the digital input hardware which is used for this functionality*)
@@ -481,6 +498,7 @@ TYPE
 	END_STRUCT;
 	McADINegLimSwSrcType : STRUCT (*Source of the digital input hardware which is used for this functionality*)
 		Type : McADIAllSrcEnum; (*Source selector setting*)
+		Variable : McADIAllSrcVarType; (*Type mcADIAS_VAR settings*)
 	END_STRUCT;
 	McADINegLimSwType : STRUCT (*Negative limit switch input functionality*)
 		Source : McADINegLimSwSrcType; (*Source of the digital input hardware which is used for this functionality*)
@@ -488,6 +506,7 @@ TYPE
 	END_STRUCT;
 	McADITrg1SrcType : STRUCT (*Source of the digital input hardware which is used for this functionality*)
 		Type : McADIAllSrcEnum; (*Source selector setting*)
+		Variable : McADIAllSrcVarType; (*Type mcADIAS_VAR settings*)
 	END_STRUCT;
 	McADITrg1Type : STRUCT (*Trigger 1 input functionality*)
 		Source : McADITrg1SrcType; (*Source of the digital input hardware which is used for this functionality*)
@@ -495,6 +514,7 @@ TYPE
 	END_STRUCT;
 	McADITrg2SrcType : STRUCT (*Source of the digital input hardware which is used for this functionality*)
 		Type : McADIAllSrcEnum; (*Source selector setting*)
+		Variable : McADIAllSrcVarType; (*Type mcADIAS_VAR settings*)
 	END_STRUCT;
 	McADITrg2Type : STRUCT (*Trigger 2 input functionality*)
 		Source : McADITrg2SrcType; (*Source of the digital input hardware which is used for this functionality*)
@@ -895,7 +915,8 @@ TYPE
 		mcAEX41IT_SSI := 2, (*SSI -*)
 		mcAEX41IT_ENDAT := 3, (*EnDat -*)
 		mcAEX41IT_HIPERFACE_DSL := 4, (*HIPERFACE DSL -*)
-		mcAEX41IT_TFMT := 5 (*T-Format - Tamagawa digital interface*)
+		mcAEX41IT_TFMT := 5, (*T-Format - Tamagawa digital interface*)
+		mcAEX41IT_MOT_DAT_IF := 6 (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
 		);
 	McAEX41BPwrSupEnum :
 		( (*Power supply of the encoder*)
@@ -996,7 +1017,8 @@ TYPE
 		mcAEX42IT_SSI := 2, (*SSI -*)
 		mcAEX42IT_ENDAT := 3, (*EnDat -*)
 		mcAEX42IT_HIPERFACE_DSL := 4, (*HIPERFACE DSL -*)
-		mcAEX42IT_TFMT := 5 (*T-Format - Tamagawa digital interface*)
+		mcAEX42IT_TFMT := 5, (*T-Format - Tamagawa digital interface*)
+		mcAEX42IT_MOT_DAT_IF := 6 (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
 		);
 	McAEX42BPwrSupEnum :
 		( (*Power supply of the encoder*)
@@ -1097,7 +1119,8 @@ TYPE
 		mcAEX43IT_SSI := 2, (*SSI -*)
 		mcAEX43IT_ENDAT := 3, (*EnDat -*)
 		mcAEX43IT_HIPERFACE_DSL := 4, (*HIPERFACE DSL -*)
-		mcAEX43IT_TFMT := 5 (*T-Format - Tamagawa digital interface*)
+		mcAEX43IT_TFMT := 5, (*T-Format - Tamagawa digital interface*)
+		mcAEX43IT_MOT_DAT_IF := 6 (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
 		);
 	McAEX43BPwrSupEnum :
 		( (*Power supply of the encoder*)

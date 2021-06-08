@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
-<Library Version="5.13.1" SubType="Binary" Description="mapp components diagnosis,hierarchy and unit handling" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="5.14.1" SubType="Binary" Description="mapp components diagnosis,hierarchy and unit handling" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File>MpCom.var</File>
     <File>MpCom.typ</File>
@@ -8,6 +8,6 @@
     <File>MpCom.fun</File>
   </Files>
   <Dependencies>
-    <Dependency ObjectName="MpBase" FromVersion="5.13.0" ToVersion="5.13.9" />
+    <Dependency ObjectName="MpBase" FromVersion="5.14.1" ToVersion="5.14.9" />
   </Dependencies>
 </Library>
