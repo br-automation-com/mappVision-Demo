@@ -85,6 +85,10 @@ FUNCTION_BLOCK ViDrawCrosshair
 							ResultPositionY		:= UDINT_TO_REAL(OCR.PositionY[idx]) / visCrossHair.CFG.PixelRatio;
 							ResultOrientation	:= OCR.Orientation[idx] / visCrossHair.CFG.PixelRatio;
 					END_CASE
+					
+					// Adapt the size to the size of the WebViewer image in mapp View. The download as svg file also uses a fixed size (both 1280x1024)
+					ResultPositionX				:= ResultPositionX * UINT_TO_REAL(visCrossHair.CFG.RefSizeX) / UINT_TO_REAL(VisionSensor.CFG.ResolutionWidth_X);
+					ResultPositionY				:= ResultPositionY * UINT_TO_REAL(visCrossHair.CFG.RefSizeY) / UINT_TO_REAL(VisionSensor.CFG.ResolutionHeight_Y);
 				
 					// Show crosshair except for measurement function
 					IF VisionSensor.CFG.VisionFunction <> enumMeasurement OR MT_UseXY THEN

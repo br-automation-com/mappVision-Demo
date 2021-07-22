@@ -62,6 +62,8 @@ TYPE
 		PixelRatio : REAL := 100; (*Position value for one pixel*)
 		Size : USINT := 80; (*Size of the cross hair in pixel*)
 		Font : USINT := 35;
+		RefSizeX : UINT := 1280; (*Size of the Webviewer Widget*)
+		RefSizeY : UINT := 1024; (*Size of the Webviewer Widget*)
 	END_STRUCT;
 	typCrossHairInfo : 	STRUCT 
 		CrosshairTopLeftX : REAL; (*top left position of the crosshair in pixels*)
