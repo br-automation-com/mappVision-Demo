@@ -261,12 +261,8 @@ PROGRAM _CYCLIC
 	
 	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
 END_PROGRAM
-
-
 PROGRAM _EXIT
-  
 	(* After download make sure to close this connection. If this is not closed the functionblock cant retrieve the new information *)
 	TcpForward_0.Enable := FALSE;
 	TcpForward_0();
-    
 END_PROGRAM

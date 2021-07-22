@@ -165,14 +165,12 @@ FUNCTION_BLOCK ViCreateWebDirFile
 		DevLink_0 : DevLink;
 		FileCopy_0 : FileCopy;
 		DevUnlink_0 : DevUnlink;
-		CfgGetIPAddr_0 : CfgGetIPAddr;
 		FileDevSystem : STRING[80];
 		FileDevSystemPara : STRING[80];
 		DirNameWeb : STRING[80];
 		FileNameVisImgHtml : STRING[80];
 		FileNameEyeSystem : STRING[80];
 		FileNameEyeUser : STRING[80];
-		EthIpAddr : STRING[80];
 		HtmlFileContent1 : STRING[1500];
 		HtmlFileContent2 : STRING[2000];
 		FileWriteData : STRING[3600];

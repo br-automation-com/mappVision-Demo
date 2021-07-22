@@ -96,17 +96,11 @@ FUNCTION_BLOCK ViCreateWebDirFile
 				Status := DevUnlink_0.status;
 				Step := 0;
 			END_IF
-		30: // Read PLCs IP and create path for webviewer widget
-			CfgGetIPAddr_0(enable := TRUE, pDevice := ADR(EthDevice), pIPAddr := ADR(EthIpAddr), Len := SIZEOF(EthIpAddr));
-			IF CfgGetIPAddr_0.status = ERR_OK THEN
-				visWebViewerPath := 'http://'; // Create path for webviewer widget
-				brsstrcat(ADR(visWebViewerPath), ADR(EthIpAddr));
-				Done := TRUE;
-				Status := ERR_OK;
-				Step := 0;
-			ELSIF CfgGetIPAddr_0.status <> ERR_FUB_BUSY THEN
-				Status := CfgGetIPAddr_0.status;
-				Step := 0;
-			END_IF
+		30: // Create path for webviewer widget
+			visWebViewerPath := 'http://'; // Create path for webviewer widget
+			brsstrcat(ADR(visWebViewerPath), ADR(EthIP));
+			Done := TRUE;
+			Status := ERR_OK;
+			Step := 0;
 	END_CASE
 END_FUNCTION_BLOCK
