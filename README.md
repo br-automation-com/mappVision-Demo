@@ -6,7 +6,7 @@
 
 <a name="Introduction"></a>
 ## Introduction
-This is a demo application for B&R vision camera. It is devloped and maintained by vision enthusiasts and is not and official B&R product. For a detailed description see this [**documentation**](Logical/Documentation/Vision%20Demo%20Application.pdf). 
+This is a demo application for B&R vision camera. It is developed and maintained by vision enthusiasts and is not and official B&R product. For a detailed description see this [**documentation**](Logical/Documentation/Vision%20Demo%20Application.pdf). 
 
 **Note:** For better alignment between the index number and IO names most arrays start at index 1 (not 0). This can cause issues with C Task since these tasks do not support arrays starting at index 1. Most arrays can be redefined starting with 0 without any issues from a code perspective but it will cause an empty line in the mappView result tables.
 
@@ -25,7 +25,7 @@ This vision sample contains a lot of functions that are not included in the mapp
 - fast repetitive mode (5 fps/200ms)
 - Simultaneous use of several cameras in one visualization
 - Use of the nettime function together with axes
-- Integration of Lightbar and Backligt
+- Integration of Lightbar and Backlight
 - Recipe management for the used parameters
 
 <a name="Requirements"></a>
@@ -45,14 +45,14 @@ You can find details in the project in "revision.txt"
  - Added RouteInfo_Tool.ps1
  - Added color detection first version
  - Split up main task into main and visu, integrated light task into main and visu
- - Added funkctionality to rotate the image on the main page
- - Click on the image on the main page toggles now the textposition (crosshair-details) from left to right
+ - Added functionality to rotate the image on the main page
+ - Click on the image on the main page toggles now the text position (crosshair-details) from left to right
  - CodeReader and OCR Text will be shown on the main page and saved in SVG file
  - Added proxy task to eliminate routing batch file
  - Added Pixel Counter hardware and code
  
 #### Version 2.2
-- Added new functionality to show images in every size on the webviewer widget on the mainpage
+- Added new functionality to show images in every size on the web viewer widget on the main page
 - Improved repetitive mode
 - SVG files save now all information. It is possible to click on the crosshairs to show the details
 - Added diagnostic data creation
