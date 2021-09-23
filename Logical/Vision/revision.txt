@@ -1,9 +1,9 @@
-Next Version
+Version 5.15
 - Update recipe managment to V1.0
 - Updated constant for code reader parameter "ParameterMode"
 - Fix ViColor
 - Make it possible to change connections
-- Updated to official 5.13 versions and official lightbar upgrade
+- Updated to official 5.15 versions and official lightbar upgrade
 - Vi_Optics added
 
 Version 2.3
