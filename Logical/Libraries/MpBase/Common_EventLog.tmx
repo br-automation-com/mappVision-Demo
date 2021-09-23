@@ -3,7 +3,7 @@
   <header creationtool="B&amp;R Automation Studio" creationtoolversion="4.2" datatype="unknown" segtype="sentence" adminlang="en" srclang="en" o-tmf="TMX">
     <note>Do not change anything in this file, else the tmx-file will not be recognized as a valid system text anymore</note>
     <prop type="x-BR-TS:Namespace">BR/EventLog</prop>
-    <prop type="x-BR-TS:systemtextsig">Mzhk03tnw3xYWSI29K9E3uKPV7pgW1OPZYVd8NKI18XYaCuX3RTv1lBxVEQZoQft1Iuj3RAQPzjrClWzRv8GV+DEqJoRI63MvSCnvcXPNbfmODqz/PrLPPNFAfB0c/z9Wlp/y3GcLVSEYGvA9tYwlNTmitC7tDaMSZbhqO/LTI4=</prop>
+    <prop type="x-BR-TS:systemtextsig">CDm74Yz0E8b3AXzGf/1LYtAI1VMlY4mPMmO+KDvTp2HvMRoDyaqgmJAXEggj2fKgU42gxgiG+RtcsgzDIlNs/tIVUZbWVvi/f49xqWbH4hAFrbb9w0hhvx07703YOKwkRfO6aQp7s5U3rdt/iDonr+XBy23gv0+Ho1ySI5mNiyg=</prop>
   </header>
   <body>
     <tu tuid="-1064239099">
@@ -304,7 +304,7 @@
     </tu>
     <tu tuid="-1064303084">
       <tuv xml:lang="de">
-        <seg>Einheit {2} kann nicht in {3} umgrechnet werden</seg>
+        <seg>Einheit {2} kann nicht in {3} umgerechnet werden</seg>
       </tuv>
       <tuv xml:lang="en">
         <seg>Unit {2} is not convertible to {3}</seg>
@@ -320,7 +320,7 @@
     </tu>
     <tu tuid="-1064303079">
       <tuv xml:lang="de">
-        <seg>Einheiten-Übersetzung {2} ungültig</seg>
+        <seg>Einheiten-Umrechnung {2} ungültig</seg>
       </tuv>
       <tuv xml:lang="en">
         <seg>Unit-translation {2} is invalid</seg>
@@ -328,7 +328,7 @@
     </tu>
     <tu tuid="-1064303077">
       <tuv xml:lang="de">
-        <seg>Variable {2} für Einheiten-Übersetzun nicht gefunden oder fehlerhaft</seg>
+        <seg>Variable {2} für Einheiten-Umrechnung nicht gefunden oder fehlerhaft</seg>
       </tuv>
       <tuv xml:lang="en">
         <seg>Variable {2} for unit-translation not found or invalid</seg>
@@ -360,7 +360,7 @@
     </tu>
     <tu tuid="-2138044953">
       <tuv xml:lang="de">
-        <seg>Komponent {2} war bereits in {3} registriert und wurde in {4} neu-registriert</seg>
+        <seg>Komponente {2} war bereits in {3} registriert und wurde in {4} neu-registriert</seg>
       </tuv>
       <tuv xml:lang="en">
         <seg>Component {2} was already linked to {3} and is relinked to {4}</seg>
@@ -528,7 +528,7 @@
     </tu>
     <tu tuid="-1064239097">
       <tuv xml:lang="de">
-        <seg>Parameters-Struktur ist ein Null-Zeiger</seg>
+        <seg>Parameter-Struktur ist ein Null-Zeiger</seg>
       </tuv>
       <tuv xml:lang="en">
         <seg>Parameters structure is a null pointer</seg>

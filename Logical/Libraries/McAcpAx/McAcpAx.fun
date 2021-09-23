@@ -35,6 +35,25 @@ FUNCTION_BLOCK MC_BR_ProcessParID_AcpAx (*reads or writes the value of a ParID a
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_BR_ProcessParTab_AcpAx (*transfers parameters of an ACOPOS parameter table according to the input "Mode"*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType;  (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		Data : McAcpAxProcessParTabDataType; (*data of the ACOPOS parameter table*)
+		Mode : McAcpAxProcessParTabModeEnum; (*mode for the transfer of the ACOPOS parameter(s)*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		Error : BOOL; (*error occurred during operation*)
+		ErrorID : DINT; (*error number*)
+		AdditionalInfo : McAcpAxProcessParTabAddInfoType; (*additional information*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK MC_BR_CyclicProcessParID_AcpAx (*reads or writes the value of a ParID cyclic according to the input "Mode"*)
 	VAR_INPUT
 		Axis : REFERENCE TO McAxisType;  (*axis reference*)
@@ -319,6 +338,69 @@ FUNCTION_BLOCK MC_BR_AutoTuneTest_AcpAx (*tests the stability of the controller*
 		Error : BOOL; (*error occurred during operation*)
 		ErrorID : DINT; (*error number*)
 		Output : McAcpAxAutoTuneTestOutType; (*output parameters of auto tuning test*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_AutoTuneInductMotor_AcpAx (*tune an induction motor*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType; (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		Mode : McAcpAxAutoTuneMotorModeEnum; (*Mode for the auto tuning*)
+		Parameters : McAcpAxAutoTuneIndMotParType; (*auto tuning parameters*)
+		AdvancedParameters : McAcpAxAdvAutoTuneIndMotType; (*advanced auto tuning parameters*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		CommandAborted : BOOL; (*Command was aborted by another command*)
+		Error : BOOL; (*error occurred during operation*)
+		ErrorID : DINT; (*error number*)
+		Output : McAcpAxAutoTuneIndMotOutType; (*output parameters of auto tuning for induction motor*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_AutoTuneSyncMotor_AcpAx (*tune a synchronous motor*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType; (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		Mode : McAcpAxAutoTuneMotorModeEnum; (*Mode for the auto tuning*)
+		Parameters : McAcpAxAutoTuneSyncMotParType; (*auto tuning parameters*)
+		AdvancedParameters : McAcpAxAdvAutoTuneSyncMotType; (*advanced auto tuning parameters*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		CommandAborted : BOOL; (*Command was aborted by another command*)
+		Error : BOOL; (*error occurred during operation*)
+		ErrorID : DINT; (*error number*)
+		Output : McAcpAxAutoTuneSyncMotOutType; (*output parameters of auto tuning for synchronous motor*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_AutoTuneMotorPhasing_AcpAx (*tune for phasing*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType; (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		Mode : McAcpAxAutoTuneMotPhasModeEnum; (*Mode for the phasing auto tuning*)
+		Parameters : McAcpAxAutoTuneMotPhasParType; (*auto tuning parameters*)
+		AdvancedParameters : McAcpAxAdvAutoTuneMotPhasType; (*advanced auto tuning parameters*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		CommandAborted : BOOL; (*Command was aborted by another command*)
+		Error : BOOL; (*error occurred during operation*)
+		ErrorID : DINT; (*error number*)
+		Output : McAcpAxAutoTuneMotPhasOutType; (*output parameters of auto tuning for motor phasing*)
 	END_VAR
 	VAR
 		Internal : McInternalType; (*internal variable*)

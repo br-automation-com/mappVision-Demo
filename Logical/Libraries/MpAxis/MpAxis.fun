@@ -16,6 +16,8 @@ FUNCTION_BLOCK MpAxisBasic
 		JogNegative : BOOL; (*Movement in the negative direction. Stops automatically at the software limit position.*) (* *) (*#CMD#OPT#;*)
 		LimitLoad : BOOL; (*Enables torque limitation*) (* *) (*#CMD#OPT#;*)
 		ReleaseBrake : BOOL; (*Releases the brake (but only when the motor is switched off)*) (* *) (*#CMD#OPT#;*)
+		Simulate : BOOL; (*Switch on or off simulation. This command is available from version 5.15.0 .*) (* *) (*#CMD#OPT#;*)
+		AutoTune : BOOL; (*Start automatic tuning procedue. This command is available from version 5.15.0 .*) (* *) (*#CMD#OPT#;*)
 	END_VAR
 	VAR_OUTPUT
 		Active : BOOL; (*Indicates whether the function block is active*) (* *) (*#PAR#;*)

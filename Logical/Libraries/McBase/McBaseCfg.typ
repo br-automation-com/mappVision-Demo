@@ -19,8 +19,8 @@ TYPE
 		mcCFG_AX_FEAT_PROF_GEN := 10102, (*AxisFeatureProfGen -*)
 		mcCFG_AX_FEAT_DIG_CAM_SW := 10103, (*Associated with data type McCfgAxFeatDigCamSwType*)
 		mcCFG_AX_FEAT_CAM_LST := 11102, (*AxisFeatureCamList -*)
-		mcCFG_MOT_SYN := 10500, (*MotorSynchronous -*)
-		mcCFG_MOT_INDUCT := 10501, (*MotorInduction -*)
+		mcCFG_MOT_SYN := 10500, (*Associated with data type McCfgMotSynType*)
+		mcCFG_MOT_INDUCT := 10501, (*Associated with data type McCfgMotInductType*)
 		mcCFG_IO_PL_IN_CARD := 10510, (*IOPlugInCard -*)
 		mcCFG_ACP_AX := 11000, (*Associated with data type McCfgAcpAxType*)
 		mcCFG_ACP_AX_REF := 11011, (*Associated with data type McCfgAcpAxRefType*)
@@ -152,6 +152,7 @@ TYPE
 		mcCFG_MS_4AX_ROB_A := 52401, (*Associated with data type McCfgMS4AxRobAType*)
 		mcCFG_MS_4AX_ROB_B := 52402, (*Associated with data type McCfgMS4AxRobBType*)
 		mcCFG_MS_5AX_ROB_A := 52501, (*Associated with data type McCfgMS5AxRobAType*)
+		mcCFG_MS_5AX_ROB_B := 52502, (*Associated with data type McCfgMS5AxRobBType*)
 		mcCFG_MS_6AX_ROB_A := 52601, (*Associated with data type McCfgMS6AxRobAType*)
 		mcCFG_MS_6AX_ROB_B := 52602, (*Associated with data type McCfgMS6AxRobBType*)
 		mcCFG_MS_6AX_ROB_C := 52603 (*Associated with data type McCfgMS6AxRobCType*)
@@ -220,11 +221,17 @@ TYPE
 		Type : McMMCLogSelUseInfoCmdEnum; (*Informational commands selector setting*)
 		Selective : McMMCLogSelUseInfoCmdSelType; (*Type mcMMCLSUIC_SEL settings*)
 	END_STRUCT;
+	McMMCLogSelUseSupSubcEEnum :
+		( (*Suppress entries for internally invoked commands for subcomponents*)
+		mcMMCLSUSSE_INACT := 0, (*Inactive - Entries for internally invoked commands for subcomponents are shown unless the base entries are suppressed*)
+		mcMMCLSUSSE_ACT := 1 (*Active - Entries for internally invoked commands for subcomponents are suppressed*)
+		);
 	McMMCLogSelUseType : STRUCT (*Type mcMMCLS_USE settings*)
 		StateChange : McCfgVisEnum; (*Component state change logger entries (PLCopen state)*)
 		AdministrativeCommands : McMMCLogSelUseAdmCmdType; (*Administrative logger entries*)
 		MovementCommands : McMMCLogSelUseMoveCmdType; (*Movement logger entries*)
 		InformationalCommands : McMMCLogSelUseInfoCmdType; (*Status information logger entries*)
+		SuppressSubcomponentEntries : McMMCLogSelUseSupSubcEEnum; (*Suppress entries for internally invoked commands for subcomponents*)
 	END_STRUCT;
 	McMMCLogSelType : STRUCT (*Define which logging areas should be visible*)
 		Type : McMMCLogSelEnum; (*Selective logging selector setting*)
@@ -515,7 +522,7 @@ TYPE
 	McCfgExtLimRefType : STRUCT (*Type mcAML_EXT settings*)
 		LimitReference : McCfgReferenceType; (*Name of the limit reference*)
 	END_STRUCT;
-	McCfgGearBoxType : STRUCT (*Specifies a gearbox by defining the ratio between a gearbox input and output*)
+	McCfgGearBoxType : STRUCT (*Ratio between a gearbox input and output*)
 		Input : DINT; (*Number of rotations on the encoder side [Revolutions]*)
 		Output : DINT; (*Number of rotations on the load side which correspond to the number of rotations on the encoder side [Revolutions]*)
 	END_STRUCT;

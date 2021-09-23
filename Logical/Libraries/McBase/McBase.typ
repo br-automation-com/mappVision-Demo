@@ -60,11 +60,12 @@ TYPE
 		mcHOMING_DCM := 7,				 (*Homing using interval-encoded reference marks*)
 		mcHOMING_BLOCK_TORQUE := 9,	     (*Performs homing to mechanical limit, torque as criteria*)
 		mcHOMING_BLOCK_LAG_ERROR := 10,	 (*Performs homing to mechanical limit, lag error as criteria*)
+		mcHOMING_ABSOLUTE_INTERNAL := 11,(*Performs homing with homing offset, which is determined by drive*)
 		mcHOMING_ABSOLUTE_CORRECTION := 133,  (*Homing by setting the "Position" homing offset for an absolute encoder with counter range correction. This mode must be used if the overflow of the absolute encoder is within the axis range of movement*)
 		mcHOMING_DCM_CORRECTION := 135,	 (*Homing using distance-coded reference marks with counting range correction*)
 		mcHOMING_DEFAULT := 140,		 (*All parameters, including "Position", are taken from the initial configuration for the axis*)
 		mcHOMING_INIT,					 (*All parameters, including "Position", are taken from an earlier initialization made using function block MC_BR_InitHome*)
-		mcHOMING_RESTORE_POSITION		 (*Restores position from permanent memory*)
+		mcHOMING_RESTORE_POSITION		 (*Restores position from a remanent variable*)
 	);
 
 	McStopModeEnum :
@@ -232,7 +233,7 @@ TYPE
 	McInternalMappLinkType : 	STRUCT  (*internal variable*)
 		Internal : ARRAY[0..1]OF UDINT; (*Internal data*)
 	END_STRUCT;
-	
+
 	McInternalMotionCfgIfType : 	STRUCT  (*Partial interface type (C only)*)
 		vtable : DWORD; (**)
 	END_STRUCT;

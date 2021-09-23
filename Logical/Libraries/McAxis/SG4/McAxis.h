@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxis 5.14.2 */
+/* McAxis 5.15.1 */
 
 #ifndef _MCAXIS_
 #define _MCAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxis_VERSION
-#define _McAxis_VERSION 5.14.2
+#define _McAxis_VERSION 5.15.1
 #endif
 
 #include <bur/plctypes.h>
@@ -66,6 +66,7 @@ typedef enum McPlcopenParEnum
 	mcPAR_MAX_AX_DECELERATION_APPL,
 	mcPAR_MAX_AX_JERK,
 	mcPAR_AX_PERIOD = 1008,
+	mcPAR_SW_END_IGNORE = 1014,
 	mcPAR_HOMING_OFFSET = 1019,
 	mcPAR_AX_MEASUREMENT_RESOLUTION = 1020,
 	mcPAR_REFERENCE_PULSE_DISTANCE = 1021,
@@ -305,6 +306,28 @@ typedef enum McAdvBrCamTransTransModeEnum
 	mcCAM_TRANS_MODE_ON_LEAD_IN_OUT
 } McAdvBrCamTransTransModeEnum;
 
+typedef enum McLimitLoadModeEnum
+{	mcLL_WITH_FEED_FORWARD,
+	mcLL_WITHOUT_FEED_FORWARD
+} McLimitLoadModeEnum;
+
+typedef enum McAcpAxAutoTuneOrientationEnum
+{	mcACPAX_ORIENTATION_HORIZONTAL,
+	mcACPAX_ORIENTATION_VERTICAL
+} McAcpAxAutoTuneOrientationEnum;
+
+typedef enum McAcpAxFilterTimeModeEnum
+{	mcACPAX_FILTER_TIME_USE,
+	mcACPAX_FILTER_TIME_TUNE_MODE1,
+	mcACPAX_FILTER_TIME_TUNE_MODE2
+} McAcpAxFilterTimeModeEnum;
+
+typedef enum McAcpAxLoopFilterModeEnum
+{	mcACPAX_LOOP_FILTER_IGNORE,
+	mcACPAX_LOOP_FILTER_USE,
+	mcACPAX_LOOP_FILTER_TUNE_NOTCH
+} McAcpAxLoopFilterModeEnum;
+
 typedef enum McABTEnum
 {	mcABT_LIN_BD = 0,
 	mcABT_LIN = 1,
@@ -457,6 +480,7 @@ typedef struct McAdvPhasingParType
 	float ProfileBaseMaxVelocity;
 	struct McAdvShiftDistanceParType DistanceParameters;
 	struct McAdvShiftZoneParType ZoneParameters;
+	float Jerk;
 } McAdvPhasingParType;
 
 typedef struct McAdvOffsetParType
@@ -465,6 +489,7 @@ typedef struct McAdvOffsetParType
 	float ProfileBaseMaxVelocity;
 	struct McAdvShiftDistanceParType DistanceParameters;
 	struct McAdvShiftZoneParType ZoneParameters;
+	float Jerk;
 } McAdvOffsetParType;
 
 typedef struct McAdvGearInParType
@@ -730,6 +755,7 @@ typedef struct McDigCamSwOptionsParType
 
 typedef struct McAdvCamAutPrepRestartParType
 {	double ToleranceWindow;
+	double RestartPositionOffset;
 } McAdvCamAutPrepRestartParType;
 
 typedef struct McAdvCyclicTorqueFFParType
@@ -794,6 +820,21 @@ typedef struct McDigitalInputsPvIfType
 	plcbit Trigger2;
 	plcbit Quickstop;
 } McDigitalInputsPvIfType;
+
+typedef struct McAdvBrTorqueControlParType
+{	plcbit NoHomingCheck;
+	plcbit UseVelocityLimits;
+	plcbit CorrectVelocityLimits;
+	plcbit UseTimeLimit;
+	float TimeLimit;
+} McAdvBrTorqueControlParType;
+
+typedef struct McAdvBrLimitLoadCamParType
+{	signed long PositionFactorPos;
+	signed long LoadFactorPos;
+	signed long PositionFactorNeg;
+	signed long LoadFactorNeg;
+} McAdvBrLimitLoadCamParType;
 
 typedef struct McABTLinBdType
 {	enum McCfgLocLenUnitEnum MeasurementUnit;
@@ -2463,6 +2504,78 @@ typedef struct MC_BR_ForceHardwareInputs
 	plcbit Ready;
 } MC_BR_ForceHardwareInputs_typ;
 
+typedef struct MC_BR_TorqueControl
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	float Torque;
+	float TorqueRamp;
+	float MaximumVelocity;
+	float MinimumVelocity;
+	float Acceleration;
+	float Jerk;
+	struct McAdvBrTorqueControlParType AdvancedParameters;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Enable;
+	plcbit InitData;
+	plcbit Start;
+	plcbit Stop;
+	/* VAR_OUTPUT (digital) */
+	plcbit InTorque;
+	plcbit Busy;
+	plcbit Active;
+	plcbit CommandAborted;
+	plcbit Error;
+	plcbit DataInitialized;
+	plcbit Ready;
+	plcbit AxisLimitActive;
+} MC_BR_TorqueControl_typ;
+
+typedef struct MC_WriteParameter
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	enum McPlcopenParEnum ParameterNumber;
+	double Value;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} MC_WriteParameter_typ;
+
+typedef struct MC_BR_LimitLoadCam
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	unsigned short CamIDPos;
+	unsigned short CamIDNeg;
+	enum McLimitLoadModeEnum Mode;
+	struct McAdvBrLimitLoadCamParType AdvancedParameters;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Enable;
+	plcbit InitData;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Ready;
+	plcbit Active;
+	plcbit Error;
+	plcbit DataInitialized;
+} MC_BR_LimitLoadCam_typ;
+
 
 
 /* Prototyping of functions and function blocks */
@@ -2532,6 +2645,9 @@ _BUR_PUBLIC void MC_BR_EventMoveAbsolute(struct MC_BR_EventMoveAbsolute* inst);
 _BUR_PUBLIC void MC_BR_EventMoveAdditive(struct MC_BR_EventMoveAdditive* inst);
 _BUR_PUBLIC void MC_BR_EventMoveVelocity(struct MC_BR_EventMoveVelocity* inst);
 _BUR_PUBLIC void MC_BR_ForceHardwareInputs(struct MC_BR_ForceHardwareInputs* inst);
+_BUR_PUBLIC void MC_BR_TorqueControl(struct MC_BR_TorqueControl* inst);
+_BUR_PUBLIC void MC_WriteParameter(struct MC_WriteParameter* inst);
+_BUR_PUBLIC void MC_BR_LimitLoadCam(struct MC_BR_LimitLoadCam* inst);
 
 
 #ifdef __cplusplus

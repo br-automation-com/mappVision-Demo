@@ -40,6 +40,7 @@ TYPE
 		mcPAR_MAX_AX_DECELERATION_APPL,	 (*Currently not available*)
 		mcPAR_MAX_AX_JERK,			(*Maximum jerk of the axis*)
 		mcPAR_AX_PERIOD := 1008,     (*The range of values of the axis position is [0, period] in [Measurement units]*)
+		mcPAR_SW_END_IGNORE := 1014,     (*Status of the SW end position monitoring*)
 		mcPAR_HOMING_OFFSET := 1019, 	 (*Homing offset [Measurement units]. Cannot be read before the first homing procedure*)
 		mcPAR_AX_MEASUREMENT_RESOLUTION := 1020,   (*Defines the possible resolution of [Measurement units] that can be met*)
 		mcPAR_REFERENCE_PULSE_DISTANCE := 1021,   (*Reference pulse distance [Measurement units]. Cannot be read before the first homing procedure*)
@@ -138,9 +139,9 @@ TYPE
 	END_STRUCT;
 
 	McAdvVelCtrlParType : STRUCT
-		Acceleration : REAL; (*Maximum acceleration [Measurement units/s²]*)
-		Deceleration : REAL; (*Maximum deceleration [Measurement units/s²]*)
-		Jerk : REAL; (*Maximum jerk [Measurement units/s³]*)
+		Acceleration : REAL; (*Maximum acceleration [Measurement units/sï¿½]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units/sï¿½]*)
+		Jerk : REAL; (*Maximum jerk [Measurement units/sï¿½]*)
 	END_STRUCT;
 
 	McShiftModeEnum:
@@ -178,6 +179,7 @@ TYPE
 		ProfileBaseMaxVelocity : REAL; (*Maximum speed of profile base during offset [Measurement units]*)
 		DistanceParameters : McAdvShiftDistanceParType ; (*Distance to the offset [Measurement units]*)
 		ZoneParameters : McAdvShiftZoneParType ; (*Position range in which the offset occurs [Measurement units]*)
+		Jerk : REAL; (*Maximum jerk of the profile [Measurement units/sï¿½]*)
 	END_STRUCT;
 
 	McAdvOffsetParType : STRUCT
@@ -186,6 +188,7 @@ TYPE
 		ProfileBaseMaxVelocity : REAL; (*Maximum speed of profile base during offset [Measurement units/s]*)
 		DistanceParameters : McAdvShiftDistanceParType ; (*Distance to the offset [Measurement units]*)
 		ZoneParameters : McAdvShiftZoneParType ; (*Position range in which the offset occurs [Measurement units]*)
+		Jerk : REAL; (*Maximum jerk of the profile [Measurement units/sï¿½]*)
 	END_STRUCT;
 
 	McAdvGearInParType : STRUCT
@@ -199,9 +202,9 @@ TYPE
 	McAdvCamInParType : STRUCT
 		Periodic : BOOL; (*TRUE -> Cam is executed periodically; FALSE -> Cam is executed just once*)
 		Velocity : REAL; (*Velocity which is used for the movement to the start position [Measurement units of slave/s]*)
-		Acceleration : REAL; (*Acceleration which is used for the movement to the start position [Measurement units of slave/s²]*)
-		Deceleration : REAL; (*Deceleration which is used for the movement to the start position [Measurement units of slave/s²]*)
-		Jerk : REAL; (*Maximum jerk during the "move to start" movement [Measurement units of slave/s³]*)
+		Acceleration : REAL; (*Acceleration which is used for the movement to the start position [Measurement units of slave/sï¿½]*)
+		Deceleration : REAL; (*Deceleration which is used for the movement to the start position [Measurement units of slave/sï¿½]*)
+		Jerk : REAL; (*Maximum jerk during the "move to start" movement [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McCamAutCrossLeftBoundEnum:
@@ -378,10 +381,10 @@ TYPE
 	    MaxSlaveCompDistance : LREAL; (*Maximum compensation distance for the slave axis [Measurement units of slave]*)
 	    MinSlaveCompVelocity : REAL; (*Minimum velocity of the slave axis during compensation [Measurement units of slave/s]*)
 	    MaxSlaveCompVelocity : REAL; (*Maximum velocity of the slave axis during compensation [Measurement units of slave/s]*)
-	    MaxSlaveCompAccel1 : REAL; (*Maximum acceleration of the slave axis during compensation phase 1 [Measurement units of slave/s²]*)
-	    MaxSlaveCompAccel2 : REAL; (*Maximum acceleration of the slave axis during compensation phase 2 [Measurement units of slave/s²]*)
+	    MaxSlaveCompAccel1 : REAL; (*Maximum acceleration of the slave axis during compensation phase 1 [Measurement units of slave/sï¿½]*)
+	    MaxSlaveCompAccel2 : REAL; (*Maximum acceleration of the slave axis during compensation phase 2 [Measurement units of slave/sï¿½]*)
 	    SlaveCompJoltTime : REAL; (*Jerk time of the slave axis during compensation [s]*)
-	    SlaveCompJerk : REAL; (*Jerk of the slave axis during compensation [Measurement units of slave/s³]*)
+	    SlaveCompJerk : REAL; (*Jerk of the slave axis during compensation [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McCamAutMasterAxisType : STRUCT
@@ -528,7 +531,7 @@ TYPE
 		CamID : UINT; (*ID of the cam for the lead-in or lead-out movement*)
 		MasterScaling : DINT; (*Master gauge factor for the lead-in or lead-out cam*)
 		SlaveScaling : DINT; (*Slave gauge factor for the lead-in or lead-out cam*)
-		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McAdvBrCamInParType : STRUCT
@@ -537,8 +540,8 @@ TYPE
 		LeadOut : McAdvCamInLeadInOutParType; (*Parameters for lead-out-movement*)
 		MasterValueSource : McValueSrcEnum; (*Defines the source of the position to be read*)
 		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
-		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
-		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/sï¿½]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McTriggerType : STRUCT
@@ -600,6 +603,7 @@ TYPE
 
 	McAdvCamAutPrepRestartParType : STRUCT
 	 	ToleranceWindow : LREAL; (*Tolerance window, used by several prepare restart modes [Measurement units]*)
+		RestartPositionOffset : LREAL; (*Offset applied in addition to the current position got from cam automat [Measurement units]*)
 	END_STRUCT;
 
 	McCamAutPrepRestartModeEnum:
@@ -620,7 +624,7 @@ TYPE
 		MasterDistance : LREAL; (*Master compensation distance outside the cam for lead-in or lead-out movement [Measurement units of master]*)
 		SlaveDistance : LREAL; (*Slave compensation distance for the lead-in or lead-out movement [Measurement units of slave]*)
 		MasterOffset : LREAL; (*Master position in the cam at which the lead-in movement ends or the lead-out movement starts [Measurement units of master]*)
-		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McAdvBrCamDwellParType : STRUCT
@@ -628,8 +632,8 @@ TYPE
 		LeadOut : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-out movement*)
 		MasterValueSource : McValueSrcEnum; (*Defines the source of the master axis position to be used*)
 		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
-		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
-		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/sï¿½]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McAdvBrAutoCamDwellParType : STRUCT
@@ -637,8 +641,8 @@ TYPE
 		LeadOut : McAdvBrCamTransLeadInOutParType; (*Parameters for lead-out movement*)
 		MasterValueSource : McValueSrcEnum; (*Defines the source of the master axis position to be used*)
 		MasterMaxVelocity : REAL; (*Maximum velocity of the master axis [Measurement units of master/s]*)
-		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
-		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/sï¿½]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McAdvBrCamTransCamModeEnum:
@@ -667,8 +671,8 @@ TYPE
 		CamTime : REAL; (*Time for the synchronous curve [s]*)
 		CamMode : McAdvBrCamTransCamModeEnum; (*Mode for synchronous curve*)
 		TransitionMode :  McAdvBrCamTransTransModeEnum; (*Mode for compensation phases*)
-		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/s³]*)
-		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/s²]*)
+		Jerk : REAL; (*Maximum jerk of the slave axis [Measurement units of slave/sï¿½]*)
+		Deceleration : REAL; (*Maximum deceleration [Measurement units of slave/sï¿½]*)
 	END_STRUCT;
 
 	McBrAdvCamSaveDatObjType : STRUCT
@@ -692,5 +696,46 @@ TYPE
         Trigger2 : BOOL; (*Variable for trigger 2 input functionality*)
         Quickstop : BOOL; (*Variable for quickstop input functionality*)
     END_STRUCT;
+
+	McAdvBrTorqueControlParType : STRUCT
+		NoHomingCheck : BOOL; (*No check for completed prior homing.*)
+		UseVelocityLimits : BOOL; (*Use axis velocity limits.*)
+		CorrectVelocityLimits : BOOL; (*Automatically correct velocity limits.*)
+		UseTimeLimit : BOOL; (*Automatic cutoff after time if no load or load too low.*)
+		TimeLimit : REAL; (*Time limit for how long the axis can move at the speed or acceleration limit before it is stopped automatically [s].*)
+	END_STRUCT;
+
+	McLimitLoadModeEnum :
+		(
+		mcLL_WITH_FEED_FORWARD,    (*control deviation torque AND feed forward torque are limited (overall torque) *)
+		mcLL_WITHOUT_FEED_FORWARD  (*control deviation torque only is limited; feed forward torque component is not limited *)
+		);
+
+	McAdvBrLimitLoadCamParType : STRUCT
+		PositionFactorPos : DINT; (*Multiplication factor of the axis position for the positive direction *)
+		LoadFactorPos : DINT; (*Multiplication factor of the torque for the positive direction *)
+		PositionFactorNeg : DINT; (*Multiplication factor of the axis position for the negative direction *)
+		LoadFactorNeg : DINT; (*Multiplication factor of the torque for the negative direction *)
+	END_STRUCT;
+
+	McAcpAxAutoTuneOrientationEnum:
+	(
+		mcACPAX_ORIENTATION_HORIZONTAL,  (*Horizontal orientation*)
+		mcACPAX_ORIENTATION_VERTICAL     (*Vertical orientation*)
+	);
+
+	McAcpAxFilterTimeModeEnum:
+	(
+		mcACPAX_FILTER_TIME_USE,  (*The determination of filter time constants is disabled; however, filter time constants are taken into account for autotuning*)
+		mcACPAX_FILTER_TIME_TUNE_MODE1,  (*The controlled variable is the unfiltered actual speed n*)
+		mcACPAX_FILTER_TIME_TUNE_MODE2   (*The controlled variable is the filtered actual speed n*)
+	);
+
+	McAcpAxLoopFilterModeEnum:
+	(
+		mcACPAX_LOOP_FILTER_IGNORE,  (*Loop filters are neither taken into account nor calculated.*)
+		mcACPAX_LOOP_FILTER_USE,  (*The parameters for all loop filters are taken into account for autotuning*)
+		mcACPAX_LOOP_FILTER_TUNE_NOTCH  (*The parameters for the loop filter are calculated*)
+	);
 
 END_TYPE

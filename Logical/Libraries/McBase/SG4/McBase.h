@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.14.2 */
+/* McBase 5.15.1 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.14.2
+#define _McBase_VERSION 5.15.1
 #endif
 
 #include <bur/plctypes.h>
@@ -72,6 +72,7 @@ typedef enum McHomingModeEnum
 	mcHOMING_DCM = 7,
 	mcHOMING_BLOCK_TORQUE = 9,
 	mcHOMING_BLOCK_LAG_ERROR = 10,
+	mcHOMING_ABSOLUTE_INTERNAL = 11,
 	mcHOMING_ABSOLUTE_CORRECTION = 133,
 	mcHOMING_DCM_CORRECTION = 135,
 	mcHOMING_DEFAULT = 140,
@@ -322,6 +323,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_MS_4AX_ROB_A = 52401,
 	mcCFG_MS_4AX_ROB_B = 52402,
 	mcCFG_MS_5AX_ROB_A = 52501,
+	mcCFG_MS_5AX_ROB_B = 52502,
 	mcCFG_MS_6AX_ROB_A = 52601,
 	mcCFG_MS_6AX_ROB_B = 52602,
 	mcCFG_MS_6AX_ROB_C = 52603
@@ -354,6 +356,11 @@ typedef enum McMMCLogSelUseInfoCmdEnum
 	mcMMCLSUIC_SUP = 1,
 	mcMMCLSUIC_SEL = 2
 } McMMCLogSelUseInfoCmdEnum;
+
+typedef enum McMMCLogSelUseSupSubcEEnum
+{	mcMMCLSUSSE_INACT = 0,
+	mcMMCLSUSSE_ACT = 1
+} McMMCLogSelUseSupSubcEEnum;
 
 typedef enum McWSHalfSpcPlEnum
 {	mcWSHSP_PL_XY = 0,
@@ -613,6 +620,7 @@ typedef struct McMMCLogSelUseType
 	struct McMMCLogSelUseAdmCmdType AdministrativeCommands;
 	struct McMMCLogSelUseMoveCmdType MovementCommands;
 	struct McMMCLogSelUseInfoCmdType InformationalCommands;
+	enum McMMCLogSelUseSupSubcEEnum SuppressSubcomponentEntries;
 } McMMCLogSelUseType;
 
 typedef struct McMMCLogSelType
