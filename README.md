@@ -32,7 +32,7 @@ This vision sample contains a lot of functions that are not included in the mapp
 ## Requirements (current used versions)
 Should also work with newer and some older versions
 * Automation Studio 4.9
-* mapp 5.13
+* mapp 5.15
 * Automation Runtime C4.90
 
 Recommended task class is #8 with a 10ms cycle time. For the nettime and axis tasks use #1
@@ -40,6 +40,14 @@ Recommended task class is #8 with a 10ms cycle time. For the nettime and axis ta
 <a name="Revision-History"></a>
 ## Revision History
 You can find details in the project in "revision.txt"
+
+#### Version 5.15
+- Update recipe managment to V1.0
+- Updated constant for code reader parameter "ParameterMode"
+- Fix ViColor
+- Make it possible to change connections
+- Updated to official 5.15 versions and official lightbar upgrade
+- Vi_Optics added
 
 #### Version 2.3
  - Added RouteInfo_Tool.ps1
