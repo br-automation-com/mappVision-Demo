@@ -90,12 +90,13 @@ FUNCTION ReplaceString : BOOL
 	END_VAR
 END_FUNCTION
 
-FUNCTION FindInMem : UDINT
+FUNCTION FindInMem : DINT
 	VAR_INPUT
 		data1 : UDINT;
 		len1 : UDINT;
 		data2 : UDINT;
 		len2 : UDINT;
+		direction : BOOL;
 	END_VAR
 	VAR
 		idx : UDINT;

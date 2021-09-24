@@ -294,9 +294,14 @@ PROGRAM _CYCLIC
 			// ---------------------------------------------------------------------------------------- 		
 			// OK																																				
 			IF (MpRecipeRegPar_1[pvCnt].Active AND NOT MpRecipeRegPar_1[pvCnt].Error) THEN
-				pvCnt := pvCnt + 1;
 				// Register next variable
-				IF((pvCnt >= SIZEOF(REC_VAR_LIST)/SIZEOF(REC_VAR_LIST[pvCnt])) OR (REC_VAR_LIST[pvCnt] = '')) THEN
+				IF (pvCnt < SIZEOF(REC_VAR_LIST)/SIZEOF(REC_VAR_LIST[1]))  THEN
+					pvCnt := pvCnt + 1;
+					// Finish when variable data is empty
+					IF (REC_VAR_LIST[pvCnt] = '') THEN
+						rec_state := REC_CREATE_DIR;
+					END_IF
+				ELSE
 					rec_state := REC_CREATE_DIR;
 				END_IF
 			// Error
@@ -902,22 +907,24 @@ PROGRAM _CYCLIC
 			// Make sure data fits into memory
 			IF(WebServiceUpload.requestDataLen < REC_UPLOAD_DOWNLOAD_SIZE) THEN
 				// Find file name start
-				file_name_start := FindInMem(AsMemPartAllocClear_0.mem, WebServiceUpload.requestDataLen, ADR('filename="'), brsstrlen(ADR('filename="'))) + brsstrlen(ADR('filename="'));
+				file_name_start := FindInMem(AsMemPartAllocClear_0.mem, WebServiceUpload.requestDataLen, ADR('filename="'), brsstrlen(ADR('filename="')), FALSE);
 				IF(file_name_start > 0) THEN
+					file_name_start := file_name_start + brsstrlen(ADR('filename="'));
 					// Find end of file name
-					file_name_len := FindInMem(AsMemPartAllocClear_0.mem+file_name_start, WebServiceUpload.requestDataLen-file_name_start, ADR('"$r$n'), brsstrlen(ADR('"$r$n')));
+					file_name_len := FindInMem(AsMemPartAllocClear_0.mem+file_name_start, WebServiceUpload.requestDataLen-file_name_start, ADR('"$r$n'), brsstrlen(ADR('"$r$n')), FALSE);
 					IF(file_name_len > 0) THEN
 						// Make sure file name is not too long
-						IF(file_name_len <= SIZEOF(item_name)) THEN
+						IF(file_name_len <= REC_NAME_LENGTH) THEN
 							// Store file name
 							brsmemset(ADR(item_name), 0, SIZEOF(item_name));
 							brsmemcpy(ADR(item_name), AsMemPartAllocClear_0.mem+file_name_start, file_name_len);
 							// Find start of data
-							file_data_start := FindInMem(AsMemPartAllocClear_0.mem, WebServiceUpload.requestDataLen, ADR('Content-Type:'), brsstrlen(ADR('Content-Type:'))) + brsstrlen(ADR('Content-Type:'));
+							file_data_start := FindInMem(AsMemPartAllocClear_0.mem, WebServiceUpload.requestDataLen, ADR('Content-Type:'), brsstrlen(ADR('Content-Type:')), FALSE);
 							IF(file_data_start > 0) THEN
+								file_data_start := file_data_start + brsstrlen(ADR('Content-Type:'));
 								// Find end of data
-								file_data_start := FindInMem(AsMemPartAllocClear_0.mem+file_data_start, WebServiceUpload.requestDataLen-file_data_start, ADR('$r$n$r$n'), brsstrlen(ADR('$r$n$r$n'))) + brsstrlen(ADR('$r$n$r$n'))+file_data_start;
-								file_data_len := FindInMem(AsMemPartAllocClear_0.mem+file_data_start, WebServiceUpload.requestDataLen-file_data_start, ADR('$r$n------'), brsstrlen(ADR('$r$n------')));
+								file_data_start := FindInMem(AsMemPartAllocClear_0.mem+file_data_start, WebServiceUpload.requestDataLen-file_data_start, ADR('$r$n$r$n'), brsstrlen(ADR('$r$n$r$n')), FALSE) + brsstrlen(ADR('$r$n$r$n'))+file_data_start;
+								file_data_len := FindInMem(AsMemPartAllocClear_0.mem+file_data_start, WebServiceUpload.requestDataLen-file_data_start, ADR('$r$n------'), brsstrlen(ADR('$r$n------')), TRUE);
 								// When file name and data is correct procceed with saving data to file
 								IF(file_data_len > 0) THEN
 									rec_state := REC_UPLOAD_1;

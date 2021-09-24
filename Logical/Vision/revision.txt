@@ -1,3 +1,6 @@
+Next Version
+- Update recipe managment to V1.3
+
 Version 5.15
 - Update recipe managment to V1.0
 - Updated constant for code reader parameter "ParameterMode"
