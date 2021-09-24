@@ -153,7 +153,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
-  <Module Name="X20CP1586" Type="X20CP1586" Version="1.8.1.0">
+  <Module Name="X20CP1586" Type="X20CP1586" Version="1.10.0.0">
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
       <Parameter ID="Mode" Value="Manual" />

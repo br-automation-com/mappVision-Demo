@@ -75,7 +75,7 @@
     <Parameter ID="PlugInType" Value="Encoder" />
     <Parameter ID="McAcoposTypeID" Value="AcoposPlugInConfig" />
   </Module>
-  <Module Name="8V1010.50-2" Type="8V1010.50-2" Version="2.2.0.0">
+  <Module Name="8V1010.50-2" Type="8V1010.50-2" Version="2.3.0.0">
     <Parameter ID="McAcoposTypeID" Location="DriveConfiguration/Module" Value="AcoposConfig" />
     <Parameter ID="ActivateACOPOSSimulationOnPLC" Location="DriveConfiguration/Module" Value="0" />
     <Parameter ID="SinglePhaseOperation" Location="DriveConfiguration/Module/PowerSupply" Value="Used" />

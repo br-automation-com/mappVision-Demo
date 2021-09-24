@@ -151,12 +151,12 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
-  <Module Name="X20BB52" Type="X20BB52" Version="1.1.1.0">
+  <Module Name="X20BB52" Type="X20BB52" Version="1.2.0.0">
     <Connector Name="IF6">
       <Parameter ID="CycleTime" Value="2000" />
     </Connector>
   </Module>
-  <Module Name="X20CP0483" Type="X20CP0483" Version="1.4.2.0">
+  <Module Name="X20CP0483" Type="X20CP0483" Version="1.5.0.0">
     <Connection Connector="SL" TargetModule="X20BB52" TargetConnector="SL1" />
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
@@ -213,7 +213,7 @@
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
   </Module>
-  <Module Name="X20PS9600" Type="X20PS9600" Version="1.3.0.0">
+  <Module Name="X20PS9600" Type="X20PS9600" Version="1.6.0.0">
     <Connection Connector="PS" TargetModule="X20BB52" TargetConnector="PS1" />
     <Connection Connector="SS1" TargetModule="X20TB12" TargetConnector="SS" />
   </Module>
