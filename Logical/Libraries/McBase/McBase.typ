@@ -133,11 +133,32 @@ TYPE
 
 	McValueSrcEnum :
 	(
-		mcVALUE_SET, 					 (*Position setpoint value [Measurement units]*)
-		mcVALUE_ACTUAL,					 (*Actual position value [Measurement units]*)
-		mcVALUE_SET_AXIS_UNITS,			 (*Position setpoint value [axis units]*)
-		mcVALUE_ACTUAL_AXIS_UNITS,		 (*Actual value for position [axis units]*)
-		mcVALUE_AUTOMATIC_SELECTION		 (*The value for the source is selected automatically in relation to the active controller mode*)
+		mcVALUE_SET, 					(*Position setpoint value [Measurement units]*)
+		mcVALUE_ACTUAL,					(*Actual position value [Measurement units]*)
+		mcVALUE_SET_AXIS_UNITS,			(*Position setpoint value [axis units]*)
+		mcVALUE_ACTUAL_AXIS_UNITS,		(*Actual value for position [axis units]*)
+		mcVALUE_AUTOMATIC_SELECTION,	(*The value for the source is selected automatically in relation to the active controller mode*)
+		mcVALUE_ALT1,					(*"Value source 1" of the feature "Alternative value source" is used*)
+		mcVALUE_ALT2,					(*"Value source 2" of the feature "Alternative value source" is used*)
+		mcVALUE_ALT3,					(*"Value source 3" of the feature "Alternative value source" is used*)
+		mcVALUE_ALT4,					(*"Value source 4" of the feature "Alternative value source" is used*)
+		mcVALUE_ALT5,					(*"Value source 5" of the feature "Alternative value source" is used*)
+		mcVALUE_ALT6,					(*"Value source 6" of the feature "Alternative value source" is used*)
+		mcVALUE_ALT7,					(*"Value source 7" of the feature "Alternative value source" is used*)
+		mcVALUE_ALT8					(*"Value source 8" of the feature "Alternative value source" is used*)
+	);
+
+	McAltValueSrcEnum :
+	(
+		mcALT_VALUE_NOT_USED := 0,	(*No alternative value source is used*)
+		mcALT_VALUE1 := 1,			(*"Value source 1" of the feature "Alternative value source" is used*)
+		mcALT_VALUE2 := 2,			(*"Value source 2" of the feature "Alternative value source" is used*)
+		mcALT_VALUE3 := 3,			(*"Value source 3" of the feature "Alternative value source" is used*)
+		mcALT_VALUE4 := 4,			(*"Value source 4" of the feature "Alternative value source" is used*)
+		mcALT_VALUE5 := 5,			(*"Value source 5" of the feature "Alternative value source" is used*)
+		mcALT_VALUE6 := 6,			(*"Value source 6" of the feature "Alternative value source" is used*)
+		mcALT_VALUE7 := 7,			(*"Value source 7" of the feature "Alternative value source" is used*)
+		mcALT_VALUE8 := 8			(*"Value source 8" of the feature "Alternative value source" is used*)
 	);
 
 	McSwitchEnum :
@@ -180,7 +201,8 @@ TYPE
 		Acceleration : REAL; (*Maximum acceleration [Measurement units/s]*)
 		Deceleration : REAL; (*Maximum deceleration [Measurement units/s]*)
 		Jerk : REAL; (*Maximum jerk [measurement units / s³]*)
-		DisableJoltLimitation : McSwitchEnum; (**)
+		DisableJoltLimitation : McSwitchEnum; (*Disable jolt limitation on the drive*)
+		AlternativeValueSource : McAltValueSrcEnum; (*If used, defines the alternative source of cyclic: position for MC_BR_MoveCyclicPosition, velocity for MC_BR_MoveCyclicVelocity [axis Units]*)
 	END_STRUCT;
 
 	McOrientType : STRUCT

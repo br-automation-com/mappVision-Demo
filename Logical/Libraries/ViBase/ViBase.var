@@ -19,7 +19,10 @@ VAR CONSTANT
 		viBASE_ERR_COMPONENT_NOT_READY: DINT  := -1045168073; (* 0xC1B40037 Vision Component is not ready. [Error: 55]*)
 		viBASE_ERR_NO_INSTANCE: DINT  := -1045168029; (* 0xC1B40063 The function block was called without a valid interface. [Error: 99]*)
 		viBASE_ERR_APP_NOT_COMPATIBLE: DINT  := -1045168008; (* 0xC1B40078 Vision Application '{1|s}' not compatible to '{2|s}'. [Error: 120]*)
-		viBASE_WRN_APP_NOT_LOADED: DINT  := -2118909829; (* 0x81B4007B Vision Application '{1|s}' was loaded with corrections. [Warning: 123]*)
 		viBASE_ERR_APP_NOT_LOADED: DINT  := -1045168005; (* 0xC1B4007B Failure loading Vision Application '{1|s}'. [Error: 123]*)
+		viBASE_WRN_APP_NOT_LOADED: DINT  := -2118909829; (* 0x81B4007B Vision Application '{1|s}' was loaded with corrections. [Warning: 123]*)
+		viBASE_ERR_APP_NOT_SAVED: DINT  := -1045168004; (* 0xC1B4007C Failure saving Vision Application '{1|s}'. [Error: 124]*)
+		viBASE_ERR_CMD_INV_LOAD_FAILED: DINT  := -1045168000; (* 0xC1B40080 Command '{=$BR/Vision/Enum/VisionCommands/{1}}' cannot be executed because the last load of the Vision Application has failed. [Error: 128]*)
+		viBASE_ERR_CMD_INV_HMI_OPEN: DINT  := -1045167984; (* 0xC1B40090 Command '{=$BR/Vision/Enum/VisionCommands/{1}}' cannot be executed because the mapp Vision HMI is connected to the camera. [Error: 144]*)
 		viBASE_ERR_APP_NOT_EXIST: DINT  := -1045167968; (* 0xC1B400A0 Vision Application '{1|s}' does not exist. [Error: 160]*)
 END_VAR
