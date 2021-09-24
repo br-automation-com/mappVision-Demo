@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package SubType="mappVision" PackageType="mappVision" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\Settings_1.vicfg</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viAppBlob1.visionapplication</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viAppBlob2.visionapplication</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viAppCR.visionapplication</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viAppMat.visionapplication</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viAppMT.visionapplication</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viAppOCR.visionapplication</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viAppPixel.visionapplication</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viCompBlob.visioncomponent</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viCompCR.visioncomponent</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viCompMat.visioncomponent</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viCompMT.visioncomponent</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viCompOCR.visioncomponent</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappVision\viCompPxl.visioncomponent</Object>
+  </Objects>
+</Package>
