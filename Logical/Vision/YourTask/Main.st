@@ -7,6 +7,15 @@
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _INIT
 	// -----------------------------------------------------------------------------------------------------------
+	// Delay startup for mappVision
+	startupDelay.IN := 1;
+	startupDelay.PT := 200;
+	REPEAT
+		startupDelay();
+		UNTIL startupDelay.Q 
+	END_REPEAT;
+	
+	// -----------------------------------------------------------------------------------------------------------
 	// Vision sensor configuration
 	// -----------------------------------------------------------------------------------------------------------
 	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online

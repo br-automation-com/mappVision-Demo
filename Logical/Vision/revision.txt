@@ -1,6 +1,7 @@
 Next Version
 - Update recipe managment to V1.3
 - Changed package references to file references
+- Interim fix to address vision load issue #7
 
 Version 5.15
 - Update recipe managment to V1.0
