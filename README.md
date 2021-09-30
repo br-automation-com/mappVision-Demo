@@ -10,6 +10,8 @@ This is a demo application for B&R vision camera. It is developed and maintained
 
 **Note:** For better alignment between the index number and IO names most arrays start at index 1 (not 0). This can cause issues with C Task since these tasks do not support arrays starting at index 1. Most arrays can be redefined starting with 0 without any issues from a code perspective but it will cause an empty line in the mappView result tables.
 
+**Note:** All tasks starting with Vi_... should not be changed because it makes updating more difficult. All Vi_... tasks use a global interface structure to interact with the outside world. All additional code and configuration should only be done in "YourTask" and "VisionVariables.var". 
+
 ![](Logical/Documentation/screenshot.png)
 
 <a name="Features"></a>
