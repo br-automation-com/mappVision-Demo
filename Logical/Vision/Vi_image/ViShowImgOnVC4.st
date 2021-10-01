@@ -119,7 +119,7 @@ FUNCTION_BLOCK ViShowImgOnVC4
 				BytesRemaining	:= BytesPerLine * ABS(Bmp24Bit.InfoHeader.biHeight);
 				Step := 21;
 			ELSE
-				Status := ERR_WRONG_DATA;
+				Status := ERR_DATA_BMP;
 				Step := 50;
 			END_IF
 		21:
@@ -137,7 +137,7 @@ FUNCTION_BLOCK ViShowImgOnVC4
 					PixelSourceAdr		:= PixelSourceAdr + 1;
 					PixelDestAdr		:= PixelDestAdr + 3;
 					IF PixelSourceAdr > MemInfo.UploadBmp8Adr + MemInfo.UploadBmp8Size - 1 OR PixelDestAdr + 2 > MemInfo.Bmp24Adr + MemInfo.Bmp24Size -1 THEN
-						Status := ERR_MEM_BMP_TOO_SMALL;
+						Status := ERR_BUFF_BMP;
 						Step := 50;
 						EXIT;
 					END_IF

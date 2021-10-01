@@ -218,7 +218,7 @@ FUNCTION_BLOCK ViSaveImgOnPlc
 				brsstrcat(MemInfo.SvgAdr, ADR(SvgTexts.ContentBase64));
 				Step := 31;
 			ELSE
-				Status := ERR_BUFF_TOO_SMALL;
+				Status := ERR_BUFF_SVG;
 				Step := 0;
 			END_IF
 		

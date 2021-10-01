@@ -55,10 +55,12 @@ END_VAR
 (**)
 (*Constants*)
 VAR CONSTANT
-	ERR_NO_IMAGE : UINT := 50210;
-	ERR_BUFF_TOO_SMALL : UINT := 50220;
-	ERR_TIMEOUT_DOWNLOAD : UINT := 50320; (*Download response timed out*)
-	ERR_MEM_DOWNLOAD : UINT := 50310; (*Size of download file exceeds maximum*)
-	ERR_MEM_BMP_TOO_SMALL : UINT := 50410;
-	ERR_WRONG_DATA : UINT := 50420;
+	ERR_BUFF_SVG : UINT := 50200; (*Buffer for creating SVG file is too small*)
+	ERR_BUFF_BMP : UINT := 50201; (*Buffer for creating BMP file is too small*)
+	ERR_DATA_BMP : UINT := 50202; (*BMP data is incorrect*)
+	ERR_NO_IMAGE : UINT := 50210; (*The camera does not have image to transfer*)
+	ERR_TIMEOUT_DOWNLOAD : UINT := 50211; (*Download response timed out*)
+	ERR_MEM_DOWNLOAD : UINT := 50212; (*Size of download file exceeds maximum*)
+	ERR_CFG_PLK : UINT := 50300; (*Powerlink node number is 0*)
+	ERR_CFG_IMG : UINT := 50301; (*No image type for selected (JPG or SVG)*)
 END_VAR

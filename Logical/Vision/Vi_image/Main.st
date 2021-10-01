@@ -7,7 +7,7 @@
 // Version 2.2
 // --------------------------------------------------------------------------------------------------------------------
 PROGRAM _INIT
-	IF RemCfgImage.ConvertCycles = 0 THEN 							// Invalid --> use default values
+	IF RemCfgImage.ConvertCycles = 0 THEN 								// Invalid --> use default values
 		gVisionImage.CFG.FileDevice 		:= DEVICE_NAME;				// File device name where the images are stored
 		gVisionImage.CFG.DirName			:= 'Vision';				// Directory used for images
 		gVisionImage.CFG.PlkIPWithoutNode	:= '192.168.200.';			// IP adress of the plk interface, where the camera is connected to (see PLK settings), without the node (last part). Example: "192.168.200.0"
@@ -41,15 +41,12 @@ PROGRAM _CYCLIC
 	CASE Step OF
 		VISTEP_WAIT: // Wait for new upload command
 			IF gVisionImage.CMD.CreateDir THEN // Create the image directory on user partition (if it does not exist)
-				gVisionImage.CMD.CreateDir := FALSE;
 				gVisionImage.DAT.Status := ERR_FUB_BUSY;
 				Step := VISTEP_CREATE_DIR;
 			ELSIF gVisionImage.CMD.DeleteDir THEN // Delete image directory on user partition including all images
-				gVisionImage.CMD.DeleteDir := FALSE;
 				gVisionImage.DAT.Status := ERR_FUB_BUSY;
 				Step := VISTEP_DELETE_DIR;
 			ELSIF gVisionImage.CMD.DeleteImage THEN // Delete one image from the image directory on the user partition
-				gVisionImage.CMD.DeleteImage := FALSE;
 				IF brsstrlen(ADR(visSelectedImage)) > 0 THEN
 					brsstrcpy(ADR(FileNameComplete), ADR(gVisionImage.CFG.DirName));
 					brsstrcat(ADR(FileNameComplete), ADR('/'));
@@ -60,26 +57,28 @@ PROGRAM _CYCLIC
 					gVisionImage.CMD.DeleteImage := FALSE;
 				END_IF
 			ELSIF gVisionImage.CMD.Refresh THEN // Refresh image list from the image directory on the user partition
-				gVisionImage.CMD.Refresh := FALSE;
 				gVisionImage.DAT.Status := ERR_FUB_BUSY;
 				Step := VISTEP_REFRESH_IMG_LIST;
 			ELSIF gVisionImage.CMD.DownloadImage THEN // Download image from plc to webbrowser
-				gVisionImage.CMD.DownloadImage := FALSE;
 				IF brsstrlen(ADR(visSelectedImage)) > 0 THEN
 					brsstrcpy(ADR(FileNameComplete), ADR(gVisionImage.CFG.DirName));
 					brsstrcat(ADR(FileNameComplete), ADR('/'));
 					brsstrcat(ADR(FileNameComplete), ADR(visSelectedImage));
 					gVisionImage.DAT.Status := ERR_FUB_BUSY;
 					Step := VISTEP_DOWNLOAD_IMAGE;
-				ELSE // If no pictures are available, don't try to delete pictures
+				ELSE // If no pictures are available, don't try to download pictures
+					gVisionImage.CMD.DownloadImage := FALSE;
 				END_IF
 			ELSIF gVisionImage.CMD.SaveImageOnPLC THEN // Save image from camera to PLC
-				gVisionImage.CMD.SaveImageOnPLC := FALSE;
 				IF NOT gVisionImage.CFG.UploadBmpJpg AND NOT gVisionImage.CFG.UploadSVG THEN // Do nothing, because of no picture is needed
 					gVisionImage.CMD.SaveImageOnPLC := FALSE;
+					gVisionImage.DAT.Status	:= ERR_CFG_IMG;
+				ELSIF gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode = 0 THEN
+					gVisionImage.CMD.SaveImageOnPLC := FALSE;
+					gVisionImage.DAT.Status	:= ERR_CFG_PLK;
 				ELSE
-					gVisionImage.DAT.Status		:= ERR_FUB_BUSY;
-					Step						:= VISTEP_SAVE_IMG_ON_PLC;
+					gVisionImage.DAT.Status	:= ERR_FUB_BUSY;
+					Step := VISTEP_SAVE_IMG_ON_PLC;
 				END_IF
 			ELSIF gVisionImage.CMD.ResetError THEN // Reset error
 				gVisionImage.CMD.ResetError := FALSE; // no error, so do nothing else (in case of an error, Step is VISTEP_ERR
@@ -108,6 +107,9 @@ PROGRAM _CYCLIC
 			DirCreate_0.pName		:= ADR(gVisionImage.CFG.DirName);
 			DirCreate_0();
 			IF DirCreate_0.status = ERR_OK OR DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
+				gVisionImage.CMD.CreateDir := FALSE;
+				gVisionImage.CMD.DeleteDir := FALSE;
+				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_REFRESH_IMG_LIST;
 			ELSIF DirCreate_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := DirCreate_0.status;
@@ -132,6 +134,8 @@ PROGRAM _CYCLIC
 			FileDelete_0.pName 		:= ADR(FileNameComplete);
 			FileDelete_0();
 			IF FileDelete_0.status = ERR_OK THEN
+				gVisionImage.CMD.DeleteImage := FALSE;
+				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_REFRESH_IMG_LIST;
 			ELSIF FileDelete_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileDelete_0.status;
@@ -145,6 +149,7 @@ PROGRAM _CYCLIC
 			ViRefreshImageList_0.visSelectedImage	:= ADR(visSelectedImage);
 			ViRefreshImageList_0();
 			IF ViRefreshImageList_0.Status = ERR_OK THEN
+				gVisionImage.CMD.Refresh := FALSE;
 				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			ELSIF ViRefreshImageList_0.Status <> ERR_FUB_BUSY THEN
@@ -160,6 +165,7 @@ PROGRAM _CYCLIC
 			ViDownloadImage_0.visDownloadFileUrl	:= ADR(visDownloadFileUrl);
 			ViDownloadImage_0();
 			IF ViDownloadImage_0.Status = ERR_OK THEN
+				gVisionImage.CMD.DownloadImage := FALSE;
 				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			ELSIF ViDownloadImage_0.Status <> ERR_FUB_BUSY THEN
@@ -174,6 +180,8 @@ PROGRAM _CYCLIC
 			ViSaveImgOnPlc_0.CrossHairInfo		:= ADR(ViDrawCrosshair_0.CrossHairInfo);
 			ViSaveImgOnPlc_0();
 			IF ViSaveImgOnPlc_0.Status = ERR_OK THEN
+				gVisionImage.CMD.SaveImageOnPLC := FALSE;
+				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_REFRESH_IMG_LIST;
 			ELSIF ViSaveImgOnPlc_0.Status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := ViSaveImgOnPlc_0.Status;
