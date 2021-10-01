@@ -73,7 +73,7 @@ PROGRAM _CYCLIC
 				IF NOT gVisionImage.CFG.UploadBmpJpg AND NOT gVisionImage.CFG.UploadSVG THEN // Do nothing, because of no picture is needed
 					gVisionImage.CMD.SaveImageOnPLC := FALSE;
 					gVisionImage.DAT.Status	:= ERR_CFG_IMG;
-				ELSIF gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode = 0 THEN
+				ELSIF gVisionSensor[LIMIT(1, gSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode = 0 THEN
 					gVisionImage.CMD.SaveImageOnPLC := FALSE;
 					gVisionImage.DAT.Status	:= ERR_CFG_PLK;
 				ELSE
@@ -176,7 +176,7 @@ PROGRAM _CYCLIC
 		VISTEP_SAVE_IMG_ON_PLC: // Save image from camera to PLC
 			ViSaveImgOnPlc_0.Enable				:= TRUE;
 			ViSaveImgOnPlc_0.CFG				:= gVisionImage.CFG;
-			ViSaveImgOnPlc_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
+			ViSaveImgOnPlc_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, gSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
 			ViSaveImgOnPlc_0.CrossHairInfo		:= ADR(ViDrawCrosshair_0.CrossHairInfo);
 			ViSaveImgOnPlc_0();
 			IF ViSaveImgOnPlc_0.Status = ERR_OK THEN
@@ -199,20 +199,20 @@ PROGRAM _CYCLIC
 	
 	// Proxy server cyclic call ( Only needed for information. ) 
 	ipSTR := gVisionImage.CFG.PlkIPWithoutNode;
-	brsitoa(visSelectedSensor, ADR(nodeSTR));
+	brsitoa(gSelectedSensor, ADR(nodeSTR));
 	brsstrcat(ADR(ipSTR), ADR(nodeSTR));
 	IF brsstrcmp( ADR( TcpForward_0.ConnectToIp ),ADR( ipSTR )) <> 0 THEN
 		TcpForward_0.ConnectToIp := ipSTR ;
 		TcpForward_0.Enable := FALSE ;	
 	ELSE
-		TcpForward_0.Enable := gVisionSensor[visSelectedSensor].HW.Connected ; // Only enable if its connected
+		TcpForward_0.Enable := gVisionSensor[gSelectedSensor].HW.Connected ; // Only enable if its connected
 	END_IF
 	TcpForward_0();
 
 	// Draw the crosshairs on the mainpage
-	ViDrawCrosshair_0.SelectedSensor		:= visSelectedSensor;
+	ViDrawCrosshair_0.SelectedSensor		:= gSelectedSensor;
 	ViDrawCrosshair_0.CmdRefreshCrosshair	:= gVisionImage.CMD.RefreshCrosshair;
-	ViDrawCrosshair_0.VisionSensor			:= ADR(gVisionSensor[visSelectedSensor]);
+	ViDrawCrosshair_0.VisionSensor			:= ADR(gVisionSensor[gSelectedSensor]);
 	ViDrawCrosshair_0.CodeTypes				:= ADR(CodeTypes);
 	ViDrawCrosshair_0.VisionDisabled		:= gVisionImage.DAT.VisionDisabled;
 	ViDrawCrosshair_0.ImageRotation_deg		:= gVisionImage.CFG.ImageRotation_deg;
@@ -239,9 +239,9 @@ PROGRAM _CYCLIC
 	brsstrcat(ADR(visWebViewerQuery), ADR('&scale='));
 	CASE gVisionImage.CFG.ImageRotation_deg OF
 		0:		brsftoa(1.0, ADR(tmpStr));
-		90:		brsftoa(UINT_TO_REAL(gVisionSensor[visSelectedSensor].CFG.ResolutionHeight_Y) / UINT_TO_REAL(gVisionSensor[visSelectedSensor].CFG.ResolutionWidth_X), ADR(tmpStr));
+		90:		brsftoa(UINT_TO_REAL(gVisionSensor[gSelectedSensor].CFG.ResolutionHeight_Y) / UINT_TO_REAL(gVisionSensor[gSelectedSensor].CFG.ResolutionWidth_X), ADR(tmpStr));
 		180:	brsftoa(1.0, ADR(tmpStr));
-		270:	brsftoa(UINT_TO_REAL(gVisionSensor[visSelectedSensor].CFG.ResolutionHeight_Y) / UINT_TO_REAL(gVisionSensor[visSelectedSensor].CFG.ResolutionWidth_X), ADR(tmpStr));
+		270:	brsftoa(UINT_TO_REAL(gVisionSensor[gSelectedSensor].CFG.ResolutionHeight_Y) / UINT_TO_REAL(gVisionSensor[gSelectedSensor].CFG.ResolutionWidth_X), ADR(tmpStr));
 	ELSE
 		brsftoa(1.0, ADR(tmpStr));
 	END_CASE
@@ -254,7 +254,7 @@ PROGRAM _CYCLIC
 	ViShowImgOnVC4_0.Enable				:= ViCreateWebDirFile_0.Done; // Wait until the directory "web" is created
 	ViShowImgOnVC4_0.RefreshImage		:= visVC4RefreshImg;
 	ViShowImgOnVC4_0.CFG				:= gVisionImage.CFG;
-	ViShowImgOnVC4_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, visSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
+	ViShowImgOnVC4_0.PowerlinkNode		:= gVisionSensor[LIMIT(1, gSelectedSensor, MAX_NUM_CAMS)].CFG.PowerlinkNode;
 	ViShowImgOnVC4_0.ImgWidthInVC4_px	:= 500; // Pixel
 	ViShowImgOnVC4_0();
 	IF ViShowImgOnVC4_0.RefreshDone THEN
@@ -262,10 +262,10 @@ PROGRAM _CYCLIC
 	END_IF
 	
 	// Refreh crosshairs when new image is available
-	IF EDGENEG(gVisionSensor[visSelectedSensor].CMD.ImageTrigger) THEN
+	IF EDGENEG(gVisionSensor[gSelectedSensor].CMD.ImageTrigger) THEN
 		gVisionImage.CMD.RefreshCrosshair := TRUE;
 	END_IF
-	gVisionImage.DAT.VisionDisabled := NOT gVisionSensor[visSelectedSensor].DAT.Enable;
+	gVisionImage.DAT.VisionDisabled := NOT gVisionSensor[gSelectedSensor].DAT.Enable;
 	
 	brsmemcpy(ADR(RemCfgImage), ADR(gVisionImage.CFG), SIZEOF(RemCfgImage)); // Save settings to remanent variable
 END_PROGRAM

@@ -37,13 +37,6 @@
         <Variable Name="Recipe_01" AutomaticEnable="True">
           <Variable Name="VIS" EnableArrayElements="True" />
         </Variable>
-        <Variable Name="gCameraBlob" AutomaticEnable="True" />
-        <Variable Name="gCameraCodeReading" AutomaticEnable="True" />
-        <Variable Name="gCameraMatch" AutomaticEnable="True" />
-        <Variable Name="gCameraMeasurement" AutomaticEnable="True" />
-        <Variable Name="gCameraOCR" AutomaticEnable="True" />
-        <Variable Name="visSelectedSensor" />
-        <Variable Name="visSelectedLight" />
         <Variable Name="gVisionImage" AutomaticEnable="True" />
         <Variable Name="gVisionLight" EnableArrayElements="True" />
         <Variable Name="gVisionNettime" AutomaticEnable="True" />
@@ -77,7 +70,8 @@
             <Variable Name="Status" />
           </Variable>
         </Variable>
-        <Variable Name="gCameraPxl" AutomaticEnable="True" />
+        <Variable Name="gSelectedLight" />
+        <Variable Name="gSelectedSensor" />
       </GlobalVariables>
       <Task Name="Vi_main" />
       <Task Name="Vi_image">

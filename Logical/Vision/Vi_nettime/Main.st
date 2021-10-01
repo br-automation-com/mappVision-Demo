@@ -40,9 +40,9 @@ PROGRAM _CYCLIC
 			gVisionNettime.DAT.NettimeNext_us	:= NettimeCurrent_us + TriggerTimeDelta_us;
 			gVisionNettime.DAT.NettimeDelta_us	:= TriggerTimeDelta_us;
 			// Transfer nettime to sensor and fire trigger
-			IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive THEN
-				gVisionSensor[visSelectedSensor].CMD.ImageTrigger	:= TRUE;
-				gVisionSensor[visSelectedSensor].DAT.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
+			IF gVisionSensor[gSelectedSensor].HW.Ready AND NOT gVisionSensor[gSelectedSensor].DAT.ImageProcessingActive THEN
+				gVisionSensor[gSelectedSensor].CMD.ImageTrigger	:= TRUE;
+				gVisionSensor[gSelectedSensor].DAT.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
 			ELSE
 				gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
 			END_IF

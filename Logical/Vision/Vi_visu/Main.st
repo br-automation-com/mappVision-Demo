@@ -7,7 +7,7 @@
 PROGRAM _INIT
 	// -----------------------------------------------------------------------------------------------------------
 	// Map global structure to local reference
-	VisionSensor ACCESS ADR(gVisionSensor[visSelectedSensor]);
+	VisionSensor ACCESS ADR(gVisionSensor[gSelectedSensor]);
 	Blob ACCESS ADR(tmpBlob);
 	CodeReader ACCESS ADR(tmpCodeReader);
 	Match ACCESS ADR(tmpMatch);
@@ -16,7 +16,7 @@ PROGRAM _INIT
 	Pixel ACCESS ADR(tmpPixel);
 	
 	// Map global structure to local reference
-	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
+	VisionLight ACCESS ADR(gVisionLight[gSelectedLight]);
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Preload code types
@@ -47,7 +47,7 @@ PROGRAM _CYCLIC
 	IF InitialSearchSensor THEN 
 		FOR i := 1 TO MAX_NUM_CAMS DO
 			IF gVisionSensor[i].HW.Connected THEN
-				visSelectedSensor := i;
+				gSelectedSensor := i;
 				InitialSearchSensor := FALSE;
 				EXIT;
 			END_IF
@@ -59,15 +59,15 @@ PROGRAM _CYCLIC
 	// Map global structure to local reference for mappView
 	// -----------------------------------------------------------------------------------------------------------
 	// Make sure we dont exceed array limit
-	IF(visSelectedSensor > MAX_NUM_CAMS) THEN
-		visSelectedSensor := 1;
+	IF(gSelectedSensor > MAX_NUM_CAMS) THEN
+		gSelectedSensor := 1;
 	END_IF
-	IF(visSelectedSensor < 1) THEN
-		visSelectedSensor := MAX_NUM_CAMS;
+	IF(gSelectedSensor < 1) THEN
+		gSelectedSensor := MAX_NUM_CAMS;
 	END_IF
 	// -----------------------------------------------------------------------------------------------------------
 	// Assign pointers
-	VisionSensor ACCESS ADR(gVisionSensor[visSelectedSensor]);
+	VisionSensor ACCESS ADR(gVisionSensor[gSelectedSensor]);
 	IF(VisionSensor.CFG.DataStructure <> 0) THEN
 		CASE VisionSensor.CFG.VisionFunction OF
 			enumBlob:			Blob ACCESS VisionSensor.CFG.DataStructure;
@@ -143,7 +143,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Disable setup buttons when camera is disconnected, processing an image or not ready
 	// -----------------------------------------------------------------------------------------------------------
-	IF(NOT VisionSensor.HW.Connected OR NOT (VisionSensor.HW.Ready OR AutoSetupRunning[visSelectedSensor]) OR VisionSensor.DAT.ImageProcessingActive) THEN
+	IF(NOT VisionSensor.HW.Connected OR NOT (VisionSensor.HW.Ready OR AutoSetupRunning[gSelectedSensor]) OR VisionSensor.DAT.ImageProcessingActive) THEN
 		visEnableSetup := FALSE;
 	ELSE
 		visEnableSetup := TRUE;
@@ -227,7 +227,7 @@ PROGRAM _CYCLIC
 	IF InitialSearchLight THEN 
 		FOR i := 1 TO MAX_NUM_LIGHTS DO
 			IF gVisionLight[i].HW.Connected THEN
-				visSelectedLight := i;
+				gSelectedLight := i;
 				InitialSearchLight := FALSE;
 				EXIT;
 			END_IF
@@ -237,13 +237,13 @@ PROGRAM _CYCLIC
 	// Map global structure to local reference
 	// -----------------------------------------------------------------------------------------------------------
 	// Make sure we dont exceed array limit
-	IF(visSelectedLight > MAX_NUM_LIGHTS) THEN
-		visSelectedLight := 1;
+	IF(gSelectedLight > MAX_NUM_LIGHTS) THEN
+		gSelectedLight := 1;
 	END_IF
-	IF(visSelectedLight < 1) THEN
-		visSelectedLight := MAX_NUM_LIGHTS;
+	IF(gSelectedLight < 1) THEN
+		gSelectedLight := MAX_NUM_LIGHTS;
 	END_IF
-	VisionLight ACCESS ADR(gVisionLight[visSelectedLight]);
+	VisionLight ACCESS ADR(gVisionLight[gSelectedLight]);
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Translate flash color from mappView to IO mapping

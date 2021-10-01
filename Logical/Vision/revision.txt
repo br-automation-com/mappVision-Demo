@@ -3,6 +3,8 @@ Next Version
 - Changed package references to file references
 - Interim fix to address vision load issue #7
 - Added more error numbers to Vi_image
+- Renamed visSelectedSensor and visSelectedLight
+- Code cleanup
 
 Version 5.15
 - Update recipe managment to V1.0

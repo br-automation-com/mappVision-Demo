@@ -90,10 +90,10 @@ PROGRAM _CYCLIC
 
 	// -----------------------------------------------------------------------------------------------------------	
 	// Trigger selected backlight when selected sensor is triggered
-	IF(EDGEPOS(gVisionSensor[visSelectedSensor].CMD.ImageTrigger)) THEN
-		gVisionLight[visSelectedLight].DAT.Exposure		:= gVisionSensor[visSelectedSensor].DAT.Exposure;
-		gVisionLight[visSelectedLight].DAT.NettimeDelay	:= gVisionSensor[visSelectedSensor].DAT.NettimeDelay;
-		gVisionLight[visSelectedLight].CMD.FlashTrigger	:= TRUE;
+	IF(EDGEPOS(gVisionSensor[gSelectedSensor].CMD.ImageTrigger)) THEN
+		gVisionLight[gSelectedLight].DAT.Exposure		:= gVisionSensor[gSelectedSensor].DAT.Exposure;
+		gVisionLight[gSelectedLight].DAT.NettimeDelay	:= gVisionSensor[gSelectedSensor].DAT.NettimeDelay;
+		gVisionLight[gSelectedLight].CMD.FlashTrigger	:= TRUE;
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------

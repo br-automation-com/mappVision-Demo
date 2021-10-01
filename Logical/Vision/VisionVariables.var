@@ -12,9 +12,9 @@ VAR
 	gVisionLight : ARRAY[0..MAX_NUM_LIGHTS] OF typLightMain; (*General Light  functions that are independent from the inspection function*)
 	gVisionNettime : typVisionNettime; (*Data for nettime calculation*)
 	gVisionSensor : ARRAY[0..MAX_NUM_CAMS] OF typVisionMain; (*General vision functions that are independent from the inspection function*)
+	gSelectedSensor : UINT := 1; (*Selected camera node number*)
+	gSelectedLight : UINT := 1; (*Selected Light node number*)
 	NettimeCurrent_us : DINT; (*Current Powerlink nettime*)
-	visSelectedSensor : UINT := 1; (*Selected camera node number*)
-	visSelectedLight : UINT := 1; (*Selected Light node number*)
 END_VAR
 VAR RETAIN
 	RecipeData : recVariable; (*Structure that contains the recipe variables*)

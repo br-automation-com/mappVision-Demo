@@ -203,7 +203,7 @@ PROGRAM _CYCLIC
 			DiagGetNumInfo_0.infoCode		:= asdiagPLUGGED_MODNO;
 			DiagGetNumInfo_0();
 			IF DiagGetNumInfo_0.status = 0 THEN
-				IF DiagGetNumInfo_0.value = gVisionSensor[visSelectedSensor].HW.ID THEN
+				IF DiagGetNumInfo_0.value = gVisionSensor[gSelectedSensor].HW.ID THEN
 					OpticsReadStep[idSensor] := 3;
 				ELSE
 					Index := Index + 1;
