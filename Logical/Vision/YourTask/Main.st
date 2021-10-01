@@ -84,6 +84,10 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
+	// -----------------------------------------------------------------------------------------------------------
+	// Backlight handling, this block can be deleted when no backlights are used
+	// -----------------------------------------------------------------------------------------------------------	
+
 	// -----------------------------------------------------------------------------------------------------------	
 	// Trigger selected backlight when selected sensor is triggered
 	IF(EDGEPOS(gVisionSensor[visSelectedSensor].CMD.ImageTrigger)) THEN
@@ -91,7 +95,11 @@ PROGRAM _CYCLIC
 		gVisionLight[visSelectedLight].DAT.NettimeDelay	:= gVisionSensor[visSelectedSensor].DAT.NettimeDelay;
 		gVisionLight[visSelectedLight].CMD.FlashTrigger	:= TRUE;
 	END_IF
-	
+
+	// -----------------------------------------------------------------------------------------------------------
+	// Recipe handling, this block can be deleted when no recipes are used
+	// -----------------------------------------------------------------------------------------------------------	
+
 	// -----------------------------------------------------------------------------------------------------------	
 	// Transfer data when loading a recipe
 	IF EDGENEG(Recipe_01.CMD.Load) OR cmdLoadRecipeAfterBoot THEN

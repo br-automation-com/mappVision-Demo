@@ -68,7 +68,7 @@ FUNCTION_BLOCK VaGetList
 				State := STATE_WAIT;
 			END_IF
 		// ----------------------------------------------------------------------------------------
-		// Find vision application anme			
+		// Find vision application name			
 		STATE_VA_NAME:
 			FOR i:=0 TO 400 DO
 				IF (brsmemcmp(ModuleList.adress+i, ADR('" Type="visionapplication"'), SIZEOF('" Type="visionapplication"')-1) = 0) THEN
