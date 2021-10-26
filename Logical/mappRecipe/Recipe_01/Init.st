@@ -50,7 +50,7 @@ PROGRAM _INIT
 		AsMemPartAllocClear_0.ident		:= AsMemPartCreate_0.ident;
 		AsMemPartAllocClear_0.len		:= REC_UPLOAD_DOWNLOAD_SIZE;
 		AsMemPartAllocClear_0();
-		IF AsMemPartCreate_0.status <> 0 THEN
+		IF AsMemPartAllocClear_0.status <> 0 THEN
 			rec_state := CreateError(ADR(RECIPE), ERR_MEM_ALLOC, "file upload and download memory clear failed", rec_state);
 		END_IF
 	END_IF
