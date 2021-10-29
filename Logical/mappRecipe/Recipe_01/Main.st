@@ -66,8 +66,10 @@ PROGRAM _CYCLIC
 		// Wait for command																				
 		// --------------------------------------------------------------------------------------------------------------------
 		REC_WAIT:
-			// Set OK state
-			RECIPE.StatusNo := ERR_OK;
+			// Reset busy state
+			IF(RECIPE.StatusNo = ERR_FUB_BUSY) THEN
+				RECIPE.StatusNo := ERR_OK;
+			END_IF
 			// --------------------------------------------------------------------------------------------------------------------
 			// Track filter change and data refresh																				
 			IF ((brwcscmp(ADR(RecipeFilterOld[VisuSlotID]), ADR(RECIPE.VIS[VisuSlotID].RecipeFilter)) <> 0) OR (RecipeNumOld[VisuSlotID] <> RECIPE.DAT.RecipeNum)) THEN
@@ -134,6 +136,7 @@ PROGRAM _CYCLIC
 				brsmemset(ADR(RECIPE.DAT), 0, SIZEOF(RECIPE.DAT));
 				brsmemset(ADR(RecipeIDs), 0, SIZEOF(RecipeIDs));
 				brsmemset(ADR(RecipeNumOld), 16#FF, SIZEOF(RecipeNumOld));
+				RecipeName := "";
 				// Register recipe name variable first if unicode is used
 				IF(REC_USE_UNICODE) THEN
 					rec_state := REC_REG_NAME;
@@ -144,7 +147,7 @@ PROGRAM _CYCLIC
 			// ---------------------------------------------------------------------------------------- 
 			// Command new recipe
 			ELSIF (RECIPE.CMD.New = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
-				// Show current state																		
+				// Show current state
 				animation := WorkingStatus(ADR(RECIPE), ADR("creating recipe..."), animation);
 				// Verify that we still have space in list												
 				IF (RECIPE.DAT.RecipeNum > REC_REC_NUM) THEN
@@ -187,14 +190,15 @@ PROGRAM _CYCLIC
 			// ---------------------------------------------------------------------------------------- 
 			// Command delete recipe
 			ELSIF (RECIPE.CMD.Delete = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
-				// Show current state, copy recipe name to local variable																		
+				// Show current state																	
 				animation := WorkingStatus(ADR(RECIPE), ADR("deleting recipe..."), animation);
 				rec_state := REC_GEN_FILE_NAME;
 			// ---------------------------------------------------------------------------------------- 
 			// Command download recipe
 			ELSIF (RECIPE.CMD.Download = TRUE AND RECIPE.PAR.RecipeName <> "") THEN
-				// Show current state, copy recipe name to local variable																		
+				// Show current state, reset error																		
 				animation := WorkingStatus(ADR(RECIPE), ADR("downloading recipe..."), animation);
+				RECIPE.StatusNo := ERR_OK;
 				RECIPE.VIS[RECIPE.PAR.VisuSlotID].DownloadFileUrl := '';
 				rec_state := REC_GEN_FILE_NAME;
 			// ---------------------------------------------------------------------------------------- 
@@ -202,7 +206,7 @@ PROGRAM _CYCLIC
 			ELSIF (RECIPE.CMD.Upload = TRUE) THEN
 				// Make sure that unicode support is turned off
 				IF(REC_USE_UNICODE = FALSE) THEN
-					// Show current state, copy recipe name to local variable																		
+					// Show current state																	
 					animation := WorkingStatus(ADR(RECIPE), ADR("uploading recipe..."), animation);
 					rec_state := REC_UPLOAD;
 				ELSE
@@ -211,7 +215,7 @@ PROGRAM _CYCLIC
 			// ---------------------------------------------------------------------------------------- 
 			// Rename recipe
 			ELSIF (RECIPE.CMD.Rename = TRUE AND RECIPE.PAR.RecipeName <> "" AND RECIPE.PAR.RecipeNameNew <> "") THEN
-				// Show current state																		
+				// Show current state																	
 				animation := WorkingStatus(ADR(RECIPE), ADR("renaming recipe..."), animation);
 				// Make sure new recipe name does not already exist
 				IF(FindRecName(ADR(RECIPE), RECIPE.PAR.RecipeNameNew) <> REC_DOES_NOT_EXIST) THEN
@@ -237,6 +241,8 @@ PROGRAM _CYCLIC
 			// Check parameters																					
 			IF (RECIPE.CMD.Init OR RECIPE.CMD.New OR RECIPE.CMD.Load OR RECIPE.CMD.Save OR RECIPE.CMD.Rename OR RECIPE.CMD.Delete OR RECIPE.CMD.View OR RECIPE.CMD.Download OR RECIPE.CMD.Upload) THEN
 				// Set busy state
+				RECIPE.ERR.Text := "";
+				RECIPE.ERR.State := 0;
 				RECIPE.StatusNo := ERR_FUB_BUSY;
 				// Make sure recipe mangament was intialized
 				IF (NOT RECIPE.CMD.Init AND NOT RECIPE.PAR.Initialized) THEN
@@ -601,7 +607,16 @@ PROGRAM _CYCLIC
 				END_IF
 				// Continue reading recipe names
 				IF(RECIPE.CMD.Init) THEN
-					InsertRecName(ADR(RECIPE), RecipeName, RECIPE.PAR.RecipeID);
+					// Make sure recipe name was found in unic
+					IF(RecipeName <> "") THEN
+						InsertRecName(ADR(RECIPE), RecipeName, RECIPE.PAR.RecipeID);
+					ELSE
+						tmpWStr1 := "error recipe name is missing from unicode file ";
+						brwcsconv(ADR(tmpWStr2), ADR(RecipeFullFileName), brwU8toUC);
+						brwcscat(ADR(tmpWStr1), ADR(tmpWStr2));
+						rec_state := CreateError(ADR(RECIPE), ERR_REC_VAR_NAME_MISSING, tmpWStr1, rec_state);
+					END_IF
+					RecipeName := "";
 					rec_state := REC_READ_DIR_2;
 					RETURN;
 				END_IF
@@ -634,7 +649,7 @@ PROGRAM _CYCLIC
 			ELSIF (MpRecipeStatusID = mpRECIPE_WRN_LOAD_WITH_WARN) THEN
 				rec_state := CreateError(ADR(RECIPE), MpRecipeStatusID, "warning recipe read/write/new, check PLC logbook for details", rec_state);
 			ELSIF (MpRecipeStatusID = mpRECIPE_WRN_NO_PV_FOUND) THEN
-				tmpWStr1 := "error recipe file contains no data ";
+				tmpWStr1 := "error recipe file contains no or corrupt data ";
 				brwcsconv(ADR(tmpWStr2), ADR(RecipeFullFileName), brwU8toUC);
 				brwcscat(ADR(tmpWStr1), ADR(tmpWStr2));
 				rec_state := CreateError(ADR(RECIPE), MpRecipeStatusID, tmpWStr1, rec_state);
@@ -1134,13 +1149,16 @@ PROGRAM _CYCLIC
 				MpRecipeXml_0.Save := FALSE;
 				MpRecipeXml_0.Load := FALSE;
 				
-				MpRecipeRegPar_0.Enable := FALSE;
-				FOR idx:=1 TO REC_VAR_NUM DO
-					MpRecipeRegPar_1[idx].Enable := FALSE;
-					IF(REC_VAR_LIST[idx] = '') THEN
-						EXIT;
-					END_IF
-				END_FOR;
+				// Only reset variable function blocks when not already initialized
+				IF NOT RECIPE.PAR.Initialized THEN
+					MpRecipeRegPar_0.Enable := FALSE;
+					FOR idx:=1 TO REC_VAR_NUM DO
+						MpRecipeRegPar_1[idx].Enable := FALSE;
+						IF(REC_VAR_LIST[idx] = '') THEN
+							EXIT;
+						END_IF
+					END_FOR;
+				END_IF
 				
 				// Reset error structure
 				brsmemset(ADR(RECIPE.ERR), 0, SIZEOF(RECIPE.ERR));

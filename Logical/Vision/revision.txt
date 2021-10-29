@@ -1,5 +1,6 @@
 Next Version
-- Update recipe managment to V1.3
+- Fixed unit scaling in tables
+- Update recipe managment to V1.4
 - Changed package references to file references
 - Interim fix to address vision load issue #7
 - Added more error numbers to Vi_image

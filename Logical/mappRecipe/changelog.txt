@@ -1,3 +1,14 @@
+Next Version
+- Fixed typo in memory allocation status check
+
+Version 1.4 (18.10.2021)
+- Added error message when recipe name is missing from unicode recipe
+- Dont reset error when returning to wait state
+
+Version 1.3 (03.09.2021)
+- Update project to Automation Studio 4.9 and mapp 5.15
+- Fixed an issue where the recipe management would not recover correct from an error
+
 Version 1.2 (15.04.2021)
 - Fixed PLC crash when REC_VAR_NUM is 1
 

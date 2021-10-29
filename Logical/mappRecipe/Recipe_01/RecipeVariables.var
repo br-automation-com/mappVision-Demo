@@ -86,6 +86,7 @@ VAR CONSTANT
 	ERR_REC_NAME_LENGTH : DINT := 50103; (*One or more recipe names exceeds maximum length*)
 	ERR_REC_DEV_NAME_EMPTY : DINT := 50110; (*Device name is empty*)
 	ERR_REC_VAR_NAME_EMPTY : DINT := 50120; (*Variable name is empty*)
+	ERR_REC_VAR_NAME_MISSING : DINT := 50121; (*Variable name is missing from unicode recipe file*)
 	ERR_REC_NOT_INITIALIZED : DINT := 50130; (*Recipemanagement is not initialized*)
 	ERR_REC_REC_NUM : DINT := 50140; (*Maximum number of recipes reached*)
 	ERR_REC_TASK_NAME : DINT := 50150; (*Task name is incorrect*)
