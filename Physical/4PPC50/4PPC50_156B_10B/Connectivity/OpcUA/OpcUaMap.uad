@@ -29,6 +29,7 @@
     </EURangesAliases>
     <EngineeringUnitAliases>
       <EngineeringUnit Id="1" UnitId="5654832" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels1" Symbol="p" />
+      <EngineeringUnit Id="2" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
     </EngineeringUnitAliases>
   </Aliases>
   <DefaultView AclId="2">
@@ -139,32 +140,32 @@
         <Variable Name="Blob" AutomaticEnable="True">
           <Variable Name="ModelNumber" EnableArrayElements="True" />
           <Variable Name="Clipped" EnableArrayElements="True" />
-          <Variable Name="Area" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" />
-          <Variable Name="PositionY" EnableArrayElements="True" />
-          <Variable Name="Orientation" EnableArrayElements="True" />
+          <Variable Name="Area" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
           <Variable Name="MeanGrayValue" EnableArrayElements="True" />
-          <Variable Name="Length" EnableArrayElements="True" />
-          <Variable Name="Width" EnableArrayElements="True" />
+          <Variable Name="Length" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="Width" EnableArrayElements="True" EngineeringUnitId="2" />
         </Variable>
         <Variable Name="CodeReader" AutomaticEnable="True">
           <Variable Name="BarcodeText" EnableArrayElements="True" />
           <Variable Name="BarcodeType" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" />
-          <Variable Name="PositionY" EnableArrayElements="True" />
-          <Variable Name="Orientation" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
           <Variable Name="Grading" EnableArrayElements="True" />
           <Variable Name="EnhancedGrading" EnableArrayElements="True" />
         </Variable>
         <Variable Name="Match" AutomaticEnable="True">
           <Variable Name="ModelNumber" EnableArrayElements="True" />
           <Variable Name="Score" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" />
-          <Variable Name="PositionY" EnableArrayElements="True" />
-          <Variable Name="Orientation" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
           <Variable Name="Scale" EnableArrayElements="True" />
-          <Variable Name="RotCenterX" EnableArrayElements="True" />
-          <Variable Name="RotCenterY" EnableArrayElements="True" />
+          <Variable Name="RotCenterX" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="RotCenterY" EnableArrayElements="True" EngineeringUnitId="2" />
         </Variable>
         <Variable Name="MT" AutomaticEnable="True">
           <Variable Name="Result" EnableArrayElements="True" />
@@ -172,9 +173,9 @@
         <Variable Name="OCR" AutomaticEnable="True">
           <Variable Name="Text" EnableArrayElements="True" />
           <Variable Name="Grading" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" />
-          <Variable Name="PositionY" EnableArrayElements="True" />
-          <Variable Name="Orientation" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
         </Variable>
         <Variable Name="VisionLight" AutomaticEnable="True" />
         <Variable Name="visLightsEnableCommand" />
@@ -193,10 +194,10 @@
           <Variable Name="MeanGray" EnableArrayElements="True" />
           <Variable Name="DeviationGray" EnableArrayElements="True" />
           <Variable Name="MedianGray" EnableArrayElements="True" />
-          <Variable Name="ModelArea" EnableArrayElements="True" />
+          <Variable Name="ModelArea" EnableArrayElements="True" EngineeringUnitId="2" />
           <Variable Name="NumConnectedComponents" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" />
-          <Variable Name="PositionY" EnableArrayElements="True" />
+          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
+          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
         </Variable>
         <Variable Name="visSelectedCodeType" />
         <Variable Name="visSelectedParameterMode" />

@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
 <Configuration>
   <Element ID="VisionUnitPixel1000" Type="Units">
     <Property ID="Namespace" Value="http://www.br-automation.com/units" />
@@ -7,7 +8,7 @@
     <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
     <Group ID="Classification[1]" />
     <Selector ID="AtomicOrCompound">
-      <Property ID="AtomicFactor" Value="1000" />
+      <Property ID="AtomicFactor" Value="0.001" />
     </Selector>
   </Element>
   <Element ID="VisionUnitPixel1" Type="Units">
@@ -27,7 +28,7 @@
     <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
     <Group ID="Classification[1]" />
     <Selector ID="AtomicOrCompound">
-      <Property ID="AtomicFactor" Value="100" />
+      <Property ID="AtomicFactor" Value="0.01" />
     </Selector>
   </Element>
   <Element ID="VisionUnitPixel10" Type="Units">
@@ -37,7 +38,7 @@
     <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
     <Group ID="Classification[1]" />
     <Selector ID="AtomicOrCompound">
-      <Property ID="AtomicFactor" Value="10" />
+      <Property ID="AtomicFactor" Value="0.1" />
     </Selector>
   </Element>
 </Configuration>
