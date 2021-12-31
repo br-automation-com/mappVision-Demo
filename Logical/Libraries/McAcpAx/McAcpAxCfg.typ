@@ -135,10 +135,16 @@ TYPE
 	McMMTMCSBCMRefTmpEnum :
 		( (*Reference temperature selector setting*)
 		mcMMTMCSBCMRT_MOT_TMP_SENS := 0, (*Motor temperature sensor -*)
-		mcMMTMCSBCMRT_NOM_AMB_TMP := 1 (*Nominal ambient temperature -*)
+		mcMMTMCSBCMRT_NOM_AMB_TMP := 1, (*Nominal ambient temperature -*)
+		mcMMTMCSBCMRT_ENC_TMP_SENS := 2 (*Encoder temperature sensor -*)
 		);
+	McMMTMCSBCMRefTmpEncTmpSensType : STRUCT (*Type mcMMTMCSBCMRT_ENC_TMP_SENS settings*)
+		TemperatureOffset : REAL; (*Temperature offset for reference temperature [°C]*)
+		TimeConstant : REAL; (*Time constant for the reference temperature [s]*)
+	END_STRUCT;
 	McMMTMCSBCMRefTmpType : STRUCT (*Reference temperature of winding temperature monitoring*)
 		Type : McMMTMCSBCMRefTmpEnum; (*Reference temperature selector setting*)
+		EncoderTemperatureSensor : McMMTMCSBCMRefTmpEncTmpSensType; (*Type mcMMTMCSBCMRT_ENC_TMP_SENS settings*)
 	END_STRUCT;
 	McMMTMCSBCMSecOrdType : STRUCT (*Type mcMMTMCSBCM_SECORD_THRM_NETW settings*)
 		WindingCrossSection : REAL; (*Phase conductor cross section [mm²]*)
@@ -528,8 +534,9 @@ TYPE
 	END_STRUCT;
 	McACModEnum :
 		( (*Mode selector setting*)
-		mcACM_POS_CTRL := 0, (*Position controller - Position controller*)
-		mcACM_POS_CTRL_TORQ_FF := 1, (*Position controller torque ff - Position controller with torque feed forward*)
+		mcACM_POS_CTRL := 0, (*Position controller - Position controller with speed feedforward*)
+		mcACM_POS_CTRL_TORQ_FF := 1, (*Position controller torque ff - Position controller with torque feedforward*)
+		mcACM_POS_CTRL_MDL_BASED := 3, (*Position controller model based - Position controller with model based control*)
 		mcACM_V_FREQ_CTRL := 2 (*Voltage frequency control - Voltage/frequency control of induction motor*)
 		);
 	McACPCType : STRUCT (*Position controller parameters*)
@@ -584,7 +591,7 @@ TYPE
 		ParID : UINT; (*ParID*)
 	END_STRUCT;
 	McACLFSLLimFixValType : STRUCT (*Type mcACLFSLLim_FIX_VAL settings*)
-		Value : REAL; (*Value [Nm]*)
+		Value : REAL; (*Value [A]*)
 	END_STRUCT;
 	McACLFSLLimType : STRUCT (*Select if a fixed value for the positive limit or if the value of an ACOPOS ParID is used therefore*)
 		Type : McACLFSLLimEnum; (*Positive limit selector setting*)
@@ -655,6 +662,87 @@ TYPE
 		FeedForward : McACMPCFFFFwdType; (*Torque feed forward control parameters*)
 		LoopFilters : McACLFType; (*Parameters of the loop filters*)
 	END_STRUCT;
+	McACMPCMBCPosType : STRUCT (*Position controller parameters*)
+		ProportionalGain : REAL; (*Proportional amplification [1/s]*)
+		IntegrationTime : REAL; (*Integral action time [s]*)
+		TotalDelayTime : REAL; (*Total delay time [s]*)
+	END_STRUCT;
+	McACMPCMBCFFEnum :
+		( (*Feedforward selector setting*)
+		mcACMPCMBCFF_STD := 0, (*Standard - Based on several parameters the torque feedforward calculation is done on the axis*)
+		mcACMPCMBCFF_PRED_SPD := 1, (*Predictive speed - Predictive speed*)
+		mcACMPCMBCFF_TWO_MASS_MDL_BASED := 2 (*Two mass model based - Two mass model based*)
+		);
+	McACMPCMBCFFStdType : STRUCT (*Type mcACMPCMBCFF_STD settings*)
+		TorqueLoad : REAL; (*Load torque [Nm]*)
+		TorquePositive : REAL; (*Torque in positive direction [Nm]*)
+		TorqueNegative : REAL; (*Torque in negative direction [Nm]*)
+		SpeedTorqueFactor : REAL; (*Speed torque factor [Nms]*)
+		Inertia : REAL; (*Mass moment of inertia [kgm²]*)
+		AccelerationFilterTime : REAL; (*Acceleration filter time constant [s]*)
+	END_STRUCT;
+	McACMPCMBCFFPredSpdType : STRUCT (*Type mcACMPCMBCFF_PRED_SPD settings*)
+		PredictionTime : REAL; (*Prediction time [s]*)
+	END_STRUCT;
+	McACMPCMBCFFTwoMassMdlBasedType : STRUCT (*Type mcACMPCMBCFF_TWO_MASS_MDL_BASED settings*)
+		TorqueLoad : REAL; (*Load torque [Nm]*)
+		TorquePositive : REAL; (*Torque in positive direction [Nm]*)
+		TorqueNegative : REAL; (*Torque in negative direction [Nm]*)
+		AccelerationFilterTime : REAL; (*Acceleration filter time constant [s]*)
+	END_STRUCT;
+	McACMPCMBCFFType : STRUCT (*Feedforward control parameters*)
+		Type : McACMPCMBCFFEnum; (*Feedforward selector setting*)
+		Standard : McACMPCMBCFFStdType; (*Type mcACMPCMBCFF_STD settings*)
+		PredictiveSpeed : McACMPCMBCFFPredSpdType; (*Type mcACMPCMBCFF_PRED_SPD settings*)
+		TwoMassModelBased : McACMPCMBCFFTwoMassMdlBasedType; (*Type mcACMPCMBCFF_TWO_MASS_MDL_BASED settings*)
+	END_STRUCT;
+	McACMPCMBCFdbkEnum :
+		( (*Feedback selector setting*)
+		mcACMPCMBCF_STD := 0, (*Standard - Standard*)
+		mcACMPCMBCF_ONE_MASS_MDL_BASED := 1, (*One mass model based - One mass model based*)
+		mcACMPCMBCF_TWO_MASS_MDL_BASED := 2, (*Two mass model based - Two mass model based*)
+		mcACMPCMBCF_TWO_ENC_SPD_BASED := 3 (*Two encoder speed based - Two encoder speed based*)
+		);
+	McACMPCMBCFdbkOneMassMdlBsdType : STRUCT (*Type mcACMPCMBCF_ONE_MASS_MDL_BASED settings*)
+		SpeedMixingFactor : REAL; (*Speed mixing factor*)
+		SpeedProportionalGain : REAL; (*Speed proportional gain [As]*)
+	END_STRUCT;
+	McACMPCMBCFdbkTwoMassMdlBsdType : STRUCT (*Type mcACMPCMBCF_TWO_MASS_MDL_BASED settings*)
+		SpeedMixingFactor : REAL; (*Speed mixing factor*)
+		SpeedProportionalGain : REAL; (*Speed proportional gain [As]*)
+	END_STRUCT;
+	McACMPCMBCFdbkTwoEncSpdBasedType : STRUCT (*Type mcACMPCMBCF_TWO_ENC_SPD_BASED settings*)
+		SpeedMixingFactor : REAL; (*Speed mixing factor*)
+		SpeedProportionalGain : REAL; (*Speed proportional gain [As]*)
+	END_STRUCT;
+	McACMPCMBCFdbkType : STRUCT (*Feedback control parameters*)
+		Type : McACMPCMBCFdbkEnum; (*Feedback selector setting*)
+		OneMassModelBased : McACMPCMBCFdbkOneMassMdlBsdType; (*Type mcACMPCMBCF_ONE_MASS_MDL_BASED settings*)
+		TwoMassModelBased : McACMPCMBCFdbkTwoMassMdlBsdType; (*Type mcACMPCMBCF_TWO_MASS_MDL_BASED settings*)
+		TwoEncoderSpeedBased : McACMPCMBCFdbkTwoEncSpdBasedType; (*Type mcACMPCMBCF_TWO_ENC_SPD_BASED settings*)
+	END_STRUCT;
+	McACMPCMBCMdlMass1Type : STRUCT (*Mass 1 parameters*)
+		Inertia : REAL; (*Mass moment of inertia [kgm²]*)
+		ViscousFriction : REAL; (*Viscous friction [Nms]*)
+	END_STRUCT;
+	McACMPCMBCMdlMass2Type : STRUCT (*Mass 2 parameters*)
+		Inertia : REAL; (*Mass moment of inertia [kgm²]*)
+		ViscousFriction : REAL; (*Viscous friction [Nms]*)
+		Stiffness : REAL; (*Stiffness of the coupling to mass 1 [Nm/rad]*)
+		Damping : REAL; (*Damping of the coupling to mass 1 [Nms/rad]*)
+	END_STRUCT;
+	McACMPCMBCMdlType : STRUCT (*Load model parameters*)
+		Mass1 : McACMPCMBCMdlMass1Type; (*Mass 1 parameters*)
+		Mass2 : McACMPCMBCMdlMass2Type; (*Mass 2 parameters*)
+	END_STRUCT;
+	McACMPCMBCType : STRUCT (*Type mcACM_POS_CTRL_MDL_BASED settings*)
+		Position : McACMPCMBCPosType; (*Position controller parameters*)
+		Speed : McACSCType; (*Speed controller parameters*)
+		Feedforward : McACMPCMBCFFType; (*Feedforward control parameters*)
+		Feedback : McACMPCMBCFdbkType; (*Feedback control parameters*)
+		Model : McACMPCMBCMdlType; (*Load model parameters*)
+		LoopFilters : McACLFType; (*Parameters of the loop filters*)
+	END_STRUCT;
 	McACMVFCVFTypEnum :
 		( (*Type of characteristic curve*)
 		mcACMVFCVFT_LIN := 129, (*Linear - Linear characteristic curve*)
@@ -688,6 +776,7 @@ TYPE
 		Type : McACModEnum; (*Mode selector setting*)
 		PositionController : McACMPCType; (*Type mcACM_POS_CTRL settings*)
 		PositionControllerTorqueFf : McACMPCFFType; (*Type mcACM_POS_CTRL_TORQ_FF settings*)
+		PositionControllerModelBased : McACMPCMBCType; (*Type mcACM_POS_CTRL_MDL_BASED settings*)
 		VoltageFrequencyControl : McACMVFCType; (*Type mcACM_V_FREQ_CTRL settings*)
 	END_STRUCT;
 	McACType : STRUCT (*Axis controller parameters*)
@@ -815,6 +904,17 @@ TYPE
 		HomingDirection : McAHModHomeDirEnum; (*Movement direction in which the homing event is evaluated*)
 		KeepDirection : McAHModKeepDirEnum; (*Keep direction (move only in one direction)*)
 	END_STRUCT;
+	McAHModBlkRefPNotUseType : STRUCT (*Type mcAHMRP_NOT_USE settings*)
+		MinimumReturnDistance : LREAL; (*Minimum return distance after the blockade is reached [Measurement units]*)
+	END_STRUCT;
+	McAHModBlkRefPUseType : STRUCT (*Type mcAHMRP_USE settings*)
+		ReferencePulseBlockingDistance : LREAL; (*Distance for blocking the activation of triggering reference pulse [Measurement units]*)
+	END_STRUCT;
+	McAHModBlkRefPType : STRUCT (*Use reference pulse of encoder*)
+		Type : McAHModRefPEnum; (*Reference pulse selector setting*)
+		NotUsed : McAHModBlkRefPNotUseType; (*Type mcAHMRP_NOT_USE settings*)
+		Used : McAHModBlkRefPUseType; (*Type mcAHMRP_USE settings*)
+	END_STRUCT;
 	McAHModBlkTorqType : STRUCT (*Type mcAHM_BLK_TORQ settings*)
 		Position : LREAL; (*Home position [Measurement units]*)
 		StartVelocity : REAL; (*Speed for searching the reference switch [Measurement units/s]*)
@@ -822,7 +922,7 @@ TYPE
 		Acceleration : REAL; (*Acceleration for homing movement [Measurement units/s²]*)
 		StartDirection : McAHModStartDirEnum; (*Start direction of movement for searching the reference switch*)
 		HomingDirection : McAHModHomeDirEnum; (*Movement direction in which the homing event is evaluated*)
-		ReferencePulse : McAHModRefPType; (*Use reference pulse of encoder*)
+		ReferencePulse : McAHModBlkRefPType; (*Use reference pulse of encoder*)
 		TorqueLimit : REAL; (*Torque limit for homing on block [Nm]*)
 		PositionErrorStopLimit : LREAL; (*Lag error for stop of the homing movement [Measurement units]*)
 	END_STRUCT;
@@ -833,7 +933,7 @@ TYPE
 		Acceleration : REAL; (*Acceleration for homing movement [Measurement units/s²]*)
 		StartDirection : McAHModStartDirEnum; (*Start direction of movement for searching the reference switch*)
 		HomingDirection : McAHModHomeDirEnum; (*Movement direction in which the homing event is evaluated*)
-		ReferencePulse : McAHModRefPType; (*Use reference pulse of encoder*)
+		ReferencePulse : McAHModBlkRefPType; (*Use reference pulse of encoder*)
 		TorqueLimit : REAL; (*Torque limit for homing on block [Nm]*)
 		PositionErrorStopLimit : LREAL; (*Lag error for stop of the homing movement [Measurement units]*)
 		BlockDetectionPositionError : LREAL; (*Lag error for block detection [Measurement units]*)
@@ -1912,6 +2012,107 @@ TYPE
 	END_STRUCT;
 	McCfgAcpChFeatType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_CH_FEAT*)
 		ChannelFeatures : McACFChFeatType; (*Features for the channel of a module*)
+	END_STRUCT;
+	McAEEAExtEncAxEnum :
+		( (*External encoder axis selector setting*)
+		mcAEEAEEA_NOT_USE := 0, (*Not used - External encoder axis is not used*)
+		mcAEEAEEA_USE := 1 (*Used - External encoder axis is used*)
+		);
+	McAEEAUseEncLinkEnum :
+		( (*Encoder link selector setting*)
+		mcAEEAUEL_ONE_ENC := 0 (*One encoder -*)
+		);
+	McAEEAUseEncLinkOneEncPosEncEnum :
+		( (*Position encoder selector setting*)
+		mcAEEAUELOEPE_ENC_X41 := 0, (*Encoder X41 -*)
+		mcAEEAUELOEPE_ENC_SS1X41X := 1, (*Encoder SS1.X41x - Plug-in module in SS1*)
+		mcAEEAUELOEPE_ENC_X42 := 2, (*Encoder X42 -*)
+		mcAEEAUELOEPE_ENC_SS1X42X := 3, (*Encoder SS1.X42x - Plug-in module in SS1*)
+		mcAEEAUELOEPE_ENC_X43 := 4, (*Encoder X43 -*)
+		mcAEEAUELOEPE_ENC_SS1X43X := 5, (*Encoder SS1.X43x - Plug-in module in SS1*)
+		mcAEEAUELOEPE_ENC_SS1X11 := 6, (*Encoder SS1.X11 - Plug-in module in SS1*)
+		mcAEEAUELOEPE_ENC_SS2X11 := 7, (*Encoder SS2.X11 - Plug-in module in SS2*)
+		mcAEEAUELOEPE_ENC_SS3X11 := 8, (*Encoder SS3.X11 - Plug-in module in SS3*)
+		mcAEEAUELOEPE_ENC_SS4X11 := 9 (*Encoder SS4.X11 - Plug-in module in SS4*)
+		);
+	McAEEAUseEncLinkOneEncPosEncType : STRUCT
+		Type : McAEEAUseEncLinkOneEncPosEncEnum; (*Position encoder selector setting*)
+	END_STRUCT;
+	McAEEAUELOneEncPosFltrEnum :
+		( (*Position filter selector setting*)
+		mcAEEAUELOEPF_EXTPOL_AND_DIST := 0 (*Extrapolation and disturbance - Extrapolation filter and disturbance filter*)
+		);
+	McAEEAUELOEPosFltrExtpolDistType : STRUCT (*Type mcAEEAUELOEPF_EXTPOL_AND_DIST settings*)
+		PositionFilterTimeConstant : REAL; (*Time constant for acutal position filter*)
+		ExtrapolationTime : REAL; (*Extrapolation time for acutal position filter*)
+	END_STRUCT;
+	McAEEAUELOneEncPosFltrType : STRUCT (*Filter for the encoder position*)
+		Type : McAEEAUELOneEncPosFltrEnum; (*Position filter selector setting*)
+		ExtrapolationAndDisturbance : McAEEAUELOEPosFltrExtpolDistType; (*Type mcAEEAUELOEPF_EXTPOL_AND_DIST settings*)
+	END_STRUCT;
+	McAEEAUseEncLinkOneEncType : STRUCT (*Type mcAEEAUEL_ONE_ENC settings*)
+		PositionEncoder : McAEEAUseEncLinkOneEncPosEncType;
+		PositionFilter : McAEEAUELOneEncPosFltrType; (*Filter for the encoder position*)
+	END_STRUCT;
+	McAEEAUseEncLinkType : STRUCT
+		Type : McAEEAUseEncLinkEnum; (*Encoder link selector setting*)
+		OneEncoder : McAEEAUseEncLinkOneEncType; (*Type mcAEEAUEL_ONE_ENC settings*)
+	END_STRUCT;
+	McAEEAHModEnum :
+		( (*Mode selector setting*)
+		mcAEEAHM_DIR := 0, (*Direct - Direct homing*)
+		mcAEEAHM_ABS := 4, (*Absolute - Homing by setting the home offset*)
+		mcAEEAHM_RES_POS := 10, (*Restore position - Homing by restoring the position from remanent variable data*)
+		mcAEEAHM_NOT_USE := 100 (*Not used - No preconfigured homing settings used*)
+		);
+	McAEEAHModDirRefPEnum :
+		( (*Reference pulse selector setting*)
+		mcAEEAHMDRP_NOT_USE := 0, (*Not used - Reference pulse is not used*)
+		mcAEEAHMDRP_USE := 1 (*Used - Reference pulse is used*)
+		);
+	McAEEAHModDirRefPType : STRUCT (*Use reference pulse of encoder*)
+		Type : McAEEAHModDirRefPEnum; (*Reference pulse selector setting*)
+	END_STRUCT;
+	McAEEAHModDirType : STRUCT (*Type mcAEEAHM_DIR settings*)
+		Position : LREAL; (*Home position [Measurement units]*)
+		ReferencePulse : McAEEAHModDirRefPType; (*Use reference pulse of encoder*)
+	END_STRUCT;
+	McAEEAHModAbsType : STRUCT (*Type mcAEEAHM_ABS settings*)
+		Position : LREAL; (*Home offset [Measurement units]*)
+	END_STRUCT;
+	McAEEAHModType : STRUCT (*Homing mode*)
+		Type : McAEEAHModEnum; (*Mode selector setting*)
+		Direct : McAEEAHModDirType; (*Type mcAEEAHM_DIR settings*)
+		Absolute : McAEEAHModAbsType; (*Type mcAEEAHM_ABS settings*)
+	END_STRUCT;
+	McAEEAHType : STRUCT (*Homing mode and parameters which can be used within the application program as preconfigured setting*)
+		Mode : McAEEAHModType; (*Homing mode*)
+		RestorePositionVariable : STRING[250]; (*Remanent variable used for homing mode: Restore position*)
+	END_STRUCT;
+	McAEEAExtEncAxUseType : STRUCT (*Type mcAEEAEEA_USE settings*)
+		AxisReference : McCfgReferenceType; (*Name of the referenced axis component*)
+		EncoderLink : McAEEAUseEncLinkType;
+		MechanicalElements : McAMEType; (*Parameter of hardware elements situated between motor encoder and load which influence the scaling*)
+		Homing : McAEEAHType; (*Homing mode and parameters which can be used within the application program as preconfigured setting*)
+	END_STRUCT;
+	McAEEAExtEncAxType : STRUCT (*Use External encoder axis*)
+		Type : McAEEAExtEncAxEnum; (*External encoder axis selector setting*)
+		Used : McAEEAExtEncAxUseType; (*Type mcAEEAEEA_USE settings*)
+	END_STRUCT;
+	McCfgAcpExtEncAxType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX*)
+		ExternalEncoderAxis : McAEEAExtEncAxType; (*Use External encoder axis*)
+	END_STRUCT;
+	McCfgAcpExtEncAxRefType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_REF*)
+		AxisReference : McCfgReferenceType; (*Name of the referenced axis component*)
+	END_STRUCT;
+	McCfgAcpExtEncAxEncLinkType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_ENC_LINK*)
+		EncoderLink : McAEEAUseEncLinkType;
+	END_STRUCT;
+	McCfgAcpExtEncAxMechElmType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_MECH_ELM*)
+		MechanicalElements : McAMEType; (*Parameter of hardware elements situated between motor encoder and load which influence the scaling*)
+	END_STRUCT;
+	McCfgAcpExtEncAxHomeType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_HOME*)
+		Homing : McAEEAHType; (*Homing mode and parameters which can be used within the application program as preconfigured setting*)
 	END_STRUCT;
 	McCfgAxFeatAcpParTblType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_ACP_PAR_TBL*)
 		ACOPOSParameterTableReference : STRING[250]; (*Name of the ACOPOS parameter table*)

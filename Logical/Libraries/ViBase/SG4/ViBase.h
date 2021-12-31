@@ -15,8 +15,11 @@ extern "C" {
 /* Constants */
 #ifdef _REPLACE_CONST
 #define viBASE_ERR_APP_NOT_EXIST (-1045167968)
-#define viBASE_ERR_APP_NOT_LOADED (-1045168005)
+#define viBASE_ERR_CMD_INV_HMI_OPEN (-1045167984)
+#define viBASE_ERR_CMD_INV_LOAD_FAILED (-1045168000)
+#define viBASE_ERR_APP_NOT_SAVED (-1045168004)
 #define viBASE_WRN_APP_NOT_LOADED (-2118909829)
+#define viBASE_ERR_APP_NOT_LOADED (-1045168005)
 #define viBASE_ERR_APP_NOT_COMPATIBLE (-1045168008)
 #define viBASE_ERR_NO_INSTANCE (-1045168029)
 #define viBASE_ERR_COMPONENT_NOT_READY (-1045168073)
@@ -30,8 +33,11 @@ extern "C" {
 #define viBASE_ERR_FILE_WRITE (-1045168107)
 #else
 _GLOBAL_CONST signed long viBASE_ERR_APP_NOT_EXIST;
-_GLOBAL_CONST signed long viBASE_ERR_APP_NOT_LOADED;
+_GLOBAL_CONST signed long viBASE_ERR_CMD_INV_HMI_OPEN;
+_GLOBAL_CONST signed long viBASE_ERR_CMD_INV_LOAD_FAILED;
+_GLOBAL_CONST signed long viBASE_ERR_APP_NOT_SAVED;
 _GLOBAL_CONST signed long viBASE_WRN_APP_NOT_LOADED;
+_GLOBAL_CONST signed long viBASE_ERR_APP_NOT_LOADED;
 _GLOBAL_CONST signed long viBASE_ERR_APP_NOT_COMPATIBLE;
 _GLOBAL_CONST signed long viBASE_ERR_NO_INSTANCE;
 _GLOBAL_CONST signed long viBASE_ERR_COMPONENT_NOT_READY;
@@ -121,9 +127,26 @@ typedef struct ViBaseLoadApplication
 	plcbit Error;
 } ViBaseLoadApplication_typ;
 
+typedef struct ViBaseSaveApplication
+{
+	/* VAR_INPUT (analog) */
+	struct ViComponentType* MpLink;
+	/* VAR_OUTPUT (analog) */
+	signed long StatusID;
+	/* VAR (analog) */
+	struct ViBaseInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} ViBaseSaveApplication_typ;
+
 /* Prototyping of functions and function blocks */
 _BUR_PUBLIC void ViBaseSaveDiagData(struct ViBaseSaveDiagData* inst);
 _BUR_PUBLIC void ViBaseLoadApplication(struct ViBaseLoadApplication* inst);
+_BUR_PUBLIC void ViBaseSaveApplication(struct ViBaseSaveApplication* inst);
 
 #ifdef __cplusplus
 } // End of C-Linkage

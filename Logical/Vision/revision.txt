@@ -1,4 +1,4 @@
-Next Version
+Version 5.16
 - Fixed unit scaling in tables
 - Update recipe managment to V1.4
 - Changed package references to file references
@@ -6,6 +6,7 @@ Next Version
 - Added more error numbers to Vi_image
 - Renamed visSelectedSensor and visSelectedLight
 - Code cleanup
+- Updated to official 5.16 versions and official lightbar upgrade
 
 Version 5.15
 - Update recipe managment to V1.0

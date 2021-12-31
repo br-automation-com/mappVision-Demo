@@ -264,4 +264,230 @@ TYPE
 	McCfgAxFeatDigCamSwType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_DIG_CAM_SW*)
 		DigitalCamSwitchType : McAFDCSTypType; (*Type of the digital output configuration*)
 	END_STRUCT;
+	McAFAVSValSrcEnum :
+		( (*Value source 1-8 selector setting*)
+		mcAFAVSVS_ACP_PARID := 0 (*ACOPOS ParID - ParID of an ACOPOS drive*)
+		);
+	McAFAVSValSrcAcpParIDType : STRUCT (*Type mcAFAVSVS_ACP_PARID settings*)
+		ParID : UINT; (*ParID which is used as value source*)
+	END_STRUCT;
+	McAFAVSValSrcType : STRUCT (*Selection of the value source*)
+		Type : McAFAVSValSrcEnum; (*Value source 1-8 selector setting*)
+		ACOPOSParID : McAFAVSValSrcAcpParIDType; (*Type mcAFAVSVS_ACP_PARID settings*)
+	END_STRUCT;
+	McCfgAxFeatAltValSrcType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_ALT_VAL_SRC*)
+		ValueSource : McCfgUnboundedArrayType; (*Selection of the value source*)
+	END_STRUCT;
+	McAFBProdFamEnum :
+		( (*Product family selector setting*)
+		mcAFBPF_ACP := 0 (*ACOPOS -*)
+		);
+	McAFBACPCtrlModEnum :
+		( (*Control mode selector setting*)
+		mcAFBACPCM_AUT := 0, (*Automatic - Brake is controlled by ACOPOS brake controller*)
+		mcAFBACPCM_EXT := 1 (*External - Brake has to be controlled externally*)
+		);
+	McAFBACPCtrlModExtCmdAcptEnum :
+		( (*Power state that allows the brake control to be operated*)
+		mcAFBACPCMECA_PWR_OFF := 0, (*Power off - Switching the brake is only allowed if the controller is switched off*)
+		mcAFBACPCMECA_ANY := 1 (*Any - Switching the brake is also allowed if the controller is switched on*)
+		);
+	McAFBACPCtrlModExtType : STRUCT (*Type mcAFBACPCM_EXT settings*)
+		CommandAcceptance : McAFBACPCtrlModExtCmdAcptEnum; (*Power state that allows the brake control to be operated*)
+	END_STRUCT;
+	McAFBACPCtrlModType : STRUCT (*Behaviour of holding brake control*)
+		Type : McAFBACPCtrlModEnum; (*Control mode selector setting*)
+		External : McAFBACPCtrlModExtType; (*Type mcAFBACPCM_EXT settings*)
+	END_STRUCT;
+	McAFBACPCtrlMonEnum :
+		( (*Control monitoring selector setting*)
+		mcAFBACPCM_USE := 0, (*Used -*)
+		mcAFBACPCM_NOT_USE := 1 (*Not used -*)
+		);
+	McAFBACPCtrlMonUseTimeEnum :
+		( (*Time selector setting*)
+		mcAFBACPCMUT_DEF := 0, (*Default -*)
+		mcAFBACPCMUT_USR_DEF := 1 (*User defined -*)
+		);
+	McAFBACPCtrlMonUseTimeUsrDefType : STRUCT (*Type mcAFBACPCMUT_USR_DEF settings*)
+		FilterTime : REAL; (*Filter time of control monitoring [s]*)
+	END_STRUCT;
+	McAFBACPCtrlMonUseTimeType : STRUCT (*Filter time setting of control monitoring*)
+		Type : McAFBACPCtrlMonUseTimeEnum; (*Time selector setting*)
+		UserDefined : McAFBACPCtrlMonUseTimeUsrDefType; (*Type mcAFBACPCMUT_USR_DEF settings*)
+	END_STRUCT;
+	McAFBACPCtrlMonUseType : STRUCT (*Type mcAFBACPCM_USE settings*)
+		Time : McAFBACPCtrlMonUseTimeType; (*Filter time setting of control monitoring*)
+	END_STRUCT;
+	McAFBACPCtrlMonType : STRUCT (*Monitoring of motor brake control*)
+		Type : McAFBACPCtrlMonEnum; (*Control monitoring selector setting*)
+		Used : McAFBACPCtrlMonUseType; (*Type mcAFBACPCM_USE settings*)
+	END_STRUCT;
+	McAFBACPMoveMonEnum :
+		( (*Movement monitoring selector setting*)
+		mcAFBACPMM_USE := 0, (*Used -*)
+		mcAFBACPMM_NOT_USE := 1 (*Not used -*)
+		);
+	McAFBACPBrkTstEnum :
+		( (*Brake test selector setting*)
+		mcAFBACPBT_NOT_USE := 0, (*Not used -*)
+		mcAFBACPBT_AUT := 1 (*Automatic -*)
+		);
+	McAFBACPBrkTstAutStEvntEnum :
+		( (*Triggering event for the start of the brake test*)
+		mcAFBACPBTASE_CTRL_ON := 0, (*Controller on*)
+		mcAFBACPBTASE_CTRL_OFF := 1, (*Controller off*)
+		mcAFBACPBTASE_CTRL_ON_AND_OFF := 2, (*Controller on and off*)
+		mcAFBACPBTASE_SAFE_BRK_TEST_ACT := 3 (*Safe brake test active*)
+		);
+	McAFBACPBrkTstAutType : STRUCT (*Type mcAFBACPBT_AUT settings*)
+		StartEvent : McAFBACPBrkTstAutStEvntEnum; (*Triggering event for the start of the brake test*)
+		Torque : REAL; (*Brake test torque. When 0.0 rated torque of motor brake is used [Nm]*)
+		TorqueSlewRate : REAL; (*Maximum change of the brake test torque [Nm/s]*)
+		Duration : REAL; (*Duration with applied testing torque [s]*)
+	END_STRUCT;
+	McAFBACPBrkTstType : STRUCT (*Apply torque for testing the brake*)
+		Type : McAFBACPBrkTstEnum; (*Brake test selector setting*)
+		Automatic : McAFBACPBrkTstAutType; (*Type mcAFBACPBT_AUT settings*)
+	END_STRUCT;
+	McAFBACPMoveMonUseType : STRUCT (*Type mcAFBACPMM_USE settings*)
+		PositionErrorLimit : REAL; (*Maximum allowed movement of the motor at closed brake [rev]*)
+		BrakeTest : McAFBACPBrkTstType; (*Apply torque for testing the brake*)
+	END_STRUCT;
+	McAFBACPMoveMonType : STRUCT (*Mechanical monitoring of motor brake*)
+		Type : McAFBACPMoveMonEnum; (*Movement monitoring selector setting*)
+		Used : McAFBACPMoveMonUseType; (*Type mcAFBACPMM_USE settings*)
+	END_STRUCT;
+	McAFBACPType : STRUCT (*Type mcAFBPF_ACP settings*)
+		ControlMode : McAFBACPCtrlModType; (*Behaviour of holding brake control*)
+		ControlMonitoring : McAFBACPCtrlMonType; (*Monitoring of motor brake control*)
+		MovementMonitoring : McAFBACPMoveMonType; (*Mechanical monitoring of motor brake*)
+	END_STRUCT;
+	McAFBProdFamType : STRUCT
+		Type : McAFBProdFamEnum; (*Product family selector setting*)
+		ACOPOS : McAFBACPType; (*Type mcAFBPF_ACP settings*)
+	END_STRUCT;
+	McCfgAxFeatBrkType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_BRK*)
+		ProductFamily : McAFBProdFamType;
+	END_STRUCT;
+	McMDCTypeEnum :
+		( (*Mechanical deviation compensation type selector setting*)
+		mcMDCT_ACP := 0 (*ACOPOS - ACOPOS mechanical deviation compensation*)
+		);
+	McMDCACalcEnum :
+		( (*Automatic compensation calculation at axis startup*)
+		mcMDCAC_NOT_USE := 0, (*Not used - No automatic calculation, has to be commanded by FB*)
+		mcMDCAC_USE := 1 (*Used - Automatic calculation, compensation data must be available after all task INIT-SP are finished*)
+		);
+	McMDCAActiEnum :
+		( (*Automatic compensation activation after axis homing*)
+		mcMDCAA_NOT_USE := 0, (*Not used - No automatic activation, has to be switched on by FB*)
+		mcMDCAA_USE := 1 (*Used - Automatic activation when axis is homed*)
+		);
+	McMDCModeEnum :
+		( (*Mode selector setting*)
+		mcMDCM_DIR_DEP_CONST_BCKL := 0, (*Dir Dep Const Bckl - Direction dependent constant backlash*)
+		mcMDCM_DIR_DEP_SET_POS := 1, (*Dir Dep Set Pos - Direction dependent set position*)
+		mcMDCM_DIR_IND := 2, (*Dir Ind - Direction independent*)
+		mcMDCM_DIR_IND_SPD := 3, (*Dir Ind Spd - Direction independent with influence on speed controller*)
+		mcMDCM_DIR_IND_W_BCKL := 4 (*Dir Ind W Bckl - Direction independent compensation data and backlash*)
+		);
+	McMDCPosSrcEnum :
+		( (*Position source*)
+		mcMDCPS_SET_POS := 0, (*Set position - Set position*)
+		mcMDCPS_ACT_POS := 1, (*Actual position - Actual position*)
+		mcMDCPS_ENC_POS := 2 (*Encoder position - Encoder position*)
+		);
+	McMDCStEdgEnum :
+		( (*Edge at which compensation is started*)
+		mcMDCSE_POS := 0, (*Positive - Positive*)
+		mcMDCSE_NEG := 1 (*Negative - Negative*)
+		);
+	McMDCDirDepConstBcklType : STRUCT (*Type mcMDCM_DIR_DEP_CONST_BCKL settings*)
+		Backlash : LREAL; (*Backlash [Measurement units]*)
+		PositionSource : McMDCPosSrcEnum; (*Position source*)
+		StartEdge : McMDCStEdgEnum; (*Edge at which compensation is started*)
+		Velocity : REAL; (*Velocity for edge change [Measurement units/s]*)
+		TimeConstant : REAL; (*Time constant of the exponential function for edge change [s]*)
+		NoiseLimit : REAL; (*Noise limit [%]*)
+	END_STRUCT;
+	McMDCCompDatEnum :
+		( (*Compensation data positive selector setting*)
+		mcMDCCD_DAT_OBJ := 0, (*Data object - Data object*)
+		mcMDCCD_F_ON_F_DEV := 1, (*File on file device - File on file device*)
+		mcMDCCD_PROC_VAR := 2 (*Process variables - Process variables*)
+		);
+	McMDCCompDatObjType : STRUCT (*Type mcMDCCD_DAT_OBJ settings*)
+		DataObjectName : STRING[12];
+	END_STRUCT;
+	McMDCCompDatFileType : STRUCT (*Type mcMDCCD_F_ON_F_DEV settings*)
+		FileDevice : STRING[250]; (*File device*)
+		CSVFileName : STRING[250]; (*Full file name with extention*)
+	END_STRUCT;
+	McMDCCompDatPVType : STRUCT (*Type mcMDCCD_PROC_VAR settings*)
+		DataPoints : STRING[250]; (*Data points*)
+		NumberOfDataPoints : STRING[250]; (*Number of data points*)
+	END_STRUCT;
+	McMDCCompDatType : STRUCT (*Compensation data for movement in positive direction*)
+		Type : McMDCCompDatEnum; (*Compensation data positive selector setting*)
+		DataObject : McMDCCompDatObjType; (*Type mcMDCCD_DAT_OBJ settings*)
+		FileOnFileDevice : McMDCCompDatFileType; (*Type mcMDCCD_F_ON_F_DEV settings*)
+		ProcessVariables : McMDCCompDatPVType; (*Type mcMDCCD_PROC_VAR settings*)
+	END_STRUCT;
+	McMDCDatIntEnum :
+		( (*Compensation data is interpreted as periodic*)
+		mcMDCDI_NOT_PER := 0, (*Not periodic - Not periodic*)
+		mcMDCDI_PER := 1 (*Periodic - Periodic*)
+		);
+	McMDCDirDepSetPosType : STRUCT (*Type mcMDCM_DIR_DEP_SET_POS settings*)
+		CompensationDataPositive : McMDCCompDatType; (*Compensation data for movement in positive direction*)
+		CompensationDataNegative : McMDCCompDatType; (*Compensation data for movement in negative direction*)
+		PositionSource : McMDCPosSrcEnum; (*Position source*)
+		DataInterpretation : McMDCDatIntEnum; (*Compensation data is interpreted as periodic*)
+		StartEdge : McMDCStEdgEnum; (*Edge at which compensation is started*)
+		Velocity : REAL; (*Velocity for edge change [Measurement units/s]*)
+		TimeConstant : REAL; (*Time constant of the exponential function for edge change [s]*)
+		NoiseLimit : REAL; (*Noise limit [%]*)
+	END_STRUCT;
+	McMDCDirIndType : STRUCT (*Type mcMDCM_DIR_IND settings*)
+		CompensationData : McMDCCompDatType; (*Compensation data for movement*)
+		PositionSource : McMDCPosSrcEnum; (*Position source*)
+		DataInterpretation : McMDCDatIntEnum; (*Compensation data is interpreted as periodic*)
+	END_STRUCT;
+	McMDCDirIndSpdType : STRUCT (*Type mcMDCM_DIR_IND_SPD settings*)
+		CompensationData : McMDCCompDatType; (*Compensation data for movement*)
+		PositionSource : McMDCPosSrcEnum; (*Position source*)
+		DataInterpretation : McMDCDatIntEnum; (*Compensation data is interpreted as periodic*)
+		FilterTime : REAL; (*Filter time constant for smoothing the speed correction value [s]*)
+	END_STRUCT;
+	McMDCDirIndBcklType : STRUCT (*Type mcMDCM_DIR_IND_W_BCKL settings*)
+		CompensationDataPositive : McMDCCompDatType; (*Compensation data for movement in positive direction*)
+		Backlash : LREAL; (*Backlash [Measurement units]*)
+		PositionSource : McMDCPosSrcEnum; (*Position source*)
+		DataInterpretation : McMDCDatIntEnum; (*Compensation data is interpreted as periodic*)
+		StartEdge : McMDCStEdgEnum; (*Edge at which compensation is started*)
+		Velocity : REAL; (*Velocity for edge change [Measurement units/s]*)
+		TimeConstant : REAL; (*Time constant of the exponential function for edge change [s]*)
+		NoiseLimit : REAL; (*Noise limit [%]*)
+	END_STRUCT;
+	McMDCModeType : STRUCT (*Mode for compensating mechanical deviations*)
+		Type : McMDCModeEnum; (*Mode selector setting*)
+		DirDepConstBckl : McMDCDirDepConstBcklType; (*Type mcMDCM_DIR_DEP_CONST_BCKL settings*)
+		DirDepSetPos : McMDCDirDepSetPosType; (*Type mcMDCM_DIR_DEP_SET_POS settings*)
+		DirInd : McMDCDirIndType; (*Type mcMDCM_DIR_IND settings*)
+		DirIndSpd : McMDCDirIndSpdType; (*Type mcMDCM_DIR_IND_SPD settings*)
+		DirIndWBckl : McMDCDirIndBcklType; (*Type mcMDCM_DIR_IND_W_BCKL settings*)
+	END_STRUCT;
+	McMDCTypeAcpType : STRUCT (*Type mcMDCT_ACP settings*)
+		AutomaticCalculation : McMDCACalcEnum; (*Automatic compensation calculation at axis startup*)
+		AutomaticActivation : McMDCAActiEnum; (*Automatic compensation activation after axis homing*)
+		MechDevnCompMode : McMDCModeType; (*Mode for compensating mechanical deviations*)
+	END_STRUCT;
+	McMDCTypeType : STRUCT (*Type of the mechanical deviation compensation*)
+		Type : McMDCTypeEnum; (*Mechanical deviation compensation type selector setting*)
+		ACOPOS : McMDCTypeAcpType; (*Type mcMDCT_ACP settings*)
+	END_STRUCT;
+	McCfgAxFeatMechDevCompType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_MECH_DEV_COMP*)
+		MechDevnCompType : McMDCTypeType; (*Type of the mechanical deviation compensation*)
+	END_STRUCT;
 END_TYPE

@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxis 5.15.1 */
+/* McAxis 5.16.2 */
 
 #ifndef _MCAXIS_
 #define _MCAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxis_VERSION
-#define _McAxis_VERSION 5.15.1
+#define _McAxis_VERSION 5.16.2
 #endif
 
 #include <bur/plctypes.h>
@@ -105,7 +105,15 @@ typedef enum McCamSectLawOfMotionEnum
 
 typedef enum McEventSrcEnum
 {	mcEVENT_SRC_TRIGGER1 = 0,
-	mcEVENT_SRC_TRIGGER2 = 1
+	mcEVENT_SRC_TRIGGER2 = 1,
+	mcEVENT_SRC_ALT_VALUE1 = 2,
+	mcEVENT_SRC_ALT_VALUE2 = 3,
+	mcEVENT_SRC_ALT_VALUE3 = 4,
+	mcEVENT_SRC_ALT_VALUE4 = 5,
+	mcEVENT_SRC_ALT_VALUE5 = 6,
+	mcEVENT_SRC_ALT_VALUE6 = 7,
+	mcEVENT_SRC_ALT_VALUE7 = 8,
+	mcEVENT_SRC_ALT_VALUE8 = 9
 } McEventSrcEnum;
 
 typedef enum McBrTouchProbeModeEnum
@@ -130,6 +138,14 @@ typedef enum McEventMoveModeEnum
 	mcEVENT_CYCLIC = 1,
 	mcEVENT_CYCLIC_ALL_EVENTS = 2
 } McEventMoveModeEnum;
+
+typedef enum McMechDevCompStateEnum
+{	mcMDC_STATE_NOT_ACTIVE,
+	mcMDC_STATE_INIT,
+	mcMDC_STATE_ACTIVE_DIR_INDEP,
+	mcMDC_STATE_ACTIVE_DIR_DEP,
+	mcMDC_STATE_ERROR
+} McMechDevCompStateEnum;
 
 typedef enum McShiftModeEnum
 {	mcSHIFT_ABSOLUTE,
@@ -281,6 +297,21 @@ typedef enum McAdvCamInModeEnum
 	mcCAM_DIRECT_LEAD_OUT
 } McAdvCamInModeEnum;
 
+typedef enum McAxisTypeEnum
+{	mcAX_TYPE_ACP_REAL,
+	mcAX_TYPE_ACP_VIRT,
+	mcAX_TYPE_ACP_APSM,
+	mcAX_TYPE_ACP_PS_ACTIVE,
+	mcAX_TYPE_ACP_PS_PASSIVE,
+	mcAX_TYPE_ACP_EXT_ENC,
+	mcAX_TYPE_ACP_INV,
+	mcAX_TYPE_STP,
+	mcAX_TYPE_PURE_VIRT,
+	mcAX_TYPE_PURE_VIRT_GPAI,
+	mcAX_TYPE_DS402_SERVO,
+	mcAX_TYPE_DS402_INV
+} McAxisTypeEnum;
+
 typedef enum McCamAutPrepRestartModeEnum
 {	mcPREP_RESTART_POSITIVE,
 	mcPREP_RESTART_NEGATIVE,
@@ -327,6 +358,12 @@ typedef enum McAcpAxLoopFilterModeEnum
 	mcACPAX_LOOP_FILTER_USE,
 	mcACPAX_LOOP_FILTER_TUNE_NOTCH
 } McAcpAxLoopFilterModeEnum;
+
+typedef enum McMechDevCompCmdEnum
+{	mcMDC_CMD_SWITCH_ON,
+	mcMDC_CMD_SWITCH_OFF,
+	mcMDC_CMD_CALC_COMP_DATA
+} McMechDevCompCmdEnum;
 
 typedef enum McABTEnum
 {	mcABT_LIN_BD = 0,
@@ -436,6 +473,95 @@ typedef enum McAFDCSACOPOSP3DigOutEnum
 	mcAFDCSACOPOSP3DO_SS1X41E10 = 9
 } McAFDCSACOPOSP3DigOutEnum;
 
+typedef enum McAFAVSValSrcEnum
+{	mcAFAVSVS_ACP_PARID = 0
+} McAFAVSValSrcEnum;
+
+typedef enum McAFBProdFamEnum
+{	mcAFBPF_ACP = 0
+} McAFBProdFamEnum;
+
+typedef enum McAFBACPCtrlModEnum
+{	mcAFBACPCM_AUT = 0,
+	mcAFBACPCM_EXT = 1
+} McAFBACPCtrlModEnum;
+
+typedef enum McAFBACPCtrlModExtCmdAcptEnum
+{	mcAFBACPCMECA_PWR_OFF = 0,
+	mcAFBACPCMECA_ANY = 1
+} McAFBACPCtrlModExtCmdAcptEnum;
+
+typedef enum McAFBACPCtrlMonEnum
+{	mcAFBACPCM_USE = 0,
+	mcAFBACPCM_NOT_USE = 1
+} McAFBACPCtrlMonEnum;
+
+typedef enum McAFBACPCtrlMonUseTimeEnum
+{	mcAFBACPCMUT_DEF = 0,
+	mcAFBACPCMUT_USR_DEF = 1
+} McAFBACPCtrlMonUseTimeEnum;
+
+typedef enum McAFBACPMoveMonEnum
+{	mcAFBACPMM_USE = 0,
+	mcAFBACPMM_NOT_USE = 1
+} McAFBACPMoveMonEnum;
+
+typedef enum McAFBACPBrkTstEnum
+{	mcAFBACPBT_NOT_USE = 0,
+	mcAFBACPBT_AUT = 1
+} McAFBACPBrkTstEnum;
+
+typedef enum McAFBACPBrkTstAutStEvntEnum
+{	mcAFBACPBTASE_CTRL_ON = 0,
+	mcAFBACPBTASE_CTRL_OFF = 1,
+	mcAFBACPBTASE_CTRL_ON_AND_OFF = 2,
+	mcAFBACPBTASE_SAFE_BRK_TEST_ACT = 3
+} McAFBACPBrkTstAutStEvntEnum;
+
+typedef enum McMDCTypeEnum
+{	mcMDCT_ACP = 0
+} McMDCTypeEnum;
+
+typedef enum McMDCACalcEnum
+{	mcMDCAC_NOT_USE = 0,
+	mcMDCAC_USE = 1
+} McMDCACalcEnum;
+
+typedef enum McMDCAActiEnum
+{	mcMDCAA_NOT_USE = 0,
+	mcMDCAA_USE = 1
+} McMDCAActiEnum;
+
+typedef enum McMDCModeEnum
+{	mcMDCM_DIR_DEP_CONST_BCKL = 0,
+	mcMDCM_DIR_DEP_SET_POS = 1,
+	mcMDCM_DIR_IND = 2,
+	mcMDCM_DIR_IND_SPD = 3,
+	mcMDCM_DIR_IND_W_BCKL = 4
+} McMDCModeEnum;
+
+typedef enum McMDCPosSrcEnum
+{	mcMDCPS_SET_POS = 0,
+	mcMDCPS_ACT_POS = 1,
+	mcMDCPS_ENC_POS = 2
+} McMDCPosSrcEnum;
+
+typedef enum McMDCStEdgEnum
+{	mcMDCSE_POS = 0,
+	mcMDCSE_NEG = 1
+} McMDCStEdgEnum;
+
+typedef enum McMDCCompDatEnum
+{	mcMDCCD_DAT_OBJ = 0,
+	mcMDCCD_F_ON_F_DEV = 1,
+	mcMDCCD_PROC_VAR = 2
+} McMDCCompDatEnum;
+
+typedef enum McMDCDatIntEnum
+{	mcMDCDI_NOT_PER = 0,
+	mcMDCDI_PER = 1
+} McMDCDatIntEnum;
+
 typedef struct McLibraryInfoType
 {	plcstring Name[33];
 } McLibraryInfoType;
@@ -456,6 +582,7 @@ typedef struct McAddInfoType
 	enum McCommunicationStateEnum CommunicationState;
 	enum McAxisPLCopenStateEnum PLCopenState;
 	plcbit InMotion;
+	enum McMechDevCompStateEnum MechDeviationCompState;
 } McAddInfoType;
 
 typedef struct McAdvVelCtrlParType
@@ -481,6 +608,7 @@ typedef struct McAdvPhasingParType
 	struct McAdvShiftDistanceParType DistanceParameters;
 	struct McAdvShiftZoneParType ZoneParameters;
 	float Jerk;
+	enum McAltValueSrcEnum ShiftAlternativeValueSource;
 } McAdvPhasingParType;
 
 typedef struct McAdvOffsetParType
@@ -490,6 +618,7 @@ typedef struct McAdvOffsetParType
 	struct McAdvShiftDistanceParType DistanceParameters;
 	struct McAdvShiftZoneParType ZoneParameters;
 	float Jerk;
+	enum McAltValueSrcEnum ShiftAlternativeValueSource;
 } McAdvOffsetParType;
 
 typedef struct McAdvGearInParType
@@ -810,6 +939,7 @@ typedef struct McEventType
 
 typedef struct McAdvEventMoveParType
 {	enum McEventMoveModeEnum Mode;
+	enum McAltValueSrcEnum AlternativeValueSource;
 } McAdvEventMoveParType;
 
 typedef struct McDigitalInputsPvIfType
@@ -835,6 +965,56 @@ typedef struct McAdvBrLimitLoadCamParType
 	signed long PositionFactorNeg;
 	signed long LoadFactorNeg;
 } McAdvBrLimitLoadCamParType;
+
+typedef struct McMechDevCompDataType
+{	double Position;
+	double Deviation;
+} McMechDevCompDataType;
+
+typedef struct McMechDevCompAdvParType
+{	plcstring DataObjectNamePos[13];
+	plcstring DataObjectNameNeg[13];
+} McMechDevCompAdvParType;
+
+typedef struct McMechDevCompAddInfoType
+{	double CamStartPositionPos;
+	double CamStartPositionNeg;
+} McMechDevCompAddInfoType;
+
+typedef struct McHwInfoAxisType
+{	plcstring AxisName[33];
+	plcstring ConfigElementLocation[251];
+	enum McAxisTypeEnum AxisType;
+} McHwInfoAxisType;
+
+typedef struct McHwInfoDriveType
+{	plcstring ModelNumber[20];
+	plcstring ModuleID[12];
+	plcstring SerialNumber[20];
+	plcstring Revision[4];
+	plcstring FirmwareVersion[8];
+} McHwInfoDriveType;
+
+typedef struct McHwInfoCardType
+{	plcbit InfoAvailable;
+	plcstring ModelNumber[20];
+	plcstring SerialNumber[20];
+	plcstring Revision[4];
+} McHwInfoCardType;
+
+typedef struct McHwInfoMotorType
+{	plcbit InfoAvailable;
+	plcstring ModelNumber[36];
+	plcstring SerialNumber[20];
+	plcstring Revision[4];
+} McHwInfoMotorType;
+
+typedef struct McHardwareInfoType
+{	struct McHwInfoAxisType Axis;
+	struct McHwInfoDriveType Drive;
+	struct McHwInfoCardType Card[4];
+	struct McHwInfoMotorType Motor[3];
+} McHardwareInfoType;
 
 typedef struct McABTLinBdType
 {	enum McCfgLocLenUnitEnum MeasurementUnit;
@@ -1028,6 +1208,172 @@ typedef struct McAFDCSTypType
 typedef struct McCfgAxFeatDigCamSwType
 {	struct McAFDCSTypType DigitalCamSwitchType;
 } McCfgAxFeatDigCamSwType;
+
+typedef struct McAFAVSValSrcAcpParIDType
+{	unsigned short ParID;
+} McAFAVSValSrcAcpParIDType;
+
+typedef struct McAFAVSValSrcType
+{	enum McAFAVSValSrcEnum Type;
+	struct McAFAVSValSrcAcpParIDType ACOPOSParID;
+} McAFAVSValSrcType;
+
+typedef struct McCfgAxFeatAltValSrcType
+{	struct McCfgUnboundedArrayType ValueSource;
+} McCfgAxFeatAltValSrcType;
+
+typedef struct McAFBACPCtrlModExtType
+{	enum McAFBACPCtrlModExtCmdAcptEnum CommandAcceptance;
+} McAFBACPCtrlModExtType;
+
+typedef struct McAFBACPCtrlModType
+{	enum McAFBACPCtrlModEnum Type;
+	struct McAFBACPCtrlModExtType External;
+} McAFBACPCtrlModType;
+
+typedef struct McAFBACPCtrlMonUseTimeUsrDefType
+{	float FilterTime;
+} McAFBACPCtrlMonUseTimeUsrDefType;
+
+typedef struct McAFBACPCtrlMonUseTimeType
+{	enum McAFBACPCtrlMonUseTimeEnum Type;
+	struct McAFBACPCtrlMonUseTimeUsrDefType UserDefined;
+} McAFBACPCtrlMonUseTimeType;
+
+typedef struct McAFBACPCtrlMonUseType
+{	struct McAFBACPCtrlMonUseTimeType Time;
+} McAFBACPCtrlMonUseType;
+
+typedef struct McAFBACPCtrlMonType
+{	enum McAFBACPCtrlMonEnum Type;
+	struct McAFBACPCtrlMonUseType Used;
+} McAFBACPCtrlMonType;
+
+typedef struct McAFBACPBrkTstAutType
+{	enum McAFBACPBrkTstAutStEvntEnum StartEvent;
+	float Torque;
+	float TorqueSlewRate;
+	float Duration;
+} McAFBACPBrkTstAutType;
+
+typedef struct McAFBACPBrkTstType
+{	enum McAFBACPBrkTstEnum Type;
+	struct McAFBACPBrkTstAutType Automatic;
+} McAFBACPBrkTstType;
+
+typedef struct McAFBACPMoveMonUseType
+{	float PositionErrorLimit;
+	struct McAFBACPBrkTstType BrakeTest;
+} McAFBACPMoveMonUseType;
+
+typedef struct McAFBACPMoveMonType
+{	enum McAFBACPMoveMonEnum Type;
+	struct McAFBACPMoveMonUseType Used;
+} McAFBACPMoveMonType;
+
+typedef struct McAFBACPType
+{	struct McAFBACPCtrlModType ControlMode;
+	struct McAFBACPCtrlMonType ControlMonitoring;
+	struct McAFBACPMoveMonType MovementMonitoring;
+} McAFBACPType;
+
+typedef struct McAFBProdFamType
+{	enum McAFBProdFamEnum Type;
+	struct McAFBACPType ACOPOS;
+} McAFBProdFamType;
+
+typedef struct McCfgAxFeatBrkType
+{	struct McAFBProdFamType ProductFamily;
+} McCfgAxFeatBrkType;
+
+typedef struct McMDCDirDepConstBcklType
+{	double Backlash;
+	enum McMDCPosSrcEnum PositionSource;
+	enum McMDCStEdgEnum StartEdge;
+	float Velocity;
+	float TimeConstant;
+	float NoiseLimit;
+} McMDCDirDepConstBcklType;
+
+typedef struct McMDCCompDatObjType
+{	plcstring DataObjectName[13];
+} McMDCCompDatObjType;
+
+typedef struct McMDCCompDatFileType
+{	plcstring FileDevice[251];
+	plcstring CSVFileName[251];
+} McMDCCompDatFileType;
+
+typedef struct McMDCCompDatPVType
+{	plcstring DataPoints[251];
+	plcstring NumberOfDataPoints[251];
+} McMDCCompDatPVType;
+
+typedef struct McMDCCompDatType
+{	enum McMDCCompDatEnum Type;
+	struct McMDCCompDatObjType DataObject;
+	struct McMDCCompDatFileType FileOnFileDevice;
+	struct McMDCCompDatPVType ProcessVariables;
+} McMDCCompDatType;
+
+typedef struct McMDCDirDepSetPosType
+{	struct McMDCCompDatType CompensationDataPositive;
+	struct McMDCCompDatType CompensationDataNegative;
+	enum McMDCPosSrcEnum PositionSource;
+	enum McMDCDatIntEnum DataInterpretation;
+	enum McMDCStEdgEnum StartEdge;
+	float Velocity;
+	float TimeConstant;
+	float NoiseLimit;
+} McMDCDirDepSetPosType;
+
+typedef struct McMDCDirIndType
+{	struct McMDCCompDatType CompensationData;
+	enum McMDCPosSrcEnum PositionSource;
+	enum McMDCDatIntEnum DataInterpretation;
+} McMDCDirIndType;
+
+typedef struct McMDCDirIndSpdType
+{	struct McMDCCompDatType CompensationData;
+	enum McMDCPosSrcEnum PositionSource;
+	enum McMDCDatIntEnum DataInterpretation;
+	float FilterTime;
+} McMDCDirIndSpdType;
+
+typedef struct McMDCDirIndBcklType
+{	struct McMDCCompDatType CompensationDataPositive;
+	double Backlash;
+	enum McMDCPosSrcEnum PositionSource;
+	enum McMDCDatIntEnum DataInterpretation;
+	enum McMDCStEdgEnum StartEdge;
+	float Velocity;
+	float TimeConstant;
+	float NoiseLimit;
+} McMDCDirIndBcklType;
+
+typedef struct McMDCModeType
+{	enum McMDCModeEnum Type;
+	struct McMDCDirDepConstBcklType DirDepConstBckl;
+	struct McMDCDirDepSetPosType DirDepSetPos;
+	struct McMDCDirIndType DirInd;
+	struct McMDCDirIndSpdType DirIndSpd;
+	struct McMDCDirIndBcklType DirIndWBckl;
+} McMDCModeType;
+
+typedef struct McMDCTypeAcpType
+{	enum McMDCACalcEnum AutomaticCalculation;
+	enum McMDCAActiEnum AutomaticActivation;
+	struct McMDCModeType MechDevnCompMode;
+} McMDCTypeAcpType;
+
+typedef struct McMDCTypeType
+{	enum McMDCTypeEnum Type;
+	struct McMDCTypeAcpType ACOPOS;
+} McMDCTypeType;
+
+typedef struct McCfgAxFeatMechDevCompType
+{	struct McMDCTypeType MechDevnCompType;
+} McCfgAxFeatMechDevCompType;
 
 typedef struct MC_BR_GetAxisLibraryInfo
 {
@@ -2576,6 +2922,42 @@ typedef struct MC_BR_LimitLoadCam
 	plcbit DataInitialized;
 } MC_BR_LimitLoadCam_typ;
 
+typedef struct MC_BR_MechDeviationComp
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	enum McMechDevCompCmdEnum Command;
+	struct McMechDevCompAdvParType AdvancedParameters;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	struct McMechDevCompAddInfoType AdditionalInfo;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} MC_BR_MechDeviationComp_typ;
+
+typedef struct MC_BR_GetHardwareInfo
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	struct McHardwareInfoType HardwareInfo;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} MC_BR_GetHardwareInfo_typ;
+
 
 
 /* Prototyping of functions and function blocks */
@@ -2648,6 +3030,8 @@ _BUR_PUBLIC void MC_BR_ForceHardwareInputs(struct MC_BR_ForceHardwareInputs* ins
 _BUR_PUBLIC void MC_BR_TorqueControl(struct MC_BR_TorqueControl* inst);
 _BUR_PUBLIC void MC_WriteParameter(struct MC_WriteParameter* inst);
 _BUR_PUBLIC void MC_BR_LimitLoadCam(struct MC_BR_LimitLoadCam* inst);
+_BUR_PUBLIC void MC_BR_MechDeviationComp(struct MC_BR_MechDeviationComp* inst);
+_BUR_PUBLIC void MC_BR_GetHardwareInfo(struct MC_BR_GetHardwareInfo* inst);
 
 
 #ifdef __cplusplus

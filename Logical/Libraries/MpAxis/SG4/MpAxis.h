@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpAxis 5.15.1 */
+/* MpAxis 5.16.2 */
 
 #ifndef _MPAXIS_
 #define _MPAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpAxis_VERSION
-#define _MpAxis_VERSION 5.15.1
+#define _MpAxis_VERSION 5.16.2
 #endif
 
 #include <bur/plctypes.h>
@@ -42,6 +42,7 @@ typedef enum MpAxisErrorEnum
 	mcAXIS_ERR_PLC_OPEN = -1067278080,
 	mcAXIS_WRN_PLC_OPEN = -2141019903,
 	mcAXIS_WRN_MULTIPLE_COMMAND = -2141019902,
+	mcAXIS_ERR_RECOVERY_NOT_ALLOWED = -1067278072,
 	mcAXIS_ERR_ACTIVATION = -1064239103,
 	mcAXIS_ERR_MPLINK_NULL = -1064239102,
 	mcAXIS_ERR_MPLINK_INVALID = -1064239101,
@@ -234,6 +235,7 @@ typedef struct MpAxisBasicInfoType
 	unsigned long StartupCount;
 	plcbit AutoTuneDone;
 	float AutoTuneQuality;
+	struct McHardwareInfoType HardwareInfo;
 } MpAxisBasicInfoType;
 
 typedef struct MpAxisOffsetParType
@@ -311,6 +313,10 @@ typedef struct MpAxisCamSequencerInfoType
 	double ActualPhaseShift;
 	struct MpAxisDiagExtType Diag;
 	struct MpAxisRecoveryInfoType Recovery;
+	plcbit ActiveSignal1;
+	plcbit ActiveSignal2;
+	plcbit ActiveSignal3;
+	plcbit ActiveSignal4;
 } MpAxisCamSequencerInfoType;
 
 typedef struct MpAxisCamSequenceGetType
@@ -342,6 +348,7 @@ typedef struct MpAxisSequencerRecoveryParType
 	float Deceleration;
 	float Jerk;
 	struct McAdvCamAutPrepRestartParType Options;
+	double MasterPositionOffset;
 } MpAxisSequencerRecoveryParType;
 
 typedef struct MpAxisCamSequencerParType
@@ -395,6 +402,7 @@ typedef struct MpAxisCouplingRecoveryParType
 	float Deceleration;
 	float Jerk;
 	struct McAdvCamAutPrepRestartParType Options;
+	double MasterPositionOffset;
 } MpAxisCouplingRecoveryParType;
 
 typedef struct MpAxisCouplingParType

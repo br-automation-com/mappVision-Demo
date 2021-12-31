@@ -1547,3 +1547,38 @@ FUNCTION_BLOCK MC_BR_LimitLoadCam (* Enables a cam profile based torque limitati
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_BR_MechDeviationComp (* handles mechanical position deviation compensation *)
+    VAR_INPUT
+        Axis : REFERENCE TO McAxisType; (*axis reference*)
+        Execute : BOOL; (*Execute the given command at rising edge*)
+        Command : McMechDevCompCmdEnum; (*commands for mechanical deviation compensation*)
+        AdvancedParameters : McMechDevCompAdvParType; (*advanced parameters for mechanics deviation position compensation*)
+    END_VAR
+    VAR_OUTPUT
+        Done : BOOL; (*last given command completed successfully*)
+        Busy : BOOL; (*function block is not finished (must be continuously called)*)
+        Error : BOOL; (*error occurred in FB*)
+        ErrorID : DINT; (*error number*)
+        AdditionalInfo : McMechDevCompAddInfoType; (*structure with extended output information*)
+    END_VAR
+	VAR
+		Internal : McInternalType;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_GetHardwareInfo (* Get information regarding the axis, the drive, the plug in cards and the motors *)
+    VAR_INPUT
+        Axis : REFERENCE TO McAxisType; (*axis reference*)
+        Execute : BOOL; (*Execute the given command at rising edge*)
+    END_VAR
+    VAR_OUTPUT
+        Done : BOOL; (*last given command completed successfully*)
+        Busy : BOOL; (*function block is not finished (must be continuously called)*)
+        Error : BOOL; (*error occurred in FB*)
+        ErrorID : DINT; (*error number*)
+        HardwareInfo : McHardwareInfoType; (*structure with the hardware information*)
+    END_VAR
+	VAR
+		Internal : McInternalType;
+	END_VAR
+END_FUNCTION_BLOCK

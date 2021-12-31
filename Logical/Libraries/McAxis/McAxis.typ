@@ -83,8 +83,16 @@ TYPE
 
 	McEventSrcEnum :
 	(
-		mcEVENT_SRC_TRIGGER1 := 0,	(*Use Trigger 1 as an event source*)
-		mcEVENT_SRC_TRIGGER2 := 1	(*Use Trigger 2 as an event source*)
+		mcEVENT_SRC_TRIGGER1 := 0,		(*Use Trigger 1 as an event source*)
+		mcEVENT_SRC_TRIGGER2 := 1,		(*Use Trigger 2 as an event source*)
+		mcEVENT_SRC_ALT_VALUE1 := 2,	(*"Value source 1" of the feature "Alternative value source" is used*)
+		mcEVENT_SRC_ALT_VALUE2 := 3,	(*"Value source 2" of the feature "Alternative value source" is used*)
+		mcEVENT_SRC_ALT_VALUE3 := 4,	(*"Value source 3" of the feature "Alternative value source" is used*)
+		mcEVENT_SRC_ALT_VALUE4 := 5,	(*"Value source 4" of the feature "Alternative value source" is used*)
+		mcEVENT_SRC_ALT_VALUE5 := 6,	(*"Value source 5" of the feature "Alternative value source" is used*)
+		mcEVENT_SRC_ALT_VALUE6 := 7,	(*"Value source 6" of the feature "Alternative value source" is used*)
+		mcEVENT_SRC_ALT_VALUE7 := 8,	(*"Value source 7" of the feature "Alternative value source" is used*)
+		mcEVENT_SRC_ALT_VALUE8 := 9		(*"Value source 8" of the feature "Alternative value source" is used*)
 	);
 
 	McBrTouchProbeModeEnum :
@@ -114,6 +122,15 @@ TYPE
 		mcEVENT_CYCLIC_ALL_EVENTS := 2 (*Cyclic start of a movement for all events*)
 	);
 
+	McMechDevCompStateEnum:
+	(
+		mcMDC_STATE_NOT_ACTIVE, (*Compensation is not active*)
+		mcMDC_STATE_INIT, (*Initialization of parameters*)
+		mcMDC_STATE_ACTIVE_DIR_INDEP, (*Direction independent compensation active*)
+		mcMDC_STATE_ACTIVE_DIR_DEP, (*Direction dependent compensation active*)
+		mcMDC_STATE_ERROR (*Error state*)
+	);
+
 	(*Structure types*)
 
 	McLibraryInfoType : STRUCT
@@ -136,6 +153,7 @@ TYPE
 		CommunicationState : McCommunicationStateEnum; (*State of network communication*)
 		PLCopenState :  McAxisPLCopenStateEnum; (*Extended PLCopen state*)
 		InMotion : BOOL; (*Controlled movement on the axis*)
+		MechDeviationCompState : McMechDevCompStateEnum; (*State of mechanical deviation compensation*)
 	END_STRUCT;
 
 	McAdvVelCtrlParType : STRUCT
@@ -180,6 +198,7 @@ TYPE
 		DistanceParameters : McAdvShiftDistanceParType ; (*Distance to the offset [Measurement units]*)
 		ZoneParameters : McAdvShiftZoneParType ; (*Position range in which the offset occurs [Measurement units]*)
 		Jerk : REAL; (*Maximum jerk of the profile [Measurement units/s�]*)
+		ShiftAlternativeValueSource : McAltValueSrcEnum; (*If used, defines the alternative source of shift value [Axis units]*)
 	END_STRUCT;
 
 	McAdvOffsetParType : STRUCT
@@ -189,6 +208,7 @@ TYPE
 		DistanceParameters : McAdvShiftDistanceParType ; (*Distance to the offset [Measurement units]*)
 		ZoneParameters : McAdvShiftZoneParType ; (*Position range in which the offset occurs [Measurement units]*)
 		Jerk : REAL; (*Maximum jerk of the profile [Measurement units/s�]*)
+		ShiftAlternativeValueSource : McAltValueSrcEnum; (*If used, defines the alternative source of shift value [Axis units]*)
 	END_STRUCT;
 
 	McAdvGearInParType : STRUCT
@@ -354,6 +374,22 @@ TYPE
 	 	mcCAM_MASTER_INTERVAL_LEAD_OUT,	(*The cam is started at the current slave position and next possible master start position*)
 	 	mcCAM_MASTER_INTERVAL_LEAD_INOUT,	(*The cam is started at the current slave position and next possible master start position*)
 	 	mcCAM_DIRECT_LEAD_OUT	(*The start takes place directly in the cam depending on the master and slave position*)
+	);
+
+	McAxisTypeEnum:
+	(
+		mcAX_TYPE_ACP_REAL, (*ACOPOS real axis*)
+		mcAX_TYPE_ACP_VIRT,	(*ACOPOS virtual axis*)
+		mcAX_TYPE_ACP_APSM,	(*ACOPOS auxiliary power supply module axis*)
+	 	mcAX_TYPE_ACP_PS_ACTIVE, (*ACOPOS active power supply axis*)
+	 	mcAX_TYPE_ACP_PS_PASSIVE, (*ACOPOS passive power supply axis*)
+	 	mcAX_TYPE_ACP_EXT_ENC,	(*ACOPOS external encoder axis*)
+	 	mcAX_TYPE_ACP_INV,	(*ACOPOSinverter axis*)
+	 	mcAX_TYPE_STP,	(*Stepper module axis*)
+		mcAX_TYPE_PURE_VIRT,	(*Purely virtual axis*)
+	 	mcAX_TYPE_PURE_VIRT_GPAI,	(*Purely virtual axis with activated general purpose axis interface*)
+	 	mcAX_TYPE_DS402_SERVO,	(*DS402 conform servo drive axis*)
+	 	mcAX_TYPE_DS402_INV	(*DS402 conform inverter axis*)
 	);
 
 	McCamDefineType : STRUCT
@@ -686,6 +722,7 @@ TYPE
 
 	McAdvEventMoveParType : STRUCT
 		Mode : McEventMoveModeEnum; (*Operation mode*)
+		AlternativeValueSource : McAltValueSrcEnum; (* If used, defines the alternative source of: position for MC_BR_EventMoveAbsolute, distance for MC_BR_EventMoveAdditive, velocity for MC_BR_EventMoveVelocity from which target value is read (Axis Units)*)
 	END_STRUCT;
 
 	McDigitalInputsPvIfType : STRUCT
@@ -737,5 +774,62 @@ TYPE
 		mcACPAX_LOOP_FILTER_USE,  (*The parameters for all loop filters are taken into account for autotuning*)
 		mcACPAX_LOOP_FILTER_TUNE_NOTCH  (*The parameters for the loop filter are calculated*)
 	);
+
+	McMechDevCompCmdEnum:
+	(
+		mcMDC_CMD_SWITCH_ON, (*Functionality activation*)
+		mcMDC_CMD_SWITCH_OFF, (*Functionality deactivation*)
+		mcMDC_CMD_CALC_COMP_DATA (*Compensation data computation*)
+	);
+
+	McMechDevCompDataType : STRUCT
+		Position : LREAL; (*Position [Measurement units]*)
+		Deviation : LREAL; (*Deviation [Measurement units]*)
+	END_STRUCT;
+
+    McMechDevCompAdvParType : STRUCT
+        DataObjectNamePos : STRING[12];
+        DataObjectNameNeg : STRING[12];
+    END_STRUCT;
+
+    McMechDevCompAddInfoType : STRUCT
+        CamStartPositionPos : LREAL;
+        CamStartPositionNeg : LREAL;
+    END_STRUCT;
+
+    McHwInfoAxisType : STRUCT
+        AxisName : STRING[32]; (*Name of the logical axis object*)
+        ConfigElementLocation : STRING[250]; (*Location for MC_BR_ProcessConfig*)
+        AxisType : McAxisTypeEnum; (*Detailed axis type*)
+    END_STRUCT;
+
+    McHwInfoDriveType : STRUCT
+        ModelNumber : STRING[19]; (*Model number of the drive*)
+        ModuleID : STRING[11]; (*For B&R modules: B&R ID code; For DS402 modules: Product code; [hex]*)
+        SerialNumber : STRING[19]; (*Serial number of the drive*)
+        Revision : STRING[3]; (*Revision number of the drive*)
+        FirmwareVersion : STRING[7]; (*Used firmware version*)
+    END_STRUCT;
+
+    McHwInfoCardType : STRUCT
+    	InfoAvailable : BOOL; (*Displays if the information is available*)
+        ModelNumber : STRING[19]; (*Model number of the card*)
+        SerialNumber : STRING[19]; (*Serial number of the card*)
+        Revision : STRING[3]; (*Revision number of the card*)
+    END_STRUCT;
+
+    McHwInfoMotorType : STRUCT
+    	InfoAvailable : BOOL; (*Displays if the information is available*)
+        ModelNumber : STRING[35]; (*Model number of the motor*)
+        SerialNumber : STRING[19]; (*Serial number of the motor*)
+        Revision : STRING[3]; (*Revision number of the motor*)
+    END_STRUCT;
+
+    McHardwareInfoType : STRUCT
+        Axis : McHwInfoAxisType; (*Detailed axis information*)
+        Drive : McHwInfoDriveType; (*Detailed drive information*)
+		Card : ARRAY[0..3] OF McHwInfoCardType; (*Detailed card information*)
+        Motor : ARRAY[0..2] OF McHwInfoMotorType; (*Detailed motor information*)
+    END_STRUCT;
 
 END_TYPE
