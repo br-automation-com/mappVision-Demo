@@ -2,7 +2,7 @@ Version 5.16
 - Fixed unit scaling in tables
 - Update recipe managment to V1.4
 - Changed package references to file references
-- Interim fix to address vision load issue #7
+- Fix to address vision load issue #7
 - Added more error numbers to Vi_image
 - Renamed visSelectedSensor and visSelectedLight
 - Code cleanup

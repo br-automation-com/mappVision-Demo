@@ -1,5 +1,4 @@
 VAR
-	startupDelay : TON_10ms; (*Delay startup for mappVision*)
 	visNewRecipe : BOOL; (*New camera settings recipe*)
 	visSaveRecipe : BOOL; (*Save camera settings*)
 	cmdLoadRecipeAfterBoot : BOOL;
