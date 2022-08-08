@@ -264,6 +264,148 @@ TYPE
 	McCfgAxFeatDigCamSwType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_DIG_CAM_SW*)
 		DigitalCamSwitchType : McAFDCSTypType; (*Type of the digital output configuration*)
 	END_STRUCT;
+	McAFDOTypEnum :
+		( (*Digital output type selector setting*)
+		mcAFDOT_ACP := 0, (*ACOPOS - ACOPOS specific part is used*)
+		mcAFDOT_STP := 1 (*Stepper - Stepper specific parts are used*)
+		);
+	McAFDOTypAcpOutEnum :
+		( (*Output selector setting*)
+		mcAFDOTAO_ACP_HW := 0 (*ACOPOS hardware - ACOPOS hardware is used*)
+		);
+	McAFDOTypAcpOutAcpHwProdFamEnum :
+		( (*ACOPOS product family selector setting*)
+		mcAFDOTAOAHPF_ACP := 0, (*ACOPOS -*)
+		mcAFDOTAOAHPF_ACPM := 1, (*ACOPOSmulti -*)
+		mcAFDOTAOAHPF_ACP_P3 := 2 (*ACOPOS P3 -*)
+		);
+	McAFDOACOPOSDigOutEnum :
+		( (*Digital output selector setting*)
+		mcAFDOACOPOSDO_SS2X111 := 0, (*SS2.X11.1 -*)
+		mcAFDOACOPOSDO_SS2X112 := 1, (*SS2.X11.2 -*)
+		mcAFDOACOPOSDO_SS2X113 := 2, (*SS2.X11.3 -*)
+		mcAFDOACOPOSDO_SS2X114 := 3, (*SS2.X11.4 -*)
+		mcAFDOACOPOSDO_SS2X115 := 4, (*SS2.X11.5 -*)
+		mcAFDOACOPOSDO_SS2X116 := 5, (*SS2.X11.6 -*)
+		mcAFDOACOPOSDO_SS2X117 := 6, (*SS2.X11.7 -*)
+		mcAFDOACOPOSDO_SS2X118 := 7, (*SS2.X11.8 -*)
+		mcAFDOACOPOSDO_SS2X119 := 8, (*SS2.X11.9 -*)
+		mcAFDOACOPOSDO_SS2X1110 := 9, (*SS2.X11.10 -*)
+		mcAFDOACOPOSDO_SS3X111 := 10, (*SS3.X11.1 -*)
+		mcAFDOACOPOSDO_SS3X112 := 11, (*SS3.X11.2 -*)
+		mcAFDOACOPOSDO_SS3X113 := 12, (*SS3.X11.3 -*)
+		mcAFDOACOPOSDO_SS3X114 := 13, (*SS3.X11.4 -*)
+		mcAFDOACOPOSDO_SS3X115 := 14, (*SS3.X11.5 -*)
+		mcAFDOACOPOSDO_SS3X116 := 15, (*SS3.X11.6 -*)
+		mcAFDOACOPOSDO_SS3X117 := 16, (*SS3.X11.7 -*)
+		mcAFDOACOPOSDO_SS3X118 := 17, (*SS3.X11.8 -*)
+		mcAFDOACOPOSDO_SS3X119 := 18, (*SS3.X11.9 -*)
+		mcAFDOACOPOSDO_SS3X1110 := 19, (*SS3.X11.10 -*)
+		mcAFDOACOPOSDO_SS4X111 := 20, (*SS4.X11.1 -*)
+		mcAFDOACOPOSDO_SS4X112 := 21, (*SS4.X11.2 -*)
+		mcAFDOACOPOSDO_SS4X113 := 22, (*SS4.X11.3 -*)
+		mcAFDOACOPOSDO_SS4X114 := 23, (*SS4.X11.4 -*)
+		mcAFDOACOPOSDO_SS4X115 := 24, (*SS4.X11.5 -*)
+		mcAFDOACOPOSDO_SS4X116 := 25, (*SS4.X11.6 -*)
+		mcAFDOACOPOSDO_SS4X117 := 26, (*SS4.X11.7 -*)
+		mcAFDOACOPOSDO_SS4X118 := 27, (*SS4.X11.8 -*)
+		mcAFDOACOPOSDO_SS4X119 := 28, (*SS4.X11.9 -*)
+		mcAFDOACOPOSDO_SS4X1110 := 29 (*SS4.X11.10 -*)
+		);
+	McAFDOACOPOSDigOutType : STRUCT
+		Type : McAFDOACOPOSDigOutEnum; (*Digital output selector setting*)
+	END_STRUCT;
+	McAFDOACOPOSType : STRUCT (*Type mcAFDOTAOAHPF_ACP settings*)
+		DigitalOutput : McAFDOACOPOSDigOutType;
+	END_STRUCT;
+	McAFDOACOPOSmultiDigOutEnum :
+		( (*Digital output selector setting*)
+		mcAFDOACOPOSMULTIDO_SS1X111 := 0, (*SS1.X11.1 -*)
+		mcAFDOACOPOSMULTIDO_SS1X113 := 1, (*SS1.X11.3 -*)
+		mcAFDOACOPOSMULTIDO_SS1X115 := 2, (*SS1.X11.5 -*)
+		mcAFDOACOPOSMULTIDO_SS1X116 := 3 (*SS1.X11.6 -*)
+		);
+	McAFDOACOPOSmultiDigOutType : STRUCT
+		Type : McAFDOACOPOSmultiDigOutEnum; (*Digital output selector setting*)
+	END_STRUCT;
+	McAFDOACOPOSmultiType : STRUCT (*Type mcAFDOTAOAHPF_ACPM settings*)
+		DigitalOutput : McAFDOACOPOSmultiDigOutType;
+	END_STRUCT;
+	McAFDOACOPOSP3DigOutEnum :
+		( (*Digital output selector setting*)
+		mcAFDOACOPOSP3DO_SS1X41E1 := 0, (*SS1.X41E.1 -*)
+		mcAFDOACOPOSP3DO_SS1X41E2 := 1, (*SS1.X41E.2 -*)
+		mcAFDOACOPOSP3DO_SS1X41E3 := 2, (*SS1.X41E.3 -*)
+		mcAFDOACOPOSP3DO_SS1X41E4 := 3, (*SS1.X41E.4 -*)
+		mcAFDOACOPOSP3DO_SS1X41E5 := 4, (*SS1.X41E.5 -*)
+		mcAFDOACOPOSP3DO_SS1X41E6 := 5, (*SS1.X41E.6 -*)
+		mcAFDOACOPOSP3DO_SS1X41E7 := 6, (*SS1.X41E.7 -*)
+		mcAFDOACOPOSP3DO_SS1X41E8 := 7, (*SS1.X41E.8 -*)
+		mcAFDOACOPOSP3DO_SS1X41E9 := 8, (*SS1.X41E.9 -*)
+		mcAFDOACOPOSP3DO_SS1X41E10 := 9 (*SS1.X41E.10 -*)
+		);
+	McAFDOACOPOSP3DigOutType : STRUCT
+		Type : McAFDOACOPOSP3DigOutEnum; (*Digital output selector setting*)
+	END_STRUCT;
+	McAFDOACOPOSP3Type : STRUCT (*Type mcAFDOTAOAHPF_ACP_P3 settings*)
+		DigitalOutput : McAFDOACOPOSP3DigOutType;
+	END_STRUCT;
+	McAFDOTypAcpOutAcpHwProdFamType : STRUCT
+		Type : McAFDOTypAcpOutAcpHwProdFamEnum; (*ACOPOS product family selector setting*)
+		ACOPOS : McAFDOACOPOSType; (*Type mcAFDOTAOAHPF_ACP settings*)
+		ACOPOSmulti : McAFDOACOPOSmultiType; (*Type mcAFDOTAOAHPF_ACPM settings*)
+		ACOPOSP3 : McAFDOACOPOSP3Type; (*Type mcAFDOTAOAHPF_ACP_P3 settings*)
+	END_STRUCT;
+	McAFDOTypAcpOutAcpHwType : STRUCT (*Type mcAFDOTAO_ACP_HW settings*)
+		ProductFamily : McAFDOTypAcpOutAcpHwProdFamType;
+	END_STRUCT;
+	McAFDOTypAcpOutType : STRUCT (*Target of the output value*)
+		Type : McAFDOTypAcpOutEnum; (*Output selector setting*)
+		ACOPOSHardware : McAFDOTypAcpOutAcpHwType; (*Type mcAFDOTAO_ACP_HW settings*)
+	END_STRUCT;
+	McAFDOTypAcpType : STRUCT (*Type mcAFDOT_ACP settings*)
+		Output : McAFDOTypAcpOutType; (*Target of the output value*)
+	END_STRUCT;
+	McAFDOTypStpOutEnum :
+		( (*Output selector setting*)
+		mcAFDOTSO_STP_HW := 0 (*Stepper hardware - Stepper hardware is used*)
+		);
+	McAFDOTypStpOutStpHwProdFamEnum :
+		( (*Stepper product family selector setting*)
+		mcAFDOTSOSHPF_ACOPOSMICRO := 0 (*ACOPOSmicro -*)
+		);
+	McAFDOAMDigOutEnum :
+		( (*Digital output selector setting*)
+		mcAFDOAMDO_X224 := 0 (*X2.24 -*)
+		);
+	McAFDOAMDigOutType : STRUCT
+		Type : McAFDOAMDigOutEnum; (*Digital output selector setting*)
+	END_STRUCT;
+	McAFDOAMType : STRUCT (*Type mcAFDOTSOSHPF_ACOPOSMICRO settings*)
+		DigitalOutput : McAFDOAMDigOutType;
+	END_STRUCT;
+	McAFDOTypStpOutStpHwProdFamType : STRUCT
+		Type : McAFDOTypStpOutStpHwProdFamEnum; (*Stepper product family selector setting*)
+		ACOPOSmicro : McAFDOAMType; (*Type mcAFDOTSOSHPF_ACOPOSMICRO settings*)
+	END_STRUCT;
+	McAFDOTypStpOutStpHwType : STRUCT (*Type mcAFDOTSO_STP_HW settings*)
+		ProductFamily : McAFDOTypStpOutStpHwProdFamType;
+	END_STRUCT;
+	McAFDOTypStpOutType : STRUCT (*Target of the output value*)
+		Type : McAFDOTypStpOutEnum; (*Output selector setting*)
+		StepperHardware : McAFDOTypStpOutStpHwType; (*Type mcAFDOTSO_STP_HW settings*)
+	END_STRUCT;
+	McAFDOTypStpType : STRUCT (*Type mcAFDOT_STP settings*)
+		Output : McAFDOTypStpOutType; (*Target of the output value*)
+	END_STRUCT;
+	McAFDOTypType : STRUCT (*Type of the digital output configuration*)
+		Type : McAFDOTypEnum; (*Digital output type selector setting*)
+		ACOPOS : McAFDOTypAcpType; (*Type mcAFDOT_ACP settings*)
+		Stepper : McAFDOTypStpType; (*Type mcAFDOT_STP settings*)
+	END_STRUCT;
+	McCfgAxFeatDigOutType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_DIG_OUT*)
+		DigitalOutputType : McAFDOTypType; (*Type of the digital output configuration*)
+	END_STRUCT;
 	McAFAVSValSrcEnum :
 		( (*Value source 1-8 selector setting*)
 		mcAFAVSVS_ACP_PARID := 0 (*ACOPOS ParID - ParID of an ACOPOS drive*)
@@ -278,9 +420,9 @@ TYPE
 	McCfgAxFeatAltValSrcType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_ALT_VAL_SRC*)
 		ValueSource : McCfgUnboundedArrayType; (*Selection of the value source*)
 	END_STRUCT;
-	McAFBProdFamEnum :
-		( (*Product family selector setting*)
-		mcAFBPF_ACP := 0 (*ACOPOS -*)
+	McAFBBrkCtrlTypEnum :
+		( (*Brake control type selector setting*)
+		mcAFBBCT_ACP := 0 (*ACOPOS -*)
 		);
 	McAFBACPCtrlModEnum :
 		( (*Control mode selector setting*)
@@ -351,28 +493,29 @@ TYPE
 		Automatic : McAFBACPBrkTstAutType; (*Type mcAFBACPBT_AUT settings*)
 	END_STRUCT;
 	McAFBACPMoveMonUseType : STRUCT (*Type mcAFBACPMM_USE settings*)
-		PositionErrorLimit : REAL; (*Maximum allowed movement of the motor at closed brake [rev]*)
+		PositionErrorLimit : REAL; (*Maximum allowed movement of the motor at closed brake [Motor revolutions]*)
 		BrakeTest : McAFBACPBrkTstType; (*Apply torque for testing the brake*)
 	END_STRUCT;
 	McAFBACPMoveMonType : STRUCT (*Mechanical monitoring of motor brake*)
 		Type : McAFBACPMoveMonEnum; (*Movement monitoring selector setting*)
 		Used : McAFBACPMoveMonUseType; (*Type mcAFBACPMM_USE settings*)
 	END_STRUCT;
-	McAFBACPType : STRUCT (*Type mcAFBPF_ACP settings*)
+	McAFBACPType : STRUCT (*Type mcAFBBCT_ACP settings*)
 		ControlMode : McAFBACPCtrlModType; (*Behaviour of holding brake control*)
 		ControlMonitoring : McAFBACPCtrlMonType; (*Monitoring of motor brake control*)
 		MovementMonitoring : McAFBACPMoveMonType; (*Mechanical monitoring of motor brake*)
 	END_STRUCT;
-	McAFBProdFamType : STRUCT
-		Type : McAFBProdFamEnum; (*Product family selector setting*)
-		ACOPOS : McAFBACPType; (*Type mcAFBPF_ACP settings*)
+	McAFBBrkCtrlTypType : STRUCT
+		Type : McAFBBrkCtrlTypEnum; (*Brake control type selector setting*)
+		ACOPOS : McAFBACPType; (*Type mcAFBBCT_ACP settings*)
 	END_STRUCT;
 	McCfgAxFeatBrkType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_BRK*)
-		ProductFamily : McAFBProdFamType;
+		BrakeControlType : McAFBBrkCtrlTypType;
 	END_STRUCT;
 	McMDCTypeEnum :
 		( (*Mechanical deviation compensation type selector setting*)
-		mcMDCT_ACP := 0 (*ACOPOS - ACOPOS mechanical deviation compensation*)
+		mcMDCT_ACP := 0, (*ACOPOS - ACOPOS mechanical deviation compensation*)
+		mcMDCT_STP_OR_GEN_PUR_AX := 1 (*Stepper or General purpose axis - Stepper or General purpose axis mechanical deviation compensation*)
 		);
 	McMDCACalcEnum :
 		( (*Automatic compensation calculation at axis startup*)
@@ -483,11 +626,83 @@ TYPE
 		AutomaticActivation : McMDCAActiEnum; (*Automatic compensation activation after axis homing*)
 		MechDevnCompMode : McMDCModeType; (*Mode for compensating mechanical deviations*)
 	END_STRUCT;
+	McMDCModeStpEnum :
+		( (*Mode selector setting*)
+		mcMDCMS_DIR_DEP_CONST_BCKL := 0, (*Dir Dep Const Bckl - Direction dependent constant backlash*)
+		mcMDCMS_DIR_DEP_SET_POS := 1, (*Dir Dep Set Pos - Direction dependent set position*)
+		mcMDCMS_DIR_IND := 2, (*Dir Ind - Direction independent*)
+		mcMDCMS_DIR_IND_W_BCKL := 3 (*Dir Ind W Bckl - Direction independent compensation data and backlash*)
+		);
+	McMDCPosSrcStpEnum :
+		( (*Position source*)
+		mcMDCPSS_SET_POS := 0 (*Set position - Set position*)
+		);
+	McMDCDirDepConstBcklStpType : STRUCT (*Type mcMDCMS_DIR_DEP_CONST_BCKL settings*)
+		Backlash : LREAL; (*Backlash [Measurement units]*)
+		PositionSource : McMDCPosSrcStpEnum; (*Position source*)
+		StartEdge : McMDCStEdgEnum; (*Edge at which compensation is started*)
+		Velocity : REAL; (*Velocity for edge change [Measurement units/s]*)
+		TimeConstant : REAL; (*Time constant of the exponential function for edge change [s]*)
+		NoiseLimit : REAL; (*Noise limit [%]*)
+	END_STRUCT;
+	McMDCDirDepSetPosStpType : STRUCT (*Type mcMDCMS_DIR_DEP_SET_POS settings*)
+		CompensationDataPositive : McMDCCompDatType; (*Compensation data for movement in positive direction*)
+		CompensationDataNegative : McMDCCompDatType; (*Compensation data for movement in negative direction*)
+		PositionSource : McMDCPosSrcStpEnum; (*Position source*)
+		DataInterpretation : McMDCDatIntEnum; (*Compensation data is interpreted as periodic*)
+		StartEdge : McMDCStEdgEnum; (*Edge at which compensation is started*)
+		Velocity : REAL; (*Velocity for edge change [Measurement units/s]*)
+		TimeConstant : REAL; (*Time constant of the exponential function for edge change [s]*)
+		NoiseLimit : REAL; (*Noise limit [%]*)
+	END_STRUCT;
+	McMDCDirIndStpType : STRUCT (*Type mcMDCMS_DIR_IND settings*)
+		CompensationData : McMDCCompDatType; (*Compensation data for movement*)
+		PositionSource : McMDCPosSrcStpEnum; (*Position source*)
+		DataInterpretation : McMDCDatIntEnum; (*Compensation data is interpreted as periodic*)
+	END_STRUCT;
+	McMDCDirIndBcklStpType : STRUCT (*Type mcMDCMS_DIR_IND_W_BCKL settings*)
+		CompensationDataPositive : McMDCCompDatType; (*Compensation data for movement in positive direction*)
+		Backlash : LREAL; (*Backlash [Measurement units]*)
+		PositionSource : McMDCPosSrcStpEnum; (*Position source*)
+		DataInterpretation : McMDCDatIntEnum; (*Compensation data is interpreted as periodic*)
+		StartEdge : McMDCStEdgEnum; (*Edge at which compensation is started*)
+		Velocity : REAL; (*Velocity for edge change [Measurement units/s]*)
+		TimeConstant : REAL; (*Time constant of the exponential function for edge change [s]*)
+		NoiseLimit : REAL; (*Noise limit [%]*)
+	END_STRUCT;
+	McMDCModeStpType : STRUCT (*Mode for compensating mechanical deviations*)
+		Type : McMDCModeStpEnum; (*Mode selector setting*)
+		DirDepConstBckl : McMDCDirDepConstBcklStpType; (*Type mcMDCMS_DIR_DEP_CONST_BCKL settings*)
+		DirDepSetPos : McMDCDirDepSetPosStpType; (*Type mcMDCMS_DIR_DEP_SET_POS settings*)
+		DirInd : McMDCDirIndStpType; (*Type mcMDCMS_DIR_IND settings*)
+		DirIndWBckl : McMDCDirIndBcklStpType; (*Type mcMDCMS_DIR_IND_W_BCKL settings*)
+	END_STRUCT;
+	McMDCTypeStpOrGenPurAxType : STRUCT (*Type mcMDCT_STP_OR_GEN_PUR_AX settings*)
+		AutomaticCalculation : McMDCACalcEnum; (*Automatic compensation calculation at axis startup*)
+		AutomaticActivation : McMDCAActiEnum; (*Automatic compensation activation after axis homing*)
+		MechDevnCompModeStp : McMDCModeStpType; (*Mode for compensating mechanical deviations*)
+	END_STRUCT;
 	McMDCTypeType : STRUCT (*Type of the mechanical deviation compensation*)
 		Type : McMDCTypeEnum; (*Mechanical deviation compensation type selector setting*)
 		ACOPOS : McMDCTypeAcpType; (*Type mcMDCT_ACP settings*)
+		StepperOrGeneralPurposeAxis : McMDCTypeStpOrGenPurAxType; (*Type mcMDCT_STP_OR_GEN_PUR_AX settings*)
 	END_STRUCT;
 	McCfgAxFeatMechDevCompType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_MECH_DEV_COMP*)
 		MechDevnCompType : McMDCTypeType; (*Type of the mechanical deviation compensation*)
+	END_STRUCT;
+	McAFANERNetwErrReacEnum :
+		( (*Network error reaction selector setting*)
+		mcAFANERNER_DEF := 0, (*Default - Configured “Stop reaction / Drive error” is immediately executed after a network failure*)
+		mcAFANERNER_DELAYED := 1 (*Delayed - Configured “Stop reaction / Drive error” is delayed by a specified time*)
+		);
+	McAFANERNetwErrReacDelayedType : STRUCT (*Type mcAFANERNER_DELAYED settings*)
+		DelayTime : REAL; (*Delay time of network error reaction [s]*)
+	END_STRUCT;
+	McAFANERNetwErrReacType : STRUCT (*Reaction in case of a network error*)
+		Type : McAFANERNetwErrReacEnum; (*Network error reaction selector setting*)
+		Delayed : McAFANERNetwErrReacDelayedType; (*Type mcAFANERNER_DELAYED settings*)
+	END_STRUCT;
+	McCfgAxFeatAcpNetwErrReacType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_ACP_NETW_ERR_REAC*)
+		NetworkErrorReaction : McAFANERNetwErrReacType; (*Reaction in case of a network error*)
 	END_STRUCT;
 END_TYPE

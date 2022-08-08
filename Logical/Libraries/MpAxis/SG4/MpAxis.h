@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpAxis 5.16.2 */
+/* MpAxis 5.18.1 */
 
 #ifndef _MPAXIS_
 #define _MPAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpAxis_VERSION
-#define _MpAxis_VERSION 5.16.2
+#define _MpAxis_VERSION 5.18.1
 #endif
 
 #include <bur/plctypes.h>
@@ -104,7 +104,8 @@ typedef enum MpAxisAutoTuneModeEnum
 	mcAXIS_TUNE_SPEED,
 	mcAXIS_TUNE_POSITION,
 	mcAXIS_TUNE_TEST,
-	mcAXIS_TUNE_LOOP_FILTER
+	mcAXIS_TUNE_LOOP_FILTER,
+	mcAXIS_TUNE_FEED_FORWARD
 } MpAxisAutoTuneModeEnum;
 
 typedef enum MpAxisAutoTuneLoopFilterModeEnum
@@ -175,6 +176,13 @@ typedef struct MpAxisAutoTuneOptionsType
 	enum McAcpAxFilterTimeModeEnum SpeedTuneFilterTmeMode;
 } MpAxisAutoTuneOptionsType;
 
+typedef struct MpAxisAutoTuneFFOptionsType
+{	enum McAcpAxAutoTuneFeedFwdModeEnum Mode;
+	enum McDirectionEnum Direction;
+	float MaxVelocityPercent;
+	float Acceleration;
+} MpAxisAutoTuneFFOptionsType;
+
 typedef struct MpAxisAutoTuneType
 {	enum MpAxisAutoTuneModeEnum Mode;
 	enum McAcpAxAutoTuneOrientationEnum Orientation;
@@ -184,6 +192,7 @@ typedef struct MpAxisAutoTuneType
 	plcbit SaveControllerSettings;
 	enum MpAxisAutoTuneLoopFilterModeEnum LoopFilterMode;
 	struct MpAxisAutoTuneOptionsType Options;
+	struct MpAxisAutoTuneFFOptionsType FeedForward;
 } MpAxisAutoTuneType;
 
 typedef struct MpAxisBasicParType
@@ -236,6 +245,8 @@ typedef struct MpAxisBasicInfoType
 	plcbit AutoTuneDone;
 	float AutoTuneQuality;
 	struct McHardwareInfoType HardwareInfo;
+	enum McAutoTuneStateEnum AutoTuneState;
+	enum McMechDevCompStateEnum MechDeviationCompState;
 } MpAxisBasicInfoType;
 
 typedef struct MpAxisOffsetParType

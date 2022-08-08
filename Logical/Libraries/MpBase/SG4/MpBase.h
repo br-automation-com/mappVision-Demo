@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpBase 5.16.0 */
+/* MpBase 5.18.0 */
 
 #ifndef _MPBASE_
 #define _MPBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpBase_VERSION
-#define _MpBase_VERSION 5.16.0
+#define _MpBase_VERSION 5.18.0
 #endif
 
 #include <bur/plctypes.h>
@@ -25,20 +25,20 @@ extern "C"
 
 /* Constants */
 #ifdef _REPLACE_CONST
- #define mpCOM_MAIN_INT 1U
- #define mpCOM_STANDALONE_INT 2U
-/*Constant mpCOM_MAIN not declared. Initialized constants from structured datatypes cannot be used in ANSI C programs / libraries. See Automation Help for details.*/
-
 /*Constant mpCOM_STANDALONE not declared. Initialized constants from structured datatypes cannot be used in ANSI C programs / libraries. See Automation Help for details.*/
 
+/*Constant mpCOM_MAIN not declared. Initialized constants from structured datatypes cannot be used in ANSI C programs / libraries. See Automation Help for details.*/
+
+ #define mpCOM_STANDALONE_INT 2U
+ #define mpCOM_MAIN_INT 1U
 #else
  #ifndef _GLOBAL_CONST
    #define _GLOBAL_CONST _WEAK const
  #endif
- _GLOBAL_CONST unsigned long mpCOM_MAIN_INT;
+
+
  _GLOBAL_CONST unsigned long mpCOM_STANDALONE_INT;
-
-
+ _GLOBAL_CONST unsigned long mpCOM_MAIN_INT;
 #endif
 
 

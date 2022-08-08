@@ -17,12 +17,12 @@
     <Object Type="Package">mappCockpit</Object>
   </Objects>
   <Configuration ModuleId="4PPC50.156B-10B">
-    <AutomationRuntime Version="C4.90" />
+    <AutomationRuntime Version="B4.93" />
     <Build GccVersion="6.3.0" PostBuildStep="Powershell.exe -executionpolicy remotesigned -File &quot;$(WIN32_AS_PROJECT_PATH)/Logical/Vision/RouteInfo_Tool.ps1&quot; -ProjectPath &quot;$(WIN32_AS_PROJECT_PATH)&quot; -ProjectCfg &quot;$(AS_CONFIGURATION)&quot;" PreBuildStep="" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Safety SafetyRelease="0.0" />
     <Transfer SavedOfflineInstallationFolder="" SavedPipDestinationFolder="" SavedRuntimeUtilityCenterPackagePath="" />
-    <Vc FirmwareVersion="V4.72.0" />
+    <Vc FirmwareVersion="V4.72.6" />
     <OnlineConfiguration Name="4PPC50.156B-10B" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=1" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=10.49.140.161 /REPO=11159 /ANSL=1 /PT=11169" Description="" />
   </Configuration>
 </Cpu>

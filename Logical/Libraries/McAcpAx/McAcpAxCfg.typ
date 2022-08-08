@@ -1227,9 +1227,15 @@ TYPE
 	END_STRUCT;
 	McAPSMOutParEnum :
 		( (*Output parameters selector setting*)
+		mcAPSMOP_ACPMOT_CMPCT := 0, (*ACOPOSmotor compact - Output parameters for ACOPOSmotor compact modules*)
 		mcAPSMOP_ACOPOSTRAK := 1, (*ACOPOStrak - Output parameters for ACOPOStrak segments*)
 		mcAPSMOP_USR_DEF := 2 (*User defined - User defined output parameters*)
 		);
+	McAPSMOutParAcpMotCmpctType : STRUCT (*Type mcAPSMOP_ACPMOT_CMPCT settings*)
+		Voltage : REAL; (*Output voltage [V]*)
+		CurrentLimit : REAL; (*Output current limit [A]*)
+		CurrentLimitTime : USINT; (*Output current limit time [s]*)
+	END_STRUCT;
 	McAPSMOutParACOPOStrakType : STRUCT (*Type mcAPSMOP_ACOPOSTRAK settings*)
 		Voltage : REAL; (*Output voltage [V]*)
 		CurrentLimit : REAL; (*Output current limit [A]*)
@@ -1254,6 +1260,7 @@ TYPE
 	END_STRUCT;
 	McAPSMOutParType : STRUCT (*Output parameters selection*)
 		Type : McAPSMOutParEnum; (*Output parameters selector setting*)
+		ACOPOSmotorCompact : McAPSMOutParAcpMotCmpctType; (*Type mcAPSMOP_ACPMOT_CMPCT settings*)
 		ACOPOStrak : McAPSMOutParACOPOStrakType; (*Type mcAPSMOP_ACOPOSTRAK settings*)
 		UserDefined : McAPSMOutParUsrDefType; (*Type mcAPSMOP_USR_DEF settings*)
 	END_STRUCT;

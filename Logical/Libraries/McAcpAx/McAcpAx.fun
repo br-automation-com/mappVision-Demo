@@ -427,6 +427,28 @@ FUNCTION_BLOCK MC_BR_AutoTuneLoadModel_AcpAx (*tune load model parameters*)
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_BR_AutoTuneFeedForward_AcpAx (*execute auto tuning for feed forward*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType; (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		Command : McAcpAxAutoTuneFeedFwdCmdEnum;
+		Mode : McAcpAxAutoTuneFeedFwdModeEnum; (*operating (identification) mode*)
+		Parameters : McAcpAxAutoTuneFeedFwdParType; (*basic operating parameters*)
+		AdvancedParameters : McAcpAxAdvAutoTuneFeedFwdType; (*advanced operating parameters*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		CommandAborted : BOOL; (*Command was aborted by another command*)
+		Error : BOOL; (*error occurred during operation*)
+		ErrorID : DINT; (*error number*)
+		Output : McAcpAxAutoTuneFeedFwdOutType; (*output parameters of auto tuning feed forward*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK MC_BR_CamAutomatSetPar_AcpAx (*set parameter for configuration of cam automat*)
 	VAR_INPUT
 		Slave : REFERENCE TO McAxisType; (*axis reference*)

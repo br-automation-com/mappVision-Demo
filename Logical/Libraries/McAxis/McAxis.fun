@@ -1582,3 +1582,21 @@ FUNCTION_BLOCK MC_BR_GetHardwareInfo (* Get information regarding the axis, the 
 		Internal : McInternalType;
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_WriteDigitalOutput (*Write digital output available directly on the drive*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType; (*Axis reference*)
+		Execute : BOOL; (*Writes the value defined on "Value" to the defined output*)
+		Output : McDigitalOutputType; (*Definition of output that should be written. The axis and the according digital output feature are defined here*)
+		Value : BOOL; (*Value that should be written to the output*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*Execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		Error : BOOL; (*Error occurred during operation*)
+		ErrorID : DINT; (*Error number*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*Internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK

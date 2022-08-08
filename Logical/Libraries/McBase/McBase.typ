@@ -128,7 +128,8 @@ TYPE
 		mcSCS5 := 7,	 (*System coordinate system 5*)
 		mcTCS := 9,	 (*Tool coordinate system*)
 		mcGCS := 10,	 (*Global coordinate system*)
-		mcJACS := 100	 (*Joint axes coordinate system*)
+		mcJACS := 100,	 (*Joint axes coordinate system*)
+		mcMPCS := 101	 (*Manipulated product coordinate system*)
 	);
 
 	McValueSrcEnum :
@@ -304,7 +305,6 @@ TYPE
 
 	McTrackingPathType : 	STRUCT
 		controlif : REFERENCE TO McInternalTrackingPathIfType; (**)
-		mappLinkInternal : McInternalMappLinkType; (**)
 	END_STRUCT;
 
 	McGetCoordSystemIdentParType : STRUCT

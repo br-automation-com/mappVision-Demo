@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.9.4.92 FileVersion="4.9"?>
+<?AutomationStudio Version=4.12.2.93 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
-  <Module Name="4PPC50_156B_10B" Type="4PPC50.156B-10B" Version="1.1.3.0">
+  <Module Name="4PPC50_156B_10B" Type="4PPC50.156B-10B" Version="1.1.6.0">
     <Connector Name="IF1">
       <Parameter ID="MtuSize" Value="1500" />
       <Parameter ID="DNAConfiguration" Value="manual" />
@@ -56,7 +56,6 @@
     <Parameter ID="FtpUserPassword1" Value="nMrFtJX1iKQAFT02mGT80Wb1a11GH29G52ATfKQ9HoA=" />
     <Parameter ID="FtpUserSalt1" Value="/yM7MnyJ" />
     <Parameter ID="FTPAccessRight1" Value="0" />
-    <Parameter ID="FTPMSPartition1" Value="DATA" />
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
     <Parameter ID="LXTMode" Value="Manual" />

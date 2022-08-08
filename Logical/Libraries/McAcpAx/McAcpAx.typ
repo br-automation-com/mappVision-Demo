@@ -246,7 +246,7 @@ TYPE
 		VoltageMonitoring : McSwitchEnum := mcSWITCH_ON; (*Enables/disables monitoring of external voltage over 24 V (Default setting:*)
 		TestAtPowerOn : McSwitchEnum := mcSWITCH_OFF; (*Enables/disables automatic torque testing when the controller is switched on (Default setting:*)
 		TestAtPowerOff : McSwitchEnum := mcSWITCH_OFF; (*Enables/disables automatic torque testing when the controller is switched off (Default setting:*)
-		AutomaticInductionStop : McSwitchEnum := mcSWITCH_ON; (*Enables/disables automatic induction stop (Default setting:*)
+		AutomaticInductionStop : McSwitchEnum := mcSWITCH_OFF; (*Enables/disables automatic induction stop (Default setting:*)
 		EnableSBTRequestBySMC : McSwitchEnum := mcSWITCH_OFF; (*Enables the automatic safe brake test requested and monitored by module SafeMC (Default setting:*)
 		ControlMonitoringFilterTime : REAL := 0.5; (*Time after which an error is reported after control monitoring is enabled. [s] (Default setting: 0.5)*)
 	END_STRUCT;
@@ -579,6 +579,26 @@ TYPE
 		Parameters : McCfgAcpCtrlType; (*Parameter structure for usage on MC_BR_ProcessConfig and MC_BR_ProcessParam*)
 	END_STRUCT;
 
+	McAcpAxAutoTuneFeedFwdParType : STRUCT
+		Direction : McDirectionEnum; (*Used for selecting the direction of movement for autotuning the feed-forward control*)
+	    Orientation : McAcpAxAutoTuneOrientationEnum; (*Selects the orientation for autotuning*)
+	    MaxCurrentPercent : REAL := 25.0; (*Percentage of the rated current that is used during autotuning [%]*)
+	    MaxVelocityPercent : REAL := 50.0; (*Percentage of the velocity used during autotuning [%]*)
+	    MaxDistance : LREAL; (*Maximum distance traveled during autotuning [Measurement units]*)
+	    MaxPositionError : LREAL; (*Maximum permitted lag error during autotuning [Measurement units]*)
+	    Acceleration : REAL; (*Acceleration that is used during autotuning [Measurement units/s]*)
+	END_STRUCT;
+
+	McAcpAxAdvAutoTuneFeedFwdType : STRUCT
+	    ExcitationSignal : McAcpAxAutoTuneExSignalType; (*Parameter for excitation signal*)
+	END_STRUCT;
+
+	McAcpAxAutoTuneFeedFwdOutType : STRUCT
+		Quality : REAL; (*Quality of parameter identification [%]*)
+		FeedForward : McAcpAxFeedForwardParType; (*Parameter for first control loop filter*)
+		Parameters : McCfgAcpCtrlType; (*Parameter structure for usage on MC_BR_ProcessConfig and MC_BR_ProcessParam*)
+	END_STRUCT;
+
 	McAcpAxAdvCamAutSetParType : STRUCT
 		ParLock : McCamAutParLockCmdEnum; (*Command for the transfer of the parameter*)
 	END_STRUCT;
@@ -705,10 +725,6 @@ TYPE
 	    VelocityParID : UINT; (*ParID from which the velocity for the phase shift is read*)
 	    PosVelocityTriggerParID : UINT; (*ParID controls the addition of velocity "CyclicVelocity" or the value of "VelocityParID"*)
 	    NegVelocityTriggerParID : UINT; (*ParID controls the subtraction of velocity "CyclicVelocity" or the value of "VelocityParID"*)
-	END_STRUCT;
-	
-	McAcpAxAdvAutoTuneFeedFwdType : STRUCT
-	    ExcitationSignal : McAcpAxAutoTuneExSignalType; (*Parameter for excitation signal*)
 	END_STRUCT;
 
 	McAcpAxLoadSimInputDataType : STRUCT

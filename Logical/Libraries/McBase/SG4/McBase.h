@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.16.2 */
+/* McBase 5.18.1 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.16.2
+#define _McBase_VERSION 5.18.1
 #endif
 
 #include <bur/plctypes.h>
@@ -132,7 +132,8 @@ typedef enum McCoordinateSystemEnum
 	mcSCS5 = 7,
 	mcTCS = 9,
 	mcGCS = 10,
-	mcJACS = 100
+	mcJACS = 100,
+	mcMPCS = 101
 } McCoordinateSystemEnum;
 
 typedef enum McValueSrcEnum
@@ -209,10 +210,12 @@ typedef enum McCfgTypeEnum
 	mcCFG_AX_FEAT_CAM_AUT_CMN = 10101,
 	mcCFG_AX_FEAT_PROF_GEN = 10102,
 	mcCFG_AX_FEAT_DIG_CAM_SW = 10103,
+	mcCFG_AX_FEAT_DIG_OUT = 10107,
 	mcCFG_AX_FEAT_CAM_LST = 11102,
 	mcCFG_AX_FEAT_ALT_VAL_SRC = 10104,
 	mcCFG_AX_FEAT_BRK = 10105,
 	mcCFG_AX_FEAT_MECH_DEV_COMP = 10106,
+	mcCFG_AX_FEAT_ACP_NETW_ERR_REAC = 10108,
 	mcCFG_MOT_SYN = 10500,
 	mcCFG_MOT_INDUCT = 10501,
 	mcCFG_IO_PL_IN_CARD = 10510,
@@ -595,7 +598,6 @@ typedef struct McAxesGroupType
 
 typedef struct McTrackingPathType
 {	struct McInternalTrackingPathIfType* controlif;
-	struct McInternalMappLinkType mappLinkInternal;
 } McTrackingPathType;
 
 typedef struct McGetCoordSystemIdentParType
