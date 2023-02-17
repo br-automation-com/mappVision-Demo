@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAcpAx 5.18.1 */
+/* McAcpAx 5.20.0 */
 
 #ifndef _MCACPAX_
 #define _MCACPAX_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAcpAx_VERSION
-#define _McAcpAx_VERSION 5.18.1
+#define _McAcpAx_VERSION 5.20.0
 #endif
 
 #include <bur/plctypes.h>
@@ -472,7 +472,8 @@ typedef enum McASRQstopEnum
 typedef enum McASRDrvErrEnum
 {	mcASRDE_DEC_LIM = 0,
 	mcASRDE_INDUCT_HALT = 1,
-	mcASRDE_COAST_TO_STANDSTILL = 2
+	mcASRDE_COAST_TO_STANDSTILL = 2,
+	mcASRDE_CYC_DEC_FROM_AX_GRP = 3
 } McASRDrvErrEnum;
 
 typedef enum McAMELVelErrMonEnum
@@ -1741,6 +1742,7 @@ typedef struct McMIBrkUseCtrlModType
 
 typedef struct McMIBrkUseLimUseType
 {	float MaximumVoltage;
+	float PermittedFrictionWork;
 } McMIBrkUseLimUseType;
 
 typedef struct McMIBrkUseLimType
@@ -1932,6 +1934,7 @@ typedef struct McMSBrkUseCtrlModType
 
 typedef struct McMSBrkUseLimUseType
 {	float MaximumVoltage;
+	float PermittedFrictionWork;
 } McMSBrkUseLimUseType;
 
 typedef struct McMSBrkUseLimType
@@ -2387,8 +2390,13 @@ typedef struct McASRQstopType
 	struct McASRQstopDecLimWJerkFltrType DecelerationLimitWithJerkFilter;
 } McASRQstopType;
 
+typedef struct McASRDrvErrCycDecFromAxGrpType
+{	float DefaultDeceleration;
+} McASRDrvErrCycDecFromAxGrpType;
+
 typedef struct McASRDrvErrType
 {	enum McASRDrvErrEnum Type;
+	struct McASRDrvErrCycDecFromAxGrpType CyclicDecelerationFromAxesGroup;
 } McASRDrvErrType;
 
 typedef struct McASRType

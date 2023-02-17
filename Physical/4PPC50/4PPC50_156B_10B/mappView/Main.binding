@@ -1,147 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Main_binding">
 	<Bindings>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[1]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain1" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[2]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain2" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[3]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain3" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[4]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain4" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[5]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain5" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[6]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain6" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[7]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain7" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[8]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain8" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[9]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain9" attribute="transform" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[10]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain10" attribute="transform" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[1]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain1" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[2]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain2" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[3]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain3" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[4]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain4" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[5]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain5" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[6]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain6" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[7]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain7" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[8]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain8" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[9]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain9" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[10]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain10" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[1]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain1" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[2]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain2" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[3]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain3" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[4]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain4" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[5]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain5" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[6]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain6" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[7]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain7" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[8]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain8" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[9]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain9" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[10]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain10" attribute="svgContent" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.ShowCrosshair" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visRepetitiveMode" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableRepetitive" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="enable" />
-		</Binding>		
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSensorEnableCommand" attribute="value" />
+		
+		<!--<Binding mode="twoWay">
+		<Source xsi:type="opcUa" refId="::Vi_visu:visSensorEnableCommand" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="enable" />
-		</Binding>
+		</Binding>-->
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.DetailsNo" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="value" />
 		</Binding>
-		<Binding mode="twoWay">
+		<!--<Binding mode="twoWay">
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNoDown" attribute="enable" />
 		</Binding>
@@ -149,25 +18,53 @@
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNoUp" attribute="enable" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.Connected" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerPath" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="host" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerQuery" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="query" />
-		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="enable" />
-		</Binding>
+		</Binding>-->
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visImageRotation" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="DropDownBoxImgRotation" attribute="selectedIndex" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.wsPort" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.wsPort" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.wsPort" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.wsPort" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.wsPort" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.wsPort" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="VisionImage1" attribute="PLCWebsocketPort" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.svgOverlay" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.svgOverlay" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.svgOverlay" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.svgOverlay" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.svgOverlay" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.svgOverlay" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="VisionImage1" attribute="svgOverlay" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cmd.repetitiveTrigger" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.cmd.repetitiveTrigger" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cmd.repetitiveTrigger" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cmd.repetitiveTrigger" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.repetitiveTrigger" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.repetitiveTrigger" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="enable" />
 		</Binding>
 	</Bindings>
 </BindingsSet>

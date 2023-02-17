@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxis 5.18.1 */
+/* McAxis 5.20.0 */
 
 #ifndef _MCAXIS_
 #define _MCAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxis_VERSION
-#define _McAxis_VERSION 5.18.1
+#define _McAxis_VERSION 5.20.0
 #endif
 
 #include <bur/plctypes.h>
@@ -311,7 +311,8 @@ typedef enum McAxisTypeEnum
 	mcAX_TYPE_PURE_VIRT,
 	mcAX_TYPE_PURE_VIRT_GPAI,
 	mcAX_TYPE_DS402_SERVO,
-	mcAX_TYPE_DS402_INV
+	mcAX_TYPE_DS402_INV,
+	mcAX_TYPE_PURE_VIRT_EXT_ENC
 } McAxisTypeEnum;
 
 typedef enum McAcpAxAutoTuneFeedFwdModeEnum
@@ -685,6 +686,10 @@ typedef enum McAFANERNetwErrReacEnum
 {	mcAFANERNER_DEF = 0,
 	mcAFANERNER_DELAYED = 1
 } McAFANERNetwErrReacEnum;
+
+typedef struct McAdvCycDriveErrDecParType
+{	enum McDisableModeEnum DisableMode;
+} McAdvCycDriveErrDecParType;
 
 typedef struct McLibraryInfoType
 {	plcstring Name[33];
@@ -1656,6 +1661,24 @@ typedef struct McAFANERNetwErrReacType
 typedef struct McCfgAxFeatAcpNetwErrReacType
 {	struct McAFANERNetwErrReacType NetworkErrorReaction;
 } McCfgAxFeatAcpNetwErrReacType;
+
+typedef struct MC_BR_CyclicDriveErrorDecel
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* Axis;
+	struct McAdvCycDriveErrDecParType AdvancedParameters;
+	float CyclicDeceleration;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Enable;
+	/* VAR_OUTPUT (digital) */
+	plcbit Valid;
+	plcbit Busy;
+	plcbit Error;
+} MC_BR_CyclicDriveErrorDecel_typ;
 
 typedef struct MC_BR_GetAxisLibraryInfo
 {
@@ -3261,6 +3284,7 @@ typedef struct MC_WriteDigitalOutput
 
 
 /* Prototyping of functions and function blocks */
+_BUR_PUBLIC void MC_BR_CyclicDriveErrorDecel(struct MC_BR_CyclicDriveErrorDecel* inst);
 _BUR_PUBLIC void MC_BR_GetAxisLibraryInfo(struct MC_BR_GetAxisLibraryInfo* inst);
 _BUR_PUBLIC void MC_Power(struct MC_Power* inst);
 _BUR_PUBLIC void MC_Home(struct MC_Home* inst);

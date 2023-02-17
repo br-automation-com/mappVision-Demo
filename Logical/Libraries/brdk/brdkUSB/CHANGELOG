@@ -1,0 +1,14 @@
+# Change Log
+
+All notable changes to brdkUSB  will be documented in this file.
+brdkUSB  adheres to [Semantic Versioning](http://semver.org/).
+
+## [Unreleased]
+
+## [1.0.2] - 2015-12-03
+### Changed
+- If a dev link device already exists, this can be handle in the fb
+
+## [1.0.1] - 2015-12-01
+### Changed
+- More strict build options

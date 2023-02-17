@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="1.00.4" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported functions and function blocks">brdkViBase.fun</File>
+    <File Description="Exported data types">Types.typ</File>
+    <File Description="Exported constants">Constants.var</File>
+    <File Description="Function to genereate a random number">brdkViBase_random.c</File>
+    <File Description="Function to initializer the random number generator">brdkViBase_initRand.c</File>
+    <File Description="Function to convert degees to radians">brdkViBase_deg2rad.c</File>
+    <File Description="Function to convert radians to degrees">brdkViBase_rad2deg.c</File>
+    <File Description="Function to calculate distance betweent two 2D points">brdkViBase_distance.c</File>
+    <File Description="Function to help with triggering of image and wait for results">brdkViBase_imgTrigger.c</File>
+    <File>brdkViBase_CamStatusToString.cpp</File>
+    <File>brdkViBase_getCameraInfo.c</File>
+    <File>brdkViBase_calcOpticInfo.c</File>
+    <File>brdkViBase_LEDIntensity.c</File>
+    <File>brdkViBase_dtStructToString.c</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="astime" />
+    <Dependency ObjectName="standard" />
+    <Dependency ObjectName="AsIODiag" />
+  </Dependencies>
+</Library>

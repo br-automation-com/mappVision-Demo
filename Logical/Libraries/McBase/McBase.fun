@@ -39,8 +39,6 @@ FUNCTION_BLOCK MC_BR_ProcessParam
 	END_VAR
 END_FUNCTION_BLOCK
 
-
-
 FUNCTION_BLOCK MC_BR_GetCoordSystemIdent
 	VAR_INPUT
 		Execute : BOOL; (*Execution of the function block begins on a rising edge of this input.*)
@@ -54,6 +52,27 @@ FUNCTION_BLOCK MC_BR_GetCoordSystemIdent
 		Error : BOOL; (*Error occurred during execution.*)
 		ErrorID : DINT; (*Error number*)
 		Ident : UDINT; (*coordinate system ident*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*Internal data*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_ReadErrorText
+	VAR_INPUT
+		Component: McComponentType; (*Reference to the component*)
+		Enable : BOOL; (*The function block is active as long as this input is set.*)
+		AdvancedParameters : McAdvReadErrTxtParType;
+		ReadNext : BOOL;
+	END_VAR
+	VAR_OUTPUT
+		Valid : BOOL; (*Execution successful. Function block is finished.*)
+		Busy : BOOL; (*Function block is active and must continue to be called.*)
+		Error : BOOL; (*Error occurred during execution.*)
+		ErrorID : DINT; (*Error number.*)
+		NumberOfRecords : UINT; (*Indicates number of records available to read.*)
+		ReadDone : BOOL; (*Read of error record is done and record data is available in ErrorRecords output.*)
+		ErrorRecords : McErrorRecordsType; (*Error record output.*)
 	END_VAR
 	VAR
 		Internal : McInternalType; (*Internal data*)

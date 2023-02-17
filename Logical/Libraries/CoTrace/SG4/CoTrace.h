@@ -219,6 +219,26 @@ typedef struct CoTraceConfigAddStartTrigger
 	plcbit Error;
 } CoTraceConfigAddStartTrigger_typ;
 
+typedef struct CoTraceConfigAddStartTriggerExt
+{
+	/* VAR_INPUT (analog) */
+	CoTraceConfigIdentType ConfigIdent;
+	plcstring DataPointName[768];
+	enum CoTraceTriggerConditionEnum Condition;
+	double Threshold;
+	double Window;
+	/* VAR_OUTPUT (analog) */
+	signed long StatusID;
+	/* VAR (analog) */
+	struct CoTraceExec1InternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} CoTraceConfigAddStartTriggerExt_typ;
+
 typedef struct CoTraceRecorder
 {
 	/* VAR_INPUT (analog) */
@@ -294,6 +314,7 @@ _BUR_PUBLIC void CoTraceConfigSetTiming(struct CoTraceConfigSetTiming* inst);
 _BUR_PUBLIC void CoTraceConfigOptionalParameter(struct CoTraceConfigOptionalParameter* inst);
 _BUR_PUBLIC void CoTraceConfigAddDataPoint(struct CoTraceConfigAddDataPoint* inst);
 _BUR_PUBLIC void CoTraceConfigAddStartTrigger(struct CoTraceConfigAddStartTrigger* inst);
+_BUR_PUBLIC void CoTraceConfigAddStartTriggerExt(struct CoTraceConfigAddStartTriggerExt* inst);
 _BUR_PUBLIC void CoTraceRecorder(struct CoTraceRecorder* inst);
 _BUR_PUBLIC void CoTraceDataReadRecords(struct CoTraceDataReadRecords* inst);
 _BUR_PUBLIC void CoTraceDataSaveCsv(struct CoTraceDataSaveCsv* inst);

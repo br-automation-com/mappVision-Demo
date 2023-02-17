@@ -1,0 +1,3 @@
+VAR
+	this : local_typ;
+END_VAR

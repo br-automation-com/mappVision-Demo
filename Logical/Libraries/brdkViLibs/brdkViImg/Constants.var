@@ -1,0 +1,7 @@
+VAR CONSTANT
+	BRDKVIS_BASE64_BUSY : UINT := 64001; (*Error occuring when base64 is busy.*)
+	BRDKVIIMG_WS_BUFFER_SIZE : UDINT := 10000;
+	BRDKVIIMG_WS_MAX_NUM_CLIENTS : UDINT := 10;
+	ERR_NO_SIM_PFILE : UINT := 64002; (*Error occuring when no pFile pointer is supplied for simulation*)
+	ERR_NO_IMAGE : UINT := 64000; (*Error occuring when no image is available*)
+END_VAR

@@ -245,6 +245,7 @@ TYPE
 		);
 	McMSBrkUseLimUseType : STRUCT (*Type mcMSBUL_USE settings*)
 		MaximumVoltage : REAL; (*Maximum permissible voltage to release (open) the holding brake [V]*)
+		PermittedFrictionWork : REAL; (*Permitted friction work up to the waer limit [J]*)
 	END_STRUCT;
 	McMSBrkUseLimType : STRUCT (*Holding brake limits*)
 		Type : McMSBrkUseLimEnum; (*Limits selector setting*)
@@ -404,6 +405,7 @@ TYPE
 		);
 	McMIBrkUseLimUseType : STRUCT (*Type mcMIBUL_USE settings*)
 		MaximumVoltage : REAL; (*Maximum permissible voltage to release (open) the holding brake [V]*)
+		PermittedFrictionWork : REAL; (*Permitted friction work up to the waer limit [J]*)
 	END_STRUCT;
 	McMIBrkUseLimType : STRUCT (*Holding brake limits*)
 		Type : McMIBrkUseLimEnum; (*Limits selector setting*)
@@ -534,10 +536,10 @@ TYPE
 	END_STRUCT;
 	McACModEnum :
 		( (*Mode selector setting*)
-		mcACM_POS_CTRL := 0, (*Position controller - Position controller with speed feedforward*)
-		mcACM_POS_CTRL_TORQ_FF := 1, (*Position controller torque ff - Position controller with torque feedforward*)
-		mcACM_POS_CTRL_MDL_BASED := 3, (*Position controller model based - Position controller with model based control*)
-		mcACM_V_FREQ_CTRL := 2 (*Voltage frequency control - Voltage/frequency control of induction motor*)
+		mcACM_POS_CTRL := 0, (*Position controller - Automatic speed feed-forward with prediction time > 0*)
+		mcACM_POS_CTRL_TORQ_FF := 1, (*Position controller torque ff - Torque feed-forward with specified parameters*)
+		mcACM_POS_CTRL_MDL_BASED := 3, (*Position controller model based - Model based control with specified parameters*)
+		mcACM_V_FREQ_CTRL := 2 (*Voltage frequency control - Voltage/frequency control of induction motor with specified parameters*)
 		);
 	McACPCType : STRUCT (*Position controller parameters*)
 		ProportionalGain : REAL; (*Proportional amplification [1/s]*)
@@ -640,9 +642,9 @@ TYPE
 		TotalDelayTime : REAL; (*Total delay time [s]*)
 	END_STRUCT;
 	McACMPCFFFFwdEnum :
-		( (*Feed forward selector setting*)
-		mcACMPCFFFF_STD := 0, (*Standard - Based on several parameters the torque feed forward calculation is done on the axis*)
-		mcACMPCFFFF_CYC_VAL_FROM_AX_GRP := 1 (*Cyclic value from axes group - The torque feed forward calculation is done by the axes group or the application on the PLC and the value is forwarded to the axis*)
+		( (*Feed-forward selector setting*)
+		mcACMPCFFFF_STD := 0, (*Standard - Based on several parameters the torque feed-forward calculation is done on the axis*)
+		mcACMPCFFFF_CYC_VAL_FROM_AX_GRP := 1 (*Cyclic value from axes group - The torque feed-forward calculation is done by the axes group or the application on the PLC and the value is forwarded to the axis*)
 		);
 	McACMPCFFFFwdStdType : STRUCT (*Type mcACMPCFFFF_STD settings*)
 		TorqueLoad : REAL; (*Load torque [Nm]*)
@@ -652,14 +654,14 @@ TYPE
 		Inertia : REAL; (*Mass moment of inertia [kgm²]*)
 		AccelerationFilterTime : REAL; (*Acceleration filter time constant [s]*)
 	END_STRUCT;
-	McACMPCFFFFwdType : STRUCT (*Torque feed forward control parameters*)
-		Type : McACMPCFFFFwdEnum; (*Feed forward selector setting*)
+	McACMPCFFFFwdType : STRUCT (*Torque feed-forward control parameters*)
+		Type : McACMPCFFFFwdEnum; (*Feed-forward selector setting*)
 		Standard : McACMPCFFFFwdStdType; (*Type mcACMPCFFFF_STD settings*)
 	END_STRUCT;
 	McACMPCFFType : STRUCT (*Type mcACM_POS_CTRL_TORQ_FF settings*)
 		Position : McACPCFFType; (*Position controller parameters*)
 		Speed : McACSCType; (*Speed controller parameters*)
-		FeedForward : McACMPCFFFFwdType; (*Torque feed forward control parameters*)
+		FeedForward : McACMPCFFFFwdType; (*Torque feed-forward control parameters*)
 		LoopFilters : McACLFType; (*Parameters of the loop filters*)
 	END_STRUCT;
 	McACMPCMBCPosType : STRUCT (*Position controller parameters*)
@@ -668,8 +670,8 @@ TYPE
 		TotalDelayTime : REAL; (*Total delay time [s]*)
 	END_STRUCT;
 	McACMPCMBCFFEnum :
-		( (*Feedforward selector setting*)
-		mcACMPCMBCFF_STD := 0, (*Standard - Based on several parameters the torque feedforward calculation is done on the axis*)
+		( (*Feed-forward selector setting*)
+		mcACMPCMBCFF_STD := 0, (*Standard - Based on several parameters the torque feed-forward calculation is done on the axis*)
 		mcACMPCMBCFF_PRED_SPD := 1, (*Predictive speed - Predictive speed*)
 		mcACMPCMBCFF_TWO_MASS_MDL_BASED := 2 (*Two mass model based - Two mass model based*)
 		);
@@ -690,8 +692,8 @@ TYPE
 		TorqueNegative : REAL; (*Torque in negative direction [Nm]*)
 		AccelerationFilterTime : REAL; (*Acceleration filter time constant [s]*)
 	END_STRUCT;
-	McACMPCMBCFFType : STRUCT (*Feedforward control parameters*)
-		Type : McACMPCMBCFFEnum; (*Feedforward selector setting*)
+	McACMPCMBCFFType : STRUCT (*Feed-forward control parameters*)
+		Type : McACMPCMBCFFEnum; (*Feed-forward selector setting*)
 		Standard : McACMPCMBCFFStdType; (*Type mcACMPCMBCFF_STD settings*)
 		PredictiveSpeed : McACMPCMBCFFPredSpdType; (*Type mcACMPCMBCFF_PRED_SPD settings*)
 		TwoMassModelBased : McACMPCMBCFFTwoMassMdlBasedType; (*Type mcACMPCMBCFF_TWO_MASS_MDL_BASED settings*)
@@ -738,7 +740,7 @@ TYPE
 	McACMPCMBCType : STRUCT (*Type mcACM_POS_CTRL_MDL_BASED settings*)
 		Position : McACMPCMBCPosType; (*Position controller parameters*)
 		Speed : McACSCType; (*Speed controller parameters*)
-		Feedforward : McACMPCMBCFFType; (*Feedforward control parameters*)
+		Feedforward : McACMPCMBCFFType; (*Feed-forward control parameters*)
 		Feedback : McACMPCMBCFdbkType; (*Feedback control parameters*)
 		Model : McACMPCMBCMdlType; (*Load model parameters*)
 		LoopFilters : McACLFType; (*Parameters of the loop filters*)
@@ -974,14 +976,19 @@ TYPE
 		( (*Drive error selector setting*)
 		mcASRDE_DEC_LIM := 0, (*Deceleration limit - Stop with deceleration limits*)
 		mcASRDE_INDUCT_HALT := 1, (*Induction halt - Stop with an induction halt*)
-		mcASRDE_COAST_TO_STANDSTILL := 2 (*Coast to standstill - Controller is deactivated*)
+		mcASRDE_COAST_TO_STANDSTILL := 2, (*Coast to standstill - Controller is deactivated*)
+		mcASRDE_CYC_DEC_FROM_AX_GRP := 3 (*Cyclic deceleration from axes group - The deceleration calculation is done by the axes group on the PLC and the value is forwarded to the axis*)
 		);
-	McASRDrvErrType : STRUCT (*Deceleration ramp / reaction in case of an error stop which is caused by a drive error*)
+	McASRDrvErrCycDecFromAxGrpType : STRUCT (*Type mcASRDE_CYC_DEC_FROM_AX_GRP settings*)
+		DefaultDeceleration : REAL; (*Default deceleration value. If 0.0, the maximum allowed value is used [Measurement units/s²]*)
+	END_STRUCT;
+	McASRDrvErrType : STRUCT (*Deceleration ramp / Response in the event of ErrorStop caused by drive error*)
 		Type : McASRDrvErrEnum; (*Drive error selector setting*)
+		CyclicDecelerationFromAxesGroup : McASRDrvErrCycDecFromAxGrpType; (*Type mcASRDE_CYC_DEC_FROM_AX_GRP settings*)
 	END_STRUCT;
 	McASRType : STRUCT (*Reactions of the axis in case of certain stop conditions*)
 		Quickstop : McASRQstopType; (*Deceleration ramp / reaction in case of a quickstop which is caused by an active quickstop input*)
-		DriveError : McASRDrvErrType; (*Deceleration ramp / reaction in case of an error stop which is caused by a drive error*)
+		DriveError : McASRDrvErrType; (*Deceleration ramp / Response in the event of ErrorStop caused by drive error*)
 	END_STRUCT;
 	McAMELVelErrMonEnum :
 		( (*Velocity error monitoring selector setting*)

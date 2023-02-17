@@ -1,0 +1,23 @@
+# Change Log
+
+All notable changes to brdkFile will be documented in this file.
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and brdkFile adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [0.0.2] - 2017-09-19
+### Fixed
+- Sometinmes on simulation the DevLink() works too fast. 
+  Changed when calling the DevLink fb to make sure not to call it twice in a row. 
+
+### Added
+- More helpfull description of which device has failed.
+
+## [0.0.1] - 2017-08-17
+### Added
+- Library created
+- brdkFileDeviceHandler() - Easy file device handler.
+- brdkFileCreateSubFolders() - Creates folders based on a path string.
+- brdkFileWrite() - Write data to a file.
+- brdkFileRead() - Read data from a file.

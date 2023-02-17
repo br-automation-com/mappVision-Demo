@@ -2,7 +2,7 @@
 <vdef:Visualization xmlns:vdef="http://www.br-automation.com/iat2015/visualizationDefinition/v2" id="visVision">
 	<StartPage pageRefId="pageMain" />
 	<Pages>
-		<Page refId="pageMain" />
+		<Page refId="pageMain"  />
 		<Page refId="pageResult" />
 		<Page refId="pageLights" />
 		<Page refId="pageNettime" />
@@ -59,7 +59,7 @@
 		<!--<ExpressionsSet refId=""/>-->
 	</ExpressionsSets>
 	<VariablesSets>
-		<!--<VariablesSet refId="" />-->
+		<VariablesSet refId="svar_0" />
 	</VariablesSets>
 	<StartTheme themeRefId="BuRTheme1" />
 	<Themes>

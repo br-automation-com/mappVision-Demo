@@ -295,7 +295,12 @@ Parameters left at default values disable the associated optional functions.*)
 		mcAXIS_CMD_SIMULATION, (*Command Simulation in execution*)
 		mcAXIS_CMD_STOP_AT_POSITION, (*Command StopAtPosition in execution*)
 		mcAXIS_CMD_POWER, (*Command Power in execution*)
-		mcAXIS_CMD_AUTOTUNE (*Command AutoTune in execution*)
+		mcAXIS_CMD_AUTOTUNE, (*Command AutoTune in execution*)
+		mcAXIS_CMD_MOVE_CYCLIC_POSITION, (*Command MoveCyclicPosition*)
+		mcAXIS_CMD_MOVE_CYCLIC_VELOCITY, (*Command MoveCyclicVelocity*)
+		mcAXIS_CMD_VELOCITY_CONTROL, (*Command Velocity Control*)
+		mcAXIS_CMD_TORQUE_CONTROL, (*Command Torque Control*)
+		mcAXIS_CMD_TORQUE_FF (*Command Torque Feed Forward*)
 		);
 	MpAxisCamStartModeEnum : 
 		(
@@ -372,5 +377,89 @@ Valid range: -100.0F .. +100.0F*)
 		Acceleration : REAL := 0.0; (* Acceleration which is used for the auto tuning. [Measurement units / s].
 Note:
 If "0.0F" is used the acceleration is adjusted during the tuning process using an iterative method. Because of this, the tuning process may take a longer time.*)
+	END_STRUCT;
+	MpAxisCyclicSetInfoType : 	STRUCT 
+		AxisReady : BOOL; (*Axis ready for operation (IsPowered and IsHomed if necessary)*)
+		TorqueControl : MpAxisTorqueControlInfoType; (*TorqueControl command additional information*)
+		Diag : MpAxisDiagExtType; (*Diagnostic information*)
+	END_STRUCT;
+	MpAxisTorqueControlInfoType : 	STRUCT 
+		InTorque : BOOL; (*Torque setpoint reached*)
+		DataInitialized : BOOL; (*Changes of TorqueControl parameters initialized on drive*)
+		Ready : BOOL; (*The function block is ready for a command. 
+If set, a new command can be executed immediately. 
+If not set, then a command is executed directly. The next command will be executed as soon as the current command has been successfully transferred. *)
+		AxisLimitActive : BOOL; (*Axis velocity limit active 
+Note: 
+If this output is active, the torque setpoint on the motor is automatically adjusted to bring the axis back within the valid velocity range (stabilization). It is no longer regulated to the configured "Torque" setpoint. *)
+	END_STRUCT;
+	MpAxisCyclicSetParType : 	STRUCT 
+		MoveCyclicPosition : MpAxisMoveCyclicPositionParType; (*Parameter for MoveCyclicPosition command*)
+		MoveCyclicVelocity : MpAxisMoveCyclicVelocityParType; (*Parameter for MoveCyclicVelocity command*)
+		TorqueControl : MpAxisTorqueControlParType; (*Parameter for TorqueControl command*)
+		TorqueFeedForward : MpAxisTorqueFFParType; (*Parameter for TorqueFF command*)
+	END_STRUCT;
+	MpAxisMoveCyclicPositionParType : 	STRUCT 
+		InterpolationMode : McIplModeEnum; (*Interpolation mode for the received value*)
+		Velocity : REAL; (*Maximum velocity [measurement units/s]*)
+		Acceleration : REAL; (*Maximum acceleration [measurement units/s²]*)
+		Deceleration : REAL; (*Maximum deceleration [measurement units/s²]*)
+		Jerk : REAL; (*Maximum jerk [measurement units/s³]*)
+		DisableJoltLimitation : McSwitchEnum; (*mcSWITCH_OFF ... Jerk limitation on the drive is active.
+mcSWITCH_ON ... Jerk limitation on the drive is disabled.
+Note:
+This should only be disabled for a real axis if jerk limitation is included when calculating the cyclic setpoint. *)
+		AlternativeValueSource : McAltValueSrcEnum; (*Alternative value source for CyclicPosition. 
+Note:
+Axis feature Alternative value source must be used to use an alternative source.*)
+	END_STRUCT;
+	MpAxisMoveCyclicVelocityModeEnum : 
+		(
+		mcAXIS_MCV_MODE_MOVE_CYC_VEL, (*MoveCyclicVelocity mode*)
+		mcAXIS_MCV_MODE_MOVE_VEL_CTRL (*VelocityControl mode*)
+		);
+	MpAxisMoveCyclicVelocityParType : 	STRUCT 
+		Mode : MpAxisMoveCyclicVelocityModeEnum; (*Mode for MoveCyclicVelocity command*)
+		InterpolationMode : McIplModeEnum; (*Interpolation mode for the received value*)
+		Acceleration : REAL; (*Maximum acceleration [measurement units/s²]*)
+		Deceleration : REAL; (*Maximum deceleration [measurement units/s²]*)
+		Jerk : REAL; (*Maximum jerk [measurement units/s³]*)
+		DisableJoltLimitation : McSwitchEnum; (*mcSWITCH_OFF ... Jerk limitation on the drive is active.
+mcSWITCH_ON ... Jerk limitation on the drive is disabled.
+Note:
+This should only be disabled for a real axis if jerk limitation is included when calculating the cyclic setpoint. *)
+		AlternativeValueSource : McAltValueSrcEnum; (*Alternative value source for CyclicVelocity. 
+Note:
+Axis feature Alternative value source must be used to use an alternative source.*)
+	END_STRUCT;
+	MpAxisTorqueControlParType : 	STRUCT 
+		CmdIndependentActivation : BOOL := FALSE; (*Allow to activate the TorqueControl functionality independently from TorqueControl command to avoid latency in shift functionalilty when command is set*)
+		TorqueResolution : REAL; (*Smallest value change considered as Torque setpoint change*)
+		TorqueRamp : REAL; (*Increase in torque until "Torque" value is reached [Nm/s]
+Note: 
+Value "0" is a valid setting and cuts off ramp generation. *)
+		MaximumVelocity : REAL; (*Signed upper velocity limit [measurement units/s]
+Note:
+This value can be negative, "0" or positive, but "MaximumVelocity" must always be greater than "MinimumVelocity".
+To disable, either set a high value or use "AdvancedParameters.VelocityLimitOff". *)
+		MinimumVelocity : REAL; (*Signed lower velocity limit [measurement units/s]
+Note: 
+This value can be negative, "0" or positive, but "MaximumVelocity" must always be greater than "MinimumVelocity".
+To disable, either set a low value (strongly negative) or use "AdvancedParameters.VelocityLimitOff". *)
+		Acceleration : REAL; (*Maximum acceleration [measurement units/s²]
+or maximum deceleration when changing "MaximumVelocity" or "MinimumVelocity" [measurement units/s²] 
+Note:
+The value is not necessarily reached during operation.
+If value "0", "<0" or ">Limit value" is specified on this input, the limit value of the axis (Movement limits - Acceleration) is used.*)
+		Jerk : REAL; (*Maximum jerk [measurement units/s³]
+Note:
+Jerk is currently not supported. Parameter "Jerk" must be 0.0.*)
+		Options : McAdvBrTorqueControlParType; (*Structure for using advanced functions
+Note:
+Parameters left at "0" disable the associated advanced function. *)
+	END_STRUCT;
+	MpAxisTorqueFFParType : 	STRUCT 
+		InterpolationMode : McIplModeEnum := mcIPLM_DEFAULT; (*Interpolation mode for the received value*)
+		Options : McAdvCyclicTorqueFFParType; (*Selection of behavior when disabling*)
 	END_STRUCT;
 END_TYPE

@@ -2,17 +2,19 @@
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Footer_binding">
 	<Bindings>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.ResultCnt" attribute="value" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.numResults" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.numResults" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.numResults" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.numResults" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.numResults" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.numResults" />
+				</be:List>
+			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numItemsFound" attribute="value" />
 		</Binding>	
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.Focus" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFocus" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.Exposure" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numExposure" attribute="value" />
-		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.LedColor" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxLedStatusColor" attribute="selectedIndex" />
@@ -34,53 +36,12 @@
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnAutoSetup" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSensorEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.Timeout" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numTimeout" attribute="node" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.SerialNumber" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numHW_SerialNumber" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.ID" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numHW_ID" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.Variant" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numHW_Variant" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.Firmware" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numHW_Firmware" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.Undervoltage" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numHW_Undervoltage" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.Temperature" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numHW_Temperature" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.AcquisitionFailedCnt" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAcquisitionFailedCnt" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.AcquisitionCompletedCnt" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAcquisitionCompletedCnt" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.AcquisitionAcceptedCnt" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAcquisitionAcceptedCnt" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.ImageProcessingError" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numImageProcessingError" attribute="value" />
-		</Binding>
+	
+		
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.OffsetROIX" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIX" attribute="node" />
@@ -93,129 +54,217 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.OffsetROIOrientation" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIOrientation" attribute="node" />
 		</Binding>
+
+	
+		
+
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.ImageNettime" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numImageNettime" attribute="node" />
-		</Binding>	
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera.ready" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera.ready" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera.ready" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera.ready" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera.ready" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera.ready" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnImageTrigger" attribute="enable" />
+		</Binding>
+		
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSensorEnableCommand" attribute="value" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cmd.trigger" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.cmd.trigger" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cmd.trigger" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cmd.trigger" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.trigger" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.trigger" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnImageTrigger" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera.connected" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera.connected" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera.connected" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera.connected" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera.connected" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera.connected" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="enable" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.BLOB.common.enable" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.CR.common.enable" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.match.common.enable" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.meassurement.common.enable" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.OCR.common.enable" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.pxCnt.common.enable" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="value" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.gainLevel" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.gainLevel" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.gainLevel" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.gainLevel" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.gainLevel" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.gainLevel" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numGain" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.focus" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.focus" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.focus" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.focus" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.focus" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.focus" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFocus" attribute="value" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.exposureTime" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.exposureTime" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.exposureTime" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.exposureTime" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.exposureTime" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.exposureTime" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numExposure" attribute="value" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera.connected" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera.connected" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera.connected" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera.connected" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera.connected" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera.connected" />
+				</be:List>
+			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxItemsCount" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSensorEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnImageTrigger" attribute="enable" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.ProcessingTimeCamera" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numCameraProcessingTime" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.ProcessingTimeFunction" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFunctionProcessingTime" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.MaxItemCnt" attribute="node" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.BLOB.common.numSearchMax" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.CR.common.numSearchMax" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.match.common.numSearchMax" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.meassurement.common.numSearchMax" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.OCR.common.numSearchMax" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.pxCnt.common.numSearchMax" />
+				</be:List>
+			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxItemsCount" attribute="node" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSensorFlashColor" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.Gain" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numGain" attribute="node" />
-		</Binding>
+		
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visEnableSetup" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnAutoSetup" attribute="enable" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera.processingTime" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera.processingTime" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera.processingTime" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera.processingTime" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera.processingTime" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera.processingTime" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numCameraProcessingTime" attribute="value" />
 		</Binding>
+		
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.IRFilter" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor1" attribute="selectedIndex" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.processingTime" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.processingTime" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.processingTime" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.processingTime" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.processingTime" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.processingTime" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFunctionProcessingTime" attribute="value" />
 		</Binding>
+	
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedFlashSegment[0]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsRight" attribute="value" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cameraInfo" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.cameraInfo" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cameraInfo" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cameraInfo" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cameraInfo" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cameraInfo" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="visionOptics1" attribute="camInfo" />
 		</Binding>
+		
+		
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedFlashSegment[1]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" attribute="value" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera.opticInfo" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera.opticInfo" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera.opticInfo" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera.opticInfo" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera.opticInfo" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera.opticInfo" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="visionOptics1" attribute="opticInfo" />
 		</Binding>
+		
+				
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedFlashSegment[2]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsLeft" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedFlashSegment[3]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsBottom" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DAT.Enable" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DIA.DiagName" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="txtDiagName" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.DIA.Status" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDIAG_Status" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.Distance_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDistance" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.Lens" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxLens" attribute="selectedIndex" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.Sensor" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxSensor" attribute="selectedIndex" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.Binning" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxBinning" attribute="selectedIndex" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.MaxObjectDist_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxLensDistance" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.MinObjectDist_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMinLensDistance" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.DepthOfFieldNearPos_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numNearDistance" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.ValidDistance" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnValidDistance" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.DepthOfFieldFarPos_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFarDistance" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.FieldOfView_X_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFoV_X" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.DepthOfField_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDepthOfField" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.Resolution_mmPerPx" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numResolution" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.FieldOfView_Y_mm" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFoV_Y" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.OPT.OrderNr" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="txtCameraOrderNr" attribute="value" />
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera" />
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="cameraInfo" attribute="value" />
 		</Binding>
 	</Bindings>
 </BindingsSet>

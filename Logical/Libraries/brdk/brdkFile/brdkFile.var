@@ -1,0 +1,6 @@
+VAR CONSTANT
+	BRDK_FILE_MAX_USB_NODES : USINT := 5; (*Maximum number of connected USB nodes. (5 means 6)*)
+	BRDK_FILE_MAX_FILES_DEVICES : USINT := 15; (*Maximum numbers of file devices. (9 means 10)*)
+	BRDK_FILE_MAX_PATH_LEN : UINT := 200; (*Maximum length of a path.*)
+	BRFK_FILE_MAX_FILE_DEVICE_LEN : UINT := 50; (*Maximum length of file device names.*)
+END_VAR

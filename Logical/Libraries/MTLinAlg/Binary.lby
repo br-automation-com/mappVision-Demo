@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="5.20.0" SubType="Binary" Description="This library is used to calculate matrices, vectors and systems of linear equations." xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exportierte Datentypen">MTLinAlg.typ</File>
+    <File Description="Exportierte Konstanten">MTLinAlg.var</File>
+    <File Description="Exportierte Funktionen und Funktionsblöcke">MTLinAlg.fun</File>
+  </Files>
+</Library>

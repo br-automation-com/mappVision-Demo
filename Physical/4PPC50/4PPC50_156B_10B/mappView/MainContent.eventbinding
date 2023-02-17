@@ -22,7 +22,7 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
-		<EventBinding id="contentMain.Rectangle1.Click">
+		<!--<EventBinding id="contentMain.Rectangle1.Click">
 			<Source contentRefId="contentMain" widgetRefId="RectangleFront" xsi:type="widgets.brease.Rectangle.Event" event="Click" />
 			<EventHandler>
 				<Action>
@@ -31,6 +31,6 @@
 					</Target>
  				</Action>
 			</EventHandler>
-		</EventBinding>
+		</EventBinding>-->
 	</Bindings>
 </EventBindingSet>

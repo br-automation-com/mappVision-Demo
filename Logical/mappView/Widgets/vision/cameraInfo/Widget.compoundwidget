@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CompoundWidget id="visionCameraInfo" width="320" height="380" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Widgets>
+		<Widget xsi:type="widgets.brease.Label" id="labHW_SerialNumber" top="5" left="5" width="190" height="25" zIndex="12" text="Serial No" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_SerialNumber" top="5" left="200" height="25" zIndex="13" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labHW_ID" top="36" left="5" width="190" height="25" zIndex="14" text="Hardware ID" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_ID" top="36" left="200" height="25" zIndex="15" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labHW_Variant" top="68" left="5" width="190" height="25" zIndex="16" text="HW Variant" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Variant" top="68" left="200" height="25" zIndex="17" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labHW_Firmware" top="99" left="5" width="190" height="25" zIndex="18" text="Firmware" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Firmware" top="99" left="200" height="25" zIndex="19" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labHW_Undervoltage" top="130" left="5" width="190" height="25" zIndex="20" text="Undervoltage" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.Label" id="labHW_Temperature" top="162" left="5" width="190" height="25" zIndex="21" text="Temperature" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Temperature" top="162" left="200" height="25" zIndex="22" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labAcquisitionAcceptedCnt" top="193" left="5" width="190" height="25" zIndex="23" text="Acquisition Accepted" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numAcquisitionAcceptedCnt" top="193" left="200" height="25" zIndex="24" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labAcquisitionCompletedCnt" top="225" left="5" width="190" height="25" zIndex="25" text="Acquisition Completed" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numAcquisitionCompletedCnt" top="225" left="200" height="25" zIndex="26" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labAcquisitionFailedCnt" top="256" left="5" width="190" height="25" zIndex="27" text="Acquisition Failed" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numAcquisitionFailedCnt" top="256" left="200" height="25" zIndex="28" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labImageProcessingError" top="319" left="5" width="190" height="25" zIndex="29" text="Image processing error" textAlign="right top" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numImageProcessingError" top="319" left="200" height="25" zIndex="30" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labImageNettime" top="350" left="5" width="150" height="25" zIndex="31" text="Image Nettime" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numImageNettime" top="350" left="160" width="140" height="25" zIndex="32" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':15},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightWarningCount" top="287" left="10" width="190" height="25" zIndex="33" text="Light warning count" textAlign="right top" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numLightWarningCount" top="287" left="200" height="25" zIndex="34" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonUndervoltageError" top="130" left="200" height="25" zIndex="35" breakWord="true" mouseDownText="Error" text="OK" backColor="rgba(128, 255, 128, 1)" backGroundGradient="linear-gradient(to bottom,#00F700 0%,#00C600 100%)" checkedBackGroundGradient="linear-gradient(to bottom, #FA0000 0%,#FC0000 100%)" style="defaultSmall" />
+	</Widgets>
+	<Properties>
+		<!-- 
+		Simple non bindable property:
+		Property Attributes
+		xsi:type: NonBindableProperty
+		name: name of the property (not allowed: width, height, top, left, id, enable, visible, zindex, margin, premissionview, permissionoperate, description)
+		<Property xsi:type="NonBindableProperty" name="" type="" defaultValue="" required="">
+		<Description>Description will be shown in property grid.</Description>
+		<Mappings>
+		<Mapping widget="" property=""/>
+		<Mapping widget="" property=""/>
+		</Mappings>
+		</Property>
+    
+		Simple bindable property:
+		<Property xsi:type="BindableProperty" name="" type="" defaultValue="" readOnly="" category="" localizable="" typeRefId="" nodeRefId="">
+		<Description>Description will be shown in property grid.</Description>
+		<Mappings>
+		<Mapping widget="" property="" mode=""/>
+		<Mapping widget="" property="" mode=""/>
+		</Mappings>
+		</Property>
+
+
+		Structure bindable property:
+
+		-->
+		
+		<Property xsi:type="StructureBindableProperty" name="value" type="hmi_out_camera_typ" readOnly="false" category="Data" >
+			<Description>vi main hmi output data structure</Description>
+			<Mappings>
+				<Mapping widget="numHW_SerialNumber" type="Number" property="value" mode="oneWay" 			memberPath="common.serialNumber" mapToNode="false"/>
+				<Mapping widget="numHW_ID" type="Number" property="value" mode="oneWay" 			memberPath="common.moduleId" mapToNode="false"/>
+				<Mapping widget="numHW_Variant" type="Number" property="value" mode="oneWay" 				memberPath="common.hardwareVariant" mapToNode="false"/>
+				<Mapping widget="numHW_Firmware" type="Number" property="value" mode="oneWay" 				memberPath="common.firmwareVersion" mapToNode="false"/>
+				<Mapping widget="ToggleButtonUndervoltageError" type="Number" property="value" mode="oneWay" 			memberPath="hw.undervoltageError" mapToNode="false"/>
+				<Mapping widget="numHW_Temperature" type="Number" property="value" mode="oneWay" 			memberPath="hw.sensorTemperature" mapToNode="false"/>	
+				<Mapping widget="numAcquisitionAcceptedCnt" type="Number" property="value" mode="oneWay" 	memberPath="hw.acceptedAcquisitionCnt" mapToNode="false"/>
+				<Mapping widget="numAcquisitionCompletedCnt" type="Number" property="value" mode="oneWay" 	memberPath="hw.completedAcquisitionCnt" mapToNode="false"/>
+				<Mapping widget="numAcquisitionFailedCnt" type="Number" property="value" mode="oneWay" 		memberPath="hw.failedAcquisitionCnt" mapToNode="false"/>
+				<Mapping widget="numLightWarningCount" type="Number" property="value" mode="oneWay" 			memberPath="hw.lightWarningCnt" mapToNode="false"/>
+				<Mapping widget="numImageProcessingError" type="Number" property="value" mode="oneWay" 		memberPath="hw.imageProcessingError" mapToNode="false"/>
+				<Mapping widget="numImageNettime" type="Number" property="value" mode="oneWay"				memberPath="hw.imageNettime" mapToNode="false"/>
+			</Mappings>
+		</Property>
+	
+	</Properties>
+
+	<Events>
+		<!--
+		<Event name="">
+		<Description>Description will be shown in property grid.</Description>
+		<Mappings>
+		<Mapping widget="" event="" />
+		</Mappings>
+		</Event>
+		-->
+	</Events>
+
+	<Actions>
+    <!--
+    <Action name="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" action="" />
+      </Mappings>
+    </Action>
+    -->
+  </Actions>
+
+  <EventBindings>
+    <!-- source and target can only be widgets within the compound widget.
+    <EventBinding id="">
+      <Source xsi:type="widget.Event" widgetRefId="" event="" />
+      <EventHandler condition="">
+        <Action>
+          <Target xsi:type="widget.Action" widgetRefId="">
+            <Method name="" value="" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    -->
+  </EventBindings>
+
+</CompoundWidget>

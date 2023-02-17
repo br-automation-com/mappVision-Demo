@@ -1,0 +1,3 @@
+VAR
+	gFiles : gFiles_typ;
+END_VAR

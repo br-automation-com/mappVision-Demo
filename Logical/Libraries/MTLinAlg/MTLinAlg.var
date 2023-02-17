@@ -1,0 +1,7 @@
+(*Error*)
+VAR CONSTANT
+	mtACD_ERR_WRONG_DIM : DINT := -1058011124; (*Error: Dimensions are wrong or not compatible.*)
+	mtACD_ERR_NULL_PRT : DINT := -1058011123; (*Error: An input is a nullpointer.*)
+	mtACD_ERR_NOT_INVERTIBLE : DINT := -1058011122; (*Error: Matrix is not invertible. *)
+	mtACD_ERR_EQUATION_NOT_SOLVABLE : DINT := -1058011121; (*Error: Equation system has not an exact solution. *)
+END_VAR

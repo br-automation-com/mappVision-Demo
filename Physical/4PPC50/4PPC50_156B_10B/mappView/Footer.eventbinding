@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Footer_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
-    <EventBinding id="contentFooter.btnImageTrigger.Click">
-      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentFooter" widgetRefId="btnImageTrigger" event="Click" />
+    <!--<EventBinding id="contentFooter.btnImageTrigger.Click">
+      <Source xsi:type="widgets.brease.PushButton.Event" contentRefId="contentFooter" widgetRefId="btnImageTrigger" event="Click" />
       <EventHandler>
         <Action>
           <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visImageTrigger">
@@ -10,7 +10,7 @@
           </Target>
         </Action>
       </EventHandler>
-    </EventBinding>
+    </EventBinding>-->
     <EventBinding id="AutoSetupStartStop">
       <Source xsi:type="opcUa.Event" refId="::Vi_visu:VisionSensor.CMD.AutoSetupStartStop" event="ValueChanged" />
       <EventHandler condition="NOT newValue">

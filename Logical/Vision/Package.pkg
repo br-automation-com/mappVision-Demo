@@ -9,13 +9,13 @@
     <Object Type="File">VisionTypes.typ</Object>
     <Object Type="Program" Language="IEC">Vi_main</Object>
     <Object Type="Program" Language="IEC">Vi_visu</Object>
-    <Object Type="Program" Language="IEC">Vi_nettime</Object>
     <Object Type="Program" Language="IEC">Vi_image</Object>
     <Object Type="Program" Language="IEC">Vi_color</Object>
-    <Object Type="Program" Language="IEC">Axis</Object>
     <Object Type="Program" Language="IEC">YourTask</Object>
     <Object Type="File">setRouteToCamera.bat</Object>
     <Object Type="File">RouteInfo_Tool.ps1</Object>
     <Object Type="File">RouteInfo_Tool_Info.txt</Object>
+    <Object Type="Package">Files</Object>
+    <Object Type="Package">Axis</Object>
   </Objects>
 </Package>

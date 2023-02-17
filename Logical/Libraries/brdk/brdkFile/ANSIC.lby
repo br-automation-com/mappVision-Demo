@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="0.00.2" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Data types">brdkFile.typ</File>
+    <File Description="Constants">brdkFile.var</File>
+    <File Description="Functions and function blocks">brdkFile.fun</File>
+    <File Description="Easy file device handler.">brdkFileDeviceHandler.c</File>
+    <File Description="Creates folders based on a path string.">brdkFileCreateSubFolders.c</File>
+    <File Description="Write data to a file.">brdkFileWrite.c</File>
+    <File Description="Read data from a file.">brdkFileRead.c</File>
+    <File Description="Header for internal functions for library.">brdkFile_func.h</File>
+    <File Description="Internal functions for library.">brdkFile_func.c</File>
+    <File Description="brdkFile change log file">CHANGELOG</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="AsIODiag" />
+    <Dependency ObjectName="AsUSB" />
+    <Dependency ObjectName="FileIO" />
+    <Dependency ObjectName="brdkSTR" />
+  </Dependencies>
+</Library>

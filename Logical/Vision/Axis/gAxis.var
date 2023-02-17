@@ -1,0 +1,3 @@
+VAR
+	gAxis : gAxis_typ;
+END_VAR

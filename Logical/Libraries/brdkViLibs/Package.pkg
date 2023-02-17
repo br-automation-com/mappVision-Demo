@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Library" Language="Binary">brdkViMapp</Object>
+    <Object Type="Library" Language="ANSIC">brdkViBase</Object>
+    <Object Type="File" Description="brdkViBase change log file">CHANGELOG</Object>
+    <Object Type="Library" Language="Binary">brdkViVF</Object>
+    <Object Type="Library" Language="Binary">brdkViCal</Object>
+    <Object Type="Library" Language="Binary">brdkViImg</Object>
+    <Object Type="Library" Language="Binary">brdkViGeom</Object>
+    <Object Type="Library" Language="Binary">brdkWS</Object>
+  </Objects>
+</Package>

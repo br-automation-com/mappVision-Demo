@@ -21,13 +21,8 @@ END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Camera info*)
 VAR
-	DiagCreateInfo_0 : DiagCreateInfo;
-	DiagGetNumInfo_0 : DiagGetNumInfo;
-	DiagGetStrInfo_0 : DiagGetStrInfo;
-	DiagDisposeInfo_0 : DiagDisposeInfo;
-	OpticsReadStep : ARRAY[0..MAX_NUM_CAMS] OF USINT;
-	Index : UDINT;
-	pChar : REFERENCE TO USINT;
+	brdkViBase_imgTrigger_0 : ARRAY[1..MAX_NUM_LIGHTS] OF brdkViBase_imgTrigger;
+	brdkViBase_getCameraInfo_0 : ARRAY[1..MAX_NUM_LIGHTS] OF brdkViBase_getCameraInfo;
 END_VAR
 (*Constants*)
 VAR CONSTANT

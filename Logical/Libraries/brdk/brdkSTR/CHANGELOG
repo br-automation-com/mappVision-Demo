@@ -1,0 +1,66 @@
+# Change Log
+
+All notable changes to brdkSTR  will be documented in this file.
+brdkSTR  adheres to [Semantic Versioning](http://semver.org/).
+
+## [Unreleased]
+- encode / decode
+	- utf8
+	- base 32
+	- base 64
+- brdkStrAToReal
+- brdkStrRealToA
+
+## [1.7.0] - 2020-12-20
+### Added
+- brdkStrSubDintSearch() - Returns a DINT based on a search.
+- brdkStrSubStrSearch() - Returns a part of a string based on a search.
+- brdkStrMemClear() - Fills amount of 0 to destination.
+
+## [1.6.0] - 2020-11-11
+### Added
+- brdkStrSplit() - Splits a string into an array by a delimiter.
+- brdkStrJoin() - Joins elements from a string array into a string with a delimiter.
+- brdkStrIsAlphabet() - Returns false or true depending of all characters are present in the alphabet. a..z = true.
+- brdkStrIsDigit() - Returns false or true depending of all characters are digits. 0..9 = true.
+- brdkStrWord() - Returns a word in a string given by a number and a delimiter.
+
+## [1.5.0] - 2020-03-01
+### Added
+- brdkStrFillUp() - Fills a string with x amount of chars until max length is reached.
+
+## [1.4.0] - 2019-04-10
+### Added
+- brdkStrIsEmpty() - Returns false or true depending of characters are present in the first position of the string.
+
+## [1.3.1] - 2017-01-12
+### Fixed
+- brdkStrMemMove() - Bug in mem move block where the 1 bytes after amount was set to 0.
+
+## [1.3.0] - 2016-08-02
+- brdkCrc32() - Calculates a CRC32 checksum based on the input string.
+
+## [1.2.0] - 2016-07-25
+### Added
+- brdkStrMemCpy() -  Copies amount of character(s) from source to destination. NO overlapping buffer support.
+- brdkStrMemMove() - Moves amount of character(s) from source to destination. Supports overlaying buffer.
+- brdkStrMove() - Moves a string to another string. Supports overlapping buffers.
+- brdkStrMemCmp() - Compares two memory areas.
+- brdkStrMemSet() - Fills amount of character(s) to destination.
+- brdkStrCmp() - Compares two strings.
+- brdkStrNCpy() - Copies a string to another string. If the function encounters a null character in the source string, the function will add null characters to the destination string until amount character(s) have been written. 
+- brdkStrDintToA() - Converts a DINT into a STRING type.
+- brdkStrAToDint() - Converts a string to a DINT type.
+
+### Changed
+- brdkStrCpy() - no longer supports an overlapping buffer. Use brdkStrMove() for this instead.
+- now support brdkGenHelp() script.
+
+## [1.1.0] - 2016-01-11
+### Added
+- See help for complete function addition list
+
+## [1.0.0] - 2015-12-17
+### Added
+- All functions
+- Help files

@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
 <Configuration>
   <Element ID="MappViewConfiguration" Type="MAPPVIEWCFG">
     <Group ID="Server">
@@ -16,6 +17,7 @@
           <Property ID="DiagnosticPageRole[1]" Value="Everyone" />
         </Selector>
       </Group>
+      <Selector ID="Deployment" Value="DeploymentPLC" />
     </Group>
     <Group ID="OpcUa">
       <Property ID="ServerConnectionTimeout" Value="5000" />
@@ -29,12 +31,13 @@
     <Group ID="Timer" />
     <Group ID="Client">
       <Group ID="ContentCaching">
-        <Property ID="cachingSlots" Value="200" />
+        <Property ID="cachingSlots" Value="0" />
         <Property ID="preserveOldValues" Value="TRUE" />
       </Group>
       <Property ID="defaultVisu" Value="visVision" />
       <Group ID="Widget">
         <Selector ID="renderingPolicy" Value="1" />
+        <Selector ID="securityPolicy" Value="1" />
       </Group>
     </Group>
   </Element>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Library Version="1.07.0" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File>brdkSTR.typ</File>
+    <File>brdkSTR.var</File>
+    <File>brdkSTR.fun</File>
+    <File>brdkStrAppendUdintToA.c</File>
+    <File>brdkStrAToDint.c</File>
+    <File>brdkStrAToUdint.c</File>
+    <File>brdkStrCat.c</File>
+    <File>brdkStrCatAtChar.c</File>
+    <File>brdkStrCharAt.c</File>
+    <File>brdkStrCharCount.c</File>
+    <File>brdkStrCmp.c</File>
+    <File>brdkStrCpy.c</File>
+    <File>brdkStrCrc32.c</File>
+    <File>brdkStrDintToA.c</File>
+    <File>brdkStrEncode.c</File>
+    <File>brdkStrFill.c</File>
+    <File>brdkStrFillUp.c</File>
+    <File>brdkStrIndexOf.c</File>
+    <File>brdkStrInsertAtPos.c</File>
+    <File>brdkStrIsAlphabet.c</File>
+    <File>brdkStrIsDigit.c</File>
+    <File>brdkStrIsEmpty.c</File>
+    <File>brdkStrJoin.c</File>
+    <File>brdkStrLen.c</File>
+    <File>brdkStrMemClear.c</File>
+    <File>brdkStrMemCmp.c</File>
+    <File>brdkStrMemCpy.c</File>
+    <File>brdkStrMemMove.c</File>
+    <File>brdkStrMemSet.c</File>
+    <File>brdkStrMove.c</File>
+    <File>brdkStrNCpy.c</File>
+    <File>brdkStrRemove.c</File>
+    <File>brdkStrRepeat.c</File>
+    <File>brdkStrReplace.c</File>
+    <File>brdkStrReverse.c</File>
+    <File>brdkStrReverseWords.c</File>
+    <File>brdkStrSearch.c</File>
+    <File>brdkStrSlice.c</File>
+    <File>brdkStrSplit.c</File>
+    <File>brdkStrSubDintSearch.c</File>
+    <File>brdkStrSubStr.c</File>
+    <File>brdkStrSubStrSearch.c</File>
+    <File>brdkStrToDec.c</File>
+    <File>brdkStrToHex.c</File>
+    <File>brdkStrToLowerCase.c</File>
+    <File>brdkStrToUpperCase.c</File>
+    <File>brdkStrToUpperCaseWords.c</File>
+    <File>brdkStrTrim.c</File>
+    <File>brdkStrUdintToA.c</File>
+    <File>brdkStrWord.c</File>
+    <File>brdkSTR_func.h</File>
+    <File>brdkSTR_func.c</File>
+    <File Description="brdkSTR change log">CHANGELOG</File>
+    <File Description="brdkSTR license">LICENSE</File>
+  </Files>
+</Library>

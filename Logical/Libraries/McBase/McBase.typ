@@ -91,7 +91,10 @@ TYPE
 		mcERROR_STOP_CTRL_OFF_CMD,  (*Generates an error, ends any active movements and switches off the controller*)
 		mcERROR_V_STOP_CTRL_OFF_CMD,  (*Generates an error, ends any active movements with a speed-controlled ramp and switches off the controller*)
 		mcERROR_COAST_TO_STANDSTILL_CMD,  (*Generates an error, any active movements coast to a stop when controller switched off*)
-		mcERROR_INDUCTION_HALT_CMD  (*Generates an axis error on the drive, movements are stopped with an induction stop of the controller*)
+		mcERROR_INDUCTION_HALT_CMD,  (*Generates an axis error on the drive, movements are stopped with an induction stop of the controller*)
+		mcERROR_STOP_DEC_CMD,  (*Generates an error and ends an active movement with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel*)
+		mcERROR_STOP_DEC_CTRL_OFF_CMD,  (*Generates an error, ends any active movement with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel and switches off the controller*)
+		mcERROR_V_STOP_DEC_CTRL_OFF_CMD  (*Generates an error, ends any active movement with a speed-controlled ramp with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel and switches off the controller*)
 	);
 
 	McEdgeEnum :
@@ -315,6 +318,34 @@ TYPE
 
 	 McProcessParamAdvParType : STRUCT
 		Name : STRING[250]; (*Name of the reference within the component which should be manipulated.*)
+	END_STRUCT;
+
+	McLanguageEnum :
+	(
+		mcLANGUAGE_DEFAULT	:= 0,	(*System language configured in the text system is used*)
+		mcLANGUAGE_ENGLISH,	(*Text in English*)
+		mcLANGUAGE_GERMAN	(*Text in German*)
+	);
+
+	McAdvReadErrTxtParType : STRUCT
+		Language : McLanguageEnum; (*Desired language for read text. This parameter is optional. Default value : mcERROR_TEXT_LANG_DEFAULT.*)
+		ShowInfoSeverity : McSwitchEnum; (*Allow to additionally show in RecordBuffer all related information severity events  linked in hierarchy to error record. *)
+	END_STRUCT;
+
+	McErrorRecordTimeStampType : STRUCT
+		Seconds : UDINT; (*Unix timestamp*)
+		Nanoseconds : UDINT; (*Additional precision information in nanoseconds unit*)
+	END_STRUCT;
+
+	McErrorRecordType : STRUCT
+		Text : STRING[255]; (*Text of message from EventLog*)
+		RecordID : UDINT; (*RecordID of provided error text*)
+		EventID : DINT; (*Event ID of provided error text*)
+		TimeStamp : McErrorRecordTimeStampType; (*TimeStamp of record*)
+	END_STRUCT;
+
+	McErrorRecordsType : STRUCT
+		Record : ARRAY[0..9]OF McErrorRecordType; (*Array of error records to be filled by the function block*)
 	END_STRUCT;
 
 END_TYPE

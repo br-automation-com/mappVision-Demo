@@ -1,0 +1,11 @@
+VAR CONSTANT
+	BRDK_STR_RIGHT_TRIM : DINT := -1; (*trims right side only*)
+	BRDK_STR_LEFT_TRIM : DINT := 1; (*trims left side only*)
+	BRDK_STR_CONVERT_HEX : USINT := 16; (*converts to/from hex*)
+	BRDK_STR_CONVERT_DECIMAL : USINT := 10; (*converts to/from decimal*)
+	BRDK_STR_CONVERT_BINARY : USINT := 2; (*converts to/from binary*)
+	BRDK_STR_BOTH_TRIM : DINT := 0; (*trims both sides*)
+	BRDK_STR_RIGHT_SEARCH : DINT := -1; (*search from right side*)
+	BRDK_STR_LEFT_SEARCH : DINT := 0; (*search from left side*)
+	BRDK_STR_UTF_8 : USINT := 0; (*encoding in utf-8 format*)
+END_VAR

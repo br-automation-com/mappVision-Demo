@@ -392,7 +392,8 @@ TYPE
 		mcAX_TYPE_PURE_VIRT,	(*Purely virtual axis*)
 	 	mcAX_TYPE_PURE_VIRT_GPAI,	(*Purely virtual axis with activated general purpose axis interface*)
 	 	mcAX_TYPE_DS402_SERVO,	(*DS402 conform servo drive axis*)
-	 	mcAX_TYPE_DS402_INV	(*DS402 conform inverter axis*)
+	 	mcAX_TYPE_DS402_INV,	(*DS402 conform inverter axis*)
+	 	mcAX_TYPE_PURE_VIRT_EXT_ENC	(*Purely virtual axis with activated external encoder axis interface*)
 	);
 
 	McAcpAxAutoTuneFeedFwdModeEnum:

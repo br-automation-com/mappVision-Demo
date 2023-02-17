@@ -4,5 +4,10 @@
   <Files>
     <File Description="Init, cyclic, exit code">Main.st</File>
     <File Description="Local variables" Private="true">Variables.var</File>
+    <File Private="true">Types.typ</File>
+    <File Private="true">Variables1.var</File>
+    <File>setupPointersAction.st</File>
+    <File>hmiAction.st</File>
+    <File>processResultsAction.st</File>
   </Files>
 </Program>
