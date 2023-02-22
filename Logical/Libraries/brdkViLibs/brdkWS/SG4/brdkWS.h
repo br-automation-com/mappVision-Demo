@@ -146,6 +146,8 @@ typedef struct brdkWS_Channel
 _BUR_PUBLIC void brdkWS_Server(struct brdkWS_Server* inst);
 _BUR_PUBLIC void brdkWS_Channel(struct brdkWS_Channel* inst);
 _BUR_PUBLIC plcbit brdkWS_MakeFrame(unsigned long pData, unsigned long dataLength, unsigned long pOutframe, unsigned long* outLenght, plcbit text);
+_BUR_PUBLIC plcbit brdkWs_clinetInitFrame(unsigned long pOutframe, unsigned long pKey);
+_BUR_PUBLIC plcbit brdkWS_ClientMakeFrame(unsigned long pData, unsigned long dataLength, unsigned long pOutframe, unsigned long* outLenght, plcbit text);
 
 
 #ifdef __cplusplus

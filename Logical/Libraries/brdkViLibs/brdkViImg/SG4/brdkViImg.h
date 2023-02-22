@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* brdkViImg 5.20.5 */
+/* brdkViImg 5.20.7 */
 
 #ifndef _BRDKVIIMG_
 #define _BRDKVIIMG_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _brdkViImg_VERSION
-#define _brdkViImg_VERSION 5.20.5
+#define _brdkViImg_VERSION 5.20.7
 #endif
 
 #include <bur/plctypes.h>
@@ -42,17 +42,19 @@ extern "C"
 
 /* Constants */
 #ifdef _REPLACE_CONST
- #define BRDKVIS_BASE64_BUSY 64001U
+ #define ERR_BRDKVIIMG_BASE64_BUSY 64001U
  #define BRDKVIIMG_WS_BUFFER_SIZE 10000U
  #define BRDKVIIMG_WS_MAX_NUM_CLIENTS 10U
- #define ERR_NO_SIM_PFILE 64002U
- #define ERR_NO_IMAGE 64000U
+ #define ERR_BRDKVIIMG_SVG_LEN_TOO_SHORT 64003U
+ #define ERR_BRDKVIIMG_NO_SIM_PFILE 64002U
+ #define ERR_BRDKVIIMG_NO_IMAGE 64000U
 #else
- _GLOBAL_CONST unsigned short BRDKVIS_BASE64_BUSY;
+ _GLOBAL_CONST unsigned short ERR_BRDKVIIMG_BASE64_BUSY;
  _GLOBAL_CONST unsigned long BRDKVIIMG_WS_BUFFER_SIZE;
  _GLOBAL_CONST unsigned long BRDKVIIMG_WS_MAX_NUM_CLIENTS;
- _GLOBAL_CONST unsigned short ERR_NO_SIM_PFILE;
- _GLOBAL_CONST unsigned short ERR_NO_IMAGE;
+ _GLOBAL_CONST unsigned short ERR_BRDKVIIMG_SVG_LEN_TOO_SHORT;
+ _GLOBAL_CONST unsigned short ERR_BRDKVIIMG_NO_SIM_PFILE;
+ _GLOBAL_CONST unsigned short ERR_BRDKVIIMG_NO_IMAGE;
 #endif
 
 
@@ -130,12 +132,14 @@ typedef struct brdkViImg_mappViewInternal_typ
 	unsigned char state;
 	struct brdkViImg_getImage getImage;
 	struct brdkViImg_imageArray_typ tmpImgArr;
+	unsigned long strImgStartLen;
+	plcstring strImgStart[201];
+	unsigned long strImgEndLen;
 	plcstring strImgEnd[101];
 	unsigned long startAdrBase64;
 	plcbit init;
 	unsigned long imgH;
 	unsigned long imgW;
-	unsigned long oldPSvgImage;
 	unsigned long maxLength;
 	unsigned long svgBaseLength;
 	plcbit newSvgReady;
@@ -150,6 +154,7 @@ typedef struct brdkViImg_mappViewInternal_typ
 	unsigned long actualMsgLength;
 	plcbit wsSend;
 	unsigned char wsRecData[11][200];
+	unsigned char oldWsNumClients;
 } brdkViImg_mappViewInternal_typ;
 
 typedef struct brdkViImg_mappViewInfo_typ

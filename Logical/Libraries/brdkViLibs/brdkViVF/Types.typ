@@ -8,4 +8,12 @@ TYPE
 		minColor : USINT; (*Minimum color value of the BLOB*)
 		area : UDINT; (*Area of BLOB.*)
 	END_STRUCT;
+	brdkViVF_bloblist_typ : 	STRUCT 
+		pBlobs : UDINT;
+		cnt : UDINT;
+	END_STRUCT;
+	brdkViVF_blob_typ : 	STRUCT 
+		pPx : UDINT;
+		cnt : UDINT;
+	END_STRUCT;
 END_TYPE

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
-<Library Version="1.00.4" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="1.00.5" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library" Description="">
   <Files>
     <File Description="Exported functions and function blocks">brdkViBase.fun</File>
     <File Description="Exported data types">Types.typ</File>
@@ -10,12 +10,13 @@
     <File Description="Function to convert degees to radians">brdkViBase_deg2rad.c</File>
     <File Description="Function to convert radians to degrees">brdkViBase_rad2deg.c</File>
     <File Description="Function to calculate distance betweent two 2D points">brdkViBase_distance.c</File>
-    <File Description="Function to help with triggering of image and wait for results">brdkViBase_imgTrigger.c</File>
-    <File>brdkViBase_CamStatusToString.cpp</File>
-    <File>brdkViBase_getCameraInfo.c</File>
-    <File>brdkViBase_calcOpticInfo.c</File>
-    <File>brdkViBase_LEDIntensity.c</File>
-    <File>brdkViBase_dtStructToString.c</File>
+    <File Description="Function block to help with triggering of image and wait for results">brdkViBase_imgTrigger.c</File>
+    <File Description="Function to convert camera status to string">brdkViBase_camStatusToString.cpp</File>
+    <File Description="Function to get camera information from product number">brdkViBase_getCameraInfo.c</File>
+    <File Description="Function to calculate optic information">brdkViBase_calcOpticInfo.c</File>
+    <File Description="Function to convert exposure time of one color LED to another LED color">brdkViBase_LEDIntensity.c</File>
+    <File Description=" Function to convert a dateTime to a string given a format string">brdkViBase_dateTimeToString.c</File>
+    <File Description="Function block to simulate a camera">brdkViBase_simCam.c</File>
   </Files>
   <Dependencies>
     <Dependency ObjectName="astime" />

@@ -49,3 +49,20 @@ FUNCTION_BLOCK brdkWS_Channel (* Bidirectional Websocket channel with both send 
 		internal : brdkWS_ChannelInternal_typ;
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION brdkWs_clinetInitFrame : BOOL
+	VAR_INPUT
+		pOutframe : UDINT;
+		pKey : UDINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION brdkWS_ClientMakeFrame : BOOL (*Create and append a websocket frame to the send buffer*)
+	VAR_INPUT
+		pData : UDINT; (*Pointer to the data that should be included in the frame*)
+		dataLength : UDINT; (*Lenght of the data that should be included in the frame*)
+		pOutframe : UDINT; (*Pointer to send buffer*)
+		outLenght : REFERENCE TO UDINT; (*Pointer to actual lenght of the send buffer, will be incremented with dataLength*)
+		text : BOOL; (*Frame type can be text (TRUE) or binary (FALSE)*)
+	END_VAR
+END_FUNCTION

@@ -17,12 +17,14 @@ TYPE
 		state : USINT;
 		getImage : brdkViImg_getImage;
 		tmpImgArr : brdkViImg_imageArray_typ;
+		strImgStartLen : UDINT;
+		strImgStart : STRING[200];
+		strImgEndLen : UDINT;
 		strImgEnd : STRING[100];
 		startAdrBase64 : UDINT;
 		init : BOOL;
 		imgH : UDINT;
 		imgW : UDINT;
-		oldPSvgImage : UDINT;
 		maxLength : UDINT;
 		svgBaseLength : UDINT;
 		newSvgReady : BOOL;
@@ -37,6 +39,7 @@ TYPE
 		actualMsgLength : UDINT;
 		wsSend : BOOL;
 		wsRecData : ARRAY[0..BRDKVIIMG_WS_MAX_NUM_CLIENTS,0..199]OF USINT;
+		oldWsNumClients : USINT;
 	END_STRUCT;
 	brdkViImg_mappViewInfo_typ : 	STRUCT  (*Information used by mappView.*)
 		failedCount : UDINT; (*Amount of failed image downloads from the camera.*)

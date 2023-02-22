@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* brdkViMapp 1.01.1 */
+/* brdkViMapp 1.01.2 */
 
 #ifndef _BRDKVIMAPP_
 #define _BRDKVIMAPP_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _brdkViMapp_VERSION
-#define _brdkViMapp_VERSION 1.01.1
+#define _brdkViMapp_VERSION 1.01.2
 #endif
 
 #include <bur/plctypes.h>
@@ -31,6 +31,7 @@ typedef enum BRDKVIMAPP_COMPILEROPTION_ENM
 typedef struct brdkViMapp_VF_typ
 {	plcstring widgetModels[150001];
 	plcstring ROI[150001];
+	plcstring models[150001];
 	plcstring params[1001];
 } brdkViMapp_VF_typ;
 

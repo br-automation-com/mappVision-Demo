@@ -9,12 +9,12 @@
 	};
 #endif
 
-#include<iostream>
+#include <iostream>
 #include <string.h>
 
 unsigned long bur_heap_size=0xFFFFF;
 /* TODO: Add your comment here */
-plcbit brdkViBase_CamStatusToString(unsigned long status, unsigned long pString)
+plcbit brdkViBase_camStatusToString(unsigned long status, unsigned long pString)
 {
 	int i;
 

@@ -825,4 +825,13 @@ Maximum line position of the BLOB area*)
 		simDelay : TON;
 		waitForImage : BOOL;
 	END_STRUCT;
+	brdkViBase_simCam_internal_typ : 	STRUCT 
+		imgCnt : USINT;
+		cnt : USINT;
+		procNettime : DINT;
+		triggerNettime : DINT;
+		procState : USINT;
+		state : USINT;
+		searchDone : BOOL;
+	END_STRUCT;
 END_TYPE

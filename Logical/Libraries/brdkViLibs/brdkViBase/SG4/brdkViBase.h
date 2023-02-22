@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* brdkViBase 1.00.4 */
+/* brdkViBase 1.00.5 */
 
 #ifndef _BRDKVIBASE_
 #define _BRDKVIBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _brdkViBase_VERSION
-#define _brdkViBase_VERSION 1.00.4
+#define _brdkViBase_VERSION 1.00.5
 #endif
 
 #include <bur/plctypes.h>
@@ -20,14 +20,17 @@ extern "C"
 #ifdef _SG3
 		#include "astime.h"
 		#include "standard.h"
+		#include "AsIODiag.h"
 #endif
 #ifdef _SG4
 		#include "astime.h"
 		#include "standard.h"
+		#include "AsIODiag.h"
 #endif
 #ifdef _SGC
 		#include "astime.h"
 		#include "standard.h"
+		#include "AsIODiag.h"
 #endif
 
 
@@ -54,6 +57,7 @@ extern "C"
  #define BRDKVIBASE_CAM_LED_WHITE 99U
  #define BRDKVIBASE_CAM_LED_UV 0U
  #define BRDKVIBASE_CAM_LED_IR 100U
+ #define BRDKVIBASE_ERR_INVALID_POINT 3104U
 #else
  _GLOBAL_CONST unsigned char BRDKVIBASE_CAM_IMG_ERR_INVALID;
  _GLOBAL_CONST unsigned char BRDKVIBASE_CAM_IMG_ERR_FILE;
@@ -76,6 +80,7 @@ extern "C"
  _GLOBAL_CONST unsigned char BRDKVIBASE_CAM_LED_WHITE;
  _GLOBAL_CONST unsigned char BRDKVIBASE_CAM_LED_UV;
  _GLOBAL_CONST unsigned char BRDKVIBASE_CAM_LED_IR;
+ _GLOBAL_CONST unsigned short BRDKVIBASE_ERR_INVALID_POINT;
 #endif
 
 
@@ -87,6 +92,53 @@ typedef enum brdkViBase_angle_enum
 	BRDKVIBASE_ANGLE_Y,
 	BRDKVIBASE_ANGLE_Z
 } brdkViBase_angle_enum;
+
+typedef enum BRDKVIBASE_PX_CONFIG_ENM
+{	BRDKVIBASE_PX_CONFIG_STANDARD = 0,
+	BRDKVIBASE_PX_CONFIG_BINNING = 1,
+	BRDKVIBASE_PX_CONFIG_SUBSAMPLING = 2
+} BRDKVIBASE_PX_CONFIG_ENM;
+
+typedef enum BRDKVIBASE_CPU_ENM
+{	BRDKVIBASE_CPU_1_DUAL = 0,
+	BRDKVIBASE_CPU_2_QUAD = 1
+} BRDKVIBASE_CPU_ENM;
+
+typedef enum BRDKVIBASE_SENSOR_TYPE_ENM
+{	BRDKVIBASE_SENSOR_1_3_MP = 0,
+	BRDKVIBASE_SENSOR_1_3_MP_LINE = 1,
+	BRDKVIBASE_SENSOR_3_5_MP = 2,
+	BRDKVIBASE_SENSOR_5_3_MP_LINE = 3
+} BRDKVIBASE_SENSOR_TYPE_ENM;
+
+typedef enum BRDKVIBASE_LED_LENS_ENM
+{	BRDKVIBASE_LED_LENS_0_NONE = 0,
+	BRDKVIBASE_LED_LENS_1_WIDE = 1,
+	BRDKVIBASE_LED_LENS_2_STANDARD = 2,
+	BRDKVIBASE_LED_LENS_3_WIDE = 3
+} BRDKVIBASE_LED_LENS_ENM;
+
+typedef enum BRDKVIBASE_LENS_ENM
+{	BRDKVIBASE_LENS_C_MOUNT = 0,
+	BRDKVIBASE_LENS_4_6 = 1,
+	BRDKVIBASE_LENS_6_0 = 2,
+	BRDKVIBASE_LENS_8_0 = 3,
+	BRDKVIBASE_LENS_12_0 = 4,
+	BRDKVIBASE_LENS_12_0_MACRO = 5,
+	BRDKVIBASE_LENS_16_0 = 6,
+	BRDKVIBASE_LENS_25_0 = 7
+} BRDKVIBASE_LENS_ENM;
+
+typedef enum BRDKVIBASE_LED_COLOR_ENM
+{	BRDKVIBASE_LED_COLOR_0_NONE = 0,
+	BRDKVIBASE_LED_COLOR_3_BLUE = 1,
+	BRDKVIBASE_LED_COLOR_8_RED = 2,
+	BRDKVIBASE_LED_COLOR_A_UV = 3,
+	BRDKVIBASE_LED_COLOR_D_IR = 4,
+	BRDKVIBASE_LED_COLOR_F_W = 5,
+	BRDKVIBASE_LED_COLOR_Q_RGBL = 6,
+	BRDKVIBASE_LED_COLOR_R_RBIRW = 7
+} BRDKVIBASE_LED_COLOR_ENM;
 
 typedef struct brdkViBase_hw_in_common_typ
 {	unsigned long hardwareVariant;
@@ -106,6 +158,64 @@ typedef struct brdkViBase_3d_typ
 	double z;
 	double x;
 } brdkViBase_3d_typ;
+
+typedef struct brdkViBase_cam_recipe_typ
+{	unsigned char gainLevel;
+	unsigned short focus;
+	unsigned long exposureTime;
+	unsigned char flashColor;
+	unsigned char flashSegment;
+	plcbit chromaticLock;
+} brdkViBase_cam_recipe_typ;
+
+typedef struct brdkViBase_getCameraInfo_int_typ
+{	struct DiagGetNumInfo diagGetNumInfo_0;
+	struct DiagGetStrInfo diagGetStrInfo_0;
+	struct DiagCreateInfo diagCreateInfo_0;
+	unsigned long index;
+	plcstring path[257];
+	unsigned char state;
+	struct DiagDisposeInfo diagDisposeInfo_0;
+} brdkViBase_getCameraInfo_int_typ;
+
+typedef struct brdkViBase_camInfo_typ
+{	enum BRDKVIBASE_LED_COLOR_ENM LED_color;
+	enum BRDKVIBASE_LED_LENS_ENM LED_lens;
+	enum BRDKVIBASE_CPU_ENM cpu;
+	enum BRDKVIBASE_LENS_ENM lens;
+	enum BRDKVIBASE_SENSOR_TYPE_ENM sensor;
+	enum BRDKVIBASE_PX_CONFIG_ENM pixelConfiguration;
+	plcstring orderNr[21];
+	float distance;
+} brdkViBase_camInfo_typ;
+
+typedef struct brdkViBase_cam_info_sensor_typ
+{	unsigned long maxHeightPx;
+	unsigned long maxWidthPx;
+	float pixelSize_um;
+} brdkViBase_cam_info_sensor_typ;
+
+typedef struct brdkViBase_cam_info_lens_typ
+{	float focalLength_mm;
+	float maxObjectDist_mm;
+	float minObjectDist_mm;
+	float aperture;
+	plcbit validDistance;
+	float distanceLens_mm;
+	float circleOfConfusion_mm;
+	float hyperFocalDistance_mm;
+	float depthOfFieldNearPos_mm;
+	float depthOfFieldFarPos_mm;
+	float depthOfField_mm;
+	float fieldOfView_X_mm;
+	float fieldOfView_Y_mm;
+	float resolution_mmPerPx;
+} brdkViBase_cam_info_lens_typ;
+
+typedef struct brdkViBase_opticInfo_typ
+{	struct brdkViBase_cam_info_sensor_typ sensor;
+	struct brdkViBase_cam_info_lens_typ lens;
+} brdkViBase_opticInfo_typ;
 
 typedef struct brdkViBase_cam_hw_out_par_typ
 {	unsigned char statusLED;
@@ -872,6 +982,30 @@ typedef struct brdkViBase_imgTrigger_local_typ
 	plcbit waitForImage;
 } brdkViBase_imgTrigger_local_typ;
 
+typedef struct brdkViBase_simCam_internal_typ
+{	unsigned char imgCnt;
+	unsigned char cnt;
+	signed long procNettime;
+	signed long triggerNettime;
+	unsigned char procState;
+	unsigned char state;
+	plcbit searchDone;
+} brdkViBase_simCam_internal_typ;
+
+typedef struct brdkViBase_getCameraInfo
+{
+	/* VAR_INPUT (analog) */
+	unsigned long pDevicePath;
+	struct brdkViBase_camInfo_typ* pInfo;
+	/* VAR_OUTPUT (analog) */
+	unsigned short status;
+	/* VAR (analog) */
+	struct brdkViBase_getCameraInfo_int_typ internal;
+	/* VAR_INPUT (digital) */
+	plcbit execute;
+	plcbit errorReset;
+} brdkViBase_getCameraInfo_typ;
+
 typedef struct brdkViBase_imgTrigger
 {
 	/* VAR_INPUT (analog) */
@@ -898,16 +1032,34 @@ typedef struct brdkViBase_imgTrigger
 	plcbit busy;
 } brdkViBase_imgTrigger_typ;
 
+typedef struct brdkViBase_simCam
+{
+	/* VAR_INPUT (analog) */
+	struct brdkViBase_cam_hw_typ* pCamHw;
+	unsigned char triggerConf;
+	signed long cameraProcessingTime;
+	signed long nettime;
+	/* VAR_OUTPUT (analog) */
+	unsigned short status;
+	/* VAR (analog) */
+	struct brdkViBase_simCam_internal_typ internal;
+} brdkViBase_simCam_typ;
+
 
 
 /* Prototyping of functions and function blocks */
+_BUR_PUBLIC void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst);
 _BUR_PUBLIC void brdkViBase_imgTrigger(struct brdkViBase_imgTrigger* inst);
-_BUR_PUBLIC double brdkViBase_distance(double x1, double y1, double x2, double y2);
-_BUR_PUBLIC signed short brdkViBase_random(signed short min, signed short max);
-_BUR_PUBLIC plcbit brdkViBase_initRand(unsigned long seed);
+_BUR_PUBLIC void brdkViBase_simCam(struct brdkViBase_simCam* inst);
+_BUR_PUBLIC plcbit brdkViBase_calcOpticInfo(struct brdkViBase_camInfo_typ* camInfo, struct brdkViBase_opticInfo_typ* opticInfo);
+_BUR_PUBLIC plcbit brdkViBase_camStatusToString(unsigned long status, unsigned long pString);
 _BUR_PUBLIC double brdkViBase_deg2rad(double deg);
-_BUR_PUBLIC double brdkViBase_rad2deg(double rad);
+_BUR_PUBLIC double brdkViBase_distance(double x1, double y1, double x2, double y2);
+_BUR_PUBLIC plcbit brdkViBase_dateTimeToString(plcdt date, plcstring* format, unsigned long pStr);
+_BUR_PUBLIC plcbit brdkViBase_initRand(unsigned long seed);
 _BUR_PUBLIC unsigned long brdkViBase_LEDIntensity(unsigned char LEDLenseType, unsigned short distance, unsigned long exposureTime, unsigned char fromColor, unsigned char toColor);
+_BUR_PUBLIC double brdkViBase_rad2deg(double rad);
+_BUR_PUBLIC signed short brdkViBase_random(signed short min, signed short max);
 
 
 #ifdef __cplusplus

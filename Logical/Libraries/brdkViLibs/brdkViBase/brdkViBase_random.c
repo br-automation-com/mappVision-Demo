@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 
+
 /* Get a random number between min and max. */
 signed short brdkViBase_random(signed short min, signed short max)
 {

@@ -79,7 +79,7 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Translate camera status in readable text
 		// -----------------------------------------------------------------------------------------------------------
-		brdkViBase_CamStatusToString(hw.camera.in.status.cameraStatus,ADR(hmi.out.camera.statusText));
+		brdkViBase_camStatusToString(hw.camera.in.status.cameraStatus,ADR(hmi.out.camera.statusText));
 		
 		// -----------------------------------------------------------------------------------------------------------
 		// Check if vision cockpit is open
@@ -104,6 +104,7 @@ PROGRAM _CYCLIC
 		IF hw.camera.out.par.focus <> hmi.in.recipe.cam.focus THEN
 			hmi.in.cameraInfo.distance := hmi.in.recipe.cam.focus;
 		END_IF
+	
 		
 		
 		IF hmi.in.cameraInfo.orderNr <> '' AND this.brdkViBase_getCameraInfo_0.status = ERR_OK THEN
@@ -215,7 +216,7 @@ PROGRAM _CYCLIC
 			// create filename with VF name and current date of the image
 			brsstrcpy(ADR(this.brdkFileWrite.fileName),ADR(hmi.out.camera.visionFunction));
 			brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('-'));
-			brdkViBase_dtStructToString(this.DTGetTime_0.DT1,'%d-%m-%Y',ADR(this.brdkFileWrite.fileName));
+			brdkViBase_dateTimeToString(this.DTGetTime_0.DT1,'%d-%m-%Y',ADR(this.brdkFileWrite.fileName));
 			CASE this.mappView.imageFormat OF
 				BRDKVIIMG_IMG_TYPE_JPEG:
 					brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('.jpg'));
