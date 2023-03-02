@@ -12,7 +12,7 @@
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
       <Parameter ID="Mode" Value="Manual" />
-      <Parameter ID="InternetAddress" Value="10.49.140.161" />
+      <Parameter ID="InternetAddress" Value="192.168.225.212" />
       <Parameter ID="SubnetMask" Value="255.255.255.0" />
       <Parameter ID="InaNodeNumber" Value="212" />
       <Parameter ID="ActivateSnmp" Value="2" />
@@ -26,7 +26,6 @@
     <Parameter ID="ConfigurationID" Value="Vision_Sample" />
     <Parameter ID="ConfigVersion" Value="2.0.0" />
     <Parameter ID="UserPartitionSize" Value="400" />
-    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="PermanentPvSize" Value="2000" />
     <Parameter ID="RemanentGlobalPvSize" Value="20000" />
     <Parameter ID="VolatileGlobalPvSize" Value="256000" />

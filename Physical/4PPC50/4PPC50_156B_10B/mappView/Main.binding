@@ -66,5 +66,70 @@
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="enable" />
 		</Binding>
-	</Bindings>
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.shapeSelector" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="shapeSelector" attribute="dataProvider" />
+			
+</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.length" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="lengthInput" attribute="value" />		
+		</Binding>
+	
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.width" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="widthInput" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.radius" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="radiusInput" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.rotation" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="rotationInput" attribute="value" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.fillColorSelector" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="fillColorMenu" attribute="dataProvider" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.strokeColorSelector" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="strokeColorMenu" attribute="dataProvider" />
+		</Binding>
+
+
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.strStyle" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="TextOutput1" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.realStrokeOpac" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="strokeOpacityInput" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.realFillOpac" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="fillOpacityInput" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.intStrokeWidth" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="strokeWidthInput" attribute="value" />
+		</Binding>
+		
+				
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.strFillColor" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="fillColorMenu" attribute="selectedValue" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.strStrokeColor" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="strokeColorMenu" attribute="selectedValue" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.reset" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="resetButton" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>

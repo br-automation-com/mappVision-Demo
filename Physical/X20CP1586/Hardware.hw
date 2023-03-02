@@ -157,7 +157,7 @@
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
       <Parameter ID="Mode" Value="Manual" />
-      <Parameter ID="InternetAddress" Value="192.168.225.100" />
+      <Parameter ID="InternetAddress" Value="192.168.225.211" />
       <Parameter ID="SubnetMask" Value="255.255.255.0" />
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Visu" />

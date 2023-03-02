@@ -20,6 +20,7 @@ TYPE
 		brdkFileWrite : brdkFileWrite;
 		dtNow : DTStructure;
 		DTGetTime_0 : DTGetTime;
+		tmp2D : brdkViBase_2d_typ;
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
 		in : hmi_in_typ;
@@ -59,6 +60,32 @@ TYPE
 		saveDiagnositc : BOOL; (*Save vision diagnostic *)
 		loadVA : BOOL; (*Load Vision application*)
 		saveImage : BOOL;
+		elemId : STRING[80];
+		click : BOOL;
+		y : REAL;
+		x : REAL;
+		shapeSelector : ARRAY[0..2]OF STRING[100] := ['{"value":"1", "text":"Rectangle"}','{"value":"2", "text":"Circle"}','{"value":"3", "text":"Triangle"}'];
+		strokeColorSelector : ARRAY[0..5]OF STRING[100] := ['{"value":";stroke:black", "text":"Black"}','{"value":";stroke:white", "text":"White"}','{"value":";stroke:red", "text":"Red"}','{"value":";stroke:green", "text":"Green"}','{"value":";stroke:blue", "text":"Blue"}','{"value":";stroke:yellow", "text":"Yellow"}'];
+		fillColorSelector : ARRAY[0..5]OF STRING[100] := ['{"value":"fill:black", "text":"Black"}','{"value":"fill:white", "text":"White"}','{"value":"fill:red", "text":"Red"}','{"value":"fill:green", "text":"Green"}','{"value":"fill:blue", "text":"Blue"}','{"value":"fill:yellow", "text":"Yellow"}'];
+		draw : hmi_in_cmd_draw_typ;
+	END_STRUCT;
+	hmi_in_cmd_draw_typ : 	STRUCT 
+		strShape : STRING[80]; (*'1' = rectangle, '2' = circle, '3' = triangle*)
+		intShape : INT; (*1 = rectangle, 2 = circle, 3 = triangle*)
+		radius : REAL;
+		width : REAL;
+		length : REAL;
+		rotation : REAL;
+		strFillColor : STRING[80];
+		strStrokeColor : STRING[80];
+		strStrokeWidth : STRING[80];
+		strFillOpac : STRING[80];
+		strStrokeOpac : STRING[80];
+		intStrokeWidth : INT;
+		realFillOpac : REAL;
+		realStrokeOpac : REAL;
+		strStyle : STRING[240];
+		reset : BOOL;
 	END_STRUCT;
 	hmi_in_typ : 	STRUCT 
 		cmd : hmi_in_cmd_typ;

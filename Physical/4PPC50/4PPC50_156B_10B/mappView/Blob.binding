@@ -69,5 +69,8 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.EnhancedBlobInformation" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemLength" attribute="visible" />
 		</Binding>
+
+
+
 	</Bindings>
 </BindingsSet>

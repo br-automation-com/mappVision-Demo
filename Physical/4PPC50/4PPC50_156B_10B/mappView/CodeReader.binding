@@ -53,5 +53,9 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.PositionX" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosX" attribute="node" />
 		</Binding>
-	</Bindings>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.strShape" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="shapeSelector" attribute="selectedValue" />
+</Binding>
+</Bindings>
 </BindingsSet>

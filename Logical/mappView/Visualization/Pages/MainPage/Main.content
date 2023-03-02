@@ -8,5 +8,34 @@
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="245" left="1335" width="80" height="80" zIndex="22" image="Media/back.svg" borderWidth="0px" />
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="245" left="1525" width="80" height="80" zIndex="23" image="Media/forward.svg" borderWidth="0px" />
     <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="35" left="35" width="1245" height="975" zIndex="24" />
+    <Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="440" left="1330" width="415" height="485" zIndex="25" childPositioning="relative" text="Draw shape" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
+      <Widgets>
+        <Widget xsi:type="widgets.brease.DropDownBox" id="shapeSelector" top="0" left="0" width="200" height="76" zIndex="0" listWidth="250" selectedValue="1" margin="20px" listPadding="0px 30px" fontSize="32px" />
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="resetButton" top="0" left="0" width="130" height="75" zIndex="2" text="Erase all" fontSize="25px" margin="20px" />
+        <Widget xsi:type="widgets.brease.GroupBox" id="shapePropBox" top="0" left="-25" width="415" height="310" zIndex="1" childPositioning="relative" text="Shape properties" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" style="transparent">
+          <Widgets>
+            <Widget xsi:type="widgets.brease.Label" id="lengthLabel" top="0" left="5" width="200" zIndex="1" text="Length (x)" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.NumericInput" id="lengthInput" top="0" left="0" width="140" zIndex="0" value="80" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="widthLabel" top="0" left="5" width="200" zIndex="2" text="Width (y)" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.NumericInput" id="widthInput" top="0" left="0" width="140" zIndex="7" value="80" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="radiusLabel" top="0" left="5" width="200" zIndex="3" text="Radius" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.NumericInput" id="radiusInput" top="0" left="0" width="140" zIndex="4" value="60" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="rotationLabel" top="0" left="5" width="200" zIndex="5" text="Rotation" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.NumericInput" id="rotationInput" top="0" left="0" width="140" zIndex="6" maxValue="360" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="fillColorLabel" top="0" left="5" width="200" zIndex="8" text="Fill color" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.DropDownBox" id="fillColorMenu" top="0" left="0" width="140" zIndex="16" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="fillOpacityLabel" top="0" left="5" width="200" zIndex="12" text="Fill opacity" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.NumericInput" id="fillOpacityInput" top="0" left="0" width="140" zIndex="13" maxValue="1" value="0.5" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="strokeColorLabel" top="0" left="5" width="200" zIndex="9" text="Border color" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.DropDownBox" id="strokeColorMenu" top="0" left="0" width="140" zIndex="17" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="strokeWidthLabel" top="0" left="5" width="200" zIndex="10" text="Border width" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.NumericInput" id="strokeWidthInput" top="0" left="0" width="140" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" value="1" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.Label" id="strokeOpacityLabel" top="0" left="5" width="200" zIndex="14" text="Border opacity" fontSize="25px" />
+            <Widget xsi:type="widgets.brease.NumericInput" id="strokeOpacityInput" top="0" left="0" width="140" zIndex="15" maxValue="1" value="1" fontSize="25px" />
+          </Widgets>
+        </Widget>
+      </Widgets>
+    </Widget>
+    <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput1" top="745" left="1780" width="750" zIndex="26" />
   </Widgets>
 </Content>

@@ -80,6 +80,44 @@
           </VariableCommon>
         </Variable>
         <Variable Name="commonRecipe" RecursiveEnable="2" />
+        <Variable Name="hmi">
+          <Variable Name="in">
+            <Variable Name="cmd">
+              <Variable Name="repetitiveTrigger" />
+              <Variable Name="trigger" />
+              <Variable Name="autoSearch" />
+              <Variable Name="resetInfo" />
+              <Variable Name="saveDiagnositc" />
+              <Variable Name="loadVA" />
+              <Variable Name="saveImage" />
+              <Variable Name="elemId" />
+              <Variable Name="click" />
+              <Variable Name="y" />
+              <Variable Name="x" />
+              <Variable Name="draw">
+                <Variable Name="radius" />
+                <Variable Name="width" />
+                <Variable Name="length" />
+                <Variable Name="rotation" />
+                <Variable Name="strShape" />
+                <Variable Name="intShape" />
+                <Variable Name="strStyle" />
+                <Variable Name="strStrokeWidth" />
+                <Variable Name="strFillOpac" />
+                <Variable Name="strStrokeOpac" />
+                <Variable Name="realStrokeOpac" />
+                <Variable Name="intStrokeWidth" />
+                <Variable Name="realFillOpac" />
+                <Variable Name="strFillColor" />
+                <Variable Name="strStrokeColor" />
+                <Variable Name="reset" />
+              </Variable>
+              <Variable Name="shapeSelector" />
+              <Variable Name="strokeColorSelector" />
+              <Variable Name="fillColorSelector" />
+            </Variable>
+          </Variable>
+        </Variable>
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />
