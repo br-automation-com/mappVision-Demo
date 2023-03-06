@@ -34,8 +34,15 @@
         <Property ID="ChannelID" Value="EnhancedBlobInfo" />
       </Group>
     </Group>
-    <Group ID="ImgProcessingVariables" />
+    <Group ID="ImageAcquisition">
+      <Group ID="BaseSettings">
+        <Property ID="FocusScale" Value="1" />
+      </Group>
+    </Group>
     <Group ID="VisionFunctionSet">
+      <Group ID="VisionProgramSettings">
+        <Property ID="CompilerOption" Value="0" />
+      </Group>
       <Group ID="VfInstance[1]">
         <Property ID="VfName" Value="VfInstanceBlob" />
         <Property ID="VfExecutionNr" Value="1" />
@@ -59,11 +66,6 @@
                 <Property ID="IoParameter" Value="NumSearchMax" />
               </Selector>
             </Group>
-            <Group ID="Alignment">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
-              </Selector>
-            </Group>
             <Group ID="RegionFeatures">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="RegionalFeatures" />
@@ -72,6 +74,11 @@
             <Group ID="EnhancedBlobInformation">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="EnhancedBlobInfo" />
+              </Selector>
+            </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
             <Group ID="OffsetROIX">
@@ -101,10 +108,6 @@
             </Group>
           </Group>
         </Selector>
-        <Group ID="Position">
-          <Property ID="X" Value="1" />
-          <Property ID="Y" Value="0" />
-        </Group>
       </Group>
     </Group>
     <Group ID="ImgProcessingOutputs">

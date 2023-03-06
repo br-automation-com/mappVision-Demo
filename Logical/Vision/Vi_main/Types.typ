@@ -21,6 +21,7 @@ TYPE
 		dtNow : DTStructure;
 		DTGetTime_0 : DTGetTime;
 		tmp2D : brdkViBase_2d_typ;
+		elemId : STRING[80];
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
 		in : hmi_in_typ;
@@ -29,6 +30,8 @@ TYPE
 	hmi_out_vf_typ : 	STRUCT 
 		processingTime : UDINT;
 		numResults : USINT;
+		ocrDataResult : STRING[240];
+		ocrData : ARRAY[0..49]OF STRING[20];
 	END_STRUCT;
 	hmi_out_camera_typ : 	STRUCT 
 		simulated : BOOL;
@@ -68,23 +71,25 @@ TYPE
 		strokeColorSelector : ARRAY[0..5]OF STRING[100] := ['{"value":";stroke:black", "text":"Black"}','{"value":";stroke:white", "text":"White"}','{"value":";stroke:red", "text":"Red"}','{"value":";stroke:green", "text":"Green"}','{"value":";stroke:blue", "text":"Blue"}','{"value":";stroke:yellow", "text":"Yellow"}'];
 		fillColorSelector : ARRAY[0..5]OF STRING[100] := ['{"value":"fill:black", "text":"Black"}','{"value":"fill:white", "text":"White"}','{"value":"fill:red", "text":"Red"}','{"value":"fill:green", "text":"Green"}','{"value":"fill:blue", "text":"Blue"}','{"value":"fill:yellow", "text":"Yellow"}'];
 		draw : hmi_in_cmd_draw_typ;
+		resultReady : BOOL;
 	END_STRUCT;
 	hmi_in_cmd_draw_typ : 	STRUCT 
 		strShape : STRING[80]; (*'1' = rectangle, '2' = circle, '3' = triangle*)
 		intShape : INT; (*1 = rectangle, 2 = circle, 3 = triangle*)
-		radius : REAL;
-		width : REAL;
-		length : REAL;
+		radius : REAL := 60;
+		width : REAL := 80;
+		length : REAL := 80;
 		rotation : REAL;
 		strFillColor : STRING[80];
 		strStrokeColor : STRING[80];
 		strStrokeWidth : STRING[80];
 		strFillOpac : STRING[80];
 		strStrokeOpac : STRING[80];
-		intStrokeWidth : INT;
-		realFillOpac : REAL;
-		realStrokeOpac : REAL;
+		intStrokeWidth : INT := 6;
+		realFillOpac : REAL := 0.2;
+		realStrokeOpac : REAL := 1;
 		strStyle : STRING[240];
+		strElemId : STRING[80];
 		reset : BOOL;
 	END_STRUCT;
 	hmi_in_typ : 	STRUCT 

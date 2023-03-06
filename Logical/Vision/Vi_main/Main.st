@@ -72,7 +72,6 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
-	processResultsAction;
 	FOR idx:= START_IDX TO NUM_CAMS BY 1 DO 
 		setupPointersAction;
 		
@@ -176,7 +175,7 @@ PROGRAM _CYCLIC
 			this.mappView.updateImage := TRUE; // Trigger an update of the image on hmi
 			this.DTGetTime_0(enable := TRUE);
 			
-			(*processResultsAction; // Process results action*)
+			processResultsAction; // Process results action
 			
 		END_IF
 		

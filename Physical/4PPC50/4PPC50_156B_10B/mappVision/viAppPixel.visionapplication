@@ -28,8 +28,15 @@
         <Property ID="ChannelID" Value="OffsetRoiRotationCenterY" />
       </Group>
     </Group>
-    <Group ID="ImgProcessingVariables" />
+    <Group ID="ImageAcquisition">
+      <Group ID="BaseSettings">
+        <Property ID="FocusScale" Value="1" />
+      </Group>
+    </Group>
     <Group ID="VisionFunctionSet">
+      <Group ID="VisionProgramSettings">
+        <Property ID="CompilerOption" Value="0" />
+      </Group>
       <Group ID="VfInstance[1]">
         <Property ID="VfName" Value="PixelCounter" />
         <Property ID="VfExecutionNr" Value="1" />
@@ -88,10 +95,6 @@
             </Group>
           </Group>
         </Selector>
-        <Group ID="Position">
-          <Property ID="X" Value="1" />
-          <Property ID="Y" Value="0" />
-        </Group>
       </Group>
     </Group>
     <Group ID="ImgProcessingOutputs">

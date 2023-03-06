@@ -115,9 +115,12 @@
               <Variable Name="shapeSelector" />
               <Variable Name="strokeColorSelector" />
               <Variable Name="fillColorSelector" />
+              <Variable Name="resultReady" />
             </Variable>
           </Variable>
         </Variable>
+        <Variable Name="hw" RecursiveEnable="2" />
+        <Variable Name="hwInstance" RecursiveEnable="2" />
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />

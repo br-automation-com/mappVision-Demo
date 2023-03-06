@@ -101,10 +101,10 @@
 		</Binding>
 
 
-		<Binding mode="twoWay">
+		<!--<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.strStyle" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="TextOutput1" attribute="value" />
-		</Binding>
+		</Binding>-->
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.realStrokeOpac" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="strokeOpacityInput" attribute="value" />
@@ -130,6 +130,10 @@
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.reset" attribute="value" />
 <Target xsi:type="brease" contentRefId="contentMain" widgetRefId="resetButton" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.resultReady" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="resultReady" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

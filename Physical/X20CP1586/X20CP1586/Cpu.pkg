@@ -24,6 +24,6 @@
     <Safety SafetyRelease="0.0" />
     <Transfer SavedOfflineInstallationFolder="" SavedPipDestinationFolder="" SavedRuntimeUtilityCenterPackagePath="" />
     <Vc FirmwareVersion="V4.72.6" />
-    <OnlineConfiguration Name="X20CP1586_2" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=251" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.100 /REPO=11159 /ANSL=1 /PT=11169" Description="" />
+    <OnlineConfiguration Name="X20CP1586" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=1" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.225.211 /REPO=11159 /ANSL=1 /PT=11169" Description="" />
   </Configuration>
 </Cpu>

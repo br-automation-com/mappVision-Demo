@@ -34,8 +34,15 @@
         <Property ID="ChannelID" Value="Grading" />
       </Group>
     </Group>
-    <Group ID="ImgProcessingVariables" />
+    <Group ID="ImageAcquisition">
+      <Group ID="BaseSettings">
+        <Property ID="FocusScale" Value="1" />
+      </Group>
+    </Group>
     <Group ID="VisionFunctionSet">
+      <Group ID="VisionProgramSettings">
+        <Property ID="CompilerOption" Value="0" />
+      </Group>
       <Group ID="VfInstance[1]">
         <Property ID="VfName" Value="VfInstanceOCR" />
         <Property ID="VfExecutionNr" Value="1" />
@@ -56,14 +63,14 @@
                 <Property ID="IoParameter" Value="NumSearchMax" />
               </Selector>
             </Group>
-            <Group ID="ParameterMode">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="ParameterMode" />
-              </Selector>
-            </Group>
             <Group ID="Timeout">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="Timeout" />
+              </Selector>
+            </Group>
+            <Group ID="ParameterMode">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="ParameterMode" />
               </Selector>
             </Group>
             <Group ID="Grading">
@@ -98,10 +105,6 @@
             </Group>
           </Group>
         </Selector>
-        <Group ID="Position">
-          <Property ID="X" Value="1" />
-          <Property ID="Y" Value="0" />
-        </Group>
       </Group>
     </Group>
     <Group ID="ImgProcessingOutputs">

@@ -37,8 +37,15 @@
         <Property ID="ChannelID" Value="MaxOverlay" />
       </Group>
     </Group>
-    <Group ID="ImgProcessingVariables" />
+    <Group ID="ImageAcquisition">
+      <Group ID="BaseSettings">
+        <Property ID="FocusScale" Value="1" />
+      </Group>
+    </Group>
     <Group ID="VisionFunctionSet">
+      <Group ID="VisionProgramSettings">
+        <Property ID="CompilerOption" Value="0" />
+      </Group>
       <Group ID="VfInstance[1]">
         <Property ID="VfName" Value="VfInstanceMatch" />
         <Property ID="VfExecutionNr" Value="1" />
@@ -67,11 +74,6 @@
                 <Property ID="IoParameter" Value="Timeout" />
               </Selector>
             </Group>
-            <Group ID="Alignment">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
-              </Selector>
-            </Group>
             <Group ID="MinScore">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="MinScore" />
@@ -80,6 +82,11 @@
             <Group ID="MaxOverlap">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="MaxOverlay" />
+              </Selector>
+            </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
             <Group ID="OffsetROIX">
@@ -109,10 +116,6 @@
             </Group>
           </Group>
         </Selector>
-        <Group ID="Position">
-          <Property ID="X" Value="1" />
-          <Property ID="Y" Value="0" />
-        </Group>
       </Group>
     </Group>
     <Group ID="ImgProcessingOutputs">

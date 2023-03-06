@@ -46,15 +46,22 @@
         <Property ID="ChannelID" Value="EnableRobustness" />
       </Group>
     </Group>
-    <Group ID="ImgProcessingVariables" />
+    <Group ID="ImageAcquisition">
+      <Group ID="BaseSettings">
+        <Property ID="FocusScale" Value="1" />
+      </Group>
+    </Group>
     <Group ID="VisionFunctionSet">
+      <Group ID="VisionProgramSettings">
+        <Property ID="CompilerOption" Value="0" />
+      </Group>
       <Group ID="VfInstance[1]">
         <Property ID="VfName" Value="VfInstanceCodeReading" />
         <Property ID="VfExecutionNr" Value="1" />
         <Selector ID="VfType" Value="vf-datacode">
           <Group ID="VfConstants">
-            <Property ID="MaxStringSize" Value="100" />
             <Property ID="NumResultsMax" Value="10" />
+            <Property ID="MaxStringSize" Value="100" />
           </Group>
           <Group ID="VfWirings">
             <Group ID="Image">
@@ -72,19 +79,14 @@
                 <Property ID="IoParameter" Value="NumSearchMax" />
               </Selector>
             </Group>
-            <Group ID="ParameterMode">
-              <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="ParameterMode" />
-              </Selector>
-            </Group>
             <Group ID="Timeout">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="Timeout" />
               </Selector>
             </Group>
-            <Group ID="Alignment">
+            <Group ID="ParameterMode">
               <Selector ID="SourceType" Value="Input">
-                <Property ID="IoParameter" Value="Alignment" />
+                <Property ID="IoParameter" Value="ParameterMode" />
               </Selector>
             </Group>
             <Group ID="ParameterOptimization">
@@ -105,6 +107,11 @@
             <Group ID="CodeGrading">
               <Selector ID="SourceType" Value="Input">
                 <Property ID="IoParameter" Value="CodeGrading" />
+              </Selector>
+            </Group>
+            <Group ID="Alignment">
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="Alignment" />
               </Selector>
             </Group>
             <Group ID="OffsetROIX">
@@ -134,10 +141,6 @@
             </Group>
           </Group>
         </Selector>
-        <Group ID="Position">
-          <Property ID="X" Value="1" />
-          <Property ID="Y" Value="0" />
-        </Group>
       </Group>
     </Group>
     <Group ID="ImgProcessingOutputs">

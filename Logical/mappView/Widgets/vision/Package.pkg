@@ -6,5 +6,6 @@
     <Object Type="Package" Description="Resources">Resources</Object>
     <Object Type="Package">visionOptics</Object>
     <Object Type="Package">cameraInfo</Object>
+    <Object Type="Package">CompoundWidget</Object>
   </Objects>
 </Package>

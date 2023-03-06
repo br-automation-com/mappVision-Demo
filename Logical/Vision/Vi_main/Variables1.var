@@ -20,5 +20,7 @@ VAR
 	hwInstance : ARRAY[START_IDX..NUM_CAMS] OF hw_typ;
 	localInstance : ARRAY[START_IDX..NUM_CAMS] OF local_typ;
 	watchIdx : USINT;
+	k : USINT;
+	j : USINT;
 	idx : USINT;
 END_VAR

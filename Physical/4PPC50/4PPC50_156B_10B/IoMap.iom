@@ -31,7 +31,7 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[1].camera.in.status.imageProcessingActive AT %IX."Blob".ImageProcessingActive;
 	Cyclic#1.::Vi_main:hwInstance[1].camera.out.cmd.imageAcquisition AT %QX."Blob".ImageAcquisition;
 	Cyclic#1.::Vi_main:hwInstance[1].camera.out.cmd.resetAcquisiton AT %QX."Blob".ResetAcquisition;
-	Cyclic#1.::Vi_main:hwInstance[1].camera.out.cmd.resetAcquisiton AT %QX."Blob".SearchAcquisitionSettings;
+	Cyclic#1.::Vi_main:hwInstance[1].camera.out.cmd.searchAcquisitonSettings AT %QX."Blob".SearchAcquisitionSettings;
 	Cyclic#1.::Vi_main:hwInstance[1].camera.out.par.IRFilter AT %QX."Blob".IRFilter;
 	Cyclic#1.::Vi_main:hwInstance[1].camera.out.par.chromaticLock AT %QX."Blob".ChromaticLock;
 	Cyclic#1.::Vi_main:hwInstance[1].VF.blob.out.common.alignment AT %QB."Blob".Alignment;
