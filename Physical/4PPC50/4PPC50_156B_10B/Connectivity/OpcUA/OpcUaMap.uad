@@ -99,7 +99,6 @@
                 <Variable Name="width" />
                 <Variable Name="length" />
                 <Variable Name="rotation" />
-                <Variable Name="strShape" />
                 <Variable Name="intShape" />
                 <Variable Name="strStyle" />
                 <Variable Name="strStrokeWidth" />
@@ -116,11 +115,15 @@
               <Variable Name="strokeColorSelector" />
               <Variable Name="fillColorSelector" />
               <Variable Name="resultReady" />
+              <Variable Name="intElemId" />
             </Variable>
           </Variable>
         </Variable>
         <Variable Name="hw" RecursiveEnable="2" />
         <Variable Name="hwInstance" RecursiveEnable="2" />
+        <Variable Name="idx" />
+        <Variable Name="j" />
+        <Variable Name="k" />
       </Task>
       <Task Name="Vi_image">
         <Variable Name="visImagePath" />

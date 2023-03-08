@@ -6,6 +6,11 @@
     <Object Type="Package" Description="Resources">Resources</Object>
     <Object Type="Package">visionOptics</Object>
     <Object Type="Package">cameraInfo</Object>
-    <Object Type="Package">CompoundWidget</Object>
+    <Object Type="Package">blobResultProp</Object>
+    <Object Type="Package">codeReaderResultProp</Object>
+    <Object Type="Package">ocrResultProp</Object>
+    <Object Type="Package">pixelCntResultProp</Object>
+    <Object Type="Package">measureResultProp</Object>
+    <Object Type="Package">matchingResultProp</Object>
   </Objects>
 </Package>

@@ -58,7 +58,7 @@
     </EventBinding>
     <EventBinding id="EventBinding_9">
       <Source xsi:type="opcUa.Event" refId="::Vi_main:hmi.in.cmd.draw.intShape" event="ValueChanged" />
-      <EventHandler condition="newValue=2">
+      <EventHandler condition="newValue=1">
         <Sequence>
           <Step order="1">
             <Action>
@@ -118,7 +118,7 @@
           </Step>
         </Sequence>
       </EventHandler>
-      <EventHandler condition="newValue=1 OR newValue=3">
+      <EventHandler condition="newValue=0 OR newValue=2">
         <Sequence>
           <Step order="1">
             <Action>
@@ -177,6 +177,51 @@
             </Action>
           </Step>
         </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_8">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:idx" event="ValueChanged" />
+      <EventHandler condition="newValue=1">
+        <Action>
+          <Target xsi:type="widgets.widgetlibrary_0.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
+            <Method xsi:type="widgets.widgetlibrary_0.blobResultProp.Action.SetVisible" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="newValue=2">
+        <Action>
+          <Target xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
+            <Method xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action.SetVisible" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="newValue=3">
+        <Action>
+          <Target xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
+            <Method xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action.SetVisible" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="newValue=4">
+        <Action>
+          <Target xsi:type="widgets.widgetlibrary_0.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
+            <Method xsi:type="widgets.widgetlibrary_0.measureResultProp.Action.SetVisible" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="newValue=5">
+        <Action>
+          <Target xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
+            <Method xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action.SetVisible" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="newValue=6">
+        <Action>
+          <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
+            <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="true" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
   </Bindings>

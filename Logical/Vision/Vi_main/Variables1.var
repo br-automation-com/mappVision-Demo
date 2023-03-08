@@ -1,4 +1,6 @@
 VAR
+	tmpID : STRING[80];
+	tmpVF : STRING[80];
 	tmpStr : STRING[100];
 	commonRecipe : common_recipe_typ;
 END_VAR
@@ -22,5 +24,6 @@ VAR
 	watchIdx : USINT;
 	k : USINT;
 	j : USINT;
+	u : USINT;
 	idx : USINT;
 END_VAR

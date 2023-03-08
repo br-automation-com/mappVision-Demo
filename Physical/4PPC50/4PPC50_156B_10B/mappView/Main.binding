@@ -67,11 +67,7 @@
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="enable" />
 		</Binding>
 
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.shapeSelector" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="shapeSelector" attribute="dataProvider" />
-			
-</Binding>
+
 		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.draw.length" attribute="value" />

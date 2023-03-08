@@ -10,7 +10,7 @@
     <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="35" left="5" width="1245" height="975" zIndex="24" />
     <Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="440" left="1330" width="415" height="485" zIndex="25" childPositioning="relative" text="Draw shape" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
       <Widgets>
-        <Widget xsi:type="widgets.brease.DropDownBox" id="shapeSelector" top="0" left="0" width="200" height="76" zIndex="0" listWidth="250" selectedValue="1" margin="20px" listPadding="0px 30px" fontSize="32px" />
+        <Widget xsi:type="widgets.brease.DropDownBox" id="shapeSelector" top="0" left="0" width="200" height="76" zIndex="0" listWidth="250" margin="20px" listPadding="0px 30px" fontSize="32px" />
         <Widget xsi:type="widgets.brease.MomentaryPushButton" id="resetButton" top="0" left="0" width="130" height="75" zIndex="2" text="Erase all" fontSize="25px" margin="20px" />
         <Widget xsi:type="widgets.brease.GroupBox" id="shapePropBox" top="0" left="-25" width="415" height="310" zIndex="1" childPositioning="relative" text="Shape properties" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" style="transparent">
           <Widgets>
@@ -36,55 +36,17 @@
         </Widget>
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.GroupBox" id="elemInfoBox" top="15" left="1859" width="416" height="905" zIndex="26" childPositioning="relative" text="Element information" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
+    <Widget xsi:type="widgets.brease.GroupBox" id="elemInfoBox" top="20" left="1765" width="480" height="905" zIndex="26" childPositioning="relative" text="Element information" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
       <Widgets>
-        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="resultReady" top="0" left="0" width="185" height="75" zIndex="1" text="Result ready" fontSize="25px" margin="20px" />
-        <Widget xsi:type="widgets.brease.GroupBox" id="resultPropBox" top="0" left="-25" width="415" height="685" zIndex="0" childPositioning="relative" text="Result properties" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" enable="false" style="transparent">
-          <Widgets>
-            <Widget xsi:type="widgets.brease.Label" id="modelNumLabel" top="0" left="5" width="260" zIndex="0" text="Model number" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="modNumOutput" top="0" left="0" zIndex="22" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="MGVLabel" top="0" left="5" width="260" zIndex="1" text="Mean grey value" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="MGVOutput" top="0" left="0" zIndex="23" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="clippedLabel" top="0" left="5" width="260" zIndex="2" text="Clipped" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.ToggleButton" id="clippedOutput" top="0" left="0" zIndex="21" mouseDownText="True" text="False" cornerRadius="5px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" textColor="rgba(255, 255, 255, 1)" disabledTextColor="rgba(255, 255, 255, 1)" fontSize="14px" shadow="0px 0px rgba(62, 79, 92, 0.75)" checkedTextColor="rgba(255, 255, 255, 1)" disabledCheckedTextColor="rgba(255, 255, 255, 1)" checkedBackGroundGradient="linear-gradient(to bottom,#4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom,#4A4A4A 0%,#29920c 100%)" enable="false" style="Operate" />
-            <Widget xsi:type="widgets.brease.Label" id="areaLabel" top="0" left="5" width="260" zIndex="3" text="Area" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="areaOutput" top="0" left="0" zIndex="41" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="lengthLabel1" top="0" left="5" width="260" zIndex="4" text="Length" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="lengthOutput" top="0" left="0" zIndex="40" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="widthLabel1" top="0" left="5" width="260" zIndex="7" text="Width" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="widthOutput" top="0" left="0" zIndex="35" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="xMinLabel" top="0" left="5" width="260" zIndex="5" text="xMin" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="xMinOutput" top="0" left="0" zIndex="24" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="xMaxLabel" top="0" left="5" width="260" zIndex="6" text="xMax" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="xMaxOutput" top="0" left="0" zIndex="25" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="yMinLabel" top="0" left="5" width="260" zIndex="8" text="yMin" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="yMinOutput" top="0" left="0" zIndex="26" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="yMaxLabel" top="0" left="5" width="260" zIndex="9" text="xMax" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="yMaxOutput" top="0" left="0" zIndex="27" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="circulLabel" top="0" left="5" width="260" zIndex="10" text="Circularity" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="circOutput" top="0" left="0" zIndex="28" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="rectLabel" top="0" left="5" width="260" zIndex="11" text="Rectangularity" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="rectOutput" top="0" left="0" zIndex="29" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="anisLabel" top="0" left="5" width="260" zIndex="12" text="Anisometry" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="anisOutput" top="0" left="0" zIndex="31" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="inCircPosXLabel" top="0" left="5" width="260" zIndex="13" text="Inner circle position x" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="inCircPosXOutput" top="0" left="0" zIndex="30" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="inCircPosYLabel" top="0" left="5" width="260" zIndex="14" text="Inner circle position y" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="inCircPosYOutput" top="0" left="0" zIndex="32" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="inCircRadLabel" top="0" left="5" width="260" zIndex="17" text="Inner circle radius" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="inCircRadOutput" top="0" left="0" zIndex="33" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="posXLabel" top="0" left="5" width="260" zIndex="15" text="Position x" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="posXOutput" top="0" left="0" zIndex="34" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="posYLabel" top="0" left="5" width="260" zIndex="16" text="Position y" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="posYOutput" top="0" left="0" zIndex="36" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="orientLabel" top="0" left="5" width="260" zIndex="18" text="Orientation" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="orientOutput" top="0" left="0" zIndex="37" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="rotCenterXLabel" top="0" left="5" width="260" zIndex="19" text="Rotation center x" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="rotCenterXOutput" top="0" left="0" zIndex="38" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-            <Widget xsi:type="widgets.brease.Label" id="rotCenterYLabel" top="0" left="5" width="260" zIndex="20" text="Rotation center y" fontSize="25px" />
-            <Widget xsi:type="widgets.brease.NumericOutput" id="rotCenterYOutput" top="0" left="0" zIndex="39" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-          </Widgets>
-        </Widget>
+        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="resultReady" top="0" left="0" width="185" height="75" zIndex="0" text="Result ready" fontSize="25px" margin="20px" />
+        <Widget xsi:type="widgets.brease.Label" id="selectedResIDLabel" top="0" left="0" width="260" zIndex="7" text="Selected result ID:" fontSize="25px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="selectedResIDOutput" top="0" left="0" width="105" zIndex="8" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
+        <Widget xsi:type="widgets.widgetlibrary_0.blobResultProp" id="blobResultProp1" top="0" left="0" zIndex="1" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.codeReaderResultProp" id="codeReaderResultProp1" top="0" left="0" zIndex="5" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.ocrResultProp" id="ocrResultProp1" top="0" left="0" zIndex="2" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.pixelCntResultProp" id="pixelCntResultProp1" top="0" left="0" zIndex="3" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.measureResultProp" id="measureResultProp1" top="0" left="0" zIndex="4" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.matchingResultProp" id="matchingResultProp1" top="0" left="0" zIndex="6" visible="false" />
       </Widgets>
     </Widget>
   </Widgets>

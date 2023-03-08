@@ -28,6 +28,7 @@
 		<BindingsSet refId="Lights_binding" />
 		<BindingsSet refId="Recipe_binding" />
 		<BindingsSet refId="ImageArchiv_binding" />
+		<BindingsSet refId="contentMain_binding" />
 	</BindingsSets>
 	<EventBindingsSets>
 		<EventBindingsSet refId="Header_eventbinding" />

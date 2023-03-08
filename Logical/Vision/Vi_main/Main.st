@@ -31,7 +31,7 @@ PROGRAM _INIT
 		hmi.in.recipe.cam.focus := 200;
 		hmi.in.recipe.cam.exposureTime := 100;
 		
-		hmi.in.cmd.resetInfo := TRUE;
+		hmi.in.cmd.resetInfo := TRUE; 
 		
 		// -----------------------------------------------------------------------------------------------------------
 		// Set camera specific data 
@@ -72,6 +72,9 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
+	
+
+				
 	FOR idx:= START_IDX TO NUM_CAMS BY 1 DO 
 		setupPointersAction;
 		
@@ -177,6 +180,24 @@ PROGRAM _CYCLIC
 			
 			processResultsAction; // Process results action
 			
+		END_IF
+		
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// Selection of specific result
+		// -----------------------------------------------------------------------------------------------------------	
+		IF hmi.in.cmd.click THEN
+			hmi.in.cmd.click := FALSE;
+		
+			//this.tmp2D.x := hmi.in.cmd.x; //Click X coordinate
+			//this.tmp2D.y := hmi.in.cmd.y; // Click Y coordinate
+			//VF 
+			brdkStrSubStr(ADR(tmpVF),ADR(hmi.in.cmd.elemId),1,1);
+			//ID 
+			brsstrcpy(ADR(tmpID),ADR(hmi.in.cmd.elemId)+2);
+				
+			hmi.in.cmd.intElemId := STRING_TO_USINT(tmpID);
+		
 		END_IF
 		
 		// -----------------------------------------------------------------------------------------------------------

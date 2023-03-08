@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CompoundWidget id="codeReaderResultProp" width="480" height="375" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Widgets>
+		<Widget xsi:type="widgets.brease.GroupBox" id="resultPropBox" top="0" left="-20" width="480" height="375" zIndex="1" childPositioning="relative" text="Result properties (codeReader)" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" enable="false" style="transparent">
+			<Widgets>
+				<Widget xsi:type="widgets.brease.Label" id="dataLabel" top="0" left="5" width="235" zIndex="0" text="Data" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.TextOutput" id="dataOutput" top="0" left="0" width="220" zIndex="16" style="Output" />
+				<Widget xsi:type="widgets.brease.Label" id="symbolTypeLabel" top="0" left="5" width="260" zIndex="1" text="Symbol type" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.NumericOutput" id="symbolTypeOutput" top="0" left="0" zIndex="10" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
+				<Widget xsi:type="widgets.brease.Label" id="gradValLabel" top="0" left="5" width="260" zIndex="2" text="Grading value" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.ToggleButton" id="gradValOutput" top="0" left="0" zIndex="9" mouseDownText="True" text="False" cornerRadius="5px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" textColor="rgba(255, 255, 255, 1)" disabledTextColor="rgba(255, 255, 255, 1)" fontSize="14px" shadow="0px 0px rgba(62, 79, 92, 0.75)" checkedTextColor="rgba(255, 255, 255, 1)" disabledCheckedTextColor="rgba(255, 255, 255, 1)" checkedBackGroundGradient="linear-gradient(to bottom,#4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom,#4A4A4A 0%,#29920c 100%)" enable="false" style="Operate" />
+				<Widget xsi:type="widgets.brease.Label" id="enhGradInfoLabel" top="0" left="5" width="225" height="70" zIndex="3" multiLine="true" text="Enhanced grading information" wordWrap="true" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.TextOutput" id="enhGradInfoOutput" top="0" left="0" width="220" zIndex="17" margin="10px" style="Output" />
+				<Widget xsi:type="widgets.brease.Label" id="posXLabel" top="0" left="5" width="260" zIndex="4" text="Position x" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.NumericOutput" id="posXOutput" top="0" left="0" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
+				<Widget xsi:type="widgets.brease.Label" id="posYLabel" top="0" left="5" width="260" zIndex="5" text="Position y" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.NumericOutput" id="posYOutput" top="0" left="0" zIndex="12" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
+				<Widget xsi:type="widgets.brease.Label" id="orientLabel" top="0" left="5" width="260" zIndex="6" text="Orientation" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.NumericOutput" id="orientOutput" top="0" left="0" zIndex="13" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
+				<Widget xsi:type="widgets.brease.Label" id="rotCenterXLabel" top="0" left="5" width="260" zIndex="7" text="Rotation center x" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.NumericOutput" id="rotCenterXOutput" top="0" left="0" zIndex="14" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
+				<Widget xsi:type="widgets.brease.Label" id="rotCenterYLabel" top="0" left="5" width="260" zIndex="8" text="Rotation center y" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.NumericOutput" id="rotCenterYOutput" top="0" left="0" zIndex="15" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
+			</Widgets>
+		</Widget>
+  </Widgets>
+  <Properties>
+    <!-- 
+    Simple non bindable property:
+    Property Attributes
+    xsi:type: NonBindableProperty
+    name: name of the property (not allowed: width, height, top, left, id, enable, visible, zindex, margin, premissionview, permissionoperate, description)
+    <Property xsi:type="NonBindableProperty" name="" type="" defaultValue="" required="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" property=""/>
+        <Mapping widget="" property=""/>
+      </Mappings>
+    </Property>
+		-->
+		   
+
+    <Property xsi:type="BindableProperty" name="dataString" type="String" defaultValue="" readOnly="false" category="data" >
+      <Description>String containing result data</Description>
+      <Mappings>
+        <Mapping widget="dataOutput" property="value" mode="oneWay"/>
+			</Mappings>
+    </Property>
+
+
+		<Property xsi:type="StructureBindableProperty" name="Structure" type="brdkViBase_hw_cr_in_typ" readOnly="false" category="data" required="false" >
+			<Description>Structure containing all code reader results</Description>
+			<Mappings>
+				<Mapping widget="symbolTypeOutput" type="Number" property="value" mode="oneWay" memberPath="symbolType" mapToNode="false"/>
+				<Mapping widget="gradValOutput" type="Boolean" property="value" mode="oneWay" memberPath="gradingValue" mapToNode="false"/>
+				<Mapping widget="enhGradInfoOutput" type="String" property="value" mode="oneWay" memberPath="enhancedGradingInformation" mapToNode="false"/>
+				<Mapping widget="posXOutput" type="Number" property="value" mode="oneWay" memberPath="positionX" mapToNode="false"/>
+				<Mapping widget="posYOutput" type="Number" property="value" mode="oneWay" memberPath="positionY" mapToNode="false"/>
+				<Mapping widget="orientOutput" type="Number" property="value" mode="oneWay" memberPath="orientation" mapToNode="false"/>
+				<Mapping widget="rotCenterXOutput" type="Number" property="value" mode="oneWay" memberPath="rotCenterX" mapToNode="false"/>
+				<Mapping widget="rotCenterYOutput" type="Number" property="value" mode="oneWay" memberPath="rotCenterY" mapToNode="false"/>
+			</Mappings>
+		</Property>
+  </Properties>
+
+  <Events>
+    <!--
+    <Event name="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" event="" />
+      </Mappings>
+    </Event>
+    -->
+  </Events>
+
+  <Actions>
+    <!--
+    <Action name="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" action="" />
+      </Mappings>
+    </Action>
+    -->
+  </Actions>
+
+  <EventBindings>
+    <!-- source and target can only be widgets within the compound widget.
+    <EventBinding id="">
+      <Source xsi:type="widget.Event" widgetRefId="" event="" />
+      <EventHandler condition="">
+        <Action>
+          <Target xsi:type="widget.Action" widgetRefId="">
+            <Method name="" value="" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    -->
+  </EventBindings>
+
+</CompoundWidget>

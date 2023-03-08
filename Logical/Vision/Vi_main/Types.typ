@@ -21,6 +21,7 @@ TYPE
 		dtNow : DTStructure;
 		DTGetTime_0 : DTGetTime;
 		tmp2D : brdkViBase_2d_typ;
+		strElemId : STRING[80];
 		elemId : STRING[80];
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
@@ -30,8 +31,8 @@ TYPE
 	hmi_out_vf_typ : 	STRUCT 
 		processingTime : UDINT;
 		numResults : USINT;
-		ocrDataResult : STRING[240];
-		ocrData : ARRAY[0..49]OF STRING[20];
+		crData : ARRAY[0..9]OF STRING[240];
+		ocrData : ARRAY[0..9]OF STRING[240];
 	END_STRUCT;
 	hmi_out_camera_typ : 	STRUCT 
 		simulated : BOOL;
@@ -63,6 +64,7 @@ TYPE
 		saveDiagnositc : BOOL; (*Save vision diagnostic *)
 		loadVA : BOOL; (*Load Vision application*)
 		saveImage : BOOL;
+		intElemId : USINT;
 		elemId : STRING[80];
 		click : BOOL;
 		y : REAL;
@@ -74,8 +76,7 @@ TYPE
 		resultReady : BOOL;
 	END_STRUCT;
 	hmi_in_cmd_draw_typ : 	STRUCT 
-		strShape : STRING[80]; (*'1' = rectangle, '2' = circle, '3' = triangle*)
-		intShape : INT; (*1 = rectangle, 2 = circle, 3 = triangle*)
+		intShape : INT; (*0 = rectangle, 1 = circle, 2 = triangle*)
 		radius : REAL := 60;
 		width : REAL := 80;
 		length : REAL := 80;
@@ -86,10 +87,9 @@ TYPE
 		strFillOpac : STRING[80];
 		strStrokeOpac : STRING[80];
 		intStrokeWidth : INT := 6;
-		realFillOpac : REAL := 0.2;
+		realFillOpac : REAL := 0;
 		realStrokeOpac : REAL := 1;
 		strStyle : STRING[240];
-		strElemId : STRING[80];
 		reset : BOOL;
 	END_STRUCT;
 	hmi_in_typ : 	STRUCT 
