@@ -5,7 +5,7 @@
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoDown" event="Click" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmi.in.cmd.intElemId">
             <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
           </Target>
         </Action>
@@ -15,7 +15,7 @@
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoUp" event="Click" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmi.in.cmd.intElemId">
             <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
           </Target>
         </Action>

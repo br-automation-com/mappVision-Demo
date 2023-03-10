@@ -163,7 +163,7 @@
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.pxCnt.common.numSearchMax" />
 				</be:List>
 			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxItemsCount" attribute="node" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxItemsCount" attribute="value" />
 		</Binding>
 		
 		<Binding mode="oneWay">

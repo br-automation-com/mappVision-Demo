@@ -5,5 +5,9 @@
 <Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.intElemId" attribute="value" />
 <Target xsi:type="brease" contentRefId="contentMain" widgetRefId="selectedResIDOutput" attribute="value" />
 </Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.intElemId" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>

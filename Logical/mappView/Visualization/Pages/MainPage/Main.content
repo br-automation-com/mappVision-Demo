@@ -3,16 +3,15 @@
   <Widgets>
     <Widget xsi:type="widgets.brease.Image" id="imgDisconnected" top="350" left="450" width="440" height="300" zIndex="0" image="Media/disconnected.png" backColor="rgba(255, 255, 255, 0)" />
     <Widget xsi:type="widgets.brease.ToggleButton" id="btnRepetitiveMode" top="10" left="1330" width="280" height="100" zIndex="19" breakWord="true" mouseDownText="Disable \n Repetitive Mode" multiLine="true" text="Enable \n Repetitive Mode" fontSize="32px" bold="true" style="Operate" />
-    <Widget xsi:type="widgets.brease.Label" id="labCameraNo" top="335" left="1335" width="270" zIndex="20" text="Show Details" textAlign="center" fontSize="32px" bold="false" />
+    <Widget xsi:type="widgets.brease.Label" id="labCameraNo" top="335" left="1335" width="270" zIndex="20" text="Result ID" textAlign="center" fontSize="32px" bold="false" />
     <Widget xsi:type="widgets.brease.NumericInput" id="numDetailsNo" top="245" left="1425" width="80" height="80" zIndex="21" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="5" minValue="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" />
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="245" left="1335" width="80" height="80" zIndex="22" image="Media/back.svg" borderWidth="0px" />
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="245" left="1525" width="80" height="80" zIndex="23" image="Media/forward.svg" borderWidth="0px" />
     <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="35" left="5" width="1245" height="975" zIndex="24" />
-    <Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="440" left="1330" width="415" height="485" zIndex="25" childPositioning="relative" text="Draw shape" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
+    <Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="450" left="1330" width="415" height="475" zIndex="25" childPositioning="relative" text="Draw shape" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
       <Widgets>
         <Widget xsi:type="widgets.brease.DropDownBox" id="shapeSelector" top="0" left="0" width="200" height="76" zIndex="0" listWidth="250" margin="20px" listPadding="0px 30px" fontSize="32px" />
-        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="resetButton" top="0" left="0" width="130" height="75" zIndex="2" text="Erase all" fontSize="25px" margin="20px" />
-        <Widget xsi:type="widgets.brease.GroupBox" id="shapePropBox" top="0" left="-25" width="415" height="310" zIndex="1" childPositioning="relative" text="Shape properties" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" style="transparent">
+        <Widget xsi:type="widgets.brease.GroupBox" id="shapePropBox" top="0" left="-25" width="415" height="300" zIndex="1" childPositioning="relative" text="Shape properties" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" style="transparent">
           <Widgets>
             <Widget xsi:type="widgets.brease.Label" id="lengthLabel" top="0" left="5" width="200" zIndex="1" text="Length (x)" fontSize="25px" />
             <Widget xsi:type="widgets.brease.NumericInput" id="lengthInput" top="0" left="0" width="140" zIndex="0" value="80" fontSize="25px" />
@@ -36,17 +35,16 @@
         </Widget>
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.GroupBox" id="elemInfoBox" top="20" left="1765" width="480" height="905" zIndex="26" childPositioning="relative" text="Element information" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
+    <Widget xsi:type="widgets.brease.GroupBox" id="elemInfoBox" top="145" left="1760" width="480" height="780" zIndex="26" childPositioning="relative" text="Result information" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
       <Widgets>
-        <Widget xsi:type="widgets.brease.MomentaryPushButton" id="resultReady" top="0" left="0" width="185" height="75" zIndex="0" text="Result ready" fontSize="25px" margin="20px" />
-        <Widget xsi:type="widgets.brease.Label" id="selectedResIDLabel" top="0" left="0" width="260" zIndex="7" text="Selected result ID:" fontSize="25px" />
-        <Widget xsi:type="widgets.brease.NumericOutput" id="selectedResIDOutput" top="0" left="0" width="105" zIndex="8" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-        <Widget xsi:type="widgets.widgetlibrary_0.blobResultProp" id="blobResultProp1" top="0" left="0" zIndex="1" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.codeReaderResultProp" id="codeReaderResultProp1" top="0" left="0" zIndex="5" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.ocrResultProp" id="ocrResultProp1" top="0" left="0" zIndex="2" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.pixelCntResultProp" id="pixelCntResultProp1" top="0" left="0" zIndex="3" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.measureResultProp" id="measureResultProp1" top="0" left="0" zIndex="4" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.matchingResultProp" id="matchingResultProp1" top="0" left="0" zIndex="6" visible="false" />
+        <Widget xsi:type="widgets.brease.Label" id="selectedResIDLabel" top="0" left="0" width="250" zIndex="6" text="Selected result ID:" fontSize="25px" margin="5px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="selectedResIDOutput" top="0" left="0" width="105" zIndex="7" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" margin="5px" style="Output" />
+        <Widget xsi:type="widgets.widgetlibrary_0.blobResultProp" id="blobResultProp1" top="0" left="0" zIndex="0" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.codeReaderResultProp" id="codeReaderResultProp1" top="0" left="0" zIndex="4" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.ocrResultProp" id="ocrResultProp1" top="0" left="0" zIndex="1" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.pixelCntResultProp" id="pixelCntResultProp1" top="0" left="0" zIndex="2" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.measureResultProp" id="measureResultProp1" top="0" left="0" zIndex="3" visible="false" />
+        <Widget xsi:type="widgets.widgetlibrary_0.matchingResultProp" id="matchingResultProp1" top="0" left="0" zIndex="5" visible="false" />
       </Widgets>
     </Widget>
   </Widgets>

@@ -9,5 +9,6 @@
     <File>setupPointersAction.st</File>
     <File>hmiAction.st</File>
     <File>processResultsAction.st</File>
+    <File>styleStringGeneration.st</File>
   </Files>
 </Program>

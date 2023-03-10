@@ -133,7 +133,41 @@ PROGRAM _CYCLIC
 		hw.camera.out.par.exposureTime 		:= hmi.in.recipe.cam.exposureTime;
 		hw.camera.out.par.chromaticLock 	:= hmi.in.recipe.cam.chromaticLock;
 		hw.camera.out.par.gainLevel 		:= hmi.in.recipe.cam.gainLevel;
+
+		//-------------------------------------------------------------------------
 		
+		// Copy recipe data (e.g. enable, maximal number of results, etc.)
+		brsstrcpy(ADR(hw.VF.blob.out.common),ADR(hmi.in.recipe.BLOB.common));
+		brsstrcpy(ADR(hw.VF.codeReader.out.common),ADR(hmi.in.recipe.CR.common));
+		brsstrcpy(ADR(hw.VF.matching.out.common),ADR(hmi.in.recipe.match.common));
+		brsstrcpy(ADR(hw.VF.measurement.out.common),ADR(hmi.in.recipe.meassurement.common));
+		brsstrcpy(ADR(hw.VF.ocr.out.common),ADR(hmi.in.recipe.OCR.common));
+		brsstrcpy(ADR(hw.VF.pixelCnt.out.common),ADR(hmi.in.recipe.pxCnt.common));
+		
+		brsstrcpy(ADR(hmi.out.camera.processingTime),ADR(hw.camera.in.status.cameraProcessingTime));
+		
+		CASE idx OF
+			1:
+				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.blob.in.common.functionProcessingTime));
+				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.blob.in.common.numResults));
+			2:
+				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.codeReader.in.common.functionProcessingTime));
+				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.codeReader.in.common.numResults));
+			3:
+				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.matching.in.common.functionProcessingTime));
+				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.matching.in.common.numResults));
+			4:
+				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.measurement.in.common.functionProcessingTime));
+				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.measurement.in.common.numResults));
+			5:
+				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.ocr.in.common.functionProcessingTime));
+				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.ocr.in.common.numResults));
+			6:
+				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.pixelCnt.in.common.functionProcessingTime));
+				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.pixelCnt.in.common.numResults));
+		END_CASE;	
+				
+		//-------------------------------------------------------------------------
 		
 		// check if camera is ready for an image trigger and MappView have been updated
 		IF this.brdkViBase_imgTrigger_0.ready AND NOT this.brdkViBase_imgTrigger_0.busy AND this.mappView.status = 0 THEN 
@@ -188,9 +222,7 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------	
 		IF hmi.in.cmd.click THEN
 			hmi.in.cmd.click := FALSE;
-		
-			//this.tmp2D.x := hmi.in.cmd.x; //Click X coordinate
-			//this.tmp2D.y := hmi.in.cmd.y; // Click Y coordinate
+
 			//VF 
 			brdkStrSubStr(ADR(tmpVF),ADR(hmi.in.cmd.elemId),1,1);
 			//ID 
