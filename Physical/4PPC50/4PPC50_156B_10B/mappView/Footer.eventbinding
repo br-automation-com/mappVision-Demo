@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Footer_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
-    <!--<EventBinding id="contentFooter.btnImageTrigger.Click">
-      <Source xsi:type="widgets.brease.PushButton.Event" contentRefId="contentFooter" widgetRefId="btnImageTrigger" event="Click" />
-      <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visImageTrigger">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>-->
     <EventBinding id="AutoSetupStartStop">
       <Source xsi:type="opcUa.Event" refId="::Vi_visu:VisionSensor.CMD.AutoSetupStartStop" event="ValueChanged" />
       <EventHandler condition="NOT newValue">
@@ -34,7 +24,7 @@
     <EventBinding id="SaveDiagData">
       <Source xsi:type="opcUa.Event" refId="::Vi_visu:VisionSensor.CMD.SaveDiagData" event="ValueChanged" />
       <Operand datatype="ANY_INT" name="DiagStatus">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_visu:VisionSensor.DIA.Status" serverAlias="">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_visu:VisionSensor.DIA.Status">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>
@@ -52,6 +42,16 @@
         <Action>
           <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:VisionSensor.CMD.ReadCameraInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_10">
+      <Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" event="ValueChanged" />
+      <EventHandler condition="newValue=1">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmi.in.recipe.cam.flashSegment">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="15" />
           </Target>
         </Action>
       </EventHandler>

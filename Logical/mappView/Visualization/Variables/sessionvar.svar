@@ -2,6 +2,8 @@
 <VariablesSet id="svar_0" xmlns="http://www.br-automation.com/iat2015/session/engineering/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Variables>
 		<Variable name="camIdx" xsi:type="ANY_INT" value="1" />
+		
+		<Variable name="cameraID1" xsi:type="ANY_INT" value="1" />
 		<!--
     <Variable name="Variable1" xsi:type="ANY_REAL" value="0" />
 		<Variable name="Variable3" xsi:type="ANY_STRING" value="0" />

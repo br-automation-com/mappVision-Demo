@@ -426,7 +426,7 @@ TYPE
 		common : brdkViBase_hw_vf_out_common_typ; (*Common vision function output*)
 	END_STRUCT;
 	brdkViBase_hw_OCR_in_typ : 	STRUCT  (*OCR hardware input structure for a result with length 50*)
-		data : ARRAY[0..49]OF USINT; (*A tuple of classification results, e.g. ["2", "6", "1", "2"], size 50*)
+		data : ARRAY[0..50]OF USINT; (*A tuple of classification results, e.g. ["2", "6", "1", "2"], size 50*)
 		gradingValue : USINT; (*Probability for all segmented characters (minimum confidence of all characters in a line)*)
 		positionX : DINT; (*X-position (of the found string) in the image in increments of 1/100 pixel*)
 		positionY : DINT; (*Y-position (of the found string) in the image in increments of 1/100 pixel*)
@@ -649,9 +649,9 @@ TYPE
 		common : brdkViBase_hw_vf_out_common_typ; (*Common vision function output*)
 	END_STRUCT;
 	brdkViBase_hw_cr_in_typ : 	STRUCT  (*Code Reader hardware input structure for a result*)
-		data : ARRAY[0..49]OF USINT; (*Returns the content of the found code as array OCTET.  Size 50*)
+		data : ARRAY[0..100]OF USINT; (*Returns the content of the found code as array OCTET.  Size 50*)
 		symbolType : USINT; (*Symbol type of codes found.*)
-		gradingValue : BOOL; (*Evaluation of the codes in terms of quality*)
+		gradingValue : SINT; (*Evaluation of the codes in terms of quality*)
 		enhancedGradingInformation : STRING[23]; (*Output of extended grading information from which the general GradingValue assessment parameter is composed.*)
 		positionX : DINT; (*X-position (of the found code) in the image in increments of 1/100 pixel.*)
 		positionY : DINT; (*Y-position (of the found code) in the image in increments of 1/100 pixel.*)

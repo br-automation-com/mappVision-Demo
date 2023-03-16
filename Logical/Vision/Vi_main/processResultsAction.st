@@ -118,7 +118,7 @@ ACTION processResultsAction:
 
 (*	//MEASUREMENT
 	
-	IF hw.VF.measurement.in.common.numResults > 0 THEN
+	IF hwInstance[4].VF.measurement.in.common.numResults > 0 THEN
 			
 		hmi.out.svgOverlay := '';
 		
@@ -151,7 +151,7 @@ ACTION processResultsAction:
 
 	//OCR
 	
-	IF hw.VF.ocr.in.common.numResults > 0 THEN
+	IF hwInstance[5].VF.ocr.in.common.numResults > 0 THEN
 			
 		hmi.out.svgOverlay := '';
 		
@@ -183,7 +183,7 @@ ACTION processResultsAction:
 	
 	//PIXEL COUNT
 	
-	IF hw.VF.pixelCnt.in.common.numResults > 0 THEN
+	IF hwInstance[6].VF.pixelCnt.in.common.numResults > 0 THEN
 			
 		hmi.out.svgOverlay := '';
 		

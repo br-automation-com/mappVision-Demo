@@ -117,6 +117,7 @@
               <Variable Name="resultReady" />
               <Variable Name="intElemId" />
             </Variable>
+            <Variable Name="recipe" RecursiveEnable="2" />
           </Variable>
         </Variable>
         <Variable Name="hw" RecursiveEnable="2" />

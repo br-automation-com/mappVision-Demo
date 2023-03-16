@@ -72,8 +72,6 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
-	
-
 				
 	FOR idx:= START_IDX TO NUM_CAMS BY 1 DO 
 		setupPointersAction;
@@ -128,7 +126,7 @@ PROGRAM _CYCLIC
 		// Image trigger (camera and lights)
 		// -----------------------------------------------------------------------------------------------------------
 		hw.camera.out.par.focus 			:= hmi.in.recipe.cam.focus;
-		hw.camera.out.par.flashSegment 		:= hmi.in.recipe.cam.flashSegment;
+		hw.camera.out.par.flashSegment 		:= 15; //hmi.in.recipe.cam.flashSegment;
 		hw.camera.out.par.flashColor 		:= hmi.in.recipe.cam.flashColor;
 		hw.camera.out.par.exposureTime 		:= hmi.in.recipe.cam.exposureTime;
 		hw.camera.out.par.chromaticLock 	:= hmi.in.recipe.cam.chromaticLock;
@@ -137,34 +135,34 @@ PROGRAM _CYCLIC
 		//-------------------------------------------------------------------------
 		
 		// Copy recipe data (e.g. enable, maximal number of results, etc.)
-		brsstrcpy(ADR(hw.VF.blob.out.common),ADR(hmi.in.recipe.BLOB.common));
-		brsstrcpy(ADR(hw.VF.codeReader.out.common),ADR(hmi.in.recipe.CR.common));
-		brsstrcpy(ADR(hw.VF.matching.out.common),ADR(hmi.in.recipe.match.common));
-		brsstrcpy(ADR(hw.VF.measurement.out.common),ADR(hmi.in.recipe.meassurement.common));
-		brsstrcpy(ADR(hw.VF.ocr.out.common),ADR(hmi.in.recipe.OCR.common));
-		brsstrcpy(ADR(hw.VF.pixelCnt.out.common),ADR(hmi.in.recipe.pxCnt.common));
+		hw.VF.blob.out.common:=hmi.in.recipe.BLOB.common;
+		hw.VF.codeReader.out.common:=hmi.in.recipe.CR.common;
+		hw.VF.matching.out.common:=hmi.in.recipe.match.common;
+		hw.VF.measurement.out.common:=hmi.in.recipe.meassurement.common;
+		hw.VF.ocr.out.common:=hmi.in.recipe.OCR.common;
+		hw.VF.pixelCnt.out.common:=hmi.in.recipe.pxCnt.common;
 		
-		brsstrcpy(ADR(hmi.out.camera.processingTime),ADR(hw.camera.in.status.cameraProcessingTime));
+		hmi.out.camera.processingTime:=hw.camera.in.status.cameraProcessingTime;
 		
 		CASE idx OF
 			1:
-				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.blob.in.common.functionProcessingTime));
-				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.blob.in.common.numResults));
+				hmi.out.VF.processingTime := hw.VF.blob.in.common.functionProcessingTime;
+				hmi.out.VF.numResults := hw.VF.blob.in.common.numResults;
 			2:
-				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.codeReader.in.common.functionProcessingTime));
-				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.codeReader.in.common.numResults));
+				hmi.out.VF.processingTime := hw.VF.codeReader.in.common.functionProcessingTime;
+				hmi.out.VF.numResults := hw.VF.codeReader.in.common.numResults;
 			3:
-				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.matching.in.common.functionProcessingTime));
-				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.matching.in.common.numResults));
+				hmi.out.VF.processingTime := hw.VF.matching.in.common.functionProcessingTime;
+				hmi.out.VF.numResults := hw.VF.matching.in.common.numResults;
 			4:
-				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.measurement.in.common.functionProcessingTime));
-				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.measurement.in.common.numResults));
+				hmi.out.VF.processingTime := hw.VF.measurement.in.common.functionProcessingTime;
+				hmi.out.VF.numResults := hw.VF.measurement.in.common.numResults;
 			5:
-				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.ocr.in.common.functionProcessingTime));
-				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.ocr.in.common.numResults));
+				hmi.out.VF.processingTime := hw.VF.ocr.in.common.functionProcessingTime;
+				hmi.out.VF.numResults := hw.VF.ocr.in.common.numResults;
 			6:
-				brsstrcpy(ADR(hmi.out.VF.processingTime),ADR(hw.VF.pixelCnt.in.common.functionProcessingTime));
-				brsstrcpy(ADR(hmi.out.VF.numResults),ADR(hw.VF.pixelCnt.in.common.numResults));
+				hmi.out.VF.processingTime := hw.VF.pixelCnt.in.common.functionProcessingTime;
+				hmi.out.VF.numResults := hw.VF.pixelCnt.in.common.numResults;
 		END_CASE;	
 				
 		//-------------------------------------------------------------------------

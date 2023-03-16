@@ -12,7 +12,7 @@ VAR
 	debug : BOOL;
 END_VAR
 VAR CONSTANT
-	NUM_CAMS : USINT := 1;
+	NUM_CAMS : USINT := 6;
 END_VAR
 VAR
 	this : REFERENCE TO local_typ;
