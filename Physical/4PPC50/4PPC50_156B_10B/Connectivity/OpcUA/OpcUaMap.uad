@@ -78,6 +78,54 @@
           <VariableCommon Name="Common Properties">
             <Variable AclInherit="1" Name="out" />
           </VariableCommon>
+          <Variable Name="hmiInstance[1]">
+            <Variable Name="out">
+              <Variable Name="VF">
+                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
+                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="hmiInstance[2]">
+            <Variable Name="out">
+              <Variable Name="VF">
+                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
+                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="hmiInstance[3]">
+            <Variable Name="out">
+              <Variable Name="VF">
+                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
+                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="hmiInstance[4]">
+            <Variable Name="out">
+              <Variable Name="VF">
+                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
+                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="hmiInstance[5]">
+            <Variable Name="out">
+              <Variable Name="VF">
+                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
+                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
+              </Variable>
+            </Variable>
+          </Variable>
+          <Variable Name="hmiInstance[6]">
+            <Variable Name="out">
+              <Variable Name="VF">
+                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
+                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
+              </Variable>
+            </Variable>
+          </Variable>
         </Variable>
         <Variable Name="commonRecipe" RecursiveEnable="2" />
         <Variable Name="hmi">
