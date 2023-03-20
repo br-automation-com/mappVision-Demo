@@ -119,3 +119,13 @@ VAR CONSTANT
 	USER_ROM1					: UINT	:= 2;		(*EPROM*)
 	FIX_RAM						: UINT	:= 5;		(*fixed RAM*)
 END_VAR
+
+(*shutdown/reboot types*)
+VAR CONSTANT
+	SYSLIB_WARMSTART				: USINT	:= 16#01;	(*WARMSTART (with restart)*)
+	SYSLIB_COLDSTART				: USINT	:= 16#02;	(*COLDSTART (with restart)*)
+	SYSLIB_WARMSTART_NO_REBOOT		: USINT	:= 16#11;	(*WARMSTART (no restart, only shutdown)*)
+	SYSLIB_COLDSTART_NO_REBOOT		: USINT	:= 16#12;	(*COLDSTART (no restart, only shutdown)*)
+	SYSLIB_DIAGNOSTICS				: USINT	:= 16#20;	(*DIAGNOSTICS (with restart)*)
+	SYSLIB_SERVICE					: USINT	:= 16#40;	(*SERVICE (with restart) *)
+END_VAR

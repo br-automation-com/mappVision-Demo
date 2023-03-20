@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpAxis 5.18.1 */
+/* MpAxis 5.21.2 */
 
 #ifndef _MPAXIS_
 #define _MPAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpAxis_VERSION
-#define _MpAxis_VERSION 5.18.1
+#define _MpAxis_VERSION 5.21.2
 #endif
 
 #include <bur/plctypes.h>
@@ -91,7 +91,12 @@ typedef enum MpAxisExecutingCmdEnum
 	mcAXIS_CMD_SIMULATION,
 	mcAXIS_CMD_STOP_AT_POSITION,
 	mcAXIS_CMD_POWER,
-	mcAXIS_CMD_AUTOTUNE
+	mcAXIS_CMD_AUTOTUNE,
+	mcAXIS_CMD_MOVE_CYCLIC_POSITION,
+	mcAXIS_CMD_MOVE_CYCLIC_VELOCITY,
+	mcAXIS_CMD_VELOCITY_CONTROL,
+	mcAXIS_CMD_TORQUE_CONTROL,
+	mcAXIS_CMD_TORQUE_FF
 } MpAxisExecutingCmdEnum;
 
 typedef enum MpAxisCamStartModeEnum
@@ -113,6 +118,11 @@ typedef enum MpAxisAutoTuneLoopFilterModeEnum
 	mcAXIS_TUNE_LOOP_FILTER_F1_F2,
 	mcAXIS_TUNE_LOOP_FILTER_F1_F2_F3
 } MpAxisAutoTuneLoopFilterModeEnum;
+
+typedef enum MpAxisMoveCyclicVelocityModeEnum
+{	mcAXIS_MCV_MODE_MOVE_CYC_VEL,
+	mcAXIS_MCV_MODE_MOVE_VEL_CTRL
+} MpAxisMoveCyclicVelocityModeEnum;
 
 typedef struct MpAxisHomingOptionsType
 {	float StartVelocity;
@@ -427,6 +437,62 @@ typedef struct MpAxisCouplingParType
 	struct MpAxisCouplingRecoveryParType Recovery;
 } MpAxisCouplingParType;
 
+typedef struct MpAxisTorqueControlInfoType
+{	plcbit InTorque;
+	plcbit DataInitialized;
+	plcbit Ready;
+	plcbit AxisLimitActive;
+} MpAxisTorqueControlInfoType;
+
+typedef struct MpAxisCyclicSetInfoType
+{	plcbit AxisReady;
+	struct MpAxisTorqueControlInfoType TorqueControl;
+	struct MpAxisDiagExtType Diag;
+} MpAxisCyclicSetInfoType;
+
+typedef struct MpAxisMoveCyclicPositionParType
+{	enum McIplModeEnum InterpolationMode;
+	float Velocity;
+	float Acceleration;
+	float Deceleration;
+	float Jerk;
+	enum McSwitchEnum DisableJoltLimitation;
+	enum McAltValueSrcEnum AlternativeValueSource;
+} MpAxisMoveCyclicPositionParType;
+
+typedef struct MpAxisMoveCyclicVelocityParType
+{	enum MpAxisMoveCyclicVelocityModeEnum Mode;
+	enum McIplModeEnum InterpolationMode;
+	float Acceleration;
+	float Deceleration;
+	float Jerk;
+	enum McSwitchEnum DisableJoltLimitation;
+	enum McAltValueSrcEnum AlternativeValueSource;
+} MpAxisMoveCyclicVelocityParType;
+
+typedef struct MpAxisTorqueControlParType
+{	plcbit CmdIndependentActivation;
+	float TorqueResolution;
+	float TorqueRamp;
+	float MaximumVelocity;
+	float MinimumVelocity;
+	float Acceleration;
+	float Jerk;
+	struct McAdvBrTorqueControlParType Options;
+} MpAxisTorqueControlParType;
+
+typedef struct MpAxisTorqueFFParType
+{	enum McIplModeEnum InterpolationMode;
+	struct McAdvCyclicTorqueFFParType Options;
+} MpAxisTorqueFFParType;
+
+typedef struct MpAxisCyclicSetParType
+{	struct MpAxisMoveCyclicPositionParType MoveCyclicPosition;
+	struct MpAxisMoveCyclicVelocityParType MoveCyclicVelocity;
+	struct MpAxisTorqueControlParType TorqueControl;
+	struct MpAxisTorqueFFParType TorqueFeedForward;
+} MpAxisCyclicSetParType;
+
 typedef struct MpAxisBasic
 {
 	/* VAR_INPUT (analog) */
@@ -558,12 +624,47 @@ typedef struct MpAxisCoupling
 	plcbit CamPrepareDone;
 } MpAxisCoupling_typ;
 
+typedef struct MpAxisCyclicSet
+{
+	/* VAR_INPUT (analog) */
+	struct McAxisType* MpLink;
+	struct MpAxisCyclicSetParType* Parameters;
+	double CyclicPosition;
+	float CyclicVelocity;
+	float CyclicTorque;
+	float CyclicTorqueFeedForward;
+	/* VAR_OUTPUT (analog) */
+	signed long StatusID;
+	struct MpAxisCyclicSetInfoType Info;
+	/* VAR (analog) */
+	struct MpComInternalDataType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Enable;
+	plcbit ErrorReset;
+	plcbit Update;
+	plcbit MoveCyclicPosition;
+	plcbit MoveCyclicVelocity;
+	plcbit TorqueControl;
+	plcbit TorqueFeedForward;
+	/* VAR_OUTPUT (digital) */
+	plcbit Active;
+	plcbit Error;
+	plcbit UpdateDone;
+	plcbit CommandBusy;
+	plcbit CommandAborted;
+	plcbit MoveCyclicPositionActive;
+	plcbit MoveCyclicVelocityActive;
+	plcbit TorqueControlActive;
+	plcbit TorqueFeedForwardActive;
+} MpAxisCyclicSet_typ;
+
 
 
 /* Prototyping of functions and function blocks */
 _BUR_PUBLIC void MpAxisBasic(struct MpAxisBasic* inst);
 _BUR_PUBLIC void MpAxisCamSequencer(struct MpAxisCamSequencer* inst);
 _BUR_PUBLIC void MpAxisCoupling(struct MpAxisCoupling* inst);
+_BUR_PUBLIC void MpAxisCyclicSet(struct MpAxisCyclicSet* inst);
 
 
 #ifdef __cplusplus

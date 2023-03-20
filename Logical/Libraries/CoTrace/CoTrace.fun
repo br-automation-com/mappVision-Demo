@@ -161,6 +161,39 @@ For local variables on the PLC in application modules: "<application module>::<p
 	END_VAR
 END_FUNCTION_BLOCK
 
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CoTraceConfigAddStartTriggerExt (*This function block allows to add a start trigger to a trace configuration.
+For a successful execution of this function block a CoTraceConfigCreate function block needs to be enabled and to provide a valid ConfigIdent as input.
+This function block is an optional part of a trace configuration.
+The start trigger can also be actuated manually using the "ForceStartTrigger" input of an CoTraceRecorder function block.
+
+Limitations:
+- Only one StartTrigger per ACOPOS channel/axis can be applied.*)
+	VAR_INPUT
+		Execute 		: BOOL; (*Execution of the function block begins on a rising edge of this input.*) (* *) (*#PAR*)
+		ConfigIdent 	: CoTraceConfigIdentType; (*The output "ConfigIdent" of an CoTraceConfigCreate function block has to be provided on the input.*) (* *) (*#PAR*)
+		DataPointName	: STRING[767]; (*Fully qualified identification of the DataPoint that is to  be recorded.
+For global variables on the PLC: "<variable name>"
+For local variables on the PLC: "<program name>:<variable name>"
+
+For DataPoints on ACOPOS drives: "*ACP:<network node/address>_Axis<channel number>:<parid number>" example: "*ACP:IF3.ST2_Axis1:355"
+
+For global variables on the PLC in application modules: "<application module>::<variable name>"
+For local variables on the PLC in application modules: "<application module>::<program name>:<variable name>" *) (* *) (*#PAR*)
+		Condition		: CoTraceTriggerConditionEnum; (*Defines the start trigger condition.*) (* *) (*#PAR*)
+		Threshold		: LREAL; (*Threshold, further information: DNE(<a xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" href="Data types and constants\Enumerators\CoTraceTriggerConditionEnum.html">CoTraceTriggerConditionEnum</a>)DNE*) (* *) (*#PAR*)
+		Window			: LREAL; (*Window, further information: DNE(<a xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" href="Data types and constants\Enumerators\CoTraceTriggerConditionEnum.html">CoTraceTriggerConditionEnum</a>)DNE*) (* *) (*#PAR*)
+	END_VAR
+	VAR_OUTPUT
+		Done			: BOOL; (*Execution successful. Function block is finished.*) (* *) (*#PAR*)
+		Busy			: BOOL; (*The function block is busy and must continue to be called.*) (* *) (*#PAR*)
+		Error			: BOOL; (*An error occurred during operation. The function block must be disabled to get out of the error state.*) (* *) (*#PAR*)
+		StatusID		: DINT; (*Status information*) (* *) (*#PAR*)
+	END_VAR
+	VAR
+		Internal : CoTraceExec1InternalType; (*Data for internal use*)
+	END_VAR
+END_FUNCTION_BLOCK
+
 {REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CoTraceRecorder (*This function block records data according to the applied trace configuration.
 When the recording is finished and the data is available the DataIdent is used as reference for the read-out by the function blocks CoTraceDataReadRecords or CoTraceDataSaveCsv.
 

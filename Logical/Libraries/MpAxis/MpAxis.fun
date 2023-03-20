@@ -44,7 +44,7 @@ FUNCTION_BLOCK MpAxisBasic
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK MpAxisCamSequencer (*Flexibly sequence various (user-defined or predefined) cam profiles together*) (* $GROUP=mapp,$CAT=Multi Axis,$GROUPICON=Icon_mapp.png,$CATICON=Icon_MpAxis1.png *)
+FUNCTION_BLOCK MpAxisCamSequencer (* *) (* $GROUP=mapp,$CAT=Multi Axis,$GROUPICON=Icon_mapp.png,$CATICON=Icon_MpAxis1.png *)
 	VAR_INPUT
 		MpLink : REFERENCE TO McAxisType; (*Connection to mapp, slave axis for the coupling*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block*) (* *) (*#PAR#;*)
@@ -94,7 +94,7 @@ FUNCTION_BLOCK MpAxisCamSequencer (*Flexibly sequence various (user-defined or p
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK MpAxisCoupling (*Flexibly sequence various (user-defined or predefined) cam profiles together*) (* $GROUP=mapp,$CAT=Multi Axis,$GROUPICON=Icon_mapp.png,$CATICON=Icon_MpAxis1.png *)
+FUNCTION_BLOCK MpAxisCoupling (* *) (* $GROUP=mapp,$CAT=Multi Axis,$GROUPICON=Icon_mapp.png,$CATICON=Icon_MpAxis1.png *)
 	VAR_INPUT
 		MpLink : REFERENCE TO McAxisType; (*Connection to mapp, slave axis for the coupling*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block*) (* *) (*#PAR#;*)
@@ -128,6 +128,40 @@ FUNCTION_BLOCK MpAxisCoupling (*Flexibly sequence various (user-defined or prede
 		GetCamPositionDone : BOOL; (*GetCamPosition executed successfully*) (* *) (*#CMD#OPT#;*)
 		CamPrepareDone : BOOL; (*CamPrepare executed successfully*) (* *) (*#CMD#OPT#;*)
 		Info : MpAxisCouplingInfoType; (*Additional information about the component*) (* *) (*#CMD#;*)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} MpComInternalDataType; (*Internal data*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MpAxisCyclicSet (* *) (* $GROUP=mapp,$CAT=Multi Axis,$GROUPICON=Icon_mapp.png,$CATICON=Icon_MpAxis1.png *)
+	VAR_INPUT
+		MpLink : REFERENCE TO McAxisType; (*The axis reference creates a link between the function block and an axis.*) (* *) (*#PAR#;*)
+		Enable : BOOL; (*The function block is active as long as this input is set.*) (* *) (*#PAR#;*)
+		ErrorReset : BOOL; (*Resets function block errors*) (* *) (*#PAR#;*)
+		Parameters : REFERENCE TO MpAxisCyclicSetParType; (*Function block parameters*) (* *) (*#PAR#;*)
+		Update : BOOL; (*Update command for the parameters*) (* *) (*#PAR#;*)
+		CyclicPosition : LREAL; (*Cyclic position setpoint [measurement units]*) (* *) (*#CYC#;*)
+		CyclicVelocity : REAL; (*Cyclic velocity setpoint [measurement units/s]*) (* *) (*#CYC#;*)
+		CyclicTorque : REAL; (*Cyclic torque setpoint [ Nm]*) (* *) (*#CYC#;*)
+		CyclicTorqueFeedForward : REAL; (*Cyclic torque feedforward value*) (* *) (*#CYC#;*)
+		MoveCyclicPosition : BOOL; (*Positive edge starts MoveCyclicPosition, negative edge stops it*) (* *) (*#CMD#;*)
+		MoveCyclicVelocity : BOOL; (*Positive edge starts MoveCyclicVelocityl, negative edge stops it*) (* *) (*#CMD#;*)
+		TorqueControl : BOOL; (*Positive edge starts TorqueControl, negative edge stops it*) (* *) (*#CMD#;*)
+		TorqueFeedForward : BOOL; (*Positive edge activates TorqueFeedForward, negative disables it*) (* *) (*#CMD#;*)
+	END_VAR
+	VAR_OUTPUT
+		Active : BOOL; (*Indicates whether the function block is active*) (* *) (*#PAR#;*)
+		Error : BOOL; (*Indicates that the function block is in an error state or a command was not executed correctly*) (* *) (*#PAR#;*)
+		StatusID : DINT; (*Status information about the function block*) (* *) (*#PAR#;*)
+		UpdateDone : BOOL; (*Parameter update completed*) (* *) (*#PAR#;*)
+		CommandBusy : BOOL; (*Function block currently executing command*) (* *) (*#CMD#OPT#;*)
+		CommandAborted : BOOL; (*Function block interrupted while executing a command*) (* *) (*#CMD#OPT#;*)
+		MoveCyclicPositionActive : BOOL; (*Initialization completed, position being transmitted cyclically*) (* *) (*#CMD#;*)
+		MoveCyclicVelocityActive : BOOL; (*Initialization completed, velocity being transmitted cyclically*) (* *) (*#CMD#;*)
+		TorqueControlActive : BOOL; (*Indicates that TorqueControl  functionality is currently controlling the axis*) (* *) (*#CMD#;*)
+		TorqueFeedForwardActive : BOOL; (*Indicated that TorqueFeedForward is active*) (* *) (*#CMD#;*)
+		Info : MpAxisCyclicSetInfoType; (*Additional information*) (* *) (*#CMD#;*)
 	END_VAR
 	VAR
 		Internal : {REDUND_UNREPLICABLE} MpComInternalDataType; (*Internal data*)

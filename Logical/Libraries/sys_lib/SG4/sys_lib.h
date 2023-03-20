@@ -133,6 +133,14 @@ extern "C"
 #define     USER_ROM1           2       /* EPROM */
 #define     FIX_RAM             5       /* fixed RAM */
 
+/* shutdown / reboot types */
+#define     SYSLIB_WARMSTART			0x01	/*WARMSTART(with restart)*/
+#define     SYSLIB_COLDSTART			0x02	/*COLDSTART(with restart)*/
+#define     SYSLIB_WARMSTART_NO_REBOOT	0x11	/*WARMSTART(no restart, only shutdown)*/
+#define     SYSLIB_COLDSTART_NO_REBOOT  0x12	/*COLDSTART(no restart, only shutdown)*/
+#define     SYSLIB_DIAGNOSTICS          0x20	/*DIAGNOSTICS(with restart)*/
+#define     SYSLIB_SERVICE				0x40	/*SERVICE(with restart) */
+
 typedef struct RTCtime_typ {
             /* 1. UDINT */
             UINT     year;       /* year, starting with zero */

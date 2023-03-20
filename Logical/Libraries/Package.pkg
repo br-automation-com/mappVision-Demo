@@ -31,6 +31,7 @@
     <Object Type="Library" Language="Binary" Description="Recipe management">MpRecipe</Object>
     <Object Type="Library" Language="Binary" Description="mapp components diagnosis,hierarchy and unit handling">MpCom</Object>
     <Object Type="Library" Language="binary" Description="[mapp Vision] Base library">ViBase</Object>
+    <Object Type="Library" Language="binary" Description="The DataObj library can be used to dynamically create, dynamically delete and copy data objects, etc. ">DataObj</Object>
     <Object Type="Library" Language="binary" Description="This library contains functionality to execute traces (to sample numeric values periodically for a defined time-span)">CoTrace</Object>
   </Objects>
 </Package>
