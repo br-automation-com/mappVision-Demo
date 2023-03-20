@@ -219,6 +219,7 @@ PROGRAM _CYCLIC
 		// Selection of specific result
 		// -----------------------------------------------------------------------------------------------------------	
 		IF hmi.in.cmd.click THEN
+			styleStringGeneration;	
 			hmi.in.cmd.click := FALSE;
 
 			//VF 
@@ -226,8 +227,12 @@ PROGRAM _CYCLIC
 			//ID 
 			brsstrcpy(ADR(tmpID),ADR(hmi.in.cmd.elemId)+2);
 				
-			hmi.in.cmd.intElemId := STRING_TO_USINT(tmpID);
+			hmi.in.cmd.intElemId := STRING_TO_USINT(tmpID);	
+		END_IF
 		
+		IF hmi.in.cmd.intElemId <> this.oldIntElemID THEN
+			this.oldIntElemID := hmi.in.cmd.intElemId;
+			processResultsAction;
 		END_IF
 		
 		// -----------------------------------------------------------------------------------------------------------

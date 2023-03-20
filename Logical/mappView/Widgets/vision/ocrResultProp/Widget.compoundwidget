@@ -5,13 +5,13 @@
 			<Widgets>
 				<Widget xsi:type="widgets.brease.Label" id="dataLabel" top="0" left="5" width="235" zIndex="0" text="Data" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.TextOutput" id="dataOutput" top="0" left="0" width="220" zIndex="8" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="gradValLabel" top="0" left="5" width="260" zIndex="1" text="Grading value" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="gradValLabel" top="0" left="5" width="305" zIndex="1" text="Grading value" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="gradValOutput" top="0" left="0" width="150" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="posXLabel" top="0" left="5" width="260" zIndex="2" text="Position x" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="posXLabel" top="0" left="5" width="305" zIndex="2" text="Position x" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="posXOutput" top="0" left="0" width="150" zIndex="5" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="posYLabel" top="0" left="5" width="260" zIndex="3" text="Position y" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="posYLabel" top="0" left="5" width="305" zIndex="3" text="Position y" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="posYOutput" top="0" left="0" width="150" zIndex="6" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="orientLabel" top="0" left="5" width="260" zIndex="4" text="Orientation" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="orientLabel" top="0" left="5" width="305" zIndex="4" text="Orientation" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="orientOutput" top="0" left="0" width="150" zIndex="7" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
 			</Widgets>
 		</Widget>

@@ -28,9 +28,9 @@ ACTION processResultsAction:
 	//BLOB
 	IF hw.VF.blob.in.common.numResults > 0 THEN
 		
-		FOR i:= 0 TO hw.VF.blob.in.common.numResults-1 BY 1 DO
-			this.tmp2D.x := DINT_TO_REAL(hw.VF.blob.in.results[i].positionX) / 100.0;
-			this.tmp2D.y := DINT_TO_REAL(hw.VF.blob.in.results[i].positionY) / 100.0;
+		FOR i:= 1 TO hw.VF.blob.in.common.numResults BY 1 DO
+			this.tmp2D.x := DINT_TO_REAL(hw.VF.blob.in.results[i-1].positionX) / 100.0;
+			this.tmp2D.y := DINT_TO_REAL(hw.VF.blob.in.results[i-1].positionY) / 100.0;
 				
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
@@ -59,9 +59,9 @@ ACTION processResultsAction:
 			
 		hmi.out.svgOverlay := '';
 		
-		FOR i:= 0 TO hw.VF.codeReader.in.common.numResults-1 BY 1 DO
-			this.tmp2D.x := DINT_TO_REAL(hw.VF.codeReader.in.results[i].positionX) / 100.0;
-			this.tmp2D.y := DINT_TO_REAL(hw.VF.codeReader.in.results[i].positionY) / 100.0;
+		FOR i:= 1 TO hw.VF.codeReader.in.common.numResults BY 1 DO
+			this.tmp2D.x := DINT_TO_REAL(hw.VF.codeReader.in.results[i-1].positionX) / 100.0;
+			this.tmp2D.y := DINT_TO_REAL(hw.VF.codeReader.in.results[i-1].positionY) / 100.0;
 				
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
@@ -72,7 +72,7 @@ ACTION processResultsAction:
 								
 			styleStringGeneration;
 			
-			hmi.in.cmd.draw.rotation:= hw.VF.codeReader.in.results[i].orientation / 100.0;
+			hmi.in.cmd.draw.rotation:= hw.VF.codeReader.in.results[i-1].orientation / 100.0;
 			hmi.in.cmd.draw.invRotation:= -(hmi.in.cmd.draw.rotation);
 			
 			// DRAW SELECTED SHAPE WITH SPECIFIED PARAMETERS ON THE OVERLAY
@@ -94,9 +94,9 @@ ACTION processResultsAction:
 			
 		hmi.out.svgOverlay := '';
 		
-		FOR i:= 0 TO hw.VF.matching.in.common.numResults-1 BY 1 DO
-			this.tmp2D.x := DINT_TO_REAL(hw.VF.matching.in.results[i].positionX) / 100.0;
-			this.tmp2D.y := DINT_TO_REAL(hw.VF.matching.in.results[i].positionY) / 100.0;
+		FOR i:= 1 TO hw.VF.matching.in.common.numResults BY 1 DO
+			this.tmp2D.x := DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionX) / 100.0;
+			this.tmp2D.y := DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionY) / 100.0;
 				
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
@@ -126,9 +126,9 @@ ACTION processResultsAction:
 			
 		hmi.out.svgOverlay := '';
 		
-		FOR i:= 0 TO hw.VF.measurement.in.common.numResults-1 BY 1 DO
-			this.tmp2D.x := DINT_TO_REAL(hw.VF.measurement.in.results[i].positionX) / 100.0;
-			this.tmp2D.y := DINT_TO_REAL(hw.VF.measurement.in.results[i].positionY) / 100.0;
+		FOR i:= 1 TO hw.VF.measurement.in.common.numResults BY 1 DO
+			this.tmp2D.x := DINT_TO_REAL(hw.VF.measurement.in.results[i-1].positionX) / 100.0;
+			this.tmp2D.y := DINT_TO_REAL(hw.VF.measurement.in.results[i-1].positionY) / 100.0;
 				
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
@@ -159,20 +159,20 @@ ACTION processResultsAction:
 			
 		hmi.out.svgOverlay := '';
 		
-		FOR i:= 0 TO hw.VF.ocr.in.common.numResults-1 BY 1 DO
-			this.tmp2D.x := DINT_TO_REAL(hw.VF.ocr.in.results[i].positionX) / 100.0;
-			this.tmp2D.y := DINT_TO_REAL(hw.VF.ocr.in.results[i].positionY) / 100.0;
+		FOR i:= 1 TO hw.VF.ocr.in.common.numResults BY 1 DO
+			this.tmp2D.x := DINT_TO_REAL(hw.VF.ocr.in.results[i-1].positionX) / 100.0;
+			this.tmp2D.y := DINT_TO_REAL(hw.VF.ocr.in.results[i-1].positionY) / 100.0;
 				
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
 			
 			this.strElemId := UINT_TO_STRING(i);
-				
+			
 			hmi.in.cmd.draw.strStyle := 'id="5'; 
-								
+			
 			styleStringGeneration;
 			
-			hmi.in.cmd.draw.rotation:= hw.VF.ocr.in.results[i].orientation / 100.0;
+			hmi.in.cmd.draw.rotation:= hw.VF.ocr.in.results[i-1].orientation / 100.0;
 			hmi.in.cmd.draw.invRotation:= -(hmi.in.cmd.draw.rotation);
 			
 			// DRAW SELECTED SHAPE WITH SPECIFIED PARAMETERS ON THE OVERLAY
@@ -194,9 +194,9 @@ ACTION processResultsAction:
 			
 		hmi.out.svgOverlay := '';
 		
-		FOR i:= 0 TO hw.VF.pixelCnt.in.common.numResults-1 BY 1 DO
-			this.tmp2D.x := DINT_TO_REAL(hw.VF.pixelCnt.in.results[i].positionX) / 100.0;
-			this.tmp2D.y := DINT_TO_REAL(hw.VF.pixelCnt.in.results[i].positionY) / 100.0;
+		FOR i:= 1 TO hw.VF.pixelCnt.in.common.numResults BY 1 DO
+			this.tmp2D.x := DINT_TO_REAL(hw.VF.pixelCnt.in.results[i-1].positionX) / 100.0;
+			this.tmp2D.y := DINT_TO_REAL(hw.VF.pixelCnt.in.results[i-1].positionY) / 100.0;
 				
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	

@@ -155,24 +155,7 @@
 </Binding>
 
 	
-	<Binding mode="twoWay">
-<Source xsi:type="listElement">
-				<Selector xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.intElemId" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="0" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[0]" />
-					<bt:Element index="1" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[1]" />
-					<bt:Element index="2" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[2]" />
-					<bt:Element index="3" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[3]" />
-					<bt:Element index="4" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[4]" />
-					<bt:Element index="5" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[5]" />
-					<bt:Element index="6" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[6]" />
-					<bt:Element index="7" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[7]" />
-					<bt:Element index="8" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[8]" />
-					<bt:Element index="9" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[9]" />
-				</be:List>
-</Source>
-<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="ocrResultProp1" attribute="Structure" />
-</Binding>
+	
 
 	
 	<Binding mode="twoWay">
@@ -245,16 +228,16 @@
 <Source xsi:type="listElement">
 				<Selector xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.intElemId" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="0" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[0]" />
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[1]" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[2]" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[3]" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[4]" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[5]" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[6]" />
-					<bt:Element index="7" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[7]" />
-					<bt:Element index="8" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[8]" />
-					<bt:Element index="9" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[9]" />
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[0]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[1]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[2]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[3]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[4]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[5]" />
+					<bt:Element index="7" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[6]" />
+					<bt:Element index="8" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[7]" />
+					<bt:Element index="9" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[8]" />
+					<bt:Element index="10" refId="::Vi_main:hmiInstance[5].out.VF.ocrData[9]" />
 				</be:List>
 </Source>
 <Target xsi:type="brease" contentRefId="contentMain" widgetRefId="ocrResultProp1" attribute="dataString" />
@@ -271,7 +254,7 @@
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.flashSegment.top" />
 				</be:List>
 </Source>
-<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" attribute="value" />
 </Binding>
 <Binding mode="twoWay">
 <Source xsi:type="listElement">
@@ -314,6 +297,24 @@
 				</be:List>
 </Source>
 <Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsBottom" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.intElemId" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
+					<bt:Element index="1" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[0]" />
+					<bt:Element index="2" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[1]" />
+					<bt:Element index="3" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[2]" />
+					<bt:Element index="4" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[3]" />
+					<bt:Element index="5" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[4]" />
+					<bt:Element index="6" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[5]" />
+					<bt:Element index="7" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[6]" />
+					<bt:Element index="8" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[7]" />
+					<bt:Element index="9" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[8]" />
+					<bt:Element index="10" refId="::Vi_main:hwInstance[5].VF.ocr.in.results[9]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="ocrResultProp1" attribute="Structure" />
 </Binding>
 </Bindings>
 </BindingsSet>

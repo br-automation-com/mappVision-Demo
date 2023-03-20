@@ -5,21 +5,21 @@
 			<Widgets>
 				<Widget xsi:type="widgets.brease.Label" id="dataLabel" top="0" left="5" width="235" zIndex="0" text="Data" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.TextOutput" id="dataOutput" top="0" left="0" width="220" zIndex="15" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="symbolTypeLabel" top="0" left="5" width="260" zIndex="1" text="Symbol type" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="symbolTypeLabel" top="0" left="5" width="305" zIndex="1" text="Symbol type" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="symbolTypeOutput" top="0" left="0" width="150" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="gradValLabel" top="0" left="5" width="260" zIndex="2" text="Grading value" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="gradValLabel" top="0" left="5" width="305" zIndex="2" text="Grading value" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="gradValOutput" top="0" left="0" width="150" zIndex="17" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
 				<Widget xsi:type="widgets.brease.Label" id="enhGradInfoLabel" top="0" left="5" width="225" height="70" zIndex="3" multiLine="true" text="Enhanced grading information" wordWrap="true" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.TextOutput" id="enhGradInfoOutput" top="0" left="0" width="220" zIndex="16" margin="10px" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="posXLabel" top="0" left="5" width="260" zIndex="4" text="Position x" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="posXLabel" top="0" left="5" width="305" zIndex="4" text="Position x" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="posXOutput" top="0" left="0" width="150" zIndex="10" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="posYLabel" top="0" left="5" width="260" zIndex="5" text="Position y" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="posYLabel" top="0" left="5" width="305" zIndex="5" text="Position y" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="posYOutput" top="0" left="0" width="150" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="orientLabel" top="0" left="5" width="260" zIndex="6" text="Orientation" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="orientLabel" top="0" left="5" width="305" zIndex="6" text="Orientation" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="orientOutput" top="0" left="0" width="150" zIndex="12" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="rotCenterXLabel" top="0" left="5" width="260" zIndex="7" text="Rotation center x" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="rotCenterXLabel" top="0" left="5" width="305" zIndex="7" text="Rotation center x" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="rotCenterXOutput" top="0" left="0" width="150" zIndex="13" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
-				<Widget xsi:type="widgets.brease.Label" id="rotCenterYLabel" top="0" left="5" width="260" zIndex="8" text="Rotation center y" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="rotCenterYLabel" top="0" left="5" width="305" zIndex="8" text="Rotation center y" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="rotCenterYOutput" top="0" left="0" width="150" zIndex="14" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
 			</Widgets>
 		</Widget>

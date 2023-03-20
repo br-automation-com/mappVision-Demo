@@ -4,21 +4,99 @@
     <EventBinding id="contentMain.numDetailsNoDown.Click">
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoDown" event="Click" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmi.in.cmd.intElemId">
-            <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
-    <EventBinding id="contentMain.numDetailsNoUp.Click">
+    <EventBinding id="EventBinding_8">
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoUp" event="Click" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmi.in.cmd.intElemId">
-            <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.intElemId">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
     <EventBinding id="EventBinding_7">
@@ -34,21 +112,161 @@
           </Step>
           <Step order="1">
             <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="6">
+            <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.y">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
               </Target>
             </Action>
           </Step>
-          <Step order="2">
+          <Step order="7">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="8">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="9">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="10">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="11">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="12">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
-          <Step order="3">
+          <Step order="13">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="14">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="15">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="16">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="17">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="18">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.click">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="19">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.click">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="20">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.click">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="21">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.click">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="22">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.click">
+                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="23">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>

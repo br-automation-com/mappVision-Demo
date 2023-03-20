@@ -22,6 +22,7 @@ TYPE
 		DTGetTime_0 : DTGetTime;
 		tmp2D : brdkViBase_2d_typ;
 		strElemId : STRING[80];
+		oldIntElemID : USINT;
 		elemId : STRING[80];
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
@@ -71,7 +72,7 @@ TYPE
 		saveDiagnositc : BOOL; (*Save vision diagnostic *)
 		loadVA : BOOL; (*Load Vision application*)
 		saveImage : BOOL;
-		intElemId : USINT;
+		intElemId : USINT := 1;
 		elemId : STRING[80];
 		click : BOOL;
 		y : REAL;
@@ -80,7 +81,6 @@ TYPE
 		strokeColorSelector : ARRAY[0..5]OF STRING[100] := ['{"value":";stroke:black", "text":"Black"}','{"value":";stroke:white", "text":"White"}','{"value":";stroke:red", "text":"Red"}','{"value":";stroke:green", "text":"Green"}','{"value":";stroke:blue", "text":"Blue"}','{"value":";stroke:yellow", "text":"Yellow"}'];
 		fillColorSelector : ARRAY[0..5]OF STRING[100] := ['{"value":"fill:black", "text":"Black"}','{"value":"fill:white", "text":"White"}','{"value":"fill:red", "text":"Red"}','{"value":"fill:green", "text":"Green"}','{"value":"fill:blue", "text":"Blue"}','{"value":"fill:yellow", "text":"Yellow"}'];
 		draw : hmi_in_cmd_draw_typ;
-		resultReady : BOOL;
 	END_STRUCT;
 	hmi_in_cmd_draw_typ : 	STRUCT 
 		intShape : INT; (*0 = rectangle, 1 = circle, 2 = triangle*)
@@ -97,8 +97,8 @@ TYPE
 		intStrokeWidth : INT := 6;
 		realFillOpac : REAL := 0;
 		realStrokeOpac : REAL := 1;
+		strStyleHighlight : STRING[240];
 		strStyle : STRING[240];
-		reset : BOOL;
 	END_STRUCT;
 	hmi_in_typ : 	STRUCT 
 		cmd : hmi_in_cmd_typ;

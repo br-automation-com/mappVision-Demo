@@ -3,7 +3,7 @@
 	<Widgets>
 		<Widget xsi:type="widgets.brease.GroupBox" id="resultPropBox4" top="0" left="-20" width="480" height="95" zIndex="4" childPositioning="relative" text="Result properties (Measurement)" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" enable="false" style="transparent">
 			<Widgets>
-				<Widget xsi:type="widgets.brease.Label" id="resultLabel" top="0" left="5" width="260" zIndex="0" text="Result" fontSize="25px" />
+				<Widget xsi:type="widgets.brease.Label" id="resultLabel" top="0" left="5" width="305" zIndex="0" text="Result" fontSize="25px" />
 				<Widget xsi:type="widgets.brease.NumericOutput" id="resultOutput" top="0" left="0" width="150" zIndex="1" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
 			</Widgets>
 		</Widget>
