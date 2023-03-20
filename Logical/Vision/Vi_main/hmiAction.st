@@ -19,5 +19,9 @@ ACTION hmiAction:
 	brsmemcpy(ADR(hmi.out.camera.hw),ADR(hw.camera.in.status),SIZEOF(hmi.out.camera.hw));
 	brsmemcpy(ADR(hmi.out.camera.common),ADR(hw.camera.in.common),SIZEOF(hmi.out.camera.common));
 	
+	hmi.in.recipe.cam.flashSegment.0 := hmi.in.cmd.flashSegment.top;
+	hmi.in.recipe.cam.flashSegment.1 := hmi.in.cmd.flashSegment.bottom;
+	hmi.in.recipe.cam.flashSegment.2 := hmi.in.cmd.flashSegment.left;
+	hmi.in.recipe.cam.flashSegment.3 := hmi.in.cmd.flashSegment.right;
 	
 END_ACTION

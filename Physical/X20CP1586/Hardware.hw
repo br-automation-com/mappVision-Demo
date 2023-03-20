@@ -1,88 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.12.2.93 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
-  <Module Name="8AC114.60-2" Type="8AC114.60-2" Version="1.0.0.8">
-    <Connection Connector="SS" TargetModule="8V1010.50-2" TargetConnector="SS1" />
-    <Connection Connector="PLK1" TargetModule="Lightbar1" TargetConnector="PLK2" NodeNumber="50">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-  </Module>
-  <Module Name="8AC120.60-1" Type="8AC120.60-1" Version="2.2.0.0">
-    <Connection Connector="SS" TargetModule="8V1010.50-2" TargetConnector="SS2" />
-    <Parameter ID="PlugInType" Value="Encoder" />
-    <Parameter ID="McAcoposTypeID" Value="AcoposPlugInConfig" />
-  </Module>
-  <Module Name="8V1010.50-2" Type="8V1010.50-2" Version="2.2.0.0">
-    <Parameter ID="McAcoposTypeID" Location="DriveConfiguration/Module" Value="AcoposConfig" />
-    <Parameter ID="ActivateACOPOSSimulationOnPLC" Location="DriveConfiguration/Module" Value="0" />
-    <Parameter ID="SinglePhaseOperation" Location="DriveConfiguration/Module/PowerSupply" Value="Used" />
-    <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxis_1" />
-    <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="0" />
-    <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="0" />
-    <Parameter ID="Output" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
-    <Parameter ID="ReferenceDistanceIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="0" />
-    <Parameter ID="ReferenceDistance" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/RotaryToLinearTransformation" Value="1" />
-    <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="0" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Controller" Value="PositionController" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="350" />
-    <Parameter ID="IntegrationTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="0.0" />
-    <Parameter ID="PredictionTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="0.0004" />
-    <Parameter ID="TotalDelayTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Position" Value="0.0004" />
-    <Parameter ID="ProportionalGainIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0" />
-    <Parameter ID="ProportionalGain" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="3" />
-    <Parameter ID="IntegrationTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0" />
-    <Parameter ID="IntegrationTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.0" />
-    <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0" />
-    <Parameter ID="FilterTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.0" />
-    <Parameter ID="LoopFilter1" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="Notch" />
-    <Parameter ID="CenterFrequency" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters/LoopFilter1" Value="1506.85" />
-    <Parameter ID="Bandwidth" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters/LoopFilter1" Value="400" />
-    <Parameter ID="LoopFilter2" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="NotUsed" />
-    <Parameter ID="LoopFilter3" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="NotUsed" />
-    <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="Direct" />
-    <Parameter ID="Position" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode" Value="0.0" />
-    <Parameter ID="ReferencePulse" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode" Value="Used" />
-    <Parameter ID="HomingVelocity" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode/ReferencePulse" Value="15" />
-    <Parameter ID="Acceleration" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode/ReferencePulse" Value="50.0" />
-    <Parameter ID="HomingDirection" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode/ReferencePulse" Value="Positive" />
-    <Parameter ID="KeepDirection" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode/ReferencePulse" Value="No" />
-    <Parameter ID="ReferencePulseBlockingDistance" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode/ReferencePulse" Value="0.0" />
-    <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="" />
-    <Parameter ID="Quickstop" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="DecelerationLimit" />
-    <Parameter ID="DriveError" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="DecelerationLimit" />
-    <Parameter ID="PositionError" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="20" />
-    <Parameter ID="VelocityErrorMonitoring" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="Automatic1" />
-    <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="NotUsed" />
-    <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/HomingSwitch" Value="High" />
-    <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/PositiveLimitSwitch" Value="High" />
-    <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/NegativeLimitSwitch" Value="High" />
-    <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Trigger1" Value="High" />
-    <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Trigger2" Value="High" />
-    <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Quickstop" Value="Trigger2" />
-    <Parameter ID="SimulationModeOnPLC" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="SetValueGeneration" />
-    <Parameter ID="SimulationModeOnACOPOS" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="NotUsed" />
-  </Module>
-  <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
-    <Connection Connector="PLK1" TargetModule="PixelCounter" TargetConnector="PLK2" NodeNumber="10">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-    <Connection Connector="PLK2" TargetModule="Backlight2" TargetConnector="PLK1" NodeNumber="10">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-    <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
-  </Module>
-  <Module Name="Backlight2" Type="VSLB11F00.54DP-000" Version="1.1.0.326">
-    <Connection Connector="PLK1" TargetModule="Backlight1" TargetConnector="PLK2">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-    <Connection Connector="PLK2" TargetModule="Lightbar1" TargetConnector="PLK1">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-    <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
-  </Module>
   <Module Name="Blob" Type="VSS112Q12.023P-000" Version="1.7.0.605">
     <Connection Connector="PLK1" TargetModule="X20CP1586" TargetConnector="IF3" NodeNumber="1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
@@ -102,16 +20,6 @@
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
-  </Module>
-  <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="Backlight2" TargetConnector="PLK2" NodeNumber="20">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-    <Connection Connector="PLK2" TargetModule="8AC114.60-2" TargetConnector="PLK1" NodeNumber="20">
-      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
-    </Connection>
-    <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
   </Module>
   <Module Name="Match" Type="VSS112Q12.023P-000" Version="1.7.0.605">
     <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="3">
@@ -147,7 +55,7 @@
     <Connection Connector="PLK1" TargetModule="OCR" TargetConnector="PLK2" NodeNumber="6">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="Backlight1" TargetConnector="PLK1" NodeNumber="6">
+    <Connection Connector="PLK2" TargetModule="blobBacklight" TargetConnector="PLK1" NodeNumber="6">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -197,5 +105,182 @@
     <Parameter ID="FTPMSpath1" Value="" />
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
+  </Module>
+  <Module Name="blobBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
+    <Connection Connector="PLK1" TargetModule="PixelCounter" TargetConnector="PLK2" NodeNumber="16">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="blobLightbar1" TargetConnector="PLK1" NodeNumber="16">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="blobLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="blobBacklight" TargetConnector="PLK2" NodeNumber="17">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="blobLightbar2" TargetConnector="PLK1" NodeNumber="17">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="blobLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="blobLightbar1" TargetConnector="PLK2" NodeNumber="18">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="crBacklight" TargetConnector="PLK1" NodeNumber="18">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="crBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
+    <Connection Connector="PLK1" TargetModule="blobLightbar2" TargetConnector="PLK2" NodeNumber="32">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="crLightbar2" TargetConnector="PLK1" NodeNumber="32">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="crLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="crLightbar2" TargetConnector="PLK2" NodeNumber="33">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="matchBacklight" TargetConnector="PLK1" NodeNumber="33">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="crLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="crBacklight" TargetConnector="PLK2" NodeNumber="34">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="crLightbar1" TargetConnector="PLK1" NodeNumber="34">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="matchBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
+    <Connection Connector="PLK1" TargetModule="crLightbar1" TargetConnector="PLK2" NodeNumber="48">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="matchLightbar1" TargetConnector="PLK1" NodeNumber="48">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="matchLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="matchBacklight" TargetConnector="PLK2" NodeNumber="49">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="matchLightbar2" TargetConnector="PLK1" NodeNumber="49">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="matchLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="matchLightbar1" TargetConnector="PLK2" NodeNumber="50">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="measureBacklight" TargetConnector="PLK1" NodeNumber="50">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="measureBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
+    <Connection Connector="PLK1" TargetModule="matchLightbar2" TargetConnector="PLK2" NodeNumber="64">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="measureLightbar1" TargetConnector="PLK1" NodeNumber="64">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="measureLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="measureBacklight" TargetConnector="PLK2" NodeNumber="65">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="measureLightbar2" TargetConnector="PLK1" NodeNumber="65">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="measureLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="measureLightbar1" TargetConnector="PLK2" NodeNumber="66">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="ocrBacklight" TargetConnector="PLK1" NodeNumber="66">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="ocrBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
+    <Connection Connector="PLK1" TargetModule="measureLightbar2" TargetConnector="PLK2" NodeNumber="80">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="ocrLightbar1" TargetConnector="PLK1" NodeNumber="80">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="ocrLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="ocrBacklight" TargetConnector="PLK2" NodeNumber="81">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="ocrLightbar2" TargetConnector="PLK1" NodeNumber="81">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="ocrLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="ocrLightbar1" TargetConnector="PLK2" NodeNumber="82">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="pxlCntBacklight" TargetConnector="PLK1" NodeNumber="82">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="pxlCntBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
+    <Connection Connector="PLK1" TargetModule="ocrLightbar2" TargetConnector="PLK2" NodeNumber="96">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="pxlCntLightbar1" TargetConnector="PLK1" NodeNumber="96">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="pxlCntLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="pxlCntBacklight" TargetConnector="PLK2" NodeNumber="97">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="pxlCntLightbar2" TargetConnector="PLK1" NodeNumber="97">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
+  </Module>
+  <Module Name="pxlCntLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+    <Connection Connector="PLK1" TargetModule="pxlCntLightbar1" TargetConnector="PLK2" NodeNumber="98">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Parameter ID="Supervision" Value="off" />
+    <Parameter ID="VisionConfig" Value="" />
   </Module>
 </Hardware>

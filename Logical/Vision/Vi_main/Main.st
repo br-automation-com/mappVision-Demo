@@ -126,7 +126,7 @@ PROGRAM _CYCLIC
 		// Image trigger (camera and lights)
 		// -----------------------------------------------------------------------------------------------------------
 		hw.camera.out.par.focus 			:= hmi.in.recipe.cam.focus;
-		hw.camera.out.par.flashSegment 		:= 15; //hmi.in.recipe.cam.flashSegment;
+		hw.camera.out.par.flashSegment	 	:= hmi.in.recipe.cam.flashSegment;
 		hw.camera.out.par.flashColor 		:= hmi.in.recipe.cam.flashColor;
 		hw.camera.out.par.exposureTime 		:= hmi.in.recipe.cam.exposureTime;
 		hw.camera.out.par.chromaticLock 	:= hmi.in.recipe.cam.chromaticLock;

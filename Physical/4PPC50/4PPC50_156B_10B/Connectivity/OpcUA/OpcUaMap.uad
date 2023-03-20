@@ -26,6 +26,12 @@
           <High ValueProvider="Const">5000</High>
         </EURange>
       </EURanges>
+      <EURanges Id="4">
+        <EURange>
+          <Low ValueProvider="Const" />
+          <High ValueProvider="PV">::Vi_main:hmi.out.VF.numResults</High>
+        </EURange>
+      </EURanges>
     </EURangesAliases>
     <EngineeringUnitAliases>
       <EngineeringUnit Id="2" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
@@ -101,6 +107,11 @@
                 <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
               </Variable>
             </Variable>
+            <Variable Name="in">
+              <Variable Name="cmd">
+                <Variable Name="intElemId" ChangedCommonProperties="1024" />
+              </Variable>
+            </Variable>
           </Variable>
           <Variable Name="hmiInstance[4]">
             <Variable Name="out">
@@ -163,7 +174,8 @@
               <Variable Name="strokeColorSelector" />
               <Variable Name="fillColorSelector" />
               <Variable Name="resultReady" />
-              <Variable Name="intElemId" />
+              <Variable Name="intElemId" EURangesId="4" />
+              <Variable Name="flashSegment" RecursiveEnable="2" />
             </Variable>
             <Variable Name="recipe" RecursiveEnable="2" />
           </Variable>

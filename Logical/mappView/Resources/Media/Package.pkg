@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.5.60 SP?>
+<?AutomationStudio FileVersion="4.9"?>
 <Package SubType="MediaPackage" PackageType="MediaPackage" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="Package">Alarm</Object>
@@ -12,5 +12,6 @@
     <Object Type="File">disconnected.png</Object>
     <Object Type="File">VisionEye.png</Object>
     <Object Type="Package">Rotation</Object>
+    <Object Type="File">BRlogo1.jpg</Object>
   </Objects>
 </Package>

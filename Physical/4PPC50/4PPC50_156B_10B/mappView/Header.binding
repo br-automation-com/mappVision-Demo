@@ -107,20 +107,7 @@
 			<Source xsi:type="session" refId="camIdx" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="numCameraNo" attribute="value" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera.connectedText" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera.connectedText" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera.connectedText" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera.connectedText" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera.connectedText" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera.connectedText" />
-				</be:List>
-</Source>
-			<Target xsi:type="brease" contentRefId="contentHeader" widgetRefId="StatusConnected" attribute="mouseDownText" />
-		</Binding>
+		
 	<Binding mode="twoWay">
 <Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />

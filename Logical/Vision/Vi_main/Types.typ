@@ -56,7 +56,14 @@ TYPE
 		VF : hmi_out_vf_typ;
 		status : DINT;
 	END_STRUCT;
+	hmi_in_cmd_flashSegment_typ : 	STRUCT 
+		top : BOOL := TRUE;
+		bottom : BOOL := TRUE;
+		right : BOOL := TRUE;
+		left : BOOL := TRUE;
+	END_STRUCT;
 	hmi_in_cmd_typ : 	STRUCT 
+		flashSegment : hmi_in_cmd_flashSegment_typ;
 		repetitiveTrigger : BOOL; (*Enable Repetitive trigger*)
 		trigger : BOOL; (*Trigger a image*)
 		autoSearch : BOOL; (*Start auto Search of exposure and focus for camra*)
@@ -80,6 +87,7 @@ TYPE
 		radius : REAL := 60;
 		width : REAL := 80;
 		length : REAL := 80;
+		invRotation : REAL;
 		rotation : REAL;
 		strFillColor : STRING[80];
 		strStrokeColor : STRING[80];

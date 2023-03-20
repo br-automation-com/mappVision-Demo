@@ -21,6 +21,7 @@ ACTION processResultsAction:
 	hmi.in.cmd.draw.strFillOpac := REAL_TO_STRING(hmi.in.cmd.draw.realFillOpac);
 	hmi.in.cmd.draw.strStrokeOpac := REAL_TO_STRING(hmi.in.cmd.draw.realStrokeOpac);
 	
+	hmi.in.cmd.draw.invRotation:= -(hmi.in.cmd.draw.rotation);
 	
 	// DRAW CIRCLES ON RESULTS
 	hmi.out.svgOverlay := '';
@@ -43,11 +44,11 @@ ACTION processResultsAction:
 			// Draw selested shape with specified parameters on the overlay
 			CASE hmi.in.cmd.draw.intShape OF
 				0: // Rectangle
-					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
+					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				1: // Circle
 					brdkViGeom_drawSvgCircle(this.tmp2D,hmi.in.cmd.draw.radius,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				2: // Triangle
-					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
+					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
 			END_CASE;
 		END_FOR;
 	END_IF;
@@ -70,15 +71,18 @@ ACTION processResultsAction:
 			hmi.in.cmd.draw.strStyle := 'id="2'; 
 								
 			styleStringGeneration;
-						
+			
+			hmi.in.cmd.draw.rotation:= hw.VF.codeReader.in.results[i].orientation / 100.0;
+			hmi.in.cmd.draw.invRotation:= -(hmi.in.cmd.draw.rotation);
+			
 			// DRAW SELECTED SHAPE WITH SPECIFIED PARAMETERS ON THE OVERLAY
 			CASE hmi.in.cmd.draw.intShape OF
 				0: // Rectangle
-					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
+					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				1: // Circle
 					brdkViGeom_drawSvgCircle(this.tmp2D,hmi.in.cmd.draw.radius,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				2: // Triangle
-					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
+					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
 	
 			END_CASE;	
 		END_FOR;
@@ -106,11 +110,11 @@ ACTION processResultsAction:
 			// DRAW SELECTED SHAPE WITH SPECIFIED PARAMETERS ON THE OVERLAY
 			CASE hmi.in.cmd.draw.intShape OF
 				0: // Rectangle
-					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
+					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				1: // Circle
 					brdkViGeom_drawSvgCircle(this.tmp2D,hmi.in.cmd.draw.radius,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				2: // Triangle
-					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
+					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
 	
 			END_CASE;	
 		END_FOR;
@@ -138,11 +142,11 @@ ACTION processResultsAction:
 			// DRAW SELECTED SHAPE WITH SPECIFIED PARAMETERS ON THE OVERLAY
 			CASE hmi.in.cmd.draw.intShape OF
 				0: // Rectangle
-					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
+					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				1: // Circle
 					brdkViGeom_drawSvgCircle(this.tmp2D,hmi.in.cmd.draw.radius,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				2: // Triangle
-					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
+					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
 	
 			END_CASE;	
 		END_FOR;
@@ -167,15 +171,18 @@ ACTION processResultsAction:
 			hmi.in.cmd.draw.strStyle := 'id="5'; 
 								
 			styleStringGeneration;
-						
+			
+			hmi.in.cmd.draw.rotation:= hw.VF.ocr.in.results[i].orientation / 100.0;
+			hmi.in.cmd.draw.invRotation:= -(hmi.in.cmd.draw.rotation);
+			
 			// DRAW SELECTED SHAPE WITH SPECIFIED PARAMETERS ON THE OVERLAY
 			CASE hmi.in.cmd.draw.intShape OF
 				0: // Rectangle
-					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
+					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				1: // Circle
 					brdkViGeom_drawSvgCircle(this.tmp2D,hmi.in.cmd.draw.radius,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				2: // Triangle
-					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
+					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
 	
 			END_CASE;	
 		END_FOR;
@@ -203,11 +210,11 @@ ACTION processResultsAction:
 			// DRAW SELECTED SHAPE WITH SPECIFIED PARAMETERS ON THE OVERLAY
 			CASE hmi.in.cmd.draw.intShape OF
 				0: // Rectangle
-					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
+					brdkViGeom_drawSvgRectFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				1: // Circle
 					brdkViGeom_drawSvgCircle(this.tmp2D,hmi.in.cmd.draw.radius,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));
 				2: // Triangle
-					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.rotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
+					brdkViGeom_drawSvgTriFromCP(this.tmp2D,hmi.in.cmd.draw.length,hmi.in.cmd.draw.width,hmi.in.cmd.draw.invRotation,ADR(hmi.out.svgOverlay),ADR(hmi.in.cmd.draw.strStyle));	  
 	
 			END_CASE;	
 		END_FOR;

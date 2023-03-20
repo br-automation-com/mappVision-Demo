@@ -225,6 +225,13 @@
               </Target>
             </Action>
           </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="newValue=2">
@@ -268,6 +275,13 @@
             <Action>
               <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
                 <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="false" />
               </Target>
             </Action>
           </Step>
@@ -317,6 +331,13 @@
               </Target>
             </Action>
           </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
+              </Target>
+            </Action>
+          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="newValue=4">
@@ -360,6 +381,13 @@
             <Action>
               <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
                 <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
               </Target>
             </Action>
           </Step>
@@ -409,6 +437,13 @@
               </Target>
             </Action>
           </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="false" />
+              </Target>
+            </Action>
+          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="newValue=6">
@@ -452,6 +487,13 @@
             <Action>
               <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
                 <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="6">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
               </Target>
             </Action>
           </Step>

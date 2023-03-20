@@ -46,15 +46,5 @@
         </Action>
       </EventHandler>
     </EventBinding>
-    <EventBinding id="EventBinding_10">
-      <Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" event="ValueChanged" />
-      <EventHandler condition="newValue=1">
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmi.in.recipe.cam.flashSegment">
-            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="15" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
   </Bindings>
 </EventBindingSet>

@@ -194,7 +194,9 @@ TYPE
 		completedFlashCnt : USINT; (*Counter for executed lighting jobs*)
 		failedFlashCnt : USINT; (*Counter for failed lighting jobs*)
 		LightWarningCnt : USINT; (*Counter for errors or warnings that have occurred related to lighting.*)
-		sensorTemperature : SINT; (*Current lighting unit temperature in °C*)
+		sensorTemperature : SINT;
+		sensorTemperatureLedBoard : SINT;
+		sensorTemperatureControllerBoard : SINT; (*Current lighting unit temperature in °C*)
 	END_STRUCT;
 	brdkViBase_light_hw_in_typ : 	STRUCT  (*Light hardware input structure from device*)
 		common : brdkViBase_hw_in_common_typ; (*B&R hardware common inputs from device*)
@@ -212,7 +214,7 @@ TYPE
 		flashColor : USINT; (*Select LED colors of the LED lighting
  Constant BRDKVIBASE_LED_xxx can be used to set the color*)
 		exposureTime : UDINT; (*Sets the exposure time in µs*)
-		flashAngle : USINT; (*Only for Lightbar. Position of the stepper motor in degree 0 to 135*)
+		flashAngle : UINT; (*Only for Lightbar. Position of the stepper motor in degree 0 to 135*)
 		flashSegments : USINT; (*Only for Lightbar. Enables/Disables LED segments*)
 		cyclicLineScanPeriod : DINT; (*Time between 2 flashes in dynamic line sensor operation.*)
 		cyclicLineScanNettime : DINT; (*Specifies the NetTime for dynamic line sensor mode.*)
@@ -236,7 +238,7 @@ TYPE
 	END_STRUCT;
 	brdkViBase_hw_vf_out_common_typ : 	STRUCT  (*vision function hardware output structure to device*)
 		enable : BOOL; (*Enables/Disables the function*)
-		numSearchMax : USINT; (*Maximum number of codes to search*)
+		numSearchMax : USINT := 10; (*Maximum number of codes to search*)
 		alignment : USINT; (*0 = "None" 
 1 = "SetReference"
 2 = "GenerateAlignmentData" *)
