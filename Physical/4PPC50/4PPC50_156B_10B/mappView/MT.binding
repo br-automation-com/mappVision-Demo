@@ -1,49 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="MT_binding">
 	<Bindings>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[1]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results1" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[2]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results2" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[3]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results3" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[4]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results4" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[5]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results5" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[6]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results6" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[7]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results7" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[8]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results8" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[9]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results9" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:MT.Result[10]" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results10" attribute="node" />
-		</Binding>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:MT.UseResultAsXY" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="btnMTuseXY" attribute="value" />
 		</Binding>
-	</Bindings>
+	<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[1]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[1]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[1]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[1]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[1]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[1]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[10]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[10]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[10]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[10]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[10]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[10]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results10" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[9]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[9]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[9]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[9]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[9]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[9]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results9" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[8]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[8]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[8]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[8]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[8]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[8]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results8" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[7]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[7]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[7]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[7]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[7]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[7]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results7" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[6]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[6]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[6]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[6]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[6]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[6]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results6" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[5]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[5]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[5]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[5]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[5]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[5]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results5" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[4]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[4]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[4]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[4]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[4]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[4]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results4" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[3]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[3]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[3]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[3]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[3]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[3]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results3" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.measurement.Result[2]" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.measurement.Result[2]" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.measurement.Result[2]" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.measurement.Result[2]" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.Result[2]" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.Result[2]" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMT" widgetRefId="numMT_Results2" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>

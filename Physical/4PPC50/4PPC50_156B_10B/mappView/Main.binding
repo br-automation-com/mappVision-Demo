@@ -225,5 +225,33 @@
 </Source>
 <Target xsi:type="brease" contentRefId="contentMain" widgetRefId="strokeOpacityInput" attribute="value" />
 </Binding>
+<Binding mode="twoWay">
+	<Source xsi:type="listElement">
+		<Selector xsi:type="session" refId="camIdx" attribute="value" />
+		<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+			<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cmd.intElemId" />
+			<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.cmd.intElemId" />
+			<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cmd.intElemId" />
+			<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cmd.intElemId" />
+			<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.intElemId" />
+			<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.intElemId" />
+		</be:List>
+	</Source>
+	<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+	<Source xsi:type="listElement">
+		<Selector xsi:type="session" refId="camIdx" attribute="value" />
+		<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+			<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cmd.intElemId" />
+			<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.cmd.intElemId" />
+			<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cmd.intElemId" />
+			<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cmd.intElemId" />
+			<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.intElemId" />
+			<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.intElemId" />
+		</be:List>
+	</Source>
+	<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="selectedResIDOutput" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>

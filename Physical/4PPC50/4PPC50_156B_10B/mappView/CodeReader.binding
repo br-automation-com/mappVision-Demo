@@ -21,38 +21,108 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.ParameterOptimization" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderParamOptimization" attribute="selectedIndex" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="ItemNo" attribute="node" />
-		</Binding>			
+					
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visCodeTypePresentDropDownValues" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="CodeReaderTypePreset" attribute="dataProvider" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.BarcodeText" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemData" attribute="stringValue" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.Grading" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemGrading" attribute="value" />
-		</Binding>
+		
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visSelectedCodeTypeDetected" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemType" attribute="stringValue" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.Orientation" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemOrientation" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.PositionY" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosY" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:CodeReader.PositionX" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosX" attribute="node" />
-		</Binding>
+		
+		
+		
 	
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.codeReader.PositionY" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.codeReader.PositionY" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.codeReader.PositionY" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.codeReader.PositionY" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.codeReader.PositionY" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.codeReader.PositionY" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosY" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.codeReader.BarcodeType" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.codeReader.BarcodeType" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.codeReader.BarcodeType" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.codeReader.BarcodeType" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.codeReader.BarcodeType" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.codeReader.BarcodeType" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemType" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.codeReader.Orientation" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.codeReader.Orientation" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.codeReader.Orientation" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.codeReader.Orientation" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.codeReader.Orientation" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.codeReader.Orientation" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemOrientation" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.codeReader.PositionX" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.codeReader.PositionX" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.codeReader.PositionX" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.codeReader.PositionX" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.codeReader.PositionX" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.codeReader.PositionX" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemPosX" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.codeReader.Grading" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.codeReader.Grading" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.codeReader.Grading" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.codeReader.Grading" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.codeReader.Grading" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.codeReader.Grading" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemGrading" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.crData" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.crData" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.crData" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.crData" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.crData" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.crData" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="itemData" attribute="stringValue" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_main:tableNo" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentCodeReader" widgetRefId="ItemNo" attribute="node" />
+</Binding>
 </Bindings>
 </BindingsSet>

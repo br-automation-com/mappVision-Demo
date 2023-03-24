@@ -46,5 +46,44 @@
         </Action>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="EventBinding_10">
+      <Source xsi:type="session.Event" refId="camIdx" event="ValueChanged" />
+      <EventHandler condition="newValue=2 OR newValue=3 OR newValue=5">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentFooter" widgetRefId="numTimeout">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentFooter" widgetRefId="labFooter6">
+                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="newValue=1 OR newValue=4 OR newValue=6">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentFooter" widgetRefId="numTimeout">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentFooter" widgetRefId="labFooter6">
+                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
   </Bindings>
 </EventBindingSet>

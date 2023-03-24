@@ -72,7 +72,7 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
-				
+					
 	FOR idx:= START_IDX TO NUM_CAMS BY 1 DO 
 		setupPointersAction;
 		
@@ -211,6 +211,7 @@ PROGRAM _CYCLIC
 			this.DTGetTime_0(enable := TRUE);
 			
 			processResultsAction; // Process results action
+			tableResultsAction;
 			
 		END_IF
 		

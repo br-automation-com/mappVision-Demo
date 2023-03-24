@@ -667,12 +667,12 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[1].lights[1].in.status.completedFlashCnt AT %IB."blobBacklight".CompletedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[1].in.status.failedFlashCnt AT %IB."blobBacklight".FailedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[1].in.status.LightWarningCnt AT %IB."blobBacklight".LightWarningCnt;
-	Cyclic#1.::Vi_main:hwInstance[1].lights[1].in.status.sensorTemperature AT %IB."blobBacklight".SensorTemperature;
+	Cyclic#1.::Vi_main:hwInstance[1].lights[1].in.status.sensorTemperatureLedBoard AT %IB."blobBacklight".SensorTemperature;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[1].out.cmd.flashTrigger AT %QX."blobBacklight".FlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[1].out.cmd.resetFlashTrigger AT %QX."blobBacklight".ResetFlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[1].out.par.nettime AT %QD."blobBacklight".Nettime01;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[1].out.par.exposureTime AT %QD."blobBacklight".ExposureTime01;
-	Cyclic#1.::Vi_main:hwInstance[1].lights[1].out.par.flashColor AT %QB."blobBacklight".FlashColor01;	
+	Cyclic#1.::Vi_main:hwInstance[1].lights[1].out.par.flashColor AT %QB."blobBacklight".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[2].in.common.moduleOk AT %IX."blobLightbar1".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[2].in.common.serialNumber AT %ID."blobLightbar1".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[2].in.common.moduleId AT %ID."blobLightbar1".ModuleID;
@@ -711,7 +711,6 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[1].lights[3].out.par.exposureTime AT %QD."blobLightbar2".ExposureTime01;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[3].out.par.flashColor AT %QB."blobLightbar2".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[1].lights[3].out.par.flashAngle AT %QW."blobLightbar2".SetAngleTotal;
-	
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.common.moduleOk AT %IX."crBacklight".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.common.serialNumber AT %ID."crBacklight".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.common.moduleId AT %ID."crBacklight".ModuleID;
@@ -723,12 +722,12 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.status.completedFlashCnt AT %IB."crBacklight".CompletedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.status.failedFlashCnt AT %IB."crBacklight".FailedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.status.LightWarningCnt AT %IB."crBacklight".LightWarningCnt;
-	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.status.sensorTemperature AT %IB."crBacklight".SensorTemperature;
+	Cyclic#1.::Vi_main:hwInstance[2].lights[1].in.status.sensorTemperatureLedBoard AT %IB."crBacklight".SensorTemperature;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].out.cmd.flashTrigger AT %QX."crBacklight".FlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].out.cmd.resetFlashTrigger AT %QX."crBacklight".ResetFlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].out.par.nettime AT %QD."crBacklight".Nettime01;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[1].out.par.exposureTime AT %QD."crBacklight".ExposureTime01;
-	Cyclic#1.::Vi_main:hwInstance[2].lights[1].out.par.flashColor AT %QB."crBacklight".FlashColor01;	
+	Cyclic#1.::Vi_main:hwInstance[2].lights[1].out.par.flashColor AT %QB."crBacklight".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[2].in.common.moduleOk AT %IX."crLightbar1".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[2].in.common.serialNumber AT %ID."crLightbar1".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[2].in.common.moduleId AT %ID."crLightbar1".ModuleID;
@@ -767,7 +766,6 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[2].lights[3].out.par.exposureTime AT %QD."crLightbar2".ExposureTime01;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[3].out.par.flashColor AT %QB."crLightbar2".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[2].lights[3].out.par.flashAngle AT %QW."crLightbar2".SetAngleTotal;
-	
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.common.moduleOk AT %IX."matchBacklight".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.common.serialNumber AT %ID."matchBacklight".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.common.moduleId AT %ID."matchBacklight".ModuleID;
@@ -779,12 +777,12 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.status.completedFlashCnt AT %IB."matchBacklight".CompletedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.status.failedFlashCnt AT %IB."matchBacklight".FailedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.status.LightWarningCnt AT %IB."matchBacklight".LightWarningCnt;
-	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.status.sensorTemperature AT %IB."matchBacklight".SensorTemperature;
+	Cyclic#1.::Vi_main:hwInstance[3].lights[1].in.status.sensorTemperatureLedBoard AT %IB."matchBacklight".SensorTemperature;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].out.cmd.flashTrigger AT %QX."matchBacklight".FlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].out.cmd.resetFlashTrigger AT %QX."matchBacklight".ResetFlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].out.par.nettime AT %QD."matchBacklight".Nettime01;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[1].out.par.exposureTime AT %QD."matchBacklight".ExposureTime01;
-	Cyclic#1.::Vi_main:hwInstance[3].lights[1].out.par.flashColor AT %QB."matchBacklight".FlashColor01;	
+	Cyclic#1.::Vi_main:hwInstance[3].lights[1].out.par.flashColor AT %QB."matchBacklight".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[2].in.common.moduleOk AT %IX."matchLightbar1".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[2].in.common.serialNumber AT %ID."matchLightbar1".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[2].in.common.moduleId AT %ID."matchLightbar1".ModuleID;
@@ -823,7 +821,6 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[3].lights[3].out.par.exposureTime AT %QD."matchLightbar2".ExposureTime01;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[3].out.par.flashColor AT %QB."matchLightbar2".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[3].lights[3].out.par.flashAngle AT %QW."matchLightbar2".SetAngleTotal;
-	
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.common.moduleOk AT %IX."measureBacklight".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.common.serialNumber AT %ID."measureBacklight".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.common.moduleId AT %ID."measureBacklight".ModuleID;
@@ -835,12 +832,12 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.status.completedFlashCnt AT %IB."measureBacklight".CompletedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.status.failedFlashCnt AT %IB."measureBacklight".FailedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.status.LightWarningCnt AT %IB."measureBacklight".LightWarningCnt;
-	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.status.sensorTemperature AT %IB."measureBacklight".SensorTemperature;
+	Cyclic#1.::Vi_main:hwInstance[4].lights[1].in.status.sensorTemperatureLedBoard AT %IB."measureBacklight".SensorTemperature;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].out.cmd.flashTrigger AT %QX."measureBacklight".FlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].out.cmd.resetFlashTrigger AT %QX."measureBacklight".ResetFlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].out.par.nettime AT %QD."measureBacklight".Nettime01;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[1].out.par.exposureTime AT %QD."measureBacklight".ExposureTime01;
-	Cyclic#1.::Vi_main:hwInstance[4].lights[1].out.par.flashColor AT %QB."measureBacklight".FlashColor01;	
+	Cyclic#1.::Vi_main:hwInstance[4].lights[1].out.par.flashColor AT %QB."measureBacklight".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[2].in.common.moduleOk AT %IX."measureLightbar1".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[2].in.common.serialNumber AT %ID."measureLightbar1".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[2].in.common.moduleId AT %ID."measureLightbar1".ModuleID;
@@ -879,7 +876,6 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[4].lights[3].out.par.exposureTime AT %QD."measureLightbar2".ExposureTime01;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[3].out.par.flashColor AT %QB."measureLightbar2".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[4].lights[3].out.par.flashAngle AT %QW."measureLightbar2".SetAngleTotal;
-	
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.common.moduleOk AT %IX."ocrBacklight".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.common.serialNumber AT %ID."ocrBacklight".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.common.moduleId AT %ID."ocrBacklight".ModuleID;
@@ -891,12 +887,12 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.status.completedFlashCnt AT %IB."ocrBacklight".CompletedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.status.failedFlashCnt AT %IB."ocrBacklight".FailedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.status.LightWarningCnt AT %IB."ocrBacklight".LightWarningCnt;
-	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.status.sensorTemperature AT %IB."ocrBacklight".SensorTemperature;
+	Cyclic#1.::Vi_main:hwInstance[5].lights[1].in.status.sensorTemperatureLedBoard AT %IB."ocrBacklight".SensorTemperature;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].out.cmd.flashTrigger AT %QX."ocrBacklight".FlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].out.cmd.resetFlashTrigger AT %QX."ocrBacklight".ResetFlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].out.par.nettime AT %QD."ocrBacklight".Nettime01;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[1].out.par.exposureTime AT %QD."ocrBacklight".ExposureTime01;
-	Cyclic#1.::Vi_main:hwInstance[5].lights[1].out.par.flashColor AT %QB."ocrBacklight".FlashColor01;	
+	Cyclic#1.::Vi_main:hwInstance[5].lights[1].out.par.flashColor AT %QB."ocrBacklight".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[2].in.common.moduleOk AT %IX."ocrLightbar1".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[2].in.common.serialNumber AT %ID."ocrLightbar1".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[2].in.common.moduleId AT %ID."ocrLightbar1".ModuleID;
@@ -935,7 +931,6 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[5].lights[3].out.par.exposureTime AT %QD."ocrLightbar2".ExposureTime01;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[3].out.par.flashColor AT %QB."ocrLightbar2".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[5].lights[3].out.par.flashAngle AT %QW."ocrLightbar2".SetAngleTotal;
-	
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.common.moduleOk AT %IX."pxlCntBacklight".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.common.serialNumber AT %ID."pxlCntBacklight".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.common.moduleId AT %ID."pxlCntBacklight".ModuleID;
@@ -947,12 +942,12 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.status.completedFlashCnt AT %IB."pxlCntBacklight".CompletedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.status.failedFlashCnt AT %IB."pxlCntBacklight".FailedFlashCnt;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.status.LightWarningCnt AT %IB."pxlCntBacklight".LightWarningCnt;
-	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.status.sensorTemperature AT %IB."pxlCntBacklight".SensorTemperature;
+	Cyclic#1.::Vi_main:hwInstance[6].lights[1].in.status.sensorTemperatureLedBoard AT %IB."pxlCntBacklight".SensorTemperature;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].out.cmd.flashTrigger AT %QX."pxlCntBacklight".FlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].out.cmd.resetFlashTrigger AT %QX."pxlCntBacklight".ResetFlashTrigger;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].out.par.nettime AT %QD."pxlCntBacklight".Nettime01;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[1].out.par.exposureTime AT %QD."pxlCntBacklight".ExposureTime01;
-	Cyclic#1.::Vi_main:hwInstance[6].lights[1].out.par.flashColor AT %QB."pxlCntBacklight".FlashColor01;	
+	Cyclic#1.::Vi_main:hwInstance[6].lights[1].out.par.flashColor AT %QB."pxlCntBacklight".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[2].in.common.moduleOk AT %IX."pxlCntLightbar1".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[2].in.common.serialNumber AT %ID."pxlCntLightbar1".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[2].in.common.moduleId AT %ID."pxlCntLightbar1".ModuleID;
@@ -991,7 +986,6 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[6].lights[3].out.par.exposureTime AT %QD."pxlCntLightbar2".ExposureTime01;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[3].out.par.flashColor AT %QB."pxlCntLightbar2".FlashColor01;
 	Cyclic#1.::Vi_main:hwInstance[6].lights[3].out.par.flashAngle AT %QW."pxlCntLightbar2".SetAngleTotal;
-	
 	Cyclic#1.::Vi_main:hwInstance[1].VF.blob.in.results[3].modelNumber AT %IB."Blob".ModelNo04;
 	Cyclic#1.::Vi_main:hwInstance[3].camera.in.status.cameraProcessingTime AT %IW."Match".CameraProcessingTime;
 	Cyclic#1.::Vi_main:hwInstance[3].camera.in.status.imageProcessingError AT %IW."Match".ImageProcessingError;
@@ -1020,5 +1014,4 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[6].VF.pixelCnt.out.common.offsetROI.y AT %QD."PixelCounter".OffsetRoiY;
 	Cyclic#1.::Vi_main:hwInstance[6].VF.pixelCnt.in.common.numResults AT %IB."PixelCounter".NumResults;
 	Cyclic#1.::Vi_main:hwInstance[4].camera.in.status.imageNettime AT %ID."Measurement".ImageNettime;
-
 END_VAR

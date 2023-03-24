@@ -236,7 +236,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="ocrLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+  <Module Name="ocrLightbar1" Type="VSLL11Q30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="ocrBacklight" TargetConnector="PLK2" NodeNumber="81">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>

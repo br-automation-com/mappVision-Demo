@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExpressionTypeSet id="expressiontype_0" xmlns="http://www.br-automation.com/iat2016/expressionType/v1">
+  <ExpressionTypes>
+		<ExpressionType name="LightID" datatype="ANY_INT">   
+			<Operands>
+				<Operand name="CamIdx" datatype="ANY_INT" />
+				<Operand name="LightNum" datatype="ANY_INT" />   
+			</Operands>   
+			<Operation>
+				10 * CamIdx + LightNum
+			</Operation>
+		</ExpressionType>
+  </ExpressionTypes>
+</ExpressionTypeSet>

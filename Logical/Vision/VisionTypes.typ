@@ -289,7 +289,7 @@ END_TYPE
 
 TYPE
 	typCodeReaderMain : 	STRUCT  (*Code reader structures*)
-		CodeType : USINT;
+		CodeType : ARRAY[1..MAX_NUM_RESULTS]OF USINT;
 		GradingEnable : BOOL;
 		RobustnessEnable : BOOL;
 		ParameterMode : USINT;

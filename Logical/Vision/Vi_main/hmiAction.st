@@ -1,4 +1,4 @@
-
+	
 ACTION hmiAction: 
 
 	IF DiagCpuIsSimulated() OR (NOT hw.camera.in.common.moduleOk AND this.brdkViBase_imgTrigger_0.simulate.alwaysSimulateNonePresentCamera) THEN
@@ -24,4 +24,8 @@ ACTION hmiAction:
 	hmi.in.recipe.cam.flashSegment.2 := hmi.in.cmd.flashSegment.left;
 	hmi.in.recipe.cam.flashSegment.3 := hmi.in.cmd.flashSegment.right;
 	
+	FOR i:=START_IDX TO NUM_LIGHTS DO
+		hmi.out.lights[i].common:=hw.lights[i].in.common;
+		hmi.out.lights[i].status:=hw.lights[i].in.status;
+	END_FOR; 
 END_ACTION

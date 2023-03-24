@@ -1,26 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Match_binding">
 	<Bindings>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Match.ModelNumber" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemModel" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Match.Score" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemScore" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Match.PositionX" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemPosX" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Match.PositionY" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemPosY" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Match.Scale" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemScale" attribute="value" />
-		</Binding>
+		
+		
+		
+		
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:Match.MinScore" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="numMatchMinScore" attribute="node" />
@@ -29,13 +14,95 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:Match.MaxOverlap" attribute="node" />
 			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="numMatchMaxOverlap" attribute="node" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="ItemNo" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Match.Orientation" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemOrientation" attribute="node" />
-		</Binding>
-	</Bindings>
+		
+		
+	<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.match.Scale" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.match.Scale" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.match.Scale" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.match.Scale" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.match.Scale" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.match.Scale" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemScale" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.match.Orientation" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.match.Orientation" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.match.Orientation" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.match.Orientation" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.match.Orientation" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.match.Orientation" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemOrientation" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.match.PositionY" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.match.PositionY" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.match.PositionY" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.match.PositionY" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.match.PositionY" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.match.PositionY" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemPosY" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.match.PositionX" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.match.PositionX" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.match.PositionX" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.match.PositionX" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.match.PositionX" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.match.PositionX" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemPosX" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.match.Score" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.match.Score" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.match.Score" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.match.Score" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.match.Score" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.match.Score" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemScore" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.match.ModelNumber" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.match.ModelNumber" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.match.ModelNumber" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.match.ModelNumber" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.match.ModelNumber" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.match.ModelNumber" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="itemModel" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_main:tableNo" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentMatch" widgetRefId="ItemNo" attribute="node" />
+</Binding>
+</Bindings>
 </BindingsSet>

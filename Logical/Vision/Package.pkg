@@ -13,7 +13,6 @@
     <Object Type="Program" Language="IEC">Vi_color</Object>
     <Object Type="Program" Language="IEC">YourTask</Object>
     <Object Type="File">setRouteToCamera.bat</Object>
-    <Object Type="File">RouteInfo_Tool.ps1</Object>
     <Object Type="File">RouteInfo_Tool_Info.txt</Object>
     <Object Type="Package">Files</Object>
     <Object Type="Package">Axis</Object>

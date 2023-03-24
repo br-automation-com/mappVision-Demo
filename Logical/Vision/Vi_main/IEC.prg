@@ -10,5 +10,6 @@
     <File>hmiAction.st</File>
     <File>processResultsAction.st</File>
     <File>styleStringGeneration.st</File>
+    <File>tableResultsAction.st</File>
   </Files>
 </Program>

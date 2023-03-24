@@ -1,48 +1,201 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Lights_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Bindings>
-		<!-- Trigger external lights />-->
-		<EventBinding id="contentLights.btnLightsTrigger.Click">
-			<Source contentRefId="contentLights" widgetRefId="btnLightsTrigger" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visLightsTrigger" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Reset external lights trigger />-->
-		<EventBinding id="contentLights.btnLightsReset.Click">
-			<Source contentRefId="contentLights" widgetRefId="btnLightsReset" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visLightsReset" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Selected external light no />-->
-		<EventBinding id="contentHeader.numLightNoDown.Click">
-			<Source contentRefId="contentLights" widgetRefId="numLightNoDown" xsi:type="widgets.brease.Image.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gSelectedLight" >
-						<Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-					</Target>
-				</Action>		
-			</EventHandler>
-		</EventBinding>
-		<EventBinding id="contentHeader.numLightNoUp.Click">
-			<Source contentRefId="contentLights" widgetRefId="numLightNoUp" xsi:type="widgets.brease.Image.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gSelectedLight" >
-						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-	</Bindings>
+  <Bindings>
+    <EventBinding id="contentLights.btnLightsTrigger.Click">
+      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="contentLights" widgetRefId="btnLightsTrigger" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visLightsTrigger">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="contentLights.btnLightsReset.Click">
+      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="contentLights" widgetRefId="btnLightsReset" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visLightsReset">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="contentHeader.numLightNoDown.Click">
+      <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentLights" widgetRefId="numLightNoDown" event="Click" />
+      <EventHandler>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="contentHeader.numLightNoUp.Click">
+      <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentLights" widgetRefId="numLightNoUp" event="Click" />
+      <EventHandler>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.lightNum">
+                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_13">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:this.brdkViBase_imgTrigger_0.useCamColorForLight" event="ValueChanged" />
+      <EventHandler condition="newValue = 1">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.DropDownBox.Action" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor">
+                <Method xsi:type="widgets.brease.DropDownBox.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLights" widgetRefId="labLightsColor">
+                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="newValue = 0">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.DropDownBox.Action" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor">
+                <Method xsi:type="widgets.brease.DropDownBox.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLights" widgetRefId="labLightsColor">
+                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_14">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:this.brdkViBase_imgTrigger_0.useCamExpTimeForLight" event="ValueChanged" />
+      <EventHandler condition="newValue = 1">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLights" widgetRefId="labLightsExposure">
+                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentLights" widgetRefId="numLightsExposure">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="newValue = 0">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLights" widgetRefId="labLightsExposure">
+                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentLights" widgetRefId="numLightsExposure">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
+  </Bindings>
 </EventBindingSet>

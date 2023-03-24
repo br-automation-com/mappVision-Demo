@@ -33,7 +33,26 @@ TYPE
 		processingTime : UDINT;
 		numResults : USINT;
 		crData : ARRAY[0..9]OF STRING[240];
+		match : typMatchMain;
+		measurement : typMTMain;
+		codeReader : typCodeReaderMain;
+		ocr : typOCRMain;
+		pixelCnt : typPixelMain;
+		blob : typBlobMain;
 		ocrData : ARRAY[0..9]OF STRING[240];
+	END_STRUCT;
+	hmi_out_lights_typ : 	STRUCT 
+		status : brdkViBase_light_hw_status_typ;
+		common : brdkViBase_hw_in_common_typ;
+		simulated : BOOL;
+		connectedText : STRING[20];
+		connected : BOOL;
+		mappVisionActive : BOOL;
+		processing : BOOL;
+		ready : BOOL;
+		statusText : STRING[50];
+		lightType : STRING[20];
+		plNodeNr : USINT;
 	END_STRUCT;
 	hmi_out_camera_typ : 	STRUCT 
 		simulated : BOOL;
@@ -53,6 +72,7 @@ TYPE
 	hmi_out_typ : 	STRUCT 
 		svgOverlay : STRING[10000];
 		wsPort : UINT;
+		lights : ARRAY[START_IDX..NUM_LIGHTS]OF hmi_out_lights_typ;
 		camera : hmi_out_camera_typ;
 		VF : hmi_out_vf_typ;
 		status : DINT;
@@ -64,6 +84,7 @@ TYPE
 		left : BOOL := TRUE;
 	END_STRUCT;
 	hmi_in_cmd_typ : 	STRUCT 
+		lights : ARRAY[START_IDX..NUM_LIGHTS]OF brdkViBase_light_hw_out_cmd_typ;
 		flashSegment : hmi_in_cmd_flashSegment_typ;
 		repetitiveTrigger : BOOL; (*Enable Repetitive trigger*)
 		trigger : BOOL; (*Trigger a image*)
@@ -106,6 +127,7 @@ TYPE
 		cameraInfo : brdkViBase_camInfo_typ;
 		diagnosticFilename : STRING[50];
 		vaName : STRING[50];
+		lightNum : USINT := 1;
 	END_STRUCT;
 	hw_io_in_typ : 	STRUCT 
 		nettime : DINT;
@@ -116,7 +138,7 @@ TYPE
 	hw_typ : 	STRUCT 
 		camera : brdkViBase_cam_hw_typ;
 		VF : hw_VF_typ;
-		lights : ARRAY[START_IDX..9]OF brdkViBase_light_hw_typ;
+		lights : ARRAY[START_IDX..NUM_LIGHTS]OF brdkViBase_light_hw_typ;
 		io : hw_io_typ;
 	END_STRUCT;
 	hw_VF_typ : 	STRUCT 
@@ -128,6 +150,7 @@ TYPE
 		blob : brdkViBase_hw_blob_10_typ;
 	END_STRUCT;
 	recipe_typ : 	STRUCT 
+		lights : ARRAY[START_IDX..NUM_LIGHTS]OF brdkViBase_light_hw_out_par_typ;
 		cam : brdkViBase_cam_recipe_typ;
 		BLOB : brdkViBase_hw_blob_out_typ;
 		CR : brdkViBase_hw_cr_out_typ;

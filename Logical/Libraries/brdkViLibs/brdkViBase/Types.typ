@@ -194,7 +194,6 @@ TYPE
 		completedFlashCnt : USINT; (*Counter for executed lighting jobs*)
 		failedFlashCnt : USINT; (*Counter for failed lighting jobs*)
 		LightWarningCnt : USINT; (*Counter for errors or warnings that have occurred related to lighting.*)
-		sensorTemperature : SINT;
 		sensorTemperatureLedBoard : SINT;
 		sensorTemperatureControllerBoard : SINT; (*Current lighting unit temperature in °C*)
 	END_STRUCT;

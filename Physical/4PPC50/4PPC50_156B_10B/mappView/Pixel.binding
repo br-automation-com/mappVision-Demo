@@ -1,53 +1,164 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet id="Pixel_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.NumPixels" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemNumPixels" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.MinGray" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMinGray" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.MaxGray" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMaxGray" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.MeanGray" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMeanGray" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.DeviationGray" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemDeviationGray" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.PositionX" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemPositionX" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.ModelArea" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemModelArea" attribute="node" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.NumConnectedComponents" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemNumConnectedComponents" attribute="node" />
-		</Binding>
-	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
-<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="ItemNo" attribute="node" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.PositionY" attribute="node" />
-<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemPositionY" attribute="node" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_visu:Pixel.ModelNumber" attribute="node" />
-<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemModel" attribute="node" />
-</Binding>
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
+
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Vi_visu:Pixel.EnhancedPixelCounterInformation" attribute="value" />
 <Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="btnPixelEnhancedPixelInfo" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.ModelNumber" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.ModelNumber" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.ModelNumber" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.ModelNumber" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.ModelNumber" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.ModelNumber" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemModel" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:tableNo" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="ItemNo" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.NumPixels" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.NumPixels" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.NumPixels" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.NumPixels" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.NumPixels" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.NumPixels" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemNumPixels" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.MinGray" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.MinGray" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.MinGray" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.MinGray" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.MinGray" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.MinGray" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMinGray" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.MaxGray" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.MaxGray" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.MaxGray" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.MaxGray" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.MaxGray" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.MaxGray" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMaxGray" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.MeanGray" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.MeanGray" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.MeanGray" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.MeanGray" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.MeanGray" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.MeanGray" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemMeanGray" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.DeviationGray" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.DeviationGray" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.DeviationGray" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.DeviationGray" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.DeviationGray" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.DeviationGray" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemDeviationGray" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.PositionX" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.PositionX" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.PositionX" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.PositionX" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.PositionX" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.PositionX" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemPositionX" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.PositionY" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.PositionY" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.PositionY" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.PositionY" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.PositionY" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.PositionY" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemPositionY" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.ModelArea" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.ModelArea" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.ModelArea" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.ModelArea" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.ModelArea" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.ModelArea" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemModelArea" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.pixelCnt.NumConnectedComponents" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.pixelCnt.NumConnectedComponents" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.pixelCnt.NumConnectedComponents" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.pixelCnt.NumConnectedComponents" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt.NumConnectedComponents" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt.NumConnectedComponents" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentPixel" widgetRefId="itemNumConnectedComponents" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

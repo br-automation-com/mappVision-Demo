@@ -1,30 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Blob_binding">
 	<Bindings>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.Area" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemArea" attribute="node" />
-		</Binding>		
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.ModelNumber" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemModel" attribute="value" />
-		</Binding>	
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.PositionX" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemPosX" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.PositionY" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemPosY" attribute="node" />
-		</Binding>	
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.MeanGrayValue" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemGray" attribute="value" />
-		</Binding>				
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.Clipped" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemClipped" attribute="value" />
-		</Binding>
+				
+			
+		
+			
+						
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.RegionalFeature" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobRegionalFeatures" attribute="value" />
@@ -33,22 +15,10 @@
 			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.EnhancedBlobInformation" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="btnBlobEnhancedBlobInfo" attribute="value" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:visTableNo" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="ItemNo" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.Orientation" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemOrientation" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.Length" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemLength" attribute="node" />
-		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.Width" attribute="node" />
-			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemWidth" attribute="node" />
-		</Binding>
+		
+		
+		
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:Blob.EnhancedBlobInformation" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemClipped" attribute="visible" />
@@ -315,6 +285,136 @@
 				</be:List>
 </Source>
 <Target xsi:type="brease" contentRefId="contentMain" widgetRefId="ocrResultProp1" attribute="Structure" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.Width" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.Width" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.Width" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.Width" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.Width" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.Width" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemWidth" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.Length" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.Length" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.Length" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.Length" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.Length" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.Length" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemLength" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.MeanGrayValue" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.MeanGrayValue" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.MeanGrayValue" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.MeanGrayValue" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.MeanGrayValue" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.MeanGrayValue" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemGray" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.Orientation" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.Orientation" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.Orientation" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.Orientation" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.Orientation" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.Orientation" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemOrientation" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.PositionY" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.PositionY" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.PositionY" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.PositionY" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.PositionY" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.PositionY" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemPosY" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.PositionX" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.PositionX" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.PositionX" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.PositionX" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.PositionX" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.PositionX" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemPosX" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.Area" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.Area" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.Area" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.Area" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.Area" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.Area" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemArea" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.Clipped" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.Clipped" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.Clipped" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.Clipped" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.Clipped" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.Clipped" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemClipped" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.VF.blob.ModelNumber" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.VF.blob.ModelNumber" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.blob.ModelNumber" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.blob.ModelNumber" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob.ModelNumber" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob.ModelNumber" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemModel" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vi_main:tableNo" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="ItemNo" attribute="node" />
 </Binding>
 </Bindings>
 </BindingsSet>
