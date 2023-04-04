@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Configuration>
+  <Element ID="gFileMan" Type="mpfilemanager">
+    <Group ID="FileManager">
+      <Group ID="Devices">
+        <Group ID="0">
+          <Property ID="DeviceName" Value="IMG" />
+          <Property ID="Text" Value="Images" />
+        </Group>
+      </Group>
+      <Group ID="Access">
+        <Group ID="0">
+          <Property ID="Folder" Value="*" />
+          <Group ID="Roles">
+            <Group ID="0">
+              <Property ID="Role" Value="Everyone" />
+              <Group ID="Rights">
+                <Property ID="Visible" Value="TRUE" />
+                <Property ID="FolderRead" Value="TRUE" />
+                <Property ID="FileRead" Value="TRUE" />
+                <Property ID="FileEdit" Value="TRUE" />
+                <Property ID="FolderEdit" Value="TRUE" />
+              </Group>
+            </Group>
+          </Group>
+        </Group>
+      </Group>
+    </Group>
+  </Element>
+</Configuration>

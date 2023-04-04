@@ -1,0 +1,79 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Main vision and data structures*)
+VAR
+	VisionSensor : REFERENCE TO typVisionMain; (*General vision functions that are independent from the inspection function*)
+	VisionLight : REFERENCE TO typLightMain; (*General vision functions that are independent from the inspection function*)
+	Match : REFERENCE TO typMatchMain; (*Data that is specific for the match function*)
+	CodeReader : REFERENCE TO typCodeReaderMain; (*Data that is specific for the code reader*)
+	MT : REFERENCE TO typMTMain; (*Data that is specific for the MT function*)
+	OCR : REFERENCE TO typOCRMain; (*Data that is specific for the OCR function*)
+	Blob : REFERENCE TO typBlobMain; (*Data that is specific for the blob function*)
+	Pixel : REFERENCE TO typPixelMain; (*Data that is specific for the blob function*)
+	tmpMatch : {REDUND_UNREPLICABLE} typMatchMain; (*Data that is specific for the match function*)
+	tmpCodeReader : {REDUND_UNREPLICABLE} typCodeReaderMain; (*Data that is specific for the code reader*)
+	tmpMT : {REDUND_UNREPLICABLE} typMTMain; (*Data that is specific for the OCR function*)
+	tmpOCR : {REDUND_UNREPLICABLE} typOCRMain; (*Data that is specific for the OCR function*)
+	tmpBlob : {REDUND_UNREPLICABLE} typBlobMain; (*Data that is specific for the blob function*)
+	tmpPixel : {REDUND_UNREPLICABLE} typPixelMain; (*Data that is specific for the blob function*)
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Vision function blocks*)
+VAR
+	VaGetList_01 : VaGetList;
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Sensor variables*)
+VAR
+	visAutoArchiv : BOOL;
+	visSensorEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
+	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
+	visEnableRepetitive : BOOL; (*Enable/Disable repetitive mode*)
+	visImageTrigger : BOOL; (*Trigger new image*)
+	visVisionApplicationList : ARRAY[0..19] OF STRING[80]; (*Flash color string*)
+	visSensorFlashColor : STRING[10]; (*Flash color string*)
+	visSensorFlashColorOld : STRING[10]; (*Flash color string*)
+	visSelectedFlashSegment : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)
+	visSelectedFlashSegmentOld : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)
+	visRepetitiveMode : BOOL; (*Enable/Disable repetitive mode*)
+	RepetitiveModeTimer : TON; (*Timer for repetitive mode*)
+	DisableAutoArchiv : BOOL; (*Enable/Disable automatic archieving for images*)
+	InitialSearchSensor : BOOL; (*Flag for first boot*)
+	AutoSetupRunning : ARRAY[1..MAX_NUM_CAMS] OF BOOL; (*Flag for auto setup running*)
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Lights variables*)
+VAR
+	InitialSearchLight : BOOL;
+	visLightsTrigger : BOOL;
+	visLightsReset : BOOL;
+	visLightsEnableCommand : BOOL;
+	visLightsFlashColor : STRING[10]; (*Flash color string*)
+	visLightsFlashColorOld : STRING[10];
+	visEnableLightBarValues : BOOL;
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Code Reader*)
+VAR
+	visSelectedCodeTypeDetected : ARRAY[1..MAX_NUM_RESULTS] OF STRING[80]; (*HMI helper string*)
+	visSelectedCodeType : STRING[80]; (*HMI helper string*)
+	visSelectedCodeTypeOld : STRING[80]; (*HMI helper string*)
+	visSelectedParameterMode : STRING[80]; (*HMI helper string*)
+	visSelectedParameterModeOld : STRING[80]; (*HMI helper string*)
+	visCodeTypePresentDropDownValues : ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80];
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Image, crosshair data and constants*)
+VAR
+	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
+	tmpStr1 : STRING[1000];
+	i : UINT;
+	visCameraStatus : STRING[30];
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Error numbers*)
+VAR CONSTANT
+	ERR_VA_LIST_NUM : UINT := 30000; (*Number of applications exceeds array size*)
+END_VAR
+VAR
+	visVaListRefresh : BOOL;
+END_VAR

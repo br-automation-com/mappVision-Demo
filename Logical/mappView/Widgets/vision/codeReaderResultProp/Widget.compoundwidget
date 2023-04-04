@@ -40,15 +40,8 @@
 		-->
 		   
 
-    <Property xsi:type="BindableProperty" name="dataString" type="String" defaultValue="" readOnly="false" category="data" >
-      <Description>String containing result data</Description>
-      <Mappings>
-        <Mapping widget="dataOutput" property="value" mode="oneWay"/>
-			</Mappings>
-    </Property>
 
-
-		<Property xsi:type="StructureBindableProperty" name="Structure" type="brdkViBase_hw_cr_in_typ" readOnly="false" category="data" required="false" >
+		<Property xsi:type="StructureBindableProperty" name="Structure" type="brdkViBase_hmi_cr_in_typ" readOnly="false" category="data" required="false" >
 			<Description>Structure containing all code reader results</Description>
 			<Mappings>
 				<Mapping widget="symbolTypeOutput" type="Number" property="value" mode="oneWay" memberPath="symbolType" mapToNode="false"/>
@@ -59,6 +52,7 @@
 				<Mapping widget="orientOutput" type="Number" property="value" mode="oneWay" memberPath="orientation" mapToNode="false"/>
 				<Mapping widget="rotCenterXOutput" type="Number" property="value" mode="oneWay" memberPath="rotCenterX" mapToNode="false"/>
 				<Mapping widget="rotCenterYOutput" type="Number" property="value" mode="oneWay" memberPath="rotCenterY" mapToNode="false"/>
+				<Mapping widget="dataOutput" type="String" property="value" mode="oneWay" memberPath="data"  mapToNode="false"/>
 			</Mappings>
 		</Property>
   </Properties>

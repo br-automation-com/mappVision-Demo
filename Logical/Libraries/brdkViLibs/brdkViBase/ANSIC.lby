@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
-<Library Version="1.00.5" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library" Description="">
+<Library Version="1.00.5" SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported functions and function blocks">brdkViBase.fun</File>
     <File Description="Exported data types">Types.typ</File>
@@ -17,6 +17,7 @@
     <File Description="Function to convert exposure time of one color LED to another LED color">brdkViBase_LEDIntensity.c</File>
     <File Description=" Function to convert a dateTime to a string given a format string">brdkViBase_dateTimeToString.c</File>
     <File Description="Function block to simulate a camera">brdkViBase_simCam.c</File>
+    <File>brdkViBase_vfs_hw2hmi.c</File>
   </Files>
   <Dependencies>
     <Dependency ObjectName="astime" />

@@ -1,7 +1,6 @@
 VAR_CONFIG
 	Cyclic#1.::NettimeCurrent_us AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
 	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP0483".IF3.NettimeSoC;
-	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP1586".IF3.NettimeSoC;
 	Cyclic#1.::Vi_main:hwInstance[1].camera.in.common.moduleOk AT %IX."Blob".ModuleOk;
 	Cyclic#1.::Vi_main:hwInstance[1].camera.in.common.serialNumber AT %ID."Blob".SerialNumber;
 	Cyclic#1.::Vi_main:hwInstance[1].camera.in.common.moduleId AT %ID."Blob".ModuleID;
@@ -1014,4 +1013,11 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[6].VF.pixelCnt.out.common.offsetROI.y AT %QD."PixelCounter".OffsetRoiY;
 	Cyclic#1.::Vi_main:hwInstance[6].VF.pixelCnt.in.common.numResults AT %IB."PixelCounter".NumResults;
 	Cyclic#1.::Vi_main:hwInstance[4].camera.in.status.imageNettime AT %ID."Measurement".ImageNettime;
+	Cyclic#1.::Vi_main:hwInstance[6].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::Vi_main:hwInstance[1].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::Vi_main:hwInstance[2].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::Vi_main:hwInstance[3].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::Vi_main:hwInstance[4].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::Vi_main:hwInstance[5].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::Axis:hw.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
 END_VAR

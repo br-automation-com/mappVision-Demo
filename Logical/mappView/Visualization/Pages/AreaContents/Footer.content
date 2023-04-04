@@ -51,14 +51,14 @@
     <Widget xsi:type="widgets.brease.FlyOut" id="faInfo" top="0" left="1000" width="330" height="700" zIndex="18" buttonOffset="20" docking="bottom" showOnTop="true" text="Info" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="labDiagnostics" top="5" left="0" width="330" zIndex="1" text="Diagnostics" textAlign="center" fontSize="22px" bold="true" />
-        <Widget xsi:type="widgets.brease.Label" id="labDiagName" top="40" left="14" width="115" height="25" zIndex="2" text="File Name" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.TextInput" id="txtDiagName" top="40" left="135" width="175" zIndex="3" />
-        <Widget xsi:type="widgets.brease.Label" id="labDIAG_Status" top="75" left="14" width="115" height="25" zIndex="4" text="Status" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.NumericOutput" id="numDIAG_Status" top="75" left="135" width="175" height="25" zIndex="5" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':15},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
-        <Widget xsi:type="widgets.brease.Button" id="btnDiagSave" top="105" left="160" width="150" height="40" zIndex="6" text="Save to PLC" cornerRadius="8px" />
-        <Widget xsi:type="widgets.brease.Line" id="Line1" zIndex="10" x1="10" x2="320" y1="170" y2="170" />
-        <Widget xsi:type="widgets.brease.Label" id="labCamera" top="180" left="0" width="330" zIndex="11" text="Camera" textAlign="center" fontSize="22px" bold="true" />
-        <Widget xsi:type="widgets.widgetlibrary_0.visionCameraInfo" id="cameraInfo" top="200" left="0" zIndex="12" />
+        <Widget xsi:type="widgets.brease.Label" id="labDiagName" top="40" left="3" width="115" height="25" zIndex="2" text="File Name" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.TextInput" id="txtDiagName" top="40" left="124" width="175" zIndex="3" />
+        <Widget xsi:type="widgets.brease.Label" id="labDIAG_Status" top="75" left="3" width="115" height="25" zIndex="4" text="Status" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numDIAG_Status" top="75" left="124" width="175" height="25" zIndex="5" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':15},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+        <Widget xsi:type="widgets.brease.Line" id="Line1" zIndex="9" x1="10" x2="320" y1="170" y2="170" />
+        <Widget xsi:type="widgets.brease.Label" id="labCamera" top="180" left="0" width="330" zIndex="10" text="Camera" textAlign="center" fontSize="22px" bold="true" />
+        <Widget xsi:type="widgets.widgetlibrary_0.visionCameraInfo" id="cameraInfo" top="200" left="0" zIndex="11" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButton1" top="110" left="155" width="145" height="45" zIndex="12" text="Save to PLC" style="Operate" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.FlyOut" id="faOptics" top="0" left="820" width="360" height="530" zIndex="44" buttonOffset="20" docking="bottom" showOnTop="true" text="Optics" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">

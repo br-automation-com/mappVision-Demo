@@ -12,6 +12,12 @@ TYPE
 		mcACPAX_PARTYPE_VOID := 65535   (*General data type*)
 	);
 
+	McAcpAxProcessDataBlockModeEnum :
+	(
+		mcACPAX_DATA_BLOCK_GET := 0,  (*Read data block*)
+		mcACPAX_DATA_BLOCK_SET	 (*Write data block*)
+	);
+
 	McAcpAxProcessParIDModeEnum :
 	(
 		mcACPAX_PARID_GET := 0,  (*Read ParID(s)*)

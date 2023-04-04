@@ -51,7 +51,7 @@
       </Mappings>
     </Property>
 		-->
-		<Property xsi:type="StructureBindableProperty" name="Structure" type="brdkViBase_hw_pxCnt_in_typ" readOnly="false" category="data" required="false" >
+		<Property xsi:type="StructureBindableProperty" name="Structure" type="brdkViBase_hmi_pxCnt_in_typ" readOnly="false" category="data" required="false" >
 			<Description>Structure containing all pixel count results</Description>
 			<Mappings>
 				<Mapping widget="modNumOutput" type="Number" property="value" mode="oneWay" memberPath="modelNumber" mapToNode="false"/>

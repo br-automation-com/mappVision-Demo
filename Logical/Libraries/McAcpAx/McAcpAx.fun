@@ -16,6 +16,27 @@ FUNCTION_BLOCK MC_BR_InitHome_AcpAx (*initializes homing parameters for usage wi
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK MC_BR_ProcessDataBlock_AcpAx (*reads or writes the value of a data block according to the input "Mode"*)
+	VAR_INPUT
+		Axis : REFERENCE TO McAxisType;  (*axis reference*)
+		Execute : BOOL; (*execution of this FB is started on rising edge of the input*)
+		ParID : UINT; (*Parameter ID number of the data block to be read or written*)
+		DataAddress : UDINT; (*address of the data buffer for the data block*)
+		DataLength : UDINT; (*size of the data buffer for the data block transfer*)
+		Mode : McAcpAxProcessDataBlockModeEnum; (*selection if the data block should be read or written*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		Error : BOOL; (*error occurred during operation*)
+		ErrorID : DINT; (*error number*)
+		DataBlockLength : UDINT; (*length of the read data block*)
+	END_VAR
+	VAR
+		Internal : McInternalType; (*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK MC_BR_ProcessParID_AcpAx (*reads or writes the value of a ParID according to the input "Mode"*)
 	VAR_INPUT
 		Axis : REFERENCE TO McAxisType;  (*axis reference*)

@@ -85,8 +85,8 @@ TYPE
 
 	McErrorCmdEnum :
 	(
-		mcWARNING_CMD := 0,  (*A warning is generated *)
-		mcERROR_CMD,  (*An error is entered*)
+		mcWARNING_CMD := 0,  (*Generates a warning*)
+		mcERROR_CMD,  (*Generates an error*)
 		mcERROR_STOP_CMD,  (*Generates an error and ends an active movement*)
 		mcERROR_STOP_CTRL_OFF_CMD,  (*Generates an error, ends any active movements and switches off the controller*)
 		mcERROR_V_STOP_CTRL_OFF_CMD,  (*Generates an error, ends any active movements with a speed-controlled ramp and switches off the controller*)
@@ -94,7 +94,9 @@ TYPE
 		mcERROR_INDUCTION_HALT_CMD,  (*Generates an axis error on the drive, movements are stopped with an induction stop of the controller*)
 		mcERROR_STOP_DEC_CMD,  (*Generates an error and ends an active movement with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel*)
 		mcERROR_STOP_DEC_CTRL_OFF_CMD,  (*Generates an error, ends any active movement with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel and switches off the controller*)
-		mcERROR_V_STOP_DEC_CTRL_OFF_CMD  (*Generates an error, ends any active movement with a speed-controlled ramp with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel and switches off the controller*)
+		mcERROR_V_STOP_DEC_CTRL_OFF_CMD,  (*Generates an error, ends any active movement with a speed-controlled ramp with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel and switches off the controller*)
+		mcERROR_ENCODER_CMD,  (*Generates an error, the encoder is set to error status and the configured stop reaction is carried out*)
+		mcERROR_CHANNEL_CMD  (*Generates a channel specific error and carries out the configured stop reaction*)
 	);
 
 	McEdgeEnum :
@@ -181,8 +183,10 @@ TYPE
 
 	McProcessConfigModeEnum:
 	(
-		mcPCM_LOAD,	 (*Load from Config*)
-		mcPCM_SAVE	 (*Save to Config*)
+		mcPCM_LOAD 	:= 0,	 	(*Load from Config*)
+		mcPCM_SAVE	:= 1,	 	(*Save to Config*)
+		mcPCM_CREATE:= 2,	 	(*Create Config*)
+		mcPCM_DELETE:= 3		(*Delete Config*)
 	);
 
 	McCommunicationStateEnum :
@@ -327,9 +331,17 @@ TYPE
 		mcLANGUAGE_GERMAN	(*Text in German*)
 	);
 
+	McEncodingEnum :
+	(
+		mcENCODING_UTF8 := 0,	(*UTF-8 encoding*)
+		mcENCODING_CP1252,	(*CP-1252 encoding*)
+		mcENCODING_LATIN1	(*Latin-1 (ISO-8859-1) encoding*)
+	);
+
 	McAdvReadErrTxtParType : STRUCT
 		Language : McLanguageEnum; (*Desired language for read text. This parameter is optional. Default value : mcERROR_TEXT_LANG_DEFAULT.*)
 		ShowInfoSeverity : McSwitchEnum; (*Allow to additionally show in RecordBuffer all related information severity events  linked in hierarchy to error record. *)
+		Encoding : McEncodingEnum; (*Allow to additionally set type of encoding for output text*)
 	END_STRUCT;
 
 	McErrorRecordTimeStampType : STRUCT

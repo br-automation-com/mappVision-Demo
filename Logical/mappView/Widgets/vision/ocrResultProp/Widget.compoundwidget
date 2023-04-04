@@ -32,21 +32,14 @@
 		-->
 		   
 
-		<Property xsi:type="BindableProperty" name="dataString" type="String" defaultValue="" readOnly="false" category="data" >
-			<Description>String containing result data</Description>
-			<Mappings>
-				<Mapping widget="dataOutput" property="value" mode="oneWay"/>
-			</Mappings>
-		</Property>
-
-
-		<Property xsi:type="StructureBindableProperty" name="Structure" type="brdkViBase_hw_OCR_in_typ" readOnly="false" category="data" required="false" >
+		<Property xsi:type="StructureBindableProperty" name="Structure" type="brdkViBase_hmi_OCR_in_typ" readOnly="false" category="data" required="false" >
 			<Description>Structure containing all OCR results</Description>
 			<Mappings>
 				<Mapping widget="gradValOutput" type="Number" property="value" mode="oneWay" memberPath="gradingValue" mapToNode="false"/>
 				<Mapping widget="posXOutput" type="Number" property="value" mode="oneWay" memberPath="positionX" mapToNode="false"/>
 				<Mapping widget="posYOutput" type="Number" property="value" mode="oneWay" memberPath="positionY" mapToNode="false"/>
 				<Mapping widget="orientOutput" type="Number" property="value" mode="oneWay" memberPath="orientation" mapToNode="false"/>
+				<Mapping widget="dataOutput" type="String"	property="value" mode="oneWay"  memberPath="data" mapToNode="false" />
 			</Mappings>
 		</Property>
   </Properties>

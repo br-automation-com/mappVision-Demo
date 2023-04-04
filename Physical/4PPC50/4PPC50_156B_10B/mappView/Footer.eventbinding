@@ -1,46 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Footer_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
-    <EventBinding id="AutoSetupStartStop">
-      <Source xsi:type="opcUa.Event" refId="::Vi_visu:VisionSensor.CMD.AutoSetupStartStop" event="ValueChanged" />
-      <EventHandler condition="NOT newValue">
-        <Action>
-          <Target xsi:type="widgets.brease.FlyOut.Action" contentRefId="contentFooter" widgetRefId="faAutoSetup">
-            <Method xsi:type="widgets.brease.FlyOut.Action.Close" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
-    <EventBinding id="contentFooter.btnDiagSave.Click">
-      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentFooter" widgetRefId="btnDiagSave" event="Click" />
-      <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:VisionSensor.CMD.SaveDiagData">
-            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
-    <EventBinding id="SaveDiagData">
-      <Source xsi:type="opcUa.Event" refId="::Vi_visu:VisionSensor.CMD.SaveDiagData" event="ValueChanged" />
-      <Operand datatype="ANY_INT" name="DiagStatus">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_visu:VisionSensor.DIA.Status">
-          <Method xsi:type="opcUa.NodeAction.GetValue" />
-        </ReadTarget>
-      </Operand>
-      <EventHandler condition="DiagStatus=0 AND newValue=false AND oldValue=true">
+    <EventBinding id="SaveDiagData_1">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[1].out.camera.saveDiagStatus" event="ValueChanged" />
+      <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
         <Action>
           <Target xsi:type="clientSystem.Action">
-            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition" header="Success" icon="Information" />
+            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition for camera 1" header="Success" icon="Information" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="SaveDiagData_2">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[2].out.camera.saveDiagStatus" event="ValueChanged" />
+      <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition for camera 2" header="Success" icon="Information" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="SaveDiagData_3">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[3].out.camera.saveDiagStatus" event="ValueChanged" />
+      <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition  for camera 3" header="Success" icon="Information" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="SaveDiagData_4">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[4].out.camera.saveDiagStatus" event="ValueChanged" />
+      <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition  for camera 4" header="Success" icon="Information" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="SaveDiagData_5">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[5].out.camera.saveDiagStatus" event="ValueChanged" />
+      <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition  for camera 5" header="Success" icon="Information" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="SaveDiagData_6">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[6].out.camera.saveDiagStatus" event="ValueChanged" />
+      <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
+        <Action>
+          <Target xsi:type="clientSystem.Action">
+            <Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="Diagnostic data stored on user partition for camera 6" header="Success" icon="Information" />
           </Target>
         </Action>
       </EventHandler>
     </EventBinding>
     <EventBinding id="EventBinding_3">
       <Source xsi:type="widgets.brease.FlyOut.Event" contentRefId="contentFooter" widgetRefId="faOptics" event="ToggleStateChanged" />
-      <EventHandler>
+      <Operand datatype="ANY_INT" name="idx">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="camIdx">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="idx = 1">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:VisionSensor.CMD.ReadCameraInfo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.resetInfo">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 2">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.resetInfo">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 3">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.resetInfo">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 4">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.resetInfo">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 5">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.resetInfo">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 6">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.resetInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>

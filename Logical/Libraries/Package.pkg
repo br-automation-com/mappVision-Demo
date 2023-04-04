@@ -24,7 +24,11 @@
     <Object Type="Library" Language="binary" Description="The AsIODiag library provides functions for creating and evaluating I/O module information.">AsIODiag</Object>
     <Object Type="Library" Language="binary" Description="This library contains FBKs to evaluate statistics and can be used for system generation device statistics.">AsETH</Object>
     <Object Type="Package">brdkViLibs</Object>
+    <Object Type="Library" Language="Binary" Description="This library is used to calculate matrices, vectors and systems of linear equations.">MTLinAlg</Object>
+    <Object Type="Package">brdk</Object>
+    <Object Type="Library" Language="binary" Description="This library contains function blocks to handle USB devices on the target.">AsUSB</Object>
     <Object Type="Library" Language="binary" Description="[mapp Vision] Base library">ViBase</Object>
+    <Object Type="Library" Language="binary" Description="The DataObj library can be used to dynamically create, dynamically delete and copy data objects, etc. ">DataObj</Object>
     <Object Type="Library" Language="binary" Description="This library contains functionality to execute traces (to sample numeric values periodically for a defined time-span)">CoTrace</Object>
     <Object Type="Library" Language="Binary" Description="Recipe management">MpRecipe</Object>
     <Object Type="Library" Language="Binary" Description="Core library for mapp components">MpBase</Object>
@@ -33,8 +37,6 @@
     <Object Type="Library" Language="binary" Description="[mapp Motion] PLCopen axis library">McAxis</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] Base library">McBase</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] ACOPOS axis library">McAcpAx</Object>
-    <Object Type="Library" Language="Binary" Description="This library is used to calculate matrices, vectors and systems of linear equations.">MTLinAlg</Object>
-    <Object Type="Package">brdk</Object>
-    <Object Type="Library" Language="binary" Description="This library contains function blocks to handle USB devices on the target.">AsUSB</Object>
+    <Object Type="Library" Language="Binary" Description="File explorer for B+R file devices">MpFile</Object>
   </Objects>
 </Package>

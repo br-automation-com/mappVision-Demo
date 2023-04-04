@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CompoundWidget id="LightInfo" width="650" height="350" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+	<Widgets>
+		<Widget xsi:type="widgets.brease.Label" id="labLightSerialNo" top="140" left="40" width="128" height="20" zIndex="0" text="Serial No" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_SerialNumber" top="140" left="180" height="25" zIndex="1" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightID" top="170" left="40" width="128" height="20" zIndex="2" text="Hardware ID" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_ID" top="170" left="180" height="25" zIndex="3" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightVariant" top="200" left="40" width="128" height="20" zIndex="4" text="HW Variant" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Variant" top="200" left="180" height="25" zIndex="5" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightFirmware" top="230" left="10" width="164" height="20" zIndex="6" text="Firmware" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Firmware" top="230" left="180" height="25" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.ToggleButton" id="StatusConnected" top="5" left="165" width="140" height="50" zIndex="7" mouseDownText="Connected" text="Disconnected" cornerRadius="5px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledTextColor="rgba(255, 255, 255, 1)" fontSize="14px" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" style="Operate" />
+		<Widget xsi:type="widgets.brease.ToggleButton" id="StatusReady" top="5" left="320" width="140" height="50" zIndex="8" mouseDownText="Ready" text="Not Ready" cornerRadius="5px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledTextColor="rgba(255, 255, 255, 1)" fontSize="14px" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" style="Operate" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightTemperature" top="290" left="10" width="164" height="20" zIndex="10" text="Temperature LED" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Temperature" top="290" left="180" height="25" zIndex="12" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightStatus" top="110" left="110" width="60" height="20" zIndex="11" text="Status" textAlign="right" fontSize="16px" bold="false" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="txtLightsStatus" top="110" left="180" width="99" height="25" zIndex="13" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightsNettime" top="85" left="356" width="79" height="20" zIndex="14" text="Nettime" textAlign="right" fontSize="18px" bold="false" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="txtLightsNettime" top="85" left="440" width="146" height="25" zIndex="15" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':11},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':11},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':11}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 0px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightsStatus" top="80" left="50" height="20" zIndex="16" text="Function" textAlign="right" fontSize="18px" bold="false" />
+		<Widget xsi:type="widgets.brease.DropDownBox" id="ddbLights" top="80" left="130" width="145" height="25" zIndex="17" dataProvider="[{'value':'0','text':'None'},{'value':'1','text':'Backlight'},{'value':'2','text':'Lightbar'}]" selectedValue="0" disabledTextColor="rgba(0, 0, 0, 1)" textAlign="right" fontSize="18px" bold="false" enable="false" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightTemperature1" top="320" left="10" width="164" height="20" zIndex="18" text="Temperature Board" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numHW_Temperature1" top="320" left="180" height="25" zIndex="19" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" useDigitGrouping="true" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightCompleted" top="145" left="336" width="145" height="20" zIndex="20" text="Flash Completed" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numFlashCompleted" top="145" left="490" width="97" height="25" zIndex="21" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightFailed" top="175" left="350" width="128" height="20" zIndex="22" text="Flash failed" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numFlashFailed" top="175" left="490" width="97" height="25" zIndex="23" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightAccepted" top="115" left="351" width="130" height="20" zIndex="24" text="Flash Accepted" textAlign="right" fontSize="18px" bold="false" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="numFlashAccepted" top="115" left="490" width="96" height="25" zIndex="25" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightsColor" top="225" left="350" width="105" height="40" zIndex="27" text="Flash Color" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBoxFlashColor" top="230" left="465" width="124" zIndex="28" dataProvider="[{'value':'0','text':'Off'},{'value':'1','text':'Red'},{'value':'2','text':'Green'},{'value':'3','text':'Blue'},{'value':'4','text':'Lime'},{'value':'99','text':'White'},{'value':'100','text':'Infrared'},{'value':'210','text':'Ultraviolet'}]" listPosition="bottom" selectedIndex="1" selectedValue="1" textAlign="center" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightsExposure" top="265" left="350" width="105" height="40" zIndex="29" text="Exposure" textAlign="right" fontSize="18px" />
+		<Widget xsi:type="widgets.brease.NumericInput" id="numLightsExposure" top="270" left="465" width="121" zIndex="30" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10000" minValue="1" value="200" textAlign="right" fontSize="20px" bold="true" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightsSetAngle" top="305" left="350" width="105" height="40" zIndex="31" text="Set Angle" textAlign="right" fontSize="18px" visible="false" />
+		<Widget xsi:type="widgets.brease.NumericInput" id="numLightsSetAngle" top="310" left="465" width="121" zIndex="32" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="140" value="90" textAlign="right" fontSize="20px" bold="true" padding="0px 5px 0px 5px" visible="false" />
+		<Widget xsi:type="widgets.brease.Label" id="labLightsPowerlinkNode" top="260" left="4" width="165" height="20" zIndex="33" text="Powerlink Node" textAlign="right" fontSize="18px" bold="false" />
+		<Widget xsi:type="widgets.brease.NumericOutput" id="txtLightsPlkNode" top="260" left="180" width="101" height="25" zIndex="34" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="100000" borderWidth="2px" cornerRadius="5px" fontSize="18px" padding="0px 5px 0px 0px" />
+
+	</Widgets>
+	<Properties>
+
+
+		<Property xsi:type="StructureBindableProperty" name="Input" type="brdkViBase_light_hw_out_par_typ" readOnly="false" category="Data" >
+			<Description>Light Input datastructure</Description>
+			<Mappings>
+				<Mapping widget="DropDownBoxFlashColor" type="Number" property="selectedIndex" mode="twoWay" memberPath="flashColor" mapToNode="false"/>
+				<Mapping widget="numLightsExposure" type="Number" property="value" mode="twoWay" memberPath="exposureTime" mapToNode="false"/>
+				<Mapping widget="numLightsSetAngle" type="Number" property="value" mode="twoWay" memberPath="flashAngle" mapToNode="false"/>
+				<Mapping widget="txtLightsNettime" type="Number" property="value" mode="oneWay" memberPath="nettime" mapToNode="false"/>
+				
+			</Mappings>
+		</Property>
+		
+		
+		<Property xsi:type="StructureBindableProperty" name="Output" type="hmi_out_lights_typ" readOnly="true" category="Data" >
+			<Description>Light output datastructure</Description>
+			<Mappings>
+				<Mapping widget="numHW_ID" type="Number" property="value" mode="twoWay" memberPath="common.moduleId" mapToNode="false"/>
+				<Mapping widget="numHW_SerialNumber" type="Number" property="value" mode="twoWay" memberPath="common.serialNumber" mapToNode="false"/>
+				<Mapping widget="numHW_Variant" type="Number" property="value" mode="twoWay" memberPath="common.hardwareVariant" mapToNode="false"/>
+				<Mapping widget="numHW_Firmware" type="Number" property="value" mode="twoWay" memberPath="common.firmwareVersion" mapToNode="false"/>
+				<Mapping widget="StatusConnected" type="Number" property="value" mode="twoWay" memberPath="common.moduleOk" mapToNode="false"/>
+				<Mapping widget="StatusReady" type="Number" property="value" mode="twoWay" memberPath="status.ready" mapToNode="false"/>
+				<Mapping widget="numHW_Temperature" type="Number" property="value" mode="twoWay" memberPath="status.sensorTemperatureLedBoard" mapToNode="false"/>
+				<Mapping widget="txtLightsStatus" type="Number" property="value" mode="twoWay" memberPath="status.status" mapToNode="false"/>
+				<Mapping widget="ddbLights" type="Number" property="selectedIndex" mode="twoWay" memberPath="lightType" mapToNode="false"/>
+				<Mapping widget="numHW_Temperature1" type="Number" property="value" mode="twoWay" memberPath="status.sensorTemperatureControllerBoard" mapToNode="false"/>
+				<Mapping widget="numFlashCompleted" type="Number" property="value" mode="twoWay" memberPath="status.completedFlashCnt" mapToNode="false"/>
+				<Mapping widget="numFlashFailed" type="Number" property="value" mode="twoWay" memberPath="status.failedFlashCnt" mapToNode="false"/>
+				<Mapping widget="numFlashAccepted" type="Number" property="value" mode="twoWay" memberPath="status.acceptedFlashCnt" mapToNode="false"/>
+				<Mapping widget="txtLightsPlkNode" type="Number" property="value" mode="twoWay" memberPath="plNodeNr" mapToNode="false"/>
+			</Mappings>
+		</Property>
+		
+	</Properties>
+
+	<Events>
+		<!--
+		<Event name="">
+		<Description>Description will be shown in property grid.</Description>
+		<Mappings>
+		<Mapping widget="" event="" />
+		</Mappings>
+		</Event>
+		-->
+	</Events>
+
+	<Actions>
+		<!--
+		<Action name="">
+		<Description>Description will be shown in property grid.</Description>
+		<Mappings>
+		<Mapping widget="" action="" />
+		</Mappings>
+		</Action>
+		-->
+	</Actions>
+
+	<EventBindings>
+		<!-- source and target can only be widgets within the compound widget.
+		<EventBinding id="">
+		<Source xsi:type="widget.Event" widgetRefId="" event="" />
+		<EventHandler condition="">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="">
+		<Method name="" value="" />
+		</Target>
+		</Action>
+		</EventHandler>
+		</EventBinding>
+		-->
+	</EventBindings>
+
+</CompoundWidget>

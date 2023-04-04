@@ -1,0 +1,37 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Global variables for sensor hardware and vision functions*)
+VAR
+	gBlob : typBlobMain; (*Data that is specific for the blob function*)
+	gCodeReader : typCodeReaderMain; (*Data that is specific for the code reader*)
+	gMatch : typMatchMain; (*Data that is specific for the match function*)
+	gMT : typMTMain; (*Data that is specific for the measurement function*)
+	gOCR : typOCRMain; (*Data that is specific for the OCR function*)
+	gPixel : typPixelMain; (*Data that is specific for the Pixel Counter function*)
+	gVisionColor : typVisionColor;
+	gVisionImage : typVisionImage; (*Data for image handling*)
+	gVisionLight : ARRAY[0..MAX_NUM_LIGHTS] OF typLightMain; (*General Light  functions that are independent from the inspection function*)
+	gVisionNettime : typVisionNettime; (*Data for nettime calculation*)
+	gVisionSensor : ARRAY[0..MAX_NUM_CAMS] OF typVisionMain; (*General vision functions that are independent from the inspection function*)
+	gSelectedSensor : UINT := 1; (*Selected camera node number*)
+	gSelectedLight : UINT := 1; (*Selected Light node number*)
+	NettimeCurrent_us : DINT; (*Current Powerlink nettime*)
+END_VAR
+VAR RETAIN
+	RecipeData : recVariable; (*Structure that contains the recipe variables*)
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Global constants*)
+VAR CONSTANT
+	MAX_NUM_CAMS : UINT := 6; (*Maximum number of camera's*)
+	MAX_NUM_LIGHTS : UINT := 5; (*Maximum number of light's*)
+	MAX_NUM_RESULTS : UINT := 10; (*Maximum number of results*)
+	MAX_NUM_PRODUCTS : UINT := 8; (*Maximum number of products for color detection*)
+	MAX_IDX_VA_LIST : UINT := 19; (*Maximum number of entrys in the Vision Application list*)
+	DEVICE_NAME : STRING[40] := 'VisionFileDevice'; (*File device where the images and recipes are stored*)
+	NETTIME_DEFAULT_DELAY : UDINT := 30000; (*This delay is used when software trigger is used and nettime is enabled*)
+	NETTIME_ENABLE : BOOL := FALSE; (*Enable nettime code, this generates the nettime when using manual triggers*)
+	MAX_NUM_CODETYPES : USINT := 69; (*Maximum number of code types*)
+END_VAR
+VAR
+	CodeTypes : {REDUND_UNREPLICABLE} ARRAY[0..MAX_NUM_CODETYPES] OF STRING[80] := ['Auto Identify (0)','2/5 Industrial (1)','2/5 Interleaved (2)','Codebar (3)','Code 32 (4)','Code 39 (5)','Code 93 (6)','Code 128 (7)','MSI (8)','PharmaCode (9)','EAN-8 (10)','EAN-8 Add-On 2 (11)','EAN-8 Add-On 5 (12)','EAN-13 (13)','EAN-13 Add-On 2 (14)','EAN-13 Add-On 5 (15)',4(''),'UPC-A (20)','UPC-A Add-On 2 (21)','UPC-A Add-On 5 (22)','UPC-E (23)','UPC-E Add-On 2 (24)','UPC-E Add-On 5 (25)',4(''),'GS1-128 (30)','GS1 DataBar Omnidirectional (31)','GS1 DataBar Truncated (32)','GS1 DataBar Stacked (33)','GS1 DataBar Stacked Omnidirectional (34)','GS1 DataBar Limited (35)','GS1 DataBar Expanded (36)','GS1 DataBar ExpandedStacked (37)',12(''),'Data Matrix ECC200 (50)','QR Code Model 1 (51)','QR Code Model 2 (52)','Micro QRCode (53)','PDF417 (54)','Aztec Code (55)',4(''),'GS1 Data Matrix (60)','GS1 QR Code Model 1 (61)','GS1 QR Code Model 2 (62)','GS1 Aztec Code (63)',6('')]; (*Codes types for code reading*)
+END_VAR

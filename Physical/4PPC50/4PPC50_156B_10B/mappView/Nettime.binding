@@ -43,7 +43,7 @@
 			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnHomeAxis" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:commonRecipe.enableAxisTrigger" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_main:commonHmi.in.recipe.enableAxisTrigger" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnNettimeActivate" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -64,7 +64,7 @@
 <Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="txtPowerlinkCycle" attribute="value" />
 </Binding>
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vi_main:commonRecipe.visionPreTriggerCycles" attribute="value" />
+<Source xsi:type="opcUa" refId="::Vi_main:commonHmi.in.recipe.visionPreTriggerCycles" attribute="value" />
 <Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numPowerlinkDelayCamera" attribute="value" />
 </Binding>
 <Binding mode="twoWay">

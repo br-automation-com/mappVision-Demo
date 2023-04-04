@@ -7,57 +7,15 @@
         <ACE RoleName="Administrators" Access="0x017F" />
         <ACE RoleName="Everyone" Access="0x015F" />
       </ACL>
-      <ACL Id="2">
-        <ACE RoleName="Everyone" Access="0x01FF" />
-        <ACE RoleName="Administrators" Access="0x01FF" />
+      <ACL Id="3">
+        <ACE RoleName="Everyone" Access="0x017F" />
+        <ACE RoleName="Administrators" Access="0x017F" />
       </ACL>
     </ACLAliases>
     <EURangeViolationAliases>
       <EURangeViolation Id="1" Mode="2" />
     </EURangeViolationAliases>
     <EURangesAliases>
-      <EURanges Id="2">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="PV">::Vi_main:hmiInstance[1].out.VF.numResults</High>
-        </EURange>
-      </EURanges>
-      <EURanges Id="3">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="PV">::Vi_main:hmiInstance[2].out.VF.numResults</High>
-        </EURange>
-      </EURanges>
-      <EURanges Id="4">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="PV">::Vi_main:hmiInstance[3].out.VF.numResults</High>
-        </EURange>
-      </EURanges>
-      <EURanges Id="5">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="PV">::Vi_main:hmiInstance[4].out.VF.numResults</High>
-        </EURange>
-      </EURanges>
-      <EURanges Id="6">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="PV">::Vi_main:hmiInstance[5].out.VF.numResults</High>
-        </EURange>
-      </EURanges>
-      <EURanges Id="7">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="PV">::Vi_main:hmiInstance[6].out.VF.numResults</High>
-        </EURange>
-      </EURanges>
-      <EURanges Id="8">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="PV">::Vi_main:hmi.out.VF.numResults</High>
-        </EURange>
-      </EURanges>
       <EURanges Id="10">
         <EURange>
           <Low ValueProvider="Const">1</Low>
@@ -69,327 +27,24 @@
       <EngineeringUnit Id="2" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
     </EngineeringUnitAliases>
   </Aliases>
-  <DefaultView AclId="2">
+  <DefaultView AclId="3">
     <Module Name="&lt;Default&gt;">
-      <GlobalVariables Name="Global Variables">
-        <Variable Name="Recipe_01" RecursiveEnable="1">
-          <Variable Name="VIS" RecursiveEnable="1" />
-        </Variable>
-        <Variable Name="gVisionImage" RecursiveEnable="1" />
-        <Variable Name="gVisionLight" RecursiveEnable="1" />
-        <Variable Name="gVisionNettime" RecursiveEnable="1" />
-        <Variable Name="gVisionSensor" RecursiveEnable="1" />
-        <Variable Name="gVisionColor" RecursiveEnable="1">
-          <Variable Name="CMD" RecursiveEnable="1" />
-          <Variable Name="CFG" RecursiveEnable="1">
-            <Variable Name="FlashColor1" />
-            <Variable Name="FlashColor2" />
-            <Variable Name="FlashColor3" />
-            <Variable Name="FlashColor4" />
-            <Variable Name="ProductName" RecursiveEnable="1" />
-            <Variable Name="GrayValue1" RecursiveEnable="1" />
-            <Variable Name="GrayValue2" RecursiveEnable="1" />
-            <Variable Name="GrayValue3" RecursiveEnable="1" />
-            <Variable Name="GrayValue4" RecursiveEnable="1" />
-            <Variable Name="TeachingIndex" />
-            <Variable Name="MaxError" />
-            <Variable Name="MinDifference" />
-          </Variable>
-          <Variable Name="DAT" RecursiveEnable="1">
-            <Variable Name="GrayValue1" />
-            <Variable Name="GrayValue2" />
-            <Variable Name="GrayValue3" />
-            <Variable Name="GrayValue4" />
-            <Variable Name="TotalError" RecursiveEnable="1" />
-            <Variable Name="LowError" />
-            <Variable Name="LowDistance" />
-            <Variable Name="LowIndex" />
-            <Variable Name="LowName" />
-            <Variable Name="Status" />
-          </Variable>
-        </Variable>
-        <Variable Name="gSelectedLight" />
-        <Variable Name="gSelectedSensor" />
-      </GlobalVariables>
       <Task Name="Vi_main">
         <Variable Name="hmiInstance" RecursiveEnable="2">
           <VariableCommon Name="Common Properties">
             <Variable AclInherit="1" Name="out" />
+            <Variable Name="in">
+              <Variable Name="cmd" />
+            </Variable>
           </VariableCommon>
-          <Variable Name="hmiInstance[1]">
-            <Variable Name="out">
-              <Variable Name="VF">
-                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="measurement">
-                  <Variable Name="Result" RecursiveEnable="2" ChangedCommonProperties="1" />
-                </Variable>
-              </Variable>
-            </Variable>
-            <Variable Name="in">
-              <Variable Name="cmd">
-                <Variable Name="intElemId" EURangeViolationId="1" EURangesId="2" ChangedCommonProperties="1536" />
-              </Variable>
-              <Variable Name="lightNum" EURangeViolationId="1" EURangesId="10" ChangedCommonProperties="1536" />
-            </Variable>
-          </Variable>
-          <Variable Name="hmiInstance[2]">
-            <Variable Name="out">
-              <Variable Name="VF">
-                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="measurement">
-                  <Variable Name="Result" RecursiveEnable="2" ChangedCommonProperties="1" />
-                </Variable>
-              </Variable>
-            </Variable>
-            <Variable Name="in">
-              <Variable Name="cmd">
-                <Variable Name="intElemId" EURangeViolationId="1" EURangesId="3" ChangedCommonProperties="1536" />
-              </Variable>
-              <Variable Name="lightNum" EURangeViolationId="1" EURangesId="10" ChangedCommonProperties="1536" />
-            </Variable>
-          </Variable>
-          <Variable Name="hmiInstance[3]">
-            <Variable Name="out">
-              <Variable Name="VF">
-                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="measurement">
-                  <Variable Name="Result" RecursiveEnable="2" ChangedCommonProperties="1" />
-                </Variable>
-              </Variable>
-            </Variable>
-            <Variable Name="in">
-              <Variable Name="cmd">
-                <Variable Name="intElemId" EURangeViolationId="1" EURangesId="4" ChangedCommonProperties="1536" />
-              </Variable>
-              <Variable Name="lightNum" EURangeViolationId="1" EURangesId="10" ChangedCommonProperties="1536" />
-            </Variable>
-          </Variable>
-          <Variable Name="hmiInstance[4]">
-            <Variable Name="out">
-              <Variable Name="VF">
-                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="measurement">
-                  <Variable Name="Result" RecursiveEnable="2" ChangedCommonProperties="1" />
-                </Variable>
-              </Variable>
-            </Variable>
-            <Variable Name="in">
-              <Variable Name="cmd">
-                <Variable Name="intElemId" EURangeViolationId="1" EURangesId="5" ChangedCommonProperties="1536" />
-              </Variable>
-              <Variable Name="lightNum" EURangeViolationId="1" EURangesId="10" ChangedCommonProperties="1536" />
-            </Variable>
-          </Variable>
-          <Variable Name="hmiInstance[5]">
-            <Variable Name="out">
-              <Variable Name="VF">
-                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="measurement">
-                  <Variable Name="Result" RecursiveEnable="2" ChangedCommonProperties="1" />
-                </Variable>
-              </Variable>
-            </Variable>
-            <Variable Name="in">
-              <Variable Name="cmd">
-                <Variable Name="intElemId" EURangeViolationId="1" EURangesId="6" ChangedCommonProperties="1536" />
-              </Variable>
-              <Variable Name="lightNum" EURangeViolationId="1" EURangesId="10" ChangedCommonProperties="1536" />
-            </Variable>
-          </Variable>
-          <Variable Name="hmiInstance[6]">
-            <Variable Name="out">
-              <Variable Name="VF">
-                <Variable Name="crData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="ocrData" RecursiveEnable="2" ChangedCommonProperties="1" />
-                <Variable Name="measurement">
-                  <Variable Name="Result" RecursiveEnable="2" ChangedCommonProperties="1" />
-                </Variable>
-              </Variable>
-            </Variable>
-            <Variable Name="in">
-              <Variable Name="cmd">
-                <Variable Name="intElemId" EURangeViolationId="1" EURangesId="7" ChangedCommonProperties="1536" />
-              </Variable>
-              <Variable Name="lightNum" EURangeViolationId="1" EURangesId="10" ChangedCommonProperties="1536" />
-            </Variable>
-          </Variable>
         </Variable>
-        <Variable Name="commonRecipe" RecursiveEnable="2" />
-        <Variable Name="hmi" RecursiveEnable="2">
-          <Variable Name="in">
-            <Variable Name="cmd">
-              <Variable Name="repetitiveTrigger" />
-              <Variable Name="trigger" />
-              <Variable Name="autoSearch" />
-              <Variable Name="resetInfo" />
-              <Variable Name="saveDiagnositc" />
-              <Variable Name="loadVA" />
-              <Variable Name="saveImage" />
-              <Variable Name="elemId" />
-              <Variable Name="click" />
-              <Variable Name="y" />
-              <Variable Name="x" />
-              <Variable Name="draw">
-                <Variable Name="radius" />
-                <Variable Name="width" />
-                <Variable Name="length" />
-                <Variable Name="rotation" />
-                <Variable Name="intShape" />
-                <Variable Name="strStyle" />
-                <Variable Name="strStrokeWidth" />
-                <Variable Name="strFillOpac" />
-                <Variable Name="strStrokeOpac" />
-                <Variable Name="realStrokeOpac" />
-                <Variable Name="intStrokeWidth" />
-                <Variable Name="realFillOpac" />
-                <Variable Name="strFillColor" />
-                <Variable Name="strStrokeColor" />
-              </Variable>
-              <Variable Name="shapeSelector" />
-              <Variable Name="strokeColorSelector" />
-              <Variable Name="fillColorSelector" />
-              <Variable Name="intElemId" EURangeViolationId="1" EURangesId="8" />
-              <Variable Name="flashSegment" RecursiveEnable="2" />
-            </Variable>
-            <Variable Name="recipe" RecursiveEnable="2" />
-            <Variable Name="lightNum" EURangeViolationId="1" EURangesId="10" />
-          </Variable>
-        </Variable>
-        <Variable Name="hw" RecursiveEnable="2" />
-        <Variable Name="hwInstance" RecursiveEnable="2" />
-        <Variable Name="idx" />
-        <Variable Name="j" />
-        <Variable Name="k" />
-        <Variable Name="NUM_LIGHTS" />
-        <Variable Name="tableNo" RecursiveEnable="2" />
-        <Variable Name="this">
-          <Variable Name="brdkViBase_imgTrigger_0">
-            <Variable Name="useCamColorForLight" />
-            <Variable Name="useCamExpTimeForLight" />
-          </Variable>
-        </Variable>
-      </Task>
-      <Task Name="Vi_image">
-        <Variable Name="visImagePath" />
-        <Variable Name="visSelectedImage" />
-        <Variable Name="visDownloadFileUrl" />
-        <Variable Name="visEnableButtons_1" />
-        <Variable Name="visEnableButtons_2" />
-        <Variable Name="visCrossHair" RecursiveEnable="1">
-          <Variable Name="SvgTransformation" RecursiveEnable="1" />
-          <Variable Name="SvgContent" RecursiveEnable="1" />
-          <Variable Name="SvgVisible" RecursiveEnable="1" />
-        </Variable>
-        <Variable Name="visImageList" RecursiveEnable="1" />
-        <Variable Name="visWebViewerPath" />
-        <Variable Name="visWebViewerQuery" />
-        <Variable Name="visImageRotation" />
-        <Variable Name="visTextAlignment" />
-      </Task>
-      <Task Name="Recipe_01">
-        <Variable Name="RECIPE" RecursiveEnable="1">
-          <Variable Name="VIS" RecursiveEnable="1" />
-          <Variable Name="DAT">
-            <Variable Name="RecipeNames" RecursiveEnable="1" />
-            <Variable Name="RecipeIDs" RecursiveEnable="1" />
-          </Variable>
-        </Variable>
-      </Task>
-      <Task Name="YourTask">
-        <Variable Name="visSaveRecipe" />
-        <Variable Name="visNewRecipe" />
-      </Task>
-      <Task Name="Vi_color">
-        <Variable Name="visSelectedProduct" />
-        <Variable Name="visTableNo" />
-      </Task>
-      <Task Name="Vi_visu">
-        <Variable Name="visCameraStatus" />
-        <Variable Name="visCodeTypePresentDropDownValues" />
-        <Variable Name="visEnableRepetitive" />
-        <Variable Name="visEnableSetup" />
-        <Variable Name="visImageTrigger" />
-        <Variable Name="VisionSensor" RecursiveEnable="1" />
-        <Variable Name="visRepetitiveMode" />
-        <Variable Name="visSelectedCodeTypeDetected" />
-        <Variable Name="visSelectedFlashSegment" RecursiveEnable="1" />
-        <Variable Name="visTableNo" />
-        <Variable Name="visVaListRefresh" />
-        <Variable Name="visVisionApplicationList" />
-        <Variable Name="Blob" RecursiveEnable="1">
-          <Variable Name="ModelNumber" RecursiveEnable="1" />
-          <Variable Name="Clipped" RecursiveEnable="1" />
-          <Variable Name="Area" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="MeanGrayValue" RecursiveEnable="1" />
-          <Variable Name="Length" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="Width" RecursiveEnable="1" EngineeringUnitId="2" />
-        </Variable>
-        <Variable Name="CodeReader" RecursiveEnable="1">
-          <Variable Name="BarcodeText" RecursiveEnable="1" />
-          <Variable Name="BarcodeType" RecursiveEnable="1" />
-          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="Grading" RecursiveEnable="1" />
-          <Variable Name="EnhancedGrading" RecursiveEnable="1" />
-        </Variable>
-        <Variable Name="Match" RecursiveEnable="1">
-          <Variable Name="ModelNumber" RecursiveEnable="1" />
-          <Variable Name="Score" RecursiveEnable="1" />
-          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="Scale" RecursiveEnable="1" />
-          <Variable Name="RotCenterX" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="RotCenterY" RecursiveEnable="1" EngineeringUnitId="2" />
-        </Variable>
-        <Variable Name="MT" RecursiveEnable="1">
-          <Variable Name="Result" RecursiveEnable="1" />
-        </Variable>
-        <Variable Name="OCR" RecursiveEnable="1">
-          <Variable Name="Text" RecursiveEnable="1" />
-          <Variable Name="Grading" RecursiveEnable="1" />
-          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
-        </Variable>
-        <Variable Name="VisionLight" RecursiveEnable="1" />
-        <Variable Name="visLightsEnableCommand" />
-        <Variable Name="visLightsFlashColor" />
-        <Variable Name="visLightsReset" />
-        <Variable Name="visLightsTrigger" />
-        <Variable Name="visSensorEnableCommand" />
-        <Variable Name="visSensorFlashColor" />
-        <Variable Name="visEnableLightBarValues" />
-        <Variable Name="visAutoArchiv" />
-        <Variable Name="Pixel" RecursiveEnable="1">
-          <Variable Name="ModelNumber" RecursiveEnable="1" />
-          <Variable Name="NumPixels" RecursiveEnable="1" />
-          <Variable Name="MinGray" RecursiveEnable="1" />
-          <Variable Name="MaxGray" RecursiveEnable="1" />
-          <Variable Name="MeanGray" RecursiveEnable="1" />
-          <Variable Name="DeviationGray" RecursiveEnable="1" />
-          <Variable Name="MedianGray" RecursiveEnable="1" />
-          <Variable Name="ModelArea" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="NumConnectedComponents" RecursiveEnable="1" />
-          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
-          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
-        </Variable>
-        <Variable Name="visSelectedCodeType" />
-        <Variable Name="visSelectedParameterMode" />
+        <Variable Name="commonHmi" RecursiveEnable="2" />
       </Task>
       <Task Name="Axis">
-        <Variable Name="hmi" RecursiveEnable="2">
-          <Variable AclInherit="1" Name="out" />
-        </Variable>
+        <Variable Name="hmi" RecursiveEnable="2" />
+      </Task>
+      <Task Name="Files">
+        <Variable Name="hmi" RecursiveEnable="2" />
       </Task>
     </Module>
   </DefaultView>

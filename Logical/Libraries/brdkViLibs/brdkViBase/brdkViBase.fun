@@ -122,3 +122,57 @@ FUNCTION_BLOCK brdkViBase_simCam (*Function block to simulate a camera's hardwar
 		internal : brdkViBase_simCam_internal_typ;
 	END_VAR
 END_FUNCTION_BLOCK
+
+{REDUND_ERROR} FUNCTION brdkViBase_blob_hw2hmi : BOOL (*Function to convert BLOB hw structure to hmi structure*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		hw : brdkViBase_hw_blob_in_typ; (*BLOB Hw result structure*)
+	END_VAR
+	VAR_IN_OUT
+		hmi : brdkViBase_hmi_blob_in_typ; (*BLOB hmi result structure*)
+	END_VAR
+END_FUNCTION
+
+{REDUND_ERROR} FUNCTION brdkViBase_cr_hw2hmi : BOOL (*Function to convert Code Reader  hw structure to hmi structure*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		hw : brdkViBase_hw_cr_in_typ; (*Code reader Hw result structure*)
+	END_VAR
+	VAR_IN_OUT
+		hmi : brdkViBase_hmi_cr_in_typ; (*Code reader hmi result structure*)
+	END_VAR
+END_FUNCTION
+
+{REDUND_ERROR} FUNCTION brdkViBase_ocr_hw2hmi : BOOL (*Function to convert OCR hw structure to hmi structure*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		hw : brdkViBase_hw_OCR_in_typ; (*OCR Hw result structure*)
+	END_VAR
+	VAR_IN_OUT
+		hmi : brdkViBase_hmi_OCR_in_typ; (*OCR hmi result structure*)
+	END_VAR
+END_FUNCTION
+
+{REDUND_ERROR} FUNCTION brdkViBase_match_hw2hmi : BOOL (*Function to convert matching hw structure to hmi structure*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		hw : brdkViBase_hw_match_in_typ; (*Matching Hw result structure*)
+	END_VAR
+	VAR_IN_OUT
+		hmi : brdkViBase_hmi_match_in_typ; (*Matching hmi result structure*)
+	END_VAR
+END_FUNCTION
+
+{REDUND_ERROR} FUNCTION brdkViBase_meas_hw2hmi : BOOL (*Function to convert measurement hw structure to hmi structure*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		hw : brdkViBase_hw_meas_in_typ; (*Measurement Hw result structure*)
+	END_VAR
+	VAR_IN_OUT
+		hmi : brdkViBase_hmi_meas_in_typ; (*Measurement hmi result structure*)
+	END_VAR
+END_FUNCTION
+
+{REDUND_ERROR} FUNCTION brdkViBase_pxCnt_hw2hmi : BOOL (*Function to convert pixel counter hw structure to hmi structure*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		hw : brdkViBase_hw_pxCnt_in_typ; (*Pixel counter Hw result structure*)
+	END_VAR
+	VAR_IN_OUT
+		hmi : brdkViBase_hmi_pxCnt_in_typ; (*Pixel counter hmi result structure*)
+	END_VAR
+END_FUNCTION

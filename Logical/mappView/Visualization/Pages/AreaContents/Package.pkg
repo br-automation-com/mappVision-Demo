@@ -7,5 +7,6 @@
     <Object Type="File">Footer.content</Object>
     <Object Type="File">Content.content</Object>
     <Object Type="File">TestContent.content</Object>
+    <Object Type="File">Content1.content</Object>
   </Objects>
 </Package>

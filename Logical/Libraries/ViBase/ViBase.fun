@@ -105,3 +105,26 @@ FUNCTION_BLOCK ViBaseGetImage (*Function block ViBaseGetImage can be used to get
 		Internal : {REDUND_UNREPLICABLE} ViBaseInternalType;
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK ViBaseAxisBasedAcquisition (*Function block ViBaseAxisBasedAcquisition can be used to acquisition a picture by axis position.*)
+	VAR_INPUT
+		MpLink : REFERENCE TO ViComponentType; (*Pointer to the vision component.*)
+		Enable : BOOL; (*Function block is active as long as Enable is set.*)
+		AcquisitionParameters : ViBaseAxBsdAcqAcqParType; (*Parameters which define when the capturing is triggered based on the axis position.*)
+		AdvancedParameters: ViBaseAxBsdAcqAdvParType; (*Structure for using advanced functions.*)
+		Update : BOOL; (*Updates the trigger parameters. *)
+		PauseAcquisition : BOOL; (*If set to TRUE, the internal calculations are still active, but no image will be acquired.*)
+		ForceAcquisition : BOOL; (*On a rising edge of this input an image acquisition is forced.*)
+	END_VAR
+	VAR_OUTPUT
+		InOperation : BOOL; (*Calculations are active and time stamps are forwarded to the vision component.*)
+		Busy : BOOL; (*The function block is active and must continue to be called.*)
+		Error : BOOL; (*Error during execution.*)
+		StatusID : DINT; (*Status information*)
+		UpdateDone : BOOL; (*Indicates that new trigger data has been initialized.*)
+		AdditionalInfo : ViBaseAxBsdAcqAddInfoType; (*Additional useful data, e.g. for system monitoring or error analysis.*)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} ViBaseInternalType;
+	END_VAR
+END_FUNCTION_BLOCK

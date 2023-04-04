@@ -1,86 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="ImageArchiv_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Bindings>
-		<!-- Command load recipe />-->
-		<EventBinding id="contentImageArchiv.btnImageArchivDownload.Click">
-			<Source contentRefId="contentImageArchiv" widgetRefId="btnImageArchivDownload" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.DownloadImage" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Reload image list from file device />-->
-		<EventBinding id="contentImageArchiv.btnImageArchivRefresh.Click">
-			<Source contentRefId="contentImageArchiv" widgetRefId="btnImageArchivRefresh" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.Refresh" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Delete image from file device />-->
-		<EventBinding id="contentImageArchiv.btnImageArchivDelete.Click">
-			<Source contentRefId="contentImageArchiv" widgetRefId="btnImageArchivDelete" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.DeleteImage" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Upload image from camera />-->
-		<EventBinding id="contentImageArchiv.btnImageArchivSave.Click">
-			<Source contentRefId="contentImageArchiv" widgetRefId="btnImageArchivSave" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.SaveImageOnPLC" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Open dialog for Upload Options />-->
+  <Bindings>
 		<EventBinding id="contentImageArchiv.btnShowUploadOptions.Click">
-			<Source contentRefId="contentImageArchiv" widgetRefId="btnShowUploadOptions" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentImageArchiv" widgetRefId="btnShowUploadOptions" event="Click" />
 			<EventHandler>
 				<Action>
 					<Target xsi:type="clientSystem.Action">
-						<Method xsi:type="clientSystem.Action.OpenDialog" dialogId="UploadOptionsDialog" mode="modal" horizontalPos="center" verticalPos="middle" headerText="Upload Options"/>
+						<Method xsi:type="clientSystem.Action.OpenDialog" dialogId="UploadOptionsDialog" mode="modal" horizontalPos="center" verticalPos="middle" headerText="Upload Options" />
 					</Target>
 				</Action>
 			</EventHandler>
 		</EventBinding>
-		<!-- Reset error state />-->
-		<EventBinding id="UploadOptionsContent.btnResetError.Click">
-			<Source contentRefId="contentImageArchiv" widgetRefId="btnResetError" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.ResetError" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Delete images />-->
-		<EventBinding id="UploadOptionsContent.btnDeleteAll.Click">
-			<Source contentRefId="UploadOptionsContent" widgetRefId="btnDeleteAll" xsi:type="widgets.brease.Button.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gVisionImage.CMD.DeleteDir" >
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<!-- Close option window />-->
+   
 		<EventBinding id="UploadOptionsContent.btnClose.Click">
-			<Source contentRefId="UploadOptionsContent" widgetRefId="btnClose" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<Source xsi:type="widgets.brease.Button.Event" contentRefId="UploadOptionsContent" widgetRefId="btnClose" event="Click" />
 			<EventHandler>
 				<Action>
 					<Target xsi:type="clientSystem.Action">
@@ -88,6 +21,6 @@
 					</Target>
 				</Action>
 			</EventHandler>
-		</EventBinding>
-	</Bindings>
+    </EventBinding>
+  </Bindings>
 </EventBindingSet>

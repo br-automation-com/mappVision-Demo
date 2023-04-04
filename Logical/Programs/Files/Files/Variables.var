@@ -1,0 +1,5 @@
+VAR
+	i : UINT;
+	hmi : hmi_typ;
+	this : local_typ;
+END_VAR

@@ -4,143 +4,35 @@
     <EventBinding id="contentMain.numDetailsNoDown.Click">
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoDown" event="Click" />
       <EventHandler>
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="3">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="4">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="5">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
+        <Action>
+          <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="numDetailsNo">
+            <Method xsi:type="widgets.brease.NumericInput.Action.SetValue" value="=origin - 1" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
     <EventBinding id="EventBinding_8">
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoUp" event="Click" />
       <EventHandler>
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="3">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="4">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="5">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.intElemId">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
+        <Action>
+          <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="numDetailsNo">
+            <Method xsi:type="widgets.brease.NumericInput.Action.SetValue" value="=origin + 1" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
     <EventBinding id="EventBinding_7">
       <Source xsi:type="widgets.brdk.VisionImage.Event" contentRefId="contentMain" widgetRefId="VisionImage1" event="Click" />
-      <EventHandler>
+      <Operand datatype="ANY_INT" name="idx">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="camIdx">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="idx = 1">
         <Sequence>
           <Step order="0">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.x">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.x">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.x">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="3">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.x">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="4">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.x">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="5">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.x">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
               </Target>
             </Action>
@@ -152,79 +44,9 @@
               </Target>
             </Action>
           </Step>
-          <Step order="7">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.y">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="8">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.y">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="9">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.y">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="10">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.y">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="11">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.y">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
-              </Target>
-            </Action>
-          </Step>
           <Step order="12">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.elemId">
-                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="13">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.elemId">
-                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="14">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.elemId">
-                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="15">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.elemId">
-                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="16">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.elemId">
-                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="17">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
@@ -236,10 +58,60 @@
               </Target>
             </Action>
           </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="idx = 2">
+        <Sequence>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="7">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="13">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
           <Step order="19">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="idx = 3">
+        <Sequence>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="8">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="14">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
@@ -250,10 +122,60 @@
               </Target>
             </Action>
           </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="idx = 4">
+        <Sequence>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="9">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="15">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
           <Step order="21">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="idx = 5">
+        <Sequence>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="10">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="16">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
@@ -264,133 +186,35 @@
               </Target>
             </Action>
           </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="idx = 6">
+        <Sequence>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.x">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="11">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.y">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="17">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.elemId">
+                <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
+              </Target>
+            </Action>
+          </Step>
           <Step order="23">
             <Action>
               <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
-      </EventHandler>
-    </EventBinding>
-    <EventBinding id="EventBinding_9">
-      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmi.in.cmd.draw.intShape" event="ValueChanged" />
-      <EventHandler condition="newValue=1">
-        <Sequence>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="lengthInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="lengthLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="3">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="widthInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="4">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="widthLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="5">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="6">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="rotationLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="7">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="radiusInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="8">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="radiusLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
-      </EventHandler>
-      <EventHandler condition="newValue=0 OR newValue=2">
-        <Sequence>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="lengthInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="lengthLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="3">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="widthInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="4">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="widthLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="5">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="6">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="rotationLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="7">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="radiusInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="8">
-            <Action>
-              <Target xsi:type="widgets.brease.Label.Action" contentRefId="contentMain" widgetRefId="radiusLabel">
-                <Method xsi:type="widgets.brease.Label.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
@@ -443,13 +267,6 @@
               </Target>
             </Action>
           </Step>
-          <Step order="6">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
-              </Target>
-            </Action>
-          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="newValue=2">
@@ -493,13 +310,6 @@
             <Action>
               <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
                 <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="6">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="false" />
               </Target>
             </Action>
           </Step>
@@ -549,13 +359,6 @@
               </Target>
             </Action>
           </Step>
-          <Step order="6">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
-              </Target>
-            </Action>
-          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="newValue=4">
@@ -599,13 +402,6 @@
             <Action>
               <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
                 <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="6">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
               </Target>
             </Action>
           </Step>
@@ -655,13 +451,6 @@
               </Target>
             </Action>
           </Step>
-          <Step order="6">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="false" />
-              </Target>
-            </Action>
-          </Step>
         </Sequence>
       </EventHandler>
       <EventHandler condition="newValue=6">
@@ -708,10 +497,70 @@
               </Target>
             </Action>
           </Step>
-          <Step order="6">
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_9">
+      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[1].out.VF.numResults" event="ValueChanged" />
+      <EventHandler condition="newValue &gt; 0">
+        <Sequence>
+          <Step order="0">
             <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="rotationInput">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetEnable" value="true" />
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="numDetailsNo">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoDown">
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoUp">
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="widgets.brease.GroupBox.Action" contentRefId="contentMain" widgetRefId="elemInfoBox">
+                <Method xsi:type="widgets.brease.GroupBox.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="newValue = 0">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="numDetailsNo">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoDown">
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoUp">
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="widgets.brease.GroupBox.Action" contentRefId="contentMain" widgetRefId="elemInfoBox">
+                <Method xsi:type="widgets.brease.GroupBox.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>

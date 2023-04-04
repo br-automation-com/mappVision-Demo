@@ -31,6 +31,7 @@ Example: 345 corresponds to version 3.45.*)
 		flashColor : USINT; (*Selects LED colors of the onboard LED lighting. The constants BRDKVIBASE_LED_xxx can be used to set the color*)
 		flashSegment : USINT; (*Enables/Disables LED segments. Binary patter for enable each of the four segments 0000 = all off, 1111 = all on*)
 		chromaticLock : BOOL; (*Enables/Disables ChromaticLock*)
+		IRFilter : BOOL;
 	END_STRUCT;
 	brdkViBase_getCameraInfo_int_typ : 	STRUCT 
 		diagGetNumInfo_0 : DiagGetNumInfo;
@@ -248,6 +249,33 @@ END_TYPE
 (*VF BLOB*)
 
 TYPE
+	brdkViBase_hmi_blob_in_typ : 	STRUCT  (*BLOB hardware structure for a result*)
+		modelNumber : USINT; (*ModelNumber of the found blob*)
+		meanGreyValue : USINT; (*Arithmetic mean of grayscale values for the blob*)
+		clipped : BOOL; (* Edge contact detection *)
+		area : REAL; (* Size (area) in pixels in increments of 1/100 pixel*)
+		length : UDINT; (* Length of the found blob*)
+		width : UDINT; (* Width of the found blob. Is always the longer of the two sides*)
+		xMin : DINT; (* Extreme value in the column direction
+Minimum column position of the BLOB area*)
+		xMax : DINT; (*Extreme value in the column direction
+Maximum column position of the BLOB area*)
+		yMin : DINT; (*Extreme value in the line direction
+Minimum line position of the BLOB area*)
+		yMax : DINT; (*Extreme value in the line direction
+Maximum line position of the BLOB area*)
+		circularity : USINT; (*Circularity of the found blob in %*)
+		rectangularity : USINT; (*Rectangularity of the found blob in %*)
+		anisometry : UINT; (*Anisometry of the found blob*)
+		innterCirclePositionX : REAL; (*Output of position X of the center point of the inner circle of the found blob determined by the algorithm in 1/100 pixels.*)
+		innterCirclePositionY : REAL; (*Output of position Y of the center point of the inner circle of the found blob determined by the algorithm in 1/100 pixels.*)
+		innterCircleRadius : UDINT; (*Output of the radius of the inner circle of the found blob determined by the algorithm in 1/100 pixels.*)
+		positionX : REAL; (*X-position (of the found blob) in the image in increments of 1/100 pixel*)
+		positionY : REAL; (*Y-position (of the found blob) in the image in increments of 1/100 pixel*)
+		orientation : REAL; (*-179.99° to +180° in increments of 1/100 degree*)
+		rotCenterX : REAL; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
+		rotCenterY : REAL; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
+	END_STRUCT;
 	brdkViBase_hw_blob_out_typ : 	STRUCT  (*BLOB hardware output structure*)
 		regionFeatures : BOOL; (*Enables the geometric exclusion procedure *)
 		enhancedBlobInformation : BOOL; (*0 = Additional information is transferred (default).
@@ -282,14 +310,6 @@ Maximum line position of the BLOB area*)
 		rotCenterX : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
 		rotCenterY : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
 	END_STRUCT;
-	brdkViBase_hw_blob_1_in_typ : 	STRUCT  (*BLOB hardware input structure for 1 BLOB result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : brdkViBase_hw_blob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_1_typ : 	STRUCT  (*BLOB hardware structure for 1 BLOB result*)
-		in : brdkViBase_hw_blob_1_in_typ;
-		out : brdkViBase_hw_blob_out_typ;
-	END_STRUCT;
 	brdkViBase_hw_blob_10_in_typ : 	STRUCT  (*BLOB hardware input structure for 10 BLOB result*)
 		common : brdkViBase_hw_vf_in_common_typ;
 		results : ARRAY[0..9]OF brdkViBase_hw_blob_in_typ;
@@ -298,51 +318,21 @@ Maximum line position of the BLOB area*)
 		in : brdkViBase_hw_blob_10_in_typ;
 		out : brdkViBase_hw_blob_out_typ;
 	END_STRUCT;
-	brdkViBase_hw_blob_50_in_typ : 	STRUCT  (*BLOB hardware input structure for 50 BLOB result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..49]OF brdkViBase_hw_blob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_50_typ : 	STRUCT  (*BLOB hardware structure for 50 BLOB result*)
-		in : brdkViBase_hw_blob_10_in_typ;
-		out : brdkViBase_hw_blob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_100_in_typ : 	STRUCT  (*BLOB hardware input structure for 100 BLOB result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..99]OF brdkViBase_hw_blob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_100_typ : 	STRUCT  (*BLOB hardware structure for 100 BLOB result*)
-		in : brdkViBase_hw_blob_100_in_typ;
-		out : brdkViBase_hw_blob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_150_in_typ : 	STRUCT  (*BLOB hardware input structure for 150 BLOB result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..149]OF brdkViBase_hw_blob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_150_typ : 	STRUCT  (*BLOB hardware structure for 150 BLOB result*)
-		in : brdkViBase_hw_blob_150_in_typ;
-		out : brdkViBase_hw_blob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_200_in_typ : 	STRUCT  (*BLOB hardware input structure for 200 BLOB result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..199]OF brdkViBase_hw_blob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_200_typ : 	STRUCT  (*BLOB hardware structure for 200 BLOB result*)
-		in : brdkViBase_hw_blob_200_in_typ;
-		out : brdkViBase_hw_blob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_250_in_typ : 	STRUCT  (*BLOB hardware input structure for 250 BLOB result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..249]OF brdkViBase_hw_blob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_blob_250_typ : 	STRUCT  (*BLOB hardware structure for 250 BLOB result*)
-		in : brdkViBase_hw_blob_250_in_typ;
-		out : brdkViBase_hw_blob_out_typ;
-	END_STRUCT;
 END_TYPE
 
 (*VF match*)
 
 TYPE
+	brdkViBase_hmi_match_in_typ : 	STRUCT  (*Matching hardware structure for a result*)
+		modelNumber : USINT; (*ID/Number of the learned model (which matches the hit)*)
+		score : REAL; (*Grade (quality score) of the Matching result concerning the model in the range of values from 0.0 to 1.0. In 1/100*)
+		scale : REAL; (*For shape-based Matching. Scaling factor from 0.01 to 2.55 in increments of 0.01.*)
+		positionX : REAL; (*X-position (of the found object) in the image in increments of 1/100 pixel*)
+		positionY : REAL; (*Y-position (of the found object) in the image in increments of 1/100 pixel*)
+		orientation : REAL; (*-179.99° to +180° in increments of 1/100 degree*)
+		rotCenterX : REAL; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
+		rotCenterY : REAL; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
+	END_STRUCT;
 	brdkViBase_hw_match_out_typ : 	STRUCT  (*Matching hardware output structure*)
 		timeout : UINT; (*Time limit for the search time in increments of 1 ms. 0 = no timeout*)
 		minScore : USINT; (*Minimum grade in percent as to whether a found object is accepted as a match.*)
@@ -359,14 +349,6 @@ TYPE
 		rotCenterX : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
 		rotCenterY : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
 	END_STRUCT;
-	brdkViBase_hw_match_1_in_typ : 	STRUCT  (*Matching hardware input structure for 1 result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : brdkViBase_hw_match_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_1_typ : 	STRUCT  (*Matching hardware structure for 1 result*)
-		in : brdkViBase_hw_match_1_in_typ;
-		out : brdkViBase_hw_match_out_typ;
-	END_STRUCT;
 	brdkViBase_hw_match_10_in_typ : 	STRUCT  (*Matching hardware input structure for 10 results*)
 		common : brdkViBase_hw_vf_in_common_typ;
 		results : ARRAY[0..9]OF brdkViBase_hw_match_in_typ;
@@ -375,51 +357,18 @@ TYPE
 		in : brdkViBase_hw_match_10_in_typ;
 		out : brdkViBase_hw_match_out_typ;
 	END_STRUCT;
-	brdkViBase_hw_match_50_in_typ : 	STRUCT  (*Matching hardware input structure for 50 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..49]OF brdkViBase_hw_match_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_50_typ : 	STRUCT  (*Matching hardware structure for 50 results*)
-		in : brdkViBase_hw_match_50_in_typ;
-		out : brdkViBase_hw_match_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_100_in_typ : 	STRUCT  (*Matching hardware input structure for 100 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..99]OF brdkViBase_hw_match_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_100_typ : 	STRUCT  (*Matching hardware structure for 100 results*)
-		in : brdkViBase_hw_match_100_in_typ;
-		out : brdkViBase_hw_match_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_150_in_typ : 	STRUCT  (*Matching hardware input structure for 150 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..149]OF brdkViBase_hw_match_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_150_typ : 	STRUCT  (*Matching hardware structure for 150 results*)
-		in : brdkViBase_hw_match_150_in_typ;
-		out : brdkViBase_hw_match_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_200_in_typ : 	STRUCT  (*Matching hardware input structure for 200 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..199]OF brdkViBase_hw_match_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_200_typ : 	STRUCT  (*Matching hardware structure for 200 results*)
-		in : brdkViBase_hw_match_200_in_typ;
-		out : brdkViBase_hw_match_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_250_in_typ : 	STRUCT  (*Matching hardware input structure for 250 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..249]OF brdkViBase_hw_match_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_match_250_typ : 	STRUCT  (*Matching hardware structure for 250 results*)
-		in : brdkViBase_hw_match_250_in_typ;
-		out : brdkViBase_hw_match_out_typ;
-	END_STRUCT;
 END_TYPE
 
 (*VF OCR [50]*)
 
 TYPE
+	brdkViBase_hmi_OCR_in_typ : 	STRUCT  (*OCR hardware input structure for a result with length 50*)
+		data : STRING[50]; (*A tuple of classification results, e.g. ["2", "6", "1", "2"], size 50*)
+		gradingValue : REAL; (*Probability for all segmented characters (minimum confidence of all characters in a line)*)
+		positionX : REAL; (*X-position (of the found string) in the image in increments of 1/100 pixel*)
+		positionY : REAL; (*Y-position (of the found string) in the image in increments of 1/100 pixel*)
+		orientation : REAL; (*-179.99° to +180° in increments of 1/100 degree*)
+	END_STRUCT;
 	brdkViBase_hw_OCR_out_typ : 	STRUCT  (*OCR hardware output structure*)
 		timeout : UINT; (*Time limit for the search time in increments of 1 ms. 0 = no timeout*)
 		parameterMode : USINT; (*Selects predefined parameter sets*)
@@ -433,14 +382,6 @@ TYPE
 		positionY : DINT; (*Y-position (of the found string) in the image in increments of 1/100 pixel*)
 		orientation : INT; (*-179.99° to +180° in increments of 1/100 degree*)
 	END_STRUCT;
-	brdkViBase_hw_OCR_1_in_typ : 	STRUCT  (*OCR hardware input structure for 1 result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : brdkViBase_hw_OCR_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_1_typ : 	STRUCT  (*OCR hardware structure for 1 result*)
-		in : brdkViBase_hw_OCR_1_in_typ;
-		out : brdkViBase_hw_OCR_out_typ;
-	END_STRUCT;
 	brdkViBase_hw_OCR_10_in_typ : 	STRUCT  (*OCR hardware input structure for 10 results*)
 		common : brdkViBase_hw_vf_in_common_typ;
 		results : ARRAY[0..9]OF brdkViBase_hw_OCR_in_typ;
@@ -449,51 +390,24 @@ TYPE
 		in : brdkViBase_hw_OCR_10_in_typ;
 		out : brdkViBase_hw_OCR_out_typ;
 	END_STRUCT;
-	brdkViBase_hw_OCR_50_in_typ : 	STRUCT  (*OCR hardware input structure for 50 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..49]OF brdkViBase_hw_OCR_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_50_typ : 	STRUCT  (*OCR hardware structure for 50 results*)
-		in : brdkViBase_hw_OCR_50_in_typ;
-		out : brdkViBase_hw_OCR_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_100_in_typ : 	STRUCT  (*OCR hardware input structure for 100 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..99]OF brdkViBase_hw_OCR_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_100_typ : 	STRUCT  (*OCR hardware structure for 100 results*)
-		in : brdkViBase_hw_OCR_100_in_typ;
-		out : brdkViBase_hw_OCR_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_150_in_typ : 	STRUCT  (*OCR hardware input structure for 150 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..149]OF brdkViBase_hw_OCR_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_150_typ : 	STRUCT  (*OCR hardware structure for 150 results*)
-		in : brdkViBase_hw_OCR_150_in_typ;
-		out : brdkViBase_hw_OCR_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_200_in_typ : 	STRUCT  (*OCR hardware input structure for 200 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..199]OF brdkViBase_hw_OCR_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_200_typ : 	STRUCT  (*OCR hardware structure for 200 results*)
-		in : brdkViBase_hw_OCR_200_in_typ;
-		out : brdkViBase_hw_OCR_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_250_in_typ : 	STRUCT  (*OCR hardware input structure for 250 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..249]OF brdkViBase_hw_OCR_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_OCR_250_typ : 	STRUCT  (*OCR hardware structure for 250 results*)
-		in : brdkViBase_hw_OCR_250_in_typ;
-		out : brdkViBase_hw_OCR_out_typ;
-	END_STRUCT;
 END_TYPE
 
 (*VF PX*)
 
 TYPE
+	brdkViBase_hmi_pxCnt_in_typ : 	STRUCT  (*PX counter hardware input structure for a result*)
+		modelNumber : USINT; (*Model number of the result found*)
+		numPixels : UDINT; (*Number of pixels that correspond to the configuration in the model*)
+		minGray : USINT; (*Lowest grayscale value in the result*)
+		maxGray : USINT; (*Highest grayscale value in the result*)
+		meanGray : REAL; (*Arithmetic mean value of the grayscale values of the result*)
+		deviationGray : REAL; (*Standard deviation of the grayscale values of the result*)
+		medianGray : USINT; (*Median of the grayscale values of the result*)
+		modelArea : UDINT; (*Size (area) of the model in pixels*)
+		numConnectedComponents : UINT; (*Number of non-contiguous areas of the result*)
+		positionX : REAL; (*X-position (center point) in the image in increments of 1/100 pixel*)
+		positionY : REAL; (*Y-position (center point) in the image in increments of 1/100 pixel*)
+	END_STRUCT;
 	brdkViBase_hw_pxCnt_out_typ : 	STRUCT  (*PX counter hardware output structure*)
 		enhancedPXInformation : BOOL; (*Enables/Disables transfer of additional information.
 Has an influence on the processing time of the vision function.*)
@@ -512,14 +426,6 @@ Has an influence on the processing time of the vision function.*)
 		positionX : DINT; (*X-position (center point) in the image in increments of 1/100 pixel*)
 		positionY : DINT; (*Y-position (center point) in the image in increments of 1/100 pixel*)
 	END_STRUCT;
-	brdkViBase_hw_pxCnt_1_in_typ : 	STRUCT  (*PX counter hardware input structure for 1 result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : brdkViBase_hw_pxCnt_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_1_typ : 	STRUCT  (*PX counter hardware structure for 1 result*)
-		in : brdkViBase_hw_pxCnt_1_in_typ;
-		out : brdkViBase_hw_pxCnt_out_typ;
-	END_STRUCT;
 	brdkViBase_hw_pxCnt_10_in_typ : 	STRUCT  (*PX counter hardware input structure for 10 results*)
 		common : brdkViBase_hw_vf_in_common_typ;
 		results : ARRAY[0..9]OF brdkViBase_hw_pxCnt_in_typ;
@@ -528,118 +434,44 @@ Has an influence on the processing time of the vision function.*)
 		in : brdkViBase_hw_pxCnt_10_in_typ;
 		out : brdkViBase_hw_pxCnt_out_typ;
 	END_STRUCT;
-	brdkViBase_hw_pxCnt_50_in_typ : 	STRUCT  (*PX counter hardware input structure for 50 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..49]OF brdkViBase_hw_pxCnt_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_50_typ : 	STRUCT  (*PX counter hardware structure for 50 results*)
-		in : brdkViBase_hw_pxCnt_50_in_typ;
-		out : brdkViBase_hw_pxCnt_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_100_in_typ : 	STRUCT  (*PX counter hardware input structure for 100 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..99]OF brdkViBase_hw_pxCnt_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_100_typ : 	STRUCT  (*PX counter hardware structure for 100 results*)
-		in : brdkViBase_hw_pxCnt_100_in_typ;
-		out : brdkViBase_hw_pxCnt_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_150_in_typ : 	STRUCT  (*PX counter hardware input structure for 150 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..149]OF brdkViBase_hw_pxCnt_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_150_typ : 	STRUCT  (*PX counter hardware structure for 150 results*)
-		in : brdkViBase_hw_pxCnt_150_in_typ;
-		out : brdkViBase_hw_pxCnt_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_200_in_typ : 	STRUCT  (*PX counter hardware input structure for 200 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..199]OF brdkViBase_hw_pxCnt_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_200_typ : 	STRUCT  (*PX counter hardware structure for 200 results*)
-		in : brdkViBase_hw_pxCnt_200_in_typ;
-		out : brdkViBase_hw_pxCnt_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_250_in_typ : 	STRUCT  (*PX counter hardware input structure for 250 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..249]OF brdkViBase_hw_pxCnt_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_pxCnt_250_typ : 	STRUCT  (*PX counter hardware structure for 250 results*)
-		in : brdkViBase_hw_pxCnt_250_in_typ;
-		out : brdkViBase_hw_pxCnt_out_typ;
-	END_STRUCT;
 END_TYPE
 
 (*VF mes*)
 
 TYPE
-	brdkViBase_hw_mes_out_typ : 	STRUCT  (*Measurement hardware output structure*)
-		common : brdkViBase_hw_vf_out_common_typ; (*Common vision function output*)
-	END_STRUCT;
-	brdkViBase_hw_mes_in_typ : 	STRUCT  (*Measurement hardware input structure for a result*)
+	brdkViBase_hmi_meas_in_typ : 	STRUCT  (*Measurement hardware input structure for a result*)
 		result : DINT; (*Measurement values. Depending on the operator, it is possible to return angle, orientation, length or distance values, or a combination of any of these in an array.*)
 	END_STRUCT;
-	brdkViBase_hw_mes_1_in_typ : 	STRUCT  (*Measurement hardware input structure for 1 result*)
+	brdkViBase_hw_meas_out_typ : 	STRUCT  (*Measurement hardware output structure*)
+		common : brdkViBase_hw_vf_out_common_typ; (*Common vision function output*)
+	END_STRUCT;
+	brdkViBase_hw_meas_in_typ : 	STRUCT  (*Measurement hardware input structure for a result*)
+		result : DINT; (*Measurement values. Depending on the operator, it is possible to return angle, orientation, length or distance values, or a combination of any of these in an array.*)
+	END_STRUCT;
+	brdkViBase_hw_meas_10_in_typ : 	STRUCT  (*Measurement hardware input structure for 10 results*)
 		common : brdkViBase_hw_vf_in_common_typ;
-		results : brdkViBase_hw_mes_in_typ;
+		results : ARRAY[0..9]OF brdkViBase_hw_meas_in_typ;
 	END_STRUCT;
-	brdkViBase_hw_mes_1_typ : 	STRUCT  (*Measurement hardware structure for 1 result*)
-		in : brdkViBase_hw_mes_1_in_typ;
-		out : brdkViBase_hw_mes_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_10_in_typ : 	STRUCT  (*Measurement hardware input structure for 10 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..9]OF brdkViBase_hw_mes_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_10_typ : 	STRUCT  (*Measurement hardware structure for 10 results*)
-		in : brdkViBase_hw_mes_10_in_typ;
-		out : brdkViBase_hw_mes_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_50_in_typ : 	STRUCT  (*Measurement hardware input structure for 50 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..49]OF brdkViBase_hw_mes_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_50_typ : 	STRUCT  (*Measurement hardware structure for 50 results*)
-		in : brdkViBase_hw_mes_50_in_typ;
-		out : brdkViBase_hw_mes_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_100_in_typ : 	STRUCT  (*Measurement hardware input structure for 100 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..99]OF brdkViBase_hw_mes_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_100_typ : 	STRUCT  (*Measurement hardware structure for 100 results*)
-		in : brdkViBase_hw_mes_100_in_typ;
-		out : brdkViBase_hw_mes_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_150_in_typ : 	STRUCT  (*Measurement hardware input structure for 150 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..149]OF brdkViBase_hw_mes_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_150_typ : 	STRUCT  (*Measurement hardware structure for 150 results*)
-		in : brdkViBase_hw_mes_150_in_typ;
-		out : brdkViBase_hw_mes_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_200_in_typ : 	STRUCT  (*Measurement hardware input structure for 200 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..199]OF brdkViBase_hw_mes_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_200_typ : 	STRUCT  (*Measurement hardware structure for 200 results*)
-		in : brdkViBase_hw_mes_200_in_typ;
-		out : brdkViBase_hw_mes_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_250_in_typ : 	STRUCT  (*Measurement hardware input structure for 250 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..249]OF brdkViBase_hw_mes_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_mes_250_typ : 	STRUCT  (*Measurement hardware structure for 250 results*)
-		in : brdkViBase_hw_mes_250_in_typ;
-		out : brdkViBase_hw_mes_out_typ;
+	brdkViBase_hw_meas_10_typ : 	STRUCT  (*Measurement hardware structure for 10 results*)
+		in : brdkViBase_hw_meas_10_in_typ;
+		out : brdkViBase_hw_meas_out_typ;
 	END_STRUCT;
 END_TYPE
 
 (*VF cr [50]*)
 
 TYPE
+	brdkViBase_hmi_cr_in_typ : 	STRUCT  (*Code Reader hardware input structure for a result*)
+		data : STRING[100]; (*Returns the content of the found code as array OCTET.  Size 50*)
+		symbolType : USINT; (*Symbol type of codes found.*)
+		gradingValue : SINT; (*Evaluation of the codes in terms of quality*)
+		enhancedGradingInformation : STRING[23]; (*Output of extended grading information from which the general GradingValue assessment parameter is composed.*)
+		positionX : REAL; (*X-position (of the found code) in the image in increments of 1/100 pixel.*)
+		positionY : REAL; (*Y-position (of the found code) in the image in increments of 1/100 pixel.*)
+		orientation : REAL; (*179.99° to +180° in increments of 1/100 degree*)
+		rotCenterX : REAL; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
+		rotCenterY : REAL; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
+	END_STRUCT;
 	brdkViBase_hw_cr_out_typ : 	STRUCT  (*Code reader hardware output structure*)
 		timeout : UINT; (*Time limit for the search time in increments of 1 ms. 0 = no timeout*)
 		parameterOptimization : USINT; (*Automatically enables, disables or resets taught-in parameters*)
@@ -660,14 +492,6 @@ TYPE
 		rotCenterX : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
 		rotCenterY : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps.*)
 	END_STRUCT;
-	brdkViBase_hw_cr_1_in_typ : 	STRUCT  (*Code reader hardware structure for 1 result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : brdkViBase_hw_cr_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_1_typ : 	STRUCT  (*Code reader hardware structure for 1 result*)
-		in : brdkViBase_hw_cr_1_in_typ;
-		out : brdkViBase_hw_cr_out_typ;
-	END_STRUCT;
 	brdkViBase_hw_cr_10_in_typ : 	STRUCT  (*Code reader hardware input structure for 10 results*)
 		common : brdkViBase_hw_vf_in_common_typ;
 		results : ARRAY[0..9]OF brdkViBase_hw_cr_in_typ;
@@ -676,51 +500,38 @@ TYPE
 		in : brdkViBase_hw_cr_10_in_typ;
 		out : brdkViBase_hw_cr_out_typ;
 	END_STRUCT;
-	brdkViBase_hw_cr_50_in_typ : 	STRUCT  (*Code reader hardware input structure for 50 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..49]OF brdkViBase_hw_cr_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_50_typ : 	STRUCT  (*Code reader hardware structure for 50 results*)
-		in : brdkViBase_hw_cr_50_in_typ;
-		out : brdkViBase_hw_cr_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_100_in_typ : 	STRUCT  (*Code reader hardware input structure for 100 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..99]OF brdkViBase_hw_cr_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_100_typ : 	STRUCT  (*Code reader hardware structure for 100 results*)
-		in : brdkViBase_hw_cr_100_in_typ;
-		out : brdkViBase_hw_cr_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_150_in_typ : 	STRUCT  (*Code reader hardware input structure for 150 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..149]OF brdkViBase_hw_cr_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_150_typ : 	STRUCT  (*Code reader hardware structure for 150 results*)
-		in : brdkViBase_hw_cr_150_in_typ;
-		out : brdkViBase_hw_cr_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_200_in_typ : 	STRUCT  (*Code reader hardware input structure for 200 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..199]OF brdkViBase_hw_cr_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_200_typ : 	STRUCT  (*Code reader hardware structure for 200 results*)
-		in : brdkViBase_hw_cr_200_in_typ;
-		out : brdkViBase_hw_cr_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_250_in_typ : 	STRUCT  (*Code reader hardware input structure for 250 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..249]OF brdkViBase_hw_cr_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_cr_250_typ : 	STRUCT  (*Code reader hardware structure for 250 results*)
-		in : brdkViBase_hw_cr_250_in_typ;
-		out : brdkViBase_hw_cr_out_typ;
-	END_STRUCT;
 END_TYPE
 
 (*VF sub*)
 
 TYPE
+	brdkViBase_hmi_subBlob_in_typ : 	STRUCT  (*Subpixel BLOB hardware structure for a result*)
+		modelNumber : USINT; (*ModelNumber of the found blob*)
+		meanGreyValue : USINT; (*Arithmetic mean of grayscale values for the blob*)
+		clipped : BOOL; (* Edge contact detection *)
+		area : REAL; (* Size (area) in pixels in increments of 1/100 pixel*)
+		length : REAL; (* Length of the found blob*)
+		width : UDINT; (* Width of the found blob. Is always the longer of the two sides*)
+		xMin : DINT; (* Extreme value in the column direction
+Minimum column position of the BLOB area*)
+		xMax : DINT; (*Extreme value in the column direction
+Maximum column position of the BLOB area*)
+		yMin : DINT; (*Extreme value in the line direction
+Minimum line position of the BLOB area*)
+		yMax : DINT; (*Extreme value in the line direction
+Maximum line position of the BLOB area*)
+		circularity : USINT; (*Circularity of the found blob in %*)
+		rectangularity : USINT; (*Rectangularity of the found blob in %*)
+		anisometry : UINT; (*Anisometry of the found blob*)
+		innterCirclePositionX : DINT; (*Output of position X of the center point of the inner circle of the found blob determined by the algorithm in 1/100 pixels.*)
+		innterCirclePositionY : DINT; (*Output of position Y of the center point of the inner circle of the found blob determined by the algorithm in 1/100 pixels.*)
+		innterCircleRadius : UDINT; (*Output of the radius of the inner circle of the found blob determined by the algorithm in 1/100 pixels.*)
+		positionX : DINT; (*X-position (of the found blob) in the image in increments of 1/100 pixel*)
+		positionY : DINT; (*Y-position (of the found blob) in the image in increments of 1/100 pixel*)
+		orientation : INT; (*-179.99° to +180° in increments of 1/100 degree*)
+		rotCenterX : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
+		rotCenterY : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
+	END_STRUCT;
 	brdkViBase_hw_subBlob_out_typ : 	STRUCT  (*Subpixel BLOB hardware output structure *)
 		regionFeatures : BOOL; (*Enables the geometric exclusion procedure *)
 		enhancedBlobInformation : BOOL; (*0 = Additional information is transferred (default).
@@ -755,60 +566,12 @@ Maximum line position of the BLOB area*)
 		rotCenterX : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
 		rotCenterY : DINT; (*The value deviating from the specified taught-in Alignment model is output here. In 1/100 pixel steps*)
 	END_STRUCT;
-	brdkViBase_hw_subBlob_1_in_typ : 	STRUCT  (*Subpixel BLOB hardware input structure for 1 result*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : brdkViBase_hw_subBlob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_1_typ : 	STRUCT  (*Subpixel BLOB hardware structure for 1 result*)
-		in : brdkViBase_hw_subBlob_1_in_typ;
-		out : brdkViBase_hw_subBlob_out_typ;
-	END_STRUCT;
 	brdkViBase_hw_subBlob_10_in_typ : 	STRUCT  (*Subpixel BLOB hardware input structure for 10 results*)
 		common : brdkViBase_hw_vf_in_common_typ;
 		results : ARRAY[0..9]OF brdkViBase_hw_subBlob_in_typ;
 	END_STRUCT;
 	brdkViBase_hw_subBlob_10_typ : 	STRUCT  (*Subpixel BLOB hardware structure for 10 results*)
 		in : brdkViBase_hw_subBlob_10_in_typ;
-		out : brdkViBase_hw_subBlob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_50_in_typ : 	STRUCT  (*Subpixel BLOB hardware input structure for 50 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..49]OF brdkViBase_hw_subBlob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_50_typ : 	STRUCT  (*Subpixel BLOB hardware structure for 50 results*)
-		in : brdkViBase_hw_subBlob_50_in_typ;
-		out : brdkViBase_hw_subBlob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_100_in_typ : 	STRUCT  (*Subpixel BLOB hardware input structure for 100 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..99]OF brdkViBase_hw_subBlob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_100_typ : 	STRUCT  (*Subpixel BLOB hardware structure for 100 results*)
-		in : brdkViBase_hw_subBlob_100_in_typ;
-		out : brdkViBase_hw_subBlob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_150_in_typ : 	STRUCT  (*Subpixel BLOB hardware input structure for 150 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..149]OF brdkViBase_hw_subBlob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_150_typ : 	STRUCT  (*Subpixel BLOB hardware structure for 150 results*)
-		in : brdkViBase_hw_subBlob_150_in_typ;
-		out : brdkViBase_hw_subBlob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_200_in_typ : 	STRUCT  (*Subpixel BLOB hardware input structure for 200 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..199]OF brdkViBase_hw_subBlob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_200_typ : 	STRUCT  (*Subpixel BLOB hardware structure for 200 results*)
-		in : brdkViBase_hw_subBlob_200_in_typ;
-		out : brdkViBase_hw_subBlob_out_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_250_in_typ : 	STRUCT  (*Subpixel BLOB hardware input structure for 250 results*)
-		common : brdkViBase_hw_vf_in_common_typ;
-		results : ARRAY[0..249]OF brdkViBase_hw_subBlob_in_typ;
-	END_STRUCT;
-	brdkViBase_hw_subBlob_250_typ : 	STRUCT  (*Subpixel BLOB hardware structure for 250 results*)
-		in : brdkViBase_hw_subBlob_250_in_typ;
 		out : brdkViBase_hw_subBlob_out_typ;
 	END_STRUCT;
 	brdkViBase_imgTrigger_sim_typ : 	STRUCT 

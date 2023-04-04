@@ -13,5 +13,7 @@
     <Object Type="Package">pixelCntResultProp</Object>
     <Object Type="Package">measureResultProp</Object>
     <Object Type="Package">matchingResultProp</Object>
+    <Object Type="Package">lightInfo</Object>
+    <Object Type="Package">drawSettings</Object>
   </Objects>
 </Package>
