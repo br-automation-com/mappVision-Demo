@@ -40,8 +40,10 @@ VAR CONSTANT
 	cfgETHBAUDRATE_AUTO				: UDINT		:= 0;		(*auto-detect*)
 	cfgETHBAUDRATE_10				: UDINT		:= 10;		(*10 MBaud, half-duplex*)
 	cfgETHBAUDRATE_10FD				: UDINT		:= 11;		(*10 MBaud, full-duplex*)
+	cfgETHBAUDRATE_10AUTO			: UDINT		:= 12;		(*10 MBaud, auto-duplex*)
 	cfgETHBAUDRATE_100				: UDINT		:= 100;		(*100 MBaud, half-duplex*)
 	cfgETHBAUDRATE_100FD			: UDINT		:= 101;		(*100 MBaud, full-duplex*)
+	cfgETHBAUDRATE_100AUTO			: UDINT		:= 102;		(*100 MBaud, auto-duplex*)
 	cfgETHBAUDRATE_1000FD			: UDINT		:= 1001;	(*1 GBaud, full-duplex*)
 
 	cfgOPTION_NON_VOLATILE			: UDINT		:= 1;		(*permanently sets parameters*)

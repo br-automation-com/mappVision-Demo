@@ -27,6 +27,22 @@ ACTION hmiAction:
 	FOR i:=START_IDX TO NUM_LIGHTS DO
 		hmi.out.lights[i].common:=hw.lights[i].in.common;
 		hmi.out.lights[i].status:=hw.lights[i].in.status;
+		hw.lights[i].out.par.flashAngle:=hmi.in.recipe.lights[i].flashAngle;
+		hw.lights[i].out.par.nettime:=this.brdkViBase_imgTrigger_0.delayNettime;
+		
+		IF hmi.in.recipe.useCamLedColorForLight THEN
+	  		hw.lights[i].out.par.flashColor:=hmi.in.recipe.cam.flashColor;
+		ELSE	
+			hw.lights[i].out.par.flashColor:=hmi.in.recipe.lights[i].flashColor;
+		END_IF;
+		
+		IF hmi.in.recipe.useCamExpTimeForLight THEN
+			hw.lights[i].out.par.exposureTime:=hmi.in.recipe.cam.exposureTime;
+		ELSE	
+			hw.lights[i].out.par.exposureTime:=hmi.in.recipe.lights[i].exposureTime;
+		END_IF;
+		
+		
 	END_FOR; 
 	
 	IF hmi.in.cmd.intElemId > 0 THEN

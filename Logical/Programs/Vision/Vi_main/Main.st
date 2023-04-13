@@ -176,7 +176,7 @@ PROGRAM _CYCLIC
 				hmi.in.cmd.trigger 							:= FALSE;
 				
 				this.brdkViBase_imgTrigger_0.trigger 		:= TRUE;
-				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12; // Calc nettime close to currnet time
+				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12+10000; // Calc nettime close to currnet time
 			
 			// Axis trigger 
 			ELSIF commonHmi.in.recipe.enableAxisTrigger AND 

@@ -2,7 +2,7 @@
 <?AutomationStudio FileVersion="4.9"?>
 <BR.AS.HardwareTopology>
   <TimeStamps>
-    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="03/20/2023 08:28:10" />
+    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="04/04/2023 10:27:54" />
   </TimeStamps>
   <Modules>
     <Module Name="Blob" Type="VSS112Q12.023P-000" X="291" Y="64" />
@@ -27,23 +27,11 @@
     <Module Name="pxlCntBacklight" Type="VSLB11Q00.54DP-000" X="613" Y="643" />
     <Module Name="pxlCntLightbar1" Type="VSLL11Q20.67AP-000" X="780" Y="643" />
     <Module Name="pxlCntLightbar2" Type="VSLL11Q20.67AP-000" X="950" Y="643" />
-    <Module Name="ocrLightbar1" Type="VSLL11Q20.67AP-000" X="295" Y="630" />
+    <Module Name="ocrLightbar1" Type="VSLL11Q30.67AP-000" X="295" Y="630" />
     <Module Name="ocrLightbar2" Type="VSLL11Q20.67AP-000" X="465" Y="630" />
     <Module Name="ocrBacklight" Type="VSLB11Q00.54DP-000" X="154" Y="643" />
   </Modules>
   <Links>
-    <Link From="blobBacklight" To="PixelCounter" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
-      <Point X="178" Y="353" />
-      <Point X="178" Y="353" />
-      <Point X="178" Y="358" />
-      <Point X="178" Y="372" />
-      <Point X="285" Y="372" />
-      <Point X="285" Y="225" />
-      <Point X="859" Y="225" />
-      <Point X="859" Y="187" />
-      <Point X="859" Y="182" />
-      <Point X="859" Y="182" />
-    </Link>
     <Link From="Blob" To="X20CP1586" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
       <Point X="309" Y="182" />
       <Point X="309" Y="182" />
@@ -104,7 +92,19 @@
       <Point X="814" Y="182" />
       <Point X="814" Y="182" />
     </Link>
-    <Link From="blobLightbar1" To="blobBacklight" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
+    <Link From="PixelCounter" To="blobBacklight" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="178" Y="353" />
+      <Point X="178" Y="353" />
+      <Point X="178" Y="358" />
+      <Point X="178" Y="372" />
+      <Point X="285" Y="372" />
+      <Point X="285" Y="225" />
+      <Point X="859" Y="225" />
+      <Point X="859" Y="187" />
+      <Point X="859" Y="182" />
+      <Point X="859" Y="182" />
+    </Link>
+    <Link From="blobBacklight" To="blobLightbar1" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
       <Point X="329" Y="325" />
       <Point X="329" Y="325" />
       <Point X="329" Y="330" />
@@ -144,7 +144,7 @@
       <Point X="774" Y="325" />
       <Point X="774" Y="325" />
     </Link>
-    <Link From="crLightbar2" To="crLightbar1" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+    <Link From="crLightbar1" To="crLightbar2" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
       <Point X="819" Y="325" />
       <Point X="819" Y="325" />
       <Point X="819" Y="330" />
@@ -166,7 +166,7 @@
       <Point X="172" Y="550" />
       <Point X="172" Y="550" />
     </Link>
-    <Link From="matchLightbar1" To="matchBacklight" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
+    <Link From="matchBacklight" To="matchLightbar1" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
       <Point X="315" Y="522" />
       <Point X="315" Y="522" />
       <Point X="315" Y="527" />
@@ -216,7 +216,39 @@
       <Point X="917" Y="526" />
       <Point X="917" Y="526" />
     </Link>
-    <Link From="pxlCntBacklight" To="ocrLightbar2" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
+    <Link From="measureLightbar2" To="ocrBacklight" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="962" Y="526" />
+      <Point X="962" Y="526" />
+      <Point X="962" Y="531" />
+      <Point X="962" Y="545" />
+      <Point X="945" Y="545" />
+      <Point X="945" Y="775" />
+      <Point X="172" Y="775" />
+      <Point X="172" Y="766" />
+      <Point X="172" Y="761" />
+      <Point X="172" Y="761" />
+    </Link>
+    <Link From="ocrBacklight" To="ocrLightbar1" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="313" Y="720" />
+      <Point X="313" Y="720" />
+      <Point X="313" Y="725" />
+      <Point X="313" Y="775" />
+      <Point X="217" Y="775" />
+      <Point X="217" Y="766" />
+      <Point X="217" Y="761" />
+      <Point X="217" Y="761" />
+    </Link>
+    <Link From="ocrLightbar1" To="ocrLightbar2" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="358" Y="720" />
+      <Point X="358" Y="720" />
+      <Point X="358" Y="725" />
+      <Point X="358" Y="738" />
+      <Point X="483" Y="738" />
+      <Point X="483" Y="725" />
+      <Point X="483" Y="720" />
+      <Point X="483" Y="720" />
+    </Link>
+    <Link From="ocrLightbar2" To="pxlCntBacklight" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
       <Point X="631" Y="761" />
       <Point X="631" Y="761" />
       <Point X="631" Y="766" />
@@ -245,38 +277,6 @@
       <Point X="968" Y="738" />
       <Point X="968" Y="733" />
       <Point X="968" Y="733" />
-    </Link>
-    <Link From="ocrLightbar1" To="ocrBacklight" FromPort="PLK1" ToPort="PLK2" IsRoutedByUser="False">
-      <Point X="313" Y="720" />
-      <Point X="313" Y="720" />
-      <Point X="313" Y="725" />
-      <Point X="313" Y="775" />
-      <Point X="217" Y="775" />
-      <Point X="217" Y="766" />
-      <Point X="217" Y="761" />
-      <Point X="217" Y="761" />
-    </Link>
-    <Link From="ocrLightbar1" To="ocrLightbar2" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
-      <Point X="358" Y="720" />
-      <Point X="358" Y="720" />
-      <Point X="358" Y="725" />
-      <Point X="358" Y="738" />
-      <Point X="483" Y="738" />
-      <Point X="483" Y="725" />
-      <Point X="483" Y="720" />
-      <Point X="483" Y="720" />
-    </Link>
-    <Link From="measureLightbar2" To="ocrBacklight" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
-      <Point X="962" Y="526" />
-      <Point X="962" Y="526" />
-      <Point X="962" Y="531" />
-      <Point X="962" Y="545" />
-      <Point X="945" Y="545" />
-      <Point X="945" Y="775" />
-      <Point X="172" Y="775" />
-      <Point X="172" Y="766" />
-      <Point X="172" Y="761" />
-      <Point X="172" Y="761" />
     </Link>
   </Links>
   <InfoElements />
