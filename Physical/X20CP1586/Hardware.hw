@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.12.2.93 FileVersion="4.9"?>
+<?AutomationStudio Version=4.12.3.127 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="Blob" Type="VSS112Q12.023P-000" Version="1.7.0.605">
     <Connection Connector="PLK1" TargetModule="X20CP1586" TargetConnector="IF3" NodeNumber="1">
@@ -64,9 +64,7 @@
   <Module Name="X20CP1586" Type="X20CP1586" Version="1.10.0.0">
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
-      <Parameter ID="Mode" Value="Manual" />
-      <Parameter ID="InternetAddress" Value="192.168.225.211" />
-      <Parameter ID="SubnetMask" Value="255.255.255.0" />
+      <Parameter ID="HostName" Value="br-visiondemo" />
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Visu" />
       <Parameter ID="VncKeyMappingFile1" Value="" />
@@ -91,6 +89,8 @@
     <Parameter ID="TaskClassIdleTime" Value="800" />
     <Parameter ID="Cyclic1Duration" Value="800" />
     <Parameter ID="Cyclic1Tolerance" Value="800" />
+    <Parameter ID="Cyclic2Duration" Value="9600" />
+    <Parameter ID="Cyclic2Tolerance" Value="595200" />
     <Parameter ID="Cyclic3Duration" Value="49600" />
     <Parameter ID="Cyclic3Tolerance" Value="49600" />
     <Parameter ID="Cyclic8Duration" Value="9600" />
@@ -116,21 +116,21 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="blobLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="blobBacklight" TargetConnector="PLK2" NodeNumber="17">
+  <Module Name="blobLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="blobBacklight" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="blobLightbar2" TargetConnector="PLK1" NodeNumber="17">
+    <Connection Connector="PLK2" TargetModule="blobLightbar2" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="blobLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="blobLightbar1" TargetConnector="PLK2" NodeNumber="18">
+  <Module Name="blobLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="blobLightbar1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="crBacklight" TargetConnector="PLK1" NodeNumber="18">
+    <Connection Connector="PLK2" TargetModule="crBacklight" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -146,21 +146,21 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="crLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="crLightbar2" TargetConnector="PLK2" NodeNumber="33">
+  <Module Name="crLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="crLightbar2" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="matchBacklight" TargetConnector="PLK1" NodeNumber="33">
+    <Connection Connector="PLK2" TargetModule="matchBacklight" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="crLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="crBacklight" TargetConnector="PLK2" NodeNumber="34">
+  <Module Name="crLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="crBacklight" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="crLightbar1" TargetConnector="PLK1" NodeNumber="34">
+    <Connection Connector="PLK2" TargetModule="crLightbar1" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -176,21 +176,21 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="matchLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="matchBacklight" TargetConnector="PLK2" NodeNumber="49">
+  <Module Name="matchLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="matchBacklight" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="matchLightbar2" TargetConnector="PLK1" NodeNumber="49">
+    <Connection Connector="PLK2" TargetModule="matchLightbar2" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="matchLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="matchLightbar1" TargetConnector="PLK2" NodeNumber="50">
+  <Module Name="matchLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="matchLightbar1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="measureBacklight" TargetConnector="PLK1" NodeNumber="50">
+    <Connection Connector="PLK2" TargetModule="measureBacklight" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -206,21 +206,21 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="measureLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="measureBacklight" TargetConnector="PLK2" NodeNumber="65">
+  <Module Name="measureLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="measureBacklight" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="measureLightbar2" TargetConnector="PLK1" NodeNumber="65">
+    <Connection Connector="PLK2" TargetModule="measureLightbar2" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="measureLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="measureLightbar1" TargetConnector="PLK2" NodeNumber="66">
+  <Module Name="measureLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="measureLightbar1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="ocrBacklight" TargetConnector="PLK1" NodeNumber="66">
+    <Connection Connector="PLK2" TargetModule="ocrBacklight" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -236,21 +236,21 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="ocrLightbar1" Type="VSLL11Q30.67AP-000" Version="1.1.0.494">
-    <Connection Connector="PLK1" TargetModule="ocrBacklight" TargetConnector="PLK2" NodeNumber="81">
+  <Module Name="ocrLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="ocrBacklight" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="ocrLightbar2" TargetConnector="PLK1" NodeNumber="81">
+    <Connection Connector="PLK2" TargetModule="ocrLightbar2" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="ocrLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="ocrLightbar1" TargetConnector="PLK2" NodeNumber="82">
+  <Module Name="ocrLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="ocrLightbar1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="pxlCntBacklight" TargetConnector="PLK1" NodeNumber="82">
+    <Connection Connector="PLK2" TargetModule="pxlCntBacklight" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
@@ -266,18 +266,18 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="pxlCntLightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="pxlCntBacklight" TargetConnector="PLK2" NodeNumber="97">
+  <Module Name="pxlCntLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="pxlCntBacklight" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="PLK2" TargetModule="pxlCntLightbar2" TargetConnector="PLK1" NodeNumber="97">
+    <Connection Connector="PLK2" TargetModule="pxlCntLightbar2" TargetConnector="PLK1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="pxlCntLightbar2" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
-    <Connection Connector="PLK1" TargetModule="pxlCntLightbar1" TargetConnector="PLK2" NodeNumber="98">
+  <Module Name="pxlCntLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
+    <Connection Connector="PLK1" TargetModule="pxlCntLightbar1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />

@@ -104,7 +104,7 @@ void brdkViBase_imgTrigger(struct brdkViBase_imgTrigger* inst)
 		break;
 		
 		case 10: // Auto focus start
-				if(!inst->ready){
+				if(!pCam->in.status.imageAcquisitionReady){
 					inst->internal.state = 20;
 				}
 				
@@ -112,7 +112,7 @@ void brdkViBase_imgTrigger(struct brdkViBase_imgTrigger* inst)
 		
 		case 20: // Auto focus done
 	
-			if(inst->ready){
+			if(pCam->in.status.imageAcquisitionReady){
 				inst->searchAcquisitonSettingsDone = 1;
 				inst->internal.state = 0;
 			}

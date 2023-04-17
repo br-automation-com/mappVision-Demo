@@ -40,7 +40,7 @@
           <Property Name="CurrentURLDatapoint" Value="None"/>
           <Property Name="DefaultURLs" Value="None"/>
           <Property Name="Description" Value=""/>
-          <Property Name="HTMLStream" Value="Source[global].Variable[DataSource.old.mappRecipe.Vi_image.ViShowImgOnVC4_0.HTMLStreamContent]"/>
+          <Property Name="HTMLStream" Value="Source[global].Variable[DataSource.old.Vi_image.ViShowImgOnVC4_0.HTMLStreamContent]"/>
           <Property Name="Height" Value="410"/>
           <Property Name="Left" Value="65"/>
           <Property Name="RenderEngine" Value="Automatic"/>
@@ -84,7 +84,7 @@
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.old.mappRecipe.Vi_image.visVC4RefreshImg]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.old.Vi_image.visVC4RefreshImg]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

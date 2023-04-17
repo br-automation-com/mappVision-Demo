@@ -2,12 +2,12 @@
 <Content id="contentMain" height="1050" width="2432" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
     <Widget xsi:type="widgets.brease.Image" id="imgDisconnected" top="350" left="450" width="440" height="300" zIndex="0" image="Media/disconnected.png" backColor="rgba(255, 255, 255, 0)" />
-    <Widget xsi:type="widgets.brease.ToggleButton" id="btnRepetitiveMode" top="35" left="1325" width="280" height="100" zIndex="19" breakWord="true" mouseDownText="Disable \n Repetitive Mode" multiLine="true" text="Enable \n Repetitive Mode" fontSize="32px" bold="true" style="Operate" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="numDetailsNo" top="70" left="1920" width="150" height="55" zIndex="20" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10" minValue="1" value="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="70" left="1765" width="80" height="55" zIndex="21" image="Media/back.svg" borderWidth="0px" />
-    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="70" left="2155" width="80" height="55" zIndex="22" image="Media/forward.svg" borderWidth="0px" />
+    <Widget xsi:type="widgets.brease.ToggleButton" id="btnRepetitiveMode" top="35" left="1290" width="425" height="100" zIndex="19" breakWord="true" mouseDownText="Disable \n Repetitive Mode" multiLine="true" text="Enable \n Repetitive Mode" fontSize="32px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="numDetailsNo" top="70" left="1920" width="150" height="55" zIndex="20" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10" minValue="1" value="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" visible="false" />
+    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="70" left="1765" width="80" height="55" zIndex="21" image="Media/back.svg" borderWidth="0px" visible="false" />
+    <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="70" left="2155" width="80" height="55" zIndex="22" image="Media/forward.svg" borderWidth="0px" visible="false" />
     <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="35" left="5" width="1245" height="975" zIndex="23" />
-    <Widget xsi:type="widgets.brease.GroupBox" id="elemInfoBox" top="150" left="1760" width="480" height="885" zIndex="24" childPositioning="relative" text="Result information" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
+    <Widget xsi:type="widgets.brease.GroupBox" id="elemInfoBox" top="150" left="1760" width="480" height="885" zIndex="24" childPositioning="relative" text="Result information" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px" visible="false">
       <Widgets>
         <Widget xsi:type="widgets.widgetlibrary_0.blobResultProp" id="blobResultProp1" top="0" left="0" zIndex="0" />
         <Widget xsi:type="widgets.widgetlibrary_0.codeReaderResultProp" id="codeReaderResultProp1" top="0" left="0" zIndex="4" visible="false" />

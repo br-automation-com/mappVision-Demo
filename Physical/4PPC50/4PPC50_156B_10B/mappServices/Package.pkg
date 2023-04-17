@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="File">Config.mprecipecsv</Object>
     <Object Type="File">Config_2.mpfilemanager</Object>
+    <Object Type="File">Config_3.mpfilemanagerui</Object>
   </Objects>
 </Package>

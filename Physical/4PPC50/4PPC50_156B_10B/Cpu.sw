@@ -4,7 +4,9 @@
   <TaskClass Name="Cyclic#1">
     <Task Name="Axis" Source="Programs.Axis.Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
-  <TaskClass Name="Cyclic#2" />
+  <TaskClass Name="Cyclic#2">
+    <Task Name="Vi_main" Source="Programs.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+  </TaskClass>
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4" />
   <TaskClass Name="Cyclic#5" />
@@ -12,7 +14,7 @@
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
     <Task Name="Files" Source="Programs.Files.Files.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vi_main" Source="Programs.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Recipe_01" Source="Programs.mappRecipe.Recipe_01.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <DataObjects>
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />

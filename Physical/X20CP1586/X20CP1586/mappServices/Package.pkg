@@ -3,6 +3,7 @@
 <Package SubType="mappServices" PackageType="mappServices" xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappServices\Config.mprecipecsv</Object>
-    <Object Type="File">Config_2.mpfilemanagerui</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappServices\Config_2.mpfilemanager</Object>
+    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappServices\Config_3.mpfilemanagerui</Object>
   </Objects>
 </Package>

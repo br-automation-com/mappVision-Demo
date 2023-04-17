@@ -7,9 +7,5 @@
     <Object Type="Program" Language="IEC">Recipe_01</Object>
     <Object Type="File">changelog.txt</Object>
     <Object Type="File">HowToImport.pdf</Object>
-    <Object Type="Program" Language="IEC">Vi_visu</Object>
-    <Object Type="Program" Language="IEC">Vi_image</Object>
-    <Object Type="Program" Language="IEC">Vi_color</Object>
-    <Object Type="Program" Language="IEC">YourTask</Object>
   </Objects>
 </Package>

@@ -500,40 +500,8 @@
         </Sequence>
       </EventHandler>
     </EventBinding>
-    <EventBinding id="EventBinding_9">
-      <Source xsi:type="opcUa.Event" refId="::Vi_main:hmiInstance[1].out.VF.numResults" event="ValueChanged" />
-      <EventHandler condition="newValue &gt; 0">
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="numDetailsNo">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoDown">
-                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="2">
-            <Action>
-              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoUp">
-                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="3">
-            <Action>
-              <Target xsi:type="widgets.brease.GroupBox.Action" contentRefId="contentMain" widgetRefId="elemInfoBox">
-                <Method xsi:type="widgets.brease.GroupBox.Action.SetVisible" value="true" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
-      </EventHandler>
+    <EventBinding id="EventBinding_13">
+      <Source xsi:type="session.Event" refId="numResults" event="ValueChanged" />
       <EventHandler condition="newValue = 0">
         <Sequence>
           <Step order="0">
@@ -561,6 +529,38 @@
             <Action>
               <Target xsi:type="widgets.brease.GroupBox.Action" contentRefId="contentMain" widgetRefId="elemInfoBox">
                 <Method xsi:type="widgets.brease.GroupBox.Action.SetVisible" value="false" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+      <EventHandler condition="newValue &gt; 0">
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="contentMain" widgetRefId="numDetailsNo">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoUp">
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="numDetailsNoDown">
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="true" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="widgets.brease.GroupBox.Action" contentRefId="contentMain" widgetRefId="elemInfoBox">
+                <Method xsi:type="widgets.brease.GroupBox.Action.SetVisible" value="true" />
               </Target>
             </Action>
           </Step>
