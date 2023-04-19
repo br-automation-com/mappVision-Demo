@@ -1,98 +1,146 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Recipe_binding">
 	<Bindings>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.FCT.ApplicationName" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="lstVaAppNames" attribute="selectedValue" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecDownload" attribute="enable" />
-		</Binding>
+		
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.FCT.Status" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="numVaStatus" attribute="value" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecDelete" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecRename" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecLoad" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecSave" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="txtRecFilter" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="WebDownload" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:Recipe_01.PAR.VisuEnableCommand" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecView" attribute="enable" />
-		</Binding>
+		
+		
+		
+		
+		
+
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_visu:visVisionApplicationList" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="lstVaAppNames" attribute="dataProvider" />
 		</Binding>
 	
 		<!-- Multiple bindings from mappView to PLC />-->
+		
+		
+		
+		
 		<Binding mode="oneWayToSource">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="::SYSTEM:clientInfo.slotId" attribute="value" />
-				<be:List xsi:type="be:opcUa" attribute="value">
-					<bt:Element index="0" refId="::AsGlobalPV:Recipe_01.VIS[0].RecipeFilter" />
-					<bt:Element index="1" refId="::AsGlobalPV:Recipe_01.VIS[1].RecipeFilter" />
-					<bt:Element index="2" refId="::AsGlobalPV:Recipe_01.VIS[2].RecipeFilter" />
-				</be:List>
-			</Source>
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.Filter" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="txtRecFilter" attribute="value" />
 		</Binding>
-		
-		<!-- Multiple bindings from vis PLC to mappView />-->
-		<Binding mode="oneWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="::SYSTEM:clientInfo.slotId" attribute="value" />
-				<be:List xsi:type="be:opcUa" attribute="value">
-					<bt:Element index="0" refId="::AsGlobalPV:Recipe_01.VIS[0].RecipeNames" />
-					<bt:Element index="1" refId="::AsGlobalPV:Recipe_01.VIS[1].RecipeNames" />
-					<bt:Element index="2" refId="::AsGlobalPV:Recipe_01.VIS[2].RecipeNames" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="lstRecNames" attribute="dataProvider" />
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.Delete" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecDelete" attribute="value" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="::SYSTEM:clientInfo.slotId" attribute="value" />
-				<be:List xsi:type="be:opcUa" attribute="value">
-					<bt:Element index="0" refId="::AsGlobalPV:Recipe_01.VIS[0].RecipeNum" />
-					<bt:Element index="1" refId="::AsGlobalPV:Recipe_01.VIS[1].RecipeNum" />
-					<bt:Element index="2" refId="::AsGlobalPV:Recipe_01.VIS[2].RecipeNum" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="numRecItems" attribute="value" />
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.Save" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecSave" attribute="value" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="::SYSTEM:clientInfo.slotId" attribute="value" />
-				<be:List xsi:type="be:opcUa" attribute="value">
-					<bt:Element index="0" refId="::AsGlobalPV:Recipe_01.VIS[0].DownloadFileUrl" />
-					<bt:Element index="1" refId="::AsGlobalPV:Recipe_01.VIS[1].DownloadFileUrl" />
-					<bt:Element index="2" refId="::AsGlobalPV:Recipe_01.VIS[2].DownloadFileUrl" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="WebDownload" attribute="path" />
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.Refresh" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecRefresh" attribute="value" />
 		</Binding>
-		
-	</Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.Rename" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecRename" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.Load" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecLoad" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.New.FileName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="txtRecNewName" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.New.Create" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecNew" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.Names" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="TableItem1" attribute="stringValue" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.LastModified" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="TableItemDateTime1" attribute="stringValue" />
+		</Binding>
+				
+	<Binding mode="twoWay">
+			
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.PageDown" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecPageDown" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.StepDown" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecStepDown" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.StepUp" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecStepUp" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.PageUp" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecPageUp1" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.MaxSelection" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="numRecItems" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.SelectedIndex" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="Table1" attribute="selectedRow" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.viewUrl" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="webViewFile" attribute="path" />
+		</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.downloadSrc" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="Paper1" attribute="svgContent" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.in.download" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecDelete1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.RangeStart" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="NumericOutput1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.mpRecipe.Recipe.List.RangeEnd" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="NumericOutput2" attribute="value" />
+</Binding>
+
+
+
+
+
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.enableBtn" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecDelete" attribute="enable" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.enableBtn" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecRename" attribute="enable" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.enableBtn" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecView" attribute="enable" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.enableBtn" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecDelete1" attribute="enable" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.enableBtn" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecLoad" attribute="enable" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.enableBtn" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecSave" attribute="enable" />
+</Binding>
+</Bindings>
 </BindingsSet>

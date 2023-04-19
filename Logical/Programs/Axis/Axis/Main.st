@@ -102,5 +102,11 @@ PROGRAM _CYCLIC
 	hmi.out.powerlinkCycle_us 	:= this.powerlinkCycle_us;
 	hmi.out.triggerTimeDelta 	:= this.triggerTimeDelta;
 	
+	this.mpRecipeRegVar.Enable 		:= gRecipe.out.active;
+	this.mpRecipeRegVar.MpLink 		:= gRecipe.out.mpLink;
+	this.mpRecipeRegVar.ConfirmSave := this.mpRecipeRegVar.SaveNotification;
+	this.mpRecipeRegVar.Category 	:= ADR('Axis');
+	this.mpRecipeRegVar.PVName 		:= ADR('::Axis:hmi.in.recipe');
+	this.mpRecipeRegVar();
 
 END_PROGRAM

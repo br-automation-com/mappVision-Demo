@@ -5,6 +5,6 @@
     <Object Type="Package">Axis</Object>
     <Object Type="Package">Files</Object>
     <Object Type="Package">Vision</Object>
-    <Object Type="Package">mappRecipe</Object>
+    <Object Type="Package" Description="This module is used to handle the machine configuration.">Recipe</Object>
   </Objects>
 </Package>

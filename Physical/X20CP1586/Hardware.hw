@@ -64,7 +64,7 @@
   <Module Name="X20CP1586" Type="X20CP1586" Version="1.10.0.0">
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
-      <Parameter ID="HostName" Value="br-visiondemo" />
+      <Parameter ID="HostName" Value="visiondemo" />
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Visu" />
       <Parameter ID="VncKeyMappingFile1" Value="" />
@@ -73,13 +73,16 @@
     <Connector Name="IF3">
       <Parameter ID="MtuSize" Value="1500" />
       <Parameter ID="DNAConfiguration" Value="manual" />
+      <Parameter ID="EplHostName" Value="visiondemo" />
       <Parameter ID="CycleTime" Value="800" />
+      <Parameter ID="HostName" Value="visiondemo" />
       <Parameter ID="InternetAddress" Value="192.168.200.240" />
       <Parameter ID="SubnetMask" Value="255.255.255.0" />
     </Connector>
     <Parameter ID="ConfigurationID" Value="Vision_Sample" />
     <Parameter ID="ConfigVersion" Value="2.0.0" />
     <Parameter ID="UserPartitionSize" Value="260" />
+    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="RemMemSize" Value="30000" />
     <Parameter ID="PermanentPvSize" Value="2000" />
     <Parameter ID="RemanentGlobalPvSize" Value="20000" />
@@ -97,6 +100,10 @@
     <Group ID="FileDevice1" />
     <Parameter ID="FileDeviceName1" Value="VisionFileDevice" />
     <Parameter ID="FileDevicePath1" Value="F:\" />
+    <Parameter ID="EthernetHostName" Value="visiondemo" />
+    <Parameter ID="ActivateDns" Value="1" />
+    <Parameter ID="DnsDefaultDomain" Value="br-automation.com" />
+    <Parameter ID="GetDnsFromDhcp" Value="2" />
     <Group ID="FtpUser1" />
     <Parameter ID="FtpUsername1" Value="bundr" />
     <Parameter ID="FtpUserPassword1" Value="nMrFtJX1iKQAFT02mGT80Wb1a11GH29G52ATfKQ9HoA=" />

@@ -1,0 +1,3 @@
+VAR
+	gRecipe : gRecipe_typ;
+END_VAR

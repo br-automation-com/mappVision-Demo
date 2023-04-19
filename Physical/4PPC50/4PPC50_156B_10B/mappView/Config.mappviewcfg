@@ -37,7 +37,7 @@
       <Property ID="defaultVisu" Value="visVision" />
       <Group ID="Widget">
         <Selector ID="renderingPolicy" Value="1" />
-        <Selector ID="securityPolicy" Value="1" />
+        <Selector ID="securityPolicy" Value="2" />
       </Group>
     </Group>
   </Element>

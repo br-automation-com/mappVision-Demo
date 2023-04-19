@@ -6,5 +6,6 @@
     <Object Type="Program" Language="IEC">Vi_image</Object>
     <Object Type="Program" Language="IEC">Vi_color</Object>
     <Object Type="Program" Language="IEC">YourTask</Object>
+    <Object Type="Package">mappRecipe</Object>
   </Objects>
 </Package>

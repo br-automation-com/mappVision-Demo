@@ -15,6 +15,11 @@ PROGRAM _INIT
 		tmpStr := USINT_TO_STRING(idx);
 		brsstrcat(ADR(this.path),ADR(tmpStr));
 		
+		this.recipePVName := '::Vi_main:hmiInstance[';
+		brsstrcat(ADR(this.recipePVName),ADR(tmpStr));
+		brsstrcat(ADR(this.recipePVName),ADR('].in.recipe'));
+	
+		
 		hmi.out.wsPort := 18000+idx*10;
 		this.mappView.enable := TRUE;
 		this.mappView.wsPort := hmi.out.wsPort;
@@ -109,6 +114,33 @@ PROGRAM _CYCLIC
 		
 		IF hmi.in.cameraInfo.orderNr <> '' AND this.brdkViBase_getCameraInfo_0.status = ERR_OK THEN
 			brdkViBase_calcOpticInfo(hmi.in.cameraInfo, hmi.out.camera.opticInfo); // calculate optic info based on defined info
+		
+			// set Camera flash options based on current camera
+			hmi.out.camera.flashLightOptions[0] := '{"value":"0","text":"None"}';  
+		
+			CASE hmi.in.cameraInfo.LED_color OF
+				BRDKVIBASE_LED_COLOR_3_BLUE:
+					hmi.out.camera.flashLightOptions[1] := '{"value":"3","text":"Blue"}';  
+				BRDKVIBASE_LED_COLOR_8_RED:
+					hmi.out.camera.flashLightOptions[1] := '{"value":"1","text":"Red"}';  
+				BRDKVIBASE_LED_COLOR_A_UV:
+					hmi.out.camera.flashLightOptions[1] := '{"value":"210","text":"Ultraviolet"}';  
+				BRDKVIBASE_LED_COLOR_D_IR:
+					hmi.out.camera.flashLightOptions[1] := '{"value":"100","text":"Infrared"}';  
+				BRDKVIBASE_LED_COLOR_F_W:
+					hmi.out.camera.flashLightOptions[1] := '{"value":"99","text":"White"}';  
+				BRDKVIBASE_LED_COLOR_Q_RGBL:
+					hmi.out.camera.flashLightOptions[1] := '{"value":"1","text":"Red"}';  
+					hmi.out.camera.flashLightOptions[2] := '{"value":"2","text":"Green"}';  
+					hmi.out.camera.flashLightOptions[3] := '{"value":"3","text":"Blue"}';  
+					hmi.out.camera.flashLightOptions[4] := '{"value":"4","text":"Lime"}';  
+			
+				BRDKVIBASE_LED_COLOR_R_RBIRW:
+					hmi.out.camera.flashLightOptions[1] := '{"value":"1","text":"Red"}';  
+					hmi.out.camera.flashLightOptions[2] := '{"value":"3","text":"Blue"}';  
+					hmi.out.camera.flashLightOptions[3] := '{"value":"99","text":"White"}';  
+					hmi.out.camera.flashLightOptions[4] := '{"value":"100","text":"Infrared"}';  
+			END_CASE	
 		END_IF		
 
 		
@@ -125,7 +157,7 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Image trigger (camera and lights)
 		// -----------------------------------------------------------------------------------------------------------
-		
+		hmi.in.recipe.cam.flashColor := STRING_TO_USINT(hmi.in.recipe.cam.flashColorStr);
 		hw.camera.out.par.focus 			:= hmi.in.recipe.cam.focus;
 		hw.camera.out.par.flashSegment	 	:= hmi.in.recipe.cam.flashSegment;
 		hw.camera.out.par.flashColor 		:= hmi.in.recipe.cam.flashColor;
@@ -393,6 +425,16 @@ PROGRAM _CYCLIC
 		// HMI stuff
 		// -----------------------------------------------------------------------------------------------------------
 		hmiAction;	
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// Recipe handling (register recipse data structure
+		// ----------------------------------------------------------------------------------------------------------- 
+		this.mpRecipeRegVar.Enable 		:= gRecipe.out.active;
+		this.mpRecipeRegVar.MpLink 		:= gRecipe.out.mpLink;
+		this.mpRecipeRegVar.ConfirmSave := this.mpRecipeRegVar.SaveNotification;
+		this.mpRecipeRegVar.Category 	:= ADR('Vision');
+		this.mpRecipeRegVar.PVName 		:= ADR(this.recipePVName);
+		this.mpRecipeRegVar();
 		
 	END_FOR
 	

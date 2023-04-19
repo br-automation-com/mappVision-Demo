@@ -22,6 +22,12 @@
           <High ValueProvider="Const">9</High>
         </EURange>
       </EURanges>
+      <EURanges Id="11">
+        <EURange>
+          <Low ValueProvider="Const" />
+          <High ValueProvider="PV">::Recipe:hmi.mpRecipe.Recipe.List.MaxSelection</High>
+        </EURange>
+      </EURanges>
     </EURangesAliases>
     <EngineeringUnitAliases>
       <EngineeringUnit Id="2" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
@@ -29,6 +35,9 @@
   </Aliases>
   <DefaultView AclId="3">
     <Module Name="&lt;Default&gt;">
+      <GlobalVariables Name="Global Variables">
+        <Variable Name="Recipe_01" RecursiveEnable="2" />
+      </GlobalVariables>
       <Task Name="Vi_main">
         <Variable Name="hmiInstance" RecursiveEnable="2">
           <VariableCommon Name="Common Properties">
@@ -45,6 +54,17 @@
       </Task>
       <Task Name="Files">
         <Variable Name="hmi" RecursiveEnable="2" />
+      </Task>
+      <Task Name="Recipe">
+        <Variable Name="hmi" RecursiveEnable="2">
+          <Variable Name="mpRecipe">
+            <Variable Name="Recipe">
+              <Variable Name="List">
+                <Variable Name="SelectedIndex" EURangeViolationId="1" EURangesId="11" />
+              </Variable>
+            </Variable>
+          </Variable>
+        </Variable>
       </Task>
     </Module>
   </DefaultView>

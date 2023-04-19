@@ -13,5 +13,7 @@
     <Object Type="File">VisionEye.png</Object>
     <Object Type="Package">Rotation</Object>
     <Object Type="File">BuR_Logo.jpg</Object>
+    <Object Type="Package">SymbolLib</Object>
+    <Object Type="File">flipVertical.svg</Object>
   </Objects>
 </Package>

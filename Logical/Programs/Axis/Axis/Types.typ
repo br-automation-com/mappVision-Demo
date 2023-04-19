@@ -40,6 +40,7 @@ TYPE
 		axisPositionNow : REAL;
 		triggerPosDelta : REAL;
 		triggerTimeDelta : DINT; (*In us*)
+		mpRecipeRegVar : MpRecipeRegParSync;
 	END_STRUCT;
 	hw_in_typ : 	STRUCT 
 		nettime : DINT;

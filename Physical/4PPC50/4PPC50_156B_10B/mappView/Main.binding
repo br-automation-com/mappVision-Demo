@@ -47,7 +47,7 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.wsPort" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.wsPort" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="VisionImage1" attribute="PLCWebsocketPort" />
 		</Binding>
 		
@@ -62,7 +62,7 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.svgOverlay" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.svgOverlay" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="VisionImage1" attribute="svgOverlay" />
 		</Binding>
 		
@@ -77,7 +77,7 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.intElemId" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.intElemId" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="value" />
 		</Binding>
 
@@ -93,7 +93,7 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.repetitiveTrigger" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.repetitiveTrigger" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="value" />
 		</Binding>
 		
@@ -110,7 +110,7 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.blob" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.blob" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="blobResultProp1" attribute="Structure" />
 		</Binding>
 		
@@ -124,9 +124,8 @@
 					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.codeReader" />
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.codeReader" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.codeReader" />
-				
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="codeReaderResultProp1" attribute="Structure" />
 		</Binding>
 		
@@ -140,9 +139,8 @@
 					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.match" />
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.match" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.match" />
-
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="matchingResultProp1" attribute="Structure" />
 		</Binding>
 		
@@ -158,9 +156,9 @@
 					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.VF.ocr" />
 					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.VF.ocr" />
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.ocr" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.ocr" />			
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.ocr" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="ocrResultProp1" attribute="Structure" />
 		</Binding>
 
@@ -175,7 +173,7 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.pixelCnt" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.pixelCnt" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="pixelCntResultProp1" attribute="Structure" />
 		</Binding>
 		
@@ -190,7 +188,7 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.VF.measurement.result" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.VF.measurement.result" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="measureResultProp1" attribute="result" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -204,8 +202,18 @@
 					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.draw" />
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.draw" />
 				</be:List>
-			</Source>
+</Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="drawSettingsWidget1" attribute="structure" />
 		</Binding>
-	</Bindings>
+		
+		
+	<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="VisionImage1" attribute="viewRotateAngle" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="NumericInput1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="VisionImage1" attribute="viewRotateAngle" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="BasicSlider1" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>

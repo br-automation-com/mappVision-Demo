@@ -26,6 +26,8 @@ TYPE
 		elemId : STRING[80];
 		tmpAngle : LREAL;
 		strStyle : STRING[240];
+		mpRecipeRegVar : MpRecipeRegParSync;
+		recipePVName : STRING[100];
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
 		in : hmi_in_typ;
@@ -67,6 +69,7 @@ TYPE
 		hw : brdkViBase_cam_hw_in_status_typ;
 		vaLoad : DINT;
 		saveDiagStatus : DINT;
+		flashLightOptions : ARRAY[0..4]OF STRING[100];
 	END_STRUCT;
 	hmi_out_typ : 	STRUCT 
 		svgOverlay : STRING[10000];

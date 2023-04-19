@@ -210,20 +210,7 @@
 		</Binding>
 		
 				
-		<Binding mode="twoWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hwInstance[1].camera.out.par.statusLED" />
-					<bt:Element index="2" refId="::Vi_main:hwInstance[2].camera.out.par.statusLED" />
-					<bt:Element index="3" refId="::Vi_main:hwInstance[3].camera.out.par.statusLED" />
-					<bt:Element index="4" refId="::Vi_main:hwInstance[4].camera.out.par.statusLED" />
-					<bt:Element index="5" refId="::Vi_main:hwInstance[5].camera.out.par.statusLED" />
-					<bt:Element index="6" refId="::Vi_main:hwInstance[6].camera.out.par.statusLED" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxLedStatusColor" attribute="selectedIndex" />
-		</Binding>
+		
 		<Binding mode="oneWay">
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
@@ -287,15 +274,15 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.flashColor" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.flashColor" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.flashColor" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.flashColor" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.flashColor" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.flashColor" />
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.flashColorStr" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.flashColorStr" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.flashColorStr" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.flashColorStr" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.flashColorStr" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.flashColorStr" />
 				</be:List>
 			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor" attribute="selectedIndex" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="listElement">
@@ -482,5 +469,37 @@
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsBottom" attribute="value" />
 		</Binding>
-	</Bindings>
+
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.camera.flashLightOptions" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.camera.flashLightOptions" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.camera.flashLightOptions" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.camera.flashLightOptions" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.camera.flashLightOptions" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.camera.flashLightOptions" />
+			
+				</be:List>
+			</Source>
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor" attribute="dataProvider" />
+		</Binding>
+		
+<Binding mode="twoWay">
+<Source xsi:type="listElement">
+				<Selector xsi:type="session" refId="camIdx" attribute="value" />
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.statusColor" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.statusColor" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.statusColor" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.statusColor" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.statusColor" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.statusColor" />
+				</be:List>
+</Source>
+<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxLedStatusColor" attribute="selectedIndex" />
+</Binding>
+</Bindings>
 </BindingsSet>

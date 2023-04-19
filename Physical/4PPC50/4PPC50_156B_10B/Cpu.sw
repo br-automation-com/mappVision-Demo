@@ -14,7 +14,7 @@
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
     <Task Name="Files" Source="Programs.Files.Files.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Recipe_01" Source="Programs.mappRecipe.Recipe_01.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Recipe" Source="Programs.Recipe.Recipe.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <DataObjects>
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />

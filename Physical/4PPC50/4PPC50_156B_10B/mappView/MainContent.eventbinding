@@ -567,5 +567,136 @@
         </Sequence>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="Image.ButtonZoomIn.MouseDown">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentMain" widgetRefId="ButtonZoomIn" event="MouseDown" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.ZoomIn" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ButtonZoomOut.MouseDown">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentMain" widgetRefId="ButtonZoomOut" event="MouseDown" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.ZoomOut" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ButtonPanLeft.MouseDown">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentMain" widgetRefId="ButtonPanLeft" event="MouseDown" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.PanLeft" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ButtonPanRight.MouseDown">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentMain" widgetRefId="ButtonPanRight" event="MouseDown" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.PanRight" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ButtonPanUp.MouseDown">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentMain" widgetRefId="ButtonPanUp" event="MouseDown" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.PanUp" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ButtonPanDown.MouseDown">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentMain" widgetRefId="ButtonPanDown" event="MouseDown" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.PanDown" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ButtonReset.MouseDown">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentMain" widgetRefId="ButtonReset" event="MouseDown" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.ViewReset" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ToggleButtonFlipVertical.ValueChanged">
+      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="contentMain" widgetRefId="ToggleButtonFlipVertical" event="ValueChanged" />
+      <EventHandler condition="NOT newValue">
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.SetFlipVertical" flip="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="newValue">
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.SetFlipVertical" flip="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="Image.ToggleButtonFlipHorisontal.ValueChanged">
+      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="contentMain" widgetRefId="ToggleButtonFlipHorisontal" event="ValueChanged" />
+      <EventHandler condition="newValue">
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.SetFlipHorisontal" flip="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="NOT newValue">
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.SetFlipHorisontal" flip="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_9">
+      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="contentMain" widgetRefId="ToggleButtonShowOverlay" event="ValueChanged" />
+      <EventHandler condition="newValueBool">
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.SetVisibleOverlay" visibility="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="NOT newValueBool">
+        <Action>
+          <Target xsi:type="widgets.brdk.VisionImage.Action" contentRefId="contentMain" widgetRefId="VisionImage1">
+            <Method xsi:type="widgets.brdk.VisionImage.Action.SetVisibleOverlay" visibility="false" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_15">
+      <Source xsi:type="widgets.brease.TextInput.Event" contentRefId="contentRecipe" widgetRefId="txtRecFilter" event="ValueChanged" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Recipe:hmi.mpRecipe.Recipe.Refresh">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
   </Bindings>
 </EventBindingSet>

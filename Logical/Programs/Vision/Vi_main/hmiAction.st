@@ -70,6 +70,14 @@ ACTION hmiAction:
 		IF hmi.in.cmd.intElemId <= hw.VF.pixelCnt.in.common.numResults THEN
 			brdkViBase_pxCnt_hw2hmi(hw.VF.pixelCnt.in.results[hmi.in.cmd.intElemId-1],hmi.out.VF.pixelCnt);
 		END_IF
+	ELSE
+		// clear if 0
+		brsmemset(ADR(hmi.out.VF.pixelCnt),0,SIZEOF(hmi.out.VF.pixelCnt));
+		brsmemset(ADR(hmi.out.VF.ocr),0,SIZEOF(hmi.out.VF.ocr));
+		brsmemset(ADR(hmi.out.VF.measurement),0,SIZEOF(hmi.out.VF.measurement));
+		brsmemset(ADR(hmi.out.VF.match),0,SIZEOF(hmi.out.VF.match));
+		brsmemset(ADR(hmi.out.VF.blob),0,SIZEOF(hmi.out.VF.blob));
+		brsmemset(ADR(hmi.out.VF.codeReader),0,SIZEOF(hmi.out.VF.codeReader));
 	END_IF
 	
 	

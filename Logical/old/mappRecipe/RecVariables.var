@@ -1,0 +1,30 @@
+(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Configuration for recipe managment*)
+VAR CONSTANT
+	REC_USE_UNICODE : BOOL := FALSE; (*Use standard strings for recipe name when false, use unicode strings for recipe name when true*)
+	REC_SORT_NUMERIC : BOOL := FALSE; (*Sort recipe names as numeric values instead of alphabetic*)
+	REC_RECIPE_TYPE : recTYPE := typeCSV; (*Type of recipe (CSV / XML)*)
+END_VAR
+VAR
+	REC_MPLINK : {REDUND_UNREPLICABLE} STRING[80] := 'gRecipeCsv_01'; (*mappRecipe link name from configuration view. User gRecipeCsv_01 for CSV and gRecipeXml_01 for XML in this demo*)
+END_VAR
+VAR CONSTANT
+	REC_DEVICE : STRING[80] := 'RECIPE'; (*Device name for the recipe data defined under File Devices in the CPU configuration*)
+	REC_DIRECTORY : STRING[80] := ''; (*Directory where the recipes are stored*)
+	REC_THIS_TASK : STRING[40] := 'Recipe_01'; (*Name of this task and the global variables structure*)
+	REC_REC_NUM : USINT := 100; (*Maximum number of recipes*)
+	REC_VAR_NUM : USINT := 10; (*Maximum number of variables that can be registered*)
+	REC_NAME_LENGTH : USINT := 40; (*Maximum length for a recipe name*)
+	REC_UPLOAD_DOWNLOAD_SIZE : UDINT := 100000; (*Maximum size of memory allocated for uploading and downloading files*)
+	REC_VIS_LENGTH : USINT := REC_NAME_LENGTH*3; (*Make this REC_NAME_LENGTH  x3*)
+	REC_MAX_CLIENTS_ID : USINT := 2; (*Highest client ID for concurrent web client connections. Do not change this number.*)
+END_VAR
+VAR
+	REC_VIEW_FILTER : ARRAY[0..9] OF STRING[5] := ['csv','xml',8('')]; (*Files extensions than can be used with the view command*)
+END_VAR
+(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Add you variables to this list*)
+VAR
+	REC_VAR_LIST : ARRAY[1..REC_VAR_NUM] OF STRING[100] := [10('')]; (*List of variables to be inlcuded in a recipe*)
+	Recipe_01 : recMAIN; (*Global recipe structure. The name must match the task name of the recipe managment.*)
+END_VAR

@@ -28,10 +28,12 @@ Example: 345 corresponds to version 3.45.*)
 		gainLevel : USINT; (*Sets a gain factor*)
 		focus : UINT; (*Sets the focus from "MOD" to "Infinity", Unit depends on the selected one in the vision application file (um, mm, raw)*)
 		exposureTime : UDINT; (*Sets the integration time of the sensor in microseconds*)
+		flashColorStr : STRING[4]; (*Selects LED colors of the onboard LED lighting. The constants BRDKVIBASE_LED_xxx can be used to set the color*)
 		flashColor : USINT; (*Selects LED colors of the onboard LED lighting. The constants BRDKVIBASE_LED_xxx can be used to set the color*)
 		flashSegment : USINT; (*Enables/Disables LED segments. Binary patter for enable each of the four segments 0000 = all off, 1111 = all on*)
 		chromaticLock : BOOL; (*Enables/Disables ChromaticLock*)
 		IRFilter : BOOL;
+		statusColor : USINT;
 	END_STRUCT;
 	brdkViBase_getCameraInfo_int_typ : 	STRUCT 
 		diagGetNumInfo_0 : DiagGetNumInfo;
