@@ -7,6 +7,8 @@ TYPE
 		triggerPosDelta : REAL;
 		triggerTimeDelta : DINT; (*In us*)
 	END_STRUCT;
+	local_vaList_typ : 	STRUCT 
+	END_STRUCT;
 	local_typ : 	STRUCT 
 		path : STRING[100];
 		brdkViBase_imgTrigger_0 : brdkViBase_imgTrigger;
@@ -28,6 +30,7 @@ TYPE
 		strStyle : STRING[240];
 		mpRecipeRegVar : MpRecipeRegParSync;
 		recipePVName : STRING[100];
+		getVaList : ViBaseListApplication;
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
 		in : hmi_in_typ;
@@ -71,6 +74,19 @@ TYPE
 		saveDiagStatus : DINT;
 		flashLightOptions : ARRAY[0..4]OF STRING[100];
 	END_STRUCT;
+	hmi_out_vaList_typ : 	STRUCT 
+		list : ARRAY[0..99]OF ViBaseFormatPlainTextType;
+		length : {REDUND_UNREPLICABLE} UINT;
+		lastError : DINT;
+	END_STRUCT;
+	hmi_out_usedVF_typ : 	STRUCT 
+		pixelCounter : BOOL;
+		measurement : BOOL;
+		matching : BOOL;
+		codeReader : BOOL;
+		OCR : BOOL;
+		BLOB : BOOL;
+	END_STRUCT;
 	hmi_out_typ : 	STRUCT 
 		svgOverlay : STRING[10000];
 		wsPort : UINT;
@@ -78,12 +94,19 @@ TYPE
 		camera : hmi_out_camera_typ;
 		VF : hmi_out_vf_typ;
 		tableVF : hmi_out_vf_table_typ;
+		vaList : hmi_out_vaList_typ;
+		usedVF : hmi_out_usedVF_typ;
 	END_STRUCT;
 	hmi_in_cmd_flashSegment_typ : 	STRUCT 
 		top : BOOL := TRUE;
 		bottom : BOOL := TRUE;
 		right : BOOL := TRUE;
 		left : BOOL := TRUE;
+	END_STRUCT;
+	hmi_in_cmd_vaList_typ : 	STRUCT 
+		refresh : BOOL;
+		selectedIndex : UINT;
+		load : BOOL;
 	END_STRUCT;
 	hmi_in_cmd_typ : 	STRUCT 
 		lights : ARRAY[START_IDX..NUM_LIGHTS]OF brdkViBase_light_hw_out_cmd_typ;
@@ -93,7 +116,6 @@ TYPE
 		autoSearch : BOOL; (*Start auto Search of exposure and focus for camra*)
 		resetInfo : BOOL; (*Reset optic info to the current camera*)
 		saveDiagnositc : BOOL; (*Save vision diagnostic *)
-		loadVA : BOOL; (*Load Vision application*)
 		saveImage : BOOL;
 		intElemId : USINT := 1;
 		elemId : STRING[80];
@@ -101,6 +123,7 @@ TYPE
 		y : REAL;
 		x : REAL;
 		draw : hmi_in_cmd_draw_typ;
+		vaList : hmi_in_cmd_vaList_typ;
 	END_STRUCT;
 	hmi_in_cmd_draw_typ : 	STRUCT 
 		intShape : INT := 0; (*0 = None, 1=  rectangle, 2 = circle, 3 = triangle*)
@@ -157,9 +180,11 @@ TYPE
 	END_STRUCT;
 	common_hmi_in_cmd_typ : 	STRUCT 
 		deleteAllImage : BOOL;
+		refreshVAlist : BOOL;
 	END_STRUCT;
 	common_hmi_in_typ : 	STRUCT 
 		recipe : common_recipe_typ;
+		cmd : common_hmi_in_cmd_typ;
 	END_STRUCT;
 	common_hmi_typ : 	STRUCT 
 		in : common_hmi_in_typ;

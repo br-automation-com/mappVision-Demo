@@ -135,5 +135,8 @@
         <Widget xsi:type="widgets.brease.NumericOutput" id="rotCenterYOutput2" top="0" left="0" width="150" zIndex="14" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="0" style="Output" />
       </Widgets>
     </Widget>
+    <Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="255" left="1730" zIndex="6" borderWidth="0px" backColor="rgba(255, 255, 255, 0)" headerGradient="" borderColor="rgba(168, 153, 160, 1) rgba(95, 95, 95, 1) rgba(95, 95, 95, 1) rgba(168, 153, 160, 0)" borderStyle="none" textAlign="left" style="transparent">
+      <Widgets />
+    </Widget>
   </Widgets>
 </Content>

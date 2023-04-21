@@ -15,5 +15,6 @@
     <Object Type="File">BuR_Logo.jpg</Object>
     <Object Type="Package">SymbolLib</Object>
     <Object Type="File">flipVertical.svg</Object>
+    <Object Type="File">refresh-icon.svg</Object>
   </Objects>
 </Package>

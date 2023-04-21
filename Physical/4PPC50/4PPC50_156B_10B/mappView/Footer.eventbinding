@@ -111,6 +111,56 @@
         </Action>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="VaListFlyOutClickEvent">
+      <Source xsi:type="widgets.brease.FlyOut.Event" contentRefId="contentFooter" widgetRefId="faVaList" event="Click" />
+      <Operand datatype="ANY_INT" name="idx">
+        <ReadTarget xsi:type="session.VariableAction.Read" refId="camIdx">
+          <Method xsi:type="session.VariableAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="idx = 1">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.vaList.refresh">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 2">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.vaList.refresh">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 3">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.vaList.refresh">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 4">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.vaList.refresh">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 5">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.vaList.refresh">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+      <EventHandler condition="idx = 6">
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.vaList.refresh">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
     <EventBinding id="EventBinding_10">
       <Source xsi:type="session.Event" refId="camIdx" event="ValueChanged" />
       <EventHandler condition="newValue=2 OR newValue=3 OR newValue=5">

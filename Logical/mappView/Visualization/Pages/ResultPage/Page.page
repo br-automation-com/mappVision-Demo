@@ -3,7 +3,7 @@
   <Assignments>
     <Assignment type="Content" baseContentRefId="contentHeader" areaRefId="AreaHeader" backColor="rgba(255, 255, 255, 1)" />
     <Assignment type="Content" baseContentRefId="contentNav" areaRefId="AreaNavigation" backColor="rgba(255, 255, 255, 1)" />
-    <Assignment type="Content" baseContentRefId="contentBlob" areaRefId="AreaContent" backColor="rgba(255, 255, 255, 1)" />
+    <Assignment type="Content" baseContentRefId="contentResult" areaRefId="AreaContent" backColor="rgba(255, 255, 255, 1)" />
     <Assignment type="Content" baseContentRefId="contentFooter" areaRefId="AreaFooter" backColor="rgba(224, 224, 224, 1)" />
   </Assignments>
 </pdef:Page>

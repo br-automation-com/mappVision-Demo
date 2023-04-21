@@ -46,27 +46,34 @@ PROGRAM _INIT
 				this.mappView.pMappLink := ADR(gCameraBlob);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_BLOB');
 				hmi.out.camera.visionFunction := 'BLOB';
+				hmi.out.usedVF.BLOB := TRUE;
 			2:	
 				this.mappView.pMappLink := ADR(gCameraCodeReading);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_CR');
 				hmi.out.camera.visionFunction := 'Code Reader';
+				hmi.out.usedVF.codeReader := TRUE;
 				(*hmi.out.VF.numResults*)
 			3:	
 				this.mappView.pMappLink := ADR(gCameraMatch);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_MATCH');
 				hmi.out.camera.visionFunction := 'Matching';
+				hmi.out.usedVF.matching := TRUE;
 			4:	
 				this.mappView.pMappLink := ADR(gCameraMeasurement);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_MEAS');
 				hmi.out.camera.visionFunction := 'Measurement';
+				hmi.out.usedVF.measurement := TRUE;
 			5:	
 				this.mappView.pMappLink := ADR(gCameraOCR);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_OCR');
 				hmi.out.camera.visionFunction := 'OCR';
+				hmi.out.usedVF.OCR := TRUE;
 			6:	
 				this.mappView.pMappLink := ADR(gCameraPxl);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_PXCNT');
 				hmi.out.camera.visionFunction := 'Pixel Counter';
+				hmi.out.usedVF.pixelCounter := TRUE;
+			
 		END_CASE
 		
 	END_FOR
@@ -294,6 +301,7 @@ PROGRAM _CYCLIC
 		
 		// search Auto Focus done (hight for one scan)
 		IF this.brdkViBase_imgTrigger_0.searchAcquisitonSettingsDone THEN
+			hmi.in.cmd.autoSearch 			:= FALSE;
 			hmi.in.recipe.cam.gainLevel 	:=	 hw.camera.in.status.gainLevel;
 			hmi.in.recipe.cam.focus		 	:=	 hw.camera.in.status.focus;
 			hmi.in.recipe.cam.exposureTime 	:=	 hw.camera.in.status.exposureTime;
@@ -342,82 +350,113 @@ PROGRAM _CYCLIC
 			this.brdkFileWrite.fileDevice := 'IMG';
 		END_IF
 		
-		this.brdkFileWrite();
-		
 		IF this.brdkFileWrite.done THEN
 			this.brdkFileWrite.enable := FALSE;
 		END_IF
 		
-			
-			
+		this.brdkFileWrite();
 		
-			
-			
-			
-			
 		
+
+			
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Save diagnostic data
 		// -----------------------------------------------------------------------------------------------------------
 		IF hmi.in.cmd.saveDiagnositc AND gFiles.output.ready THEN
+			hmi.in.cmd.saveDiagnositc 			:= FALSE;
+
 			// Delete old file first
-			this.fileDelete.enable := hmi.in.cmd.saveDiagnositc AND NOT this.viBaseSaveDiagData_0.Execute;
-			this.fileDelete.pDevice := ADR(this.visionDiagFileDevice);
-			this.fileDelete.pName := ADR(hmi.in.diagnosticFilename);
-			IF (this.fileDelete.status <> ERR_FUB_BUSY) THEN
-				this.viBaseSaveDiagData_0.Execute := TRUE;
-			END_IF
+			this.fileDelete.enable 					:= TRUE;
+			this.fileDelete.pDevice 				:= ADR(this.visionDiagFileDevice);
+			this.fileDelete.pName 					:= ADR(hmi.in.diagnosticFilename);
 			
 			// Upload diagnostic information
 			this.viBaseSaveDiagData_0.MpLink 		:= this.mappView.pMappLink;
 			this.viBaseSaveDiagData_0.DeviceName 	:= ADR(this.visionDiagFileDevice);
 			this.viBaseSaveDiagData_0.FileName 		:= ADR(hmi.in.diagnosticFilename);
 			hmi.out.camera.saveDiagStatus 			:= UINT_TO_DINT(ERR_FUB_BUSY);
-			
-			// -----------------------------------------------------------------------------------------------------------
-			// OK
-			IF (this.viBaseSaveDiagData_0.Done) THEN
-				hmi.out.camera.saveDiagStatus		:= UINT_TO_DINT(ERR_OK);
-				this.viBaseSaveDiagData_0.Execute 	:= FALSE;
-				hmi.in.cmd.saveDiagnositc 			:= FALSE;
-				
-			// -----------------------------------------------------------------------------------------------------------
-			// Error
-			ELSIF (NOT this.viBaseSaveDiagData_0.Busy AND this.viBaseSaveDiagData_0.Error) THEN
-				hmi.out.camera.saveDiagStatus		:= this.viBaseSaveDiagData_0.StatusID;
-				this.viBaseSaveDiagData_0.Execute 	:= FALSE;
-				hmi.in.cmd.saveDiagnositc 			:= FALSE;
-			END_IF
+		END_IF
+		
+		// file delete done or error (if file do not exsist)
+		IF (this.fileDelete.enable AND this.fileDelete.status = ERR_OK) THEN
+			this.fileDelete.enable 				:= FALSE;
+			this.viBaseSaveDiagData_0.Execute 	:= TRUE;
+		END_IF
+		
+		// Done	
+		IF (this.viBaseSaveDiagData_0.Done) THEN
+			hmi.out.camera.saveDiagStatus		:= UINT_TO_DINT(ERR_OK);
+			this.viBaseSaveDiagData_0.Execute 	:= FALSE;
+		END_IF		
+	
+		// Error
+		IF (NOT this.viBaseSaveDiagData_0.Busy AND this.viBaseSaveDiagData_0.Error) THEN
+			hmi.out.camera.saveDiagStatus		:= this.viBaseSaveDiagData_0.StatusID;
+			this.viBaseSaveDiagData_0.Execute 	:= FALSE;
 		END_IF
 		
 		this.viBaseSaveDiagData_0();
 		this.fileDelete();
 		
 		
+		// -----------------------------------------------------------------------------------------------------------
+		// Get Vision application list from camera
+		// -----------------------------------------------------------------------------------------------------------
+		
+		// trigger
+		IF hmi.in.cmd.vaList.refresh THEN
+			hmi.in.cmd.vaList.refresh 	:= FALSE;
+			
+			this.getVaList.Execute 		:= TRUE;
+			this.getVaList.Format 		:= viBASE_FORMAT_PLAIN_TEXT;
+			this.getVaList.List 		:= ADR(hmi.out.vaList.list);
+			this.getVaList.ListLen 		:= SIZEOF(hmi.out.vaList.list);
+			this.getVaList.MpLink 		:= this.mappView.pMappLink;
+		END_IF
+		
+		// Done
+		IF this.getVaList.Done THEN
+			this.getVaList.Execute 		:= FALSE;
+			hmi.out.vaList.length 		:= this.getVaList.NrEntries;
+		END_IF
+		
+		// Error
+		IF this.getVaList.Error THEN
+			this.getVaList.Execute 		:= FALSE;
+			hmi.out.vaList.lastError 	:= this.getVaList.StatusID;
+		END_IF
+		
+		this.getVaList();
 		
 		// -----------------------------------------------------------------------------------------------------------
 		// Load vision application
 		// -----------------------------------------------------------------------------------------------------------
-		IF (hmi.in.cmd.loadVA) THEN
-			this.viBaseLoadApplication_0.MpLink	:= this.mappView.pMappLink;
-			this.viBaseLoadApplication_0.Name	:= ADR(hmi.in.vaName);
-			hmi.out.camera.vaLoad := UINT_TO_DINT(ERR_FUB_BUSY);
-			
-			// -----------------------------------------------------------------------------------------------------------
-			// OK
-			IF (this.viBaseLoadApplication_0.Done) THEN
-				hmi.out.camera.vaLoad := UINT_TO_DINT(ERR_OK);
-				hmi.in.cmd.loadVA := FALSE;
 		
-			// -----------------------------------------------------------------------------------------------------------
-			// Error
-			ELSIF (NOT this.viBaseLoadApplication_0.Busy AND this.viBaseLoadApplication_0.Error) THEN
-				hmi.out.camera.vaLoad := this.viBaseLoadApplication_0.StatusID;
-				hmi.in.cmd.loadVA := FALSE;
-			END_IF		
+		// Trigger
+		IF hmi.in.cmd.vaList.load AND brsstrlen(ADR(hmi.out.vaList.list[hmi.in.cmd.vaList.selectedIndex])) > 5 THEN
+			hmi.in.cmd.vaList.load 						:= FALSE;
+		
+			this.viBaseLoadApplication_0.Execute 	:= TRUE;
+			this.viBaseLoadApplication_0.MpLink		:= this.mappView.pMappLink;
+			this.viBaseLoadApplication_0.Name		:= ADR(hmi.out.vaList.list[hmi.in.cmd.vaList.selectedIndex]);
+			hmi.out.camera.vaLoad 					:= UINT_TO_DINT(ERR_FUB_BUSY);	
+		ELSE
+			hmi.in.cmd.vaList.load := FALSE;
 		END_IF
 		
-		this.viBaseLoadApplication_0.Execute := hmi.in.cmd.loadVA;
+		// Done
+		IF (this.viBaseLoadApplication_0.Done) THEN
+			this.viBaseLoadApplication_0.Execute 	:= FALSE;
+			hmi.out.camera.vaLoad 					:= UINT_TO_DINT(ERR_OK);
+		END_IF
+		
+		// Error
+		IF (NOT this.viBaseLoadApplication_0.Busy AND this.viBaseLoadApplication_0.Error) THEN
+			this.viBaseLoadApplication_0.Execute 	:= FALSE;
+			hmi.out.camera.vaLoad 					:= this.viBaseLoadApplication_0.StatusID;
+		END_IF
+		
 		this.viBaseLoadApplication_0();
 		
 		
@@ -437,6 +476,8 @@ PROGRAM _CYCLIC
 		this.mpRecipeRegVar();
 		
 	END_FOR
+	
+
 	
 	// -----------------------------------------------------------------------------------------------------------
 	//Configure the pointers (this,hmi,hw etc.) show the correct data for that watch index 
