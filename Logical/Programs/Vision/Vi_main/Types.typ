@@ -31,6 +31,8 @@ TYPE
 		mpRecipeRegVar : MpRecipeRegParSync;
 		recipePVName : STRING[100];
 		getVaList : ViBaseListApplication;
+		tmpFileName : STRING[255];
+		saveState : USINT;
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
 		in : hmi_in_typ;
@@ -190,8 +192,8 @@ TYPE
 		in : common_hmi_in_typ;
 	END_STRUCT;
 	common_recipe_typ : 	STRUCT 
-		jpegQuality : USINT;
-		imageFormat : BRDKVIIMG_IMG_TYPE;
+		jpegQuality : USINT := 50;
+		imageFormat : BRDKVIIMG_IMG_TYPE := BRDKVIIMG_IMG_TYPE_JPEG;
 		visionPreTriggerCycles : DINT := 0;
 		enableAxisTrigger : BOOL;
 		saveAllImages : BOOL;

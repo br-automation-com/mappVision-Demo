@@ -1,3 +1,6 @@
+VAR CONSTANT
+	FILES_LIST_SIZE : USINT := 13;
+END_VAR
 VAR
 	i : UINT;
 	hmi : hmi_typ;

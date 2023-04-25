@@ -31,5 +31,6 @@
     </Widget>
     <Widget xsi:type="widgets.widgetlibrary_0.drawSettingsWidget" id="drawSettingsWidget1" top="125" left="1335" zIndex="24" />
     <Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonShowOverlay" top="770" left="1335" width="470" height="100" zIndex="34" image="Media/SymbolLib/Symbols/Hide.svg" mouseDownImage="Media/SymbolLib/Symbols/UnHide.svg" value="true" imageHeight="50" imageWidth="50" style="Operate" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButtonSave" top="885" left="1335" width="470" height="100" zIndex="35" image="Media/SymbolLib/Edit/Save.svg" style="Operate" />
   </Widgets>
 </Content>

@@ -3,26 +3,30 @@
   <Widgets>
     <Widget xsi:type="widgets.brease.GroupBox" id="grpImage" top="10" left="10" width="520" height="500" zIndex="0" text="Image Archiv">
       <Widgets>
-        <Widget xsi:type="widgets.brease.Button" id="btnImageArchivSave" top="8" left="9" width="126" height="50" zIndex="0" text="Save" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.Button" id="btnShowUploadOptions" top="363" left="9" width="121" height="40" zIndex="1" text="Options" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.Label" id="labImage" top="423" left="13" width="71" zIndex="2" text="Status" textAlign="right" fontSize="20px" bold="true" />
-        <Widget xsi:type="widgets.brease.NumericOutput" id="numImageStatus" top="423" left="89" width="110" height="33" zIndex="3" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" borderWidth="1px" cornerRadius="3px" />
-        <Widget xsi:type="widgets.brease.Button" id="btnResetError" top="413" left="220" width="290" height="40" zIndex="4" text="Reset Error" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.Button" id="btnImageArchivDownload" top="128" left="9" width="126" height="50" zIndex="5" text="Download" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.WebViewer" id="WebDownloadImage" top="198" left="14" width="106" height="45" zIndex="6" path="" borderStyle="none" visible="false" />
-        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonPageUp" top="5" left="144" width="61" height="55" zIndex="7" text="PushButton1" style="Operate" />
-        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonStepUp" top="68" left="144" width="61" height="55" zIndex="8" text="PushButton2" style="Operate" />
-        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonStepDown" top="288" left="144" width="61" height="55" zIndex="9" text="PushButton3" style="Operate" />
-        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonPageDown" top="353" left="144" width="61" height="55" zIndex="10" text="PushButton4" style="Operate" />
-        <Widget xsi:type="widgets.brease.Table" id="Table1" top="8" left="219" width="286" height="392" zIndex="11">
+        <Widget xsi:type="widgets.brease.Button" id="btnShowUploadOptions" top="363" left="9" width="156" height="50" zIndex="0" image="Media/SymbolLib/Symbols/Settings.svg" imageAlign="right" text="Settings" cornerRadius="5px" fontSize="16px" bold="true" style="Operate" />
+        <Widget xsi:type="widgets.brease.Label" id="labImage" top="423" left="13" width="71" zIndex="1" text="Status" textAlign="right" fontSize="20px" bold="true" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numImageStatus" top="423" left="89" width="110" height="33" zIndex="2" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" borderWidth="1px" cornerRadius="3px" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonPageUp" top="10" left="179" width="61" height="50" zIndex="3" image="Media/SymbolLib/Arrow/Up1.svg" style="Operate" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonStepUp" top="73" left="179" width="61" height="50" zIndex="4" image="Media/SymbolLib/Arrow/Up2.svg" style="Operate" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonStepDown" top="298" left="179" width="61" height="50" zIndex="5" image="Media/SymbolLib/Arrow/Down2.svg" style="Operate" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonPageDown" top="358" left="179" width="61" height="50" zIndex="6" image="Media/SymbolLib/Arrow/Down1.svg" style="Operate" />
+        <Widget xsi:type="widgets.brease.Table" id="Table1" top="8" left="245" width="260" height="442" zIndex="7">
           <Widgets>
-            <Widget xsi:type="widgets.brease.TableItem" id="TableItem1" zIndex="0" columnWidth="285" text="Filename" />
+            <Widget xsi:type="widgets.brease.TableItem" id="TableItem1" zIndex="0" columnWidth="260" text="Filename" />
           </Widgets>
         </Widget>
-        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonRefresh" top="293" left="14" width="116" height="55" zIndex="12" text="Refresh" style="Operate" />
-        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonDelete" top="68" left="14" width="116" height="55" zIndex="13" text="Delete" style="Operate" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonRefresh" top="298" left="9" width="156" height="50" zIndex="8" image="Media/refresh-icon.svg" imageAlign="right" text="Update" imageHeight="30" fontSize="16px" style="Operate" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonDelete" top="10" left="9" width="156" height="50" zIndex="9" image="Media/SymbolLib/Edit/Delete.svg" imageAlign="right" text="Delete" fontSize="16px" style="Operate" />
+        <Widget xsi:type="widgets.brease.Paper" id="Paper1" top="138" left="14" width="36" height="32" zIndex="10" borderStyle="none" />
+        <Widget xsi:type="widgets.brease.PushButton" id="PushButtonDelete1" top="73" left="9" width="156" height="50" zIndex="11" image="Media/SymbolLib/Symbols/Download.svg" imageAlign="right" text="Download" fontSize="16px" style="Operate" />
+        <Widget xsi:type="widgets.brease.RadioButtonGroup" id="RadioButtonGroup1" top="173" left="14" width="201" zIndex="12">
+          <Widgets>
+            <Widget xsi:type="widgets.brease.RadioButton" id="RadioButtonJpg" top="5" left="5" zIndex="0" text="jpg" tooltip="jpg" />
+            <Widget xsi:type="widgets.brease.RadioButton" id="RadioButtonBmp" top="50" left="5" zIndex="1" text="bmp" />
+          </Widgets>
+        </Widget>
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.Image" id="imgImageArchiv" top="10" left="550" width="640" height="495" zIndex="1" cornerRadius="3px" />
+    <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="10" left="545" width="645" height="500" zIndex="1" PLCWebsocketPort="18100" />
   </Widgets>
 </Content>

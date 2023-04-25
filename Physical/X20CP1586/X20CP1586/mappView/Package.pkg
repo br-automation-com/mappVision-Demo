@@ -27,7 +27,5 @@
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Results.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Visualizat.vis</Object>
-    <Object Type="File">contentRecipe.eventbinding</Object>
-    <Object Type="File">contentFooter.eventbinding</Object>
   </Objects>
 </Package>

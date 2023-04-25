@@ -326,34 +326,66 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Save image to file devive F:/images
 		// -----------------------------------------------------------------------------------------------------------
+		CASE this.saveState OF
+			0:
+				
+				IF (hmi.in.cmd.saveImage OR (this.mappView.newSvgReady AND commonHmi.in.recipe.saveAllImages))  AND gFiles.output.ready THEN
+					hmi.in.cmd.saveImage := FALSE;
+					
+					// create filename with VF name and current date of the image
+					brsstrcpy(ADR(this.tmpFileName),ADR(hmi.out.camera.visionFunction));
+					brsstrcat(ADR(this.tmpFileName),ADR('-'));
+					brdkViBase_dateTimeToString(this.DTGetTime_0.DT1,'%Y-%m-%d-%H-%M-%S',ADR(this.tmpFileName));
+					
+					
+					brsstrcpy(ADR(this.brdkFileWrite.fileName),ADR(this.tmpFileName));
+					
+					CASE this.mappView.imageFormat OF
+						BRDKVIIMG_IMG_TYPE_JPEG:
+							brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('.jpg'));
+						BRDKVIIMG_IMG_TYPE_BMP:
+							brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('.bmp'));
+					END_CASE
+					
 		
-		IF (hmi.in.cmd.saveImage OR (this.mappView.newSvgReady AND commonHmi.in.recipe.saveAllImages))  AND gFiles.output.ready THEN
-			hmi.in.cmd.saveImage := FALSE;
+					this.brdkFileWrite.enable := TRUE;
+					this.brdkFileWrite.dataLength := this.mappView.internal.getImage.destLen;
+					this.brdkFileWrite.pData := this.mappView.internal.getImage.pDest;
+					this.brdkFileWrite.overwrite := TRUE;
+					this.brdkFileWrite.fileDevice := 'IMG';
+					
+					this.saveState := 10;
+				END_IF
+			10:
+				
+				IF this.brdkFileWrite.done THEN
+					gFiles.input.refresh := TRUE;
+					this.brdkFileWrite.enable := FALSE;
+					this.saveState := 20;
+				END_IF
 			
-			// create filename with VF name and current date of the image
-			brsstrcpy(ADR(this.brdkFileWrite.fileName),ADR(hmi.out.camera.visionFunction));
-			brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('-'));
-			brdkViBase_dateTimeToString(this.DTGetTime_0.DT1,'%S-%M-%H-%d-%m-%Y',ADR(this.brdkFileWrite.fileName));
+			20:
+				brsstrcpy(ADR(this.brdkFileWrite.fileName),ADR(this.tmpFileName));
+					
+				brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('.svg'));
+				this.brdkFileWrite.enable := TRUE;
+				this.brdkFileWrite.dataLength := brsstrlen(ADR(hmi.out.svgOverlay));
+				this.brdkFileWrite.pData := ADR(hmi.out.svgOverlay);
+				this.brdkFileWrite.overwrite := TRUE;
+				this.brdkFileWrite.fileDevice := 'IMG';
+				
+				this.saveState := 30;
 			
-			CASE this.mappView.imageFormat OF
-				BRDKVIIMG_IMG_TYPE_JPEG:
-					brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('.jpg'));
-				BRDKVIIMG_IMG_TYPE_BMP:
-					brsstrcat(ADR(this.brdkFileWrite.fileName),ADR('.bmp'));
-			END_CASE
-			
-
-			this.brdkFileWrite.enable := TRUE;
-			this.brdkFileWrite.dataLength := this.mappView.internal.getImage.destLen;
-			this.brdkFileWrite.pData := this.mappView.internal.getImage.pDest;
-			this.brdkFileWrite.overwrite := TRUE;
-			this.brdkFileWrite.fileDevice := 'IMG';
-		END_IF
+			30:
+				IF this.brdkFileWrite.done THEN
+					gFiles.input.refresh := TRUE;
+					this.brdkFileWrite.enable := FALSE;
+					this.saveState := 0;
+				END_IF
+				
+		END_CASE
 		
-		IF this.brdkFileWrite.done THEN
-			this.brdkFileWrite.enable := FALSE;
-		END_IF
-		
+				
 		this.brdkFileWrite();
 		
 		
