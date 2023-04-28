@@ -9,6 +9,8 @@
 		<Page refId="pageColor" />
 		<Page refId="RecipePage" />
 		<Page refId="pageImageArchiv" />
+		<Page refId="pageMappVisonHmi" />
+		<Page refId="pageSDM" />
 	</Pages>
 	<Navigations>
 		<!--<Navigation refId="" />-->

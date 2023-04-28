@@ -11,4 +11,5 @@
 	<Styles refId="BuRTheme1chartStyles" />
 	<Styles refId="BuRTheme1sequencerStyles" />
 	<Styles refId="BuRTheme1ListStyles" />
+	<Styles refId="mVi2BuRThemeFlat1VisionStyles" />
 </StylesSet>

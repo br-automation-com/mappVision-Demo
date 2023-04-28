@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StyleInformation name="widgets.brdk.VisionImage" xmlns="http://www.br-automation.com/iat2014/widgetStyles"
+									xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <StyleProperties>
+
+    <StyleProperty name="width" type="Size" not_styleable="true" default="300">
+      <StyleElement attribute="@include elemWidth($value)"></StyleElement>
+      <Description>outer width of widget</Description>
+    </StyleProperty>
+    <StyleProperty name="height" type="Size" not_styleable="true" default="300">
+      <StyleElement attribute="@include elemHeight($value)"></StyleElement>
+      <Description>outer height of widget</Description>
+    </StyleProperty>
+
+    <StyleProperty name="borderWidth" category="Appearance" type="PixelValCollection" default="1px">
+      <StyleElement attribute="border-width"></StyleElement>
+      <Description>
+        Sets the width of the border. For further information, please check its type
+      </Description>
+    </StyleProperty>
+    
+    <StyleProperty name="borderStyle" category="Appearance" type="BorderStyle" default="solid" >
+      <StyleElement attribute="border-style"></StyleElement>
+      <Description>
+        Style of the border of the widget
+      </Description>
+    </StyleProperty>
+
+    <StyleProperty name="borderColor" category="Appearance" type="ColorCollection" default="#000000" >
+      <StyleElement attribute="border-color"></StyleElement>
+      <Description>
+        Sets the border color
+      </Description>
+    </StyleProperty>
+
+    
+    
+   
+    
+    <StyleProperty name="cornerRadius" category="Appearance" type="PixelValCollection" default="0px">
+      <StyleElement attribute="@include border-radius($value)" ></StyleElement>
+      <StyleElement selector="svg.breasePaperSVGContainer" attribute="@include border-radius($value)" ></StyleElement>
+      <Description>
+        Sets the radius of the widget rounded corners. For further information, please check its type
+      </Description>
+    </StyleProperty>
+
+    <StyleProperty name="backColor" category="Appearance" type="Color" default="transparent" >
+      <StyleElement attribute="background-color"></StyleElement>
+      <Description>
+        Sets the background color
+      </Description>
+    </StyleProperty>
+
+    <StyleProperty name="opacity" category="Appearance" type="Opacity" default="1">
+      <StyleElement attribute="opacity"></StyleElement>
+      <Description>
+        Opacity of the widget
+      </Description>
+    </StyleProperty>
+    
+    <StyleProperty name="margin" category="Layout" type="Margin" default="0px">
+      <StyleElement attribute="margin"></StyleElement>
+      <Description>
+        Margin of the Widget
+      </Description>
+    </StyleProperty>
+    
+
+  </StyleProperties>
+</StyleInformation>

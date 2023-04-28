@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:iat="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" elementFormDefault="qualified">
+<xs:complexType name="widgets.brdk.VisionImageRestrict" abstract="true">
+	<xs:complexContent>
+		<xs:restriction base="iat:brease.core.BaseContentWidget">
+			<xs:attribute name="height" use="optional" type="types:Size" default="300" />
+			<xs:attribute name="width" use="optional" type="types:Size" default="300" />
+		</xs:restriction>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="widgets.brdk.VisionImage">
+	<xs:complexContent>
+		<xs:extension base="iat:widgets.brdk.VisionImageRestrict">
+			<xs:attribute name="PLCWebsocketPort" use="optional" type="types:UNumber" default="0" />
+			<xs:attribute name="colorList" use="optional" type="types:ColorList" default="#FFCC66,#FF8800,#FFCC99,#993333" />
+			<xs:attribute name="flipHorisontal" use="optional" type="types:Boolean" default="false" />
+			<xs:attribute name="flipVertical" use="optional" type="types:Boolean" default="false" />
+			<xs:attribute name="maxZoomLevel" use="optional" type="types:UNumber" default="1000" />
+			<xs:attribute name="minZoomLevel" use="optional" type="types:UNumber" default="20" />
+			<xs:attribute name="svgImage" use="optional" type="types:String" default="" />
+			<xs:attribute name="svgOverlay" use="optional" type="types:String" default="" />
+			<xs:attribute name="transitionTime" use="optional" type="types:UInteger" default="500" />
+			<xs:attribute name="viewRotateAngle" use="optional" type="types:Number" default="0" />
+			<xs:attribute name="visibleOverlay" use="optional" type="types:Boolean" default="true" />
+			<xs:attribute name="borderWidth" use="optional" type="types:PixelValCollection" default="1px" />
+			<xs:attribute name="borderStyle" use="optional" type="types:BorderStyle" default="solid" />
+			<xs:attribute name="borderColor" use="optional" type="types:ColorCollection" default="#000000" />
+			<xs:attribute name="cornerRadius" use="optional" type="types:PixelValCollection" default="0px" />
+			<xs:attribute name="backColor" use="optional" type="types:Color" default="transparent" />
+			<xs:attribute name="opacity" use="optional" type="types:Opacity" default="1" />
+			<xs:attribute name="margin" use="optional" type="types:Margin" default="0px" />
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+</xs:schema>

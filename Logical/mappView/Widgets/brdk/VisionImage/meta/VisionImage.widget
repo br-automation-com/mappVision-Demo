@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WidgetLibrary xmlns="http://www.br-automation.com/iat2014/widget">
+	<Widget name="widgets.brdk.VisionImage">
+		<ASEngineeringInfo>
+			<IsProjectable>true</IsProjectable>
+			<LicenseInfo>licensed</LicenseInfo>
+		</ASEngineeringInfo>
+		<Dependencies>
+			<Files>
+				<File>DOMPurify.js</File>
+				<File>brease/config.js</File>
+				<File>brease/controller/FileManager.js</File>
+				<File>brease/controller/PopUpManager.js</File>
+				<File>brease/controller/ZoomManager.js</File>
+				<File>brease/controller/libs/KeyActions.js</File>
+				<File>brease/controller/libs/Utils.js</File>
+				<File>brease/controller/objects/PageType.js</File>
+				<File>brease/core/BaseWidget.js</File>
+				<File>brease/core/Class.js</File>
+				<File>brease/core/Decorator.js</File>
+				<File>brease/core/Types.js</File>
+				<File>brease/core/Utils.js</File>
+				<File>brease/core/libs/AsyncProcess.js</File>
+				<File>brease/core/libs/Deferred.js</File>
+				<File>brease/decorators/ContentActivatedDependency.js</File>
+				<File>brease/decorators/DragAndDropCapability.js</File>
+				<File>brease/decorators/Permissions.js</File>
+				<File>brease/decorators/TooltipDependency.js</File>
+				<File>brease/decorators/libs/DragAndDropManager.js</File>
+				<File>brease/decorators/libs/Draggable.js</File>
+				<File>brease/enum/Enum.js</File>
+				<File>brease/enum/EnumObject.js</File>
+				<File>brease/events/BreaseEvent.js</File>
+				<File>brease/events/ClientSystemEvent.js</File>
+				<File>brease/events/DummyEvent.js</File>
+				<File>brease/events/EventHandler.js</File>
+				<File>brease/events/Gestures.js</File>
+				<File>brease/events/VirtualEvents.js</File>
+				<File>hammer.js</File>
+				<File>jquery.js</File>
+				<File>libs/d3/d3.js</File>
+				<File>widgets/brdk/VisionImage/libs/Renderer.js</File>
+				<File>widgets/brease/common/DragDropProperties/libs/DroppablePropertiesEvents.js</File>
+				<File>widgets/brease/common/libs/BreaseResizeObserver.js</File>
+				<File>widgets/brease/common/libs/redux/utils/UtilsSvg.js</File>
+			</Files>
+			<Widgets>
+				<Widget>widgets/brdk/VisionImage/VisionImage.js</Widget>
+			</Widgets>
+		</Dependencies>
+		<Categories>
+			<Category name="Category">Drawing</Category>
+		</Categories>
+		<Descriptions>
+			<Description name="short">Display vision image and svg overlay</Description>
+			<Description name="de">Aktivieren Sie die Visualisierung eines Vision-Bildes und einer darüber liegenden SVG-Überlagerung. Kann den Inhalt zoomen, schwenken, drehen und spiegeln.</Description>
+			<Description name="en">Enable visualisation of an Vision image and an svg overlay ontop of it. Can zoom, pan, rotate and flip the contnet.</Description>
+		</Descriptions>
+		<Inheritance>
+			<Class level="0">widgets.brdk.VisionImage</Class>
+			<Class level="1">brease.core.BaseWidget</Class>
+		</Inheritance>
+		<Parents>
+			<Parent>*</Parent>
+		</Parents>
+		<Children>
+		</Children>
+		<Methods>
+			<Method name="Focus" read="false">
+				<Description>Sets focus on the widget element, if it can be focused and keyboardOperation=true</Description>
+			</Method>
+			<Method name="PanDown" read="false">
+				<Description>Pan the view down</Description>
+			</Method>
+			<Method name="PanLeft" read="false">
+				<Description>Pan the view left</Description>
+			</Method>
+			<Method name="PanReset" read="false">
+				<Description>Reset the view pan x,y to 0</Description>
+			</Method>
+			<Method name="PanRight" read="false">
+				<Description>Pan the view right</Description>
+			</Method>
+			<Method name="PanUp" read="false">
+				<Description>Pan the view up</Description>
+			</Method>
+			<Method name="SetEnable" read="false">
+				<Description>Sets the state of property «enable»</Description>
+				<Arguments>
+					<Argument name="value" type="Boolean" index="0" required="true"/>
+				</Arguments>
+			</Method>
+			<Method name="SetFlipHorisontal" read="false">
+				<Description>Sets flipHorisontal</Description>
+				<Arguments>
+					<Argument name="flip" type="Boolean" index="0" required="true"/>
+				</Arguments>
+			</Method>
+			<Method name="SetFlipVertical" read="false">
+				<Description>Sets flipVertical</Description>
+				<Arguments>
+					<Argument name="flip" type="Boolean" index="0" required="true"/>
+				</Arguments>
+			</Method>
+			<Method name="SetStyle" read="false">
+				<Arguments>
+					<Argument name="value" type="StyleReference" index="0" required="true"/>
+				</Arguments>
+			</Method>
+			<Method name="SetViewRotateAngle" read="false">
+				<Description>Sets viewRotateAngle</Description>
+				<Arguments>
+					<Argument name="viewRotateAngle" type="Number" index="0" required="true"/>
+				</Arguments>
+			</Method>
+			<Method name="SetVisible" read="false">
+				<Description>Sets the state of property «visible»</Description>
+				<Arguments>
+					<Argument name="value" type="Boolean" index="0" required="true"/>
+				</Arguments>
+			</Method>
+			<Method name="SetVisibleOverlay" read="false">
+				<Description>Sets visibility of overlay, visible if the value is true. Otherwise, invisible.</Description>
+				<Arguments>
+					<Argument name="visibility" type="Boolean" index="0" required="true"/>
+				</Arguments>
+			</Method>
+			<Method name="ShowTooltip" read="false"/>
+			<Method name="ViewReset" read="false">
+				<Description>Reset the view level to 100% zoom and pan x,y to 0</Description>
+			</Method>
+			<Method name="ZoomIn" read="false">
+				<Description>Zoom into the Paper</Description>
+			</Method>
+			<Method name="ZoomOut" read="false">
+				<Description>Zoom out of the Paper</Description>
+			</Method>
+			<Method name="ZoomReset" read="false">
+				<Description>Reset the view level to 100% zoom</Description>
+			</Method>
+		</Methods>
+		<Events>
+			<Event name="Click">
+				<Description>Fired when widget is clicked</Description>
+				<Arguments>
+					<Argument name="x" type="Integer" index="0" required="true"/>
+					<Argument name="y" type="Integer" index="1" required="true"/>
+					<Argument name="horizontalPos" type="String" index="2" required="true">
+						<Description>horizontal position of click in pixel i.e &apos;10px&apos;</Description>
+					</Argument>
+					<Argument name="verticalPos" type="String" index="3" required="true">
+						<Description>vertical position of click in pixel i.e &apos;10px&apos;</Description>
+					</Argument>
+					<Argument name="origin" type="String" index="4" required="true">
+						<Description>id of widget that triggered this event</Description>
+					</Argument>
+					<Argument name="elementId" type="String" index="5" required="true">
+						<Description>id of a clicked svg element</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+			<Event name="DisabledClick">
+				<Description>Fired when disabled element is clicked on.</Description>
+				<Arguments>
+					<Argument name="horizontalPos" type="String" index="0" required="true">
+						<Description>horizontal position of click in pixel i.e &apos;10px&apos;</Description>
+					</Argument>
+					<Argument name="verticalPos" type="String" index="1" required="true">
+						<Description>vertical position of click in pixel i.e &apos;10px&apos;</Description>
+					</Argument>
+					<Argument name="origin" type="String" index="2" required="true">
+						<Description>id of widget that triggered this event</Description>
+					</Argument>
+					<Argument name="hasPermission" type="Boolean" index="3" required="true">
+						<Description>defines if the state is caused due to missing roles of the current user</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+			<Event name="EnableChanged">
+				<Description>Fired when operability of the widget changes.</Description>
+				<Arguments>
+					<Argument name="value" type="Boolean" index="0" required="true">
+						<Description>operability</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+			<Event name="FocusIn">
+				<Description>Fired when the widgets gets focus</Description>
+			</Event>
+			<Event name="FocusOut">
+				<Description>Fired when the widgets lost focus</Description>
+			</Event>
+			<Event name="ImageClick">
+				<Description>Fired when image in widget is clicked</Description>
+				<Arguments>
+					<Argument name="x" type="Integer" index="0" required="true"/>
+					<Argument name="y" type="Integer" index="1" required="true"/>
+					<Argument name="origin" type="String" index="2" required="true">
+						<Description>id of widget that triggered this event</Description>
+					</Argument>
+					<Argument name="elementId" type="String" index="3" required="true">
+						<Description>id of a clicked svg element</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+			<Event name="OnDragEnter">
+				<Description>Fired when element has onDragEnter.</Description>
+				<Arguments>
+					<Argument name="contentId" type="String" index="0" required="true">
+						<Description>content id of the widget that has been entering the droppable widget</Description>
+					</Argument>
+					<Argument name="widgetId" type="String" index="1" required="true">
+						<Description>id of the widget that has been entering the droppable widget</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+			<Event name="OnDragLeave">
+				<Description>Fired when element has OnDragLeave.</Description>
+				<Arguments>
+					<Argument name="contentId" type="String" index="0" required="true">
+						<Description>content id of the widget that has been leaving the droppable widget</Description>
+					</Argument>
+					<Argument name="widgetId" type="String" index="1" required="true">
+						<Description>id of the widget that has been leaving the droppable widget</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+			<Event name="OnDrop">
+				<Description>Fired when element has OnDrop.</Description>
+				<Arguments>
+					<Argument name="contentId" type="String" index="0" required="true">
+						<Description>content id of the widget that has been dropped on the droppable widget</Description>
+					</Argument>
+					<Argument name="widgetId" type="String" index="1" required="true">
+						<Description>id of the widget that has been dropped on the droppable widget</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+			<Event name="TransformDone">
+				<Description>Fired when a transform command has finished execution.</Description>
+				<Arguments>
+					<Argument name="select" type="String" index="0" required="true"/>
+				</Arguments>
+			</Event>
+			<Event name="VisibleChanged">
+				<Description>Fired when the visibility of the widget changes.</Description>
+				<Arguments>
+					<Argument name="value" type="Boolean" index="0" required="true">
+						<Description>visibility</Description>
+					</Argument>
+				</Arguments>
+			</Event>
+		</Events>
+		<Properties>
+			<Property name="PLCWebsocketPort" type="UNumber" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Data" defaultValue="0">
+				<Description>Additional PLC websocket port to connect to (0=Not used).</Description>
+			</Property>
+			<Property name="colorList" type="ColorList" initOnly="true" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Appearance" defaultValue="#FFCC66,#FF8800,#FFCC99,#993333">
+				<Description>List of possible colors to apply to svg elements.</Description>
+			</Property>
+			<Property name="enable" type="Boolean" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="true">
+				<Description>Initial option to enable widget.</Description>
+			</Property>
+			<Property name="flipHorisontal" type="Boolean" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="false">
+				<Description>Flip image horizontal</Description>
+			</Property>
+			<Property name="flipVertical" type="Boolean" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="false">
+				<Description>Flip image vertical</Description>
+			</Property>
+			<Property name="maxZoomLevel" type="UNumber" initOnly="true" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="1000">
+				<Description>Defines in percentage the upper limit of the zoom in the Paper area (100 means no zoom level applied)</Description>
+			</Property>
+			<Property name="minZoomLevel" type="UNumber" initOnly="true" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="20">
+				<Description>Defines in percentage the lower limit of the zoom in the Paper area (100 means no zoom level applied)</Description>
+			</Property>
+			<Property name="permissionOperate" type="RoleCollection" initOnly="true" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Accessibility">
+				<Description>restricts operability to users, which have given roles</Description>
+			</Property>
+			<Property name="permissionView" type="RoleCollection" initOnly="true" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Accessibility">
+				<Description>restricts visibility to users, which have given roles</Description>
+			</Property>
+			<Property name="style" type="StyleReference" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Appearance" defaultValue="default">
+				<Description>reference to a style for this widget type</Description>
+			</Property>
+			<Property name="svgImage" type="String" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Data" defaultValue="">
+				<Description>Additional svg string content to display on the widget.</Description>
+			</Property>
+			<Property name="svgOverlay" type="String" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Data" defaultValue="">
+				<Description>Additional svg string content to display on the widget.</Description>
+			</Property>
+			<Property name="tabIndex" type="Integer" initOnly="true" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="-1">
+				<Description>sets if a widget should have autofocus enabled (0), the order of the focus (&gt;0),
+or if autofocus should be disabled (-1)				</Description>
+			</Property>
+			<Property name="tooltip" type="String" initOnly="true" localizable="true" editableBinding="false" readOnly="false" required="false" projectable="true" category="Appearance" defaultValue="">
+				<Description>reference to a tooltip for a widget</Description>
+			</Property>
+			<Property name="transitionTime" type="UInteger" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="500">
+				<Description>Default execution time of any svg transformation.</Description>
+			</Property>
+			<Property name="viewRotateAngle" type="Number" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="0">
+				<Description>Defines in degrees the view rotation</Description>
+			</Property>
+			<Property name="visible" type="Boolean" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="true">
+				<Description>change visibility</Description>
+			</Property>
+			<Property name="visibleOverlay" type="Boolean" initOnly="false" localizable="false" editableBinding="false" readOnly="false" required="false" projectable="true" category="Behavior" defaultValue="true">
+				<Description>Overlay is visible if the value is true. Otherwise, invisible.</Description>
+			</Property>
+		</Properties>
+	<BindingTemplates>
+  
+</BindingTemplates>
+<PropertyGroups>
+  <PropertyGroup name="Size" type="String" category="Layout">
+    <Description>outer height and width of widget</Description>
+  </PropertyGroup>
+  <PropertyGroup name="Position" type="String" category="Layout">
+    <Description>top and left of widget</Description>
+  </PropertyGroup>
+</PropertyGroups>
+<StyleProperties defaultStyle="default">
+  <StyleProperty name="width" type="Size" not_styleable="true" owner="widgets.brdk.VisionImage" category="Layout" groupRefId="Size" groupOrder="1" default="300">
+    <StyleElement attribute="@include elemWidth($value)"/>
+    <Description>outer width of widget</Description>
+  </StyleProperty>
+  <StyleProperty name="height" type="Size" not_styleable="true" owner="widgets.brdk.VisionImage" category="Layout" groupRefId="Size" groupOrder="2" default="300">
+    <StyleElement attribute="@include elemHeight($value)"/>
+    <Description>outer height of widget</Description>
+  </StyleProperty>
+  <StyleProperty name="top" type="Integer" not_styleable="true" owner="brease.core.BaseWidget" category="Layout" groupRefId="Position" groupOrder="1">
+    <StyleElement attribute="@include elemTop($value)"/>
+    <Description>absolute position measured from top boundary of parent container</Description>
+  </StyleProperty>
+  <StyleProperty name="left" type="Integer" not_styleable="true" owner="brease.core.BaseWidget" category="Layout" groupRefId="Position" groupOrder="2">
+    <StyleElement attribute="@include elemLeft($value)"/>
+    <Description>absolute position measured from left boundary of parent container</Description>
+  </StyleProperty>
+  <StyleProperty name="zIndex" type="UInteger" not_styleable="true" owner="brease.core.BaseWidget" category="Layout" required="true">
+    <StyleElement attribute="z-index"/>
+    <Description>The zIndex property specifies the z-order of a widget and its childs.&lt;br/&gt;&#xD;
+        When widgets overlap, z-order determines which one covers the other. A widget with a larger zIndex generally covers a widget with a lower one.&lt;br/&gt;&#xD;
+        The zIndex must be unique within a content.&lt;br/&gt;</Description>
+  </StyleProperty>
+  <StyleProperty name="borderWidth" category="Appearance" type="PixelValCollection" default="1px">
+    <StyleElement attribute="border-width"/>
+    <Description>Sets the width of the border. For further information, please check its type</Description>
+  </StyleProperty>
+  <StyleProperty name="borderStyle" category="Appearance" type="BorderStyle" default="solid">
+    <StyleElement attribute="border-style"/>
+    <Description>Style of the border of the widget</Description>
+  </StyleProperty>
+  <StyleProperty name="borderColor" category="Appearance" type="ColorCollection" default="#000000">
+    <StyleElement attribute="border-color"/>
+    <Description>Sets the border color</Description>
+  </StyleProperty>
+  <StyleProperty name="cornerRadius" category="Appearance" type="PixelValCollection" default="0px">
+    <StyleElement attribute="@include border-radius($value)"/>
+    <StyleElement selector="svg.breasePaperSVGContainer" attribute="@include border-radius($value)"/>
+    <Description>Sets the radius of the widget rounded corners. For further information, please check its type</Description>
+  </StyleProperty>
+  <StyleProperty name="backColor" category="Appearance" type="Color" default="transparent">
+    <StyleElement attribute="background-color"/>
+    <Description>Sets the background color</Description>
+  </StyleProperty>
+  <StyleProperty name="opacity" category="Appearance" type="Opacity" default="1">
+    <StyleElement attribute="opacity"/>
+    <Description>Opacity of the widget</Description>
+  </StyleProperty>
+  <StyleProperty name="margin" category="Layout" type="Margin" default="0px">
+    <StyleElement attribute="margin"/>
+    <Description>Margin of the Widget</Description>
+  </StyleProperty>
+</StyleProperties>
+</Widget>
+</WidgetLibrary>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mappings>
+  <Mapping parameter="widgets.brdk.VisionImage.Action.SetEnable.value" type="BOOL"/>
+  <Mapping parameter="widgets.brdk.VisionImage.Action.SetFlipHorisontal.flip" type="BOOL"/>
+  <Mapping parameter="widgets.brdk.VisionImage.Action.SetFlipVertical.flip" type="BOOL"/>
+  <Mapping parameter="widgets.brdk.VisionImage.Action.SetStyle.value" type="ANY_STRING"/>
+  <Mapping parameter="widgets.brdk.VisionImage.Action.SetViewRotateAngle.viewRotateAngle" type="ANY_REAL"/>
+  <Mapping parameter="widgets.brdk.VisionImage.Action.SetVisible.value" type="BOOL"/>
+  <Mapping parameter="widgets.brdk.VisionImage.Action.SetVisibleOverlay.visibility" type="BOOL"/>
+</Mappings>

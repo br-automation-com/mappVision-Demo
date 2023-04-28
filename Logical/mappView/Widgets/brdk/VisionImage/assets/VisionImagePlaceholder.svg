@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+    <defs id="svgEditorDefs">
+        <polygon id="svgEditorShapeDefs" fill="khaki" stroke="black" style="vector-effect: non-scaling-stroke; stroke-width: 1px;" />
+        <linearGradient gradientUnits="objectBoundingBox" id="lrgd2-e1-50-reflect" spreadMethod="reflect" x1="0%" x2="50%" y1="0%" y2="0%">
+            <stop offset="0%" stop-color="lightblue" />
+            <stop offset="100%" stop-color="#87CEFA" />
+        </linearGradient>
+        <linearGradient gradientTransform="rotate(98.1974) skewX(-45)" gradientUnits="objectBoundingBox" id="lgrd2-c-repeat" spreadMethod="repeat" x1="0%" x2="5%" y1="0%" y2="0%">
+            <stop id="c1" offset="0" stop-color="#FF8800" stop-opacity="1" />
+            <stop id="c2" offset="75%" stop-color="yellow" stop-opacity="1" />
+        </linearGradient>
+        <linearGradient gradientUnits="objectBoundingBox" id="lgrd2-fire" spreadMethod="pad" x1="0%" x2="100%" y1="0%" y2="0%" gradientTransform="rotate(90.028)">
+            <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+            <stop offset="100%" style="stop-color: rgb(255, 136, 0); stop-opacity: 1;" />
+        </linearGradient>
+        <path id="svgEditorClosePathDefs" stroke="black" fill="khaki" style="stroke-width: 1px;" />
+    </defs>
+    <rect id="svgEditorBackground" x="0" y="0" width="1150" height="660" style="fill: none; stroke: none;" />
+    <g transform="matrix(2.15077 0 0 2.15077 72.5529 63.8554)" stroke="black" id="e1_shape" style="vector-effect: non-scaling-stroke; stroke-width: 1px; fill: none;">
+        <path d="M17.778,0c-5.4,0,-9.778,4.378,-9.778,9.778v108.445c0,5.400000000000006,4.378,9.778000000000006,9.778,9.778000000000006h84.445c5.400000000000006,0,9.778000000000006,-4.378,9.778000000000006,-9.778000000000006v-86.222h-22.221999999999994c-5.400000000000006,0,-9.637955161018297,0.10343486202425822,-10.338179364274382,0.025138738114279136v-32.02513873811428h-61.661820635725626Z" id="e196_path" />
+        <path d="M84.95944514518835,1.1203587118540845v24.60061095871425h24.718974211244387Z" transform="matrix(1.16871 0 0 1.16871 -17.5241 -0.473354)" />
+    </g>
+    <rect x="99.39759063720703" y="241.5663299560547" stroke="black" id="e125_rectangle" style="stroke-width: 1px;" width="204.21686746987953" height="89.15662650602411" fill="black" rx="20" ry="20" />
+    <text fill="white" x="139.759" y="306.626" id="e260_texte" style="font-family: Arial; font-size: 60px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: bold;" dy="" dx="">SVG</text>
+    <circle id="e305_circle" cx="187.952" cy="154.819" stroke="black" style="stroke-width: 2px;" r="33.9494" transform="matrix(1.34662 0 0 1.34662 -79.0024 -67.5182)" fill="url(&quot;#lgrd2-fire&quot;)" />
+    <rect x="209.3793072211222" y="141.56638339830258" stroke="black" id="e333_rectangle" style="stroke-width: 2px; stroke-dasharray: 1px, 1px;" width="54.8193" height="56.6265" transform="matrix(1.27444 0 0 1.27444 -55.5494 -37.1982)" fill="url(&quot;#lgrd2-c-repeat&quot;)" />
+    <polygon stroke="black" id="e349_polygon" style="stroke-width: 2px;" points="171.617 232.112 254.148 232.112 213.341 170.238" fill="#FF8800" transform="matrix(1.35216 0 0 1.32681 -86.1319 -75.5998)" />
+</svg>

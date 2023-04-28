@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:s1="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:var="http://www.br-automation.com/iat2015/varTypes/v2" elementFormDefault="qualified">
+	<xs:complexType name="widgets.brdk.VisionImage.Action">
+		<xs:complexContent>
+			<xs:extension base="s1:Target.BaseWidget">
+				<xs:sequence>
+					<xs:element name="Method" type="s1:widgets.brdk.VisionImage.Action.widgetMethod"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.widgetMethod" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="s1:widgetMethod"></xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.Focus">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.PanDown">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.PanLeft">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.PanReset">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.PanRight">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.PanUp">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.SetEnable">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+				<xs:attribute name="value" type="var:Boolean" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.SetFlipHorisontal">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+				<xs:attribute name="flip" type="var:Boolean" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.SetFlipVertical">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+				<xs:attribute name="flip" type="var:Boolean" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.SetStyle">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+				<xs:attribute name="value" type="var:StyleReference" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.SetViewRotateAngle">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+				<xs:attribute name="viewRotateAngle" type="var:Number" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.SetVisible">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+				<xs:attribute name="value" type="var:Boolean" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.SetVisibleOverlay">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+				<xs:attribute name="visibility" type="var:Boolean" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.ShowTooltip">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.ViewReset">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.ZoomIn">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.ZoomOut">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Action.ZoomReset">
+		<xs:complexContent>
+			<xs:extension base="s1:widgets.brdk.VisionImage.Action.widgetMethod">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="widgets.brdk.VisionImage.Event">
+		<xs:complexContent>
+			<xs:extension base="s1:Source.BaseWidget">
+				<xs:attribute name="event" type="s1:widgets.brdk.VisionImage.Events" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="widgets.brdk.VisionImage.Events">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Click"></xs:enumeration>
+			<xs:enumeration value="DisabledClick"></xs:enumeration>
+			<xs:enumeration value="EnableChanged"></xs:enumeration>
+			<xs:enumeration value="FocusIn"></xs:enumeration>
+			<xs:enumeration value="FocusOut"></xs:enumeration>
+			<xs:enumeration value="ImageClick"></xs:enumeration>
+			<xs:enumeration value="OnDragEnter"></xs:enumeration>
+			<xs:enumeration value="OnDragLeave"></xs:enumeration>
+			<xs:enumeration value="OnDrop"></xs:enumeration>
+			<xs:enumeration value="TransformDone"></xs:enumeration>
+			<xs:enumeration value="VisibleChanged"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

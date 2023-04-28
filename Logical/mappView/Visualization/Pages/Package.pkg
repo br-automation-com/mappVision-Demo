@@ -6,6 +6,8 @@
     <Object Type="Package">MainPage</Object>
     <Object Type="Package">ResultPage</Object>
     <Object Type="Package">Lights</Object>
+    <Object Type="Package">mappVisionHmi</Object>
+    <Object Type="Package">SDM</Object>
     <Object Type="Package">Nettime</Object>
     <Object Type="Package">Color</Object>
     <Object Type="Package">RecipePage</Object>
