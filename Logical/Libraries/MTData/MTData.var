@@ -1,0 +1,10 @@
+(*Error*)
+VAR CONSTANT
+	mtBCD_ERR_DATA_NB_VALUES_HIGH : DINT := -1058012164; (*Maximum number of input values exceeded. FB stopped.*)
+	mtBCD_ERR_DATA_WINDOW_INVALID : DINT := -1058012163; (*MovingWindowLength invalid.*)
+        mtBCD_ERR_LIMITS_INVALID : DINT := -1058012162; (*Process specification limits invalid.*)
+END_VAR
+(*Warning*)
+VAR CONSTANT
+	mtBCD_WRN_DATA_WINDOW_INVALID : DINT := -2131753988; (*MovingWindowLength invalid.*)
+END_VAR

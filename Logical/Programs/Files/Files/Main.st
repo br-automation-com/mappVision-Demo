@@ -36,6 +36,9 @@ PROGRAM _INIT
 	this.brdkFileDevUsb.setup.fileDevices[1].path := 'Recipe';
 	this.brdkFileDevUsb.setup.fileDevices[2].name := 'VI_DIAG';
 	this.brdkFileDevUsb.setup.fileDevices[2].path := 'visionDiag';
+	this.brdkFileDevUsb.setup.fileDevices[3].name := 'DATA';
+	this.brdkFileDevUsb.setup.fileDevices[3].path := 'data';
+	
 	
 	this.mpFileManUI.UISetup.FileListScrollWindow := 1;
 	this.mpFileManUI.UISetup.FileListSize := FILES_LIST_SIZE;

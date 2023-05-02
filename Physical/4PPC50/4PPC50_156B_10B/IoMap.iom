@@ -1020,4 +1020,16 @@ VAR_CONFIG
 	Cyclic#1.::Vi_main:hwInstance[4].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
 	Cyclic#1.::Vi_main:hwInstance[5].io.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
 	Cyclic#1.::Axis:hw.in.nettime AT %ID."X20CP1586".IF3.NettimeSoC;
+	::Vi_main:hwInstance[1].io.in.individualTrigger AT %IX."X20DI9371".DigitalInput01;
+	::Vi_main:hwInstance[2].io.in.individualTrigger AT %IX."X20DI9371".DigitalInput02;
+	::Vi_main:hwInstance[3].io.in.individualTrigger AT %IX."X20DI9371".DigitalInput03;
+	::Vi_main:hwInstance[4].io.in.individualTrigger AT %IX."X20DI9371".DigitalInput04;
+	::Vi_main:hwInstance[5].io.in.individualTrigger AT %IX."X20DI9371".DigitalInput05;
+	::Vi_main:hwInstance[6].io.in.individualTrigger AT %IX."X20DI9371".DigitalInput06;
+	::Vi_main:hwInstance[6].io.in.commonTrigger AT %IX."X20DI9371".DigitalInput12;
+	::Vi_main:hwInstance[1].io.in.commonTrigger AT %IX."X20DI9371".DigitalInput12;
+	::Vi_main:hwInstance[2].io.in.commonTrigger AT %IX."X20DI9371".DigitalInput12;
+	::Vi_main:hwInstance[3].io.in.commonTrigger AT %IX."X20DI9371".DigitalInput12;
+	::Vi_main:hwInstance[4].io.in.commonTrigger AT %IX."X20DI9371".DigitalInput12;
+	::Vi_main:hwInstance[5].io.in.commonTrigger AT %IX."X20DI9371".DigitalInput12;
 END_VAR
