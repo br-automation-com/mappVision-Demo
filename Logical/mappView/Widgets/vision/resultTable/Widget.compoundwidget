@@ -120,6 +120,7 @@
 		<Property xsi:type="StructureBindableProperty" name="Structure" type="hmi_out_vf_table_typ" readOnly="false" category="data" required="false" >
 			<Description>Structure containing all results</Description>
 			<Mappings>
+					
 				<!-- BLOB -->
 				<Mapping widget="ItemNo" type="Number" property="value" mode="oneWay" memberPath="blob.id" mapToNode="false"/>
 				<Mapping widget="itemModel" type="Number" property="value" mode="oneWay" memberPath="blob.ModelNumber" mapToNode="false"/>
@@ -176,9 +177,10 @@
 			</Mappings>
 		</Property>
 
-		<Property xsi:type="StructureBindableProperty" name="UsedVfs" type="hmi_out_usedVF_typ" readOnly="false" category="data" required="false" >
+		<Property xsi:type="StructureBindableProperty" name="UsedVfs" type="hmi_out_usedVF_typ" category="data" readOnly="false"  required="false" >
 			<Description>Structure containing boolean for all used vf</Description>
 			<Mappings>
+				
 				<Mapping widget="TabItemBLOB" 			type="Boolean" property="visible" mode="oneWay" memberPath="BLOB" mapToNode="false"/>
 				<Mapping widget="TabItemOCR" 			type="Boolean" property="visible" mode="oneWay" memberPath="OCR" mapToNode="false"/>
 				<Mapping widget="TabItemPxCnt" 			type="Boolean" property="visible" mode="oneWay" memberPath="pixelCounter" mapToNode="false"/>
@@ -188,7 +190,16 @@
 				
 			</Mappings>
 		</Property>
+		
+			
 	
+		<Property xsi:type="BindableProperty" name="selectedTabIndex" type="Number" category="data" defaultValue="0" required="false">
+			<Description>Selected tab index</Description>
+			<Mappings>
+				<Mapping widget="TabControl1" property="selectedIndex" mode="oneWay"/>
+			</Mappings>
+		</Property>
+		
 		
 		<!-- 
 		Simple non bindable property:

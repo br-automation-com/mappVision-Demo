@@ -19,6 +19,10 @@ PROGRAM _INIT
 		brsstrcat(ADR(this.recipePVName),ADR(tmpStr));
 		brsstrcat(ADR(this.recipePVName),ADR('].in.recipe'));
 	
+		this.user.dataPvName := '::Vi_main:localInstance[';
+		brsstrcat(ADR(this.user.dataPvName),ADR(tmpStr));
+		brsstrcat(ADR(this.user.dataPvName),ADR('].user.data'));
+	
 		
 		hmi.out.wsPort := 18000+idx*10;
 		this.mappView.enable := TRUE;
@@ -41,38 +45,46 @@ PROGRAM _INIT
 		// -----------------------------------------------------------------------------------------------------------
 		// Set camera specific data 
 		// -----------------------------------------------------------------------------------------------------------
+		
+		hmi.in.cmd.resultTabIndex := 5;
 		CASE idx OF
 			1:
 				this.mappView.pMappLink := ADR(gCameraBlob);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_BLOB');
 				hmi.out.camera.visionFunction := 'BLOB';
 				hmi.out.usedVF.BLOB := TRUE;
+				hmi.in.cmd.resultTabIndex := MIN(hmi.in.cmd.resultTabIndex,idx-1);
 			2:	
 				this.mappView.pMappLink := ADR(gCameraCodeReading);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_CR');
 				hmi.out.camera.visionFunction := 'Code Reader';
 				hmi.out.usedVF.codeReader := TRUE;
+				hmi.in.cmd.resultTabIndex := MIN(hmi.in.cmd.resultTabIndex,idx-1);
 				(*hmi.out.VF.numResults*)
 			3:	
 				this.mappView.pMappLink := ADR(gCameraMatch);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_MATCH');
 				hmi.out.camera.visionFunction := 'Matching';
 				hmi.out.usedVF.matching := TRUE;
+				hmi.in.cmd.resultTabIndex := MIN(hmi.in.cmd.resultTabIndex,idx-1);
 			4:	
 				this.mappView.pMappLink := ADR(gCameraMeasurement);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_MEAS');
 				hmi.out.camera.visionFunction := 'Measurement';
 				hmi.out.usedVF.measurement := TRUE;
+				hmi.in.cmd.resultTabIndex := MIN(hmi.in.cmd.resultTabIndex,idx-1);
 			5:	
 				this.mappView.pMappLink := ADR(gCameraOCR);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_OCR');
 				hmi.out.camera.visionFunction := 'OCR';
 				hmi.out.usedVF.OCR := TRUE;
+				hmi.in.cmd.resultTabIndex := MIN(hmi.in.cmd.resultTabIndex,idx-1);
 			6:	
 				this.mappView.pMappLink := ADR(gCameraPxl);
 				this.mappView.simulateConfig.pDevice := ADR('SIM_PXCNT');
 				hmi.out.camera.visionFunction := 'Pixel Counter';
 				hmi.out.usedVF.pixelCounter := TRUE;
+				hmi.in.cmd.resultTabIndex := MIN(hmi.in.cmd.resultTabIndex,idx-1);
 			
 		END_CASE
 		
@@ -159,7 +171,7 @@ PROGRAM _CYCLIC
 		END_IF
 		this.axisTrig.nettimeLastCycle_us	:= hw.io.in.nettime;
 		
-	
+		hmi.in.recipe.showOnlyLastImage
 		
 		// -----------------------------------------------------------------------------------------------------------
 		// Image trigger (camera and lights)
@@ -175,12 +187,12 @@ PROGRAM _CYCLIC
 		//-------------------------------------------------------------------------
 		
 		// Copy recipe data (e.g. enable, maximal number of results, etc.)
-		hw.VF.blob.out.common:=hmi.in.recipe.BLOB.common;
-		hw.VF.codeReader.out.common:=hmi.in.recipe.CR.common;
-		hw.VF.matching.out.common:=hmi.in.recipe.match.common;
-		hw.VF.measurement.out.common:=hmi.in.recipe.meassurement.common;
-		hw.VF.ocr.out.common:=hmi.in.recipe.OCR.common;
-		hw.VF.pixelCnt.out.common:=hmi.in.recipe.pxCnt.common;
+		hw.VF.blob.out			:=hmi.in.recipe.BLOB;	
+		hw.VF.codeReader.out	:= hmi.in.recipe.CR;
+		hw.VF.matching.out		:=hmi.in.recipe.match;
+		hw.VF.measurement.out	:=hmi.in.recipe.meassurement;
+		hw.VF.ocr.out			:=hmi.in.recipe.OCR;
+		hw.VF.pixelCnt.out		:=hmi.in.recipe.pxCnt;
 		
 		hmi.out.camera.processingTime:=hw.camera.in.status.cameraProcessingTime;
 		
@@ -207,24 +219,37 @@ PROGRAM _CYCLIC
 				
 		//-------------------------------------------------------------------------
 		
+		this.ioTrigger(CLK := hw.io.in.commonTrigger OR hw.io.in.individualTrigger);
 		// check if camera is ready for an image trigger and MappView have been updated
 		IF this.brdkViBase_imgTrigger_0.ready AND NOT this.brdkViBase_imgTrigger_0.busy AND this.mappView.status = 0 THEN 
 			
+			
 			// Hmi manual trigger
-			IF hmi.in.cmd.trigger OR hmi.in.cmd.repetitiveTrigger THEN
+			IF hmi.in.cmd.trigger OR hmi.in.recipe.repetitiveTrigger THEN
 				hmi.in.cmd.trigger 							:= FALSE;
 				
 				this.brdkViBase_imgTrigger_0.trigger 		:= TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12+10000; // Calc nettime close to currnet time
-			
+				this.currentTriggerNum := 1;
 			// Axis trigger 
-			ELSIF commonHmi.in.recipe.enableAxisTrigger AND 
+			ELSIF hmi.in.recipe.enableAxisTrigger AND 
 					gAxis.status.triggerTimeDelta >= (commonHmi.in.recipe.visionPreTriggerCycles * this.axisTrig.powerlinkCycle_us) AND
 					gAxis.status.triggerTimeDelta <= ((commonHmi.in.recipe.visionPreTriggerCycles + 1) * this.axisTrig.powerlinkCycle_us) THEN
 				
 				this.brdkViBase_imgTrigger_0.trigger := TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime := gAxis.status.nettime + gAxis.status.triggerTimeDelta; // Use time calculated in Axis program
+			ELSIF hmi.in.recipe.enableIoTrigger AND this.ioTrigger.Q THEN
 				
+				this.brdkViBase_imgTrigger_0.trigger := TRUE;
+				this.brdkViBase_imgTrigger_0.delayNettime := gAxis.status.nettime + hmi.in.recipe.ioTriggerDelay ; // Use time calculated in Axis program
+				
+			ELSIF this.currentTriggerNum < hmi.in.recipe.numTrigger THEN
+			
+				this.brdkViBase_imgTrigger_0.trigger 		:= TRUE;
+				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12+10000; // Calc nettime close to currnet time
+		
+				this.currentTriggerNum := 		this.currentTriggerNum +1;
+			
 			END_IF
 		END_IF
 		
@@ -262,7 +287,7 @@ PROGRAM _CYCLIC
 		// New image (hight for one scan)
 		IF this.brdkViBase_imgTrigger_0.newImage THEN
 			
-			this.mappView.updateImage := TRUE; // Trigger an update of the image on hmi
+			this.mappView.updateImage := hmi.in.recipe.showAllImages OR this.currentTriggerNum = hmi.in.recipe.numTrigger; // Trigger an update of the image on hmi
 			this.DTGetTime_0(enable := TRUE);
 			
 			processResultsAction; // Process results action
@@ -479,6 +504,7 @@ PROGRAM _CYCLIC
 		
 		// Done
 		IF (this.viBaseLoadApplication_0.Done) THEN
+			hmi.in.cmd.vaList.selectedIndex := 0;
 			this.viBaseLoadApplication_0.Execute 	:= FALSE;
 			hmi.out.camera.vaLoad 					:= UINT_TO_DINT(ERR_OK);
 		END_IF
@@ -503,9 +529,18 @@ PROGRAM _CYCLIC
 		this.mpRecipeRegVar.Enable 		:= gRecipe.out.active;
 		this.mpRecipeRegVar.MpLink 		:= gRecipe.out.mpLink;
 		this.mpRecipeRegVar.ConfirmSave := this.mpRecipeRegVar.SaveNotification;
-		this.mpRecipeRegVar.Category 	:= ADR('Vision');
+		this.mpRecipeRegVar.Category 	:= ADR('Recipe');
 		this.mpRecipeRegVar.PVName 		:= ADR(this.recipePVName);
 		this.mpRecipeRegVar();
+		
+		
+		this.user.mpRecipeRegVar.Enable 		:= gRecipe.out.active;
+		this.user.mpRecipeRegVar.MpLink 	:= gRecipe.out.mpLink;
+		this.user.mpRecipeRegVar.ConfirmSave := this.user.mpRecipeRegVar.SaveNotification;
+		this.user.mpRecipeRegVar.Category 	:= ADR('Data');
+		this.user.mpRecipeRegVar.PVName 	:= ADR(this.user.dataPvName);
+		this.user.mpRecipeRegVar();
+		
 		
 	END_FOR
 	

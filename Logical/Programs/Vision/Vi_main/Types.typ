@@ -33,6 +33,9 @@ TYPE
 		getVaList : ViBaseListApplication;
 		tmpFileName : STRING[255];
 		saveState : USINT;
+		ioTrigger : R_TRIG;
+		user : user_typ;
+		currentTriggerNum : UINT;
 	END_STRUCT;
 	hmi_typ : 	STRUCT 
 		in : hmi_in_typ;
@@ -113,7 +116,6 @@ TYPE
 	hmi_in_cmd_typ : 	STRUCT 
 		lights : ARRAY[START_IDX..NUM_LIGHTS]OF brdkViBase_light_hw_out_cmd_typ;
 		flashSegment : hmi_in_cmd_flashSegment_typ;
-		repetitiveTrigger : BOOL; (*Enable Repetitive trigger*)
 		trigger : BOOL; (*Trigger a image*)
 		autoSearch : BOOL; (*Start auto Search of exposure and focus for camra*)
 		resetInfo : BOOL; (*Reset optic info to the current camera*)
@@ -124,10 +126,10 @@ TYPE
 		click : BOOL;
 		y : REAL;
 		x : REAL;
-		draw : hmi_in_cmd_draw_typ;
 		vaList : hmi_in_cmd_vaList_typ;
+		resultTabIndex : USINT;
 	END_STRUCT;
-	hmi_in_cmd_draw_typ : 	STRUCT 
+	hmi_in_recipe_draw_typ : 	STRUCT 
 		intShape : INT := 0; (*0 = None, 1=  rectangle, 2 = circle, 3 = triangle*)
 		radius : REAL := 60;
 		width : REAL := 80;
@@ -150,6 +152,8 @@ TYPE
 	END_STRUCT;
 	hw_io_in_typ : 	STRUCT 
 		nettime : DINT;
+		commonTrigger : BOOL;
+		individualTrigger : BOOL;
 	END_STRUCT;
 	hw_io_typ : 	STRUCT 
 		in : hw_io_in_typ;
@@ -179,6 +183,14 @@ TYPE
 		pxCnt : brdkViBase_hw_pxCnt_out_typ;
 		useCamExpTimeForLight : BOOL;
 		useCamLedColorForLight : BOOL;
+		ioTriggerDelay : DINT;
+		enableIoTrigger : BOOL;
+		multiCaptureNum : UINT := 1;
+		showOnlyLastImage : BOOL;
+		draw : hmi_in_recipe_draw_typ;
+		enableAxisTrigger : BOOL;
+		repetitiveTriggerInterval : UDINT;
+		repetitiveTrigger : BOOL;
 	END_STRUCT;
 	common_hmi_in_cmd_typ : 	STRUCT 
 		deleteAllImage : BOOL;
@@ -187,6 +199,7 @@ TYPE
 	common_hmi_in_typ : 	STRUCT 
 		recipe : common_recipe_typ;
 		cmd : common_hmi_in_cmd_typ;
+		dataFilePostName : STRING[255];
 	END_STRUCT;
 	common_hmi_typ : 	STRUCT 
 		in : common_hmi_in_typ;

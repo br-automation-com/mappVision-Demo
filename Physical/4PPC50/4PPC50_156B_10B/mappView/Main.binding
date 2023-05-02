@@ -82,21 +82,6 @@
 		</Binding>
 
 		
-		<Binding mode="twoWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cmd.repetitiveTrigger" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[1].in.cmd.repetitiveTrigger" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cmd.repetitiveTrigger" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cmd.repetitiveTrigger" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.repetitiveTrigger" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.repetitiveTrigger" />
-				</be:List>
-</Source>
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnRepetitiveMode" attribute="value" />
-		</Binding>
-		
 
 		<!--VF result binings to compound widgets -->
 		<Binding mode="twoWay">
@@ -195,12 +180,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cmd.draw" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.cmd.draw" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cmd.draw" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cmd.draw" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.draw" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.draw" />
+					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.draw" />
+					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.draw" />
+					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.draw" />
+					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.draw" />
+					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.draw" />
+					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.draw" />
 				</be:List>
 </Source>
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="drawSettingsWidget1" attribute="structure" />

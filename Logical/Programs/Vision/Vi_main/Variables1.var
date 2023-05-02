@@ -1,4 +1,5 @@
 VAR
+	id : UDINT;
 	tmpID : STRING[80];
 	tmpVF : STRING[80];
 	tmpStr : STRING[100];

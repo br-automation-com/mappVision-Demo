@@ -105,7 +105,7 @@ PROGRAM _CYCLIC
 	this.mpRecipeRegVar.Enable 		:= gRecipe.out.active;
 	this.mpRecipeRegVar.MpLink 		:= gRecipe.out.mpLink;
 	this.mpRecipeRegVar.ConfirmSave := this.mpRecipeRegVar.SaveNotification;
-	this.mpRecipeRegVar.Category 	:= ADR('Axis');
+	this.mpRecipeRegVar.Category 	:= ADR('Recipe');
 	this.mpRecipeRegVar.PVName 		:= ADR('::Axis:hmi.in.recipe');
 	this.mpRecipeRegVar();
 

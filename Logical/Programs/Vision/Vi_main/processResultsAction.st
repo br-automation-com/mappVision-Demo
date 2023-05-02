@@ -1,10 +1,12 @@
 ACTION processResultsAction: 
 
 
-	this.tmpAngle:= -(hmi.in.cmd.draw.rotation);
+	this.tmpAngle:= -(hmi.in.recipe.draw.rotation);
 	
 	// DRAW CIRCLES ON RESULTS
 	hmi.out.svgOverlay := '';
+	brsmemset(ADR(hmi.out.tableVF),0,SIZEOF(hmi.out.tableVF));
+
 	//BLOB
 	IF hw.VF.blob.in.common.numResults > 0 THEN
 		FOR i:= 1 TO hw.VF.blob.in.common.numResults BY 1 DO
@@ -32,21 +34,19 @@ ACTION processResultsAction:
 			
 			// Draw selested shape with specified parameters on the overlay
 			styleStringGeneration;
-										
-			
-			
 		END_FOR;
-	END_IF;
+	END_IF
+	
+	
 
 	//CODE READER
-	//Conversion of individual USINT values into strings for Code Reader
-	brsmemset(ADR(hmi.out.tableVF.codeReader.BarcodeText),0,SIZEOF(hmi.out.tableVF.codeReader.BarcodeText));
 	
 	IF hw.VF.codeReader.in.common.numResults > 0 THEN
 		FOR i:= 1 TO hw.VF.codeReader.in.common.numResults BY 1 DO
 			
 			//----------------------------------
 			//          table results 
+			//Conversion of individual USINT values into strings for Code Reader
 			brsmemcpy(ADR(hmi.out.tableVF.codeReader.BarcodeText[i]),ADR(hw.VF.codeReader.in.results[j].data),SIZEOF(hw.VF.codeReader.in.results[j].data));
 			hmi.out.tableVF.codeReader.BarcodeType[i] 		:= hw.VF.codeReader.in.results[i-1].symbolType;
 			hmi.out.tableVF.codeReader.Grading[i] 		:= hw.VF.codeReader.in.results[i-1].gradingValue;
@@ -109,8 +109,6 @@ ACTION processResultsAction:
 	
 
 	//OCR
-	//Conversion of individual USINT values into strings for OCR
-	brsmemset(ADR(hmi.out.tableVF.ocr.Text),0,SIZEOF(hmi.out.tableVF.ocr.Text));
 	
 	IF hwInstance[5].VF.ocr.in.common.numResults > 0 THEN
 		FOR i:= 1 TO hw.VF.ocr.in.common.numResults BY 1 DO
@@ -120,6 +118,7 @@ ACTION processResultsAction:
 			hmi.out.tableVF.ocr.PositionX[i] :=  DINT_TO_REAL(hw.VF.ocr.in.results[i-1].positionX) /100.0;
 			hmi.out.tableVF.ocr.PositionY[i] :=  DINT_TO_REAL(hw.VF.ocr.in.results[i-1].positionY) /100.0;
 			hmi.out.tableVF.ocr.Orientation[i] :=  DINT_TO_REAL(hw.VF.ocr.in.results[i-1].orientation) /100.0;
+			//Conversion of individual USINT values into strings for OCR
 			brsmemcpy(ADR(hmi.out.tableVF.ocr.Text[i]),ADR(hw.VF.ocr.in.results[j].data),SIZEOF(hw.VF.ocr.in.results[j].data));
 		
 			//------------------------------------
@@ -162,7 +161,7 @@ ACTION processResultsAction:
 			
 			this.tmp2D.x := DINT_TO_REAL(hw.VF.pixelCnt.in.results[i-1].positionX) / 100.0;
 			this.tmp2D.y := DINT_TO_REAL(hw.VF.pixelCnt.in.results[i-1].positionY) / 100.0;
-			this.tmpAngle := -REAL_TO_LREAL(hmi.in.cmd.draw.rotation);
+			this.tmpAngle := -REAL_TO_LREAL(hmi.in.recipe.draw.rotation);
 			
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
@@ -174,4 +173,4 @@ ACTION processResultsAction:
 		END_FOR;
 	END_IF;
 	
-END_ACTION
+		END_ACTION

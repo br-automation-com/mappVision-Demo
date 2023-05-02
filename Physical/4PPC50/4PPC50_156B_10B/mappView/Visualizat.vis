@@ -17,12 +17,7 @@
 		<BindingsSet refId="Header_binding" />
 		<BindingsSet refId="Main_binding" />
 		<BindingsSet refId="Footer_binding" />
-		<BindingsSet refId="CodeReader_binding" />
 		<BindingsSet refId="Blob_binding" />
-		<BindingsSet refId="Match_binding" />
-		<BindingsSet refId="OCR_binding" />
-		<BindingsSet refId="MT_binding" />
-		<BindingsSet refId="Pixel_binding" />
 		<BindingsSet refId="Nettime_binding" />
 		<BindingsSet refId="Color_binding" />
 		<BindingsSet refId="Lights_binding" />
@@ -45,12 +40,6 @@
 	</Dialogs>
 	<Contents preCache="all">
 		<Content refId="contentResult" />
-		<Content refId="contentBlob" preCache="false"/>
-		<Content refId="contentMatch" preCache="false"/>
-		<Content refId="contentMT" preCache="false"/>
-		<Content refId="contentOCR" preCache="false"/>
-		<Content refId="contentCodeReader" preCache="false"/>
-		<Content refId="contentPixel" preCache="false"/>
 	</Contents>
 	<SnippetsSets>
 		<!--<SnippetsSet refId=""/>-->

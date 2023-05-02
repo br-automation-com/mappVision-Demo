@@ -18,6 +18,16 @@ PROGRAM _INIT
 END_PROGRAM
 
 PROGRAM _CYCLIC
+	
+	IF gRecipe.in.cmd.saveData THEN
+		gRecipe.in.cmd.saveData := FALSE;
+		this.mpRecipe.DeviceName := ADR('DATA');
+		this.mpRecipe.Category := ADR('Data');
+		this.mpRecipe.FileName := ADR(gRecipe.in.filename);
+		this.mpRecipe.Save := TRUE;
+	END_IF
+	
+	
 	this.mpRecipe(Enable 				:= gFiles.output.ready);
 	this.mpRecipeUi(Enable 				:= this.mpRecipe.Active);
 	gRecipe.out.active 					:= this.mpRecipe.Active;
@@ -25,6 +35,14 @@ PROGRAM _CYCLIC
 		
 	this.oldName 			:= this.mpRecipe.Info.LastLoadedRecipe;
 	hmi.out.selectedName 	:= hmi.mpRecipe.Recipe.List.Names[hmi.mpRecipe.Recipe.List.SelectedIndex];
+	
+	IF this.mpRecipe.CommandDone THEN
+		this.mpRecipe.DeviceName := ADR('RECIPE');
+		this.mpRecipe.Category := ADR('Recipe');
+		this.mpRecipe.FileName := 0;
+		this.mpRecipe.Save := FALSE;
+	END_IF
+	
 	
 	hmi.out.viewUrl := 'FileDevice:';
 	brsstrcat(ADR(hmi.out.viewUrl),this.mpRecipe.DeviceName);
@@ -50,6 +68,8 @@ PROGRAM _CYCLIC
 		hmi.out.downloadSrc := '';
 	END_IF
 	this.delayTon();
+	
+	
 	
 	hmi.out.enableBtn := brsstrlen(ADR(hmi.mpRecipe.Recipe.List.Names[0])) > 0;
 END_PROGRAM

@@ -61,6 +61,9 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
+  <Module Name="X20BM11" Type="X20BM11" Version="1.1.0.0">
+    <Connection Connector="X2X1" TargetModule="X20CP1586" TargetConnector="IF6" />
+  </Module>
   <Module Name="X20CP1586" Type="X20CP1586" Version="1.10.0.0">
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
@@ -82,7 +85,6 @@
     <Parameter ID="ConfigurationID" Value="Vision_Sample" />
     <Parameter ID="ConfigVersion" Value="2.0.0" />
     <Parameter ID="UserPartitionSize" Value="260" />
-    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="RemMemSize" Value="30000" />
     <Parameter ID="PermanentPvSize" Value="2000" />
     <Parameter ID="RemanentGlobalPvSize" Value="20000" />
@@ -102,7 +104,6 @@
     <Parameter ID="FileDevicePath1" Value="F:\" />
     <Parameter ID="EthernetHostName" Value="visiondemo" />
     <Parameter ID="ActivateDns" Value="1" />
-    <Parameter ID="DnsDefaultDomain" Value="br-automation.com" />
     <Parameter ID="GetDnsFromDhcp" Value="2" />
     <Group ID="FtpUser1" />
     <Parameter ID="FtpUsername1" Value="bundr" />
@@ -113,6 +114,12 @@
     <Parameter ID="ActivateOpcUa" Value="1" />
     <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
   </Module>
+  <Module Name="X20DI9371" Type="X20DI9371" Version="1.4.0.0">
+    <Connection Connector="SS1" TargetModule="X20TB12" TargetConnector="SS" />
+    <Connection Connector="SL" TargetModule="X20BM11" TargetConnector="SL1" />
+    <Parameter ID="Supervision" Value="off" />
+  </Module>
+  <Module Name="X20TB12" Type="X20TB12" Version="1.0.0.0" />
   <Module Name="blobBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
     <Connection Connector="PLK1" TargetModule="PixelCounter" TargetConnector="PLK2" NodeNumber="16">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />

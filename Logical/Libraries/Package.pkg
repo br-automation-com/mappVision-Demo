@@ -38,5 +38,8 @@
     <Object Type="Library" Language="binary" Description="[mapp Motion] Base library">McBase</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] ACOPOS axis library">McAcpAx</Object>
     <Object Type="Library" Language="Binary" Description="File explorer for B+R file devices">MpFile</Object>
+    <Object Type="Library" Language="Binary" Description="This mechatronics library contains function blocks for statistical data analysis.">MTData</Object>
+    <Object Type="Library" Language="binary" Description="The BRSystem library provides the user with a number of system functions for e.g. handling permanent memory, accessing exception information, etc.">brsystem</Object>
+    <Object Type="Library" Language="binary" Description="This mechatronics library contains different system datatypes and general error numbers.">MTTypes</Object>
   </Objects>
 </Package>

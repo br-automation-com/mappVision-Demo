@@ -31,5 +31,15 @@
         </Action>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="EventBinding_17">
+      <Source xsi:type="widgets.brease.Button.Event" contentRefId="contentRecipe" widgetRefId="btnCloseViewFile" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brease.FlyOut.Action" contentRefId="contentRecipe" widgetRefId="flyViewFile">
+            <Method xsi:type="widgets.brease.FlyOut.Action.Close" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
   </Bindings>
 </EventBindingSet>

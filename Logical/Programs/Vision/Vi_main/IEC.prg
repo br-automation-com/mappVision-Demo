@@ -9,5 +9,6 @@
     <File>hmiAction.st</File>
     <File>processResultsAction.st</File>
     <File>styleStringGeneration.st</File>
+    <File Private="true">user.typ</File>
   </Files>
 </Program>

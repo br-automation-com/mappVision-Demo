@@ -19,10 +19,21 @@ ACTION hmiAction:
 	brsmemcpy(ADR(hmi.out.camera.hw),ADR(hw.camera.in.status),SIZEOF(hmi.out.camera.hw));
 	brsmemcpy(ADR(hmi.out.camera.common),ADR(hw.camera.in.common),SIZEOF(hmi.out.camera.common));
 	
-	hmi.in.recipe.cam.flashSegment.0 := hmi.in.cmd.flashSegment.top;
-	hmi.in.recipe.cam.flashSegment.1 := hmi.in.cmd.flashSegment.bottom;
-	hmi.in.recipe.cam.flashSegment.2 := hmi.in.cmd.flashSegment.left;
-	hmi.in.recipe.cam.flashSegment.3 := hmi.in.cmd.flashSegment.right;
+	
+	
+	IF this.mpRecipeRegVar.UpdateNotification THEN
+		
+		hmi.in.cmd.flashSegment.top := hmi.in.recipe.cam.flashSegment.0;
+		hmi.in.recipe.cam.flashSegment.1;
+		hmi.in.cmd.flashSegment.left := 	hmi.in.recipe.cam.flashSegment.2;
+		hmi.in.cmd.flashSegment.right := 	hmi.in.recipe.cam.flashSegment.3;
+	
+	ELSE
+		hmi.in.recipe.cam.flashSegment.0 := hmi.in.cmd.flashSegment.top;
+		hmi.in.recipe.cam.flashSegment.1 := hmi.in.cmd.flashSegment.bottom;
+		hmi.in.recipe.cam.flashSegment.2 := hmi.in.cmd.flashSegment.left;
+		hmi.in.recipe.cam.flashSegment.3 := hmi.in.cmd.flashSegment.right;
+	END_IF
 	
 	FOR i:=START_IDX TO NUM_LIGHTS DO
 		hmi.out.lights[i].common:=hw.lights[i].in.common;
@@ -31,7 +42,7 @@ ACTION hmiAction:
 		hw.lights[i].out.par.nettime:=this.brdkViBase_imgTrigger_0.delayNettime;
 		
 		IF hmi.in.recipe.useCamLedColorForLight THEN
-	  		hw.lights[i].out.par.flashColor:=hmi.in.recipe.cam.flashColor;
+			hw.lights[i].out.par.flashColor:=hmi.in.recipe.cam.flashColor;
 		ELSE	
 			hw.lights[i].out.par.flashColor:=hmi.in.recipe.lights[i].flashColor;
 		END_IF;

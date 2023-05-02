@@ -17,5 +17,6 @@
     <Object Type="Package">drawSettings</Object>
     <Object Type="Package">resultTable</Object>
     <Object Type="Package">vfSettings</Object>
+    <Object Type="Package">triggerSettings</Object>
   </Objects>
 </Package>
