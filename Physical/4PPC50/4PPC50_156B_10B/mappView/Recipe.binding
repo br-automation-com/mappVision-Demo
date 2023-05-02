@@ -113,5 +113,9 @@
 <Source xsi:type="opcUa" refId="::Recipe:hmi.out.enableBtn" attribute="value" />
 <Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="btnRecSave" attribute="enable" />
 </Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Recipe:hmi.out.lastLoaded" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentRecipe" widgetRefId="TextOutput1" attribute="value" />
+</Binding>
 </Bindings>
 </BindingsSet>

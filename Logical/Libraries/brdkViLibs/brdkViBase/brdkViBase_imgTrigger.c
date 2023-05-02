@@ -94,7 +94,6 @@ void brdkViBase_imgTrigger(struct brdkViBase_imgTrigger* inst)
 				}else if(inst->searchAcquisitonSettings){
 				
 					pCam->out.cmd.searchAcquisitonSettings = 1;
-					pCam->out.cmd.imageAcquisition = 1;
 					
 					inst->internal.state = 10;
 			

@@ -14,7 +14,7 @@ ACTION hmiAction:
 		END_IF	
 	END_IF
 	hmi.out.camera.processing := hw.camera.in.status.imageProcessingActive;
-	hmi.out.camera.ready := this.brdkViBase_imgTrigger_0.ready AND NOT hmi.in.cmd.repetitiveTrigger;
+	hmi.out.camera.ready := this.brdkViBase_imgTrigger_0.ready AND NOT hmi.in.recipe.repetitiveTrigger;
 	
 	brsmemcpy(ADR(hmi.out.camera.hw),ADR(hw.camera.in.status),SIZEOF(hmi.out.camera.hw));
 	brsmemcpy(ADR(hmi.out.camera.common),ADR(hw.camera.in.common),SIZEOF(hmi.out.camera.common));

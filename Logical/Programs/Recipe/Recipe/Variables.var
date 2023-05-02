@@ -1,3 +1,6 @@
+VAR RETAIN
+	retain : retain_typ;
+END_VAR
 VAR
 	hmi : hmi_typ;
 	this : local_typ;

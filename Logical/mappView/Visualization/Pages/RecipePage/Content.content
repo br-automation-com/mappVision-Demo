@@ -3,17 +3,17 @@
   <Widgets>
     <Widget xsi:type="widgets.brease.GroupBox" id="grpRecManagment" top="10" left="9" width="1176" height="500" zIndex="0" text="Recipe Managment">
       <Widgets>
-        <Widget xsi:type="widgets.brease.Label" id="labRecFilter" top="15" left="9" width="41" zIndex="15" text="Filter" textAlign="right" />
-        <Widget xsi:type="widgets.brease.TextInput" id="txtRecFilter" top="15" left="50" width="325" zIndex="16" />
+        <Widget xsi:type="widgets.brease.Label" id="labRecFilter" top="15" left="9" width="51" zIndex="15" text="Filter:" textAlign="right" />
+        <Widget xsi:type="widgets.brease.TextInput" id="txtRecFilter" top="15" left="65" width="195" zIndex="16" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRecRefresh" top="408" left="985" width="160" height="43" zIndex="1" image="Media/refresh-icon.svg" imageAlign="right" text="Refresh" imageWidth="30" cornerRadius="10px" textAlign="right" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRecLoad" top="122" left="980" width="160" height="43" zIndex="17" image="Media/SymbolLib/Edit/Open.svg" imageAlign="right" multiLine="true" text="Load" cornerRadius="10px" textAlign="right" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRecSave" top="237" left="980" width="160" height="43" zIndex="18" image="Media/SymbolLib/Edit/Save.svg" imageAlign="right" text="Save" cornerRadius="10px" textAlign="right" />
-        <Widget xsi:type="widgets.brease.Label" id="labRecNewName" top="21" left="695" width="105" height="18" zIndex="19" text="New Name" textAlign="left" />
+        <Widget xsi:type="widgets.brease.Label" id="labRecNewName" top="21" left="695" width="105" height="18" zIndex="19" text="New Name:" textAlign="left" />
         <Widget xsi:type="widgets.brease.TextInput" id="txtRecNewName" top="15" left="800" width="260" zIndex="20" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRecNew" top="65" left="1070" width="70" height="43" zIndex="21" text="New" cornerRadius="10px" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRecRename" top="65" left="980" width="86" height="43" zIndex="22" text="Rename" cornerRadius="10px" />
         <Widget xsi:type="widgets.brease.Button" id="btnRecView" top="179" left="980" width="160" height="43" zIndex="23" image="Media/SymbolLib/Symbols/UnHide.svg" imageAlign="right" text="View" cornerRadius="10px" textAlign="right" />
-        <Widget xsi:type="widgets.brease.Button" id="btnRecClearFilter" top="8" left="395" width="70" height="43" zIndex="35" text="X" cornerRadius="5px" />
+        <Widget xsi:type="widgets.brease.Button" id="btnRecClearFilter" top="8" left="275" width="70" height="43" zIndex="35" text="X" cornerRadius="5px" />
         <Widget xsi:type="widgets.brease.Table" id="Table1" top="63" left="5" width="800" height="387" zIndex="36" showScrollbars="false">
           <Widgets>
             <Widget xsi:type="widgets.brease.TableItem" id="TableItem1" zIndex="0" columnWidth="615" text="Name" />
@@ -28,6 +28,8 @@
         <Widget xsi:type="widgets.brease.Paper" id="Paper1" top="238" left="835" width="30" height="22" zIndex="42" borderStyle="none" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRecDelete" top="294" left="981" width="160" height="43" zIndex="43" image="Media/SymbolLib/Edit/Delete.svg" imageAlign="right" text="Delete" cornerRadius="10px" textAlign="right" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRecDelete1" top="351" left="985" width="160" height="43" zIndex="44" image="Media/SymbolLib/Symbols/Download.svg" imageAlign="right" text="Download" cornerRadius="10px" textAlign="right" />
+        <Widget xsi:type="widgets.brease.Label" id="labRecFilter1" top="15" left="380" width="105" zIndex="45" text="Last Loaded:" textAlign="right top" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput1" top="15" left="485" width="185" zIndex="46" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.FlyOut" id="flyViewFile" top="0" left="1" width="1198" height="500" zIndex="10" autoClose="true" docking="bottom" showButton="false" text="ViewFile" buttonWidth="100" buttonBorderWidth="0px" borderStyle="solid" borderWidth="1px" cornerRadius="5px" backColor="rgba(224, 224, 224, 1)">

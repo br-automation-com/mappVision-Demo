@@ -1,11 +1,14 @@
 
 TYPE
+	retain_typ : 	STRUCT 
+		lastLoadedName : STRING[255];
+	END_STRUCT;
 	local_typ : 	STRUCT 
 		mpRecipeUi : MpRecipeUI;
 		mpRecipe : MpRecipeCsv;
 		New_Member : USINT;
-		oldName : STRING[255];
 		delayTon : TON;
+		autoLoadTon : TON;
 	END_STRUCT;
 	hmi_in_typ : 	STRUCT 
 		downloadDone : BOOL;
@@ -21,5 +24,6 @@ TYPE
 		selectedName : STRING[255];
 		downloadSrc : STRING[500];
 		enableBtn : BOOL;
+		lastLoaded : STRING[255];
 	END_STRUCT;
 END_TYPE

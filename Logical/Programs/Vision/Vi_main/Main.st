@@ -171,7 +171,6 @@ PROGRAM _CYCLIC
 		END_IF
 		this.axisTrig.nettimeLastCycle_us	:= hw.io.in.nettime;
 		
-		hmi.in.recipe.showOnlyLastImage
 		
 		// -----------------------------------------------------------------------------------------------------------
 		// Image trigger (camera and lights)
@@ -243,7 +242,7 @@ PROGRAM _CYCLIC
 				this.brdkViBase_imgTrigger_0.trigger := TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime := gAxis.status.nettime + hmi.in.recipe.ioTriggerDelay ; // Use time calculated in Axis program
 				
-			ELSIF this.currentTriggerNum < hmi.in.recipe.numTrigger THEN
+			ELSIF this.currentTriggerNum < hmi.in.recipe.multiCaptureNum THEN
 			
 				this.brdkViBase_imgTrigger_0.trigger 		:= TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12+10000; // Calc nettime close to currnet time
@@ -287,7 +286,7 @@ PROGRAM _CYCLIC
 		// New image (hight for one scan)
 		IF this.brdkViBase_imgTrigger_0.newImage THEN
 			
-			this.mappView.updateImage := hmi.in.recipe.showAllImages OR this.currentTriggerNum = hmi.in.recipe.numTrigger; // Trigger an update of the image on hmi
+			this.mappView.updateImage := NOT hmi.in.recipe.showOnlyLastImage OR this.currentTriggerNum = hmi.in.recipe.multiCaptureNum; // Trigger an update of the image on hmi
 			this.DTGetTime_0(enable := TRUE);
 			
 			processResultsAction; // Process results action
@@ -331,6 +330,7 @@ PROGRAM _CYCLIC
 			hmi.in.recipe.cam.focus		 	:=	 hw.camera.in.status.focus;
 			hmi.in.recipe.cam.exposureTime 	:=	 hw.camera.in.status.exposureTime;
 			this.brdkViBase_imgTrigger_0.searchAcquisitonSettings := FALSE;
+			hmi.in.cmd.trigger 				:= TRUE;
 		END_IF
 		
 		
@@ -541,7 +541,12 @@ PROGRAM _CYCLIC
 		this.user.mpRecipeRegVar.PVName 	:= ADR(this.user.dataPvName);
 		this.user.mpRecipeRegVar();
 		
+		// Clear ready for init (auto load) if data structures have not been registred
+		IF NOT this.user.mpRecipeRegVar.Active OR NOT this.mpRecipeRegVar.Active THEN
+			gRecipe.in.readyForInit := FALSE;
+		END_IF
 		
+	
 	END_FOR
 	
 
@@ -554,4 +559,17 @@ PROGRAM _CYCLIC
 	setupPointersAction;
 
 	
+END_PROGRAM
+
+
+PROGRAM _EXIT
+
+	FOR idx:= START_IDX TO NUM_CAMS BY 1 DO
+		setupPointersAction;
+		
+	
+		this.mappView(enable := FALSE);
+		this.mpRecipeRegVar(Enable := FALSE);
+		this.user.mpRecipeRegVar(Enable := FALSE);
+	END_FOR
 END_PROGRAM

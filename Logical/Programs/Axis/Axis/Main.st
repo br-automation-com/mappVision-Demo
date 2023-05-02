@@ -108,5 +108,11 @@ PROGRAM _CYCLIC
 	this.mpRecipeRegVar.Category 	:= ADR('Recipe');
 	this.mpRecipeRegVar.PVName 		:= ADR('::Axis:hmi.in.recipe');
 	this.mpRecipeRegVar();
+	
+	// Clear ready for init (auto load) if data structures have not been registred
+	IF NOT this.mpRecipeRegVar.Active THEN
+		gRecipe.in.readyForInit := FALSE;
+	END_IF
+		
 
 END_PROGRAM
