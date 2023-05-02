@@ -600,7 +600,7 @@
 					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe" />
 				</be:List>
 </Source>
-<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="vfSettings1" attribute="Structure" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="vfSettings1" attribute="Structure" />
 </Binding>
 </Bindings>
 </BindingsSet>

@@ -1,0 +1,402 @@
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>widgets.brdk.VisionImage Documentation</title>
+	<link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+<div class="panel-heading"><h3>widgets.brdk.VisionImage</h3></div>
+<div class="panel panel-default">
+ <div class="panel-heading"><h3>Widget Description</h3></div>
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td><strong>short: </strong>Display vision image and svg overlay</td>
+</tr>
+<tr>
+<td><strong>de: </strong>Aktivieren Sie die Visualisierung eines Vision-Bildes und einer darüber liegenden SVG-Überlagerung. Kann den Inhalt zoomen, schwenken, drehen und spiegeln.</td>
+</tr>
+<tr>
+<td><strong>en: </strong>Enable visualisation of an Vision image and an svg overlay ontop of it. Can zoom, pan, rotate and flip the contnet.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="panel panel-default">
+ <div class="panel-heading"><h3>Properties</h3></div>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>description</th>
+<th>bindable</th>
+<th>readOnly</th>
+<th>required</th>
+<th>defaultValue</th>
+<th>localizable</th>
+</tr>
+ </thead>
+<tbody>
+<tr>
+<td>PLCWebsocketPort</td>
+<td>UNumber</td>
+<td>Additional PLC websocket port to connect to (0=Not used).
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>0</td>
+<td>false</td>
+</tr>
+<tr>
+<td>colorList</td>
+<td>ColorList</td>
+<td>List of possible colors to apply to svg elements.
+</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>#FFCC66,#FF8800,#FFCC99,#993333</td>
+<td>false</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>Boolean</td>
+<td>Initial option to enable widget.
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>flipHorisontal</td>
+<td>Boolean</td>
+<td>Flip image horizontal
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>flipVertical</td>
+<td>Boolean</td>
+<td>Flip image vertical
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>maxZoomLevel</td>
+<td>UNumber</td>
+<td>Defines in percentage the upper limit of the zoom in the Paper area (100 means no zoom level applied)
+</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>1000</td>
+<td>false</td>
+</tr>
+<tr>
+<td>minZoomLevel</td>
+<td>UNumber</td>
+<td>Defines in percentage the lower limit of the zoom in the Paper area (100 means no zoom level applied)
+</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>20</td>
+<td>false</td>
+</tr>
+<tr>
+<td>permissionOperate</td>
+<td>RoleCollection</td>
+<td>restricts operability to users, which have given roles
+</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>permissionView</td>
+<td>RoleCollection</td>
+<td>restricts visibility to users, which have given roles
+</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>style</td>
+<td>StyleReference</td>
+<td>reference to a style for this widget type
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>default</td>
+<td>false</td>
+</tr>
+<tr>
+<td>svgImage</td>
+<td>String</td>
+<td>Additional svg string content to display on the widget.
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>svgOverlay</td>
+<td>String</td>
+<td>Additional svg string content to display on the widget.
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>tabIndex</td>
+<td>Integer</td>
+<td>sets if a widget should have autofocus enabled (0), the order of the focus (>0),
+or if autofocus should be disabled (-1)
+</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>-1</td>
+<td>false</td>
+</tr>
+<tr>
+<td>tooltip</td>
+<td>String</td>
+<td>reference to a tooltip for a widget
+</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td style="color:green;font-weight:bold;">true</td>
+</tr>
+<tr>
+<td>transitionTime</td>
+<td>UInteger</td>
+<td>Default execution time of any svg transformation.
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>500</td>
+<td>false</td>
+</tr>
+<tr>
+<td>viewRotateAngle</td>
+<td>Number</td>
+<td>Defines in degrees the view rotation
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>0</td>
+<td>false</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>Boolean</td>
+<td>change visibility
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>visibleOverlay</td>
+<td>Boolean</td>
+<td>Overlay is visible if the value is true. Otherwise, invisible.
+</td>
+<td style="color:green;font-weight:bold;">true</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>zIndex</td>
+<td>UInteger</td>
+<td>The zIndex property specifies the z-order of a widget and its childs.<br/>
+        When widgets overlap, z-order determines which one covers the other. A widget with a larger zIndex generally covers a widget with a lower one.<br/>
+        The zIndex must be unique within a content.<br/></td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>left</td>
+<td>Integer</td>
+<td>absolute position measured from left boundary of parent container</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>top</td>
+<td>Integer</td>
+<td>absolute position measured from top boundary of parent container</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>height</td>
+<td>Size</td>
+<td>outer height of widget</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>300</td>
+<td>false</td>
+</tr>
+<tr>
+<td>width</td>
+<td>Size</td>
+<td>outer width of widget</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>300</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="panel panel-default">
+ <div class="panel-heading"><h3>Styleable Properties</h3></div>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>description</th>
+<th>defaultValue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>Size</td>
+<td><p>outer width of widget</p>
+</td>
+<td>300</td>
+</tr>
+<tr>
+<td>height</td>
+<td>Size</td>
+<td><p>outer height of widget</p>
+</td>
+<td>300</td>
+</tr>
+<tr>
+<td>top</td>
+<td>Integer</td>
+<td><p>absolute position measured from top boundary of parent container</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>left</td>
+<td>Integer</td>
+<td><p>absolute position measured from left boundary of parent container</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>zIndex</td>
+<td>UInteger</td>
+<td><p>The zIndex property specifies the z-order of a widget and its childs.&lt;br/&gt;
+When widgets overlap, z-order determines which one covers the other. A widget with a larger zIndex generally covers a widget with a lower one.&lt;br/&gt;
+The zIndex must be unique within a content.&lt;br/&gt;</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>PixelValCollection</td>
+<td><p>Sets the width of the border. For further information, please check its type</p>
+</td>
+<td>1px</td>
+</tr>
+<tr>
+<td>borderStyle</td>
+<td>BorderStyle</td>
+<td><p>Style of the border of the widget</p>
+</td>
+<td>solid</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>ColorCollection</td>
+<td><p>Sets the border color</p>
+</td>
+<td>#000000</td>
+</tr>
+<tr>
+<td>cornerRadius</td>
+<td>PixelValCollection</td>
+<td><p>Sets the radius of the widget rounded corners. For further information, please check its type</p>
+</td>
+<td>0px</td>
+</tr>
+<tr>
+<td>backColor</td>
+<td>Color</td>
+<td><p>Sets the background color</p>
+</td>
+<td>transparent</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>Opacity</td>
+<td><p>Opacity of the widget</p>
+</td>
+<td>1</td>
+</tr>
+<tr>
+<td>margin</td>
+<td>Margin</td>
+<td><p>Margin of the Widget</p>
+</td>
+<td>0px</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+ <script src="../../../../jquery.js"></script>
+ <script src="../../../../assets/js/bootstrap.min.js"></script>
+</body>
+</html>

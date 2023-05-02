@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SchemaCatalog xmlns="http://schemas.microsoft.com/xsd/catalog">
+	<Schema href="VisionImage/meta/VisionImage_Styles.xsd" targetNamespace="http://www.br-automation.com/iat2015/styles/engineering/v1" />
+</SchemaCatalog>

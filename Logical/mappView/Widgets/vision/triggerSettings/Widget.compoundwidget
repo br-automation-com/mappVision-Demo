@@ -18,14 +18,14 @@
 		<Property xsi:type="StructureBindableProperty" name="Structure" type="recipe_typ" readOnly="false" category="data" required="false" >
 			<Description>Structure containing all recipe data</Description>
 			<Mappings>
-				<Mapping widget="ToggleButtonShowLastImages" 	type="Boolean" property="value" mode="oneWay" memberPath="showOnlyLastImage" mapToNode="false"/>
-				<Mapping widget="ToggleButtonRepetiveMode" 		type="Boolean" property="value" mode="oneWay" memberPath="repetitiveTrigger" mapToNode="false"/>
-				<Mapping widget="ToggleButtonAxisTrigger" 		type="Boolean" property="value" mode="oneWay" memberPath="enableAxisTrigger" mapToNode="false"/>
-				<Mapping widget="btnEnableIoTrigger" 			type="Boolean" property="value" mode="oneWay" memberPath="enableIoTrigger" mapToNode="false"/>
+				<Mapping widget="ToggleButtonShowLastImages" 	type="Boolean" property="value" mode="twoWay" memberPath="showOnlyLastImage" mapToNode="false"/>
+				<Mapping widget="ToggleButtonRepetiveMode" 		type="Boolean" property="value" mode="twoWay" memberPath="repetitiveTrigger" mapToNode="false"/>
+				<Mapping widget="ToggleButtonAxisTrigger" 		type="Boolean" property="value" mode="twoWay" memberPath="enableAxisTrigger" mapToNode="false"/>
+				<Mapping widget="btnEnableIoTrigger" 			type="Boolean" property="value" mode="twoWay" memberPath="enableIoTrigger" mapToNode="false"/>
 			
-				<Mapping widget="numMultiCapture" 				type="Number" property="value" mode="oneWay" memberPath="multiCaptureNum" mapToNode="false"/>
-				<Mapping widget="numIoTriggerDelay" 			type="Number" property="value" mode="oneWay" memberPath="ioTriggerDelay" mapToNode="false"/>
-				<Mapping widget="numRepetitiveInterval" 		type="Number" property="value" mode="oneWay" memberPath="repetitiveTriggerInterval" mapToNode="false"/>
+				<Mapping widget="numMultiCapture" 				type="Number" property="value" mode="twoWay" memberPath="multiCaptureNum" mapToNode="false"/>
+				<Mapping widget="numIoTriggerDelay" 			type="Number" property="value" mode="twoWay" memberPath="ioTriggerDelay" mapToNode="false"/>
+				<Mapping widget="numRepetitiveInterval" 		type="Number" property="value" mode="twoWay" memberPath="repetitiveTriggerInterval" mapToNode="false"/>
 		
 			</Mappings>
 		</Property>

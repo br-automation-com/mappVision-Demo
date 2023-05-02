@@ -219,13 +219,19 @@ PROGRAM _CYCLIC
 		//-------------------------------------------------------------------------
 		
 		this.ioTrigger(CLK := hw.io.in.commonTrigger OR hw.io.in.individualTrigger);
+		this.repetitiveTriggerTON.IN := hmi.in.recipe.repetitiveTrigger;
+		this.repetitiveTriggerTON.PT := UDINT_TO_TIME(hmi.in.recipe.repetitiveTriggerInterval);
+		this.repetitiveTriggerTON();
+			
 		// check if camera is ready for an image trigger and MappView have been updated
 		IF this.brdkViBase_imgTrigger_0.ready AND NOT this.brdkViBase_imgTrigger_0.busy AND this.mappView.status = 0 THEN 
 			
 			
 			// Hmi manual trigger
-			IF hmi.in.cmd.trigger OR hmi.in.recipe.repetitiveTrigger THEN
+			IF hmi.in.cmd.trigger OR this.repetitiveTriggerTON.Q THEN
 				hmi.in.cmd.trigger 							:= FALSE;
+				
+				this.repetitiveTriggerTON(IN:=FALSE);
 				
 				this.brdkViBase_imgTrigger_0.trigger 		:= TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12+10000; // Calc nettime close to currnet time
@@ -242,7 +248,7 @@ PROGRAM _CYCLIC
 				this.brdkViBase_imgTrigger_0.trigger := TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime := gAxis.status.nettime + hmi.in.recipe.ioTriggerDelay ; // Use time calculated in Axis program
 				
-			ELSIF this.currentTriggerNum < hmi.in.recipe.multiCaptureNum THEN
+			ELSIF this.currentTriggerNum < hmi.in.recipe.multiCaptureNum AND NOT hmi.in.recipe.repetitiveTrigger THEN
 			
 				this.brdkViBase_imgTrigger_0.trigger 		:= TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12+10000; // Calc nettime close to currnet time

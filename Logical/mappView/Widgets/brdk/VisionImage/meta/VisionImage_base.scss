@@ -1,0 +1,17 @@
+@import "mixins.scss";
+@mixin widgets_brdk_VisionImage_base {
+	@include elemWidth(300);
+	@include elemHeight(300);
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	@include border-radius(0px);
+svg.breasePaperSVGContainer {
+	@include border-radius(0px);
+}
+	background-color: transparent;
+	opacity: 1;
+	margin: 0px;
+
+}
+
