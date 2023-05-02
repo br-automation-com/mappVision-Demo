@@ -50,28 +50,28 @@
 			<Description>Structure containing all vf settings</Description>
 			<Mappings>
 				<!-- BLOB -->
-				<Mapping widget="ToggleButtonRegionFeatures" 	type="Boolean" property="value" mode="oneWay" memberPath="BLOB.regionFeatures" mapToNode="false"/>
-				<Mapping widget="ToggleButtonEnhancedInfo" 		type="Boolean" property="value" mode="oneWay" memberPath="BLOB.enhancedBlobInformation" mapToNode="false"/>
+				<Mapping widget="ToggleButtonRegionFeatures" 	type="Boolean" property="value" mode="twoWay" memberPath="BLOB.regionFeatures" mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnhancedInfo" 		type="Boolean" property="value" mode="twoWay" memberPath="BLOB.enhancedBlobInformation" mapToNode="false"/>
 			
 				<!-- OCR -->
-				<Mapping widget="ToggleButtonEnableParameterMode" 	type="Boolean" property="value" mode="oneWay" memberPath="OCR.parameterMode" mapToNode="false"/>
-				<Mapping widget="ToggleButtonEnableGrading" 		type="Boolean" property="value" mode="oneWay" memberPath="OCR.grading" mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnableParameterMode" 	type="Boolean" property="value" mode="twoWay" memberPath="OCR.parameterMode" mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnableGrading" 		type="Boolean" property="value" mode="twoWay" memberPath="OCR.grading" mapToNode="false"/>
 			
 				<!-- Pixel counter -->
-				<Mapping widget="ToggleButtonEnableEnhancedPxInfo" 	type="Boolean" property="value" mode="oneWay" memberPath="pxCnt.enhancedPXInformation" mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnableEnhancedPxInfo" 	type="Boolean" property="value" mode="twoWay" memberPath="pxCnt.enhancedPXInformation" mapToNode="false"/>
 			
 				
 				<!-- Matching -->
-				<Mapping widget="numMatchMinScore" 		type="Number" property="value" mode="oneWay" memberPath="match.minScore" mapToNode="false"/>
-				<Mapping widget="numMatchMaxOverlap" 	type="Number" property="value" mode="oneWay" memberPath="match.maxOverlap" mapToNode="false"/>
+				<Mapping widget="numMatchMinScore" 		type="Number" property="value" mode="twoWay" memberPath="match.minScore" mapToNode="false"/>
+				<Mapping widget="numMatchMaxOverlap" 	type="Number" property="value" mode="twoWay" memberPath="match.maxOverlap" mapToNode="false"/>
 				
 				
 				<!-- Code reader -->
-				<Mapping widget="ToggleButtonEnableRobustness" 		type="Boolean" property="value" mode="oneWay" memberPath="CR.enableRobustness" mapToNode="false"/>
-				<Mapping widget="ToggleButtonEnableGradingCR" 		type="Boolean" property="value" mode="oneWay" memberPath="CR.codeGrading" mapToNode="false"/>
-				<Mapping widget="CodeReaderTypePreset" 				type="Number" property="selectedIndex" mode="oneWay" memberPath="CR.symbolType" mapToNode="false"/>
-				<Mapping widget="CodeReaderParamMode" 				type="Number" property="selectedIndex" mode="oneWay" memberPath="CR.parameterMode" mapToNode="false"/>
-				<Mapping widget="CodeReaderParamOptimization" 		type="Number" property="selectedIndex" mode="oneWay" memberPath="CR.parameterOptimization" mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnableRobustness" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.enableRobustness" mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnableGradingCR" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.codeGrading" mapToNode="false"/>
+				<Mapping widget="CodeReaderTypePreset" 				type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.symbolType" mapToNode="false"/>
+				<Mapping widget="CodeReaderParamMode" 				type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterMode" mapToNode="false"/>
+				<Mapping widget="CodeReaderParamOptimization" 		type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterOptimization" mapToNode="false"/>
 		
 			</Mappings>
 		</Property>
