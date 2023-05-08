@@ -44,6 +44,8 @@ plcbit brdkViBase_cr_hw2hmi(struct brdkViBase_hw_cr_in_typ* hw, struct brdkViBas
 	hmi->gradingValue = hw->gradingValue;
 	strcpy(&hmi->data,&hw->data);
 	hmi->symbolType = hw->symbolType;
+	itoa(hw->symbolType, hmi->symbolTypeStr, 10);
+	
 	hmi->orientation = hw->orientation  / 100.0;
 	hmi->positionX = hw->positionX  / 100.0;
 	hmi->positionY = hw->positionY  / 100.0;

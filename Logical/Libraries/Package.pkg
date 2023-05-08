@@ -38,5 +38,6 @@
     <Object Type="Library" Language="Binary" Description="File explorer for B+R file devices">MpFile</Object>
     <Object Type="Library" Language="Binary" Description="Recipe management">MpRecipe</Object>
     <Object Type="Library" Language="Binary" Description="mapp components diagnosis,hierarchy and unit handling">MpCom</Object>
+    <Object Type="Library" Language="Binary" Description="This mechatronics library contains function blocks for statistical data analysis.">MTData</Object>
   </Objects>
 </Package>

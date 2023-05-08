@@ -14,7 +14,45 @@
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnableRobustness" top="277" left="16" width="470" height="60" zIndex="0" text="Enable Robustness" fontSize="24px" style="Operate" />
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnableGradingCR" top="357" left="16" width="470" height="60" zIndex="1" text="Enable Grading" fontSize="24px" style="Operate" />
 						<Widget xsi:type="widgets.brease.Label" id="labCodeReader1" top="12" left="16" width="171" height="27" zIndex="2" text="Code Type Preset" textAlign="left" fontSize="18px" />
-						<Widget xsi:type="widgets.brease.DropDownBox" id="CodeReaderTypePreset" top="42" left="16" width="470" zIndex="3" listPosition="center" listWidth="500" textAlign="center" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.DropDownBox" id="CodeReaderTypePreset" top="42" left="16" width="470" zIndex="3" listPosition="center" listWidth="500" textAlign="center" fontSize="18px" dataProvider="[{'value': '0', 'text': '0 - Identify code'}, {'value': '1', 'text': '1 - 2/5 Industrial'},
+							{'value': '2', 'text': '2 - 2/5 Interleaved'},
+							{'value': '3', 'text': '3 - Codabar'},
+							{'value': '4', 'text': '4 - Code 32'},
+							{'value': '5', 'text': '5 - Code 39'},
+							{'value': '6', 'text': '6 - Code 93'},
+							{'value': '7', 'text': '7 - Code 128'},
+							{'value': '8', 'text': '8 - MSI'},
+							{'value': '9', 'text': '9 - PharmaCode'},
+							{'value': '10', 'text': '10 - EAN-8'},
+							{'value': '11', 'text': '11 - EAN-8 Add-On 2'},
+							{'value': '12', 'text': '12 - EAN-8 Add-On 5'},
+							{'value': '13', 'text': '13 - EAN-13'},
+							{'value': '14', 'text': '14 - EAN-13 Add-On 2'},
+							{'value': '15', 'text': '15 - EAN-13 Add-On 5'},
+							{'value': '20', 'text': '20 - UPC-A'},
+							{'value': '21', 'text': '21 - UPC-A Add-On 2'},
+							{'value': '22', 'text': '22 - UPC-A Add-On 5'},
+							{'value': '23', 'text': '23 - UPC-E'},
+							{'value': '24', 'text': '24 - UPC-E Add-On 2'},
+							{'value': '25', 'text': '25 - UPC-E Add-On 5'},
+							{'value': '30', 'text': '30 - GS1-128'},
+							{'value': '31', 'text': '31 - GS1 DataBar'},
+							{'value': '32', 'text': '32 - GS1 DataBar'},
+							{'value': '33', 'text': '33 - GS1 DataBar'},
+							{'value': '34', 'text': '34 - GS1 DataBar'},
+							{'value': '35', 'text': '35 - GS1 DataBar'},
+							{'value': '36', 'text': '36 - GS1 DataBar'},
+							{'value': '37', 'text': '37 - GS1 DataBar'},
+							{'value': '50', 'text': '50 - Data Matrix ECC 200'},
+							{'value': '51', 'text': '51 - QR Code Model 1'},
+							{'value': '52', 'text': '52 - QR Code Model 2'},
+							{'value': '53', 'text': '53 - Micro QR Code'},
+							{'value': '54', 'text': '54 - PDF417'},
+							{'value': '55', 'text': '55 - Aztec code'},
+							{'value': '60', 'text': '60 - GS1 DataMatrix'},
+							{'value': '61', 'text': '61 - GS1 QR Code Model 1'},
+							{'value': '62', 'text': '62 - GS1 QR Code Model 2'},
+							{'value': '63', 'text': '63 - GS1 Aztec code'}]"/>
 						<Widget xsi:type="widgets.brease.Label" id="labCodeReader2" top="97" left="16" width="210" height="27" zIndex="4" text="Parameter Mode" textAlign="left" fontSize="18px" />
 						<Widget xsi:type="widgets.brease.DropDownBox" id="CodeReaderParamMode" top="132" left="16" width="470" zIndex="5" dataProvider="[{'value':'0','text':'Max. Recognition (Polarity: black on white)'},{'value':'1','text':'Max. Recognition (Polarity: white on black)'},{'value':'10','text':'Fast Recognition (Polarity: black on white)'},{'value':'11','text':'Fast Recognition (Polarity: white on black)'},{'value':'20','text':'Trained Parameter (Parameteroptimization)'},{'value':'30','text':'User defined Parameter (Expert mode):'}]" listPosition="center" listWidth="500" selectedValue="0" textAlign="center" fontSize="18px" />
 						<Widget xsi:type="widgets.brease.Label" id="labCodeReader3" top="187" left="16" width="210" height="27" zIndex="6" text="Parameter Optimization" textAlign="left" fontSize="18px" />
@@ -69,7 +107,7 @@
 				<!-- Code reader -->
 				<Mapping widget="ToggleButtonEnableRobustness" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.enableRobustness" mapToNode="false"/>
 				<Mapping widget="ToggleButtonEnableGradingCR" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.codeGrading" mapToNode="false"/>
-				<Mapping widget="CodeReaderTypePreset" 				type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.symbolType" mapToNode="false"/>
+				<Mapping widget="CodeReaderTypePreset" 				type="String" property="selectedValue" mode="twoWay" memberPath="CRTypeStr" mapToNode="false"/>
 				<Mapping widget="CodeReaderParamMode" 				type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterMode" mapToNode="false"/>
 				<Mapping widget="CodeReaderParamOptimization" 		type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterOptimization" mapToNode="false"/>
 		

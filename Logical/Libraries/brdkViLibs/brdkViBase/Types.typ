@@ -465,6 +465,7 @@ END_TYPE
 TYPE
 	brdkViBase_hmi_cr_in_typ : 	STRUCT  (*Code Reader hardware input structure for a result*)
 		data : STRING[100]; (*Returns the content of the found code as array OCTET.  Size 50*)
+		symbolTypeStr : STRING[20]; (*Symbol type of codes found.*)
 		symbolType : USINT; (*Symbol type of codes found.*)
 		gradingValue : SINT; (*Evaluation of the codes in terms of quality*)
 		enhancedGradingInformation : STRING[23]; (*Output of extended grading information from which the general GradingValue assessment parameter is composed.*)

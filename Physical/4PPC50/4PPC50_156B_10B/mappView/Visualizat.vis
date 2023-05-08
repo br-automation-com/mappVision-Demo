@@ -19,7 +19,7 @@
 		<BindingsSet refId="Header_binding" />
 		<BindingsSet refId="Main_binding" />
 		<BindingsSet refId="Footer_binding" />
-		<BindingsSet refId="Blob_binding" />
+		<BindingsSet refId="results_binding" />
 		<BindingsSet refId="Nettime_binding" />
 		<BindingsSet refId="Color_binding" />
 		<BindingsSet refId="Lights_binding" />

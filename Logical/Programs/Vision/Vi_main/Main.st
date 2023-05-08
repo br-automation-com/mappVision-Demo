@@ -539,6 +539,14 @@ PROGRAM _CYCLIC
 		this.mpRecipeRegVar.PVName 		:= ADR(this.recipePVName);
 		this.mpRecipeRegVar();
 		
+		// handle conversion from CR dropDown value to interger and back
+		IF this.mpRecipeRegVar.UpdateNotification THEN
+			hmi.in.recipe.CRTypeStr := USINT_TO_STRING(hmi.in.recipe.CR.symbolType);
+		ELSE
+			hmi.in.recipe.CR.symbolType := STRING_TO_USINT(hmi.in.recipe.CRTypeStr);
+		END_IF
+		
+		
 		
 		this.user.mpRecipeRegVar.Enable 		:= gRecipe.out.active;
 		this.user.mpRecipeRegVar.MpLink 	:= gRecipe.out.mpLink;

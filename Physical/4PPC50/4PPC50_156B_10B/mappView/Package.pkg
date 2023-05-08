@@ -7,12 +7,7 @@
     <Object Type="File">Header.binding</Object>
     <Object Type="File">Footer.binding</Object>
     <Object Type="File">Main.binding</Object>
-    <Object Type="File">Blob.binding</Object>
-    <Object Type="File">CodeReader.binding</Object>
-    <Object Type="File">Match.binding</Object>
-    <Object Type="File">MT.binding</Object>
-    <Object Type="File">OCR.binding</Object>
-    <Object Type="File">Pixel.binding</Object>
+    <Object Type="File">Results.binding</Object>
     <Object Type="File">Lights.binding</Object>
     <Object Type="File">Nettime.binding</Object>
     <Object Type="File">Color.binding</Object>

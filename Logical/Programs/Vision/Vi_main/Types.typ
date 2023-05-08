@@ -177,7 +177,7 @@ TYPE
 		lights : ARRAY[START_IDX..NUM_LIGHTS]OF brdkViBase_light_hw_out_par_typ;
 		cam : brdkViBase_cam_recipe_typ;
 		BLOB : brdkViBase_hw_blob_out_typ;
-		CR : brdkViBase_hw_cr_out_typ;
+		CR : brdkViBase_hw_cr_out_typ := (symbolType:=0);
 		match : brdkViBase_hw_match_out_typ;
 		meassurement : brdkViBase_hw_meas_out_typ;
 		OCR : brdkViBase_hw_OCR_out_typ;
@@ -192,6 +192,7 @@ TYPE
 		enableAxisTrigger : BOOL;
 		repetitiveTriggerInterval : UDINT;
 		repetitiveTrigger : BOOL;
+		CRTypeStr : STRING[20] := '0';
 	END_STRUCT;
 	common_hmi_in_cmd_typ : 	STRUCT 
 		deleteAllImage : BOOL;
