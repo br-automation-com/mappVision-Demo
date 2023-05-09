@@ -109,11 +109,11 @@
 				<Mapping widget="ToggleButtonRegionFeatures" 	type="Boolean" property="value" mode="twoWay" memberPath="BLOB.regionFeatures" mapToNode="false"/>
 				<Mapping widget="ToggleButtonEnhancedInfo" 		type="Boolean" property="value" mode="twoWay" memberPath="BLOB.enhancedBlobInformation" mapToNode="false"/>
 				
-				<Mapping widget="numOffsetROIX" 				type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.x" 			mapToNode="true"/>
-				<Mapping widget="numOffsetROIY" 				type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.y" 			mapToNode="true"/>
-				<Mapping widget="numOffsetROIOrientation" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.orientation" mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterX" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.rotCenterX" 	mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterY" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.rotCenterY" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIX" 				type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.x" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIY" 				type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.y" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIOrientation" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.orientation" mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterX" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.rotCenterX" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterY" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.rotCenterY" 	mapToNode="false"/>
 		
 				<!-- Code reader -->
 				<Mapping widget="ToggleButtonEnableRobustness" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.enableRobustness" 				mapToNode="false"/>
@@ -123,11 +123,11 @@
 				<Mapping widget="CodeReaderParamOptimization" 		type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterOptimization" 	mapToNode="false"/>
 				<Mapping widget="numTimeout" 						type="Number" property="value" mode="twoWay" memberPath="CR.timeout" 						mapToNode="false"/>
 			
-				<Mapping widget="numOffsetROIX1" 				type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.x" 			mapToNode="true"/>
-				<Mapping widget="numOffsetROIY1" 				type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.y" 			mapToNode="true"/>
-				<Mapping widget="numOffsetROIOrientation1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.orientation" 	mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterX1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.rotCenterX" 	mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterY1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.rotCenterY" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIX1" 				type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.x" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIY1" 				type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.y" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIOrientation1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.orientation" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterX1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.rotCenterX" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterY1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.rotCenterY" 	mapToNode="false"/>
 			
 				
 				
@@ -136,11 +136,11 @@
 				<Mapping widget="numMatchMaxOverlap" 	type="Number" property="value" mode="twoWay" memberPath="match.maxOverlap" mapToNode="false"/>
 				<Mapping widget="numTimeout1" 					type="Number" property="value" mode="twoWay" memberPath="match.timeout" 						mapToNode="false"/>
 		
-				<Mapping widget="numOffsetROIX2" 				type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.x" 				mapToNode="true"/>
-				<Mapping widget="numOffsetROIY2" 				type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.y" 				mapToNode="true"/>
-				<Mapping widget="numOffsetROIOrientation2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.orientation" 	mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterX2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.rotCenterX" 	mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterY2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.rotCenterY" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIX2" 				type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.x" 				mapToNode="false"/>
+				<Mapping widget="numOffsetROIY2" 				type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.y" 				mapToNode="false"/>
+				<Mapping widget="numOffsetROIOrientation2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.orientation" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterX2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.rotCenterX" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterY2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.rotCenterY" 	mapToNode="false"/>
 			
 			
 				<!-- OCR -->
@@ -148,11 +148,11 @@
 				<Mapping widget="ToggleButtonEnableGrading" 		type="Boolean" property="value" mode="twoWay" 	memberPath="OCR.grading" 		mapToNode="false"/>
 				<Mapping widget="numTimeout2" 						type="Number" property="value" mode="twoWay" 	memberPath="OCR.timeout" 		mapToNode="false"/>
 		
-				<Mapping widget="numOffsetROIX3" 				type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.x" 			mapToNode="true"/>
-				<Mapping widget="numOffsetROIY3" 				type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.y" 			mapToNode="true"/>
-				<Mapping widget="numOffsetROIOrientation3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.orientation" 	mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterX3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.rotCenterX" 	mapToNode="true"/>
-				<Mapping widget="numOffsetROIRotCenterY3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.rotCenterY" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIX3" 				type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.x" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIY3" 				type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.y" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIOrientation3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.orientation" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterX3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.rotCenterX" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterY3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.rotCenterY" 	mapToNode="false"/>
 				
 			
 				
