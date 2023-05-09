@@ -22,7 +22,7 @@
     <Build GccVersion="6.3.0" PostBuildStep="Powershell.exe -executionpolicy remotesigned -File &quot;$(WIN32_AS_PROJECT_PATH)/Logical/Vision/RouteInfo_Tool.ps1&quot; -ProjectPath &quot;$(WIN32_AS_PROJECT_PATH)&quot; -ProjectCfg &quot;$(AS_CONFIGURATION)&quot;" PreBuildStep="" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Safety SafetyRelease="0.0" />
-    <Transfer AddToUserPart="False" AdditionalUserDir="" AllowDowngrade="False" AllowInitialTransfer="False" AllowPartitioning="False" ExecuteInitExitProgram="True" ForceInitialTransfer="False" IdentificationTypeValue="" IgnoreVersion="True" KeepNonVolatileMemory="False" PreserveVariableValues="False" ProjectConsistent="False" RebootDuringTransfer="True" SavedOfflineInstallationFolder="" SavedPipDestinationFolder="" SavedRuntimeUtilityCenterPackagePath="" TargetIdentificationType="Always" TryToBootInRunMode="False" UserFilesIgnoreDifference="True" />
+    <Transfer AddToUserPart="False" AdditionalUserDir="" AllowDowngrade="False" AllowInitialTransfer="False" AllowPartitioning="False" ExecuteInitExitProgram="True" ForceInitialTransfer="False" IdentificationTypeValue="" IgnoreVersion="True" KeepNonVolatileMemory="False" PreserveVariableValues="False" ProjectConsistent="True" RebootDuringTransfer="False" SavedOfflineInstallationFolder="" SavedPipDestinationFolder="" SavedRuntimeUtilityCenterPackagePath="" TargetIdentificationType="Always" TryToBootInRunMode="False" UserFilesIgnoreDifference="True" />
     <Vc FirmwareVersion="V4.72.6" />
     <OnlineConfiguration Name="NewTCPIPConnection_4" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=1" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=10.10.0.253 /REPO=11159 /ANSL=1 /PT=11169" Description="" />
   </Configuration>

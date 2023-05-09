@@ -1,81 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CompoundWidget id="vfSettings" width="515" height="500" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Widgets>
-		<Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="20" left="20" width="515" height="500" style="transparent" zIndex="0" childPositioning="relative">
+		<Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="20" left="20" width="515" height="600" zIndex="0" childPositioning="relative" style="transparent">
 			<Widgets>
-				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxBlob" top="0" left="0" width="500" height="216" zIndex="0" text="BLOB">
+				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxBlob" top="0" left="0" width="600" height="465" zIndex="0" text="BLOB">
 					<Widgets>
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonRegionFeatures" top="13" left="15" width="470" height="60" zIndex="0" text="Region features" fontSize="24px" style="Operate" />
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnhancedInfo" top="93" left="14" width="470" height="60" zIndex="1" text="Enhanced information" fontSize="24px" style="Operate" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIX" top="173" left="389" height="40" zIndex="2" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIY" top="223" left="389" height="40" zIndex="3" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIOrientation" top="273" left="389" height="40" zIndex="4" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'DD','imperial':'DD','imperial-us':'DD'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label28" top="178" left="234" width="150" zIndex="5" text="Offset ROI X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label29" top="228" left="229" width="150" zIndex="6" text="Offset ROI Y" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label30" top="278" left="174" width="210" zIndex="7" text="Offset ROI Orientation" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterX" top="323" left="389" height="40" zIndex="8" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterY" top="373" left="389" height="40" zIndex="9" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label43" top="328" left="145" width="239" zIndex="10" text="Offset ROI rotation center X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label44" top="378" left="135" width="244" zIndex="11" text="Offset ROI rotation center Y" textAlign="right" fontSize="18px" />
 					</Widgets>
 				</Widget>
-				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxCodeReader" top="0" left="0" width="505" height="475" zIndex="1" text="Code Reader">
+				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxCodeReader" top="0" left="0" width="505" height="780" zIndex="1" text="Code Reader">
 					<Widgets>
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnableRobustness" top="277" left="16" width="470" height="60" zIndex="0" text="Enable Robustness" fontSize="24px" style="Operate" />
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnableGradingCR" top="357" left="16" width="470" height="60" zIndex="1" text="Enable Grading" fontSize="24px" style="Operate" />
 						<Widget xsi:type="widgets.brease.Label" id="labCodeReader1" top="12" left="16" width="171" height="27" zIndex="2" text="Code Type Preset" textAlign="left" fontSize="18px" />
-						<Widget xsi:type="widgets.brease.DropDownBox" id="CodeReaderTypePreset" top="42" left="16" width="470" zIndex="3" listPosition="center" listWidth="500" textAlign="center" fontSize="18px" dataProvider="[{'value': '0', 'text': '0 - Identify code'}, {'value': '1', 'text': '1 - 2/5 Industrial'},
-							{'value': '2', 'text': '2 - 2/5 Interleaved'},
-							{'value': '3', 'text': '3 - Codabar'},
-							{'value': '4', 'text': '4 - Code 32'},
-							{'value': '5', 'text': '5 - Code 39'},
-							{'value': '6', 'text': '6 - Code 93'},
-							{'value': '7', 'text': '7 - Code 128'},
-							{'value': '8', 'text': '8 - MSI'},
-							{'value': '9', 'text': '9 - PharmaCode'},
-							{'value': '10', 'text': '10 - EAN-8'},
-							{'value': '11', 'text': '11 - EAN-8 Add-On 2'},
-							{'value': '12', 'text': '12 - EAN-8 Add-On 5'},
-							{'value': '13', 'text': '13 - EAN-13'},
-							{'value': '14', 'text': '14 - EAN-13 Add-On 2'},
-							{'value': '15', 'text': '15 - EAN-13 Add-On 5'},
-							{'value': '20', 'text': '20 - UPC-A'},
-							{'value': '21', 'text': '21 - UPC-A Add-On 2'},
-							{'value': '22', 'text': '22 - UPC-A Add-On 5'},
-							{'value': '23', 'text': '23 - UPC-E'},
-							{'value': '24', 'text': '24 - UPC-E Add-On 2'},
-							{'value': '25', 'text': '25 - UPC-E Add-On 5'},
-							{'value': '30', 'text': '30 - GS1-128'},
-							{'value': '31', 'text': '31 - GS1 DataBar'},
-							{'value': '32', 'text': '32 - GS1 DataBar'},
-							{'value': '33', 'text': '33 - GS1 DataBar'},
-							{'value': '34', 'text': '34 - GS1 DataBar'},
-							{'value': '35', 'text': '35 - GS1 DataBar'},
-							{'value': '36', 'text': '36 - GS1 DataBar'},
-							{'value': '37', 'text': '37 - GS1 DataBar'},
-							{'value': '50', 'text': '50 - Data Matrix ECC 200'},
-							{'value': '51', 'text': '51 - QR Code Model 1'},
-							{'value': '52', 'text': '52 - QR Code Model 2'},
-							{'value': '53', 'text': '53 - Micro QR Code'},
-							{'value': '54', 'text': '54 - PDF417'},
-							{'value': '55', 'text': '55 - Aztec code'},
-							{'value': '60', 'text': '60 - GS1 DataMatrix'},
-							{'value': '61', 'text': '61 - GS1 QR Code Model 1'},
-							{'value': '62', 'text': '62 - GS1 QR Code Model 2'},
-							{'value': '63', 'text': '63 - GS1 Aztec code'}]"/>
+						<Widget xsi:type="widgets.brease.DropDownBox" id="CodeReaderTypePreset" top="42" left="16" width="470" zIndex="3" dataProvider="[{'value':'0','text':'0 - Identify code'},{'value':'1','text':'1 - 2/5 Industrial'},{'value':'2','text':'2 - 2/5 Interleaved'},{'value':'3','text':'3 - Codabar'},{'value':'4','text':'4 - Code 32'},{'value':'5','text':'5 - Code 39'},{'value':'6','text':'6 - Code 93'},{'value':'7','text':'7 - Code 128'},{'value':'8','text':'8 - MSI'},{'value':'9','text':'9 - PharmaCode'},{'value':'10','text':'10 - EAN-8'},{'value':'11','text':'11 - EAN-8 Add-On 2'},{'value':'12','text':'12 - EAN-8 Add-On 5'},{'value':'13','text':'13 - EAN-13'},{'value':'14','text':'14 - EAN-13 Add-On 2'},{'value':'15','text':'15 - EAN-13 Add-On 5'},{'value':'20','text':'20 - UPC-A'},{'value':'21','text':'21 - UPC-A Add-On 2'},{'value':'22','text':'22 - UPC-A Add-On 5'},{'value':'23','text':'23 - UPC-E'},{'value':'24','text':'24 - UPC-E Add-On 2'},{'value':'25','text':'25 - UPC-E Add-On 5'},{'value':'30','text':'30 - GS1-128'},{'value':'31','text':'31 - GS1 DataBar'},{'value':'32','text':'32 - GS1 DataBar'},{'value':'33','text':'33 - GS1 DataBar'},{'value':'34','text':'34 - GS1 DataBar'},{'value':'35','text':'35 - GS1 DataBar'},{'value':'36','text':'36 - GS1 DataBar'},{'value':'37','text':'37 - GS1 DataBar'},{'value':'50','text':'50 - Data Matrix ECC 200'},{'value':'51','text':'51 - QR Code Model 1'},{'value':'52','text':'52 - QR Code Model 2'},{'value':'53','text':'53 - Micro QR Code'},{'value':'54','text':'54 - PDF417'},{'value':'55','text':'55 - Aztec code'},{'value':'60','text':'60 - GS1 DataMatrix'},{'value':'61','text':'61 - GS1 QR Code Model 1'},{'value':'62','text':'62 - GS1 QR Code Model 2'},{'value':'63','text':'63 - GS1 Aztec code'}]" listPosition="center" listWidth="500" textAlign="center" fontSize="18px" />
 						<Widget xsi:type="widgets.brease.Label" id="labCodeReader2" top="97" left="16" width="210" height="27" zIndex="4" text="Parameter Mode" textAlign="left" fontSize="18px" />
 						<Widget xsi:type="widgets.brease.DropDownBox" id="CodeReaderParamMode" top="132" left="16" width="470" zIndex="5" dataProvider="[{'value':'0','text':'Max. Recognition (Polarity: black on white)'},{'value':'1','text':'Max. Recognition (Polarity: white on black)'},{'value':'10','text':'Fast Recognition (Polarity: black on white)'},{'value':'11','text':'Fast Recognition (Polarity: white on black)'},{'value':'20','text':'Trained Parameter (Parameteroptimization)'},{'value':'30','text':'User defined Parameter (Expert mode):'}]" listPosition="center" listWidth="500" selectedValue="0" textAlign="center" fontSize="18px" />
 						<Widget xsi:type="widgets.brease.Label" id="labCodeReader3" top="187" left="16" width="210" height="27" zIndex="6" text="Parameter Optimization" textAlign="left" fontSize="18px" />
 						<Widget xsi:type="widgets.brease.DropDownBox" id="CodeReaderParamOptimization" top="222" left="16" width="470" zIndex="7" dataProvider="[{'value':'0','text':'Disabled'},{'value':'1','text':'Training mode'},{'value':'2','text':'Reset Training'}]" listPosition="center" listWidth="500" selectedValue="0" textAlign="center" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIX1" top="491" left="389" height="40" zIndex="8" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIY1" top="541" left="389" height="40" zIndex="9" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIOrientation1" top="591" left="389" height="40" zIndex="10" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'DD','imperial':'DD','imperial-us':'DD'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label31" top="496" left="204" width="150" zIndex="11" text="Offset ROI X" textAlign="right" fontSize="18px" />																																					  
+						<Widget xsi:type="widgets.brease.Label" id="Label32" top="546" left="204" width="150" zIndex="12" text="Offset ROI Y" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label33" top="596" left="144" width="210" zIndex="13" text="Offset ROI Orientation" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="labFooter6" top="447" left="204" width="150" zIndex="15" text="Timeout" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numTimeout" top="442" left="389" height="40" zIndex="14" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" maxValue="65535" minValue="10" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 0px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterX1" top="641" left="389" height="40" zIndex="16" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterY1" top="691" left="389" height="40" zIndex="17" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label45" top="646" left="145" width="239" zIndex="18" text="Offset ROI rotation center X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label46" top="696" left="135" width="244" zIndex="19" text="Offset ROI rotation center Y" textAlign="right" fontSize="18px" />
 					</Widgets>
 				</Widget>
-				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxMatching" top="0" left="0" width="505" height="175" zIndex="2" text="Matching" textAlign="center">
+				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxMatching" top="0" left="0" width="505" height="485" zIndex="2" text="Matching" textAlign="center">
 					<Widgets>
-						<Widget xsi:type="widgets.brease.Label" id="Label10" top="32" left="222" width="150" zIndex="0" text="Min Score" textAlign="right" fontSize="18px" />
-						<Widget xsi:type="widgets.brease.Label" id="Label11" top="72" left="227" width="150" zIndex="1" text="Max Overlap" textAlign="right" fontSize="18px" />
-						<Widget xsi:type="widgets.brease.NumericInput" id="numMatchMinScore" top="22" left="389" height="40" zIndex="2" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" />
-						<Widget xsi:type="widgets.brease.NumericInput" id="numMatchMaxOverlap" top="72" left="389" height="40" zIndex="3" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" />
+						<Widget xsi:type="widgets.brease.Label" id="Label10" top="27" left="222" width="150" zIndex="0" text="Min Score" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label11" top="77" left="227" width="150" zIndex="1" text="Max Overlap" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numMatchMinScore" top="22" left="389" height="40" zIndex="2" unitAlign="right" unit="{'metric':'P1','imperial':'P1','imperial-us':'P1'}" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numMatchMaxOverlap" top="72" left="389" height="40" zIndex="3" unitAlign="right" unit="{'metric':'P1','imperial':'P1','imperial-us':'P1'}" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIX2" top="173" left="389" height="40" zIndex="4" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIY2" top="223" left="389" height="40" zIndex="5" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIOrientation2" top="273" left="389" height="40" zIndex="6" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'DD','imperial':'DD','imperial-us':'DD'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label34" top="178" left="219" width="150" zIndex="7" text="Offset ROI X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label35" top="228" left="219" width="150" zIndex="8" text="Offset ROI Y" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label36" top="278" left="159" width="210" zIndex="9" text="Offset ROI Orientation" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="labFooter7" top="128" left="219" width="150" zIndex="11" text="Timeout" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numTimeout1" top="123" left="389" height="40" zIndex="10" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" maxValue="65535" minValue="10" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 0px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterX2" top="321" left="389" height="40" zIndex="12" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterY2" top="371" left="389" height="40" zIndex="13" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label47" top="326" left="145" width="239" zIndex="14" text="Offset ROI rotation center X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label48" top="376" left="135" width="244" zIndex="15" text="Offset ROI rotation center Y" textAlign="right" fontSize="18px" />
 					</Widgets>
 				</Widget>
-				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxOCR" top="0" left="0" width="500" height="216" zIndex="3" text="OCR" textAlign="center">
+				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxOCR" top="0" left="0" width="500" height="510" zIndex="3" text="OCR" textAlign="center">
 					<Widgets>
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnableParameterMode" top="13" left="15" width="470" height="60" zIndex="0" text="Enable Parameter Mode" fontSize="24px" style="Operate" />
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnableGrading" top="93" left="14" width="470" height="60" zIndex="1" text="Enable Grading" fontSize="24px" style="Operate" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIX3" top="222" left="384" height="40" zIndex="2" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIY3" top="272" left="384" height="40" zIndex="3" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIOrientation3" top="322" left="384" height="40" zIndex="4" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'DD','imperial':'DD','imperial-us':'DD'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label37" top="227" left="214" width="150" zIndex="5" text="Offset ROI X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label38" top="277" left="214" width="150" zIndex="6" text="Offset ROI Y" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label39" top="327" left="154" width="210" zIndex="7" text="Offset ROI Orientation" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="labFooter8" top="177" left="214" width="150" zIndex="9" text="Timeout" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numTimeout2" top="172" left="384" height="40" zIndex="8" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" maxValue="65535" minValue="10" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 0px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterX3" top="372" left="384" height="40" zIndex="10" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterY3" top="422" left="384" height="40" zIndex="11" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label49" top="377" left="140" width="239" zIndex="12" text="Offset ROI rotation center X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label50" top="427" left="130" width="244" zIndex="13" text="Offset ROI rotation center Y" textAlign="right" fontSize="18px" />
 					</Widgets>
 				</Widget>
-				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxPxCnt" top="0" left="0" width="500" height="125" zIndex="4" text="Pixel Counter" textAlign="center">
+				<Widget xsi:type="widgets.brease.GroupBox" id="GroupBoxPxCnt" top="0" left="0" width="500" height="385" zIndex="4" text="Pixel Counter" textAlign="center">
 					<Widgets>
 						<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonEnableEnhancedPxInfo" top="13" left="15" width="470" height="60" zIndex="0" text="Enable Enhanced Pixel Information" fontSize="24px" style="Operate" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIX4" top="90" left="384" height="40" zIndex="1" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIY4" top="140" left="384" height="40" zIndex="2" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIOrientation4" top="190" left="384" height="40" zIndex="3" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'DD','imperial':'DD','imperial-us':'DD'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label40" top="95" left="214" width="150" zIndex="4" text="Offset ROI X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label41" top="145" left="214" width="150" zIndex="5" text="Offset ROI Y" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label42" top="195" left="154" width="210" zIndex="6" text="Offset ROI Orientation" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterX4" top="242" left="384" height="40" zIndex="7" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIRotCenterY4" top="292" left="384" height="40" zIndex="8" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label51" top="247" left="140" width="239" zIndex="9" text="Offset ROI rotation center X" textAlign="right" fontSize="18px" />
+						<Widget xsi:type="widgets.brease.Label" id="Label52" top="297" left="130" width="244" zIndex="10" text="Offset ROI rotation center Y" textAlign="right" fontSize="18px" />
 					</Widgets>
 				</Widget>
 			</Widgets>
@@ -90,26 +108,64 @@
 				<!-- BLOB -->
 				<Mapping widget="ToggleButtonRegionFeatures" 	type="Boolean" property="value" mode="twoWay" memberPath="BLOB.regionFeatures" mapToNode="false"/>
 				<Mapping widget="ToggleButtonEnhancedInfo" 		type="Boolean" property="value" mode="twoWay" memberPath="BLOB.enhancedBlobInformation" mapToNode="false"/>
+				
+				<Mapping widget="numOffsetROIX" 				type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.x" 			mapToNode="true"/>
+				<Mapping widget="numOffsetROIY" 				type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.y" 			mapToNode="true"/>
+				<Mapping widget="numOffsetROIOrientation" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.orientation" mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterX" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.rotCenterX" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterY" 		type="Number" property="value" mode="twoWay" memberPath="BLOB.common.offsetROI.rotCenterY" 	mapToNode="true"/>
+		
+				<!-- Code reader -->
+				<Mapping widget="ToggleButtonEnableRobustness" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.enableRobustness" 				mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnableGradingCR" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.codeGrading" 					mapToNode="false"/>
+				<Mapping widget="CodeReaderTypePreset" 				type="String" property="selectedValue" mode="twoWay" memberPath="CRTypeStr" 				mapToNode="false"/>
+				<Mapping widget="CodeReaderParamMode" 				type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterMode" 			mapToNode="false"/>
+				<Mapping widget="CodeReaderParamOptimization" 		type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterOptimization" 	mapToNode="false"/>
+				<Mapping widget="numTimeout" 						type="Number" property="value" mode="twoWay" memberPath="CR.timeout" 						mapToNode="false"/>
 			
-				<!-- OCR -->
-				<Mapping widget="ToggleButtonEnableParameterMode" 	type="Boolean" property="value" mode="twoWay" memberPath="OCR.parameterMode" mapToNode="false"/>
-				<Mapping widget="ToggleButtonEnableGrading" 		type="Boolean" property="value" mode="twoWay" memberPath="OCR.grading" mapToNode="false"/>
+				<Mapping widget="numOffsetROIX1" 				type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.x" 			mapToNode="true"/>
+				<Mapping widget="numOffsetROIY1" 				type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.y" 			mapToNode="true"/>
+				<Mapping widget="numOffsetROIOrientation1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.orientation" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterX1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.rotCenterX" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterY1" 		type="Number" property="value" mode="twoWay" memberPath="CR.common.offsetROI.rotCenterY" 	mapToNode="true"/>
 			
-				<!-- Pixel counter -->
-				<Mapping widget="ToggleButtonEnableEnhancedPxInfo" 	type="Boolean" property="value" mode="twoWay" memberPath="pxCnt.enhancedPXInformation" mapToNode="false"/>
-			
+				
 				
 				<!-- Matching -->
 				<Mapping widget="numMatchMinScore" 		type="Number" property="value" mode="twoWay" memberPath="match.minScore" mapToNode="false"/>
 				<Mapping widget="numMatchMaxOverlap" 	type="Number" property="value" mode="twoWay" memberPath="match.maxOverlap" mapToNode="false"/>
+				<Mapping widget="numTimeout1" 					type="Number" property="value" mode="twoWay" memberPath="match.timeout" 						mapToNode="false"/>
+		
+				<Mapping widget="numOffsetROIX2" 				type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.x" 				mapToNode="true"/>
+				<Mapping widget="numOffsetROIY2" 				type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.y" 				mapToNode="true"/>
+				<Mapping widget="numOffsetROIOrientation2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.orientation" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterX2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.rotCenterX" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterY2" 		type="Number" property="value" mode="twoWay" memberPath="match.common.offsetROI.rotCenterY" 	mapToNode="true"/>
+			
+			
+				<!-- OCR -->
+				<Mapping widget="ToggleButtonEnableParameterMode" 	type="Boolean" property="value" mode="twoWay" 	memberPath="OCR.parameterMode" 	mapToNode="false"/>
+				<Mapping widget="ToggleButtonEnableGrading" 		type="Boolean" property="value" mode="twoWay" 	memberPath="OCR.grading" 		mapToNode="false"/>
+				<Mapping widget="numTimeout2" 						type="Number" property="value" mode="twoWay" 	memberPath="OCR.timeout" 		mapToNode="false"/>
+		
+				<Mapping widget="numOffsetROIX3" 				type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.x" 			mapToNode="true"/>
+				<Mapping widget="numOffsetROIY3" 				type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.y" 			mapToNode="true"/>
+				<Mapping widget="numOffsetROIOrientation3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.orientation" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterX3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.rotCenterX" 	mapToNode="true"/>
+				<Mapping widget="numOffsetROIRotCenterY3" 		type="Number" property="value" mode="twoWay" memberPath="OCR.common.offsetROI.rotCenterY" 	mapToNode="true"/>
 				
+			
 				
-				<!-- Code reader -->
-				<Mapping widget="ToggleButtonEnableRobustness" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.enableRobustness" mapToNode="false"/>
-				<Mapping widget="ToggleButtonEnableGradingCR" 		type="Boolean" property="value" mode="twoWay" memberPath="CR.codeGrading" mapToNode="false"/>
-				<Mapping widget="CodeReaderTypePreset" 				type="String" property="selectedValue" mode="twoWay" memberPath="CRTypeStr" mapToNode="false"/>
-				<Mapping widget="CodeReaderParamMode" 				type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterMode" mapToNode="false"/>
-				<Mapping widget="CodeReaderParamOptimization" 		type="Number" property="selectedIndex" mode="twoWay" memberPath="CR.parameterOptimization" mapToNode="false"/>
+			
+				<!-- Pixel counter -->
+				<Mapping widget="ToggleButtonEnableEnhancedPxInfo" 	type="Boolean" property="value" mode="twoWay" memberPath="pxCnt.enhancedPXInformation" mapToNode="false"/>
+		
+				<Mapping widget="numOffsetROIX4" 				type="Number" property="value" mode="twoWay" memberPath="pxCnt.common.offsetROI.x" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIY4" 				type="Number" property="value" mode="twoWay" memberPath="pxCnt.common.offsetROI.y" 			mapToNode="false"/>
+				<Mapping widget="numOffsetROIOrientation4" 		type="Number" property="value" mode="twoWay" memberPath="pxCnt.common.offsetROI.orientation" mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterX4" 		type="Number" property="value" mode="twoWay" memberPath="pxCnt.common.offsetROI.rotCenterX" 	mapToNode="false"/>
+				<Mapping widget="numOffsetROIRotCenterY4" 		type="Number" property="value" mode="twoWay" memberPath="pxCnt.common.offsetROI.rotCenterY" 	mapToNode="false"/>
+			
 		
 			</Mappings>
 		</Property>

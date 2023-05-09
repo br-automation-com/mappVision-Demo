@@ -15,21 +15,13 @@
         <Widget xsi:type="widgets.brease.Label" id="Label5" top="149" left="74" width="130" height="40" zIndex="9" text="Flash Segment" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.Label" id="Label12" top="433" left="80" width="130" height="40" zIndex="10" text="Led Color" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBoxLedStatusColor" top="438" left="214" width="120" zIndex="11" dataProvider="[{'value':'0','text':'PLK Status'},{'value':'1','text':'Off'},{'value':'2','text':'Green'},{'value':'3','text':'Red'},{'value':'4','text':'Blue'}]" listPosition="top" selectedValue="0" textAlign="center" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIX" top="473" left="224" width="110" zIndex="12" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" fontSize="16px" padding="0px 5px 0px 5px" />
-        <Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIY" top="508" left="224" width="110" zIndex="13" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" fontSize="16px" padding="0px 5px 0px 5px" />
-        <Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIOrientation" top="543" left="224" width="110" zIndex="14" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" fontSize="16px" padding="0px 5px 0px 5px" />
-        <Widget xsi:type="widgets.brease.Label" id="Label28" top="473" left="64" width="150" zIndex="15" text="Offset ROI X" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.Label" id="Label29" top="508" left="64" width="150" zIndex="16" text="Offset ROI Y" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.Label" id="Label30" top="543" left="4" width="210" zIndex="17" text="Offset ROI Orientation" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.Label" id="Label13" top="398" left="80" width="130" height="40" zIndex="18" text="IR Filter" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBoxFlashColor1" top="403" left="214" width="120" zIndex="19" dataProvider="[{'value':'0','text':'Off'},{'value':'1','text':'On'}]" listPosition="top" selectedValue="0" textAlign="center" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.Label" id="labFooter6" top="578" left="64" width="150" zIndex="20" text="Timeout" textAlign="right" fontSize="18px" />
-        <Widget xsi:type="widgets.brease.NumericInput" id="numTimeout" top="578" left="224" width="110" zIndex="21" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="65535" minValue="10" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 0px" />
-        <Widget xsi:type="widgets.brease.Image" id="imgCamLights" top="169" left="214" width="95" height="150" zIndex="22" image="Media/FrontSmartSensor.png" />
-        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsLeft" top="229" left="189" width="25" zIndex="23" value="true" />
-        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsRight" top="229" left="309" width="25" zIndex="24" value="true" />
-        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsTop" top="139" left="249" width="25" zIndex="25" value="true" />
-        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsBottom" top="319" left="249" width="25" zIndex="26" value="true" />
+        <Widget xsi:type="widgets.brease.Label" id="Label13" top="398" left="80" width="130" height="40" zIndex="12" text="IR Filter" textAlign="right" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBoxFlashColor1" top="403" left="214" width="120" zIndex="13" dataProvider="[{'value':'0','text':'Off'},{'value':'1','text':'On'}]" listPosition="top" selectedValue="0" textAlign="center" fontSize="18px" />
+        <Widget xsi:type="widgets.brease.Image" id="imgCamLights" top="169" left="214" width="95" height="150" zIndex="14" image="Media/FrontSmartSensor.png" />
+        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsLeft" top="229" left="189" width="25" zIndex="15" value="true" />
+        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsRight" top="229" left="309" width="25" zIndex="16" value="true" />
+        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsTop" top="139" left="249" width="25" zIndex="17" value="true" />
+        <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsBottom" top="319" left="249" width="25" zIndex="18" value="true" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.Label" id="labFooter7" top="10" left="1045" width="210" height="25" zIndex="43" text="Camera Processing Time" textAlign="right" fontSize="18px" />
@@ -77,9 +69,9 @@
         </Widget>
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList1" top="0" left="540" width="540" height="500" zIndex="46" buttonOffset="20" docking="bottom" showOnTop="true" text="VF settings" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList1" top="0" left="540" width="560" height="600" zIndex="46" buttonOffset="20" docking="bottom" showOnTop="true" text="VF settings" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
-        <Widget xsi:type="widgets.widgetlibrary_0.vfSettings" id="vfSettings1" top="0" left="0" width="525" zIndex="0" />
+        <Widget xsi:type="widgets.widgetlibrary_0.vfSettings" id="vfSettings1" top="0" left="5" width="544" height="600" zIndex="0" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.FlyOut" id="faVaList2" top="0" left="350" width="540" height="500" zIndex="47" buttonOffset="20" docking="bottom" showOnTop="true" text="Trigger settings" buttonHeight="40" buttonWidth="175" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
