@@ -23,7 +23,10 @@
         </EURange>
       </EURanges>
     </EURangesAliases>
-    <EngineeringUnitAliases />
+    <EngineeringUnitAliases>
+      <EngineeringUnit Id="5" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
+      <EngineeringUnit Id="6" UnitId="5654836" NameSpaceUri="http://www.br-automation.com/units" Name="Degree100" Symbol="°" />
+    </EngineeringUnitAliases>
   </Aliases>
   <DefaultView AclId="3">
     <Module Name="&lt;Default&gt;">
@@ -33,6 +36,63 @@
             <Variable AclInherit="1" Name="out" />
             <Variable Name="in">
               <Variable Name="cmd" />
+              <Variable Name="recipe">
+                <Variable Name="BLOB">
+                  <Variable Name="common">
+                    <Variable Name="offsetROI">
+                      <Variable Name="orientation" EngineeringUnitId="6" />
+                      <Variable Name="x" EngineeringUnitId="5" />
+                      <Variable Name="y" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterX" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterY" EngineeringUnitId="5" />
+                    </Variable>
+                  </Variable>
+                </Variable>
+                <Variable Name="CR">
+                  <Variable Name="common">
+                    <Variable Name="offsetROI">
+                      <Variable Name="x" EngineeringUnitId="5" />
+                      <Variable Name="y" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterX" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterY" EngineeringUnitId="5" />
+                      <Variable Name="orientation" EngineeringUnitId="6" />
+                    </Variable>
+                  </Variable>
+                </Variable>
+                <Variable Name="match">
+                  <Variable Name="common">
+                    <Variable Name="offsetROI">
+                      <Variable Name="x" EngineeringUnitId="5" />
+                      <Variable Name="y" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterX" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterY" EngineeringUnitId="5" />
+                      <Variable Name="orientation" EngineeringUnitId="6" />
+                    </Variable>
+                  </Variable>
+                </Variable>
+                <Variable Name="meassurement">
+                  <Variable Name="common">
+                    <Variable Name="offsetROI">
+                      <Variable Name="x" EngineeringUnitId="5" />
+                      <Variable Name="y" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterX" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterY" EngineeringUnitId="5" />
+                      <Variable Name="orientation" EngineeringUnitId="6" />
+                    </Variable>
+                  </Variable>
+                </Variable>
+                <Variable Name="OCR">
+                  <Variable Name="common">
+                    <Variable Name="offsetROI">
+                      <Variable Name="x" EngineeringUnitId="5" />
+                      <Variable Name="y" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterX" EngineeringUnitId="5" />
+                      <Variable Name="rotCenterY" EngineeringUnitId="5" />
+                      <Variable Name="orientation" EngineeringUnitId="6" />
+                    </Variable>
+                  </Variable>
+                </Variable>
+              </Variable>
             </Variable>
           </VariableCommon>
         </Variable>

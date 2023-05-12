@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
-  <Element ID="VisionUnitPixel1000" Type="Units">
-    <Property ID="Namespace" Value="http://www.br-automation.com/units" />
-    <Property ID="UnitID" Value="5654835" />
-    <Property ID="CommonCode" Value="VI3" />
-    <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
-    <Group ID="Classification[1]" />
-    <Selector ID="AtomicOrCompound">
-      <Property ID="AtomicFactor" Value="0.001" />
-    </Selector>
-  </Element>
   <Element ID="VisionUnitPixel1" Type="Units">
     <Property ID="Namespace" Value="http://www.br-automation.com/units" />
     <Property ID="UnitID" Value="5654832" />
@@ -19,6 +9,9 @@
     <Group ID="Classification[1]" />
     <Selector ID="AtomicOrCompound">
       <Property ID="AtomicFactor" Value="1" />
+      <Group ID="AtomicReference">
+        <Property ID="ReferenceUnitNamespace" Value="" />
+      </Group>
     </Selector>
   </Element>
   <Element ID="VisionUnitPixel100" Type="Units">
@@ -29,6 +22,24 @@
     <Group ID="Classification[1]" />
     <Selector ID="AtomicOrCompound">
       <Property ID="AtomicFactor" Value="0.01" />
+      <Group ID="AtomicReference">
+        <Property ID="ReferenceUnitNamespace" Value="http://www.br-automation.com/units" />
+        <Property ID="ReferenceUnitID" Value="5654832" />
+      </Group>
+    </Selector>
+  </Element>
+  <Element ID="VisionUnitDegree100" Type="Units">
+    <Property ID="Namespace" Value="http://www.br-automation.com/units" />
+    <Property ID="UnitID" Value="5654836" />
+    <Property ID="CommonCode" Value="VI4" />
+    <Property ID="TextSystemNamespace" Value="Localization/Units/User" />
+    <Group ID="Classification[1]" />
+    <Selector ID="AtomicOrCompound">
+      <Property ID="AtomicFactor" Value="0.01" />
+      <Group ID="AtomicReference">
+        <Property ID="ReferenceUnitNamespace" Value="http://www.opcfoundation.org/UA/units/un/cefact" />
+        <Property ID="ReferenceUnitID" Value="17476" />
+      </Group>
     </Selector>
   </Element>
   <Element ID="VisionUnitPixel10" Type="Units">
@@ -39,6 +50,10 @@
     <Group ID="Classification[1]" />
     <Selector ID="AtomicOrCompound">
       <Property ID="AtomicFactor" Value="0.1" />
+      <Group ID="AtomicReference">
+        <Property ID="ReferenceUnitNamespace" Value="http://www.br-automation.com/units" />
+        <Property ID="ReferenceUnitID" Value="5654832" />
+      </Group>
     </Selector>
   </Element>
 </Configuration>

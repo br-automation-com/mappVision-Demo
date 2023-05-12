@@ -210,5 +210,10 @@
 </Source>
 <Target xsi:type="brease" contentRefId="contentMain" widgetRefId="PushButtonSave" attribute="value" />
 </Binding>
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Vi_main:hmiInstance[1].in.recipe.BLOB.common.offsetROI.x" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numOffsetROIOrientation" attribute="node" />
+</Binding>
 </Bindings>
 </BindingsSet>
