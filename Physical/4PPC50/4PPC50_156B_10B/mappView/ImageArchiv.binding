@@ -11,23 +11,23 @@
 		</Binding>
 		
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:commonHmi.in.recipe.jpegQuality" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vision:commonHmi.in.recipe.jpegQuality" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="numJPEGQuality" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:commonHmi.in.recipe.saveAllImages" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vision:commonHmi.in.recipe.saveAllImages" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkMainAutoArchive" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:commonHmi.in.recipe.imageFormat" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vision:commonHmi.in.recipe.imageFormat" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="RadioButtonGroupJPEGorBitmap" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:commonHmi.in.recipe.saveImage" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vision:commonHmi.in.recipe.saveImage" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkUploadJBEGBitmap" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_main:commonHmi.in.recipe.saveSvg" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vision:commonHmi.in.recipe.saveSvg" attribute="value" />
 			<Target xsi:type="brease" contentRefId="UploadOptionsContent" widgetRefId="chkUploadSVG" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">

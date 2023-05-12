@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CompoundWidget id="drawSettingsWidget" width="470" height="640" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Widgets>
+		<Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="0" left="0" width="470" height="640" zIndex="0" childPositioning="relative" text="Draw shape" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px">
+			<Widgets>
+				<Widget xsi:type="widgets.brease.DropDownBox" id="shapeSelector" top="0" left="-1" width="430" height="76" zIndex="0" listWidth="250" margin="20px" listPadding="0px 30px" fontSize="32px" dataProvider="[{'value':'0','text':'None'},{'value':'1','text':'Rectangle'},{'value':'2','text':'Circle'},{'value':'3','text':'Triangle'}]"/>
+				<Widget xsi:type="widgets.brease.GroupBox" id="shapePropBox" top="-12" left="-25" width="470" height="462" zIndex="1" childPositioning="relative" text="Shape properties" borderWidth="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="25px" textAlign="left" padding="5px" margin="0px 0px 12px 20px" style="transparent">
+					<Widgets>
+						
+						
+						<Widget xsi:type="widgets.brease.Label" id="strokeColorLabel1" top="345" left="5" width="225" zIndex="18" text="Active Border color" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.DropDownBox" id="ActiveStrokeColorMenu" top="345" left="69" width="145" zIndex="19" selectedIndex="5" fontSize="25px"  dataProvider = "[{'value':' stroke: Transparent;','text':'None'},{'value':' stroke: black;','text':'Black'},{'value':' stroke: gray;','text':'Gray'},{'value':' stroke: white;','text':'White'},{'value':' stroke: red;','text':'Red'},{'value':' stroke: orange;','text':'Orange'},{'value':' stroke: yellow;','text':'Yellow'},{'value':' stroke: green;','text':'Green'},{'value':' stroke: blue;','text':'Blue'},{'value':' stroke: purple;','text':'Purple'},{'value':' stroke: pink;','text':'Pink'},{'value':' stroke: brown;','text':'Brown'},{'value':' stroke: tan;','text':'Tan'},{'value':' stroke: beige;','text':'Beige'},{'value':' stroke: navy;','text':'Navy'}]"/>
+						<Widget xsi:type="widgets.brease.Label" id="lengthLabel" top="-32" left="5" width="200" zIndex="1" text="Length (x)" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="lengthInput" top="-32" left="94" width="140" zIndex="0" maxValue="1000" value="80" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.Label" id="widthLabel" top="-23" left="5" width="200" zIndex="2" text="Width (y)" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="widthInput" top="-23" left="94" width="140" zIndex="7" maxValue="1000" value="80" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.Label" id="radiusLabel" top="-15" left="5" width="200" zIndex="3" text="Radius" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="radiusInput" top="-15" left="94" width="140" zIndex="4" maxValue="300" value="60" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.Label" id="rotationLabel" top="-6" left="5" width="200" zIndex="5" text="Rotation" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="rotationInput" top="-6" left="94" width="140" zIndex="6" maxValue="360" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.Label" id="fillColorLabel" top="2" left="5" width="200" zIndex="8" text="Fill color" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.DropDownBox" id="fillColorMenu" top="2" left="94" width="145" zIndex="16" selectedIndex="7" fontSize="25px" dataProvider = "[{'value':' fill: Transparent;','text':'None'},{'value':' fill: black;','text':'Black'},{'value':' fill: gray;','text':'Gray'},{'value':' fill: white;','text':'White'},{'value':' fill: red;','text':'Red'},{'value':' fill: orange;','text':'Orange'},{'value':' fill: yellow;','text':'Yellow'},{'value':' fill: green;','text':'Green'},{'value':' fill: blue;','text':'Blue'},{'value':' fill: purple;','text':'Purple'},{'value':' fill: pink;','text':'Pink'},{'value':' fill: brown;','text':'Brown'},{'value':' fill: tan;','text':'Tan'},{'value':' fill: beige;','text':'Beige'},{'value':' fill: navy;','text':'Navy'}]"/>
+						<Widget xsi:type="widgets.brease.Label" id="fillOpacityLabel" top="11" left="5" width="200" zIndex="12" text="Fill opacity" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="fillOpacityInput" top="11" left="94" width="140" zIndex="13" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="1" value="0.5" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.Label" id="strokeColorLabel" top="19" left="5" width="200" zIndex="9" text="Border color" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.DropDownBox" id="strokeColorMenu" top="19" left="94" width="145" zIndex="17" selectedIndex="1" fontSize="25px" dataProvider = "[{'value':' stroke: Transparent;','text':'None'},{'value':' stroke: black;','text':'Black'},{'value':' stroke: gray;','text':'Gray'},{'value':' stroke: white;','text':'White'},{'value':' stroke: red;','text':'Red'},{'value':' stroke: orange;','text':'Orange'},{'value':' stroke: yellow;','text':'Yellow'},{'value':' stroke: green;','text':'Green'},{'value':' stroke: blue;','text':'Blue'},{'value':' stroke: purple;','text':'Purple'},{'value':' stroke: pink;','text':'Pink'},{'value':' stroke: brown;','text':'Brown'},{'value':' stroke: tan;','text':'Tan'},{'value':' stroke: beige;','text':'Beige'},{'value':' stroke: navy;','text':'Navy'}]"/>
+						<Widget xsi:type="widgets.brease.Label" id="strokeWidthLabel" top="28" left="5" width="200" zIndex="10" text="Border width" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="strokeWidthInput" top="28" left="94" width="140" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" value="1" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.Label" id="strokeOpacityLabel" top="36" left="5" width="200" zIndex="14" text="Border opacity" fontSize="25px" />
+						<Widget xsi:type="widgets.brease.NumericInput" id="StrokeOpacityInput" top="36" left="94" width="140" zIndex="15" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="1" value="1" fontSize="25px" />
+					</Widgets>
+				</Widget>
+			</Widgets>
+		</Widget>
+	</Widgets>
+	<Properties>
+		<Property xsi:type="StructureBindableProperty" name="structure" type="hmi_in_cmd_draw_typ" readOnly="true" category="Data" >
+			<Description>Draw settings data structure</Description>
+			<Mappings>
+				<Mapping widget="shapeSelector" 		type="Number" property="selectedIndex" 	mode="twoWay" memberPath="intShape" mapToNode="false"/>
+				<Mapping widget="ActiveStrokeColorMenu"	type="String" property="selectedValue" 	mode="twoWay" memberPath="activeStrokeColor" mapToNode="false"/>
+				<Mapping widget="fillColorMenu" 		type="String" property="selectedValue" 	mode="twoWay" memberPath="fillColor" mapToNode="false"/>
+				<Mapping widget="strokeColorMenu" 		type="String" property="selectedValue" 	mode="twoWay" memberPath="strokeColor" mapToNode="false"/>
+				<Mapping widget="StrokeOpacityInput" 	type="Number" property="value" 			mode="twoWay" memberPath="strokeOpac" mapToNode="false"/>
+				<Mapping widget="lengthInput" 			type="Number" property="value" 			mode="twoWay" memberPath="length" mapToNode="false"/>
+				<Mapping widget="widthInput" 			type="Number" property="value" 			mode="twoWay" memberPath="width" mapToNode="false"/>
+				<Mapping widget="radiusInput" 			type="Number" property="value" 			mode="twoWay" memberPath="radius" mapToNode="false"/>
+				<Mapping widget="rotationInput" 		type="Number" property="value" 			mode="twoWay" memberPath="rotation" mapToNode="false"/>
+				<Mapping widget="fillOpacityInput" 		type="Number" property="value" 			mode="twoWay" memberPath="fillOpac" mapToNode="false"/>
+				<Mapping widget="strokeWidthInput" 		type="Number" property="value" 			mode="twoWay" memberPath="strokeWidth" mapToNode="false"/>
+			</Mappings>
+		</Property>
+	</Properties>
+
+	<Events>
+		<!--
+		<Event name="">
+		<Description>Description will be shown in property grid.</Description>
+		<Mappings>
+		<Mapping widget="" event="" />
+		</Mappings>
+		</Event>
+		-->
+	</Events>
+
+	<Actions>
+		<!--
+		<Action name="">
+		<Description>Description will be shown in property grid.</Description>
+		<Mappings>
+		-->
+	</Actions>
+
+	<EventBindings>
+		<!-- source and target can only be widgets within the compound widget.
+		<EventBinding id="">
+		<Source xsi:type="widget.Event" widgetRefId="" event="" />
+		<EventHandler condition="">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="">
+		<Method name="" value="" />
+		</Target>
+		</Action>
+		</EventHandler>
+		</EventBinding>
+		-->
+		<EventBinding id="getLocalVaue"> 
+			<Source xsi:type="widget.Event" widgetRefId="shapeSelector"  event="SelectedIndexChanged" /> 
+		
+			<EventHandler condition="newValue = 0"> 
+				<Sequence>
+					<Step order="1">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="shapePropBox"> 
+								<Method name="SetVisible" value="false" /> 
+							</Target>
+						</Action> 
+					</Step>
+				</Sequence>
+			</EventHandler>
+			
+			<EventHandler condition="newValue = 1 OR newValue = 3"> 
+				<Sequence>
+					<Step order="1">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="lengthInput"> 
+								<Method name="SetVisible" value="true" /> 
+							</Target>
+						</Action> 
+					</Step><Step order="2">
+						<Action>
+							<Target xsi:type="widget.Action"  widgetRefId="lengthLabel">
+								<Method name="SetVisible" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="3">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="widthInput">
+								<Method name="SetVisible" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="4">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="widthLabel">
+								<Method name="SetVisible" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="5">
+						<Action>
+							<Target xsi:type="widget.Action"  widgetRefId="rotationInput">
+								<Method name="SetVisible" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="6">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="rotationLabel">
+								<Method name="SetVisible" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="7">
+						<Action>
+							<Target xsi:type="widget.Action"  widgetRefId="radiusInput">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="8">
+						<Action>
+							<Target xsi:type="widget.Action"  widgetRefId="radiusLabel">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="9">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="shapePropBox"> 
+								<Method name="SetVisible" value="true" /> 
+							</Target>
+						</Action> 
+					</Step>
+				</Sequence>
+			</EventHandler>
+			<EventHandler condition="newValue = 2">
+				<Sequence>
+					<Step order="1">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="lengthInput">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="2">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="lengthLabel">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="3">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="widthInput">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="4">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="widthLabel">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="5">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="rotationInput">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="6">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="rotationLabel">
+								<Method name="SetVisible" value="false" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="7">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="radiusInput">
+								<Method name="SetVisible" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="8">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="radiusLabel">
+								<Method name="SetVisible" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="9">
+						<Action>
+							<Target xsi:type="widget.Action" widgetRefId="shapePropBox"> 
+								<Method name="SetVisible" value="true" /> 
+							</Target>
+						</Action> 
+					</Step>
+				</Sequence>
+			</EventHandler> 
+		</EventBinding> 
+
+
+		<!--
+		<EventBinding id="WidgetEvent_1">
+		<Source xsi:type="this.brease.DropDownBox.Event" widgetRefId="shapeSelector" event="SelectedIndexChanged" />
+		<EventHandler condition="newValue=0 OR newValue=2">
+		<Sequence>
+		<Step order="1">
+		<Action>
+		<Target xsi:type="widget.Action"  widgetRefId="lengthInput">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="2">
+		<Action>
+		<Target xsi:type="widget.Action"  widgetRefId="lengthLabel">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="3">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="widthInput">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="4">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="widthLabel">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="5">
+		<Action>
+		<Target xsi:type="widget.Action"  widgetRefId="rotationInput">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="6">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="rotationLabel">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="7">
+		<Action>
+		<Target xsi:type="widget.Action"  widgetRefId="radiusInput">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="8">
+		<Action>
+		<Target xsi:type="widget.Action"  widgetRefId="radiusLabel">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		</Sequence>
+		</EventHandler>
+		<EventHandler condition="newValue=1">
+		<Sequence>
+		<Step order="1">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="lengthInput">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="2">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="lengthLabel">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="3">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="widthInput">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="4">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="widthLabel">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="5">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="rotationInput">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="6">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="rotationLabel">
+		<Method name="SetVisible" value="false" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="7">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="radiusInput">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		<Step order="8">
+		<Action>
+		<Target xsi:type="widget.Action" widgetRefId="radiusLabel">
+		<Method name="SetVisible" value="true" />
+		</Target>
+		</Action>
+		</Step>
+		</Sequence>
+		</EventHandler>
+		</EventBinding>-->
+		
+	</EventBindings>
+
+</CompoundWidget>

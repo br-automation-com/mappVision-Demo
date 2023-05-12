@@ -1,0 +1,39 @@
+(*Constants*)
+VAR CONSTANT
+	START_IDX : USINT := 1; (*Start index of arrays *)
+	MAX_NUM_RESULTS_M1 : USINT := MAX_NUM_RESULTS-1; (*Max number of results -1 *)
+	MAX_NUM_RESULTS : USINT := 10; (*Max number of results*)
+	MAX_NUM_CAMS : USINT := 6; (*Number of cameras*)
+	MAX_NUM_LIGHTS : USINT := 9; (*Number of lights*)
+END_VAR
+(*Array instances*)
+VAR
+	hwInstance : ARRAY[START_IDX..MAX_NUM_CAMS] OF hw_typ; (*An array of hardware data structures for each camera*)
+	hmiInstance : ARRAY[START_IDX..MAX_NUM_CAMS] OF hmi_typ; (*An array of HMI data structures for each camera*)
+	localInstance : ARRAY[START_IDX..MAX_NUM_CAMS] OF local_typ; (*An array of local data structures for each camera*)
+	commonHmi : common_hmi_typ; (*Common hmi variables that apply to all cameras*)
+END_VAR
+(*Pointers to array instances*)
+VAR
+	hw : REFERENCE TO hw_typ; (*Pointer to a hardware data structure*)
+	hmi : REFERENCE TO hmi_typ; (*Pointer to a HMI data structure*)
+	this : REFERENCE TO local_typ; (*Pointer to a Local data structure*)
+	watchIdx : USINT; (*Used to indicate what array instance the points should point to (set at the end of the program)*)
+	idx : USINT; (*Current Array index (e.g. camrea)*)
+END_VAR
+(*Variables used for loops*)
+VAR
+	i : USINT;
+	u : USINT;
+	k : USINT;
+	p : USINT;
+	j : USINT;
+END_VAR
+(*Temporary variables*)
+VAR
+	debug : BOOL;
+	tmpStr : STRING[100];
+	tmpVF : STRING[80];
+	tmpID : STRING[80];
+	id : UDINT;
+END_VAR

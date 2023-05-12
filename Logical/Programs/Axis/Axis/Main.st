@@ -8,7 +8,6 @@ PROGRAM _INIT
 	this.mpAxisBasic_0();
 	this.mpAxisBasicPar_0.Homing.Mode	:= mcHOMING_DEFAULT;
 	
-	gVisionNettime.CMD.Activate					:= TRUE;
 	hmi.in.recipe.axisPeriod				:= 360; // Needs also to be set in the axis configuration
 	hmi.in.recipe.axisPositionTrigger		:= 0;
 	hmi.in.recipe.axisPositionDelayCycles	:= 1; 	// Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
@@ -32,7 +31,7 @@ PROGRAM _CYCLIC
 	
 	IF this.mpAxisBasic_0.PowerOn AND this.mpAxisBasic_0.IsHomed AND hmi.in.cmd.moveAbs THEN
 		this.mpAxisBasic_0.MoveAbsolute		:= TRUE;
-		this.mpAxisBasicPar_0.Position		:= gVisionNettime.CFG.AxisPositionTrigger;
+		this.mpAxisBasicPar_0.Position		:= hmi.in.recipe.axisPositionTrigger;
 	END_IF
 	hmi.in.cmd.moveAbs					:= FALSE;
 	

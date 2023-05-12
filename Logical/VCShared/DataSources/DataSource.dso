@@ -13,21 +13,12 @@
       <Folder Name="Vi_image">
         <Property Name="Description" Value=""/>
         <Property Name="FolderType" Value="Program"/>
-        <DataPoint Name="visVC4RefreshImg">
-          <Property Name="ConnectedBySharedResource" Value="False"/>
-          <Property Name="ConnectingVisus" Value="Programs\Vision\Visu"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="PLCType" Value="BOOL"/>
-          <Property Name="UpdateTime" Value="Default"/>
-          <Property Name="UserID" Value="None"/>
-          <Property Name="VCType" Value="BOOL"/>
-        </DataPoint>
         <Folder Name="ViShowImgOnVC4_0">
           <Property Name="Description" Value=""/>
           <Property Name="FolderType" Value="FunctionBlock"/>
           <DataPoint Name="HTMLStreamContent">
             <Property Name="ConnectedBySharedResource" Value="False"/>
-            <Property Name="ConnectingVisus" Value="Programs\Vision\Visu"/>
+            <Property Name="ConnectingVisus" Value="old\Visu"/>
             <Property Name="Description" Value=""/>
             <Property Name="PLCType" Value="STRING"/>
             <Property Name="StringLength" Value="600"/>
@@ -36,6 +27,15 @@
             <Property Name="VCType" Value="STRING"/>
           </DataPoint>
         </Folder>
+        <DataPoint Name="visVC4RefreshImg">
+          <Property Name="ConnectedBySharedResource" Value="False"/>
+          <Property Name="ConnectingVisus" Value="old\Visu"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="PLCType" Value="BOOL"/>
+          <Property Name="UpdateTime" Value="Default"/>
+          <Property Name="UserID" Value="None"/>
+          <Property Name="VCType" Value="BOOL"/>
+        </DataPoint>
       </Folder>
     </Folder>
   </DataPoints>

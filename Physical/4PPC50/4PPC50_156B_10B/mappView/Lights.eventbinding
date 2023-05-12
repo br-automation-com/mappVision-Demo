@@ -8,42 +8,42 @@
 				<Sequence>
 					<Step order="0">
 						<Action>
-							<Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.lightNum">
+							<Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.lightNum">
 								<Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
 							</Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
               </Target>
             </Action>
@@ -57,42 +57,42 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.lightNum">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.lightNum">
                 <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
               </Target>
             </Action>

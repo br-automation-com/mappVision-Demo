@@ -20,15 +20,15 @@
     <Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonFlipHorisontal" top="828" left="12" width="50" height="50" zIndex="32" image="Media/flipVertical.svg" mouseDownImage="Media/flipVertical.svg" imageHeight="20" rotation="270deg" style="Operate" />
     <Widget xsi:type="widgets.brease.GroupBox" id="elemInfoBox" top="125" left="1895" width="480" height="885" zIndex="22" childPositioning="relative" text="Result information" headerBackColor="rgba(255, 255, 255, 0)" fontSize="25px" visible="false">
       <Widgets>
-        <Widget xsi:type="widgets.widgetlibrary_0.blobResultProp" id="blobResultProp1" top="0" left="0" zIndex="0" />
-        <Widget xsi:type="widgets.widgetlibrary_0.codeReaderResultProp" id="codeReaderResultProp1" top="0" left="0" zIndex="4" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.ocrResultProp" id="ocrResultProp1" top="0" left="0" zIndex="1" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.pixelCntResultProp" id="pixelCntResultProp1" top="0" left="0" zIndex="2" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.measureResultProp" id="measureResultProp1" top="0" left="0" zIndex="3" visible="false" />
-        <Widget xsi:type="widgets.widgetlibrary_0.matchingResultProp" id="matchingResultProp1" top="0" left="0" zIndex="5" visible="false" />
+        <Widget xsi:type="widgets.visionWidget.blobResultProp" id="blobResultProp1" top="0" left="0" zIndex="0" />
+        <Widget xsi:type="widgets.visionWidget.codeReaderResultProp" id="codeReaderResultProp1" top="0" left="0" zIndex="4" visible="false" />
+        <Widget xsi:type="widgets.visionWidget.ocrResultProp" id="ocrResultProp1" top="0" left="0" zIndex="1" visible="false" />
+        <Widget xsi:type="widgets.visionWidget.pixelCntResultProp" id="pixelCntResultProp1" top="0" left="0" zIndex="2" visible="false" />
+        <Widget xsi:type="widgets.visionWidget.measureResultProp" id="measureResultProp1" top="0" left="0" zIndex="3" visible="false" />
+        <Widget xsi:type="widgets.visionWidget.matchingResultProp" id="matchingResultProp1" top="0" left="0" zIndex="5" visible="false" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.widgetlibrary_0.drawSettingsWidget" id="drawSettingsWidget1" top="125" left="1335" zIndex="23" />
+    <Widget xsi:type="widgets.visionWidget.drawSettingsWidget" id="drawSettingsWidget1" top="125" left="1335" zIndex="23" />
     <Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonShowOverlay" top="770" left="1335" width="470" height="100" zIndex="33" image="Media/SymbolLib/Symbols/Hide.svg" mouseDownImage="Media/SymbolLib/Symbols/UnHide.svg" value="true" imageHeight="50" imageWidth="50" style="Operate" />
     <Widget xsi:type="widgets.brease.PushButton" id="PushButtonSave" top="885" left="1335" width="470" height="100" zIndex="34" image="Media/SymbolLib/Edit/Save.svg" style="Operate" />
   </Widgets>

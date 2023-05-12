@@ -5,7 +5,7 @@
     <Task Name="Axis" Source="Programs.Axis.Axis.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2">
-    <Task Name="Vi_main" Source="Programs.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vision1" Source="Programs.Vision.Vision.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4" />
@@ -72,7 +72,6 @@
     <BinaryObject Name="ashwac" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Settings_1" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viCompBlob" Source="" Memory="UserROM" Language="Binary" />
-    <BinaryObject Name="Vision" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="sysconf" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="viCompCR" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viCompOCR" Source="" Memory="UserROM" Language="Binary" />

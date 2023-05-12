@@ -16,12 +16,6 @@
       <EURangeViolation Id="1" Mode="2" />
     </EURangeViolationAliases>
     <EURangesAliases>
-      <EURanges Id="10">
-        <EURange>
-          <Low ValueProvider="Const">1</Low>
-          <High ValueProvider="Const">9</High>
-        </EURange>
-      </EURanges>
       <EURanges Id="11">
         <EURange>
           <Low ValueProvider="Const" />
@@ -29,16 +23,11 @@
         </EURange>
       </EURanges>
     </EURangesAliases>
-    <EngineeringUnitAliases>
-      <EngineeringUnit Id="2" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
-    </EngineeringUnitAliases>
+    <EngineeringUnitAliases />
   </Aliases>
   <DefaultView AclId="3">
     <Module Name="&lt;Default&gt;">
-      <GlobalVariables Name="Global Variables">
-        <Variable Name="Recipe_01" RecursiveEnable="2" />
-      </GlobalVariables>
-      <Task Name="Vi_main">
+      <Task Name="Vision1">
         <Variable Name="hmiInstance" RecursiveEnable="2">
           <VariableCommon Name="Common Properties">
             <Variable AclInherit="1" Name="out" />

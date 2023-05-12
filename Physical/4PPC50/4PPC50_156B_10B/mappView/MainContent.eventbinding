@@ -32,28 +32,28 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.x">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.cmd.x">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
               </Target>
             </Action>
           </Step>
           <Step order="6">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.y">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.cmd.y">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
               </Target>
             </Action>
           </Step>
           <Step order="12">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.elemId">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
           <Step order="18">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[1].in.cmd.click">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -64,28 +64,28 @@
         <Sequence>
           <Step order="1">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.x">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.cmd.x">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
               </Target>
             </Action>
           </Step>
           <Step order="7">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.y">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.cmd.y">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
               </Target>
             </Action>
           </Step>
           <Step order="13">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.elemId">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
           <Step order="19">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[2].in.cmd.click">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -96,28 +96,28 @@
         <Sequence>
           <Step order="2">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.x">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.cmd.x">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
               </Target>
             </Action>
           </Step>
           <Step order="8">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.y">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.cmd.y">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
               </Target>
             </Action>
           </Step>
           <Step order="14">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.elemId">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
           <Step order="20">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[3].in.cmd.click">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -128,28 +128,28 @@
         <Sequence>
           <Step order="3">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.x">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.cmd.x">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
               </Target>
             </Action>
           </Step>
           <Step order="9">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.y">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.cmd.y">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
               </Target>
             </Action>
           </Step>
           <Step order="15">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.elemId">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
           <Step order="21">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[4].in.cmd.click">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -160,28 +160,28 @@
         <Sequence>
           <Step order="4">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.x">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.cmd.x">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
               </Target>
             </Action>
           </Step>
           <Step order="10">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.y">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.cmd.y">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
               </Target>
             </Action>
           </Step>
           <Step order="16">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.elemId">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
           <Step order="22">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[5].in.cmd.click">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -192,28 +192,28 @@
         <Sequence>
           <Step order="5">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.x">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.cmd.x">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=x" />
               </Target>
             </Action>
           </Step>
           <Step order="11">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.y">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.cmd.y">
                 <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=y" />
               </Target>
             </Action>
           </Step>
           <Step order="17">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.elemId">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.cmd.elemId">
                 <Method xsi:type="opcUa.NodeAction.SetValueString" value="=elementId" />
               </Target>
             </Action>
           </Step>
           <Step order="23">
             <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Vi_main:hmiInstance[6].in.cmd.click">
+              <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.cmd.click">
                 <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
               </Target>
             </Action>
@@ -227,43 +227,43 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.blobResultProp.Action.SetVisible" value="true" />
+              <Target xsi:type="widgets.visionWidget.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
+                <Method xsi:type="widgets.visionWidget.blobResultProp.Action.SetVisible" value="true" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
+                <Method xsi:type="widgets.visionWidget.codeReaderResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
+                <Method xsi:type="widgets.visionWidget.matchingResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.measureResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
+                <Method xsi:type="widgets.visionWidget.measureResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
+                <Method xsi:type="widgets.visionWidget.ocrResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
+                <Method xsi:type="widgets.visionWidget.pixelCntResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
@@ -273,43 +273,43 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.blobResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
+                <Method xsi:type="widgets.visionWidget.blobResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action.SetVisible" value="true" />
+              <Target xsi:type="widgets.visionWidget.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
+                <Method xsi:type="widgets.visionWidget.codeReaderResultProp.Action.SetVisible" value="true" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
+                <Method xsi:type="widgets.visionWidget.matchingResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.measureResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
+                <Method xsi:type="widgets.visionWidget.measureResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
+                <Method xsi:type="widgets.visionWidget.ocrResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
+                <Method xsi:type="widgets.visionWidget.pixelCntResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
@@ -319,43 +319,43 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.blobResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
+                <Method xsi:type="widgets.visionWidget.blobResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
+                <Method xsi:type="widgets.visionWidget.codeReaderResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action.SetVisible" value="true" />
+              <Target xsi:type="widgets.visionWidget.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
+                <Method xsi:type="widgets.visionWidget.matchingResultProp.Action.SetVisible" value="true" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.measureResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
+                <Method xsi:type="widgets.visionWidget.measureResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
+                <Method xsi:type="widgets.visionWidget.ocrResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
+                <Method xsi:type="widgets.visionWidget.pixelCntResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
@@ -365,43 +365,43 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.blobResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
+                <Method xsi:type="widgets.visionWidget.blobResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
+                <Method xsi:type="widgets.visionWidget.codeReaderResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
+                <Method xsi:type="widgets.visionWidget.matchingResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.measureResultProp.Action.SetVisible" value="true" />
+              <Target xsi:type="widgets.visionWidget.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
+                <Method xsi:type="widgets.visionWidget.measureResultProp.Action.SetVisible" value="true" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
+                <Method xsi:type="widgets.visionWidget.ocrResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
+                <Method xsi:type="widgets.visionWidget.pixelCntResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
@@ -411,43 +411,43 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.blobResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
+                <Method xsi:type="widgets.visionWidget.blobResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
+                <Method xsi:type="widgets.visionWidget.codeReaderResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
+                <Method xsi:type="widgets.visionWidget.matchingResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.measureResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
+                <Method xsi:type="widgets.visionWidget.measureResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action.SetVisible" value="true" />
+              <Target xsi:type="widgets.visionWidget.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
+                <Method xsi:type="widgets.visionWidget.ocrResultProp.Action.SetVisible" value="true" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
+                <Method xsi:type="widgets.visionWidget.pixelCntResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
@@ -457,43 +457,43 @@
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.blobResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.blobResultProp.Action" contentRefId="contentMain" widgetRefId="blobResultProp1">
+                <Method xsi:type="widgets.visionWidget.blobResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.codeReaderResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.codeReaderResultProp.Action" contentRefId="contentMain" widgetRefId="codeReaderResultProp1">
+                <Method xsi:type="widgets.visionWidget.codeReaderResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.matchingResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.matchingResultProp.Action" contentRefId="contentMain" widgetRefId="matchingResultProp1">
+                <Method xsi:type="widgets.visionWidget.matchingResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.measureResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.measureResultProp.Action" contentRefId="contentMain" widgetRefId="measureResultProp1">
+                <Method xsi:type="widgets.visionWidget.measureResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.ocrResultProp.Action.SetVisible" value="false" />
+              <Target xsi:type="widgets.visionWidget.ocrResultProp.Action" contentRefId="contentMain" widgetRefId="ocrResultProp1">
+                <Method xsi:type="widgets.visionWidget.ocrResultProp.Action.SetVisible" value="false" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
-                <Method xsi:type="widgets.widgetlibrary_0.pixelCntResultProp.Action.SetVisible" value="true" />
+              <Target xsi:type="widgets.visionWidget.pixelCntResultProp.Action" contentRefId="contentMain" widgetRefId="pixelCntResultProp1">
+                <Method xsi:type="widgets.visionWidget.pixelCntResultProp.Action.SetVisible" value="true" />
               </Target>
             </Action>
           </Step>

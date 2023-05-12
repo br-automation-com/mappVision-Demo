@@ -7,7 +7,7 @@
     <Object Type="Package" Description="Global libraries">Libraries</Object>
     <Object Type="Package">Programs</Object>
     <Object Type="Package">Documentation</Object>
-    <Object Type="Package">mappView</Object>
+    <Object Type="Package" Description="mappView visualization for vision">mappView</Object>
     <Object Type="File">Project.language</Object>
     <Object Type="Package">old</Object>
   </Objects>
