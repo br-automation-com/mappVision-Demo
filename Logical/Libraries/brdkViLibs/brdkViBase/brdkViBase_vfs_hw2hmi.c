@@ -15,13 +15,13 @@
 plcbit brdkViBase_blob_hw2hmi(struct brdkViBase_hw_blob_in_typ* hw, struct brdkViBase_hmi_blob_in_typ* hmi)
 {
 	hmi->anisometry = hw->anisometry;
-	hmi->area = hw->area;
+	hmi->area = hw->area /100.0;
 	hmi->circularity = hw->circularity;
 	hmi->clipped = hw->clipped;
 	hmi->innterCirclePositionX = hw->innterCirclePositionX / 100.0;
 	hmi->innterCirclePositionY = hw->innterCirclePositionY / 100.0;
 	hmi->innterCircleRadius = hw->innterCircleRadius  / 100.0;
-	hmi->length = hw->length;
+	hmi->length = hw->length /100.0;
 	hmi->meanGreyValue = hw->meanGreyValue;
 	hmi->modelNumber = hw->modelNumber;
 	hmi->orientation = hw->orientation  / 100.0;
@@ -30,7 +30,7 @@ plcbit brdkViBase_blob_hw2hmi(struct brdkViBase_hw_blob_in_typ* hw, struct brdkV
 	hmi->rectangularity = hw->rectangularity;
 	hmi->rotCenterX = hw->rotCenterX  / 100.0;
 	hmi->rotCenterY = hw->rotCenterY  / 100.0;
-	hmi->width = hw->width;
+	hmi->width = hw->width / 100.0 ;
 	hmi->xMax = hw->xMax;
 	hmi->xMin = hw->xMin;
 	hmi->yMax = hw->yMax;

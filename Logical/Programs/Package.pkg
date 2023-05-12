@@ -2,9 +2,10 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="Package">Axis</Object>
-    <Object Type="Package">Files</Object>
-    <Object Type="Package">Vision</Object>
-    <Object Type="Package" Description="This module is used to handle the machine configuration.">Recipe</Object>
+    <Object Type="Package" Description="Program that handles motion axis related tasks">Axis</Object>
+    <Object Type="Package" Description="Program that handles file system tasks">Files</Object>
+    <Object Type="Package" Description="Main program that handles triggering and processing of vision">Vision</Object>
+    <Object Type="Package" Description="Program to handle MpRecipe">Recipe</Object>
+    <Object Type="Package">User</Object>
   </Objects>
 </Package>

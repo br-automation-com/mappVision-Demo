@@ -10,6 +10,6 @@
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8" />
   <VcDataObjects>
-    <VcDataObject Name="Visu" Source="Programs.Vision.Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
+    <VcDataObject Name="Visu" Source="old.Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
   </VcDataObjects>
 </SwConfiguration>

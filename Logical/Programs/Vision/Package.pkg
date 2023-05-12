@@ -2,12 +2,8 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="File">revision.txt</Object>
-    <Object Type="DataObject" Language="Vc" Description="Sample VC4 Visu 640x480 (VGA)">Visu</Object>
-    <Object Type="File">VisionVariables.var</Object>
-    <Object Type="File">VisionTypes.typ</Object>
-    <Object Type="Program" Language="IEC">Vi_main</Object>
-    <Object Type="File">setRouteToCamera.bat</Object>
-    <Object Type="File">RouteInfo_Tool_Info.txt</Object>
+    <Object Type="File">gVision.var</Object>
+    <Object Type="File">gVision.typ</Object>
+    <Object Type="Program" Language="IEC">Vision</Object>
   </Objects>
 </Package>

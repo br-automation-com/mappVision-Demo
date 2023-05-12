@@ -11,12 +11,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="opcUa" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.lightNum" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.lightNum" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.lightNum" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.lightNum" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.lightNum" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.lightNum" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.lightNum" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.lightNum" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.lightNum" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.lightNum" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.lightNum" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.lightNum" />
 				</be:List>
 			</Source>
 			<Target xsi:type="expression" refId="LightID" attribute="LightNum" />
@@ -26,12 +26,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.lightNum" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.lightNum" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.lightNum" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.lightNum" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.lightNum" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.lightNum" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.lightNum" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.lightNum" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.lightNum" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.lightNum" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.lightNum" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.lightNum" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="numLightsNo" attribute="value" />
@@ -43,75 +43,70 @@
 		</Binding>
 				
 		
-		<Binding mode="oneWay">
-			<Source xsi:type="session" refId="lightID" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="NumericOutput3" attribute="value" />
-		</Binding>
-		
 		
 		<Binding mode="twoWay">
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="lightID" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="11" refId="::Vi_main:hmiInstance[1].in.recipe.lights[1]" />
-					<bt:Element index="12" refId="::Vi_main:hmiInstance[1].in.recipe.lights[2]" />
-					<bt:Element index="13" refId="::Vi_main:hmiInstance[1].in.recipe.lights[3]" />
-					<bt:Element index="14" refId="::Vi_main:hmiInstance[1].in.recipe.lights[4]" />
-					<bt:Element index="15" refId="::Vi_main:hmiInstance[1].in.recipe.lights[5]" />
-					<bt:Element index="16" refId="::Vi_main:hmiInstance[1].in.recipe.lights[6]" />
-					<bt:Element index="17" refId="::Vi_main:hmiInstance[1].in.recipe.lights[7]" />
-					<bt:Element index="18" refId="::Vi_main:hmiInstance[1].in.recipe.lights[8]" />
-					<bt:Element index="19" refId="::Vi_main:hmiInstance[1].in.recipe.lights[9]" />
+					<bt:Element index="11" refId="::Vision1:hmiInstance[1].in.recipe.lights[1]" />
+					<bt:Element index="12" refId="::Vision1:hmiInstance[1].in.recipe.lights[2]" />
+					<bt:Element index="13" refId="::Vision1:hmiInstance[1].in.recipe.lights[3]" />
+					<bt:Element index="14" refId="::Vision1:hmiInstance[1].in.recipe.lights[4]" />
+					<bt:Element index="15" refId="::Vision1:hmiInstance[1].in.recipe.lights[5]" />
+					<bt:Element index="16" refId="::Vision1:hmiInstance[1].in.recipe.lights[6]" />
+					<bt:Element index="17" refId="::Vision1:hmiInstance[1].in.recipe.lights[7]" />
+					<bt:Element index="18" refId="::Vision1:hmiInstance[1].in.recipe.lights[8]" />
+					<bt:Element index="19" refId="::Vision1:hmiInstance[1].in.recipe.lights[9]" />
 					
-					<bt:Element index="21" refId="::Vi_main:hmiInstance[2].in.recipe.lights[1]" />
-					<bt:Element index="22" refId="::Vi_main:hmiInstance[2].in.recipe.lights[2]" />
-					<bt:Element index="23" refId="::Vi_main:hmiInstance[2].in.recipe.lights[3]" />
-					<bt:Element index="24" refId="::Vi_main:hmiInstance[2].in.recipe.lights[4]" />
-					<bt:Element index="25" refId="::Vi_main:hmiInstance[2].in.recipe.lights[5]" />
-					<bt:Element index="26" refId="::Vi_main:hmiInstance[2].in.recipe.lights[6]" />
-					<bt:Element index="27" refId="::Vi_main:hmiInstance[2].in.recipe.lights[7]" />
-					<bt:Element index="28" refId="::Vi_main:hmiInstance[2].in.recipe.lights[8]" />
-					<bt:Element index="29" refId="::Vi_main:hmiInstance[2].in.recipe.lights[9]" />
+					<bt:Element index="21" refId="::Vision1:hmiInstance[2].in.recipe.lights[1]" />
+					<bt:Element index="22" refId="::Vision1:hmiInstance[2].in.recipe.lights[2]" />
+					<bt:Element index="23" refId="::Vision1:hmiInstance[2].in.recipe.lights[3]" />
+					<bt:Element index="24" refId="::Vision1:hmiInstance[2].in.recipe.lights[4]" />
+					<bt:Element index="25" refId="::Vision1:hmiInstance[2].in.recipe.lights[5]" />
+					<bt:Element index="26" refId="::Vision1:hmiInstance[2].in.recipe.lights[6]" />
+					<bt:Element index="27" refId="::Vision1:hmiInstance[2].in.recipe.lights[7]" />
+					<bt:Element index="28" refId="::Vision1:hmiInstance[2].in.recipe.lights[8]" />
+					<bt:Element index="29" refId="::Vision1:hmiInstance[2].in.recipe.lights[9]" />
 					
-					<bt:Element index="31" refId="::Vi_main:hmiInstance[3].in.recipe.lights[1]" />
-					<bt:Element index="32" refId="::Vi_main:hmiInstance[3].in.recipe.lights[2]" />
-					<bt:Element index="33" refId="::Vi_main:hmiInstance[3].in.recipe.lights[3]" />
-					<bt:Element index="34" refId="::Vi_main:hmiInstance[3].in.recipe.lights[4]" />
-					<bt:Element index="35" refId="::Vi_main:hmiInstance[3].in.recipe.lights[5]" />
-					<bt:Element index="36" refId="::Vi_main:hmiInstance[3].in.recipe.lights[6]" />
-					<bt:Element index="37" refId="::Vi_main:hmiInstance[3].in.recipe.lights[7]" />
-					<bt:Element index="38" refId="::Vi_main:hmiInstance[3].in.recipe.lights[8]" />
-					<bt:Element index="39" refId="::Vi_main:hmiInstance[3].in.recipe.lights[9]" />
+					<bt:Element index="31" refId="::Vision1:hmiInstance[3].in.recipe.lights[1]" />
+					<bt:Element index="32" refId="::Vision1:hmiInstance[3].in.recipe.lights[2]" />
+					<bt:Element index="33" refId="::Vision1:hmiInstance[3].in.recipe.lights[3]" />
+					<bt:Element index="34" refId="::Vision1:hmiInstance[3].in.recipe.lights[4]" />
+					<bt:Element index="35" refId="::Vision1:hmiInstance[3].in.recipe.lights[5]" />
+					<bt:Element index="36" refId="::Vision1:hmiInstance[3].in.recipe.lights[6]" />
+					<bt:Element index="37" refId="::Vision1:hmiInstance[3].in.recipe.lights[7]" />
+					<bt:Element index="38" refId="::Vision1:hmiInstance[3].in.recipe.lights[8]" />
+					<bt:Element index="39" refId="::Vision1:hmiInstance[3].in.recipe.lights[9]" />
 					
-					<bt:Element index="41" refId="::Vi_main:hmiInstance[4].in.recipe.lights[1]" />
-					<bt:Element index="42" refId="::Vi_main:hmiInstance[4].in.recipe.lights[2]" />
-					<bt:Element index="43" refId="::Vi_main:hmiInstance[4].in.recipe.lights[3]" />
-					<bt:Element index="44" refId="::Vi_main:hmiInstance[4].in.recipe.lights[4]" />
-					<bt:Element index="45" refId="::Vi_main:hmiInstance[4].in.recipe.lights[5]" />
-					<bt:Element index="46" refId="::Vi_main:hmiInstance[4].in.recipe.lights[6]" />
-					<bt:Element index="47" refId="::Vi_main:hmiInstance[4].in.recipe.lights[7]" />
-					<bt:Element index="48" refId="::Vi_main:hmiInstance[4].in.recipe.lights[8]" />
-					<bt:Element index="49" refId="::Vi_main:hmiInstance[4].in.recipe.lights[9]" />
+					<bt:Element index="41" refId="::Vision1:hmiInstance[4].in.recipe.lights[1]" />
+					<bt:Element index="42" refId="::Vision1:hmiInstance[4].in.recipe.lights[2]" />
+					<bt:Element index="43" refId="::Vision1:hmiInstance[4].in.recipe.lights[3]" />
+					<bt:Element index="44" refId="::Vision1:hmiInstance[4].in.recipe.lights[4]" />
+					<bt:Element index="45" refId="::Vision1:hmiInstance[4].in.recipe.lights[5]" />
+					<bt:Element index="46" refId="::Vision1:hmiInstance[4].in.recipe.lights[6]" />
+					<bt:Element index="47" refId="::Vision1:hmiInstance[4].in.recipe.lights[7]" />
+					<bt:Element index="48" refId="::Vision1:hmiInstance[4].in.recipe.lights[8]" />
+					<bt:Element index="49" refId="::Vision1:hmiInstance[4].in.recipe.lights[9]" />
 					
-					<bt:Element index="51" refId="::Vi_main:hmiInstance[5].in.recipe.lights[1]" />
-					<bt:Element index="52" refId="::Vi_main:hmiInstance[5].in.recipe.lights[2]" />
-					<bt:Element index="53" refId="::Vi_main:hmiInstance[5].in.recipe.lights[3]" />
-					<bt:Element index="54" refId="::Vi_main:hmiInstance[5].in.recipe.lights[4]" />
-					<bt:Element index="55" refId="::Vi_main:hmiInstance[5].in.recipe.lights[5]" />
-					<bt:Element index="56" refId="::Vi_main:hmiInstance[5].in.recipe.lights[6]" />
-					<bt:Element index="57" refId="::Vi_main:hmiInstance[5].in.recipe.lights[7]" />
-					<bt:Element index="58" refId="::Vi_main:hmiInstance[5].in.recipe.lights[8]" />
-					<bt:Element index="59" refId="::Vi_main:hmiInstance[5].in.recipe.lights[9]" />
+					<bt:Element index="51" refId="::Vision1:hmiInstance[5].in.recipe.lights[1]" />
+					<bt:Element index="52" refId="::Vision1:hmiInstance[5].in.recipe.lights[2]" />
+					<bt:Element index="53" refId="::Vision1:hmiInstance[5].in.recipe.lights[3]" />
+					<bt:Element index="54" refId="::Vision1:hmiInstance[5].in.recipe.lights[4]" />
+					<bt:Element index="55" refId="::Vision1:hmiInstance[5].in.recipe.lights[5]" />
+					<bt:Element index="56" refId="::Vision1:hmiInstance[5].in.recipe.lights[6]" />
+					<bt:Element index="57" refId="::Vision1:hmiInstance[5].in.recipe.lights[7]" />
+					<bt:Element index="58" refId="::Vision1:hmiInstance[5].in.recipe.lights[8]" />
+					<bt:Element index="59" refId="::Vision1:hmiInstance[5].in.recipe.lights[9]" />
 					
-					<bt:Element index="61" refId="::Vi_main:hmiInstance[6].in.recipe.lights[1]" />
-					<bt:Element index="62" refId="::Vi_main:hmiInstance[6].in.recipe.lights[2]" />
-					<bt:Element index="63" refId="::Vi_main:hmiInstance[6].in.recipe.lights[3]" />
-					<bt:Element index="64" refId="::Vi_main:hmiInstance[6].in.recipe.lights[4]" />
-					<bt:Element index="65" refId="::Vi_main:hmiInstance[6].in.recipe.lights[5]" />
-					<bt:Element index="66" refId="::Vi_main:hmiInstance[6].in.recipe.lights[6]" />
-					<bt:Element index="67" refId="::Vi_main:hmiInstance[6].in.recipe.lights[7]" />
-					<bt:Element index="68" refId="::Vi_main:hmiInstance[6].in.recipe.lights[8]" />
-					<bt:Element index="69" refId="::Vi_main:hmiInstance[6].in.recipe.lights[9]" />
+					<bt:Element index="61" refId="::Vision1:hmiInstance[6].in.recipe.lights[1]" />
+					<bt:Element index="62" refId="::Vision1:hmiInstance[6].in.recipe.lights[2]" />
+					<bt:Element index="63" refId="::Vision1:hmiInstance[6].in.recipe.lights[3]" />
+					<bt:Element index="64" refId="::Vision1:hmiInstance[6].in.recipe.lights[4]" />
+					<bt:Element index="65" refId="::Vision1:hmiInstance[6].in.recipe.lights[5]" />
+					<bt:Element index="66" refId="::Vision1:hmiInstance[6].in.recipe.lights[6]" />
+					<bt:Element index="67" refId="::Vision1:hmiInstance[6].in.recipe.lights[7]" />
+					<bt:Element index="68" refId="::Vision1:hmiInstance[6].in.recipe.lights[8]" />
+					<bt:Element index="69" refId="::Vision1:hmiInstance[6].in.recipe.lights[9]" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="LightInfo1" attribute="Input" />
@@ -121,65 +116,65 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="lightID" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="11" refId="::Vi_main:hmiInstance[1].out.lights[1]" />
-					<bt:Element index="12" refId="::Vi_main:hmiInstance[1].out.lights[2]" />
-					<bt:Element index="13" refId="::Vi_main:hmiInstance[1].out.lights[3]" />
-					<bt:Element index="14" refId="::Vi_main:hmiInstance[1].out.lights[4]" />
-					<bt:Element index="15" refId="::Vi_main:hmiInstance[1].out.lights[5]" />
-					<bt:Element index="16" refId="::Vi_main:hmiInstance[1].out.lights[6]" />
-					<bt:Element index="17" refId="::Vi_main:hmiInstance[1].out.lights[7]" />
-					<bt:Element index="18" refId="::Vi_main:hmiInstance[1].out.lights[8]" />
-					<bt:Element index="19" refId="::Vi_main:hmiInstance[1].out.lights[9]" />
+					<bt:Element index="11" refId="::Vision1:hmiInstance[1].out.lights[1]" />
+					<bt:Element index="12" refId="::Vision1:hmiInstance[1].out.lights[2]" />
+					<bt:Element index="13" refId="::Vision1:hmiInstance[1].out.lights[3]" />
+					<bt:Element index="14" refId="::Vision1:hmiInstance[1].out.lights[4]" />
+					<bt:Element index="15" refId="::Vision1:hmiInstance[1].out.lights[5]" />
+					<bt:Element index="16" refId="::Vision1:hmiInstance[1].out.lights[6]" />
+					<bt:Element index="17" refId="::Vision1:hmiInstance[1].out.lights[7]" />
+					<bt:Element index="18" refId="::Vision1:hmiInstance[1].out.lights[8]" />
+					<bt:Element index="19" refId="::Vision1:hmiInstance[1].out.lights[9]" />
 					
-					<bt:Element index="21" refId="::Vi_main:hmiInstance[2].out.lights[1]" />
-					<bt:Element index="22" refId="::Vi_main:hmiInstance[2].out.lights[2]" />
-					<bt:Element index="23" refId="::Vi_main:hmiInstance[2].out.lights[3]" />
-					<bt:Element index="24" refId="::Vi_main:hmiInstance[2].out.lights[4]" />
-					<bt:Element index="25" refId="::Vi_main:hmiInstance[2].out.lights[5]" />
-					<bt:Element index="26" refId="::Vi_main:hmiInstance[2].out.lights[6]" />
-					<bt:Element index="27" refId="::Vi_main:hmiInstance[2].out.lights[7]" />
-					<bt:Element index="28" refId="::Vi_main:hmiInstance[2].out.lights[8]" />
-					<bt:Element index="29" refId="::Vi_main:hmiInstance[2].out.lights[9]" />
+					<bt:Element index="21" refId="::Vision1:hmiInstance[2].out.lights[1]" />
+					<bt:Element index="22" refId="::Vision1:hmiInstance[2].out.lights[2]" />
+					<bt:Element index="23" refId="::Vision1:hmiInstance[2].out.lights[3]" />
+					<bt:Element index="24" refId="::Vision1:hmiInstance[2].out.lights[4]" />
+					<bt:Element index="25" refId="::Vision1:hmiInstance[2].out.lights[5]" />
+					<bt:Element index="26" refId="::Vision1:hmiInstance[2].out.lights[6]" />
+					<bt:Element index="27" refId="::Vision1:hmiInstance[2].out.lights[7]" />
+					<bt:Element index="28" refId="::Vision1:hmiInstance[2].out.lights[8]" />
+					<bt:Element index="29" refId="::Vision1:hmiInstance[2].out.lights[9]" />
 					
-					<bt:Element index="31" refId="::Vi_main:hmiInstance[3].out.lights[1]" />
-					<bt:Element index="32" refId="::Vi_main:hmiInstance[3].out.lights[2]" />
-					<bt:Element index="33" refId="::Vi_main:hmiInstance[3].out.lights[3]" />
-					<bt:Element index="34" refId="::Vi_main:hmiInstance[3].out.lights[4]" />
-					<bt:Element index="35" refId="::Vi_main:hmiInstance[3].out.lights[5]" />
-					<bt:Element index="36" refId="::Vi_main:hmiInstance[3].out.lights[6]" />
-					<bt:Element index="37" refId="::Vi_main:hmiInstance[3].out.lights[7]" />
-					<bt:Element index="38" refId="::Vi_main:hmiInstance[3].out.lights[8]" />
-					<bt:Element index="39" refId="::Vi_main:hmiInstance[3].out.lights[9]" />
+					<bt:Element index="31" refId="::Vision1:hmiInstance[3].out.lights[1]" />
+					<bt:Element index="32" refId="::Vision1:hmiInstance[3].out.lights[2]" />
+					<bt:Element index="33" refId="::Vision1:hmiInstance[3].out.lights[3]" />
+					<bt:Element index="34" refId="::Vision1:hmiInstance[3].out.lights[4]" />
+					<bt:Element index="35" refId="::Vision1:hmiInstance[3].out.lights[5]" />
+					<bt:Element index="36" refId="::Vision1:hmiInstance[3].out.lights[6]" />
+					<bt:Element index="37" refId="::Vision1:hmiInstance[3].out.lights[7]" />
+					<bt:Element index="38" refId="::Vision1:hmiInstance[3].out.lights[8]" />
+					<bt:Element index="39" refId="::Vision1:hmiInstance[3].out.lights[9]" />
 					
-					<bt:Element index="41" refId="::Vi_main:hmiInstance[4].out.lights[1]" />
-					<bt:Element index="42" refId="::Vi_main:hmiInstance[4].out.lights[2]" />
-					<bt:Element index="43" refId="::Vi_main:hmiInstance[4].out.lights[3]" />
-					<bt:Element index="44" refId="::Vi_main:hmiInstance[4].out.lights[4]" />
-					<bt:Element index="45" refId="::Vi_main:hmiInstance[4].out.lights[5]" />
-					<bt:Element index="46" refId="::Vi_main:hmiInstance[4].out.lights[6]" />
-					<bt:Element index="47" refId="::Vi_main:hmiInstance[4].out.lights[7]" />
-					<bt:Element index="48" refId="::Vi_main:hmiInstance[4].out.lights[8]" />
-					<bt:Element index="49" refId="::Vi_main:hmiInstance[4].out.lights[9]" />
+					<bt:Element index="41" refId="::Vision1:hmiInstance[4].out.lights[1]" />
+					<bt:Element index="42" refId="::Vision1:hmiInstance[4].out.lights[2]" />
+					<bt:Element index="43" refId="::Vision1:hmiInstance[4].out.lights[3]" />
+					<bt:Element index="44" refId="::Vision1:hmiInstance[4].out.lights[4]" />
+					<bt:Element index="45" refId="::Vision1:hmiInstance[4].out.lights[5]" />
+					<bt:Element index="46" refId="::Vision1:hmiInstance[4].out.lights[6]" />
+					<bt:Element index="47" refId="::Vision1:hmiInstance[4].out.lights[7]" />
+					<bt:Element index="48" refId="::Vision1:hmiInstance[4].out.lights[8]" />
+					<bt:Element index="49" refId="::Vision1:hmiInstance[4].out.lights[9]" />
 					
-					<bt:Element index="51" refId="::Vi_main:hmiInstance[5].out.lights[1]" />
-					<bt:Element index="52" refId="::Vi_main:hmiInstance[5].out.lights[2]" />
-					<bt:Element index="53" refId="::Vi_main:hmiInstance[5].out.lights[3]" />
-					<bt:Element index="54" refId="::Vi_main:hmiInstance[5].out.lights[4]" />
-					<bt:Element index="55" refId="::Vi_main:hmiInstance[5].out.lights[5]" />
-					<bt:Element index="56" refId="::Vi_main:hmiInstance[5].out.lights[6]" />
-					<bt:Element index="57" refId="::Vi_main:hmiInstance[5].out.lights[7]" />
-					<bt:Element index="58" refId="::Vi_main:hmiInstance[5].out.lights[8]" />
-					<bt:Element index="59" refId="::Vi_main:hmiInstance[5].out.lights[9]" />
+					<bt:Element index="51" refId="::Vision1:hmiInstance[5].out.lights[1]" />
+					<bt:Element index="52" refId="::Vision1:hmiInstance[5].out.lights[2]" />
+					<bt:Element index="53" refId="::Vision1:hmiInstance[5].out.lights[3]" />
+					<bt:Element index="54" refId="::Vision1:hmiInstance[5].out.lights[4]" />
+					<bt:Element index="55" refId="::Vision1:hmiInstance[5].out.lights[5]" />
+					<bt:Element index="56" refId="::Vision1:hmiInstance[5].out.lights[6]" />
+					<bt:Element index="57" refId="::Vision1:hmiInstance[5].out.lights[7]" />
+					<bt:Element index="58" refId="::Vision1:hmiInstance[5].out.lights[8]" />
+					<bt:Element index="59" refId="::Vision1:hmiInstance[5].out.lights[9]" />
 					
-					<bt:Element index="61" refId="::Vi_main:hmiInstance[6].out.lights[1]" />
-					<bt:Element index="62" refId="::Vi_main:hmiInstance[6].out.lights[2]" />
-					<bt:Element index="63" refId="::Vi_main:hmiInstance[6].out.lights[3]" />
-					<bt:Element index="64" refId="::Vi_main:hmiInstance[6].out.lights[4]" />
-					<bt:Element index="65" refId="::Vi_main:hmiInstance[6].out.lights[5]" />
-					<bt:Element index="66" refId="::Vi_main:hmiInstance[6].out.lights[6]" />
-					<bt:Element index="67" refId="::Vi_main:hmiInstance[6].out.lights[7]" />
-					<bt:Element index="68" refId="::Vi_main:hmiInstance[6].out.lights[8]" />
-					<bt:Element index="69" refId="::Vi_main:hmiInstance[6].out.lights[9]" />
+					<bt:Element index="61" refId="::Vision1:hmiInstance[6].out.lights[1]" />
+					<bt:Element index="62" refId="::Vision1:hmiInstance[6].out.lights[2]" />
+					<bt:Element index="63" refId="::Vision1:hmiInstance[6].out.lights[3]" />
+					<bt:Element index="64" refId="::Vision1:hmiInstance[6].out.lights[4]" />
+					<bt:Element index="65" refId="::Vision1:hmiInstance[6].out.lights[5]" />
+					<bt:Element index="66" refId="::Vision1:hmiInstance[6].out.lights[6]" />
+					<bt:Element index="67" refId="::Vision1:hmiInstance[6].out.lights[7]" />
+					<bt:Element index="68" refId="::Vision1:hmiInstance[6].out.lights[8]" />
+					<bt:Element index="69" refId="::Vision1:hmiInstance[6].out.lights[9]" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="LightInfo1" attribute="Output" />
@@ -188,12 +183,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.useCamLedColorForLight" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.useCamLedColorForLight" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.useCamLedColorForLight" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.useCamLedColorForLight" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.useCamLedColorForLight" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.useCamLedColorForLight" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.useCamLedColorForLight" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.useCamLedColorForLight" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.useCamLedColorForLight" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.useCamLedColorForLight" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.useCamLedColorForLight" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.useCamLedColorForLight" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="useCamColorCheck" attribute="value" />
@@ -202,12 +197,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.useCamExpTimeForLight" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.useCamExpTimeForLight" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.useCamExpTimeForLight" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.useCamExpTimeForLight" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.useCamExpTimeForLight" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.useCamExpTimeForLight" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.useCamExpTimeForLight" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.useCamExpTimeForLight" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.useCamExpTimeForLight" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.useCamExpTimeForLight" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.useCamExpTimeForLight" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.useCamExpTimeForLight" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="useCamExposureCheck" attribute="value" />
@@ -218,12 +213,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.flashColor" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.flashColor" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.flashColor" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.flashColor" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.flashColor" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.flashColor" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.flashColor" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.flashColor" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.flashColor" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.flashColor" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.flashColor" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.flashColor" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="DropDownBoxFlashColor1" attribute="selectedIndex" />
@@ -233,12 +228,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.recipe.cam.exposureTime" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.recipe.cam.exposureTime" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.recipe.cam.exposureTime" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.recipe.cam.exposureTime" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.recipe.cam.exposureTime" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.recipe.cam.exposureTime" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.exposureTime" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.exposureTime" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.exposureTime" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.exposureTime" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.exposureTime" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.exposureTime" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentLights" widgetRefId="cameraExpTimeOutput" attribute="value" />
@@ -248,65 +243,65 @@
 				<Selector xsi:type="session" refId="lightID" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
 					
-					<bt:Element index="11" refId="::Vi_main:hmiInstance[1].in.cmd.lights[1].flashTrigger" />
-					<bt:Element index="12" refId="::Vi_main:hmiInstance[1].in.cmd.lights[2].flashTrigger" />
-					<bt:Element index="13" refId="::Vi_main:hmiInstance[1].in.cmd.lights[3].flashTrigger" />
-					<bt:Element index="14" refId="::Vi_main:hmiInstance[1].in.cmd.lights[4].flashTrigger" />
-					<bt:Element index="15" refId="::Vi_main:hmiInstance[1].in.cmd.lights[5].flashTrigger" />
-					<bt:Element index="16" refId="::Vi_main:hmiInstance[1].in.cmd.lights[6].flashTrigger" />
-					<bt:Element index="17" refId="::Vi_main:hmiInstance[1].in.cmd.lights[7].flashTrigger" />
-					<bt:Element index="18" refId="::Vi_main:hmiInstance[1].in.cmd.lights[8].flashTrigger" />
-					<bt:Element index="19" refId="::Vi_main:hmiInstance[1].in.cmd.lights[9].flashTrigger" />
+					<bt:Element index="11" refId="::Vision1:hmiInstance[1].in.cmd.lights[1].flashTrigger" />
+					<bt:Element index="12" refId="::Vision1:hmiInstance[1].in.cmd.lights[2].flashTrigger" />
+					<bt:Element index="13" refId="::Vision1:hmiInstance[1].in.cmd.lights[3].flashTrigger" />
+					<bt:Element index="14" refId="::Vision1:hmiInstance[1].in.cmd.lights[4].flashTrigger" />
+					<bt:Element index="15" refId="::Vision1:hmiInstance[1].in.cmd.lights[5].flashTrigger" />
+					<bt:Element index="16" refId="::Vision1:hmiInstance[1].in.cmd.lights[6].flashTrigger" />
+					<bt:Element index="17" refId="::Vision1:hmiInstance[1].in.cmd.lights[7].flashTrigger" />
+					<bt:Element index="18" refId="::Vision1:hmiInstance[1].in.cmd.lights[8].flashTrigger" />
+					<bt:Element index="19" refId="::Vision1:hmiInstance[1].in.cmd.lights[9].flashTrigger" />
 					
-					<bt:Element index="21" refId="::Vi_main:hmiInstance[2].in.cmd.lights[1].flashTrigger" />
-					<bt:Element index="22" refId="::Vi_main:hmiInstance[2].in.cmd.lights[2].flashTrigger" />
-					<bt:Element index="23" refId="::Vi_main:hmiInstance[2].in.cmd.lights[3].flashTrigger" />
-					<bt:Element index="24" refId="::Vi_main:hmiInstance[2].in.cmd.lights[4].flashTrigger" />
-					<bt:Element index="25" refId="::Vi_main:hmiInstance[2].in.cmd.lights[5].flashTrigger" />
-					<bt:Element index="26" refId="::Vi_main:hmiInstance[2].in.cmd.lights[6].flashTrigger" />
-					<bt:Element index="27" refId="::Vi_main:hmiInstance[2].in.cmd.lights[7].flashTrigger" />
-					<bt:Element index="28" refId="::Vi_main:hmiInstance[2].in.cmd.lights[8].flashTrigger" />
-					<bt:Element index="29" refId="::Vi_main:hmiInstance[2].in.cmd.lights[9].flashTrigger" />
+					<bt:Element index="21" refId="::Vision1:hmiInstance[2].in.cmd.lights[1].flashTrigger" />
+					<bt:Element index="22" refId="::Vision1:hmiInstance[2].in.cmd.lights[2].flashTrigger" />
+					<bt:Element index="23" refId="::Vision1:hmiInstance[2].in.cmd.lights[3].flashTrigger" />
+					<bt:Element index="24" refId="::Vision1:hmiInstance[2].in.cmd.lights[4].flashTrigger" />
+					<bt:Element index="25" refId="::Vision1:hmiInstance[2].in.cmd.lights[5].flashTrigger" />
+					<bt:Element index="26" refId="::Vision1:hmiInstance[2].in.cmd.lights[6].flashTrigger" />
+					<bt:Element index="27" refId="::Vision1:hmiInstance[2].in.cmd.lights[7].flashTrigger" />
+					<bt:Element index="28" refId="::Vision1:hmiInstance[2].in.cmd.lights[8].flashTrigger" />
+					<bt:Element index="29" refId="::Vision1:hmiInstance[2].in.cmd.lights[9].flashTrigger" />
 					
-					<bt:Element index="31" refId="::Vi_main:hmiInstance[3].in.cmd.lights[1].flashTrigger" />
-					<bt:Element index="32" refId="::Vi_main:hmiInstance[3].in.cmd.lights[2].flashTrigger" />
-					<bt:Element index="33" refId="::Vi_main:hmiInstance[3].in.cmd.lights[3].flashTrigger" />
-					<bt:Element index="34" refId="::Vi_main:hmiInstance[3].in.cmd.lights[4].flashTrigger" />
-					<bt:Element index="35" refId="::Vi_main:hmiInstance[3].in.cmd.lights[5].flashTrigger" />
-					<bt:Element index="36" refId="::Vi_main:hmiInstance[3].in.cmd.lights[6].flashTrigger" />
-					<bt:Element index="37" refId="::Vi_main:hmiInstance[3].in.cmd.lights[7].flashTrigger" />
-					<bt:Element index="38" refId="::Vi_main:hmiInstance[3].in.cmd.lights[8].flashTrigger" />
-					<bt:Element index="39" refId="::Vi_main:hmiInstance[3].in.cmd.lights[9].flashTrigger" />
+					<bt:Element index="31" refId="::Vision1:hmiInstance[3].in.cmd.lights[1].flashTrigger" />
+					<bt:Element index="32" refId="::Vision1:hmiInstance[3].in.cmd.lights[2].flashTrigger" />
+					<bt:Element index="33" refId="::Vision1:hmiInstance[3].in.cmd.lights[3].flashTrigger" />
+					<bt:Element index="34" refId="::Vision1:hmiInstance[3].in.cmd.lights[4].flashTrigger" />
+					<bt:Element index="35" refId="::Vision1:hmiInstance[3].in.cmd.lights[5].flashTrigger" />
+					<bt:Element index="36" refId="::Vision1:hmiInstance[3].in.cmd.lights[6].flashTrigger" />
+					<bt:Element index="37" refId="::Vision1:hmiInstance[3].in.cmd.lights[7].flashTrigger" />
+					<bt:Element index="38" refId="::Vision1:hmiInstance[3].in.cmd.lights[8].flashTrigger" />
+					<bt:Element index="39" refId="::Vision1:hmiInstance[3].in.cmd.lights[9].flashTrigger" />
 					
-					<bt:Element index="41" refId="::Vi_main:hmiInstance[4].in.cmd.lights[1].flashTrigger" />
-					<bt:Element index="42" refId="::Vi_main:hmiInstance[4].in.cmd.lights[2].flashTrigger" />
-					<bt:Element index="43" refId="::Vi_main:hmiInstance[4].in.cmd.lights[3].flashTrigger" />
-					<bt:Element index="44" refId="::Vi_main:hmiInstance[4].in.cmd.lights[4].flashTrigger" />
-					<bt:Element index="45" refId="::Vi_main:hmiInstance[4].in.cmd.lights[5].flashTrigger" />
-					<bt:Element index="46" refId="::Vi_main:hmiInstance[4].in.cmd.lights[6].flashTrigger" />
-					<bt:Element index="47" refId="::Vi_main:hmiInstance[4].in.cmd.lights[7].flashTrigger" />
-					<bt:Element index="48" refId="::Vi_main:hmiInstance[4].in.cmd.lights[8].flashTrigger" />
-					<bt:Element index="49" refId="::Vi_main:hmiInstance[4].in.cmd.lights[9].flashTrigger" />
+					<bt:Element index="41" refId="::Vision1:hmiInstance[4].in.cmd.lights[1].flashTrigger" />
+					<bt:Element index="42" refId="::Vision1:hmiInstance[4].in.cmd.lights[2].flashTrigger" />
+					<bt:Element index="43" refId="::Vision1:hmiInstance[4].in.cmd.lights[3].flashTrigger" />
+					<bt:Element index="44" refId="::Vision1:hmiInstance[4].in.cmd.lights[4].flashTrigger" />
+					<bt:Element index="45" refId="::Vision1:hmiInstance[4].in.cmd.lights[5].flashTrigger" />
+					<bt:Element index="46" refId="::Vision1:hmiInstance[4].in.cmd.lights[6].flashTrigger" />
+					<bt:Element index="47" refId="::Vision1:hmiInstance[4].in.cmd.lights[7].flashTrigger" />
+					<bt:Element index="48" refId="::Vision1:hmiInstance[4].in.cmd.lights[8].flashTrigger" />
+					<bt:Element index="49" refId="::Vision1:hmiInstance[4].in.cmd.lights[9].flashTrigger" />
 					
-					<bt:Element index="51" refId="::Vi_main:hmiInstance[5].in.cmd.lights[1].flashTrigger" />
-					<bt:Element index="52" refId="::Vi_main:hmiInstance[5].in.cmd.lights[2].flashTrigger" />
-					<bt:Element index="53" refId="::Vi_main:hmiInstance[5].in.cmd.lights[3].flashTrigger" />
-					<bt:Element index="54" refId="::Vi_main:hmiInstance[5].in.cmd.lights[4].flashTrigger" />
-					<bt:Element index="55" refId="::Vi_main:hmiInstance[5].in.cmd.lights[5].flashTrigger" />
-					<bt:Element index="56" refId="::Vi_main:hmiInstance[5].in.cmd.lights[6].flashTrigger" />
-					<bt:Element index="57" refId="::Vi_main:hmiInstance[5].in.cmd.lights[7].flashTrigger" />
-					<bt:Element index="58" refId="::Vi_main:hmiInstance[5].in.cmd.lights[8].flashTrigger" />
-					<bt:Element index="59" refId="::Vi_main:hmiInstance[5].in.cmd.lights[9].flashTrigger" />
+					<bt:Element index="51" refId="::Vision1:hmiInstance[5].in.cmd.lights[1].flashTrigger" />
+					<bt:Element index="52" refId="::Vision1:hmiInstance[5].in.cmd.lights[2].flashTrigger" />
+					<bt:Element index="53" refId="::Vision1:hmiInstance[5].in.cmd.lights[3].flashTrigger" />
+					<bt:Element index="54" refId="::Vision1:hmiInstance[5].in.cmd.lights[4].flashTrigger" />
+					<bt:Element index="55" refId="::Vision1:hmiInstance[5].in.cmd.lights[5].flashTrigger" />
+					<bt:Element index="56" refId="::Vision1:hmiInstance[5].in.cmd.lights[6].flashTrigger" />
+					<bt:Element index="57" refId="::Vision1:hmiInstance[5].in.cmd.lights[7].flashTrigger" />
+					<bt:Element index="58" refId="::Vision1:hmiInstance[5].in.cmd.lights[8].flashTrigger" />
+					<bt:Element index="59" refId="::Vision1:hmiInstance[5].in.cmd.lights[9].flashTrigger" />
 					
-					<bt:Element index="61" refId="::Vi_main:hmiInstance[6].in.cmd.lights[1].flashTrigger" />
-					<bt:Element index="62" refId="::Vi_main:hmiInstance[6].in.cmd.lights[2].flashTrigger" />
-					<bt:Element index="63" refId="::Vi_main:hmiInstance[6].in.cmd.lights[3].flashTrigger" />
-					<bt:Element index="64" refId="::Vi_main:hmiInstance[6].in.cmd.lights[4].flashTrigger" />
-					<bt:Element index="65" refId="::Vi_main:hmiInstance[6].in.cmd.lights[5].flashTrigger" />
-					<bt:Element index="66" refId="::Vi_main:hmiInstance[6].in.cmd.lights[6].flashTrigger" />
-					<bt:Element index="67" refId="::Vi_main:hmiInstance[6].in.cmd.lights[7].flashTrigger" />
-					<bt:Element index="68" refId="::Vi_main:hmiInstance[6].in.cmd.lights[8].flashTrigger" />
-					<bt:Element index="69" refId="::Vi_main:hmiInstance[6].in.cmd.lights[9].flashTrigger" />
+					<bt:Element index="61" refId="::Vision1:hmiInstance[6].in.cmd.lights[1].flashTrigger" />
+					<bt:Element index="62" refId="::Vision1:hmiInstance[6].in.cmd.lights[2].flashTrigger" />
+					<bt:Element index="63" refId="::Vision1:hmiInstance[6].in.cmd.lights[3].flashTrigger" />
+					<bt:Element index="64" refId="::Vision1:hmiInstance[6].in.cmd.lights[4].flashTrigger" />
+					<bt:Element index="65" refId="::Vision1:hmiInstance[6].in.cmd.lights[5].flashTrigger" />
+					<bt:Element index="66" refId="::Vision1:hmiInstance[6].in.cmd.lights[6].flashTrigger" />
+					<bt:Element index="67" refId="::Vision1:hmiInstance[6].in.cmd.lights[7].flashTrigger" />
+					<bt:Element index="68" refId="::Vision1:hmiInstance[6].in.cmd.lights[8].flashTrigger" />
+					<bt:Element index="69" refId="::Vision1:hmiInstance[6].in.cmd.lights[9].flashTrigger" />
 				
 				</be:List>
 			</Source>

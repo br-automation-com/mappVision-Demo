@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package SubType="WidgetLibrary" PackageType="WidgetLibrary" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File" Description="Widget Library Description">Description.widgetlibrary</Object>
+    <Object Type="Package" Description="Resources">Resources</Object>
+    <Object Type="Package">visionOptics</Object>
+    <Object Type="Package">cameraInfo</Object>
+    <Object Type="Package">blobResultProp</Object>
+    <Object Type="Package">codeReaderResultProp</Object>
+    <Object Type="Package">ocrResultProp</Object>
+    <Object Type="Package">pixelCntResultProp</Object>
+    <Object Type="Package">measureResultProp</Object>
+    <Object Type="Package">matchingResultProp</Object>
+    <Object Type="Package">lightInfo</Object>
+    <Object Type="Package">drawSettings</Object>
+    <Object Type="Package">resultTable</Object>
+    <Object Type="Package">vfSettings</Object>
+    <Object Type="Package">triggerSettings</Object>
+  </Objects>
+</Package>

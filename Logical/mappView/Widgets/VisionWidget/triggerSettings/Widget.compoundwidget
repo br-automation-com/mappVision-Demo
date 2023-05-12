@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CompoundWidget id="triggerSettings" width="540" height="500" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Widgets>
+		<Widget xsi:type="widgets.brease.ToggleButton" id="btnEnableIoTrigger" top="229" left="19" width="500" height="60" zIndex="0" mouseDownText="Disable IO Trigger" text="Enable IO Trigger" fontSize="24px" bold="true" checkedBackGroundGradient="linear-gradient(to bottom, #FFAA4D 0%,#FF8500 100%)" style="Operate" />
+		<Widget xsi:type="widgets.brease.Label" id="labFooter9" top="308" left="19" width="310" height="40" zIndex="1" text="Io Trigger Delay" textAlign="right" fontSize="18px" bold="true" />
+		<Widget xsi:type="widgets.brease.NumericInput" id="numIoTriggerDelay" top="308" left="338" width="181" height="40" zIndex="2" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="2147483647"  unit="{'metric':'B98','imperial':'B98','imperial-us':'B98'}" unitAlign="right" fontSize="20px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.Label" id="labFooter10" top="448" left="19" width="310" height="40" zIndex="3" text="Multi capture images" textAlign="right" fontSize="18px" bold="true" />
+		<Widget xsi:type="widgets.brease.NumericInput" id="numMultiCapture" top="448" left="338" width="181" height="40" zIndex="4" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" minValue="1" maxValue="1000" unitAlign="right" fontSize="20px" padding="0px 5px 0px 5px" />
+		<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonShowLastImages" top="368" left="19" width="500" height="60" zIndex="5" mouseDownText="Show All Images" text="Show Only Last Multi Capture Image" fontSize="24px" italic="false" style="Operate" />
+		<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonRepetiveMode" top="9" left="19" width="500" height="60" zIndex="6" text="Enable Repetitive Mode"  mouseDownText="Disable Repetitive Mode" fontSize="24px" italic="false" style="Operate" />
+		<Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonAxisTrigger" top="148" left="19" width="500" height="60" zIndex="7" text="Enable Axis Trigger" mouseDownText="Disable Axis Trigger" fontSize="24px" italic="false" style="Operate" />
+		<Widget xsi:type="widgets.brease.Label" id="labFooter11" top="89" left="19" width="310" height="40" zIndex="8" text="Repetitive trigger interval" textAlign="right" fontSize="18px" bold="true" />
+		<Widget xsi:type="widgets.brease.NumericInput" id="numRepetitiveInterval" top="89" left="338" width="181" height="40" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="2147483647" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" fontSize="20px" padding="0px 5px 0px 5px" />
+    
+  </Widgets>
+	<Properties>
+		
+		<Property xsi:type="StructureBindableProperty" name="Structure" type="recipe_typ" readOnly="false" category="data" required="false" >
+			<Description>Structure containing all recipe data</Description>
+			<Mappings>
+				<Mapping widget="ToggleButtonShowLastImages" 	type="Boolean" property="value" mode="twoWay" memberPath="showOnlyLastImage" mapToNode="false"/>
+				<Mapping widget="ToggleButtonRepetiveMode" 		type="Boolean" property="value" mode="twoWay" memberPath="repetitiveTrigger" mapToNode="false"/>
+				<Mapping widget="ToggleButtonAxisTrigger" 		type="Boolean" property="value" mode="twoWay" memberPath="enableAxisTrigger" mapToNode="false"/>
+				<Mapping widget="btnEnableIoTrigger" 			type="Boolean" property="value" mode="twoWay" memberPath="enableIoTrigger" mapToNode="false"/>
+			
+				<Mapping widget="numMultiCapture" 				type="Number" property="value" mode="twoWay" memberPath="multiCaptureNum" mapToNode="false"/>
+				<Mapping widget="numIoTriggerDelay" 			type="Number" property="value" mode="twoWay" memberPath="ioTriggerDelay" mapToNode="false"/>
+				<Mapping widget="numRepetitiveInterval" 		type="Number" property="value" mode="twoWay" memberPath="repetitiveTriggerInterval" mapToNode="false"/>
+		
+			</Mappings>
+		</Property>
+		
+    <!-- 
+    Simple non bindable property:
+    Property Attributes
+    xsi:type: NonBindableProperty
+    name: name of the property (not allowed: width, height, top, left, id, enable, visible, zindex, margin, premissionview, permissionoperate, description)
+    <Property xsi:type="NonBindableProperty" name="" type="" defaultValue="" required="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" property=""/>
+        <Mapping widget="" property=""/>
+      </Mappings>
+    </Property>
+    
+    Simple bindable property:
+    <Property xsi:type="BindableProperty" name="" type="" defaultValue="" readOnly="" category="" localizable="" typeRefId="" nodeRefId="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" property="" mode=""/>
+        <Mapping widget="" property="" mode=""/>
+      </Mappings>
+    </Property>
+
+
+    Structure bindable property:
+		<Property xsi:type="StructureBindableProperty" name="" type="" readOnly="" >
+			<Description>Description will be shown in property grid.</Description>
+			<Mappings>
+				<Mapping widget="" type="" property="" mode="" memberPath="" mapToNode=""/>
+				<Mapping widget="" type="" property="" mode="" memberPath="" mapToNode=""/>
+				<Mapping widget="" type="" property="" mode="" memberPath="" mapToNode=""/>
+			</Mappings>
+		</Property>
+    -->
+  </Properties>
+
+  <Events>
+    <!--
+    <Event name="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" event="" />
+      </Mappings>
+    </Event>
+    -->
+  </Events>
+
+  <Actions>
+    <!--
+    <Action name="">
+      <Description>Description will be shown in property grid.</Description>
+      <Mappings>
+        <Mapping widget="" action="" />
+      </Mappings>
+    </Action>
+    -->
+  </Actions>
+
+  <EventBindings>
+    <!-- source and target can only be widgets within the compound widget.
+    <EventBinding id="">
+      <Source xsi:type="widget.Event" widgetRefId="" event="" />
+      <EventHandler condition="">
+        <Action>
+          <Target xsi:type="widget.Action" widgetRefId="">
+            <Method name="" value="" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    -->
+  </EventBindings>
+
+</CompoundWidget>

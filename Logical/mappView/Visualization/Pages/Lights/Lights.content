@@ -7,7 +7,7 @@
         <Widget xsi:type="widgets.brease.NumericInput" id="numLightsNo" top="38" left="54" width="51" zIndex="2" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="9" minValue="1" value="1" disabledBackColor="rgba(255, 255, 255, 1)" disabledBorderColor="rgba(255, 136, 0, 1)" disabledTextColor="rgba(0, 0, 0, 1)" textAlign="center" fontSize="20px" bold="true" padding="0px 0px 0px 0px" enable="false" />
         <Widget xsi:type="widgets.brease.Image" id="numLightNoDown" top="38" left="19" width="30" height="30" zIndex="3" image="Media/back.svg" borderWidth="0px" />
         <Widget xsi:type="widgets.brease.Image" id="numLightNoUp" top="38" left="114" width="30" height="30" zIndex="4" image="Media/forward.svg" borderWidth="0px" />
-        <Widget xsi:type="widgets.widgetlibrary_0.LightInfo" id="LightInfo1" top="8" left="9" zIndex="0" />
+        <Widget xsi:type="widgets.visionWidget.LightInfo" id="LightInfo1" top="8" left="9" zIndex="0" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.GroupBox" id="grpSelection" top="10" left="10" width="280" height="345" zIndex="1" text="General settings">
@@ -20,7 +20,6 @@
         <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBoxFlashColor1" top="93" left="164" height="28" zIndex="5" dataProvider="[{'value':'0','text':'Off'},{'value':'1','text':'Red'},{'value':'2','text':'Green'},{'value':'3','text':'Blue'},{'value':'4','text':'Lime'},{'value':'99','text':'White'},{'value':'100','text':'Infrared'},{'value':'210','text':'Ultraviolet'}]" listPosition="bottom" selectedIndex="1" selectedValue="1" disabledTextColor="rgba(0, 0, 0, 1)" textAlign="center" fontSize="18px" enable="false" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput3" top="260" left="1030" zIndex="4" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" />
-    <Widget xsi:type="widgets.brease.PushButton" id="LightTriggerPushButton" top="365" left="10" width="280" height="55" zIndex="5" text="Trigger light" style="Operate" />
+    <Widget xsi:type="widgets.brease.PushButton" id="LightTriggerPushButton" top="365" left="10" width="280" height="55" zIndex="4" text="Trigger light" style="Operate" />
   </Widgets>
 </Content>
