@@ -35,5 +35,6 @@ VAR
 	tmpStr : STRING[100];
 	tmpVF : STRING[80];
 	tmpID : STRING[80];
+	pOffset : REFERENCE TO brdkviBase_hw_vf_out_offset_typ;
 	id : UDINT;
 END_VAR

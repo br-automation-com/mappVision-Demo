@@ -5,12 +5,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.VF.numResults" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.VF.numResults" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.VF.numResults" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.VF.numResults" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.VF.numResults" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.VF.numResults" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.VF.numResults" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.VF.numResults" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.VF.numResults" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.VF.numResults" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.VF.numResults" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.VF.numResults" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numItemsFound" attribute="value" />
@@ -21,12 +21,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera.ready" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera.ready" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera.ready" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera.ready" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera.ready" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera.ready" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera.ready" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera.ready" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera.ready" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera.ready" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera.ready" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera.ready" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnImageTrigger" attribute="enable" />
@@ -36,12 +36,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.trigger" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.trigger" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.trigger" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.trigger" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.trigger" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.trigger" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.trigger" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.trigger" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.trigger" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.trigger" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.trigger" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.trigger" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnImageTrigger" attribute="value" />
@@ -50,12 +50,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera.connected" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera.connected" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera.connected" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera.connected" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera.connected" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera.connected" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera.connected" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera.connected" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera.connected" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera.connected" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera.connected" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera.connected" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="enable" />
@@ -65,12 +65,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.BLOB.common.enable" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.CR.common.enable" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.match.common.enable" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.meassurement.common.enable" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.OCR.common.enable" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.pxCnt.common.enable" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.BLOB.common.enable" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.CR.common.enable" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.match.common.enable" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.meassurement.common.enable" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.OCR.common.enable" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.pxCnt.common.enable" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnVisionEnable" attribute="value" />
@@ -80,12 +80,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.gainLevel" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.gainLevel" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.gainLevel" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.gainLevel" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.gainLevel" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.gainLevel" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.gainLevel" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.gainLevel" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.gainLevel" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.gainLevel" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.gainLevel" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.gainLevel" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numGain" attribute="value" />
@@ -94,12 +94,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.focus" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.focus" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.focus" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.focus" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.focus" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.focus" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.focus" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.focus" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.focus" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.focus" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.focus" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.focus" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFocus" attribute="value" />
@@ -109,12 +109,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.exposureTime" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.exposureTime" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.exposureTime" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.exposureTime" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.exposureTime" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.exposureTime" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.exposureTime" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.exposureTime" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.exposureTime" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.exposureTime" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.exposureTime" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.exposureTime" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numExposure" attribute="value" />
@@ -124,12 +124,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera.connected" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera.connected" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera.connected" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera.connected" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera.connected" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera.connected" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera.connected" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera.connected" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera.connected" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera.connected" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera.connected" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera.connected" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxItemsCount" attribute="enable" />
@@ -138,12 +138,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.BLOB.common.numSearchMax" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.CR.common.numSearchMax" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.match.common.numSearchMax" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.meassurement.common.numSearchMax" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.OCR.common.numSearchMax" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.pxCnt.common.numSearchMax" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.BLOB.common.numSearchMax" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.CR.common.numSearchMax" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.match.common.numSearchMax" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.meassurement.common.numSearchMax" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.OCR.common.numSearchMax" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.pxCnt.common.numSearchMax" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numMaxItemsCount" attribute="value" />
@@ -153,12 +153,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera.processingTime" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera.processingTime" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera.processingTime" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera.processingTime" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera.processingTime" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera.processingTime" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera.processingTime" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera.processingTime" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera.processingTime" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera.processingTime" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera.processingTime" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera.processingTime" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numCameraProcessingTime" attribute="value" />
@@ -168,12 +168,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.VF.processingTime" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.VF.processingTime" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.VF.processingTime" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.VF.processingTime" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.VF.processingTime" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.VF.processingTime" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.VF.processingTime" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.VF.processingTime" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.VF.processingTime" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.VF.processingTime" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.VF.processingTime" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.VF.processingTime" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numFunctionProcessingTime" attribute="value" />
@@ -183,12 +183,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cameraInfo" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cameraInfo" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cameraInfo" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cameraInfo" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cameraInfo" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cameraInfo" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cameraInfo" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cameraInfo" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cameraInfo" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cameraInfo" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cameraInfo" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cameraInfo" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="visionOptics1" attribute="camInfo" />
@@ -199,12 +199,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera.opticInfo" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera.opticInfo" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera.opticInfo" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera.opticInfo" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera.opticInfo" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera.opticInfo" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera.opticInfo" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera.opticInfo" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera.opticInfo" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera.opticInfo" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera.opticInfo" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera.opticInfo" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="visionOptics1" attribute="opticInfo" />
@@ -216,12 +216,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.gainLevel" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.gainLevel" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.gainLevel" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.gainLevel" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.gainLevel" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.gainLevel" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.gainLevel" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.gainLevel" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.gainLevel" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.gainLevel" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.gainLevel" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.gainLevel" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAutoSetupGain" attribute="value" />
@@ -230,12 +230,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.autoSearch" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.autoSearch" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.autoSearch" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.autoSearch" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.autoSearch" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.autoSearch" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.autoSearch" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.autoSearch" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.autoSearch" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.autoSearch" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.autoSearch" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.autoSearch" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnAutoSetup" attribute="value" />
@@ -244,12 +244,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.exposureTime" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.exposureTime" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.exposureTime" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.exposureTime" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.exposureTime" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.exposureTime" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.exposureTime" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.exposureTime" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.exposureTime" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.exposureTime" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.exposureTime" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.exposureTime" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAutoSetupExposure" attribute="value" />
@@ -258,12 +258,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.focus" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.focus" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.focus" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.focus" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.focus" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.focus" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.focus" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.focus" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.focus" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.focus" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.focus" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.focus" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numAutoSetupFocus" attribute="value" />
@@ -275,12 +275,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.flashColorStr" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.flashColorStr" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.flashColorStr" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.flashColorStr" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.flashColorStr" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.flashColorStr" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.flashColorStr" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.flashColorStr" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.flashColorStr" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.flashColorStr" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.flashColorStr" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.flashColorStr" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor" attribute="selectedValue" />
@@ -289,85 +289,30 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.IRFilter" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.IRFilter" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.IRFilter" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.IRFilter" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.IRFilter" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.IRFilter" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.IRFilter" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.IRFilter" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.IRFilter" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.IRFilter" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.IRFilter" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.IRFilter" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor1" attribute="selectedIndex" />
 		</Binding>
 
-		<Binding mode="twoWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.BLOB.common.offsetROI.x" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.CR.common.offsetROI.x" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.match.common.offsetROI.x" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.meassurement.common.offsetROI.x" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.OCR.common.offsetROI.x" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.pxCnt.common.offsetROI.x" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIX" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.BLOB.common.offsetROI.x" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.CR.common.offsetROI.x" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.match.common.offsetROI.x" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.meassurement.common.offsetROI.x" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.OCR.common.offsetROI.x" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.pxCnt.common.offsetROI.x" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIY" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.BLOB.common.offsetROI.orientation" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.CR.common.offsetROI.orientation" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.match.common.offsetROI.orientation" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.meassurement.common.offsetROI.orientation" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.OCR.common.offsetROI.orientation" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.pxCnt.common.offsetROI.orientation" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numOffsetROIOrientation" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="listElement">
-				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.CR.timeout" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.match.timeout" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.OCR.timeout" />
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.CR.timeout" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[1].in.recipe.CR.timeout" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[1].in.recipe.CR.timeout" />
-				</be:List>
-			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numTimeout" attribute="value" />
-		</Binding>
+	
 
 
 		<Binding mode="twoWay">
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.saveDiagnositc" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.saveDiagnositc" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.saveDiagnositc" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.saveDiagnositc" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.saveDiagnositc" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.saveDiagnositc" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.saveDiagnositc" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.saveDiagnositc" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.saveDiagnositc" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.saveDiagnositc" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.saveDiagnositc" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.saveDiagnositc" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="PushButton1" attribute="value" />
@@ -376,12 +321,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera.saveDiagStatus" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera.saveDiagStatus" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera.saveDiagStatus" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera.saveDiagStatus" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera.saveDiagStatus" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera.saveDiagStatus" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera.saveDiagStatus" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera.saveDiagStatus" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera.saveDiagStatus" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera.saveDiagStatus" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera.saveDiagStatus" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera.saveDiagStatus" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numDIAG_Status" attribute="value" />
@@ -390,12 +335,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.diagnosticFilename" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.diagnosticFilename" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.diagnosticFilename" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.diagnosticFilename" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.diagnosticFilename" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.diagnosticFilename" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.diagnosticFilename" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.diagnosticFilename" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.diagnosticFilename" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.diagnosticFilename" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.diagnosticFilename" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.diagnosticFilename" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="txtDiagName" attribute="value" />
@@ -404,12 +349,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="cameraInfo" attribute="value" />
@@ -418,12 +363,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.flashSegment.top" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.flashSegment.top" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.flashSegment.top" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.flashSegment.top" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.flashSegment.top" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.flashSegment.top" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.flashSegment.top" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.flashSegment.top" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.flashSegment.top" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.flashSegment.top" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.flashSegment.top" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.flashSegment.top" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsTop" attribute="value" />
@@ -432,12 +377,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.flashSegment.right" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.flashSegment.right" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.flashSegment.right" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.flashSegment.right" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.flashSegment.right" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.flashSegment.right" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.flashSegment.right" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.flashSegment.right" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.flashSegment.right" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.flashSegment.right" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.flashSegment.right" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.flashSegment.right" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsRight" attribute="value" />
@@ -446,12 +391,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.flashSegment.left" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.flashSegment.left" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.flashSegment.left" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.flashSegment.left" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.flashSegment.left" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.flashSegment.left" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.flashSegment.left" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.flashSegment.left" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.flashSegment.left" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.flashSegment.left" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.flashSegment.left" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.flashSegment.left" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsLeft" attribute="value" />
@@ -460,12 +405,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.flashSegment.bottom" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.flashSegment.bottom" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.flashSegment.bottom" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.flashSegment.bottom" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.flashSegment.bottom" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.flashSegment.bottom" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.flashSegment.bottom" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.flashSegment.bottom" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.flashSegment.bottom" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.flashSegment.bottom" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.flashSegment.bottom" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.flashSegment.bottom" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="chkCamLightsBottom" attribute="value" />
@@ -476,12 +421,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.camera.flashLightOptions" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.camera.flashLightOptions" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.camera.flashLightOptions" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.camera.flashLightOptions" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.camera.flashLightOptions" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.camera.flashLightOptions" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.camera.flashLightOptions" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.camera.flashLightOptions" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.camera.flashLightOptions" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.camera.flashLightOptions" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.camera.flashLightOptions" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.camera.flashLightOptions" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxFlashColor" attribute="dataProvider" />
@@ -491,12 +436,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe.cam.statusColor" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe.cam.statusColor" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe.cam.statusColor" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe.cam.statusColor" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe.cam.statusColor" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe.cam.statusColor" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe.cam.statusColor" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe.cam.statusColor" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe.cam.statusColor" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe.cam.statusColor" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe.cam.statusColor" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.statusColor" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="DropDownBoxLedStatusColor" attribute="selectedIndex" />
@@ -505,12 +450,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.vaList.refresh" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.vaList.refresh" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.vaList.refresh" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.vaList.refresh" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.vaList.refresh" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.vaList.refresh" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.vaList.refresh" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.vaList.refresh" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.vaList.refresh" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.vaList.refresh" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.vaList.refresh" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.vaList.refresh" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnRefreshVa" attribute="value" />
@@ -519,12 +464,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.vaList.load" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.vaList.load" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.vaList.load" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.vaList.load" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.vaList.load" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.vaList.load" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.vaList.load" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.vaList.load" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.vaList.load" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.vaList.load" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.vaList.load" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.vaList.load" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="btnLoadVA" attribute="value" />
@@ -533,12 +478,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.vaList.list" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.vaList.list" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.vaList.list" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.vaList.list" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.vaList.list" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.vaList.list" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.vaList.list" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.vaList.list" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.vaList.list" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.vaList.list" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.vaList.list" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.vaList.list" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="TableItemVaName" attribute="stringValue" />
@@ -547,12 +492,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.cmd.vaList.selectedIndex" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.cmd.vaList.selectedIndex" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.cmd.vaList.selectedIndex" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.cmd.vaList.selectedIndex" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.cmd.vaList.selectedIndex" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.cmd.vaList.selectedIndex" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.vaList.selectedIndex" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.vaList.selectedIndex" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.vaList.selectedIndex" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.vaList.selectedIndex" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.vaList.selectedIndex" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.vaList.selectedIndex" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="TableVaList" attribute="selectedRow" />
@@ -561,12 +506,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].out.usedVF" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].out.usedVF" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].out.usedVF" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].out.usedVF" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].out.usedVF" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].out.usedVF" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.usedVF" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.usedVF" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.usedVF" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.usedVF" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.usedVF" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.usedVF" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="vfSettings1" attribute="UsedVfs" />
@@ -577,12 +522,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="triggerSettings1" attribute="Structure" />
@@ -592,12 +537,12 @@
 <Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vision:hmiInstance[1].in.recipe" />
-					<bt:Element index="2" refId="::Vision:hmiInstance[2].in.recipe" />
-					<bt:Element index="3" refId="::Vision:hmiInstance[3].in.recipe" />
-					<bt:Element index="4" refId="::Vision:hmiInstance[4].in.recipe" />
-					<bt:Element index="5" refId="::Vision:hmiInstance[5].in.recipe" />
-					<bt:Element index="6" refId="::Vision:hmiInstance[6].in.recipe" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.recipe" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.recipe" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.recipe" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.recipe" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.recipe" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe" />
 				</be:List>
 </Source>
 			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="vfSettings1" attribute="Structure" />

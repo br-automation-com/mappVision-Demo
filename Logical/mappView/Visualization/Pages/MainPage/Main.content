@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentMain" height="1050" width="2432" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-    <Widget xsi:type="widgets.brease.NumericInput" id="numOffsetROIOrientation" top="45" left="1360" height="40" zIndex="34" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':2,'minimumIntegerDigits':1}}" unit="{'metric':'http://www.br-automation.com/units|VI0','imperial':'http://www.br-automation.com/units|VI0','imperial-us':'http://www.br-automation.com/units|VI0'}" unitAlign="right" fontSize="16px" padding="0px 5px 0px 5px" />
-    <Widget xsi:type="widgets.brease.Image" id="imgDisconnected" top="350" left="450" width="440" height="300" zIndex="0" image="Media/disconnected.png" backColor="rgba(255, 255, 255, 0)" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="numDetailsNo" top="14" left="2014" width="247" height="100" zIndex="17" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10" minValue="1" value="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" visible="false" />
+	<Widget xsi:type="widgets.brease.Image" id="imgDisconnected" top="350" left="450" width="440" height="300" zIndex="0" image="Media/disconnected.png" backColor="rgba(255, 255, 255, 0)" />
+	<Widget xsi:type="widgets.brease.NumericInput" id="numDetailsNo" top="14" left="2014" width="247" height="100" zIndex="17" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10" minValue="1" value="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" visible="false" />
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="14" left="1899" width="100" zIndex="18" image="Media/back.svg" borderWidth="0px" visible="false" />
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="15" left="2275" width="100" zIndex="19" image="Media/forward.svg" borderWidth="0px" visible="false" />
     <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="5" left="80" width="1245" height="975" zIndex="20" />
@@ -29,14 +28,9 @@
         <Widget xsi:type="widgets.visionWidget.matchingResultProp" id="matchingResultProp1" top="0" left="0" zIndex="5" visible="false" />
       </Widgets>
     </Widget>
-<<<<<<< HEAD
-    <Widget xsi:type="widgets.visionWidget.drawSettingsWidget" id="drawSettingsWidget1" top="125" left="1335" zIndex="23" />
+		<Widget xsi:type="widgets.visionWidget.drawSettingsWidget" id="drawSettingsWidget1" top="125" left="1335" zIndex="23" />
     <Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonShowOverlay" top="770" left="1335" width="470" height="100" zIndex="33" image="Media/SymbolLib/Symbols/Hide.svg" mouseDownImage="Media/SymbolLib/Symbols/UnHide.svg" value="true" imageHeight="50" imageWidth="50" style="Operate" />
     <Widget xsi:type="widgets.brease.PushButton" id="PushButtonSave" top="885" left="1335" width="470" height="100" zIndex="34" image="Media/SymbolLib/Edit/Save.svg" style="Operate" />
-=======
-    <Widget xsi:type="widgets.widgetlibrary_0.drawSettingsWidget" id="drawSettingsWidget1" top="125" left="1335" zIndex="22" />
-    <Widget xsi:type="widgets.brease.ToggleButton" id="ToggleButtonShowOverlay" top="770" left="1335" width="470" height="100" zIndex="32" image="Media/SymbolLib/Symbols/Hide.svg" mouseDownImage="Media/SymbolLib/Symbols/UnHide.svg" value="true" imageHeight="50" imageWidth="50" style="Operate" />
-    <Widget xsi:type="widgets.brease.PushButton" id="PushButtonSave" top="885" left="1335" width="470" height="100" zIndex="33" image="Media/SymbolLib/Edit/Save.svg" style="Operate" />
->>>>>>> CompoundUnit
+
   </Widgets>
 </Content>

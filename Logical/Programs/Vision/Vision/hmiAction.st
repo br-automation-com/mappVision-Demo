@@ -1,6 +1,55 @@
 	
 ACTION hmiAction: 
 
+	// Work around untill units in compund widgets are fixed
+	
+	pOffset ACCESS ADR(hw.VF.blob.out.common.offsetROI);
+	pOffset.orientation := pOffset.orientation *100;
+	pOffset.rotCenterX := pOffset.rotCenterX *100;
+	pOffset.rotCenterY := pOffset.rotCenterY *100;
+	pOffset.x := pOffset.x *100;
+	pOffset.y := pOffset.y *100;
+	
+	pOffset ACCESS ADR(hw.VF.codeReader.out.common.offsetROI);
+	pOffset.orientation := pOffset.orientation *100;
+	pOffset.rotCenterX := pOffset.rotCenterX *100;
+	pOffset.rotCenterY := pOffset.rotCenterY *100;
+	pOffset.x := pOffset.x *100;
+	pOffset.y := pOffset.y *100;
+	
+	
+	pOffset ACCESS ADR(hw.VF.matching.out.common.offsetROI);
+	pOffset.orientation := pOffset.orientation *100;
+	pOffset.rotCenterX := pOffset.rotCenterX *100;
+	pOffset.rotCenterY := pOffset.rotCenterY *100;
+	pOffset.x := pOffset.x *100;
+	pOffset.y := pOffset.y *100;
+	
+	
+	pOffset ACCESS ADR(hw.VF.measurement.out.common.offsetROI);
+	pOffset.orientation := pOffset.orientation *100;
+	pOffset.rotCenterX := pOffset.rotCenterX *100;
+	pOffset.rotCenterY := pOffset.rotCenterY *100;
+	pOffset.x := pOffset.x *100;
+	pOffset.y := pOffset.y *100;
+	
+	
+	pOffset ACCESS ADR(hw.VF.ocr.out.common.offsetROI);
+	pOffset.orientation := pOffset.orientation *100;
+	pOffset.rotCenterX := pOffset.rotCenterX *100;
+	pOffset.rotCenterY := pOffset.rotCenterY *100;
+	pOffset.x := pOffset.x *100;
+	pOffset.y := pOffset.y *100;
+	
+	pOffset ACCESS ADR(hw.VF.pixelCnt.out.common.offsetROI);
+	pOffset.orientation := pOffset.orientation *100;
+	pOffset.rotCenterX := pOffset.rotCenterX *100;
+	pOffset.rotCenterY := pOffset.rotCenterY *100;
+	pOffset.x := pOffset.x *100;
+	pOffset.y := pOffset.y *100;
+	
+	// Work around done
+	
 	IF DiagCpuIsSimulated() OR (NOT hw.camera.in.common.moduleOk AND this.brdkViBase_imgTrigger_0.simulate.alwaysSimulateNonePresentCamera) THEN
 		hmi.out.camera.connected :=  TRUE;
 		hmi.out.camera.simulated := TRUE;

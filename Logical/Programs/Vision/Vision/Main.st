@@ -281,21 +281,24 @@ PROGRAM _CYCLIC
 		
 		
 		
-		// Manual Light trigger
-		// exposuretime 
-		IF hmi.in.recipe.useCamExpTimeForLight THEN
-			hw.lights[i].out.par.exposureTime := hmi.in.recipe.cam.exposureTime;
-		ELSE
-			hw.lights[i].out.par.exposureTime := hmi.in.recipe.lights[i].exposureTime;
-		END_IF	
-		// color
-		IF hmi.in.recipe.useCamLedColorForLight THEN
-			hw.lights[i].out.par.flashColor := hmi.in.recipe.cam.flashColor;
-		ELSE
-			hw.lights[i].out.par.flashColor := hmi.in.recipe.lights[i].flashColor;
-		END_IF	
+		
 		
 		FOR i:=START_IDX TO MAX_NUM_LIGHTS BY 1 DO
+			
+			// Manual Light trigger
+			// exposuretime 
+			IF hmi.in.recipe.useCamExpTimeForLight THEN
+				hw.lights[i].out.par.exposureTime := hmi.in.recipe.cam.exposureTime;
+			ELSE
+				hw.lights[i].out.par.exposureTime := hmi.in.recipe.lights[i].exposureTime;
+			END_IF	
+			// color
+			IF hmi.in.recipe.useCamLedColorForLight THEN
+				hw.lights[i].out.par.flashColor := hmi.in.recipe.cam.flashColor;
+			ELSE
+				hw.lights[i].out.par.flashColor := hmi.in.recipe.lights[i].flashColor;
+			END_IF	
+			
 			hmi.out.lights[i].common:=hw.lights[i].in.common;
 			hmi.out.lights[i].status:=hw.lights[i].in.status;
 			hw.lights[i].out.par.flashAngle:=hmi.in.recipe.lights[i].flashAngle;
