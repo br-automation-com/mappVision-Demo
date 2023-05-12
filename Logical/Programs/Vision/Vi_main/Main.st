@@ -29,10 +29,11 @@ PROGRAM _INIT
 		this.mappView.wsPort := hmi.out.wsPort;
 		this.mappView.simulateConfig.activate := DiagCpuIsSimulated();
 		this.mappView.simulateConfig.pFile := ADR('img');
-		this.mappView.simulateConfig.useRandomNumbers := TRUE;
+		this.mappView.simulateConfig.useRandomNumbers := FALSE;
 		this.mappView.simulateConfig.appendNumber := TRUE;
+		this.mappView.simulateConfig.autoIncrementNumber := TRUE;
 		this.mappView.simulateConfig.minNumber := 1;
-		this.mappView.simulateConfig.minNumber := 3;
+		this.mappView.simulateConfig.maxNumber := 3;
 		
 		this.visionDiagFileDevice := 'VI_DIAG'; // File device is created in Files program (changes to USB if such is pluged in)
 		
