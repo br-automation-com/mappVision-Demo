@@ -2,7 +2,7 @@
 <EventBindingSet id="Footer_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
     <EventBinding id="SaveDiagData_1">
-      <Source xsi:type="opcUa.Event" refId="::Vision:hmiInstance[1].out.camera.saveDiagStatus" event="ValueChanged" />
+      <Source xsi:type="opcUa.Event" refId="::Vision1:hmiInstance[1].out.camera.saveDiagStatus" event="ValueChanged" />
       <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
         <Action>
           <Target xsi:type="clientSystem.Action">
@@ -12,7 +12,7 @@
       </EventHandler>
     </EventBinding>
     <EventBinding id="SaveDiagData_2">
-      <Source xsi:type="opcUa.Event" refId="::Vision:hmiInstance[2].out.camera.saveDiagStatus" event="ValueChanged" />
+      <Source xsi:type="opcUa.Event" refId="::Vision1:hmiInstance[2].out.camera.saveDiagStatus" event="ValueChanged" />
       <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
         <Action>
           <Target xsi:type="clientSystem.Action">
@@ -22,7 +22,7 @@
       </EventHandler>
     </EventBinding>
     <EventBinding id="SaveDiagData_3">
-      <Source xsi:type="opcUa.Event" refId="::Vision:hmiInstance[3].out.camera.saveDiagStatus" event="ValueChanged" />
+      <Source xsi:type="opcUa.Event" refId="::Vision1:hmiInstance[3].out.camera.saveDiagStatus" event="ValueChanged" />
       <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
         <Action>
           <Target xsi:type="clientSystem.Action">
@@ -32,7 +32,7 @@
       </EventHandler>
     </EventBinding>
     <EventBinding id="SaveDiagData_4">
-      <Source xsi:type="opcUa.Event" refId="::Vision:hmiInstance[4].out.camera.saveDiagStatus" event="ValueChanged" />
+      <Source xsi:type="opcUa.Event" refId="::Vision1:hmiInstance[4].out.camera.saveDiagStatus" event="ValueChanged" />
       <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
         <Action>
           <Target xsi:type="clientSystem.Action">
@@ -42,7 +42,7 @@
       </EventHandler>
     </EventBinding>
     <EventBinding id="SaveDiagData_5">
-      <Source xsi:type="opcUa.Event" refId="::Vision:hmiInstance[5].out.camera.saveDiagStatus" event="ValueChanged" />
+      <Source xsi:type="opcUa.Event" refId="::Vision1:hmiInstance[5].out.camera.saveDiagStatus" event="ValueChanged" />
       <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
         <Action>
           <Target xsi:type="clientSystem.Action">
@@ -52,7 +52,7 @@
       </EventHandler>
     </EventBinding>
     <EventBinding id="SaveDiagData_6">
-      <Source xsi:type="opcUa.Event" refId="::Vision:hmiInstance[6].out.camera.saveDiagStatus" event="ValueChanged" />
+      <Source xsi:type="opcUa.Event" refId="::Vision1:hmiInstance[6].out.camera.saveDiagStatus" event="ValueChanged" />
       <EventHandler condition="newValue = 0 AND oldValue &lt;&gt; 0">
         <Action>
           <Target xsi:type="clientSystem.Action">
@@ -70,42 +70,42 @@
       </Operand>
       <EventHandler condition="idx = 1">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.cmd.resetInfo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[1].in.cmd.resetInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 2">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.cmd.resetInfo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[2].in.cmd.resetInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 3">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.cmd.resetInfo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[3].in.cmd.resetInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 4">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.cmd.resetInfo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[4].in.cmd.resetInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 5">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.cmd.resetInfo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[5].in.cmd.resetInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 6">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.cmd.resetInfo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[6].in.cmd.resetInfo">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
@@ -120,42 +120,42 @@
       </Operand>
       <EventHandler condition="idx = 1">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[1].in.cmd.vaList.refresh">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[1].in.cmd.vaList.refresh">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 2">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[2].in.cmd.vaList.refresh">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[2].in.cmd.vaList.refresh">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 3">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[3].in.cmd.vaList.refresh">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[3].in.cmd.vaList.refresh">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 4">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[4].in.cmd.vaList.refresh">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[4].in.cmd.vaList.refresh">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 5">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[5].in.cmd.vaList.refresh">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[5].in.cmd.vaList.refresh">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>
       </EventHandler>
       <EventHandler condition="idx = 6">
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vision:hmiInstance[6].in.cmd.vaList.refresh">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vision1:hmiInstance[6].in.cmd.vaList.refresh">
             <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
           </Target>
         </Action>

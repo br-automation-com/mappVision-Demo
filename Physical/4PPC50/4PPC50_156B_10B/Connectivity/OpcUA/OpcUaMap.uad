@@ -22,6 +22,11 @@
           <High ValueProvider="PV">::Recipe:hmi.mpRecipe.Recipe.List.MaxSelection</High>
         </EURange>
       </EURanges>
+      <EURanges Id="12">
+        <EURange>
+          <Low ValueProvider="Const">0</Low>
+        </EURange>
+      </EURanges>
     </EURangesAliases>
     <EngineeringUnitAliases>
       <EngineeringUnit Id="5" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
@@ -35,7 +40,9 @@
           <VariableCommon Name="Common Properties">
             <Variable AclInherit="1" Name="out" />
             <Variable Name="in">
-              <Variable Name="cmd" />
+              <Variable Name="cmd">
+                <Variable Name="intElemId" EURangeViolationId="1" EURangesId="12" />
+              </Variable>
               <Variable Name="recipe">
                 <Variable Name="BLOB">
                   <Variable Name="common">

@@ -19,12 +19,12 @@ PROGRAM _INIT
 		tmpStr := USINT_TO_STRING(idx);
 		brsstrcat(ADR(this.path),ADR(tmpStr));
 		
-		this.recipePVName := '::Vision:hmiInstance[';
+		this.recipePVName := '::Vision1:hmiInstance[';
 		brsstrcat(ADR(this.recipePVName),ADR(tmpStr));
 		brsstrcat(ADR(this.recipePVName),ADR('].in.recipe'));
 	
 		
-		FOR i:= 0 TO MAX_NUM_RESULTS BY 1 DO
+		FOR i:= START_IDX TO MAX_NUM_RESULTS BY 1 DO
 			hmi.out.tableVF.tableNum[i] := i;
 		END_FOR
 		

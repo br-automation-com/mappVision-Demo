@@ -69,7 +69,7 @@
 		<Binding mode="twoWay">
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
-				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="node">				
+				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
 					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.intElemId" />
 					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.intElemId" />
 					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.intElemId" />

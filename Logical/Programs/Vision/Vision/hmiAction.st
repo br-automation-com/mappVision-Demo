@@ -68,6 +68,12 @@ ACTION hmiAction:
 	brsmemcpy(ADR(hmi.out.camera.hw),ADR(hw.camera.in.status),SIZEOF(hmi.out.camera.hw));
 	brsmemcpy(ADR(hmi.out.camera.common),ADR(hw.camera.in.common),SIZEOF(hmi.out.camera.common));
 	
+	IF brsmemcmp(ADR(hmi.in.recipe.draw),ADR(this.tmpDraw),SIZEOF(this.tmpDraw)) <> 0 THEN
+		processResultsAction;
+		this.tmpDraw := hmi.in.recipe.draw;
+	END_IF
+	
+	
 	
 	
 	IF this.mpRecipeRegVar.UpdateNotification THEN
@@ -89,26 +95,38 @@ ACTION hmiAction:
 		
 		IF hmi.in.cmd.intElemId <= hw.VF.blob.in.common.numResults THEN
 			brdkViBase_blob_hw2hmi(hw.VF.blob.in.results[hmi.in.cmd.intElemId-1],hmi.out.VF.blob);
+		ELSE
+			brsmemset(ADR(hmi.out.VF.blob),0,SIZEOF(hmi.out.VF.blob));
 		END_IF
 		
 		IF hmi.in.cmd.intElemId <= hw.VF.codeReader.in.common.numResults THEN
 			brdkViBase_cr_hw2hmi(hw.VF.codeReader.in.results[hmi.in.cmd.intElemId-1],hmi.out.VF.codeReader);
+		ELSE
+			brsmemset(ADR(hmi.out.VF.codeReader),0,SIZEOF(hmi.out.VF.codeReader));
 		END_IF
 		
 		IF hmi.in.cmd.intElemId <= hw.VF.matching.in.common.numResults THEN
 			brdkViBase_match_hw2hmi(hw.VF.matching.in.results[hmi.in.cmd.intElemId-1],hmi.out.VF.match);
+		ELSE
+			brsmemset(ADR(hmi.out.VF.match),0,SIZEOF(hmi.out.VF.match));
 		END_IF
 		
 		IF hmi.in.cmd.intElemId <= hw.VF.measurement.in.common.numResults THEN
 			brdkViBase_meas_hw2hmi(hw.VF.measurement.in.results[hmi.in.cmd.intElemId-1],hmi.out.VF.measurement);
+		ELSE
+			brsmemset(ADR(hmi.out.VF.measurement),0,SIZEOF(hmi.out.VF.measurement));
 		END_IF
 		
 		IF hmi.in.cmd.intElemId <= hw.VF.ocr.in.common.numResults THEN
 			brdkViBase_ocr_hw2hmi(hw.VF.ocr.in.results[hmi.in.cmd.intElemId-1],hmi.out.VF.ocr);
+		ELSE
+			brsmemset(ADR(hmi.out.VF.ocr),0,SIZEOF(hmi.out.VF.ocr));
 		END_IF
 			
 		IF hmi.in.cmd.intElemId <= hw.VF.pixelCnt.in.common.numResults THEN
 			brdkViBase_pxCnt_hw2hmi(hw.VF.pixelCnt.in.results[hmi.in.cmd.intElemId-1],hmi.out.VF.pixelCnt);
+		ELSE
+			brsmemset(ADR(hmi.out.VF.pixelCnt),0,SIZEOF(hmi.out.VF.pixelCnt));	
 		END_IF
 	ELSE
 		// clear if 0

@@ -38,6 +38,7 @@ TYPE
 		user : user_local_typ;
 		currentTriggerNum : UINT;
 		repetitiveTriggerTON : TON;
+		tmpDraw : hmi_in_recipe_draw_typ;
 	END_STRUCT;
 END_TYPE
 
@@ -202,7 +203,7 @@ TYPE
 		pixelCnt : hmi_out_vf_table_pxCnt_typ;
 		blob : hmi_out_vf_table_blob_typ;
 		codeReader : hmi_out_vf_table_cr_typ;
-		tableNum : ARRAY[0..MAX_NUM_RESULTS]OF USINT;
+		tableNum : ARRAY[START_IDX..MAX_NUM_RESULTS]OF USINT;
 	END_STRUCT;
 END_TYPE
 
