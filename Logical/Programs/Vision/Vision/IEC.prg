@@ -5,10 +5,10 @@
     <File Description="Init, cyclic, exit code">Main.st</File>
     <File Private="true">Types.typ</File>
     <File Private="true">Variables.var</File>
-    <File>setupPointersAction.st</File>
-    <File>hmiAction.st</File>
-    <File>processResultsAction.st</File>
-    <File>styleStringGeneration.st</File>
+    <File Description="Setup points to point to right data structure">setupPointersAction.st</File>
+    <File Description="HMI related">hmiAction.st</File>
+    <File Description="Process the vision results and draw overlay">processResultsAction.st</File>
+    <File Description="Generate style string for vision result">styleStringGeneration.st</File>
     <File Private="true" Reference="true">\Logical\Programs\User\user.typ</File>
     <File Reference="true">\Logical\Programs\User\userActions.st</File>
   </Files>

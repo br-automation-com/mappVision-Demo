@@ -17,7 +17,8 @@
     <File Description="Function to convert exposure time of one color LED to another LED color">brdkViBase_LEDIntensity.c</File>
     <File Description=" Function to convert a dateTime to a string given a format string">brdkViBase_dateTimeToString.c</File>
     <File Description="Function block to simulate a camera">brdkViBase_simCam.c</File>
-    <File>brdkViBase_vfs_hw2hmi.c</File>
+    <File Description="Functions to convert hw structures to hmi structures with scaling ">brdkViBase_vfs_hw2hmi.c</File>
+    <File Description="Function to get camera information from product number">brdkViBase_getLightInfo.c</File>
   </Files>
   <Dependencies>
     <Dependency ObjectName="astime" />

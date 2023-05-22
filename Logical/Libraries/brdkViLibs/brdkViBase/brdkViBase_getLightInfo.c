@@ -13,7 +13,7 @@
 #define TRUE 1
 #define FALSE 0
 /* TODO: Add your comment here */
-void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst)
+void brdkViBase_getLightInfo(struct brdkViBase_getLightInfo* inst)
 {
 	brdkViBase_getCameraInfo_int_typ* this = &inst->internal;
 	char* pChar;
@@ -39,9 +39,8 @@ void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst)
 			}else{
 			this->diagCreateInfo_0.infoKind		= asdiagCONFIGURED;
 			}
-			
+	
 			DiagCreateInfo(&this->diagCreateInfo_0);
-			
 			if( this->diagCreateInfo_0.status == 0 ) {
 				this->state = 2;
 			}else if( this->diagCreateInfo_0.status != ERR_FUB_BUSY ) {
@@ -118,22 +117,65 @@ void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst)
 		case 20: 
 			if( brsstrlen(&inst->pInfo->orderNr) == 18 ) {
 				
-				// Letter for CPU cors
-				switch(inst->pInfo->orderNr[4]){
-					case 0x31:  inst->pInfo->cpu = BRDKVIBASE_CPU_1_DUAL; break; // ASCII '1'
-					case 0x32:  inst->pInfo->cpu = BRDKVIBASE_CPU_2_QUAD; break;// ASCII '2'
-					default:
-						this->state = 95;
+				// Letter for light type back or light bar
+				switch(inst->pInfo->orderNr[3]){
+					case 0x42:  // ASCII 'B'
+						switch(inst->pInfo->orderNr[4]){
+							case 0x31:   // ASCII '1'
+								switch(inst->pInfo->orderNr[5]){
+									case 0x31:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BACK_1X1; break; // ASCII '1'
+				
+									case 0x32:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BACK_1X2; break;// ASCII '2'
+								
+									case 0x33:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BACK_1X3; break; // ASCII '3'
+				
+									case 0x34:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BACK_1X4; break;// ASCII '4'
+				
+								}
+								break;
+							case 0x32:  // ASCII '2'
+								switch(inst->pInfo->orderNr[5]){
+									case 0x32:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BACK_2X2; break; // ASCII '2'
+				
+									case 0x33:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BACK_2X3; break;// ASCII '2'
+				
+								}
+								break;
+						}
+						break;
+					
+					case 0x4C:  // ASCII 'L'
+						switch(inst->pInfo->orderNr[4]){
+							case 0x31:   // ASCII '1'
+								switch(inst->pInfo->orderNr[5]){
+									case 0x31:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BAR_1X1; break; // ASCII '1'
+									case 0x32:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BAR_1X2; break;// ASCII '2'
+									case 0x33:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BAR_1X3; break; // ASCII '3'
+									case 0x34:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_BAR_1X4; break;// ASCII '4'
+								}
+								break;
+							case 0x52:  // ASCII 'R'
+								switch(inst->pInfo->orderNr[5]){
+									case 0x34:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_RING_4; break; // ASCII '4'
+									case 0x36:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_RING_6; break;// ASCII '6'
+									case 0x38:  inst->pInfo->size = BRDKVIBASE_LIGHT_SIZE_RING_8; break; // ASCII '8'
+							
+								}
+								break;
+						}
+						break;
 				}
+			
+			
+			
 			
 				// Letter for LED Color
 				switch(inst->pInfo->orderNr[6]){ 
-					case 0x30:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_0_NONE; break; // ASCII '0'
 					case 0x33:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_3_BLUE; break;// ASCII '3'
 					case 0x38:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_8_RED; break;// ASCII '8'
-					case 0x41:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_A_UV; break;// ASCII 'A'
 					case 0x44:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_D_IR; break;// ASCII 'D'
 					case 0x46:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_F_W; break;// ASCII 'F'
+					case 0x48:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_H_IRW; break;// ASCII 'H'
 					case 0x51:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_Q_RGBL; break;// ASCII 'Q'
 					case 0x52:  inst->pInfo->LED_color = BRDKVIBASE_LED_COLOR_R_RBIRW; break;// ASCII 'R'
 					default:
@@ -152,52 +194,16 @@ void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst)
 				}
 			
 			
-				// Letter for Sensor
-				switch(inst->pInfo->orderNr[8]){
-					case 0x31:  inst->pInfo->sensor = BRDKVIBASE_SENSOR_1_3_MP; break; // ASCII '1'
-					case 0x32:  inst->pInfo->sensor = BRDKVIBASE_SENSOR_1_3_MP_LINE; break; // ASCII '2'
-					case 0x34:  inst->pInfo->sensor = BRDKVIBASE_SENSOR_3_5_MP; break;// ASCII '4'
-					case 0x35:  inst->pInfo->sensor = BRDKVIBASE_SENSOR_1_3_MP_LINE; break;// ASCII '5'
-					default:
-						this->state = 95;
-				}
-				// first letter for optics (0 or M)
-				switch(inst->pInfo->orderNr[10]){
-					case 0x30:  inst->pInfo->lens = BRDKVIBASE_LENS_C_MOUNT; break;// ASCII '0'
-					case 0x4D:  inst->pInfo->lens = BRDKVIBASE_LENS_12_0_MACRO;  break;// ASCII 'M'
-					default:
-						this->state = 96;
-				}
 				// second letter for optics
-				switch(inst->pInfo->orderNr[11]){
-					case 0x30:  inst->pInfo->lens = BRDKVIBASE_LENS_C_MOUNT;  break;// ASCII '0' // no optics
-					case 0x32:  inst->pInfo->lens = BRDKVIBASE_LENS_4_6;  break;// ASCII '2'
-					case 0x33:  inst->pInfo->lens = BRDKVIBASE_LENS_6_0;  break;// ASCII '3'
-					case 0x34:  inst->pInfo->lens = BRDKVIBASE_LENS_8_0;  break;// ASCII '4'
-					case 0x35: // ASCII '5'
-						if( inst->pInfo->lens == BRDKVIBASE_LENS_12_0_MACRO ) {
-							// do noting, already selected
-						}else{
-							inst->pInfo->lens = BRDKVIBASE_LENS_12_0;
-						}
-						break;
-					case 0x36:  inst->pInfo->lens = BRDKVIBASE_LENS_16_0;  break;// ASCII '6'
-					case 0x37:  inst->pInfo->lens = BRDKVIBASE_LENS_25_0;  break;// ASCII '7'
+				switch(inst->pInfo->orderNr[12]){
+					case 0x41:  inst->pInfo->front = BRDKVIBASE_FRONT_A_PLASTIC;  break;// ASCII 'A' 
+					case 0x43:  inst->pInfo->front = BRDKVIBASE_FRONT_C_PLASTIC_POL; 	break;// ASCII 'C'
+					case 0x44:  inst->pInfo->front = BRDKVIBASE_FRONT_D_PLASTIC_DIFF; 	break;// ASCII 'D'
+					case 0x45:  inst->pInfo->front = BRDKVIBASE_FRONT_E_PLASTIC_TELE; 	break;// ASCII 'E'
 					default:
 						this->state = 97;
 				}
 			
-				// second letter for optics
-				switch(inst->pInfo->orderNr[12]){
-					case 0x30:  inst->pInfo->front = BRDKVIBASE_FRONT_0_CMOUNT;  break;// ASCII '0' // no optics
-					case 0x31:  inst->pInfo->front = BRDKVIBASE_FRONT_1_GLASS_ANTI;  break;// ASCII '1'
-					case 0x32:  inst->pInfo->front = BRDKVIBASE_FRONT_2_GLASS_POL;  break;// ASCII '2'
-					case 0x33:  inst->pInfo->front = BRDKVIBASE_FRONT_3_GLASS_DIFFUSE;  break;// ASCII '3'
-					case 0x42:  inst->pInfo->front = BRDKVIBASE_FRONT_B_PLASTIC_ANTI; 	break;// ASCII 'B'
-					case 0x44:  inst->pInfo->front = BRDKVIBASE_FRONT_D_PLASTIC_DIFF; 	break;// ASCII 'D'
-					default:
-						this->state = 97;
-				}
 						
 				inst->status = ERR_OK;
 				this->state = 0;

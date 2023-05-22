@@ -12,7 +12,9 @@ TYPE
 	END_STRUCT;
 	local_typ : 	STRUCT 
 		path : STRING[100];
+		lightPath : ARRAY[START_IDX..MAX_NUM_LIGHTS]OF STRING[100];
 		brdkViBase_imgTrigger_0 : brdkViBase_imgTrigger;
+		brdkViBase_getLightInfo : ARRAY[START_IDX..MAX_NUM_LIGHTS]OF brdkViBase_getLightInfo;
 		brdkViBase_getCameraInfo_0 : brdkViBase_getCameraInfo;
 		mappView : {REDUND_UNREPLICABLE} brdkViImg_mappView;
 		viBaseSaveDiagData_0 : ViBaseSaveDiagData;
@@ -112,6 +114,8 @@ TYPE
 		statusText : STRING[50];
 		lightType : USINT;
 		plNodeNr : USINT;
+		info : brdkViBase_lightInfo_typ;
+		flashLightOptions : ARRAY[0..4]OF STRING[50];
 	END_STRUCT;
 	hmi_out_camera_typ : 	STRUCT 
 		simulated : BOOL;
@@ -244,6 +248,7 @@ TYPE
 		x : REAL;
 		vaList : hmi_in_cmd_vaList_typ;
 		resultTabIndex : USINT;
+		lightColorStr : ARRAY[START_IDX..MAX_NUM_LIGHTS]OF STRING[50];
 	END_STRUCT;
 	hmi_in_recipe_draw_typ : 	STRUCT 
 		intShape : INT := 0; (*0 = None, 1=  rectangle, 2 = circle, 3 = triangle*)

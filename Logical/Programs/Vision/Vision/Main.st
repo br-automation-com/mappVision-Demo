@@ -15,9 +15,20 @@ PROGRAM _INIT
 	FOR idx:= START_IDX TO MAX_NUM_CAMS BY 1 DO 
 		setupPointersAction;
 		
+		//  Create IO path to cam
 		this.path := 'IF3.ST';
 		tmpStr := USINT_TO_STRING(idx);
 		brsstrcat(ADR(this.path),ADR(tmpStr));
+		
+		// Create IO path to lights
+		FOR i := START_IDX TO MAX_NUM_LIGHTS BY 1 DO 
+			this.lightPath[i] := 'IF3.ST';
+			tmpStr := USINT_TO_STRING(idx*16+(i-1));
+			brsstrcat(ADR(this.lightPath[i]),ADR(tmpStr));
+		END_FOR
+		
+			
+		
 		
 		this.recipePVName := '::Vision1:hmiInstance[';
 		brsstrcat(ADR(this.recipePVName),ADR(tmpStr));
@@ -113,7 +124,11 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Translate camera status in readable text
 		// -----------------------------------------------------------------------------------------------------------
-		brdkViBase_camStatusToString(hw.camera.in.status.cameraStatus,ADR(hmi.out.camera.statusText));
+		IF hw.camera.in.common.moduleOk THEN
+			brdkViBase_camStatusToString(hw.camera.in.status.cameraStatus,ADR(hmi.out.camera.statusText));
+		ELSE
+			hmi.out.camera.statusText := 'Disconnected';
+		END_IF
 		
 		// -----------------------------------------------------------------------------------------------------------
 		// Check if vision cockpit is open
@@ -129,17 +144,61 @@ PROGRAM _CYCLIC
 			hmi.in.cmd.resetInfo := FALSE;
 			hmi.in.cameraInfo.distance := hmi.in.recipe.cam.focus;
 			this.brdkViBase_getCameraInfo_0.execute := TRUE;
+			this.brdkViBase_getCameraInfo_0.pluggedModule := hw.camera.in.common.moduleOk AND NOT DiagCpuIsSimulated();
+		
+			FOR i := START_IDX TO MAX_NUM_LIGHTS BY 1 DO
+				this.brdkViBase_getLightInfo[i].execute := TRUE;
+				this.brdkViBase_getLightInfo[i].pInfo := ADR(hmi.out.lights[i].info);
+				this.brdkViBase_getLightInfo[i].pDevicePath := ADR(this.lightPath[i]);
+				this.brdkViBase_getLightInfo[i].pluggedModule := hw.lights[i].in.common.moduleOk AND NOT DiagCpuIsSimulated();
+			END_FOR
+			
 		END_IF
 		
 		this.brdkViBase_getCameraInfo_0.pDevicePath := ADR(this.path);
 		this.brdkViBase_getCameraInfo_0.pInfo := ADR(hmi.in.cameraInfo);
 		this.brdkViBase_getCameraInfo_0();
 		
+					
+		FOR i:=START_IDX TO MAX_NUM_LIGHTS BY 1 DO
+			this.brdkViBase_getLightInfo[i]();
+			
+			IF hmi.out.lights[i].info.orderNr <> '' AND this.brdkViBase_getLightInfo[i].status = ERR_OK THEN
+				
+				// set Camera flash options based on current camera
+				hmi.out.lights[i].flashLightOptions[0] := '{"value":"0","text":"None"}';  
+		
+				CASE hmi.out.lights[i].info.LED_color OF
+					BRDKVIBASE_LED_COLOR_3_BLUE:
+						hmi.out.lights[i].flashLightOptions[1] := '{"value":"3","text":"Blue"}';  
+					BRDKVIBASE_LED_COLOR_8_RED:
+						hmi.out.lights[i].flashLightOptions[1] := '{"value":"1","text":"Red"}';  
+					BRDKVIBASE_LED_COLOR_D_IR:
+						hmi.out.lights[i].flashLightOptions[1] := '{"value":"100","text":"Infrared"}';  
+					BRDKVIBASE_LED_COLOR_F_W:
+						hmi.out.lights[i].flashLightOptions[1] := '{"value":"99","text":"White"}';  
+					BRDKVIBASE_LED_COLOR_H_IRW:
+						hmi.out.lights[i].flashLightOptions[1] := '{"value":"99","text":"White"}';  
+						hmi.out.lights[i].flashLightOptions[2] := '{"value":"100","text":"Infrared"}';  
+					BRDKVIBASE_LED_COLOR_Q_RGBL:
+						hmi.out.lights[i].flashLightOptions[1] := '{"value":"1","text":"Red"}';  
+						hmi.out.lights[i].flashLightOptions[2] := '{"value":"2","text":"Green"}';  
+						hmi.out.lights[i].flashLightOptions[3] := '{"value":"3","text":"Blue"}';  
+						hmi.out.lights[i].flashLightOptions[4] := '{"value":"4","text":"Lime"}';  
+			
+					BRDKVIBASE_LED_COLOR_R_RBIRW:
+						hmi.out.lights[i].flashLightOptions[1] := '{"value":"1","text":"Red"}';  
+						hmi.out.lights[i].flashLightOptions[2] := '{"value":"3","text":"Blue"}';  
+						hmi.out.lights[i].flashLightOptions[3] := '{"value":"99","text":"White"}';  
+						hmi.out.lights[i].flashLightOptions[4] := '{"value":"100","text":"Infrared"}';  
+				END_CASE	
+			END_IF	
+		END_FOR
+	
 		IF hw.camera.out.par.focus <> hmi.in.recipe.cam.focus THEN
 			hmi.in.cameraInfo.distance := hmi.in.recipe.cam.focus;
 		END_IF
 	
-		
 		
 		IF hmi.in.cameraInfo.orderNr <> '' AND this.brdkViBase_getCameraInfo_0.status = ERR_OK THEN
 			brdkViBase_calcOpticInfo(hmi.in.cameraInfo, hmi.out.camera.opticInfo); // calculate optic info based on defined info
@@ -246,10 +305,10 @@ PROGRAM _CYCLIC
 				this.brdkViBase_imgTrigger_0.trigger 		:= TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime 	:= hw.io.in.nettime + gAxis.status.powerlinkCycleTime * 12+10000; // Calc nettime close to currnet time
 				this.currentTriggerNum := 1;
-			// Axis trigger 
+				// Axis trigger 
 			ELSIF hmi.in.recipe.enableAxisTrigger AND 
-					gAxis.status.triggerTimeDelta >= (commonHmi.in.recipe.visionPreTriggerCycles * this.axisTrig.powerlinkCycle_us) AND
-					gAxis.status.triggerTimeDelta <= ((commonHmi.in.recipe.visionPreTriggerCycles + 1) * this.axisTrig.powerlinkCycle_us) THEN
+				gAxis.status.triggerTimeDelta >= (commonHmi.in.recipe.visionPreTriggerCycles * this.axisTrig.powerlinkCycle_us) AND
+				gAxis.status.triggerTimeDelta <= ((commonHmi.in.recipe.visionPreTriggerCycles + 1) * this.axisTrig.powerlinkCycle_us) THEN
 				
 				this.brdkViBase_imgTrigger_0.trigger := TRUE;
 				this.brdkViBase_imgTrigger_0.delayNettime := gAxis.status.nettime + gAxis.status.triggerTimeDelta; // Use time calculated in Axis program
@@ -284,7 +343,7 @@ PROGRAM _CYCLIC
 		
 		
 		FOR i:=START_IDX TO MAX_NUM_LIGHTS BY 1 DO
-			
+						
 			// Manual Light trigger
 			// exposuretime 
 			IF hmi.in.recipe.useCamExpTimeForLight THEN
@@ -574,8 +633,18 @@ PROGRAM _CYCLIC
 		// handle conversion from CR dropDown value to interger and back
 		IF this.mpRecipeRegVar.UpdateNotification THEN
 			hmi.in.recipe.CRTypeStr := USINT_TO_STRING(hmi.in.recipe.CR.symbolType);
+			
+			FOR i:=START_IDX TO MAX_NUM_LIGHTS BY 1 DO
+				this.brdkViBase_getLightInfo[i]();
+				hmi.in.cmd.lightColorStr[i] := USINT_TO_STRING(hmi.in.recipe.lights[i].flashColor );
+			END_FOR
+			
 		ELSE
 			hmi.in.recipe.CR.symbolType := STRING_TO_USINT(hmi.in.recipe.CRTypeStr);
+			FOR i:=START_IDX TO MAX_NUM_LIGHTS BY 1 DO
+				this.brdkViBase_getLightInfo[i]();
+				hmi.in.recipe.lights[i].flashColor := STRING_TO_USINT(hmi.in.cmd.lightColorStr[i]);
+			END_FOR
 		END_IF
 		
 		
@@ -599,7 +668,7 @@ PROGRAM _CYCLIC
 	setupPointersAction;
 
 	
-END_PROGRAM
+					END_PROGRAM
 
 
 PROGRAM _EXIT
@@ -617,4 +686,4 @@ PROGRAM _EXIT
 	
 	userExitCommonPostAction;
 	
-END_PROGRAM
+					END_PROGRAM

@@ -38,11 +38,28 @@ FUNCTION brdkViBase_dateTimeToString : BOOL (*Function to convert at DateTimte t
 	END_VAR
 END_FUNCTION
 
+FUNCTION_BLOCK brdkViBase_getLightInfo (*Function block to extract the light product number from the IO address*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		execute : BOOL; (*When TRUE the extraction is started, is automatically reset to FALSE*)
+		errorReset : BOOL; (*Reset function block in case of error*)
+		pDevicePath : UDINT; (*Pointer to string with Device path e.g. "IF3.ST1"*)
+		pluggedModule : BOOL; (*If true then the plugged module information is extracted, if false its the configued module information that is used*)
+		pInfo : REFERENCE TO brdkViBase_lightInfo_typ; (*Pointer to brdkViBase camera hardware datastructure where information is written to*)
+	END_VAR
+	VAR_OUTPUT
+		status : UINT; (*Status for the function block*)
+	END_VAR
+	VAR
+		internal : brdkViBase_getCameraInfo_int_typ;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK brdkViBase_getCameraInfo (*Function block to extract the camera product number from the IO address*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
 		execute : BOOL; (*When TRUE the extraction is started, is automatically reset to FALSE*)
 		errorReset : BOOL; (*Reset function block in case of error*)
 		pDevicePath : UDINT; (*Pointer to string with Device path e.g. "IF3.ST1"*)
+		pluggedModule : BOOL; (*If true then the plugged module information is extracted, if false its the configued module information that is used*)
 		pInfo : REFERENCE TO brdkViBase_camInfo_typ; (*Pointer to brdkViBase camera hardware datastructure where information is written to*)
 	END_VAR
 	VAR_OUTPUT

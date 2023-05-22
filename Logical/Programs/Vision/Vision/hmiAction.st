@@ -78,10 +78,10 @@ ACTION hmiAction:
 	
 	IF this.mpRecipeRegVar.UpdateNotification THEN
 		
-		hmi.in.cmd.flashSegment.top := hmi.in.recipe.cam.flashSegment.0;
-		hmi.in.recipe.cam.flashSegment.1;
-		hmi.in.cmd.flashSegment.left := 	hmi.in.recipe.cam.flashSegment.2;
-		hmi.in.cmd.flashSegment.right := 	hmi.in.recipe.cam.flashSegment.3;
+		hmi.in.cmd.flashSegment.top 	:= hmi.in.recipe.cam.flashSegment.0;
+		hmi.in.cmd.flashSegment.bottom 	:= hmi.in.recipe.cam.flashSegment.1;
+		hmi.in.cmd.flashSegment.left 	:= hmi.in.recipe.cam.flashSegment.2;
+		hmi.in.cmd.flashSegment.right 	:= hmi.in.recipe.cam.flashSegment.3;
 	
 	ELSE
 		hmi.in.recipe.cam.flashSegment.0 := hmi.in.cmd.flashSegment.top;

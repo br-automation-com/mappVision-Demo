@@ -42,6 +42,7 @@
             <Variable Name="in">
               <Variable Name="cmd">
                 <Variable Name="intElemId" EURangeViolationId="1" EURangesId="12" />
+                <Variable Name="lightColorStr" RecursiveEnable="2" />
               </Variable>
               <Variable Name="recipe">
                 <Variable Name="BLOB">
