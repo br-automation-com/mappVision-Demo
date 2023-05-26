@@ -19,6 +19,7 @@
     <File Description="Function block to simulate a camera">brdkViBase_simCam.c</File>
     <File Description="Functions to convert hw structures to hmi structures with scaling ">brdkViBase_vfs_hw2hmi.c</File>
     <File Description="Function to get camera information from product number">brdkViBase_getLightInfo.c</File>
+    <File>brdkViBase_LEDColorToOptions.c</File>
   </Files>
   <Dependencies>
     <Dependency ObjectName="astime" />

@@ -193,3 +193,10 @@ END_FUNCTION
 		hmi : brdkViBase_hmi_pxCnt_in_typ; (*Pixel counter hmi result structure*)
 	END_VAR
 END_FUNCTION
+
+{REDUND_ERROR} FUNCTION brdkViBase_LEDColorToOptions : BOOL (*Function to convert LEDColor enum to options array for dropdown*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		LEDColor : BRDKVIBASE_LED_COLOR_ENM; (*LED Color enum that define de available colors*)
+		pOptions : REFERENCE TO ARRAY[0..4] OF STRING[50]; (*Pointer to options array of strings*)
+	END_VAR
+END_FUNCTION

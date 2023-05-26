@@ -165,73 +165,23 @@ PROGRAM _CYCLIC
 			this.brdkViBase_getLightInfo[i]();
 			
 			IF hmi.out.lights[i].info.orderNr <> '' AND this.brdkViBase_getLightInfo[i].status = ERR_OK THEN
-				
 				// set Camera flash options based on current camera
-				hmi.out.lights[i].flashLightOptions[0] := '{"value":"0","text":"None"}';  
-		
-				CASE hmi.out.lights[i].info.LED_color OF
-					BRDKVIBASE_LED_COLOR_3_BLUE:
-						hmi.out.lights[i].flashLightOptions[1] := '{"value":"3","text":"Blue"}';  
-					BRDKVIBASE_LED_COLOR_8_RED:
-						hmi.out.lights[i].flashLightOptions[1] := '{"value":"1","text":"Red"}';  
-					BRDKVIBASE_LED_COLOR_D_IR:
-						hmi.out.lights[i].flashLightOptions[1] := '{"value":"100","text":"Infrared"}';  
-					BRDKVIBASE_LED_COLOR_F_W:
-						hmi.out.lights[i].flashLightOptions[1] := '{"value":"99","text":"White"}';  
-					BRDKVIBASE_LED_COLOR_H_IRW:
-						hmi.out.lights[i].flashLightOptions[1] := '{"value":"99","text":"White"}';  
-						hmi.out.lights[i].flashLightOptions[2] := '{"value":"100","text":"Infrared"}';  
-					BRDKVIBASE_LED_COLOR_Q_RGBL:
-						hmi.out.lights[i].flashLightOptions[1] := '{"value":"1","text":"Red"}';  
-						hmi.out.lights[i].flashLightOptions[2] := '{"value":"2","text":"Green"}';  
-						hmi.out.lights[i].flashLightOptions[3] := '{"value":"3","text":"Blue"}';  
-						hmi.out.lights[i].flashLightOptions[4] := '{"value":"4","text":"Lime"}';  
-			
-					BRDKVIBASE_LED_COLOR_R_RBIRW:
-						hmi.out.lights[i].flashLightOptions[1] := '{"value":"1","text":"Red"}';  
-						hmi.out.lights[i].flashLightOptions[2] := '{"value":"3","text":"Blue"}';  
-						hmi.out.lights[i].flashLightOptions[3] := '{"value":"99","text":"White"}';  
-						hmi.out.lights[i].flashLightOptions[4] := '{"value":"100","text":"Infrared"}';  
-				END_CASE	
+				brdkViBase_LEDColorToOptions(hmi.out.lights[i].info.LED_color, ADR(hmi.out.lights[i].flashLightOptions));
 			END_IF	
 		END_FOR
-	
+		
 		IF hw.camera.out.par.focus <> hmi.in.recipe.cam.focus THEN
 			hmi.in.cameraInfo.distance := hmi.in.recipe.cam.focus;
 		END_IF
 	
-		
 		IF hmi.in.cameraInfo.orderNr <> '' AND this.brdkViBase_getCameraInfo_0.status = ERR_OK THEN
 			brdkViBase_calcOpticInfo(hmi.in.cameraInfo, hmi.out.camera.opticInfo); // calculate optic info based on defined info
 		
 			// set Camera flash options based on current camera
-			hmi.out.camera.flashLightOptions[0] := '{"value":"0","text":"None"}';  
-		
-			CASE hmi.in.cameraInfo.LED_color OF
-				BRDKVIBASE_LED_COLOR_3_BLUE:
-					hmi.out.camera.flashLightOptions[1] := '{"value":"3","text":"Blue"}';  
-				BRDKVIBASE_LED_COLOR_8_RED:
-					hmi.out.camera.flashLightOptions[1] := '{"value":"1","text":"Red"}';  
-				BRDKVIBASE_LED_COLOR_A_UV:
-					hmi.out.camera.flashLightOptions[1] := '{"value":"210","text":"Ultraviolet"}';  
-				BRDKVIBASE_LED_COLOR_D_IR:
-					hmi.out.camera.flashLightOptions[1] := '{"value":"100","text":"Infrared"}';  
-				BRDKVIBASE_LED_COLOR_F_W:
-					hmi.out.camera.flashLightOptions[1] := '{"value":"99","text":"White"}';  
-				BRDKVIBASE_LED_COLOR_Q_RGBL:
-					hmi.out.camera.flashLightOptions[1] := '{"value":"1","text":"Red"}';  
-					hmi.out.camera.flashLightOptions[2] := '{"value":"2","text":"Green"}';  
-					hmi.out.camera.flashLightOptions[3] := '{"value":"3","text":"Blue"}';  
-					hmi.out.camera.flashLightOptions[4] := '{"value":"4","text":"Lime"}';  
-			
-				BRDKVIBASE_LED_COLOR_R_RBIRW:
-					hmi.out.camera.flashLightOptions[1] := '{"value":"1","text":"Red"}';  
-					hmi.out.camera.flashLightOptions[2] := '{"value":"3","text":"Blue"}';  
-					hmi.out.camera.flashLightOptions[3] := '{"value":"99","text":"White"}';  
-					hmi.out.camera.flashLightOptions[4] := '{"value":"100","text":"Infrared"}';  
-			END_CASE	
+			brdkViBase_LEDColorToOptions(hmi.in.cameraInfo.LED_color, ADR(hmi.out.camera.flashLightOptions));
 		END_IF		
 
+	
 		
 		
 		IF hw.io.in.nettime > this.axisTrig.nettimeLastCycle_us THEN

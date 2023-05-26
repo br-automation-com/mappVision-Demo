@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentNav" height="518" width="166" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navMain" top="20" left="5" width="150" height="45" zIndex="0" pageId="pageMain" text="Main" cornerRadius="8px" fontSize="20px" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navImageArchiv" top="460" left="5" width="150" height="45" zIndex="1" pageId="pageImageArchiv" text="Image Archiv" cornerRadius="8px" fontSize="20px" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navRecipes" top="405" left="5" width="150" height="45" zIndex="2" pageId="RecipePage" text="Recipes" cornerRadius="8px" fontSize="20px" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navLights" top="130" left="5" width="150" height="45" zIndex="3" pageId="pageLights" text="Lights" cornerRadius="8px" fontSize="20px" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navLights1" top="185" left="5" width="150" height="45" zIndex="4" pageId="pageNettime" text="Nettime" cornerRadius="8px" fontSize="20px" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navColor" top="240" left="5" width="150" height="45" zIndex="5" pageId="pageColor" text="Color" cornerRadius="8px" fontSize="20px" visible="false" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navResult" top="75" left="5" width="150" height="45" zIndex="6" pageId="pageResult" text="Result" cornerRadius="8px" fontSize="20px" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navmappVisionHmi" top="295" left="5" width="150" height="45" zIndex="7" pageId="pageMappVisonHmi" text="Vision HMI" cornerRadius="8px" fontSize="20px" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="navSDM" top="350" left="5" width="150" height="45" zIndex="8" pageId="pageSDM" text="SDM" cornerRadius="8px" fontSize="20px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navMain" top="10" left="10" width="135" height="45" zIndex="0" image="Media/photoCamera.svg" pageId="pageMain" text="Main" imageWidth="30" cornerRadius="8px" textAlign="left" fontSize="15px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navImageArchiv" top="365" left="10" width="135" height="45" zIndex="1" image="Media/SymbolLib/File/Package.svg" pageId="pageImageArchiv" text="Archive" cornerRadius="8px" textAlign="left" fontSize="15px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navRecipes" top="313" left="10" width="135" height="45" zIndex="2" image="Media/SymbolLib/File/Recipe.svg" pageId="RecipePage" text="Recipes" cornerRadius="8px" textAlign="left" fontSize="15px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navLights" top="111" left="10" width="135" height="45" zIndex="3" image="Media/SymbolLib/DisplayAndTouch/Lightness.svg" pageId="pageLights" text="Lights" cornerRadius="8px" textAlign="left" fontSize="15px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navLights1" top="162" left="10" width="135" height="45" zIndex="4" image="Media/SymbolLib/Symbols/Robot.svg" pageId="pageNettime" text="Motion axis" cornerRadius="8px" textAlign="left" fontSize="13px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navResult" top="61" left="10" width="135" height="45" zIndex="5" image="Media/results.svg" pageId="pageResult" text="Result" imageWidth="30" cornerRadius="8px" textAlign="left" fontSize="15px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navmappVisionHmi" top="212" left="10" width="135" height="45" zIndex="6" image="Media/normalVA.png" pageId="pageMappVisonHmi" text="Vision HMI" cornerRadius="8px" textAlign="left" fontSize="14px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navSDM" top="263" left="10" width="135" height="45" zIndex="7" image="Media/SymbolLib/Symbols/Remote2.svg" pageId="pageSDM" text="SDM" cornerRadius="8px" textAlign="left" fontSize="15px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navSDM1" top="414" left="10" width="135" height="45" zIndex="8" image="Media/SymbolLib/Symbols/PDF.svg" pageId="pageManual" text="Manual" cornerRadius="8px" textAlign="left" fontSize="15px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="navSDM2" top="465" left="10" width="135" height="45" zIndex="9" image="Media/bug.png" pageId="pageIssues" text="Issues" imageHeight="35" cornerRadius="8px" textAlign="left" fontSize="15px" />
   </Widgets>
 </Content>

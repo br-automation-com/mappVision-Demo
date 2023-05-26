@@ -12,5 +12,7 @@
     <Object Type="Package">Color</Object>
     <Object Type="Package">RecipePage</Object>
     <Object Type="Package">ImageArchiv</Object>
+    <Object Type="Package">Issues</Object>
+    <Object Type="Package">Manual</Object>
   </Objects>
 </Package>

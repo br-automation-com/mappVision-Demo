@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.12.2.93 FileVersion="4.9"?>
+<?AutomationStudio Version=4.12.3.127 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="8AC114.60-2" Type="8AC114.60-2" Version="1.0.0.8">
     <Connection Connector="SS" TargetModule="8V1010.50-2" TargetConnector="SS1" />
@@ -12,7 +12,7 @@
     <Parameter ID="PlugInType" Value="Encoder" />
     <Parameter ID="McAcoposTypeID" Value="AcoposPlugInConfig" />
   </Module>
-  <Module Name="8V1010.50-2" Type="8V1010.50-2" Version="2.3.0.0">
+  <Module Name="8V1010.50-2" Type="8V1010.50-2" Version="2.2.0.0">
     <Parameter ID="McAcoposTypeID" Location="DriveConfiguration/Module" Value="AcoposConfig" />
     <Parameter ID="ActivateACOPOSSimulationOnPLC" Location="DriveConfiguration/Module" Value="0" />
     <Parameter ID="SinglePhaseOperation" Location="DriveConfiguration/Module/PowerSupply" Value="Used" />

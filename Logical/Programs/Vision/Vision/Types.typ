@@ -133,7 +133,7 @@ TYPE
 		hw : brdkViBase_cam_hw_in_status_typ;
 		vaLoad : DINT;
 		saveDiagStatus : DINT;
-		flashLightOptions : ARRAY[0..4]OF STRING[100];
+		flashLightOptions : ARRAY[0..4]OF STRING[50];
 	END_STRUCT;
 	hmi_out_vaList_typ : 	STRUCT 
 		list : ARRAY[0..99]OF ViBaseFormatPlainTextType;

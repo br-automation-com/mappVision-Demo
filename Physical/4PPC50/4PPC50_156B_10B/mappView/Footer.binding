@@ -88,7 +88,7 @@
 					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.recipe.cam.gainLevel" />
 				</be:List>
 			</Source>
-			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numGain" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentFooter" widgetRefId="numGain" attribute="selectedIndex" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="listElement">

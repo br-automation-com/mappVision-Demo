@@ -11,6 +11,9 @@
 		<Page refId="pageImageArchiv" />
 		<Page refId="pageMappVisonHmi" />
 		<Page refId="pageSDM" />
+		<Page refId="pageManual" />
+		<Page refId="pageIssues" />
+		
 	</Pages>
 	<Navigations>
 		<!--<Navigation refId="" />-->

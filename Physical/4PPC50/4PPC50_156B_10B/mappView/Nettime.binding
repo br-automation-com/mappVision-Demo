@@ -42,10 +42,7 @@
 			<Source xsi:type="opcUa" refId="::Axis:hmi.in.cmd.home" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnHomeAxis" attribute="value" />
 		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vision1:commonHmi.in.recipe.enableAxisTrigger" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="btnNettimeActivate" attribute="value" />
-		</Binding>
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::Axis:hmi.in.recipe.axisPeriod" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentNettime" widgetRefId="numAxisPeriod" attribute="value" />

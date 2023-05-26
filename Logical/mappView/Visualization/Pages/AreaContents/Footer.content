@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentFooter" height="150" width="1366" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2">
   <Widgets>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faAutoSetup" top="0" left="1000" width="360" height="630" zIndex="19" buttonOffset="200" docking="bottom" showOnTop="true" text="Setup" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faAutoSetup" top="0" left="1000" width="360" height="630" zIndex="18" buttonOffset="200" docking="bottom" showOnTop="true" text="Setup" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="Label6" top="19" left="94" width="130" zIndex="0" text="Gain" textAlign="right" fontSize="18px" />
         <Widget xsi:type="widgets.brease.Label" id="Label7" top="54" left="94" width="130" zIndex="1" text="Focus" textAlign="right" fontSize="18px" />
@@ -24,23 +24,22 @@
         <Widget xsi:type="widgets.brease.CheckBox" id="chkCamLightsBottom" top="319" left="249" width="25" zIndex="18" value="true" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.Label" id="labFooter7" top="10" left="1045" width="210" height="25" zIndex="43" text="Camera Processing Time" textAlign="right" fontSize="18px" />
+    <Widget xsi:type="widgets.brease.Label" id="labFooter7" top="10" left="1045" width="210" height="25" zIndex="42" text="Camera Processing Time" textAlign="right" fontSize="18px" />
     <Widget xsi:type="widgets.brease.NumericOutput" id="numCameraProcessingTime" top="10" left="1255" width="90" height="25" zIndex="2" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Label" id="labFooter1" top="20" left="10" width="100" height="20" zIndex="3" text="Gain" textAlign="right" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="labFooter1" top="20" left="10" width="105" height="20" zIndex="3" text="Gain" textAlign="right" fontSize="20px" bold="true" />
     <Widget xsi:type="widgets.brease.Label" id="labFooter2" top="50" left="10" width="100" height="40" zIndex="4" text="Focus" textAlign="right" fontSize="20px" bold="true" />
     <Widget xsi:type="widgets.brease.Label" id="labFooter3" top="90" left="10" width="100" height="40" zIndex="5" text="Exposure" textAlign="right" fontSize="20px" bold="true" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="numGain" top="10" left="120" height="40" zIndex="6" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="3" fontSize="20px" padding="0px 5px 0px 5px" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="numFocus" top="50" left="120" height="40" zIndex="7" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="60000" unit="{'metric':'MMT','imperial':'MMT','imperial-us':'MMT'}" unitAlign="right" fontSize="20px" padding="0px 5px 0px 5px" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="numExposure" top="90" left="120" height="40" zIndex="8" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="50000" unit="{'metric':'B98','imperial':'B98','imperial-us':'B98'}" unitAlign="right" fontSize="20px" padding="0px 5px 0px 5px" />
-    <Widget xsi:type="widgets.brease.Label" id="labFooter8" top="40" left="1030" width="225" height="25" zIndex="9" text="Function Processing Time" textAlign="right" fontSize="18px" />
-    <Widget xsi:type="widgets.brease.NumericOutput" id="numFunctionProcessingTime" top="40" left="1255" width="90" height="25" zIndex="10" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Label" id="labFooter5" top="45" left="725" width="150" height="25" zIndex="11" text="Items found" textAlign="right" fontSize="18px" />
-    <Widget xsi:type="widgets.brease.NumericOutput" id="numItemsFound" top="45" left="874" width="90" height="25" zIndex="12" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 5px" />
-    <Widget xsi:type="widgets.brease.ToggleButton" id="btnVisionEnable" top="10" left="465" width="200" height="60" zIndex="13" mouseDownText="Disable VA" text="Enable VA" fontSize="24px" bold="true" checkedBackGroundGradient="linear-gradient(to bottom, #FFAA4D 0%,#FF8500 100%)" style="Operate" />
-    <Widget xsi:type="widgets.brease.Label" id="labFooter4" top="10" left="725" width="150" zIndex="14" text="Max items count" textAlign="right" fontSize="18px" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="numMaxItemsCount" top="10" left="875" width="90" zIndex="15" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10" fontSize="16px" padding="0px 5px 0px 5px" />
-    <Widget xsi:type="widgets.brease.PushButton" id="btnImageTrigger" top="10" left="250" width="200" height="60" zIndex="16" text="Trigger" fontSize="24px" bold="true" style="Operate" />
-    <Widget xsi:type="widgets.brease.FlyOut" id="faInfo" top="0" left="1020" width="330" height="700" zIndex="18" buttonOffset="20" docking="bottom" showOnTop="true" text="Info" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.NumericInput" id="numFocus" top="50" left="120" height="40" zIndex="6" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="60000" unit="{'metric':'MMT','imperial':'MMT','imperial-us':'MMT'}" unitAlign="right" fontSize="20px" padding="0px 5px 0px 5px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="numExposure" top="90" left="120" height="40" zIndex="7" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="50000" unit="{'metric':'B98','imperial':'B98','imperial-us':'B98'}" unitAlign="right" fontSize="20px" padding="0px 5px 0px 5px" />
+    <Widget xsi:type="widgets.brease.Label" id="labFooter8" top="40" left="1030" width="225" height="25" zIndex="8" text="Function Processing Time" textAlign="right" fontSize="18px" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="numFunctionProcessingTime" top="40" left="1255" width="90" height="25" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" unit="{'metric':'C26','imperial':'C26','imperial-us':'C26'}" unitAlign="right" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 0px" />
+    <Widget xsi:type="widgets.brease.Label" id="labFooter5" top="45" left="725" width="150" height="25" zIndex="10" text="Items found" textAlign="right" fontSize="18px" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="numItemsFound" top="45" left="874" width="90" height="25" zIndex="11" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderWidth="2px" cornerRadius="5px" fontSize="16px" padding="0px 5px 0px 5px" />
+    <Widget xsi:type="widgets.brease.ToggleButton" id="btnVisionEnable" top="10" left="465" width="200" height="60" zIndex="12" mouseDownText="Disable VA" text="Enable VA" fontSize="24px" bold="true" checkedBackGroundGradient="linear-gradient(to bottom, #FFAA4D 0%,#FF8500 100%)" style="Operate" />
+    <Widget xsi:type="widgets.brease.Label" id="labFooter4" top="10" left="725" width="150" zIndex="13" text="Max items count" textAlign="right" fontSize="18px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="numMaxItemsCount" top="10" left="875" width="90" zIndex="14" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="10" fontSize="16px" padding="0px 5px 0px 5px" enable="false" />
+    <Widget xsi:type="widgets.brease.PushButton" id="btnImageTrigger" top="10" left="250" width="200" height="60" zIndex="15" text="Trigger" fontSize="24px" bold="true" style="Operate" />
+    <Widget xsi:type="widgets.brease.FlyOut" id="faInfo" top="0" left="1020" width="330" height="700" zIndex="17" buttonOffset="20" docking="bottom" showOnTop="true" text="Info" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.brease.Label" id="labDiagnostics" top="5" left="0" width="330" zIndex="1" text="Diagnostics" textAlign="center" fontSize="22px" bold="true" />
         <Widget xsi:type="widgets.brease.Label" id="labDiagName" top="40" left="3" width="115" height="25" zIndex="2" text="File Name" textAlign="right" fontSize="18px" />
@@ -53,12 +52,12 @@
         <Widget xsi:type="widgets.brease.PushButton" id="PushButton1" top="110" left="155" width="145" height="45" zIndex="12" text="Save to PLC" style="Operate" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faOptics" top="0" left="860" width="360" height="530" zIndex="44" buttonOffset="20" docking="bottom" showOnTop="true" text="Optics" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faOptics" top="0" left="860" width="360" height="530" zIndex="43" buttonOffset="20" docking="bottom" showOnTop="true" text="Optics" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.visionWidget.visionOptics" id="visionOptics1" top="0" left="0" zIndex="1" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList" top="0" left="700" width="360" height="530" zIndex="45" buttonOffset="20" docking="bottom" showOnTop="true" text="Application" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList" top="0" left="700" width="360" height="530" zIndex="44" buttonOffset="20" docking="bottom" showOnTop="true" text="Application" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.brease.PushButton" id="btnLoadVA" top="14" left="182" width="165" height="35" zIndex="1" text="Load" fontSize="24px" bold="true" style="Operate" />
         <Widget xsi:type="widgets.brease.PushButton" id="btnRefreshVa" top="14" left="9" width="165" height="35" zIndex="2" text="Refresh" fontSize="24px" bold="true" style="Operate" />
@@ -69,15 +68,16 @@
         </Widget>
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList1" top="0" left="540" width="560" height="600" zIndex="46" buttonOffset="20" docking="bottom" showOnTop="true" text="VF settings" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList1" top="0" left="540" width="560" height="600" zIndex="45" buttonOffset="20" docking="bottom" showOnTop="true" text="VF settings" buttonHeight="40" buttonWidth="150" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.visionWidget.vfSettings" id="vfSettings1" top="0" left="0" width="525" height="600" zIndex="0" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList2" top="0" left="350" width="540" height="500" zIndex="47" buttonOffset="20" docking="bottom" showOnTop="true" text="Trigger settings" buttonHeight="40" buttonWidth="175" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
+    <Widget xsi:type="widgets.brease.FlyOut" id="faVaList2" top="0" left="350" width="540" height="500" zIndex="46" buttonOffset="20" docking="bottom" showOnTop="true" text="Trigger settings" buttonHeight="40" buttonWidth="175" buttonBorderWidth="1px" buttonCornerRadius="5px" borderStyle="solid" borderWidth="1px" backColor="rgba(255, 192, 128, 1)" fontSize="20px">
       <Widgets>
         <Widget xsi:type="widgets.visionWidget.triggerSettings" id="triggerSettings1" top="0" left="0" zIndex="0" />
       </Widgets>
     </Widget>
+    <Widget xsi:type="widgets.brease.DropDownBox" id="numGain" top="10" left="120" width="105" height="35" zIndex="47" dataProvider="[{'value':'0','text':'x 1'},{'value':'1','text':'x 1'},{'value':'2','text':'x 1.9'},{'value':'3','text':'x 3.5'}]" selectedValue="0" textAlign="center" />
   </Widgets>
 </Content>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Issues</title>
+  <style>
+    /* CSS for the tabs */
+    .tab {
+      display: none;
+    }
+    
+    /* CSS for GitHub-like styling */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #24292e;
+    }
+    
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+    
+    .tab-buttons {
+      margin-bottom: 1rem;
+    }
+    
+    .tab-button {
+      padding: 0.5rem 1rem;
+      background-color: #f6f8fa;
+      border: none;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    .tab-button.active {
+      background-color: #fff;
+      border-bottom: 2px solid #0366d6;
+    }
+    
+    button:hover {
+      background-color: #005cc5;
+    }
+    
+    ul {
+      padding: 0;
+      list-style-type: none;
+    }
+    
+    .issue-card {
+      margin-bottom: 20px;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: #f6f8fa;
+    }
+    
+    .issue-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .issue-card-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .issue-card-label {
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 4px;
+      color: #fff;
+    }
+    
+    .issue-card-body {
+      margin-top: 10px;
+    }
+    
+    .issue-card-meta {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #586069;
+    }
+    
+    .issue-card-meta strong {
+      font-weight: 600;
+    }
+    
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    input[type="submit"] {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0366d6;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #005cc5;
+    }
+  </style>
+</head>
+<body onload="openTab('list-issues-tab'); loadIssues();">
+  <h1>GitHub Issues</h1>
+  
+  <div class="tab-buttons">
+    <button id="list-issues-tab-button" class="tab-button active" onclick="openTab('list-issues-tab')">List Issues</button>
+    <button id="create-issue-tab-button" class="tab-button" onclick="openTab('create-issue-tab')">Create Issue</button>
+  </div>
+  
+  <div class="tab" id="list-issues-tab">
+    <h2>List Issues</h2>
+    <ul id="issue-list"></ul>
+  </div>
+  
+  <div class="tab" id="create-issue-tab">
+    <h2>Create Issue</h2>
+    <form onsubmit="return createIssue(event)">
+      <label for="title">Title:</label>
+      <input type="text" id="title" required>
+      
+      <label for="body">Body:</label>
+      <textarea id="body" rows="4"></textarea>
+      
+      <label for="labels">Labels:</label>
+      <select id="labels">
+        <option value="bug">bug</option>
+        <option value="documentation">documentation</option>
+        <option value="enhancement">enhancement</option>
+        <option value="help wanted">help wanted</option>
+        <option value="question">question</option>
+      </select>
+      
+      <input type="submit" value="Create">
+    </form>
+  </div>
+  
+  <script>
+    function openTab(tabId) {
+      const tabButtons = document.getElementsByClassName('tab-button');
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+      }
+      
+      const tabs = document.getElementsByClassName('tab');
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = 'none';
+      }
+      
+      const tabButton = document.getElementById(tabId + '-button');
+      tabButton.classList.add('active');
+      
+      const tab = document.getElementById(tabId);
+      tab.style.display = 'block';
+    }
+    
+    function loadIssues() {
+      const apiUrl = 'https://api.github.com/repos/br-automation-com/mappVision-Demo/issues';
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const issueList = document.getElementById('issue-list');
+          issueList.innerHTML = '';
+          
+          data.sort((a, b) => {
+            const statusA = a.state.toLowerCase();
+            const statusB = b.state.toLowerCase();
+            if (statusA < statusB) return -1;
+            if (statusA > statusB) return 1;
+            return 0;
+          });
+          
+          data.forEach(issue => {
+            const { title, body, state, assignee, created_at, labels } = issue;
+            
+            const issueCard = document.createElement('li');
+            issueCard.classList.add('issue-card');
+            
+            const issueHeader = document.createElement('div');
+            issueHeader.classList.add('issue-card-header');
+            
+            const issueTitle = document.createElement('h3');
+            issueTitle.classList.add('issue-card-title');
+            labels.forEach(item => {
+			issueTitle.innerText += item.name +" ";
+			});
+			
+			issueTitle.innerText += ": "+title;
+            
+            const issueStatus = document.createElement('span');
+            issueStatus.classList.add('issue-card-label');
+            issueStatus.innerText = state;
+			if(state === "open"){
+			issueStatus.style.backgroundColor = "red";
+			}else{
+			issueStatus.style.backgroundColor = "grey";
+			}
+			
+           
+            issueHeader.appendChild(issueTitle);
+            issueHeader.appendChild(issueStatus);
+           
+            const issueBody = document.createElement('div');
+            issueBody.classList.add('issue-card-body');
+            issueBody.innerText = body;
+            
+            const issueMeta = document.createElement('div');
+            issueMeta.classList.add('issue-card-meta');
+            issueMeta.innerHTML = `<strong>Assignee:</strong> ${assignee ? assignee.login : 'None'}<br><strong>Created At:</strong> ${new Date(created_at).toLocaleString()}`;
+            
+            const issueButton = document.createElement('button');
+            issueButton.innerText = 'Open Issue';
+            issueButton.addEventListener('click', () => {
+              const url = `https://github.com/br-automation-com/mappVision-Demo/issues/${issue.number}`;
+              window.open(url, '_blank');
+            });
+            
+            issueCard.appendChild(issueHeader);
+            issueCard.appendChild(issueBody);
+            issueCard.appendChild(issueMeta);
+            issueCard.appendChild(issueButton);
+            
+            issueList.appendChild(issueCard);
+          });
+        })
+        .catch(error => console.error(error));
+    }
+    
+    function createIssue(event) {
+      event.preventDefault();
+      
+      const title = document.getElementById('title').value;
+      const body = document.getElementById('body').value;
+      const labels = document.getElementById('labels').value;
+      
+      const apiUrl = `https://github.com/br-automation-com/mappVision-Demo/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}&labels=${encodeURIComponent(labels)}`;
+      
+      window.open(apiUrl, '_blank');
+      
+      return false;
+    }
+    
+    function getLabelColor(label) {
+      const labelColors = {
+        bug: 'red',
+        documentation: '#0075ca',
+        enhancement: '#a2eeef',
+        'help wanted': '#008672',
+        question: '#d876e3'
+      };
+      return label ? labelColors[label] : 'gray';
+    }
+  </script>
+</body>
+</html>
