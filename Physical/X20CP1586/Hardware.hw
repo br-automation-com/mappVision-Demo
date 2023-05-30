@@ -85,7 +85,6 @@
     <Parameter ID="ConfigurationID" Value="Vision_Sample" />
     <Parameter ID="ConfigVersion" Value="2.0.0" />
     <Parameter ID="UserPartitionSize" Value="260" />
-    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="RemMemSize" Value="30000" />
     <Parameter ID="PermanentPvSize" Value="2000" />
     <Parameter ID="RemanentGlobalPvSize" Value="20000" />
