@@ -39,6 +39,17 @@ Should also work with newer and some older versions
 *Chrome Browser
 
 Recommended task class is #8 with a 10ms cycle time. For the nettime and axis tasks use #1
+
+#### version 5.22.1
+Fixed:
+- Recipe for vision task did not work as the light loop overwritten the index string
+- Page fault for click on image if no element was clicked twice. Removed style creating string as it was not needed at the start for click
+
+Modifided:
+- Set project up to include user drive web folder, as this includes the issue web page.
+- Match score and scale er now in percent
+- Added units for matching results
+
 #### version 5.22.0
 - Updated to AS 4.12
 - Updated to Mapp 5.22
