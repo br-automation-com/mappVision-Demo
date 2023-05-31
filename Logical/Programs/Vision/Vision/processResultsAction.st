@@ -77,18 +77,18 @@ ACTION processResultsAction:
 			//----------------------------------
 			//          table results 
 			hmi.out.tableVF.match.ModelNumber[i] := hw.VF.matching.in.results[i-1].modelNumber;
-			hmi.out.tableVF.match.Score[i] :=  DINT_TO_REAL(hw.VF.matching.in.results[i-1].score) /100.0;
+			hmi.out.tableVF.match.Score[i] :=  DINT_TO_REAL(hw.VF.matching.in.results[i-1].score);
 			hmi.out.tableVF.match.PositionX[i] :=  DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionX) /100.0;
 			hmi.out.tableVF.match.PositionY[i] :=  DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionY) /100.0;
 			hmi.out.tableVF.match.Orientation[i] :=  DINT_TO_REAL(hw.VF.matching.in.results[i-1].orientation) /100.0;
-			hmi.out.tableVF.match.Scale[i] :=  DINT_TO_REAL(hw.VF.matching.in.results[i-1].scale) /100.0;
+			hmi.out.tableVF.match.Scale[i] :=  DINT_TO_REAL(hw.VF.matching.in.results[i-1].scale);
 			
 			//------------------------------------
 			//			Overlay darwing 
 			
 			this.tmp2D.x := DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionX) / 100.0;
 			this.tmp2D.y := DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionY) / 100.0;
-			this.tmpAngle:= this.tmpAngle-REAL_TO_LREAL(hmi.out.tableVF.match.PositionY[i]);
+			this.tmpAngle:= -REAL_TO_LREAL(hmi.out.tableVF.match.Orientation[i]+hmi.in.recipe.draw.rotation);
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
 			this.strStyle := 'id="3'; 
