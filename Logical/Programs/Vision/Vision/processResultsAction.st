@@ -88,7 +88,7 @@ ACTION processResultsAction:
 			
 			this.tmp2D.x := DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionX) / 100.0;
 			this.tmp2D.y := DINT_TO_REAL(hw.VF.matching.in.results[i-1].positionY) / 100.0;
-			this.tmpAngle:= -REAL_TO_LREAL(hmi.out.tableVF.blob.PositionY[i]);
+			this.tmpAngle:= this.tmpAngle-REAL_TO_LREAL(hmi.out.tableVF.match.PositionY[i]);
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
 			this.strStyle := 'id="3'; 
@@ -126,7 +126,7 @@ ACTION processResultsAction:
 			
 			this.tmp2D.x := DINT_TO_REAL(hw.VF.ocr.in.results[i-1].positionX) / 100.0;
 			this.tmp2D.y := DINT_TO_REAL(hw.VF.ocr.in.results[i-1].positionY) / 100.0;
-			this.tmpAngle:= -REAL_TO_LREAL(hmi.out.tableVF.blob.PositionY[i]);
+			this.tmpAngle:= -REAL_TO_LREAL(hmi.out.tableVF.ocr.PositionY[i]);
 			// Style string generation			
 			// e.g.:'id="13" style="fill:blue;stroke:blue;stroke-width:5;fill-opacity:0.3;stroke-opacity:1"'	
 				

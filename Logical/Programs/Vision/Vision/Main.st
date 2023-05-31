@@ -20,20 +20,18 @@ PROGRAM _INIT
 		tmpStr := USINT_TO_STRING(idx);
 		brsstrcat(ADR(this.path),ADR(tmpStr));
 		
+		this.recipePVName := '::Vision1:hmiInstance[';
+		brsstrcat(ADR(this.recipePVName),ADR(tmpStr));
+		brsstrcat(ADR(this.recipePVName),ADR('].in.recipe'));
+	
+	
+		
 		// Create IO path to lights
 		FOR i := START_IDX TO MAX_NUM_LIGHTS BY 1 DO 
 			this.lightPath[i] := 'IF3.ST';
 			tmpStr := USINT_TO_STRING(idx*16+(i-1));
 			brsstrcat(ADR(this.lightPath[i]),ADR(tmpStr));
 		END_FOR
-		
-			
-		
-		
-		this.recipePVName := '::Vision1:hmiInstance[';
-		brsstrcat(ADR(this.recipePVName),ADR(tmpStr));
-		brsstrcat(ADR(this.recipePVName),ADR('].in.recipe'));
-	
 		
 		FOR i:= START_IDX TO MAX_NUM_RESULTS BY 1 DO
 			hmi.out.tableVF.tableNum[i] := i;
@@ -351,7 +349,6 @@ PROGRAM _CYCLIC
 		// Selection of specific result
 		// -----------------------------------------------------------------------------------------------------------	
 		IF hmi.in.cmd.click THEN
-			styleStringGeneration;	
 			hmi.in.cmd.click := FALSE;
 
 			//VF 
@@ -359,7 +356,11 @@ PROGRAM _CYCLIC
 			//ID 
 			brsstrcpy(ADR(tmpID),ADR(hmi.in.cmd.elemId)+2);
 				
-			hmi.in.cmd.intElemId := STRING_TO_USINT(tmpID);	
+			hmi.in.cmd.intElemId := STRING_TO_USINT(tmpID);
+			IF hmi.in.cmd.intElemId > MAX_NUM_RESULTS THEN
+				hmi.in.cmd.intElemId := 0;
+			END_IF
+				
 		END_IF
 		
 		IF hmi.in.cmd.intElemId <> this.oldIntElemID THEN

@@ -1,4 +1,5 @@
 
+
 ACTION styleStringGeneration:
 	
 	IF hmi.in.recipe.draw.intShape > 0 THEN
