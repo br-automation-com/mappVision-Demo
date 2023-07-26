@@ -200,6 +200,7 @@ PROGRAM _CYCLIC
 		hw.camera.out.par.exposureTime 		:= hmi.in.recipe.cam.exposureTime;
 		hw.camera.out.par.chromaticLock 	:= hmi.in.recipe.cam.chromaticLock;
 		hw.camera.out.par.gainLevel 		:= hmi.in.recipe.cam.gainLevel;
+		hw.camera.out.par.IRFilter			:= hmi.in.recipe.cam.IRFilter;
 
 		//-------------------------------------------------------------------------
 		
