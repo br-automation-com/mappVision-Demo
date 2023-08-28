@@ -11,6 +11,7 @@ TYPE
 		mcCFG_TOOL := 1300, (*Tool -*)
 		mcCFG_LIMSET_LIN := 1411, (*Associated with data type McCfgLimSetLinType*)
 		mcCFG_LIMSET_ROT := 1412, (*Associated with data type McCfgLimSetRotType*)
+		mcCFG_CAMLST := 1500, (*Associated with data type McCfgCamLstType*)
 		mcCFG_PROC_PT_LST := 1600, (*Associated with data type McCfgProcPtLstType*)
 		mcCFG_TRK_PATH := 1700, (*Associated with data type McCfgTrkPathType*)
 		mcCFG_PICK_CORE := 2100, (*Associated with data type MpCfgPickCoreType*)
@@ -71,7 +72,7 @@ TYPE
 		mcCFG_ACP_EXT_ENC_AX_MECH_ELM := 11073, (*Associated with data type McCfgAcpExtEncAxMechElmType*)
 		mcCFG_ACP_EXT_ENC_AX_HOME := 11074, (*Associated with data type McCfgAcpExtEncAxHomeType*)
 		mcCFG_AX_FEAT_CAM_AUT_ACP := 11101, (*AxisFeatureCamAutAcopos -*)
-		mcCFG_AX_FEAT_A_IN := 11103, (*AxisFeatureAInput -*)
+		mcCFG_AX_FEAT_A_IN := 11103, (*Associated with data type McCfgAxFeatAInType*)
 		mcCFG_AX_FEAT_ACP_PAR_TBL := 11104, (*Associated with data type McCfgAxFeatAcpParTblType*)
 		mcCFG_PURE_V_AX := 12000, (*Associated with data type McCfgPureVAxType*)
 		mcCFG_PURE_V_AX_REF := 12011, (*Associated with data type McCfgPureVAxRefType*)
@@ -149,6 +150,7 @@ TYPE
 		mcCFG_AXGRP_FEAT_TAN_TOOL := 21124, (*Associated with data type McCfgAxGrpFeatTanToolType*)
 		mcCFG_AXGRP_FEAT_REV_MOVE := 21125, (*Associated with data type McCfgAxGrpFeatRevMoveType*)
 		mcCFG_AXGRP_FEAT_TRK := 21126, (*Associated with data type McCfgAxGrpFeatTrkType*)
+		mcCFG_AXGRP_FEAT_PIPE_CUT := 21127, (*Associated with data type McCfgAxGrpPipeCutType*)
 		mcCFG_ASM := 31000, (*Associated with data type McCfgAsmType*)
 		mcCFG_ASM_FEAT_CPLG := 31101, (*Associated with data type McCfgAsmFeatCplgType*)
 		mcCFG_ASM_FEAT_SIM_SH_DEF := 31102, (*Associated with data type McCfgAsmFeatSimShDefType*)
@@ -563,6 +565,37 @@ TYPE
 		Deceleration : McLSDecType; (*Deceleration limits*)
 		Jerk : McCfgLimJerkType; (*Jerk limits*)
 		Torque : McCfgLimTorqType; (*Torque limits*)
+	END_STRUCT;
+	McCLRowCamIDEnum :
+		(
+		mcCLRCI_CAM_ID_1 := 0, (*Cam ID 1 - Cam ID 1*)
+		mcCLRCI_CAM_ID_2 := 1, (*Cam ID 2 - Cam ID 2*)
+		mcCLRCI_CAM_ID_3 := 2, (*Cam ID 3 - Cam ID 3*)
+		mcCLRCI_CAM_ID_4 := 3, (*Cam ID 4 - Cam ID 4*)
+		mcCLRCI_CAM_ID_5 := 4, (*Cam ID 5 - Cam ID 5*)
+		mcCLRCI_CAM_ID_6 := 5, (*Cam ID 6 - Cam ID 6*)
+		mcCLRCI_CAM_ID_7 := 6, (*Cam ID 7 - Cam ID 7*)
+		mcCLRCI_CAM_ID_8 := 7, (*Cam ID 8 - Cam ID 8*)
+		mcCLRCI_CAM_ID_9 := 8, (*Cam ID 9 - Cam ID 9*)
+		mcCLRCI_CAM_ID_10 := 9, (*Cam ID 10 - Cam ID 10*)
+		mcCLRCI_CAM_ID_11 := 10, (*Cam ID 11 - Cam ID 11*)
+		mcCLRCI_CAM_ID_12 := 11, (*Cam ID 12 - Cam ID 12*)
+		mcCLRCI_CAM_ID_13 := 12, (*Cam ID 13 - Cam ID 13*)
+		mcCLRCI_CAM_ID_14 := 13, (*Cam ID 14 - Cam ID 14*)
+		mcCLRCI_CAM_ID_15 := 14, (*Cam ID 15 - Cam ID 15*)
+		mcCLRCI_CAM_ID_16 := 15, (*Cam ID 16 - Cam ID 16*)
+		mcCLRCI_CAM_ID_17 := 16, (*Cam ID 17 - Cam ID 17*)
+		mcCLRCI_CAM_ID_18 := 17, (*Cam ID 18 - Cam ID 18*)
+		mcCLRCI_CAM_ID_19 := 18, (*Cam ID 19 - Cam ID 19*)
+		mcCLRCI_CAM_ID_20 := 19 (*Cam ID 20 - Cam ID 20*)
+		);
+	McCLRowType : STRUCT
+		CamName : STRING[250];
+		CamID : McCLRowCamIDEnum;
+		Description : STRING[250];
+	END_STRUCT;
+	McCfgCamLstType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_CAMLST*)
+		Row : McCfgUnboundedArrayType;
 	END_STRUCT;
 	McPPLPtEnum :
 		( (*Process point: {/} selector setting*)

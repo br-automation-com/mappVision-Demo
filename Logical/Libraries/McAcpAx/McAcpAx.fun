@@ -668,3 +668,44 @@ FUNCTION_BLOCK MC_BR_ApsmPowerOff_AcpAx (* This function block switches off the 
 		Internal : McInternalType;
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_InitParIDTransfer_AcpAx (*This function block initializes a cyclic ParID transfer from the master to the slave*)
+    VAR_INPUT
+        Master : REFERENCE TO McAxisType; (*master axis reference*)
+        Slave : REFERENCE TO McAxisType; (*slave axis reference*)
+        Execute : BOOL; (*initializes transfer on a rising edge*)
+        MasterParID : UINT; (*ParID whose value shall be transferred from the master axis to the slave axis*)
+        InterpolationMode : McIplModeEnum; (*Interpolation mode for the received value*)
+        AdvancedParameters : McAcpAxAdvInitParIDTransferType; (*Additional advanced parameters*)
+    END_VAR
+    VAR_OUTPUT
+		Done : BOOL; (*execution successful. FB finished*)
+		Busy : BOOL; (*FB is active and needs to be called*)
+		Error : BOOL; (*error occurred during operation*)
+		ErrorID : DINT; (*error number*)
+		SlaveReceiveParID : UINT; (* The received ParID on the slave axis*)
+    END_VAR
+    VAR
+        Internal : McInternalTwoRefType; (*internal variable*)
+    END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_BR_GetParIDTransferInfo_AcpAx (*This function block provides administrative information about the ParID transfer of an axis.*)
+	VAR_INPUT
+        Axis : REFERENCE TO McAxisType; (*Axis reference.*)
+        Execute : BOOL; (*Gets transfer information on a rising edge.*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*Execution successful. FB finished.*)
+		Busy : BOOL; (*FB is active and needs to be called.*)
+		Error : BOOL; (*Error occurred during operation.*)
+		ErrorID : DINT; (*Error number.*)
+		FreeMasterSendChannels : USINT; (*Number of send channels still available for the axis.*)
+		FreeSlaveReceiveChannels : USINT; (*Number of receive channels still available for the axis.*)
+		ParIDTransferInfo : McAcpAxParIDTransferInfoType; (*Detailed information about the current configuration of the send and receive channels for the axis.*)
+	END_VAR
+	VAR
+       Internal : McInternalType; (*Internal variable.*)
+ 	END_VAR
+END_FUNCTION_BLOCK
+

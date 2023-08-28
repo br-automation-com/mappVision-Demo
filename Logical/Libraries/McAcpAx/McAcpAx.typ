@@ -191,6 +191,24 @@ TYPE
 		 mcACPAX_FBCTRL_MODE_2ENC_SPEED := 5 (*Two encoder speed: nc2ENCOD_SPEED*)
 	);
 
+ 	McAcpAxSendChannelEnum :
+	(
+		mcACPAX_SEND_CHANNEL_AUTO := 0, (*Select channel automatically*)
+		mcACPAX_SEND_CHANNEL_1 := 1, (*Select channel 1*)
+		mcACPAX_SEND_CHANNEL_2 := 2, (*Select channel 2*)
+		mcACPAX_SEND_CHANNEL_3 := 3 (*Select channel 3*)
+	);
+
+	McAcpAxReceiveChannelEnum :
+	(
+		mcACPAX_RECEIVE_CHANNEL_AUTO := 0, (*Select channel automatically*)
+		mcACPAX_RECEIVE_CHANNEL_1 := 1, (*Select channel 1*)
+		mcACPAX_RECEIVE_CHANNEL_2 := 2, (*Select channel 2*)
+		mcACPAX_RECEIVE_CHANNEL_3 := 3, (*Select channel 3*)
+		mcACPAX_RECEIVE_CHANNEL_4 := 4, (*Select channel 4*)
+		mcACPAX_RECEIVE_CHANNEL_5 := 5 (*Select channel 5*)
+	);
+
    	McAcpAxHomingParType : STRUCT
         HomingMode : McHomingModeEnum; (*Mode for homing*)
 		Position : LREAL; (*Absolute position or homing offset when homing signal [Measurement units] occurs*)
@@ -756,4 +774,27 @@ TYPE
 		Mass2 : McAcpAxLoadModelMass2Type; (*Mass 2 component of the load model.*)
 	END_STRUCT;
 
+	McAcpAxAdvInitParIDTransferType : STRUCT
+		MasterSendChannel : McAcpAxSendChannelEnum; (*Requested channel specifier on the Master axis to be used to send the value of the MasterParID.*)
+		SlaveReceiveChannel : McAcpAxReceiveChannelEnum; (*Requested channel specifier on the Slave axis to be used to receive the value of the MasterParID.*)
+	END_STRUCT;
+
+	McAcpAxParIDMasterSendInfoType : STRUCT
+		Used : BOOL; (*Indicates whether this channel is currently being used and the rest of the data below is valid.*)
+		ParID :  UINT; (*Master source ParID being sent via this channel.*)
+		ChangeAllowed : BOOL; (*Indicates whether it is possible to reconfigure this channel.*)
+	END_STRUCT;
+
+	McAcpAxParIDSlaveReceiveInfoType : STRUCT
+		Used : BOOL; (*Indicates whether this channel is currently being used and the rest of the data below is valid.*)
+		ParID :  UINT; (*Master source ParID being received via this channel.*)
+		ChangeAllowed : BOOL; (*Indicates whether it is possible to reconfigure this channel.*)
+		InterpolationMode : McIplModeEnum; (*Interpolation mode for the received value.*)
+		SendModuleAndElement : STRING[64]; (*Sender module (and element) information. Example: 'EPL: IF3.ST6 (CHAN1)'.*)
+	END_STRUCT;
+
+	McAcpAxParIDTransferInfoType : STRUCT
+		MasterSendInfo : ARRAY[0..3] OF McAcpAxParIDMasterSendInfoType; (*Detailed information about each of the individual send channels for the axis.*)
+		SlaveReceiveInfo : ARRAY[0..5] OF McAcpAxParIDSlaveReceiveInfoType; (*Detailed information about each of the individual receive channels for the axis.*)
+	END_STRUCT;
 END_TYPE

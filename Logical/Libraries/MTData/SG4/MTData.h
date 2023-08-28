@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MTData 5.22.0 */
+/* MTData 5.23.0 */
 
 #ifndef _MTDATA_
 #define _MTDATA_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MTData_VERSION
-#define _MTData_VERSION 5.22.0
+#define _MTData_VERSION 5.23.0
 #endif
 
 #include <bur/plctypes.h>

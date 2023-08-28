@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.22.0 */
+/* McBase 5.23.0 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.22.0
+#define _McBase_VERSION 5.23.0
 #endif
 
 #include <bur/plctypes.h>
@@ -82,7 +82,8 @@ typedef enum McHomingModeEnum
 
 typedef enum McStopModeEnum
 {	mcSTOPMODE_JERK_LIMIT,
-	mcSTOPMODE_NO_JERK_LIMIT
+	mcSTOPMODE_NO_JERK_LIMIT,
+	mcSTOPMODE_QUICKSTOP
 } McStopModeEnum;
 
 typedef enum McIplModeEnum
@@ -222,6 +223,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_TOOL = 1300,
 	mcCFG_LIMSET_LIN = 1411,
 	mcCFG_LIMSET_ROT = 1412,
+	mcCFG_CAMLST = 1500,
 	mcCFG_PROC_PT_LST = 1600,
 	mcCFG_TRK_PATH = 1700,
 	mcCFG_PICK_CORE = 2100,
@@ -360,6 +362,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_AXGRP_FEAT_TAN_TOOL = 21124,
 	mcCFG_AXGRP_FEAT_REV_MOVE = 21125,
 	mcCFG_AXGRP_FEAT_TRK = 21126,
+	mcCFG_AXGRP_FEAT_PIPE_CUT = 21127,
 	mcCFG_ASM = 31000,
 	mcCFG_ASM_FEAT_CPLG = 31101,
 	mcCFG_ASM_FEAT_SIM_SH_DEF = 31102,
@@ -520,6 +523,29 @@ typedef enum McCfgLimTorqEnum
 	mcCLT_BASIC = 1,
 	mcCLT_ADV = 2
 } McCfgLimTorqEnum;
+
+typedef enum McCLRowCamIDEnum
+{	mcCLRCI_CAM_ID_1 = 0,
+	mcCLRCI_CAM_ID_2 = 1,
+	mcCLRCI_CAM_ID_3 = 2,
+	mcCLRCI_CAM_ID_4 = 3,
+	mcCLRCI_CAM_ID_5 = 4,
+	mcCLRCI_CAM_ID_6 = 5,
+	mcCLRCI_CAM_ID_7 = 6,
+	mcCLRCI_CAM_ID_8 = 7,
+	mcCLRCI_CAM_ID_9 = 8,
+	mcCLRCI_CAM_ID_10 = 9,
+	mcCLRCI_CAM_ID_11 = 10,
+	mcCLRCI_CAM_ID_12 = 11,
+	mcCLRCI_CAM_ID_13 = 12,
+	mcCLRCI_CAM_ID_14 = 13,
+	mcCLRCI_CAM_ID_15 = 14,
+	mcCLRCI_CAM_ID_16 = 15,
+	mcCLRCI_CAM_ID_17 = 16,
+	mcCLRCI_CAM_ID_18 = 17,
+	mcCLRCI_CAM_ID_19 = 18,
+	mcCLRCI_CAM_ID_20 = 19
+} McCLRowCamIDEnum;
 
 typedef enum McPPLPtEnum
 {	mcPPLP_TRAK_PT = 0
@@ -1002,6 +1028,16 @@ typedef struct McCfgLimSetRotType
 	struct McCfgLimJerkType Jerk;
 	struct McCfgLimTorqType Torque;
 } McCfgLimSetRotType;
+
+typedef struct McCLRowType
+{	plcstring CamName[251];
+	enum McCLRowCamIDEnum CamID;
+	plcstring Description[251];
+} McCLRowType;
+
+typedef struct McCfgCamLstType
+{	struct McCfgUnboundedArrayType Row;
+} McCfgCamLstType;
 
 typedef struct McPPLPtTrakPtBarrFunType
 {	enum McPPLPtTrakPtBarrFunEnum Type;

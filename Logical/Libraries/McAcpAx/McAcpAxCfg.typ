@@ -302,7 +302,7 @@ TYPE
 		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
 		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
 		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
-		MomentOfInertia : REAL; (*Moment of inertia for the gearbox [kgcm²]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
 	END_STRUCT;
 	McMSGBType : STRUCT (*Gearbox*)
 		Type : McMSGBEnum; (*Gearbox selector setting*)
@@ -462,7 +462,7 @@ TYPE
 		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
 		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
 		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
-		MomentOfInertia : REAL; (*Moment of inertia for the gearbox [kgcm²]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
 	END_STRUCT;
 	McMIGBType : STRUCT (*Gearbox*)
 		Type : McMIGBEnum; (*Gearbox selector setting*)
@@ -598,7 +598,7 @@ TYPE
 		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
 		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
 		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
-		MomentOfInertia : REAL; (*Moment of inertia for the gearbox [kgcm²]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
 	END_STRUCT;
 	McMSAMCGBType : STRUCT (*Gearbox*)
 		Type : McMSAMCGBEnum; (*Gearbox selector setting*)
@@ -3081,6 +3081,88 @@ TYPE
 	END_STRUCT;
 	McCfgAcpExtEncAxHomeType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_HOME*)
 		Homing : McAEEAHType; (*Homing mode and parameters which can be used within the application program as preconfigured setting*)
+	END_STRUCT;
+	McAFAIProdFamEnum :
+		( (*ACOPOS product family selector setting*)
+		mcAFAIPF_ACP := 0, (*ACOPOS -*)
+		mcAFAIPF_ACPM := 1, (*ACOPOSmulti -*)
+		mcAFAIPF_ACP_P3 := 2 (*ACOPOS P3 -*)
+		);
+	McAFAIACPAnInEnum :
+		( (*Analog input 1-4 selector setting*)
+		mcAFAIACPAI_SS2X111 := 0, (*SS2.X11.1 -*)
+		mcAFAIACPAI_SS2X112 := 1, (*SS2.X11.2 -*)
+		mcAFAIACPAI_SS3X111 := 2, (*SS3.X11.1 -*)
+		mcAFAIACPAI_SS3X112 := 3, (*SS3.X11.2 -*)
+		mcAFAIACPAI_SS4X111 := 4, (*SS4.X11.1 -*)
+		mcAFAIACPAI_SS4X112 := 5 (*SS4.X11.2 -*)
+		);
+	McAFAIAnInScEnum :
+		( (*Scaling selector setting*)
+		mcAFAIAIS_NOT_USE := 0, (*Not used -*)
+		mcAFAIAIS_USE := 1 (*Used -*)
+		);
+	McAFAIAnInScUseType : STRUCT (*Type mcAFAIAIS_USE settings*)
+		MinimumVoltage : REAL; (*Minimum voltage of the analog input [V]*)
+		MaximumVoltage : REAL; (*Maximum voltage of the analog input [V]*)
+		MinimumScaledValue : REAL; (*Minimum scaled value of the analog input [Signal units]*)
+		MaximumScaledValue : REAL; (*Maximum scaled value of the analog input [Signal units]*)
+	END_STRUCT;
+	McAFAIAnInScType : STRUCT
+		Type : McAFAIAnInScEnum; (*Scaling selector setting*)
+		Used : McAFAIAnInScUseType; (*Type mcAFAIAIS_USE settings*)
+	END_STRUCT;
+	McAFAIACPAnInCmnType : STRUCT (*Common settings for all Type values*)
+		Scaling : McAFAIAnInScType;
+	END_STRUCT;
+	McAFAIACPAnInType : STRUCT
+		Type : McAFAIACPAnInEnum; (*Analog input 1-4 selector setting*)
+		Common : McAFAIACPAnInCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McAFAIACPType : STRUCT (*Type mcAFAIPF_ACP settings*)
+		AnalogInput : McCfgUnboundedArrayType;
+	END_STRUCT;
+	McAFAIACPmultiAnInEnum :
+		( (*Analog input 1-4 selector setting*)
+		mcAFAIACPMULTIAI_SS2X111 := 0, (*SS2.X11.1 -*)
+		mcAFAIACPMULTIAI_SS2X112 := 1, (*SS2.X11.2 -*)
+		mcAFAIACPMULTIAI_SS2X113 := 2, (*SS2.X11.3 -*)
+		mcAFAIACPMULTIAI_SS2X114 := 3 (*SS2.X11.4 -*)
+		);
+	McAFAIACPmultiAnInCmnType : STRUCT (*Common settings for all Type values*)
+		Scaling : McAFAIAnInScType;
+	END_STRUCT;
+	McAFAIACPmultiAnInType : STRUCT
+		Type : McAFAIACPmultiAnInEnum; (*Analog input 1-4 selector setting*)
+		Common : McAFAIACPmultiAnInCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McAFAIACPmultiType : STRUCT (*Type mcAFAIPF_ACPM settings*)
+		AnalogInput : McCfgUnboundedArrayType;
+	END_STRUCT;
+	McAFAIACPP3AnInEnum :
+		( (*Analog input 1-3 selector setting*)
+		mcAFAIACPP3AI_SS1X41E1 := 0, (*SS1.X41E.1 -*)
+		mcAFAIACPP3AI_SS1X41E2 := 1, (*SS1.X41E.2 -*)
+		mcAFAIACPP3AI_SS1X41E3 := 2 (*SS1.X41E.3 -*)
+		);
+	McAFAIACPP3AnInCmnType : STRUCT (*Common settings for all Type values*)
+		Scaling : McAFAIAnInScType;
+	END_STRUCT;
+	McAFAIACPP3AnInType : STRUCT
+		Type : McAFAIACPP3AnInEnum; (*Analog input 1-3 selector setting*)
+		Common : McAFAIACPP3AnInCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McAFAIACPP3Type : STRUCT (*Type mcAFAIPF_ACP_P3 settings*)
+		AnalogInput : McCfgUnboundedArrayType;
+	END_STRUCT;
+	McAFAIProdFamType : STRUCT
+		Type : McAFAIProdFamEnum; (*ACOPOS product family selector setting*)
+		ACOPOS : McAFAIACPType; (*Type mcAFAIPF_ACP settings*)
+		ACOPOSmulti : McAFAIACPmultiType; (*Type mcAFAIPF_ACPM settings*)
+		ACOPOSP3 : McAFAIACPP3Type; (*Type mcAFAIPF_ACP_P3 settings*)
+	END_STRUCT;
+	McCfgAxFeatAInType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_A_IN*)
+		ProductFamily : McAFAIProdFamType;
 	END_STRUCT;
 	McCfgAxFeatAcpParTblType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_ACP_PAR_TBL*)
 		ACOPOSParameterTableReference : STRING[250]; (*Name of the ACOPOS parameter table*)
