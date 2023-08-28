@@ -2,21 +2,21 @@
 <?AutomationStudio FileVersion="4.9"?>
 <BR.AS.HardwareTopology>
   <TimeStamps>
-    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="04/26/2023 10:44:06" />
+    <TimeStamp LogicalPath="X20CP1586.Hardware.hw" LastWriteTime="04/27/2023 08:45:29" />
   </TimeStamps>
   <Modules>
-    <Module Name="Blob" Type="VSS122Q25.071P-000" X="291" Y="64" />
-    <Module Name="Match" Type="VSS122Q25.071P-000" X="596" Y="64" />
-    <Module Name="OCR" Type="VSS122Q25.071P-000" X="691" Y="64" />
+    <Module Name="Blob" Type="VSS112Q12.023P-000" X="291" Y="64" />
+    <Module Name="Match" Type="VSS112Q12.023P-000" X="596" Y="64" />
+    <Module Name="OCR" Type="VSS112Q12.023P-000" X="691" Y="64" />
     <Module Name="blobBacklight" Type="VSLB11Q00.54DP-000" X="160" Y="235" />
-    <Module Name="CodeReader" Type="VSS122Q25.071P-000" X="495" Y="64" />
+    <Module Name="CodeReader" Type="VSS112Q12.023P-000" X="495" Y="64" />
     <Module Name="Measurement" Type="VSS112Q12.023P-000" X="393" Y="64" />
     <Module Name="X20CP1586" Type="X20CP1586" X="100" Y="100" />
     <Module Name="X20BM11" Type="X20BM11" X="250" Y="100" />
     <Module Name="X20DI9371" Type="X20DI9371" X="250" Y="100" />
     <Module Name="X20TB12" Type="X20TB12" X="250" Y="127" />
     <Module Name="blobLightbar2" Type="VSLL11R30.67AP-000" X="446" Y="235" />
-    <Module Name="PixelCounter" Type="VSS122Q25.071P-000" X="796" Y="64" />
+    <Module Name="PixelCounter" Type="VSS112Q12.023P-000" X="796" Y="64" />
     <Module Name="blobLightbar1" Type="VSLL11R30.67AP-000" X="311" Y="235" />
     <Module Name="crLightbar2" Type="VSLL11R30.67AP-000" X="756" Y="235" />
     <Module Name="crLightbar1" Type="VSLL11R30.67AP-000" X="905" Y="235" />

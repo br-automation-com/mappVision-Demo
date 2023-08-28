@@ -128,7 +128,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
   <Module Name="blobLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="blobBacklight" TargetConnector="PLK2">
@@ -138,7 +138,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
   <Module Name="blobLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="blobLightbar1" TargetConnector="PLK2">
@@ -148,7 +148,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
   <Module Name="crBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
     <Connection Connector="PLK1" TargetModule="blobLightbar2" TargetConnector="PLK2" NodeNumber="32">
@@ -158,7 +158,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
   <Module Name="crLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="crLightbar2" TargetConnector="PLK2">
@@ -168,7 +168,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
   <Module Name="crLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="crBacklight" TargetConnector="PLK2">
@@ -178,7 +178,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
   <Module Name="matchBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
     <Connection Connector="PLK1" TargetModule="crLightbar1" TargetConnector="PLK2" NodeNumber="48">
@@ -188,7 +188,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraMatch" />
   </Module>
   <Module Name="matchLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="matchBacklight" TargetConnector="PLK2">
@@ -198,7 +198,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraMatch" />
   </Module>
   <Module Name="matchLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="matchLightbar1" TargetConnector="PLK2">
@@ -208,7 +208,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraMatch" />
   </Module>
   <Module Name="measureBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
     <Connection Connector="PLK1" TargetModule="matchLightbar2" TargetConnector="PLK2" NodeNumber="64">
@@ -218,7 +218,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
   </Module>
   <Module Name="measureLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="measureBacklight" TargetConnector="PLK2">
@@ -228,7 +228,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
   </Module>
   <Module Name="measureLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="measureLightbar1" TargetConnector="PLK2">
@@ -238,7 +238,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
   </Module>
   <Module Name="ocrBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
     <Connection Connector="PLK1" TargetModule="measureLightbar2" TargetConnector="PLK2" NodeNumber="80">
@@ -248,7 +248,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraOCR" />
   </Module>
   <Module Name="ocrLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="ocrBacklight" TargetConnector="PLK2">
@@ -258,7 +258,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraOCR" />
   </Module>
   <Module Name="ocrLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="ocrLightbar1" TargetConnector="PLK2">
@@ -268,7 +268,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraOCR" />
   </Module>
   <Module Name="pxlCntBacklight" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
     <Connection Connector="PLK1" TargetModule="ocrLightbar2" TargetConnector="PLK2" NodeNumber="96">
@@ -278,7 +278,7 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
   <Module Name="pxlCntLightbar1" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="pxlCntBacklight" TargetConnector="PLK2">
@@ -288,13 +288,13 @@
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
   <Module Name="pxlCntLightbar2" Type="VSLL11R30.67AP-000" Version="1.1.0.494">
     <Connection Connector="PLK1" TargetModule="pxlCntLightbar1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Parameter ID="Supervision" Value="off" />
-    <Parameter ID="VisionConfig" Value="" />
+    <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
 </Hardware>

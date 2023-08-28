@@ -1,8 +1,8 @@
 VAR CONSTANT
-	FILES_LIST_SIZE : USINT := 13;
+	FILES_LIST_SIZE : USINT := 13; (*Number of files to be displayed on one page of the list in the HMI application*)
 END_VAR
 VAR
-	i : UINT;
 	hmi : hmi_typ;
+	i : UINT;
 	this : local_typ;
 END_VAR

@@ -113,40 +113,28 @@
         <seg>Ma description</seg>
       </tuv>
     </tu>
-    <tu tuid="5654835.Name_1">
-      <note>Pixels1000</note>
+    <tu tuid="5654836.Name">
       <tuv xml:lang="de">
-        <seg>Pixels1000</seg>
+        <seg>Degree100</seg>
       </tuv>
       <tuv xml:lang="en">
-        <seg>Pixels1000</seg>
-      </tuv>
-      <tuv xml:lang="fr">
-        <seg>Mon unité</seg>
+        <seg>Degree100</seg>
       </tuv>
     </tu>
-    <tu tuid="5654835.Sym_1">
-      <note>p</note>
+    <tu tuid="5654836.Sym">
       <tuv xml:lang="de">
-        <seg>px</seg>
+        <seg>°</seg>
       </tuv>
       <tuv xml:lang="en">
-        <seg>px</seg>
-      </tuv>
-      <tuv xml:lang="fr">
-        <seg>Unité</seg>
+        <seg>°</seg>
       </tuv>
     </tu>
-    <tu tuid="5654835.Desc_1">
-      <note>pixels</note>
+    <tu tuid="5654836.Desc">
       <tuv xml:lang="de">
-        <seg>pixels</seg>
+        <seg>Hundreth of degrees</seg>
       </tuv>
       <tuv xml:lang="en">
-        <seg>pixels</seg>
-      </tuv>
-      <tuv xml:lang="fr">
-        <seg>Ma description</seg>
+        <seg>Hundreth of degrees</seg>
       </tuv>
     </tu>
   </body>

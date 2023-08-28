@@ -2,10 +2,8 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="Program" Language="IEC">Vi_visu</Object>
-    <Object Type="Program" Language="IEC">Vi_image</Object>
     <Object Type="Program" Language="IEC">Vi_color</Object>
-    <Object Type="Program" Language="IEC">YourTask</Object>
-    <Object Type="Package">mappRecipe</Object>
+    <Object Type="DataObject" Language="Vc" Description="Sample VC4 Visu 640x480 (VGA)">Visu</Object>
+    <Object Type="File">revision.txt</Object>
   </Objects>
 </Package>

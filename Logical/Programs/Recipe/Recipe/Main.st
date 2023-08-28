@@ -57,6 +57,12 @@ PROGRAM _CYCLIC
 		this.mpRecipe.UpdateNotification := FALSE;
 	END_IF
 	
+	IF hmi.mpRecipe.New.Create THEN
+		hmi.out.lastLoaded	:= retain.lastLoadedName 	:= hmi.mpRecipe.New.FileName;
+	END_IF
+	
+		
+	
 	hmi.out.selectedName 	:= hmi.mpRecipe.Recipe.List.Names[hmi.mpRecipe.Recipe.List.SelectedIndex];
 	
 	IF this.mpRecipe.CommandDone THEN

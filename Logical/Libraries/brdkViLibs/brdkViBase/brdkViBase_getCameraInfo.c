@@ -34,13 +34,14 @@ void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst)
 		// Create DiagInformation
 		case 1: 
 			this->diagCreateInfo_0.enable			= TRUE;
-			if(DiagCpuIsSimulated()){
-			this->diagCreateInfo_0.infoKind		= asdiagCONFIGURED;
-			}else{
+			if(inst->pluggedModule){
 			this->diagCreateInfo_0.infoKind		= asdiagPLUGGED;
+			}else{
+			this->diagCreateInfo_0.infoKind		= asdiagCONFIGURED;
 			}
-		
+			
 			DiagCreateInfo(&this->diagCreateInfo_0);
+			
 			if( this->diagCreateInfo_0.status == 0 ) {
 				this->state = 2;
 			}else if( this->diagCreateInfo_0.status != ERR_FUB_BUSY ) {
@@ -82,10 +83,10 @@ void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst)
 			this->diagGetStrInfo_0.enable		= TRUE;
 			this->diagGetStrInfo_0.ident		= this->diagCreateInfo_0.ident;
 			this->diagGetStrInfo_0.index		= this->index;
-			if(DiagCpuIsSimulated()){
-				this->diagGetStrInfo_0.infoCode		= asdiagCONFIG_MODULE;
-			}else{
+			if(inst->pluggedModule){
 				this->diagGetStrInfo_0.infoCode		= asdiagPLUGGED_MODULE;
+			}else{
+				this->diagGetStrInfo_0.infoCode		= asdiagCONFIG_MODULE;
 			}
 			this->diagGetStrInfo_0.pBuffer		= (UDINT)&inst->pInfo->orderNr;
 			this->diagGetStrInfo_0.bufferLen	= sizeof(inst->pInfo->orderNr) - 1;
@@ -186,6 +187,17 @@ void brdkViBase_getCameraInfo(struct brdkViBase_getCameraInfo* inst)
 						this->state = 97;
 				}
 			
+				// second letter for optics
+				switch(inst->pInfo->orderNr[12]){
+					case 0x30:  inst->pInfo->front = BRDKVIBASE_FRONT_0_CMOUNT;  break;// ASCII '0' // no optics
+					case 0x31:  inst->pInfo->front = BRDKVIBASE_FRONT_1_GLASS_ANTI;  break;// ASCII '1'
+					case 0x32:  inst->pInfo->front = BRDKVIBASE_FRONT_2_GLASS_POL;  break;// ASCII '2'
+					case 0x33:  inst->pInfo->front = BRDKVIBASE_FRONT_3_GLASS_DIFFUSE;  break;// ASCII '3'
+					case 0x42:  inst->pInfo->front = BRDKVIBASE_FRONT_B_PLASTIC_ANTI; 	break;// ASCII 'B'
+					case 0x44:  inst->pInfo->front = BRDKVIBASE_FRONT_D_PLASTIC_DIFF; 	break;// ASCII 'D'
+					default:
+						this->state = 97;
+				}
 						
 				inst->status = ERR_OK;
 				this->state = 0;

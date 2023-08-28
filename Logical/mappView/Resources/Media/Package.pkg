@@ -16,5 +16,10 @@
     <Object Type="Package">SymbolLib</Object>
     <Object Type="File">flipVertical.svg</Object>
     <Object Type="File">refresh-icon.svg</Object>
+    <Object Type="File">bug.png</Object>
+    <Object Type="File">results.svg</Object>
+    <Object Type="File">photoCamera.svg</Object>
+    <Object Type="File">normalVA.png</Object>
+    <Object Type="File">Vision Demo Application.pdf</Object>
   </Objects>
 </Package>

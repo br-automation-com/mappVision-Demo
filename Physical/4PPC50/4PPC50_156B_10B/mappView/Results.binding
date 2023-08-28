@@ -32,7 +32,7 @@
 		<Target xsi:type="brease" contentRefId="contentBlob" widgetRefId="itemLength" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-		<Source xsi:type="opcUa" refId="::Vi_main:hmi.in.cmd.shapeSelector" attribute="value" />
+		<Source xsi:type="opcUa" refId="::Vision1:hmi.in.cmd.shapeSelector" attribute="value" />
 		<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="shapeSelector" attribute="dataProvider" />
 		</Binding>-->
 
@@ -44,12 +44,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject" >				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.tableVF" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.tableVF" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.tableVF" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.tableVF" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.tableVF" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.tableVF" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.tableVF" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.tableVF" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.tableVF" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.tableVF" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.tableVF" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.tableVF" />
 				</be:List>
 </Source>
 			<Target xsi:type="brease" contentRefId="contentResult" widgetRefId="resultTable1" attribute="Structure" />
@@ -59,12 +59,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUaComplexObject">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].out.usedVF" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].out.usedVF" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].out.usedVF" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].out.usedVF" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].out.usedVF" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].out.usedVF" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].out.usedVF" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].out.usedVF" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].out.usedVF" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].out.usedVF" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].out.usedVF" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].out.usedVF" />
 				</be:List>
 </Source>
 			<Target xsi:type="brease" contentRefId="contentResult" widgetRefId="resultTable1" attribute="UsedVfs" />
@@ -76,12 +76,12 @@
 			<Source xsi:type="listElement">
 				<Selector xsi:type="session" refId="camIdx" attribute="value" />
 				<be:List xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xsi:type="be:opcUa" attribute="value">				
-					<bt:Element index="1" refId="::Vi_main:hmiInstance[1].in.cmd.resultTabIndex" />
-					<bt:Element index="2" refId="::Vi_main:hmiInstance[2].in.cmd.resultTabIndex" />
-					<bt:Element index="3" refId="::Vi_main:hmiInstance[3].in.cmd.resultTabIndex" />
-					<bt:Element index="4" refId="::Vi_main:hmiInstance[4].in.cmd.resultTabIndex" />
-					<bt:Element index="5" refId="::Vi_main:hmiInstance[5].in.cmd.resultTabIndex" />
-					<bt:Element index="6" refId="::Vi_main:hmiInstance[6].in.cmd.resultTabIndex" />
+					<bt:Element index="1" refId="::Vision1:hmiInstance[1].in.cmd.resultTabIndex" />
+					<bt:Element index="2" refId="::Vision1:hmiInstance[2].in.cmd.resultTabIndex" />
+					<bt:Element index="3" refId="::Vision1:hmiInstance[3].in.cmd.resultTabIndex" />
+					<bt:Element index="4" refId="::Vision1:hmiInstance[4].in.cmd.resultTabIndex" />
+					<bt:Element index="5" refId="::Vision1:hmiInstance[5].in.cmd.resultTabIndex" />
+					<bt:Element index="6" refId="::Vision1:hmiInstance[6].in.cmd.resultTabIndex" />
 				</be:List>
 			</Source>
 			<Target xsi:type="brease" contentRefId="contentResult" widgetRefId="resultTable1" attribute="selectedTabIndex" />
