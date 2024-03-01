@@ -36,6 +36,23 @@ TYPE
 		CameraType : REFERENCE TO ViComponentInternalCameraIfType;
 		MappLinkInternal : ViComponentInternalMappLinkType;
 	END_STRUCT;
+	ViBaseAxBsdAcqAcqParType : {REDUND_UNREPLICABLE} 	STRUCT
+		AcquisitionPositions : ARRAY[0..7]OF LREAL; (*Positions in [measurement units] within the defined "Period" or axis period in which images should be acquired.*)
+		Period : LREAL; (*Period in [measurement units] if a non-periodic axis is used or a different axis period than the one defined should be used.*)
+		StartPosition : LREAL; (*Start position in [measurement units] of the period.*)
+	END_STRUCT;
+	ViBaseAxBsdAcqAdvParType : {REDUND_UNREPLICABLE} 	STRUCT
+		DisableNegativeDirection : BOOL; (*If TRUE, the image acquisition is only triggered when the position value of the axis increases.*)
+		AddPositionCompensation : REAL; (*The time value [s] configured here is added to the automatically determined position compensation time (see AdditionalInfo.DefaultPositionCompensation).*)
+		AddOutputCompensation : REAL; (*The time value [s] configured here is added to the automatically determined output compensation time (see AdditionalInfo.DefaultOutputCompensation).*)
+	END_STRUCT;
+	ViBaseAxBsdAcqAddInfoType : {REDUND_UNREPLICABLE} 	STRUCT
+		DefaultPositionCompensation : REAL; (*Automatically determined position compensation time [s].*)
+		DefaultOutputCompensation : REAL; (*Automatically determined output compensation time [s].*)
+		TimestampCount : SINT; (*The value is changed when a new timestamp value is calculated for the image acquisition.*)
+		CalculatedTimestamp : DINT; (*Last calculated timestamp value forwarded to the vision component.*)
+	END_STRUCT;
+
 	ViBaseFormatEnum :
 		( (*	Enumeration of format options*)
 		viBASE_FORMAT_PLAIN_TEXT := 0, (*Elements are listed in plain text format for direct usage in e.g. ViBaseLoadApplication

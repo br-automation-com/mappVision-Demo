@@ -295,18 +295,29 @@ TYPE
 	McMSGBEnum :
 		( (*Gearbox selector setting*)
 		mcMSG_NOT_USE := 0, (*Not used -*)
-		mcMSG_USE := 1 (*Used -*)
+		mcMSG_USE := 1, (*Used -*)
+		mcMSG_USE_W_DYN_TORQ_LIM := 2 (*Used with dynamic torque limitation -*)
 		);
 	McMSGBUseType : STRUCT (*Type mcMSG_USE settings*)
 		GearRatio : McCfgGearBoxType; (*Ratio between a gearbox input and output*)
 		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
 		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
 		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
-		MomentOfInertia : REAL; (*Moment of inertia for the gearbox [kgcm²]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
+	END_STRUCT;
+	McMSGBUseWDynTorqLimType : STRUCT (*Type mcMSG_USE_W_DYN_TORQ_LIM settings*)
+		GearRatio : McCfgGearBoxType; (*Ratio between a gearbox input and output*)
+		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
+		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
+		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
+		ViscousFriction : REAL; (*Speed dependent friction at gearbox input [torque per rotations/secound] [Nms]*)
+		StaticFriction : REAL; (*Static friction at gearbox input [Nm]*)
 	END_STRUCT;
 	McMSGBType : STRUCT (*Gearbox*)
 		Type : McMSGBEnum; (*Gearbox selector setting*)
 		Used : McMSGBUseType; (*Type mcMSG_USE settings*)
+		UsedWithDynamicTorqueLimitation : McMSGBUseWDynTorqLimType; (*Type mcMSG_USE_W_DYN_TORQ_LIM settings*)
 	END_STRUCT;
 	McCfgMotSynType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_MOT_SYN*)
 		Motor : McMSMotType;
@@ -455,24 +466,182 @@ TYPE
 	McMIGBEnum :
 		( (*Gearbox selector setting*)
 		mcMIG_NOT_USE := 0, (*Not used -*)
-		mcMIG_USE := 1 (*Used -*)
+		mcMIG_USE := 1, (*Used -*)
+		mcMIG_USE_W_DYN_TORQ_LIM := 2 (*Used with dynamic torque limitation -*)
 		);
 	McMIGBUseType : STRUCT (*Type mcMIG_USE settings*)
 		GearRatio : McCfgGearBoxType; (*Ratio between a gearbox input and output*)
 		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
 		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
 		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
-		MomentOfInertia : REAL; (*Moment of inertia for the gearbox [kgcm²]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
+	END_STRUCT;
+	McMIGBUseWDynTorqLimType : STRUCT (*Type mcMIG_USE_W_DYN_TORQ_LIM settings*)
+		GearRatio : McCfgGearBoxType; (*Ratio between a gearbox input and output*)
+		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
+		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
+		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
+		ViscousFriction : REAL; (*Speed dependent friction at gearbox input [torque per rotations/secound] [Nms]*)
+		StaticFriction : REAL; (*Static friction at gearbox input [Nm]*)
 	END_STRUCT;
 	McMIGBType : STRUCT (*Gearbox*)
 		Type : McMIGBEnum; (*Gearbox selector setting*)
 		Used : McMIGBUseType; (*Type mcMIG_USE settings*)
+		UsedWithDynamicTorqueLimitation : McMIGBUseWDynTorqLimType; (*Type mcMIG_USE_W_DYN_TORQ_LIM settings*)
 	END_STRUCT;
 	McCfgMotInductType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_MOT_INDUCT*)
 		Motor : McMIMotType;
 		Brake : McMIBrkType; (*Holding brake*)
 		Encoder : McMIEncType; (*Motor encoder*)
 		Gearbox : McMIGBType; (*Gearbox*)
+	END_STRUCT;
+	McMSAMCMotEnum :
+		( (*Motor selector setting*)
+		mcMSAMCM_DEF := 0 (*Default -*)
+		);
+	McMSAMCMotDefVLimEnum :
+		( (*Voltage limitation selector setting*)
+		mcMSAMCMDVL_NOT_USE := 0, (*Not used -*)
+		mcMSAMCMDVL_USE := 1 (*Used -*)
+		);
+	McMSAMCMotDefVLimUseType : STRUCT (*Type mcMSAMCMDVL_USE settings*)
+		MaximumDCBusVoltage : REAL; (*Maximum permissible DC bus voltage [V]*)
+	END_STRUCT;
+	McMSAMCMotDefVLimType : STRUCT (*Voltage limitation (Motor has no protective conductor or windings should be protected)*)
+		Type : McMSAMCMotDefVLimEnum; (*Voltage limitation selector setting*)
+		Used : McMSAMCMotDefVLimUseType; (*Type mcMSAMCMDVL_USE settings*)
+	END_STRUCT;
+	McMSAMCMotDefEncMntType : STRUCT (*Encoder mounting*)
+		Angle : McMMDEMAngType; (*Angle between motor encoder zero point and flux space vector*)
+	END_STRUCT;
+	McMSAMCMotDefType : STRUCT (*Type mcMSAMCM_DEF settings*)
+		NumberOfPolePairs : USINT; (*Number of pole pairs*)
+		NominalSpeed : REAL; (*Nominal speed [rpm]*)
+		MaximumSpeed : REAL; (*Maximum permissible speed [rpm]*)
+		NominalVoltage : REAL; (*Nominal voltage (RMS value, phase-phase) [V]*)
+		NominalCurrent : REAL; (*Phase current for generating the nominal torque at nominal speed (RMS value) [A]*)
+		StallCurrent : REAL; (*Phase current for generating the stall torque (RMS value) [A]*)
+		PeakCurrent : REAL; (*Phase current for generating the peak torque (RMS value) [A]*)
+		NominalTorque : REAL; (*Motor torque at nominal current [Nm]*)
+		StallTorque : REAL; (*Motor torque at stall current [Nm]*)
+		PeakTorque : REAL; (*Motor torque at peak current [Nm]*)
+		VoltageConstant : REAL; (*Induced voltage per speed (RMS value of voltage at 1000 rpm, phase-phase) [mV/rpm]*)
+		TorqueConstant : REAL; (*Torque constant [Nm/A]*)
+		StatorResistance : REAL; (*Stator resistance (phase-phase) [Ω]*)
+		StatorInductance : REAL; (*Stator inductance (phase-phase) [mH]*)
+		MomentOfInertia : REAL; (*Mass moment of inertia [kgcm²]*)
+		NominalAmbientTemperature : REAL; (*Nominal ambient temperature [°C]*)
+		VoltageLimitation : McMSAMCMotDefVLimType; (*Voltage limitation (Motor has no protective conductor or windings should be protected)*)
+		EncoderMounting : McMSAMCMotDefEncMntType; (*Encoder mounting*)
+		TemperatureSensor : McMMTmpSensType; (*Temperature sensor configuration*)
+		TemperatureModel : McMMTmpMdlType; (*Model for winding temperature monitoring*)
+	END_STRUCT;
+	McMSAMCMotType : STRUCT
+		Type : McMSAMCMotEnum; (*Motor selector setting*)
+		Default : McMSAMCMotDefType; (*Type mcMSAMCM_DEF settings*)
+	END_STRUCT;
+	McMSAMCBrkEnum :
+		( (*Brake selector setting*)
+		mcMSAMCB_NOT_USE := 0, (*Not used -*)
+		mcMSAMCB_USE := 1 (*Used -*)
+		);
+	McMSAMCBrkUseCtrlModEnum :
+		( (*Control mode selector setting*)
+		mcMSAMCBUCM_SW := 0, (*Switched -*)
+		mcMSAMCBUCM_V_CTRL := 1 (*Voltage controlled -*)
+		);
+	McMSAMCBrkUseCtrlModVCtrlType : STRUCT (*Type mcMSAMCBUCM_V_CTRL settings*)
+		ReleaseVoltage : REAL; (*Nominal voltage, to release (open) the holding brake [V]*)
+		HoldVoltage : REAL; (*Nominal voltage to ensure the holding brake remains open [V]*)
+	END_STRUCT;
+	McMSAMCBrkUseCtrlModType : STRUCT (*Behaviour of holding brake control*)
+		Type : McMSAMCBrkUseCtrlModEnum; (*Control mode selector setting*)
+		VoltageControlled : McMSAMCBrkUseCtrlModVCtrlType; (*Type mcMSAMCBUCM_V_CTRL settings*)
+	END_STRUCT;
+	McMSAMCBrkUseLimEnum :
+		( (*Limits selector setting*)
+		mcMSAMCBUL_NOT_USE := 0, (*Not used -*)
+		mcMSAMCBUL_USE := 1 (*Used -*)
+		);
+	McMSAMCBrkUseLimUseType : STRUCT (*Type mcMSAMCBUL_USE settings*)
+		MaximumVoltage : REAL; (*Maximum permissible voltage to release (open) the holding brake [V]*)
+		PermittedFrictionWork : REAL; (*Permitted friction work up to the waer limit [J]*)
+	END_STRUCT;
+	McMSAMCBrkUseLimType : STRUCT (*Holding brake limits*)
+		Type : McMSAMCBrkUseLimEnum; (*Limits selector setting*)
+		Used : McMSAMCBrkUseLimUseType; (*Type mcMSAMCBUL_USE settings*)
+	END_STRUCT;
+	McMSAMCBrkUseType : STRUCT (*Type mcMSAMCB_USE settings*)
+		NominalCurrent : REAL; (*Current of the holding brake [A]*)
+		NominalTorque : REAL; (*Minimum holding torque of the holding brake [Nm]*)
+		ActivationDelay : REAL; (*Holding torque build-up time after switching off the operating voltage [s]*)
+		ReleaseDelay : REAL; (*Holding torque decaying time after switching on the operating voltage [s]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the holding brake [kgcm²]*)
+		ControlMode : McMSAMCBrkUseCtrlModType; (*Behaviour of holding brake control*)
+		Limits : McMSAMCBrkUseLimType; (*Holding brake limits*)
+	END_STRUCT;
+	McMSAMCBrkType : STRUCT (*Holding brake*)
+		Type : McMSAMCBrkEnum; (*Brake selector setting*)
+		Used : McMSAMCBrkUseType; (*Type mcMSAMCB_USE settings*)
+	END_STRUCT;
+	McMSAMCEncEnum :
+		( (*Encoder selector setting*)
+		mcMSAMCE_NOT_USE := 0, (*Not used -*)
+		mcMSAMCE_USE := 1 (*Used -*)
+		);
+	McMSAMCEncUseTmpSensEnum :
+		( (*Temperature sensor selector setting*)
+		mcMSAMCEUTS_NOT_USE := 0, (*Not used -*)
+		mcMSAMCEUTS_USE := 1 (*Used -*)
+		);
+	McMSAMCEncUseTmpSensUseType : STRUCT (*Type mcMSAMCEUTS_USE settings*)
+		LimitTemperature : UINT; (*Maximum permissible encoder temperature [°C]*)
+	END_STRUCT;
+	McMSAMCEncUseTmpSensType : STRUCT (*Encoder temperature sensor*)
+		Type : McMSAMCEncUseTmpSensEnum; (*Temperature sensor selector setting*)
+		Used : McMSAMCEncUseTmpSensUseType; (*Type mcMSAMCEUTS_USE settings*)
+	END_STRUCT;
+	McMSAMCEncUseType : STRUCT (*Type mcMSAMCE_USE settings*)
+		MomentOfInertia : REAL; (*Moment of inertia for the encoder [kgcm²]*)
+		TemperatureSensor : McMSAMCEncUseTmpSensType; (*Encoder temperature sensor*)
+	END_STRUCT;
+	McMSAMCEncType : STRUCT (*Motor encoder*)
+		Type : McMSAMCEncEnum; (*Encoder selector setting*)
+		Used : McMSAMCEncUseType; (*Type mcMSAMCE_USE settings*)
+	END_STRUCT;
+	McMSAMCGBEnum :
+		( (*Gearbox selector setting*)
+		mcMSAMCG_NOT_USE := 0, (*Not used -*)
+		mcMSAMCG_USE := 1, (*Used -*)
+		mcMSAMCG_USE_W_DYN_TORQ_LIM := 2 (*Used with dynamic torque limitation -*)
+		);
+	McMSAMCGBUseType : STRUCT (*Type mcMSAMCG_USE settings*)
+		GearRatio : McCfgGearBoxType; (*Ratio between a gearbox input and output*)
+		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
+		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
+		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
+	END_STRUCT;
+	McMSAMCGBUseWDynTorqLimType : STRUCT (*Type mcMSAMCG_USE_W_DYN_TORQ_LIM settings*)
+		GearRatio : McCfgGearBoxType; (*Ratio between a gearbox input and output*)
+		MaximumInputSpeed : REAL; (*Maximum permissible speed at gearbox input [rpm]*)
+		NominalOutputTorque : REAL; (*Nominal torque at gearbox output [Nm]*)
+		PeakOutputTorque : REAL; (*Peak torque at gearbox output [Nm]*)
+		MomentOfInertia : REAL; (*Moment of inertia for the gearbox at gearbox input [kgcm²]*)
+		ViscousFriction : REAL; (*Speed dependent friction at gearbox input [torque per rotations/secound] [Nms]*)
+		StaticFriction : REAL; (*Static friction at gearbox input [Nm]*)
+	END_STRUCT;
+	McMSAMCGBType : STRUCT (*Gearbox*)
+		Type : McMSAMCGBEnum; (*Gearbox selector setting*)
+		Used : McMSAMCGBUseType; (*Type mcMSAMCG_USE settings*)
+		UsedWithDynamicTorqueLimitation : McMSAMCGBUseWDynTorqLimType; (*Type mcMSAMCG_USE_W_DYN_TORQ_LIM settings*)
+	END_STRUCT;
+	McCfgMotSynAmcType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_MOT_SYN_AMC*)
+		Motor : McMSAMCMotType;
+		Brake : McMSAMCBrkType; (*Holding brake*)
+		Encoder : McMSAMCEncType; (*Motor encoder*)
+		Gearbox : McMSAMCGBType; (*Gearbox*)
 	END_STRUCT;
 	McAPICEIfTypEnum :
 		( (*Interface type selector setting*)
@@ -656,7 +825,8 @@ TYPE
 		mcAMPICEITIMEOF_MEOF_25000 := 0, (*MEOF 25000 - 25000 Hz*)
 		mcAMPICEITIMEOF_MEOF_50000 := 1, (*MEOF 50000 - 50000 Hz*)
 		mcAMPICEITIMEOF_MEOF_100000 := 2, (*MEOF 100000 - 100000 Hz*)
-		mcAMPICEITIMEOF_MEOF_200000 := 3 (*MEOF 200000 - 200000 Hz*)
+		mcAMPICEITIMEOF_MEOF_200000 := 3, (*MEOF 200000 - 200000 Hz*)
+		mcAMPICEITIMEOF_MEOF_400000 := 4 (*MEOF 400000 - 400000 Hz*)
 		);
 	McAMPICEITIncrOutStgEnum :
 		( (*Output stage*)
@@ -675,7 +845,8 @@ TYPE
 		mcAMPICEITIWDCMMEOF_MEOF_25000 := 0, (*MEOF 25000 - 25000 Hz*)
 		mcAMPICEITIWDCMMEOF_MEOF_50000 := 1, (*MEOF 50000 - 50000 Hz*)
 		mcAMPICEITIWDCMMEOF_MEOF_100000 := 2, (*MEOF 100000 - 100000 Hz*)
-		mcAMPICEITIWDCMMEOF_MEOF_200000 := 3 (*MEOF 200000 - 200000 Hz*)
+		mcAMPICEITIWDCMMEOF_MEOF_200000 := 3, (*MEOF 200000 - 200000 Hz*)
+		mcAMPICEITIWDCMMEOF_MEOF_400000 := 4 (*MEOF 400000 - 400000 Hz*)
 		);
 	McAMPICEITIWDCMOutStgEnum :
 		( (*Output stage*)
@@ -1050,7 +1221,7 @@ TYPE
 	McAPICIOIncrEncABREmuType : STRUCT (*Type mcAPICIODIO1T3_INCR_ENC_ABR_EMU settings*)
 		ValueSource : McAPICIOIncrEmuValSrcType; (*Value which should be output by the emulation*)
 		LinesPerEncoderRevolution : UDINT; (*Absolute number of lines of an encoder revolution*)
-		UnitsPerEncoderRevolutions : LREAL; (*Absolute number of units per encoder revolutions*)
+		UnitsPerEncoderRevolutions : LREAL; (*Absolute number of units per encoder revolutions [Measurement units]*)
 		UnitsPerEncoderRevolutionsParID : UDINT; (*Absolute number of units per encoder revolutions*)
 		NumberOfEncoderRevolutions : UDINT; (*Number of encoder revolutions relating to units*)
 		CountDirection : McAPICIOIncrEncABREmuCntDirEnum; (*Direction of the encoder in which the position value is increasing*)
@@ -1063,7 +1234,7 @@ TYPE
 	McAPICIOIncrEncABEmuType : STRUCT (*Type mcAPICIODIO1T3_INCR_ENC_AB_EMU settings*)
 		ValueSource : McAPICIOIncrEmuValSrcType; (*Value which should be output by the emulation*)
 		LinesPerEncoderRevolution : UDINT; (*Absolute number of lines of an encoder revolution*)
-		UnitsPerEncoderRevolutions : LREAL; (*Absolute number of units per encoder revolutions*)
+		UnitsPerEncoderRevolutions : LREAL; (*Absolute number of units per encoder revolutions [Measurement units]*)
 		UnitsPerEncoderRevolutionsParID : UDINT; (*Absolute number of units per encoder revolutions*)
 		NumberOfEncoderRevolutions : UDINT; (*Number of encoder revolutions relating to units*)
 		CountDirection : McAPICIOIncrEncABEmuCntDirEnum; (*Direction of the encoder in which the position value is increasing*)
@@ -1232,8 +1403,15 @@ TYPE
 	McAELOneEncMotAndPosEncType : STRUCT
 		Type : McAELAllEncEnum; (*Motor and position encoder selector setting*)
 	END_STRUCT;
+	McAELEncParSetEnum :
+		( (*Encoder parameter set selection*)
+		mcAELEPS_AUT := 0, (*Automatic - Automatic selection of encoder parameter set (see AS-Help)*)
+		mcAELEPS_ENCOD1 := 1, (*ENCOD1 - Parameter set ENCOD1*)
+		mcAELEPS_ENCOD2 := 2 (*ENCOD2 - Parameter set ENCOD2*)
+		);
 	McAELOneEncType : STRUCT (*Type mcAEL_ONE_ENC settings*)
 		MotorAndPositionEncoder : McAELOneEncMotAndPosEncType;
+		EncoderParameterSet : McAELEncParSetEnum; (*Encoder parameter set selection*)
 	END_STRUCT;
 	McAELTwoEncMotEncType : STRUCT
 		Type : McAELAllEncEnum; (*Motor encoder selector setting*)
@@ -1250,6 +1428,7 @@ TYPE
 	END_STRUCT;
 	McAELTwoEncPosEncCmnType : STRUCT (*Common settings for all Type values*)
 		Scaling : McAELTwoEncPosEncCmnScType; (*Encoder scaling based on a gear ratio and / or a movement transformation factor*)
+		EncoderParameterSet : McAELEncParSetEnum; (*Encoder parameter set selection*)
 	END_STRUCT;
 	McAELTwoEncPosEncType : STRUCT
 		Type : McAELAllEncEnum; (*Position encoder selector setting*)
@@ -1257,6 +1436,7 @@ TYPE
 	END_STRUCT;
 	McAELTwoEncType : STRUCT (*Type mcAEL_TWO_ENC settings*)
 		MotorEncoder : McAELTwoEncMotEncType;
+		EncoderParameterSet : McAELEncParSetEnum; (*Encoder parameter set selection*)
 		PositionEncoder : McAELTwoEncPosEncType;
 		PositionDifferenceLimit : REAL; (*Position difference limit between motor and position encoder for stopping a movement [Measurement units]*)
 	END_STRUCT;
@@ -1293,7 +1473,9 @@ TYPE
 		mcACLFS_LIM := 5, (*Limiter - Limiter*)
 		mcACLFS_LIN_LIM := 6, (*Linear limitation - Linear limitation*)
 		mcACLFS_RISE_TIME_LIM := 7, (*Rise time limitation - Rise time limitation*)
-		mcACLFS_COMP := 8 (*Compensation - Compensation*)
+		mcACLFS_COMP := 8, (*Compensation - Compensation*)
+		mcACLFS_ADPT_NOTCH := 9, (*Adaptive notch - Adaptive notch*)
+		mcACLFS_VAR_CTRL_NOTCH := 10 (*Variable controlled notch - Variable controlled notch*)
 		);
 	McACLFSLP2ndOrdType : STRUCT (*Type mcACLFS_LP_2ND_ORD settings*)
 		CutOffFrequency : REAL; (*Cut off frequency [Hz]*)
@@ -1348,6 +1530,17 @@ TYPE
 		MultiplicationFactorParID : UINT; (*Multiplication Factor ParID*)
 		AdditiveValueParID : UINT; (*Additive Value ParID*)
 	END_STRUCT;
+	McACLFSAdptNotchType : STRUCT (*Type mcACLFS_ADPT_NOTCH settings*)
+		CenterFrequency : REAL; (*Center frequency [Hz]*)
+		Bandwidth : REAL; (*Bandwidth [Hz]*)
+		LowerFrequencyLimit : REAL; (*Lower frequency limit [Hz]*)
+		UpperFrequencyLimit : REAL; (*Upper frequency limit [Hz]*)
+		AdaptionThreshold : REAL; (*Adaption threshold [A]*)
+	END_STRUCT;
+	McACLFSVarCtrlNotchType : STRUCT (*Type mcACLFS_VAR_CTRL_NOTCH settings*)
+		CenterFrequencyParID : UINT; (*Center frequency ParID*)
+		BandwidthParID : UINT; (*Bandwidth ParID*)
+	END_STRUCT;
 	McACLFSType : STRUCT (*Type of the loop filter*)
 		Type : McACLFSEnum; (*Loop filter 1-3 selector setting*)
 		Lowpass2ndOrder : McACLFSLP2ndOrdType; (*Type mcACLFS_LP_2ND_ORD settings*)
@@ -1358,6 +1551,8 @@ TYPE
 		LinearLimitation : McACLFSLinLimType; (*Type mcACLFS_LIN_LIM settings*)
 		RiseTimeLimitation : McACLFSRiseTimeLimType; (*Type mcACLFS_RISE_TIME_LIM settings*)
 		Compensation : McACLFSCompType; (*Type mcACLFS_COMP settings*)
+		AdaptiveNotch : McACLFSAdptNotchType; (*Type mcACLFS_ADPT_NOTCH settings*)
+		VariableControlledNotch : McACLFSVarCtrlNotchType; (*Type mcACLFS_VAR_CTRL_NOTCH settings*)
 	END_STRUCT;
 	McACLFType : STRUCT (*Parameters of the loop filters*)
 		LoopFilter : ARRAY[0..2] OF McACLFSType; (*Type of the loop filter*)
@@ -1751,6 +1946,19 @@ TYPE
 		Type : McAJFEnum; (*Jerk filter selector setting*)
 		Used : McAJFUseType; (*Type mcAJF_USE settings*)
 	END_STRUCT;
+	McAZVFEnum :
+		( (*Zero vibration filter selector setting*)
+		mcAZVF_NOT_USE := 0, (*Not used - No zero vibration filter is applied*)
+		mcAZVF_USE := 1 (*Used - Zero vibration filter is applied*)
+		);
+	McAZVFUseType : STRUCT (*Type mcAZVF_USE settings*)
+		ZeroVibrationFilterCoefficient : REAL; (*Zero vibration filter coefficient*)
+		ZeroVibrationFilterTime : REAL; (*Zero vibration filter time [s]*)
+	END_STRUCT;
+	McAZVFType : STRUCT (*Zero vibration filter*)
+		Type : McAZVFEnum; (*Zero vibration filter selector setting*)
+		Used : McAZVFUseType; (*Type mcAZVF_USE settings*)
+	END_STRUCT;
 	McADIAllSrcEnum :
 		( (*Source selector setting*)
 		mcADIAS_NOT_USE := 0, (*Not used -*)
@@ -1926,6 +2134,7 @@ TYPE
 		StopReaction : McASRType; (*Reactions of the axis in case of certain stop conditions*)
 		MovementErrorLimits : McAMELType; (*Limit values that result in a stop reaction when exceeded*)
 		JerkFilter : McAJFType; (*Jerk filter*)
+		ZeroVibrationFilter : McAZVFType; (*Zero vibration filter*)
 		DigitalInputs : McADIType; (*Various digital input functionalities e.g. like homing switch or triggers*)
 		Simulation : McASType; (*Parameters which influence the simulation possibilities of this axis*)
 		AxisFeatures : McAAFType; (*Features for an axis*)
@@ -1941,6 +2150,9 @@ TYPE
 	END_STRUCT;
 	McCfgAcpCtrlType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_CTRL*)
 		Controller : McACType; (*Axis controller parameters*)
+	END_STRUCT;
+	McCfgAcpSpdCtrlType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_SPD_CTRL*)
+		Speed : McACSCType; (*Speed controller parameters*)
 	END_STRUCT;
 	McCfgAcpHomeType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_HOME*)
 		Homing : McAHType; (*Homing mode and parameters which can be used within the application program as preconfigured setting*)
@@ -1962,6 +2174,9 @@ TYPE
 	END_STRUCT;
 	McCfgAcpAxFeatType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_AX_FEAT*)
 		AxisFeatures : McAAFType; (*Features for an axis*)
+	END_STRUCT;
+	McCfgAcpZeroVibFltrType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_ZERO_VIB_FLTR*)
+		ZeroVibrationFilter : McAZVFType; (*Zero vibration filter*)
 	END_STRUCT;
 	McAPSMOutParEnum :
 		( (*Output parameters selector setting*)
@@ -2053,19 +2268,19 @@ TYPE
 		SinglePhaseOperation : McAPSPwrSupACSngPhOpType;
 	END_STRUCT;
 	McAPSPwrSupDCPwrSupModRefType : STRUCT (*Type mcAPSPS_DC_PWR_SUP_MOD_REF settings*)
-		PowerSupplyModuleReference : STRING[250]; (*Name of the referenced power supply module component*)
+		PowerSupplyModuleReference : STRING[250]; (*DC bus voltage is read from the referenced power supply module*)
 	END_STRUCT;
 	McAPSPwrSupDCBusVType : STRUCT (*Type mcAPSPS_DC_BUS_V settings*)
 		BusVoltage : UINT; (*Bus voltage [V]*)
 	END_STRUCT;
-	McAPSPwrSupType : STRUCT
+	McAPSPwrSupType : STRUCT (*Selects the power supply or DC bus voltage*)
 		Type : McAPSPwrSupEnum; (*Power supply selector setting*)
 		AC : McAPSPwrSupACType; (*Type mcAPSPS_AC settings*)
 		DCPowerSupplyModuleReference : McAPSPwrSupDCPwrSupModRefType; (*Type mcAPSPS_DC_PWR_SUP_MOD_REF settings*)
 		DCBusVoltage : McAPSPwrSupDCBusVType; (*Type mcAPSPS_DC_BUS_V settings*)
 	END_STRUCT;
 	McCfgAcpPwrSupType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_PWR_SUP*)
-		PowerSupply : McAPSPwrSupType;
+		PowerSupply : McAPSPwrSupType; (*Selects the power supply or DC bus voltage*)
 	END_STRUCT;
 	McAMActAcpSimOnPLCEnum :
 		( (*Activates or deactivates the ACOPOS simulation on the PLC*)
@@ -2095,12 +2310,12 @@ TYPE
 		SinglePhaseOperation : McAMPwrSupACSngPhOpType;
 	END_STRUCT;
 	McAMPwrSupDCPwrSupModRefType : STRUCT (*Type mcAMPS_DC_PWR_SUP_MOD_REF settings*)
-		PowerSupplyModuleReference : STRING[250]; (*Name of the referenced power supply module component*)
+		PowerSupplyModuleReference : STRING[250]; (*DC bus voltage is read from the referenced power supply module*)
 	END_STRUCT;
 	McAMPwrSupDCBusVType : STRUCT (*Type mcAMPS_DC_BUS_V settings*)
 		BusVoltage : UINT; (*Bus voltage [V]*)
 	END_STRUCT;
-	McAMPwrSupType : STRUCT
+	McAMPwrSupType : STRUCT (*Selects the power supply or DC bus voltage*)
 		Type : McAMPwrSupEnum; (*Power supply selector setting*)
 		AC : McAMPwrSupACType; (*Type mcAMPS_AC settings*)
 		DCPowerSupplyModuleReference : McAMPwrSupDCPwrSupModRefType; (*Type mcAMPS_DC_PWR_SUP_MOD_REF settings*)
@@ -2109,7 +2324,7 @@ TYPE
 	McCfgAcpModType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_MOD*)
 		ActivateACOPOSSimulationOnPLC : McAMActAcpSimOnPLCEnum; (*Activates or deactivates the ACOPOS simulation on the PLC*)
 		BusVoltage : UINT; (*Bus voltage [V]*)
-		PowerSupply : McAMPwrSupType;
+		PowerSupply : McAMPwrSupType; (*Selects the power supply or DC bus voltage*)
 	END_STRUCT;
 	McAEEncX6AIfTypEnum :
 		( (*Interface type selector setting*)
@@ -2283,7 +2498,8 @@ TYPE
 		mcAEX41IT_ENDAT := 3, (*EnDat -*)
 		mcAEX41IT_HIPERFACE_DSL := 4, (*HIPERFACE DSL -*)
 		mcAEX41IT_TFMT := 5, (*T-Format - Tamagawa digital interface*)
-		mcAEX41IT_MOT_DAT_IF := 6 (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
+		mcAEX41IT_MOT_DAT_IF := 6, (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
+		mcAEX41IT_ENDAT_SAFEMOTION := 7 (*EnDat SafeMOTION -*)
 		);
 	McAEX41BPwrSupEnum :
 		( (*Power supply of the encoder*)
@@ -2385,7 +2601,8 @@ TYPE
 		mcAEX42IT_ENDAT := 3, (*EnDat -*)
 		mcAEX42IT_HIPERFACE_DSL := 4, (*HIPERFACE DSL -*)
 		mcAEX42IT_TFMT := 5, (*T-Format - Tamagawa digital interface*)
-		mcAEX42IT_MOT_DAT_IF := 6 (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
+		mcAEX42IT_MOT_DAT_IF := 6, (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
+		mcAEX42IT_ENDAT_SAFEMOTION := 7 (*EnDat SafeMOTION -*)
 		);
 	McAEX42BPwrSupEnum :
 		( (*Power supply of the encoder*)
@@ -2487,7 +2704,8 @@ TYPE
 		mcAEX43IT_ENDAT := 3, (*EnDat -*)
 		mcAEX43IT_HIPERFACE_DSL := 4, (*HIPERFACE DSL -*)
 		mcAEX43IT_TFMT := 5, (*T-Format - Tamagawa digital interface*)
-		mcAEX43IT_MOT_DAT_IF := 6 (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
+		mcAEX43IT_MOT_DAT_IF := 6, (*Motion Data Interface - B&R bi-directional asynchronous serial interface*)
+		mcAEX43IT_ENDAT_SAFEMOTION := 7 (*EnDat SafeMOTION -*)
 		);
 	McAEX43BPwrSupEnum :
 		( (*Power supply of the encoder*)
@@ -2767,6 +2985,7 @@ TYPE
 		AxisReference : McCfgReferenceType; (*Name of the referenced axis component*)
 		Homing : McAVAVirtAxUseHomeType; (*Homing mode and parameters which can be used within the application program as preconfigured setting*)
 		JerkFilter : McAJFType; (*Jerk filter*)
+		ZeroVibrationFilter : McAZVFType; (*Zero vibration filter*)
 		AxisFeatures : McAAFType; (*Features for an axis*)
 	END_STRUCT;
 	McAVAVirtAxType : STRUCT
@@ -2804,6 +3023,9 @@ TYPE
 	END_STRUCT;
 	McCfgAcpVirtAxFeatType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_VIRT_AX_FEAT*)
 		AxisFeatures : McAAFType; (*Features for an axis*)
+	END_STRUCT;
+	McCfgAcpVirtZeroVibFltrType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_VIRT_ZERO_VIB_FLTR*)
+		ZeroVibrationFilter : McAZVFType; (*Zero vibration filter*)
 	END_STRUCT;
 	McACFChFeatType : STRUCT (*Features for the channel of a module*)
 		FeatureReference : McCfgUnboundedArrayType; (*Name of the axis feature reference*)
@@ -2851,6 +3073,7 @@ TYPE
 	McAEEAUseEncLinkOneEncType : STRUCT (*Type mcAEEAUEL_ONE_ENC settings*)
 		PositionEncoder : McAEEAUseEncLinkOneEncPosEncType;
 		PositionFilter : McAEEAUELOneEncPosFltrType; (*Filter for the encoder position*)
+		EncoderParameterSet : McAELEncParSetEnum; (*Encoder parameter set selection*)
 	END_STRUCT;
 	McAEEAUseEncLinkType : STRUCT
 		Type : McAEEAUseEncLinkEnum; (*Encoder link selector setting*)
@@ -2911,6 +3134,88 @@ TYPE
 	END_STRUCT;
 	McCfgAcpExtEncAxHomeType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_ACP_EXT_ENC_AX_HOME*)
 		Homing : McAEEAHType; (*Homing mode and parameters which can be used within the application program as preconfigured setting*)
+	END_STRUCT;
+	McAFAIProdFamEnum :
+		( (*ACOPOS product family selector setting*)
+		mcAFAIPF_ACP := 0, (*ACOPOS -*)
+		mcAFAIPF_ACPM := 1, (*ACOPOSmulti -*)
+		mcAFAIPF_ACP_P3 := 2 (*ACOPOS P3 -*)
+		);
+	McAFAIACPAnInEnum :
+		( (*Analog input 1-4 selector setting*)
+		mcAFAIACPAI_SS2X111 := 0, (*SS2.X11.1 -*)
+		mcAFAIACPAI_SS2X112 := 1, (*SS2.X11.2 -*)
+		mcAFAIACPAI_SS3X111 := 2, (*SS3.X11.1 -*)
+		mcAFAIACPAI_SS3X112 := 3, (*SS3.X11.2 -*)
+		mcAFAIACPAI_SS4X111 := 4, (*SS4.X11.1 -*)
+		mcAFAIACPAI_SS4X112 := 5 (*SS4.X11.2 -*)
+		);
+	McAFAIAnInScEnum :
+		( (*Scaling selector setting*)
+		mcAFAIAIS_NOT_USE := 0, (*Not used -*)
+		mcAFAIAIS_USE := 1 (*Used -*)
+		);
+	McAFAIAnInScUseType : STRUCT (*Type mcAFAIAIS_USE settings*)
+		MinimumVoltage : REAL; (*Minimum voltage of the analog input [V]*)
+		MaximumVoltage : REAL; (*Maximum voltage of the analog input [V]*)
+		MinimumScaledValue : REAL; (*Minimum scaled value of the analog input [Signal units]*)
+		MaximumScaledValue : REAL; (*Maximum scaled value of the analog input [Signal units]*)
+	END_STRUCT;
+	McAFAIAnInScType : STRUCT
+		Type : McAFAIAnInScEnum; (*Scaling selector setting*)
+		Used : McAFAIAnInScUseType; (*Type mcAFAIAIS_USE settings*)
+	END_STRUCT;
+	McAFAIACPAnInCmnType : STRUCT (*Common settings for all Type values*)
+		Scaling : McAFAIAnInScType;
+	END_STRUCT;
+	McAFAIACPAnInType : STRUCT
+		Type : McAFAIACPAnInEnum; (*Analog input 1-4 selector setting*)
+		Common : McAFAIACPAnInCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McAFAIACPType : STRUCT (*Type mcAFAIPF_ACP settings*)
+		AnalogInput : McCfgUnboundedArrayType;
+	END_STRUCT;
+	McAFAIACPmultiAnInEnum :
+		( (*Analog input 1-4 selector setting*)
+		mcAFAIACPMULTIAI_SS2X111 := 0, (*SS2.X11.1 -*)
+		mcAFAIACPMULTIAI_SS2X112 := 1, (*SS2.X11.2 -*)
+		mcAFAIACPMULTIAI_SS2X113 := 2, (*SS2.X11.3 -*)
+		mcAFAIACPMULTIAI_SS2X114 := 3 (*SS2.X11.4 -*)
+		);
+	McAFAIACPmultiAnInCmnType : STRUCT (*Common settings for all Type values*)
+		Scaling : McAFAIAnInScType;
+	END_STRUCT;
+	McAFAIACPmultiAnInType : STRUCT
+		Type : McAFAIACPmultiAnInEnum; (*Analog input 1-4 selector setting*)
+		Common : McAFAIACPmultiAnInCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McAFAIACPmultiType : STRUCT (*Type mcAFAIPF_ACPM settings*)
+		AnalogInput : McCfgUnboundedArrayType;
+	END_STRUCT;
+	McAFAIACPP3AnInEnum :
+		( (*Analog input 1-3 selector setting*)
+		mcAFAIACPP3AI_SS1X41E1 := 0, (*SS1.X41E.1 -*)
+		mcAFAIACPP3AI_SS1X41E2 := 1, (*SS1.X41E.2 -*)
+		mcAFAIACPP3AI_SS1X41E3 := 2 (*SS1.X41E.3 -*)
+		);
+	McAFAIACPP3AnInCmnType : STRUCT (*Common settings for all Type values*)
+		Scaling : McAFAIAnInScType;
+	END_STRUCT;
+	McAFAIACPP3AnInType : STRUCT
+		Type : McAFAIACPP3AnInEnum; (*Analog input 1-3 selector setting*)
+		Common : McAFAIACPP3AnInCmnType; (*Common settings for all Type values*)
+	END_STRUCT;
+	McAFAIACPP3Type : STRUCT (*Type mcAFAIPF_ACP_P3 settings*)
+		AnalogInput : McCfgUnboundedArrayType;
+	END_STRUCT;
+	McAFAIProdFamType : STRUCT
+		Type : McAFAIProdFamEnum; (*ACOPOS product family selector setting*)
+		ACOPOS : McAFAIACPType; (*Type mcAFAIPF_ACP settings*)
+		ACOPOSmulti : McAFAIACPmultiType; (*Type mcAFAIPF_ACPM settings*)
+		ACOPOSP3 : McAFAIACPP3Type; (*Type mcAFAIPF_ACP_P3 settings*)
+	END_STRUCT;
+	McCfgAxFeatAInType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_A_IN*)
+		ProductFamily : McAFAIProdFamType;
 	END_STRUCT;
 	McCfgAxFeatAcpParTblType : STRUCT (*Main data type corresponding to McCfgTypeEnum mcCFG_AX_FEAT_ACP_PAR_TBL*)
 		ACOPOSParameterTableReference : STRING[250]; (*Name of the ACOPOS parameter table*)

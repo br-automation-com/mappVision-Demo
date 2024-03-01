@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McAxis 5.21.2 */
+/* McAxis 5.24.1 */
 
 #ifndef _MCAXIS_
 #define _MCAXIS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McAxis_VERSION
-#define _McAxis_VERSION 5.21.2
+#define _McAxis_VERSION 5.24.1
 #endif
 
 #include <bur/plctypes.h>
@@ -422,6 +422,22 @@ typedef enum McAMoveLimDecEnum
 {	mcAMLD_BASIC = 0,
 	mcAMLD_ADV = 1
 } McAMoveLimDecEnum;
+
+typedef enum McAFPGJFEnum
+{	mcAFPGJF_NOT_USE = 0,
+	mcAFPGJF_USE = 1,
+	mcAFPGJF_JERK_LIM = 2
+} McAFPGJFEnum;
+
+typedef enum McAFPGZVFEnum
+{	mcAFPGZVF_NOT_USE = 0,
+	mcAFPGZVF_USE = 1
+} McAFPGZVFEnum;
+
+typedef enum McAFPGCSMaSetValSrcEnum
+{	mcAFPGCSMSVS_PROF_GEN_SET_POS = 0,
+	mcAFPGCSMSVS_ACP_SET_POS = 1
+} McAFPGCSMaSetValSrcEnum;
 
 typedef enum McAFDCSTypEnum
 {	mcAFDCST_ACP = 0
@@ -1129,7 +1145,7 @@ typedef struct McHwInfoDriveType
 {	plcstring ModelNumber[20];
 	plcstring ModuleID[12];
 	plcstring SerialNumber[20];
-	plcstring Revision[4];
+	plcstring Revision[12];
 	plcstring FirmwareVersion[8];
 } McHwInfoDriveType;
 
@@ -1268,6 +1284,58 @@ typedef struct McCfgAxBaseTypType
 typedef struct McCfgAxMoveLimType
 {	struct McAMLType MovementLimits;
 } McCfgAxMoveLimType;
+
+typedef struct McAFPGJFUseType
+{	float MaximumJerkTime;
+	float JerkTime;
+} McAFPGJFUseType;
+
+typedef struct McAFPGJFJerkLimType
+{	float JerkLimit;
+} McAFPGJFJerkLimType;
+
+typedef struct McAFPGJFType
+{	enum McAFPGJFEnum Type;
+	struct McAFPGJFUseType Used;
+	struct McAFPGJFJerkLimType JerkLimited;
+} McAFPGJFType;
+
+typedef struct McAFPGZVFUseType
+{	float MaximumZeroVibrationFilterTime;
+	float ZeroVibrationFilterCoefficient;
+	float ZeroVibrationFilterTime;
+} McAFPGZVFUseType;
+
+typedef struct McAFPGZVFType
+{	enum McAFPGZVFEnum Type;
+	struct McAFPGZVFUseType Used;
+} McAFPGZVFType;
+
+typedef struct McAFPGCSMaSetValSrcType
+{	enum McAFPGCSMaSetValSrcEnum Type;
+} McAFPGCSMaSetValSrcType;
+
+typedef struct McAFPGCSType
+{	struct McAFPGCSMaSetValSrcType MasterSetValueSource;
+} McAFPGCSType;
+
+typedef struct McCfgAxFeatProfGenType
+{	struct McAFPGJFType JerkFilter;
+	struct McAFPGZVFType ZeroVibrationFilter;
+	struct McAFPGCSType CouplingSettings;
+} McCfgAxFeatProfGenType;
+
+typedef struct McCfgAxFeatPgJerkFltrType
+{	struct McAFPGJFType JerkFilter;
+} McCfgAxFeatPgJerkFltrType;
+
+typedef struct McCfgAxFeatPgZeroVibFltrType
+{	struct McAFPGZVFType ZeroVibrationFilter;
+} McCfgAxFeatPgZeroVibFltrType;
+
+typedef struct McCfgAxFeatPgCplgSetType
+{	struct McAFPGCSType CouplingSettings;
+} McCfgAxFeatPgCplgSetType;
 
 typedef struct McAFDCSTypAcpValSrcRTOAUseType
 {	struct McCfgReferenceType AxisReference;

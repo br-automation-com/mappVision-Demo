@@ -847,7 +847,7 @@ TYPE
         ModelNumber : STRING[19]; (*Model number of the drive*)
         ModuleID : STRING[11]; (*For B&R modules: B&R ID code; For DS402 modules: Product code; [hex]*)
         SerialNumber : STRING[19]; (*Serial number of the drive*)
-        Revision : STRING[3]; (*Revision number of the drive*)
+        Revision : STRING[11]; (*Revision number of the drive*)
         FirmwareVersion : STRING[7]; (*Used firmware version*)
     END_STRUCT;
 

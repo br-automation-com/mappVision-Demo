@@ -71,7 +71,8 @@ TYPE
 	McStopModeEnum :
 	(
 		mcSTOPMODE_JERK_LIMIT,			 (*Takes into account the jerk limit value while stopping*)
-		mcSTOPMODE_NO_JERK_LIMIT		 (*Ignores the jerk limit value while stopping*)
+		mcSTOPMODE_NO_JERK_LIMIT,		 (*Ignores the jerk limit value while stopping*)
+		mcSTOPMODE_QUICKSTOP			 (*Considers only velocity and acceleration axis limits, motor and gearbox torques limits and cross section loads limits*)
 	);
 
 	McIplModeEnum :
@@ -131,6 +132,7 @@ TYPE
 		mcSCS3 := 5,	 (*System coordinate system 3*)
 		mcSCS4 := 6,	 (*System coordinate system 4*)
 		mcSCS5 := 7,	 (*System coordinate system 5*)
+		mcBCS := 8,	 (*Base coordinate system*)
 		mcTCS := 9,	 (*Tool coordinate system*)
 		mcGCS := 10,	 (*Global coordinate system*)
 		mcJACS := 100,	 (*Joint axes coordinate system*)
@@ -183,8 +185,11 @@ TYPE
 
 	McProcessConfigModeEnum:
 	(
-		mcPCM_LOAD,	 (*Load from Config*)
-		mcPCM_SAVE	 (*Save to Config*)
+		mcPCM_LOAD 	:= 0,	 	(*Load from Config*)
+		mcPCM_SAVE	:= 1,	 	(*Save to Config*)
+		mcPCM_CREATE:= 2,	 	(*Create Config*)
+		mcPCM_DELETE:= 3,		(*Delete Config*)
+		mcPCM_DEFAULT_VALUES:= 4(*Default Config Values*)
 	);
 
 	McCommunicationStateEnum :
@@ -329,9 +334,17 @@ TYPE
 		mcLANGUAGE_GERMAN	(*Text in German*)
 	);
 
+	McEncodingEnum :
+	(
+		mcENCODING_UTF8 := 0,	(*UTF-8 encoding*)
+		mcENCODING_CP1252,	(*CP-1252 encoding*)
+		mcENCODING_LATIN1	(*Latin-1 (ISO-8859-1) encoding*)
+	);
+
 	McAdvReadErrTxtParType : STRUCT
 		Language : McLanguageEnum; (*Desired language for read text. This parameter is optional. Default value : mcERROR_TEXT_LANG_DEFAULT.*)
 		ShowInfoSeverity : McSwitchEnum; (*Allow to additionally show in RecordBuffer all related information severity events  linked in hierarchy to error record. *)
+		Encoding : McEncodingEnum; (*Allow to additionally set type of encoding for output text*)
 	END_STRUCT;
 
 	McErrorRecordTimeStampType : STRUCT
