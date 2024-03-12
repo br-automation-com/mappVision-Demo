@@ -199,7 +199,7 @@ PROGRAM _CYCLIC
 	
 	// Proxy server cyclic call ( Only needed for information. ) 
 	ipSTR := gVisionImage.CFG.PlkIPWithoutNode;
-	brsitoa(gSelectedSensor, ADR(nodeSTR));
+	brsitoa(gVisionSensor[gSelectedSensor].CFG.PowerlinkNode, ADR(nodeSTR)); 
 	brsstrcat(ADR(ipSTR), ADR(nodeSTR));
 	IF brsstrcmp( ADR( TcpForward_0.ConnectToIp ),ADR( ipSTR )) <> 0 THEN
 		TcpForward_0.ConnectToIp := ipSTR ;
