@@ -211,7 +211,7 @@ HtmlFileContent1 :=
 HtmlFileContent2 :=
 ':8888/jpg";
 				var ErrorImagePath 		= "VisionEye.png";
-				var UpdateInterval_ms 	= 200;
+				var UpdateInterval_ms 	= 500;
 				var MissingImgCtr		= 0;
 				function updateImage() {
 					document.getElementById("imgCamera").setAttribute("src", ImagePath + "?q=" + getParameterByName("q") + "&" + Math.random());
