@@ -1,7 +1,7 @@
 VAR_CONFIG
 	Cyclic#1.::NettimeCurrent_us AT %ID."4PPC50_156B_10B".IF1.NettimeSoC;
 	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP0483".IF3.NettimeSoC;
-	Cyclic#1.::NettimeCurrent_us AT %ID."X20CP1586".IF3.NettimeSoC;
+	Cyclic#1.::NettimeCurrent_us AT %ID."X20EM0612".IF3.NettimeSoC;
 	Cyclic#1.::gVisionSensor[1].HW.Connected AT %IX."Blob".ModuleOk;
 	Cyclic#1.::gVisionSensor[1].HW.SerialNumber AT %ID."Blob".SerialNumber;
 	Cyclic#1.::gVisionSensor[1].HW.ID AT %ID."Blob".ModuleID;
@@ -710,7 +710,7 @@ VAR_CONFIG
 	Cyclic#1.::gVisionLight[2].DAT.FlashAcceptedCnt AT %IB."Backlight2".AcceptedFlashCnt;
 	Cyclic#1.::gVisionLight[2].DAT.FlashCompletedCnt AT %IB."Backlight2".CompletedFlashCnt;
 	Cyclic#1.::gVisionLight[2].DAT.FlashFailedCnt AT %IB."Backlight2".FailedFlashCnt;
-	Cyclic#1.::gVisionLight[2].HW.WarningCnt  AT %IB."Backlight2".LightWarningCnt;
+	Cyclic#1.::gVisionLight[2].HW.WarningCnt AT %IB."Backlight2".LightWarningCnt;
 	Cyclic#1.::gVisionLight[2].HW.TemperatureLED AT %IB."Backlight2".SensorTemperature;
 	Cyclic#1.::gVisionLight[2].CMD.FlashTrigger AT %QX."Backlight2".FlashTrigger;
 	Cyclic#1.::gVisionLight[2].CMD.FlashTriggerReset AT %QX."Backlight2".ResetFlashTrigger;

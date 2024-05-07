@@ -12,11 +12,12 @@
     <Parameter ID="PlugInType" Value="Encoder" />
     <Parameter ID="McAcoposTypeID" Value="AcoposPlugInConfig" />
   </Module>
-  <Module Name="8V1010.50-2" Type="8V1010.50-2" Version="2.2.0.0">
+  <Module Name="8V1010.50-2" Type="8V1010.50-2" Version="2.3.0.0">
     <Parameter ID="McAcoposTypeID" Location="DriveConfiguration/Module" Value="AcoposConfig" />
     <Parameter ID="ActivateACOPOSSimulationOnPLC" Location="DriveConfiguration/Module" Value="0" />
     <Parameter ID="SinglePhaseOperation" Location="DriveConfiguration/Module/PowerSupply" Value="Used" />
     <Parameter ID="AxisReference" Location="DriveConfiguration/Channel[1]/RealAxis" Value="gAxis_1" />
+    <Parameter ID="MechanicalElementsIsInvisible" Location="DriveConfiguration/Channel[1]/RealAxis" Value="0" />
     <Parameter ID="InputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="0" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="1" />
     <Parameter ID="OutputIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/MechanicalElements/Gearbox" Value="0" />
@@ -35,11 +36,13 @@
     <Parameter ID="IntegrationTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.0" />
     <Parameter ID="FilterTimeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0" />
     <Parameter ID="FilterTime" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/Speed" Value="0.0" />
+    <Parameter ID="LoopFilterXIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="0" />
     <Parameter ID="LoopFilter1" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="Notch" />
     <Parameter ID="CenterFrequency" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters/LoopFilter1" Value="1506.85" />
     <Parameter ID="Bandwidth" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters/LoopFilter1" Value="400" />
     <Parameter ID="LoopFilter2" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="NotUsed" />
     <Parameter ID="LoopFilter3" Location="DriveConfiguration/Channel[1]/RealAxis/Controller/Mode/LoopFilters" Value="NotUsed" />
+    <Parameter ID="ModeIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="0" />
     <Parameter ID="Mode" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="Direct" />
     <Parameter ID="Position" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode" Value="0.0" />
     <Parameter ID="ReferencePulse" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode" Value="Used" />
@@ -49,21 +52,32 @@
     <Parameter ID="KeepDirection" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode/ReferencePulse" Value="No" />
     <Parameter ID="ReferencePulseBlockingDistance" Location="DriveConfiguration/Channel[1]/RealAxis/Homing/Mode/ReferencePulse" Value="0.0" />
     <Parameter ID="RestorePositionVariable" Location="DriveConfiguration/Channel[1]/RealAxis/Homing" Value="" />
+    <Parameter ID="QuickstopIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="0" />
     <Parameter ID="Quickstop" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="DecelerationLimit" />
+    <Parameter ID="DriveErrorIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="0" />
     <Parameter ID="DriveError" Location="DriveConfiguration/Channel[1]/RealAxis/StopReaction" Value="DecelerationLimit" />
     <Parameter ID="PositionError" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="20" />
     <Parameter ID="VelocityErrorMonitoring" Location="DriveConfiguration/Channel[1]/RealAxis/MovementErrorLimits" Value="Automatic1" />
+    <Parameter ID="JerkFilterIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis" Value="0" />
     <Parameter ID="JerkFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="NotUsed" />
+    <Parameter ID="ZeroVibrationFilter" Location="DriveConfiguration/Channel[1]/RealAxis" Value="NotUsed" />
+    <Parameter ID="SourceIsReadOnly" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/HomingSwitch" Value="0" />
+    <Parameter ID="Source" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/HomingSwitch" Value="X1Ref" />
     <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/HomingSwitch" Value="High" />
+    <Parameter ID="Source" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/PositiveLimitSwitch" Value="X1PosLim" />
     <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/PositiveLimitSwitch" Value="High" />
+    <Parameter ID="Source" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/NegativeLimitSwitch" Value="X1NegLim" />
     <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/NegativeLimitSwitch" Value="High" />
+    <Parameter ID="Source" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Trigger1" Value="X1Trigger1" />
     <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Trigger1" Value="High" />
+    <Parameter ID="Source" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Trigger2" Value="X1Trigger2" />
     <Parameter ID="Level" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Trigger2" Value="High" />
     <Parameter ID="Input" Location="DriveConfiguration/Channel[1]/RealAxis/DigitalInputs/Quickstop" Value="Trigger2" />
     <Parameter ID="SimulationModeOnPLC" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="SetValueGeneration" />
     <Parameter ID="SimulationModeOnACOPOS" Location="DriveConfiguration/Channel[1]/RealAxis/Simulation" Value="NotUsed" />
+    <Parameter ID="ExternalEncoderAxis" Location="DriveConfiguration/Channel[1]" Value="NotUsed" />
   </Module>
-  <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" Version="1.1.0.323">
+  <Module Name="Backlight1" Type="VSLB11Q00.54DP-000" Version="1.2.0.681">
     <Connection Connector="PLK1" TargetModule="PixelCounter" TargetConnector="PLK2" NodeNumber="10">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -73,7 +87,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="Backlight2" Type="VSLB11F00.54DP-000" Version="1.1.0.326">
+  <Module Name="Backlight2" Type="VSLB11F00.54DP-000" Version="1.2.0.687">
     <Connection Connector="PLK1" TargetModule="Backlight1" TargetConnector="PLK2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -83,8 +97,8 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="Blob" Type="VSS112Q22.041P-000" Version="1.6.0.543">
-    <Connection Connector="PLK1" TargetModule="X20CP1586" TargetConnector="IF3" NodeNumber="1">
+  <Module Name="Blob" Type="VSC122R24.051P-000" Version="1.9.0.730">
+    <Connection Connector="PLK1" TargetModule="X20EM0612" TargetConnector="IF3" NodeNumber="1">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
     <Connection Connector="PLK2" TargetModule="Measurement" TargetConnector="PLK1" NodeNumber="1">
@@ -93,7 +107,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraBlob" />
   </Module>
-  <Module Name="CodeReader" Type="VSS112Q22.041P-000" Version="1.6.0.543">
+  <Module Name="CodeReader" Type="VSC122R24.051P-000" Version="1.9.0.730">
     <Connection Connector="PLK1" TargetModule="Measurement" TargetConnector="PLK2" NodeNumber="2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -103,7 +117,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraCodeReading" />
   </Module>
-  <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" Version="1.1.0.433">
+  <Module Name="Lightbar1" Type="VSLL11Q20.67AP-000" Version="1.2.0.681">
     <Connection Connector="PLK1" TargetModule="Backlight2" TargetConnector="PLK2" NodeNumber="20">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -113,7 +127,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="" />
   </Module>
-  <Module Name="Match" Type="VSS112Q22.041P-000" Version="1.6.0.543">
+  <Module Name="Match" Type="VSC122R24.051P-000" Version="1.9.0.730">
     <Connection Connector="PLK1" TargetModule="CodeReader" TargetConnector="PLK2" NodeNumber="3">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -123,7 +137,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMatch" />
   </Module>
-  <Module Name="Measurement" Type="VSS112Q22.041P-000" Version="1.6.0.543">
+  <Module Name="Measurement" Type="VSC122R24.051P-000" Version="1.9.0.730">
     <Connection Connector="PLK1" TargetModule="Blob" TargetConnector="PLK2" NodeNumber="4">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -133,7 +147,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraMeasurement" />
   </Module>
-  <Module Name="OCR" Type="VSS112Q22.041P-000" Version="1.6.0.543">
+  <Module Name="OCR" Type="VSC122R24.051P-000" Version="1.9.0.730">
     <Connection Connector="PLK1" TargetModule="Match" TargetConnector="PLK2" NodeNumber="5">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -143,7 +157,7 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraOCR" />
   </Module>
-  <Module Name="PixelCounter" Type="VSS112Q22.041P-000" Version="1.6.0.543">
+  <Module Name="PixelCounter" Type="VSC122R24.051P-000" Version="1.9.0.730">
     <Connection Connector="PLK1" TargetModule="OCR" TargetConnector="PLK2" NodeNumber="6">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
@@ -153,12 +167,9 @@
     <Parameter ID="Supervision" Value="off" />
     <Parameter ID="VisionConfig" Value="gCameraPxl" />
   </Module>
-  <Module Name="X20CP1586" Type="X20CP1586" Version="1.10.0.0">
+  <Module Name="X20EM0612" Type="X20EM0612" Version="1.1.1.0">
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
-      <Parameter ID="Mode" Value="Manual" />
-      <Parameter ID="InternetAddress" Value="192.168.1.100" />
-      <Parameter ID="SubnetMask" Value="255.255.255.0" />
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Visu" />
       <Parameter ID="VncKeyMappingFile1" Value="" />
@@ -173,13 +184,12 @@
     </Connector>
     <Parameter ID="ConfigurationID" Value="Vision_Sample" />
     <Parameter ID="ConfigVersion" Value="2.0.0" />
-    <Parameter ID="UserPartitionSize" Value="400" />
+    <Parameter ID="UserPartitionSize" Value="100" />
     <Parameter ID="RemMemSize" Value="30000" />
-    <Parameter ID="PermanentPvSize" Value="2000" />
     <Parameter ID="RemanentGlobalPvSize" Value="20000" />
     <Parameter ID="VolatileGlobalPvSize" Value="256000" />
     <Parameter ID="TimerDeviceType" Value="EPLX2X" />
-    <Parameter ID="TimerDevice" Value="X20CP1586.IF3" />
+    <Parameter ID="TimerDevice" Value="X20EM0612.IF3" />
     <Parameter ID="TaskClassIdleTime" Value="800" />
     <Parameter ID="Cyclic1Duration" Value="800" />
     <Parameter ID="Cyclic1Tolerance" Value="800" />

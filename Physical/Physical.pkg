@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
+<?AutomationStudio FileVersion="4.9"?>
 <Physical xmlns="http://br-automation.co.at/AS/Physical">
   <Objects>
     <Object Type="Configuration">4PPC50</Object>
     <Object Type="Configuration">X20CP0483</Object>
-    <Object Type="Configuration">X20CP1586</Object>
+    <Object Type="Configuration">X20EM0612</Object>
   </Objects>
 </Physical>
