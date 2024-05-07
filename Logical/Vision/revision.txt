@@ -1,12 +1,9 @@
-Version 5.16
-- Fixed unit scaling in tables
-- Update recipe managment to V1.4
-- Changed package references to file references
-- Fix to address vision load issue #7
-- Added more error numbers to Vi_image
-- Renamed visSelectedSensor and visSelectedLight
-- Code cleanup
-- Updated to official 5.16 versions and official lightbar upgrade
+Version 5.24
+- Update to AS 4.12
+- Update to mapp 4.24
+- Fixed image download node number is not correct
+- Removed old routing files
+- Changed image update interval to 500ms
 
 Version 5.15
 - Update recipe managment to V1.0
