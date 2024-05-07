@@ -33,8 +33,8 @@ This vision sample contains a lot of functions that are not included in the mapp
 <a name="Requirements"></a>
 ## Requirements (current used versions)
 Should also work with newer and some older versions
-* Automation Studio 4.9
-* mapp 5.15
+* Automation Studio 4.12
+* mapp 5.24
 * Automation Runtime C4.90
 
 Recommended task class is #8 with a 10ms cycle time. For the nettime and axis tasks use #1
@@ -43,6 +43,13 @@ Recommended task class is #8 with a 10ms cycle time. For the nettime and axis ta
 ## Revision History
 You can find details in the project in "revision.txt"
 
+### Version 5.24
+- Update to AS 4.12
+- Update to mapp 4.24
+- Fixed image download node number is not correct
+- Removed old routing files
+- Changed image update interval to 500ms
+- 
 #### Version 5.15
 - Update recipe managment to V1.0
 - Updated constant for code reader parameter "ParameterMode"
