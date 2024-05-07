@@ -49,7 +49,7 @@ You can find details in the project in "revision.txt"
 - Fixed image download node number is not correct
 - Removed old routing files
 - Changed image update interval to 500ms
-- 
+
 #### Version 5.15
 - Update recipe managment to V1.0
 - Updated constant for code reader parameter "ParameterMode"
