@@ -43,7 +43,7 @@ Recommended task class is #8 with a 10ms cycle time. For the nettime and axis ta
 ## Revision History
 You can find details in the project in "revision.txt"
 
-### Version 5.24
+#### Version 5.24
 - Update to AS 4.12
 - Update to mapp 4.24
 - Fixed image download node number is not correct
