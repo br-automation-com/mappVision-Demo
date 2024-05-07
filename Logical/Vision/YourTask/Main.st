@@ -16,12 +16,12 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 	// Vision sensor configuration
 	// -----------------------------------------------------------------------------------------------------------
-	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
+	gVisionImage.CFG.EthDevice				:= ONLINE_INTERFACE;	// Ethernet interface for the PLC, this is the IF where you go online
 	// Configuration for blob
-	gVisionSensor[1].CFG.VisionFunction		:= enumBlob;		// Used to run specific code for this vision function
-	gVisionSensor[1].CFG.PowerlinkNode		:= 1;				// Powerlink node number
-	gVisionSensor[1].CFG.DataStructure		:= ADR(gBlob);		// Global structures that holds all data related to this function
-	gVisionSensor[1].CFG.ComponentLink		:= gCameraBlob;		// Vision component name defined under mappVision in the configuration view
+	gVisionSensor[1].CFG.VisionFunction		:= enumBlob;			// Used to run specific code for this vision function
+	gVisionSensor[1].CFG.PowerlinkNode		:= 1;					// Powerlink node number
+	gVisionSensor[1].CFG.DataStructure		:= ADR(gBlob);			// Global structures that holds all data related to this function
+	gVisionSensor[1].CFG.ComponentLink		:= gCameraBlob;			// Vision component name defined under mappVision in the configuration view
 	gVisionSensor[1].CFG.ResolutionWidth_X	:= 1280;
 	gVisionSensor[1].CFG.ResolutionHeight_Y	:= 1024;
 	// Configuration for code reader
