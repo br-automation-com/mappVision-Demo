@@ -42,10 +42,45 @@ FUNCTION_BLOCK ViBaseLoadApplication (*Function block ViBaseLoadApplication can 
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK ViBaseDeleteApplication (*Function block ViBaseDeleteApplication can be used to delete a vision application from the controller.*)
+	VAR_INPUT
+		MpLink : REFERENCE TO ViComponentType; (*Pointer to the vision component .*)
+		Execute : BOOL; (*Execution of the function block begins on a rising edge of this input.*)
+		Name : REFERENCE TO STRING[50]; (*Pointer to the name of the vision application to be loaded.*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*Execution successful. Function block is finished.*)
+		Busy : BOOL; (*The function block is active and must continue to be called.*)
+		Error : BOOL; (*Error during execution.*)
+		StatusID : DINT; (*Status information*)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} ViBaseInternalType;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK ViBaseSaveApplication (*Function block ViBaseSaveApplication can be used to save a vision application from a camera module to the controller.*)
 	VAR_INPUT
 		MpLink : REFERENCE TO ViComponentType; (*Pointer to the vision component from which the vision application is saved.*)
 		Execute : BOOL; (*Execution of the function block begins on a rising edge of this input.*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*Execution successful. Function block is finished.*)
+		Busy : BOOL; (*The function block is active and must continue to be called.*)
+		Error : BOOL; (*Error during execution.*)
+		StatusID : DINT; (*Status information*)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} ViBaseInternalType;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK ViBaseSaveApplicationAs (*Function block ViBaseSaveApplicationAs can be used to save a vision application under a different name*)
+	VAR_INPUT
+		MpLink : REFERENCE TO ViComponentType; (*Pointer to the vision component from which the vision application is saved.*)
+		Execute : BOOL; (*Execution of the function block begins on a rising edge of this input.*)
+		Name : REFERENCE TO STRING[50]; (*Pointer to the name under which the vision application will be saved.*)
+		Overwrite : BOOL; (*Check for a already existing VA, overwrite it if existing and compatible.*)
 	END_VAR
 	VAR_OUTPUT
 		Done : BOOL; (*Execution successful. Function block is finished.*)

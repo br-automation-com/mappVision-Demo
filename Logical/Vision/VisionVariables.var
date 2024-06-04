@@ -7,7 +7,6 @@ VAR
 	gMT : typMTMain; (*Data that is specific for the measurement function*)
 	gOCR : typOCRMain; (*Data that is specific for the OCR function*)
 	gPixel : typPixelMain; (*Data that is specific for the Pixel Counter function*)
-	gVisionColor : typVisionColor;
 	gVisionImage : typVisionImage; (*Data for image handling*)
 	gVisionLight : ARRAY[0..MAX_NUM_LIGHTS] OF typLightMain; (*General Light  functions that are independent from the inspection function*)
 	gVisionNettime : typVisionNettime; (*Data for nettime calculation*)
@@ -15,9 +14,6 @@ VAR
 	gSelectedSensor : UINT := 1; (*Selected camera node number*)
 	gSelectedLight : UINT := 1; (*Selected Light node number*)
 	NettimeCurrent_us : DINT; (*Current Powerlink nettime*)
-END_VAR
-VAR RETAIN
-	RecipeData : recVariable; (*Structure that contains the recipe variables*)
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Global constants*)

@@ -9,7 +9,4 @@
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8" />
-  <VcDataObjects>
-    <VcDataObject Name="Visu" Source="Vision.Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
-  </VcDataObjects>
 </SwConfiguration>

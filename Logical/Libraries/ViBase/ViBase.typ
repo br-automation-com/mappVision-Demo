@@ -71,4 +71,7 @@ TYPE
 													An array of this type can be used in mapp View for ItemCollection bindings on selector widgets*)
 	ViBaseFormatPlainTextType :STRING[50]; (*This type is intended for vision application list entry in plain text.
 													An array of this can be used in mapp View for StringArra1D bindings e.g. in a Table*)
+
+
 END_TYPE
+

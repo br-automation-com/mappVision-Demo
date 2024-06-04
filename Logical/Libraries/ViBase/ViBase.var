@@ -24,6 +24,8 @@ VAR CONSTANT
 	viBASE_ERR_APP_NOT_LOADED        : DINT :=  -1045168005;	(* 0xc1b4007b Failure loading Vision Application '{VisionApplicationName}'. [Error: 123] *)
 	viBASE_ERR_APP_NOT_SAVED         : DINT :=  -1045168004;	(* 0xc1b4007c Failure saving Vision Application '{VisionApplicationName}'. [Error: 124] *)
 	viBASE_ERR_CMD_INV_LOAD_FAILED   : DINT :=  -1045168000;	(* 0xc1b40080 Command '{CommandName}' cannot be executed because the last load of the Vision Application has failed. [Error: 128] *)
+	viBASE_ERR_DELETE_VA_IN_USE      : DINT :=  -1045167987;	(* 0xc1b4008d Vision Application '{VisionApplicationName}' is used by Vision Component '{VisionComponentName}'. [Error: 141] *)
+	viBASE_ERR_DELETE_FAILURE        : DINT :=  -1045167986;	(* 0xc1b4008e Failure deleting Vision Application '{VisionApplicationName}'. [Error: 142] *)
 	viBASE_ERR_CMD_INV_HMI_OPEN      : DINT :=  -1045167984;	(* 0xc1b40090 Command '{CommandName}' cannot be executed because the mapp Vision HMI is connected to the camera. [Error: 144] *)
 	viBASE_INF_APP_LIST_NOT_COMPLETE : DINT :=   1102315666;	(* 0x41b40092 The number of listable Vision Applications '{NrEntries}' exceeds the size of the provided String array '{BufferLen}'. [Informational: 146] *)
 	viBASE_ERR_GET_IMG_FAILED        : DINT :=  -1045167981;	(* 0xc1b40093 Failure retrieving the image. [Error: 147] *)
@@ -31,6 +33,11 @@ VAR CONSTANT
 	viBASE_ERR_IMG_TOO_BIG           : DINT :=  -1045167979;	(* 0xc1b40095 The image acquired at NetTime {NetTime} requires at least {BufferLen} bytes of memory, which exceeds the provided data buffer size of {BufferSize} bytes. [Error: 149] *)
 	viBASE_ERR_FEATURE_NOT_SUPPORTED : DINT :=  -1045167977;	(* 0xc1b40097 Vision Application '{VisionApplicationName}' cannot be loaded because the feature '{UnavailableFeature}' is not available for the camera module. [Error: 151] *)
 	viBASE_ERR_APP_NOT_EXIST         : DINT :=  -1045167968;	(* 0xc1b400a0 Vision Application '{VisionApplicationName}' does not exist. [Error: 160] *)
+	viBASE_ERR_APP_ALREADY_EXISTS    : DINT :=  -1045167967;	(* 0xc1b400a1 Saving as '{EnteredVisionApplicationName}' is not possible because an incompatible Vision Application with this name already exists. [Error: 161] *)
+	viBASE_ERR_APP_NAME_INVALID      : DINT :=  -1045167966;	(* 0xc1b400a2 {EnteredVisionApplicationName}' is not a valid name for a Vision Application. [Error: 162] *)
+	viBASE_ERR_APP_ALREADY_EXISTS_W  : DINT :=  -1045167965;	(* 0xc1b400a3 Saving as '{EnteredVisionApplicationName}' is not possible because a Vision Application with this name already exists and the FB ViBaseSaveApplicationAs input 'Overwrite' is not set. [Error: 163] *)
+	viBASE_ERR_COMP_ALREADY_EXISTS   : DINT :=  -1045167964;	(* 0xc1b400a4 Saving as '{EnteredVisionApplicationName}' is not possible because a Vision Component with this name already exists. [Error: 164] *)
+	viBASE_ERR_COMP_SAVE_AS_FAILED   : DINT :=  -1045167963;	(* 0xc1b400a5 Saving the Vision Application as '{EnteredVisionApplicationName}' is not possible because the Vision Application '{AlreadyExistingApplicationName}' already exists. [Error: 165] *)
 	viBASE_ERR_MAPP_AXIS_REF_INCORR  : DINT :=  -1045167947;	(* 0xc1b400b5 mapp Axis is not configured as Trigger Source or no axis reference configured. [Error: 181] *)
 	viBASE_ERR_MAPP_AXIS_REF_INVAL   : DINT :=  -1045167946;	(* 0xc1b400b6 Axis reference '{AxisName}' in Trigger Source configuration was invalid. [Error: 182] *)
 	viBASE_ERR_NO_DFLT_POS_COMPENS   : DINT :=  -1045167945;	(* 0xc1b400b7 The value for DefaultPositionCompensation was not available. [Error: 183] *)
@@ -50,5 +57,7 @@ VAR CONSTANT
 	viBASE_ERR_NEG_DFLT_POS_COMPENS  : DINT :=  -1045167930;	(* 0xc1b400c6 The value for DefaultPositionCompensation is negative. [Error: 198] *)
 	viBASE_ERR_FRCD_ACQ_W_HMI_ACTIVE : DINT :=  -1045167929;	(* 0xc1b400c7 The forced image acquisition is not possible because the mapp Vision HMI is connected to the camera. [Error: 199] *)
 	viBASE_ERR_ACQ_W_HMI_ACTIVE      : DINT :=  -1045167928;	(* 0xc1b400c8 The axis-based image acquisition at position '{AcquisitionPosition}' with calculated timestamp '{NetTime}' is not possible because the mapp Vision HMI is connected to the camera. [Error: 200] *)
+	viBASE_ERR_CMD_INV_ACCESS_BASIS  : DINT :=  -1045167872;	(* 0xc1b40100 Command '{CommandName}' cannot be executed because the FB ViAccessBasis is active on the camera. [Error: 256] *)
+	viBASE_ERR_CAM_NO_VA_LOADED      : DINT :=  -1045167871;	(* 0xc1b40101 Camera has currently no loaded Vision Application. [Error: 257] *)
 END_VAR
 

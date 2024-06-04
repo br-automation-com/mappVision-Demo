@@ -15,17 +15,13 @@
     <Object Type="File">Pixel.binding</Object>
     <Object Type="File">Lights.binding</Object>
     <Object Type="File">Nettime.binding</Object>
-    <Object Type="File">Color.binding</Object>
     <Object Type="File">ImageArchiv.binding</Object>
-    <Object Type="File">Recipe.binding</Object>
     <Object Type="File">Header.eventbinding</Object>
     <Object Type="File">Footer.eventbinding</Object>
     <Object Type="File">Navigation.eventbinding</Object>
     <Object Type="File">MainContent.eventbinding</Object>
     <Object Type="File">Lights.eventbinding</Object>
     <Object Type="File">ImageArchiv.eventbinding</Object>
-    <Object Type="File">Recipe.eventbinding</Object>
     <Object Type="File">Results.eventbinding</Object>
-    <Object Type="File">Color.eventbinding</Object>
   </Objects>
 </Package>

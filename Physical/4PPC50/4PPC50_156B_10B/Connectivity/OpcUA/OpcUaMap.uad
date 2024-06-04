@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
-<OpcUaSource FileVersion="7" ArVersion="C4.90">
+<OpcUaSource FileVersion="9" ArVersion="I4.93">
   <Aliases>
     <ACLAliases>
       <ACL Id="1">
-        <ACE RoleId="1" RoleName="Administrators" Access="0x017F" />
-        <ACE RoleId="2" RoleName="Everyone" Access="0x015F" />
+        <ACE RoleName="Administrators" Access="0x017F" />
+        <ACE RoleName="Everyone" Access="0x015F" />
       </ACL>
       <ACL Id="2">
-        <ACE RoleId="2" RoleName="Everyone" Access="0x01FF" />
-        <ACE RoleId="1" RoleName="Administrators" Access="0x01FF" />
+        <ACE RoleName="Everyone" Access="0x01FF" />
+        <ACE RoleName="Administrators" Access="0x01FF" />
       </ACL>
     </ACLAliases>
     <EURangeViolationAliases />
@@ -28,49 +28,16 @@
       </EURanges>
     </EURangesAliases>
     <EngineeringUnitAliases>
-      <EngineeringUnit Id="1" UnitId="5654832" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels1" Symbol="p" />
       <EngineeringUnit Id="2" UnitId="5654834" NameSpaceUri="http://www.br-automation.com/units" Name="Pixels100" Symbol="px" />
     </EngineeringUnitAliases>
   </Aliases>
   <DefaultView AclId="2">
     <Module Name="&lt;Default&gt;">
       <GlobalVariables Name="Global Variables">
-        <Variable Name="Recipe_01" AutomaticEnable="True">
-          <Variable Name="VIS" EnableArrayElements="True" />
-        </Variable>
-        <Variable Name="gVisionImage" AutomaticEnable="True" />
-        <Variable Name="gVisionLight" EnableArrayElements="True" />
-        <Variable Name="gVisionNettime" AutomaticEnable="True" />
-        <Variable Name="gVisionSensor" EnableArrayElements="True" />
-        <Variable Name="gVisionColor" AutomaticEnable="True">
-          <Variable Name="CMD" AutomaticEnable="True" />
-          <Variable Name="CFG" AutomaticEnable="True">
-            <Variable Name="FlashColor1" />
-            <Variable Name="FlashColor2" />
-            <Variable Name="FlashColor3" />
-            <Variable Name="FlashColor4" />
-            <Variable Name="ProductName" EnableArrayElements="True" />
-            <Variable Name="GrayValue1" EnableArrayElements="True" />
-            <Variable Name="GrayValue2" EnableArrayElements="True" />
-            <Variable Name="GrayValue3" EnableArrayElements="True" />
-            <Variable Name="GrayValue4" EnableArrayElements="True" />
-            <Variable Name="TeachingIndex" />
-            <Variable Name="MaxError" />
-            <Variable Name="MinDifference" />
-          </Variable>
-          <Variable Name="DAT" AutomaticEnable="True">
-            <Variable Name="GrayValue1" />
-            <Variable Name="GrayValue2" />
-            <Variable Name="GrayValue3" />
-            <Variable Name="GrayValue4" />
-            <Variable Name="TotalError" EnableArrayElements="True" />
-            <Variable Name="LowError" />
-            <Variable Name="LowDistance" />
-            <Variable Name="LowIndex" />
-            <Variable Name="LowName" />
-            <Variable Name="Status" />
-          </Variable>
-        </Variable>
+        <Variable Name="gVisionImage" RecursiveEnable="1" />
+        <Variable Name="gVisionLight" RecursiveEnable="1" />
+        <Variable Name="gVisionNettime" RecursiveEnable="1" />
+        <Variable Name="gVisionSensor" RecursiveEnable="1" />
         <Variable Name="gSelectedLight" />
         <Variable Name="gSelectedSensor" />
       </GlobalVariables>
@@ -81,25 +48,16 @@
         <Variable Name="visDownloadFileUrl" />
         <Variable Name="visEnableButtons_1" />
         <Variable Name="visEnableButtons_2" />
-        <Variable Name="visCrossHair" AutomaticEnable="True">
-          <Variable Name="SvgTransformation" EnableArrayElements="True" />
-          <Variable Name="SvgContent" EnableArrayElements="True" />
-          <Variable Name="SvgVisible" EnableArrayElements="True" />
+        <Variable Name="visCrossHair" RecursiveEnable="1">
+          <Variable Name="SvgTransformation" RecursiveEnable="1" />
+          <Variable Name="SvgContent" RecursiveEnable="1" />
+          <Variable Name="SvgVisible" RecursiveEnable="1" />
         </Variable>
-        <Variable Name="visImageList" EnableArrayElements="True" />
+        <Variable Name="visImageList" RecursiveEnable="1" />
         <Variable Name="visWebViewerPath" />
         <Variable Name="visWebViewerQuery" />
         <Variable Name="visImageRotation" />
         <Variable Name="visTextAlignment" />
-      </Task>
-      <Task Name="Recipe_01">
-        <Variable Name="RECIPE" AutomaticEnable="True">
-          <Variable Name="VIS" EnableArrayElements="True" />
-          <Variable Name="DAT">
-            <Variable Name="RecipeNames" EnableArrayElements="True" />
-            <Variable Name="RecipeIDs" EnableArrayElements="True" />
-          </Variable>
-        </Variable>
       </Task>
       <Task Name="Vi_nettime">
         <Variable Name="PowerlinkCycle_us" />
@@ -117,12 +75,8 @@
         <Variable Name="cmdAxisMoveAbs" />
         <Variable Name="cmdAxisPower" />
         <Variable Name="cmdAxisRun" />
-        <Variable Name="MpAxisBasic_0" AutomaticEnable="True" />
+        <Variable Name="MpAxisBasic_0" RecursiveEnable="1" />
         <Variable Name="cmdAxisErrorReset" />
-      </Task>
-      <Task Name="Vi_color">
-        <Variable Name="visSelectedProduct" />
-        <Variable Name="visTableNo" />
       </Task>
       <Task Name="Vi_visu">
         <Variable Name="visCameraStatus" />
@@ -130,54 +84,54 @@
         <Variable Name="visEnableRepetitive" />
         <Variable Name="visEnableSetup" />
         <Variable Name="visImageTrigger" />
-        <Variable Name="VisionSensor" AutomaticEnable="True" />
+        <Variable Name="VisionSensor" RecursiveEnable="1" />
         <Variable Name="visRepetitiveMode" />
         <Variable Name="visSelectedCodeTypeDetected" />
-        <Variable Name="visSelectedFlashSegment" EnableArrayElements="True" />
+        <Variable Name="visSelectedFlashSegment" RecursiveEnable="1" />
         <Variable Name="visTableNo" />
         <Variable Name="visVaListRefresh" />
         <Variable Name="visVisionApplicationList" />
-        <Variable Name="Blob" AutomaticEnable="True">
-          <Variable Name="ModelNumber" EnableArrayElements="True" />
-          <Variable Name="Clipped" EnableArrayElements="True" />
-          <Variable Name="Area" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="MeanGrayValue" EnableArrayElements="True" />
-          <Variable Name="Length" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="Width" EnableArrayElements="True" EngineeringUnitId="2" />
+        <Variable Name="Blob" RecursiveEnable="1">
+          <Variable Name="ModelNumber" RecursiveEnable="1" />
+          <Variable Name="Clipped" RecursiveEnable="1" />
+          <Variable Name="Area" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="MeanGrayValue" RecursiveEnable="1" />
+          <Variable Name="Length" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="Width" RecursiveEnable="1" EngineeringUnitId="2" />
         </Variable>
-        <Variable Name="CodeReader" AutomaticEnable="True">
-          <Variable Name="BarcodeText" EnableArrayElements="True" />
-          <Variable Name="BarcodeType" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="Grading" EnableArrayElements="True" />
-          <Variable Name="EnhancedGrading" EnableArrayElements="True" />
+        <Variable Name="CodeReader" RecursiveEnable="1">
+          <Variable Name="BarcodeText" RecursiveEnable="1" />
+          <Variable Name="BarcodeType" RecursiveEnable="1" />
+          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="Grading" RecursiveEnable="1" />
+          <Variable Name="EnhancedGrading" RecursiveEnable="1" />
         </Variable>
-        <Variable Name="Match" AutomaticEnable="True">
-          <Variable Name="ModelNumber" EnableArrayElements="True" />
-          <Variable Name="Score" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="Scale" EnableArrayElements="True" />
-          <Variable Name="RotCenterX" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="RotCenterY" EnableArrayElements="True" EngineeringUnitId="2" />
+        <Variable Name="Match" RecursiveEnable="1">
+          <Variable Name="ModelNumber" RecursiveEnable="1" />
+          <Variable Name="Score" RecursiveEnable="1" />
+          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="Scale" RecursiveEnable="1" />
+          <Variable Name="RotCenterX" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="RotCenterY" RecursiveEnable="1" EngineeringUnitId="2" />
         </Variable>
-        <Variable Name="MT" AutomaticEnable="True">
-          <Variable Name="Result" EnableArrayElements="True" />
+        <Variable Name="MT" RecursiveEnable="1">
+          <Variable Name="Result" RecursiveEnable="1" />
         </Variable>
-        <Variable Name="OCR" AutomaticEnable="True">
-          <Variable Name="Text" EnableArrayElements="True" />
-          <Variable Name="Grading" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="Orientation" EnableArrayElements="True" EngineeringUnitId="2" />
+        <Variable Name="OCR" RecursiveEnable="1">
+          <Variable Name="Text" RecursiveEnable="1" />
+          <Variable Name="Grading" RecursiveEnable="1" />
+          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="Orientation" RecursiveEnable="1" EngineeringUnitId="2" />
         </Variable>
-        <Variable Name="VisionLight" AutomaticEnable="True" />
+        <Variable Name="VisionLight" RecursiveEnable="1" />
         <Variable Name="visLightsEnableCommand" />
         <Variable Name="visLightsFlashColor" />
         <Variable Name="visLightsReset" />
@@ -186,18 +140,18 @@
         <Variable Name="visSensorFlashColor" />
         <Variable Name="visEnableLightBarValues" />
         <Variable Name="visAutoArchiv" />
-        <Variable Name="Pixel" AutomaticEnable="True">
-          <Variable Name="ModelNumber" EnableArrayElements="True" />
-          <Variable Name="NumPixels" EnableArrayElements="True" />
-          <Variable Name="MinGray" EnableArrayElements="True" />
-          <Variable Name="MaxGray" EnableArrayElements="True" />
-          <Variable Name="MeanGray" EnableArrayElements="True" />
-          <Variable Name="DeviationGray" EnableArrayElements="True" />
-          <Variable Name="MedianGray" EnableArrayElements="True" />
-          <Variable Name="ModelArea" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="NumConnectedComponents" EnableArrayElements="True" />
-          <Variable Name="PositionX" EnableArrayElements="True" EngineeringUnitId="2" />
-          <Variable Name="PositionY" EnableArrayElements="True" EngineeringUnitId="2" />
+        <Variable Name="Pixel" RecursiveEnable="1">
+          <Variable Name="ModelNumber" RecursiveEnable="1" />
+          <Variable Name="NumPixels" RecursiveEnable="1" />
+          <Variable Name="MinGray" RecursiveEnable="1" />
+          <Variable Name="MaxGray" RecursiveEnable="1" />
+          <Variable Name="MeanGray" RecursiveEnable="1" />
+          <Variable Name="DeviationGray" RecursiveEnable="1" />
+          <Variable Name="MedianGray" RecursiveEnable="1" />
+          <Variable Name="ModelArea" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="NumConnectedComponents" RecursiveEnable="1" />
+          <Variable Name="PositionX" RecursiveEnable="1" EngineeringUnitId="2" />
+          <Variable Name="PositionY" RecursiveEnable="1" EngineeringUnitId="2" />
         </Variable>
         <Variable Name="visSelectedCodeType" />
         <Variable Name="visSelectedParameterMode" />

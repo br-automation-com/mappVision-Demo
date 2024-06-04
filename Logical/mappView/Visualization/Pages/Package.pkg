@@ -7,8 +7,6 @@
     <Object Type="Package">ResultPage</Object>
     <Object Type="Package">Lights</Object>
     <Object Type="Package">Nettime</Object>
-    <Object Type="Package">Color</Object>
-    <Object Type="Package">RecipePage</Object>
     <Object Type="Package">ImageArchiv</Object>
   </Objects>
 </Package>

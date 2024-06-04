@@ -4,8 +4,6 @@
   <Objects>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Blob.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\CodeReader.binding</Object>
-    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Color.binding</Object>
-    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Color.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Config.mappviewcfg</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Footer.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Footer.eventbinding</Object>
@@ -23,8 +21,6 @@
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Nettime.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\OCR.binding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Pixel.binding</Object>
-    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.binding</Object>
-    <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Recipe.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Results.eventbinding</Object>
     <Object Type="File" Reference="true">\Physical\4PPC50\4PPC50_156B_10B\mappView\Visualizat.vis</Object>
   </Objects>

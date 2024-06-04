@@ -8,7 +8,6 @@
     <Object Type="Package">Vision</Object>
     <Object Type="Package">Documentation</Object>
     <Object Type="Package">mappView</Object>
-    <Object Type="Package">mappRecipe</Object>
     <Object Type="File">Project.language</Object>
   </Objects>
 </Package>
