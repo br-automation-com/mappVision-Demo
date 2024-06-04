@@ -216,19 +216,15 @@ TYPE
 		DeleteDir : BOOL;
 		DeleteImage : BOOL;
 		Refresh : BOOL;
-		DownloadImage : BOOL;
-		SaveImageOnPLC : BOOL;
+		SaveImage : BOOL;
 		ResetError : BOOL;
 		RefreshCrosshair : BOOL;
 	END_STRUCT;
 	typVisionImageConfig : 	STRUCT 
 		FileDevice : STRING[80];
 		DirName : STRING[80];
-		PlkIPWithoutNode : STRING[80];
-		EthDevice : STRING[80];
-		EthIP : STRING[80];
-		ConvertCycles : UDINT;
-		Format : USINT; (*0: jpg. 1: bmp*)
+		ComponentLink : ViComponentType;
+		Format : ViBaseImageTypeEnum; (*0: bmp. 1: jpg*)
 		QualityJPG : USINT;
 		UploadBmpJpg : BOOL;
 		UploadSVG : BOOL;
@@ -237,8 +233,15 @@ TYPE
 	END_STRUCT;
 	typVisionImageData : 	STRUCT 
 		Images : ARRAY[0..19]OF STRING[80];
-		Status : UINT;
+		Crosshair : ARRAY[1..MAX_NUM_RESULTS]OF typVisionImageDataCrosshair;
+		Status : DINT;
 		VisionDisabled : BOOL;
+	END_STRUCT;
+	typVisionImageDataCrosshair : 	STRUCT 
+		CrosshairX : REAL;
+		CrosshairY : REAL;
+		CrosshairRotate : REAL;
+		Text : STRING[1000];
 	END_STRUCT;
 END_TYPE
 

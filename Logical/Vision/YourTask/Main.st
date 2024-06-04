@@ -6,17 +6,15 @@
 // Initialization
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _INIT
-	cmdLoadRecipeAfterBoot	:= TRUE;
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
-		// -----------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------
 	// Vision sensor configuration
 	// -----------------------------------------------------------------------------------------------------------
-	gVisionImage.CFG.EthDevice				:= ONLINE_INTERFACE;	// Ethernet interface for the PLC, this is the IF where you go online
 	// Configuration for blob
 	gVisionSensor[1].CFG.VisionFunction		:= enumBlob;			// Used to run specific code for this vision function
 	gVisionSensor[1].CFG.PowerlinkNode		:= 1;					// Powerlink node number

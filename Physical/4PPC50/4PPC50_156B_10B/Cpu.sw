@@ -13,13 +13,16 @@
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
     <Task Name="Vi_main" Source="Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vi_visu" Source="Vision.Vi_visu.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_image" Source="Vision.Vi_image.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vi_visu" Source="Vision.Vi_visu.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="YourTask" Source="Vision.YourTask.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <DataObjects>
     <DataObject Name="McAcpSys" Source="" Memory="UserROM" Language="Binary" />
   </DataObjects>
+  <NcDataObjects>
+    <NcDataObject Name="McDriveLog" Source="" Memory="UserROM" Language="Binary" />
+  </NcDataObjects>
   <Binaries>
     <BinaryObject Name="udbdef" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="mvLoader" Source="" Memory="UserROM" Language="Binary" />
@@ -32,6 +35,7 @@
     <BinaryObject Name="McAcpDrv" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="arflatprv" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="arcoal" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="visionUnit" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viAppOCR" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Settings" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="iomap" Source="" Memory="UserROM" Language="Binary" />
@@ -52,13 +56,13 @@
     <BinaryObject Name="viAppMT" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="TC" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="ashwd" Source="" Memory="SystemROM" Language="Binary" />
-    <BinaryObject Name="Config" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="User" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Config_1" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viAppBlob1" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viAppBlob2" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viAppPixel" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="viCompPxl" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Config" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vccbtn" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcpdvnc" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="arialbd" Source="" Memory="UserROM" Language="Binary" />
@@ -118,9 +122,9 @@
     <LibraryObject Name="ViBase" Source="Libraries.ViBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="MpCom" Source="Libraries.MpCom.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="AsETH" Source="Libraries.AsETH.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="DataObj" Source="Libraries.DataObj.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="vcresman" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="ashw" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="DataObj" Source="Libraries.DataObj.lby" Memory="UserROM" Language="binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

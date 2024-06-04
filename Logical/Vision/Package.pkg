@@ -7,8 +7,8 @@
     <Object Type="File">VisionTypes.typ</Object>
     <Object Type="Program" Language="IEC">Vi_main</Object>
     <Object Type="Program" Language="IEC">Vi_visu</Object>
-    <Object Type="Program" Language="IEC">Vi_nettime</Object>
     <Object Type="Program" Language="IEC">Vi_image</Object>
+    <Object Type="Program" Language="IEC">Vi_nettime</Object>
     <Object Type="Program" Language="IEC">Axis</Object>
     <Object Type="Program" Language="IEC">YourTask</Object>
   </Objects>

@@ -1,39 +1,34 @@
 VAR
 	Step : VIStep_Enum;
-	FileNameComplete : STRING[80];
-END_VAR
-VAR RETAIN
-	RemCfgImage : typVisionImageConfig;
-END_VAR
-VAR
-	tmpStr : STRING[80];
+	tmpStr1 : STRING[80];
+	idx : UINT;
+	DiagStartTime : TIME;
+	DiagTime : DiagTime_Type;
 END_VAR
 (**)
-(*Proxy variables*)
-VAR
-	nodeSTR : STRING[80];
-	ipSTR : STRING[80];
-	TcpForward_0 : TcpForward;
-END_VAR
-(**)
-VAR
-	DirCreate_0 : DirCreate;
-END_VAR
 (*Filehandling*)
 VAR
+	DirCreate_0 : DirCreate;
 	DirDeleteEx_0 : DirDeleteEx;
+	FileNamePict : STRING[80];
+	FileNameSvg : STRING[80];
+	FOpen : FileOpen;
+	FRead : FileReadEx;
+	FileCreate_0 : FileCreate;
 	FileDelete_0 : FileDelete;
-END_VAR
-(**)
-(*Internal FBKs*)
-VAR
-	CfgGetIPAddr_0 : CfgGetIPAddr;
-	ViDownloadImage_0 : ViDownloadImage;
-	ViSaveImgOnPlc_0 : ViSaveImgOnPlc;
-	ViRefreshImageList_0 : ViRefreshImageList;
-	ViDrawCrosshair_0 : ViDrawCrosshair;
-	ViCreateWebDirFile_0 : ViCreateWebDirFile;
-	ViShowImgOnVC4_0 : ViShowImgOnVC4;
+	FileWrite_0 : FileWrite;
+	FileClose_0 : FileClose;
+	DirRead_0 : DirRead;
+	dir_data : fiDIR_READ_DATA;
+	dir_entry : UINT;
+	file_newest : STRING[80];
+	file_oldest : STRING[80];
+	date_newest : DATE_AND_TIME;
+	date_oldest : DATE_AND_TIME;
+	cmdDeleteOldest : BOOL;
+	DTGetTime_0 : DTGetTime;
+	DTStructure_0 : DTStructure;
+	TON_VisPause : TON;
 END_VAR
 (**)
 (*mappView connected variables*)
@@ -44,23 +39,42 @@ VAR
 	visEnableButtons_1 : BOOL;
 	visEnableButtons_2 : BOOL;
 	visDownloadFileUrl : STRING[200];
-	visCrossHair : typCrossHair; (*Data structure to draw the crosshairs on the main page*)
-	visImageList : ARRAY[0..19] OF STRING[80];
-	visWebViewerPath : STRING[80];
-	visWebViewerQuery : STRING[80];
-	visVC4RefreshImg : BOOL;
-	visImageRotation : USINT;
-	visTextAlignment : BOOL;
+END_VAR
+(**)
+(*Create memory*)
+VAR
+	AsMemPartCreate_0 : AsMemPartCreate;
+	AsMemPartAllocClear_0 : AsMemPartAllocClear;
+	MemUpload : UDINT;
+	MemUploadSize : UDINT;
+	MemSvg : UDINT;
+	MemSvgSize : UDINT;
+	MemSvgHeaderSize : UDINT;
+	MemSvgCrossh : UDINT;
+	MemSvgCrosshSize : UDINT;
+END_VAR
+(**)
+VAR
+	ViBaseGetImage_0 : ViBaseGetImage;
+END_VAR
+(**)
+(*Bas64*)
+VAR
+	b64AdrInBuffer : UDINT;
+	b64AdrOutBuffer : UDINT;
+	b64neededOutput : UDINT;
+	b64key : ARRAY[0..63] OF USINT;
+	b64actposIN : UDINT;
+	b64actposOUT : UDINT;
+	b64in : REFERENCE TO ARRAY[0..2] OF USINT;
+	b64out : REFERENCE TO ARRAY[0..3] OF USINT;
+	b64blockLen : USINT;
+	SvgTexts : SvgTexts_Type;
+	i : UDINT;
 END_VAR
 (**)
 (*Constants*)
-VAR CONSTANT
-	ERR_BUFF_SVG : UINT := 50200; (*Buffer for creating SVG file is too small*)
-	ERR_BUFF_BMP : UINT := 50201; (*Buffer for creating BMP file is too small*)
-	ERR_DATA_BMP : UINT := 50202; (*BMP data is incorrect*)
-	ERR_NO_IMAGE : UINT := 50210; (*The camera does not have image to transfer*)
-	ERR_TIMEOUT_DOWNLOAD : UINT := 50211; (*Download response timed out*)
-	ERR_MEM_DOWNLOAD : UINT := 50212; (*Size of download file exceeds maximum*)
-	ERR_CFG_PLK : UINT := 50300; (*Powerlink node number is 0*)
-	ERR_CFG_IMG : UINT := 50301; (*No image type for selected (JPG or SVG)*)
+VAR
+	ERR_NO_IMAGE : UINT := 50000;
+	ERR_BUFF_TOO_SMALL : UINT := 50001;
 END_VAR

@@ -48,26 +48,13 @@
         <Variable Name="visDownloadFileUrl" />
         <Variable Name="visEnableButtons_1" />
         <Variable Name="visEnableButtons_2" />
-        <Variable Name="visCrossHair" RecursiveEnable="1">
-          <Variable Name="SvgTransformation" RecursiveEnable="1" />
-          <Variable Name="SvgContent" RecursiveEnable="1" />
-          <Variable Name="SvgVisible" RecursiveEnable="1" />
-        </Variable>
-        <Variable Name="visImageList" RecursiveEnable="1" />
-        <Variable Name="visWebViewerPath" />
-        <Variable Name="visWebViewerQuery" />
-        <Variable Name="visImageRotation" />
-        <Variable Name="visTextAlignment" />
       </Task>
       <Task Name="Vi_nettime">
         <Variable Name="PowerlinkCycle_us" />
         <Variable Name="TriggerPosDelta" />
         <Variable Name="TriggerTimeDelta_us" />
       </Task>
-      <Task Name="YourTask">
-        <Variable Name="visSaveRecipe" />
-        <Variable Name="visNewRecipe" />
-      </Task>
+      <Task Name="YourTask" />
       <Task Name="Axis">
         <Variable Name="AxisAcceleration" />
         <Variable Name="AxisVelocity" />
