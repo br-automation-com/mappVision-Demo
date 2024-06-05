@@ -199,9 +199,9 @@
     <Parameter ID="FileDeviceName1" Value="VisionFileDevice" />
     <Parameter ID="FileDevicePath1" Value="F:\" />
     <Group ID="FtpUser1" />
-    <Parameter ID="FtpUsername1" Value="bundr" />
-    <Parameter ID="FtpUserPassword1" Value="nMrFtJX1iKQAFT02mGT80Wb1a11GH29G52ATfKQ9HoA=" />
-    <Parameter ID="FtpUserSalt1" Value="/yM7MnyJ" />
+    <Parameter ID="FtpUsername1" Value="admin" />
+    <Parameter ID="FtpUserPassword1" Value="zYnIBP9kc2SCEe7NTMMz+0dkpE9XhXunbWoCvwMO7Vw=" Description="admin" />
+    <Parameter ID="FtpUserSalt1" Value="syFgzv/x" />
     <Parameter ID="FTPAccessRight1" Value="0" />
     <Parameter ID="FTPMSpath1" Value="" />
     <Parameter ID="ActivateOpcUa" Value="1" />

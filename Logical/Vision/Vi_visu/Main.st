@@ -166,10 +166,12 @@ PROGRAM _CYCLIC
 	// Auto save image
 	// -----------------------------------------------------------------------------------------------------------
 	IF EDGENEG(VisionSensor.CMD.ImageTrigger) THEN
-		IF visAutoArchiv AND NOT DisableAutoArchiv THEN
-			gVisionImage.CFG.ComponentLink := gVisionSensor[gSelectedSensor].CFG.ComponentLink;
-			gVisionImage.CMD.SaveImage := TRUE;
-		END_IF
+		gVisionImage.CFG.ComponentLink := gVisionSensor[gSelectedSensor].CFG.ComponentLink;
+		gVisionImage.CMD.SaveImage := TRUE;
+//		IF visAutoArchiv AND NOT DisableAutoArchiv THEN
+//			gVisionImage.CFG.ComponentLink := gVisionSensor[gSelectedSensor].CFG.ComponentLink;
+//			gVisionImage.CMD.SaveImage := TRUE;
+//		END_IF
 		IF NOT visRepetitiveMode THEN
 			DisableAutoArchiv := FALSE;
 		END_IF

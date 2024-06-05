@@ -2,8 +2,6 @@ VAR
 	Step : VIStep_Enum;
 	tmpStr1 : STRING[80];
 	idx : UINT;
-	DiagStartTime : TIME;
-	DiagTime : DiagTime_Type;
 END_VAR
 (**)
 (*Filehandling*)

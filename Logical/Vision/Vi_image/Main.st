@@ -5,10 +5,6 @@
 PROGRAM _INIT
 	gVisionImage.CFG.FileDevice 	:= 'VisionFileDevice';		// File device name where the images are stored
 	gVisionImage.CFG.DirName		:= 'Vision';				// Directory used for images
-	gVisionImage.CFG.Format			:= 0;						// Image type, use 0 for JPEG, 1 for bitmap
-	gVisionImage.CFG.QualityJPG		:= 80;						// Quality for JPG images, larger numbers produce better images
-	gVisionImage.CFG.UploadBmpJpg	:= TRUE;
-	gVisionImage.CFG.UploadSVG		:= TRUE;
 
 	gVisionImage.CMD.CreateDir	:= TRUE;
 	visSelectedImage			:= '';
@@ -17,13 +13,14 @@ PROGRAM _INIT
 	
 	// Create memory for uploading and transforming image
 	// Size: a 5MP picture in bmp format has less than 6.000.000 Bytes. A SVG with bas64 conversion maximum the 4/3 size.
-	MemUploadSize		:= 6000000;		// Upload of the picture data with httpClient
-	MemSvgHeaderSize	:= 2000; 		// Fileheader, ...
-	MemSvgCrosshSize	:= 18000; 		// Crosshairs, Texts, ...
+	MemUploadSize		:= 6000000;
+	MemSvgHeaderSize	:= 2000;
+	MemSvgCrosshSize	:= 18000;
 	MemSvgSize			:= MemUploadSize * 4 / 3 + MemSvgHeaderSize + MemSvgCrosshSize;
 	AsMemPartCreate_0.enable	:= TRUE;
 	AsMemPartCreate_0.len		:= MemUploadSize + MemSvgSize + MemSvgCrosshSize + 1000; // 1000 Bytes for AsMemPart stuff/header
 	AsMemPartCreate_0();
+	
 	IF AsMemPartCreate_0.status = 0 THEN
 		AsMemPartAllocClear_0.enable	:= TRUE;
 		AsMemPartAllocClear_0.ident		:= AsMemPartCreate_0.ident;
@@ -63,16 +60,19 @@ PROGRAM _CYCLIC
 			IF gVisionImage.CMD.CreateDir THEN 
 				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_CREATE_DIR;
+				
 			// -----------------------------------------------------------------------------------------------------------
 			// Delete image directory
 			ELSIF gVisionImage.CMD.DeleteDir THEN
 				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_DELETE_DIR;
+				
 			// -----------------------------------------------------------------------------------------------------------
 			// Refresh image data from file device
 			ELSIF gVisionImage.CMD.Refresh THEN 
 				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_READ_DIR1;
+				
 			// -----------------------------------------------------------------------------------------------------------
 			// Delete image data from file device
 			ELSIF gVisionImage.CMD.DeleteImage THEN 
@@ -85,72 +85,62 @@ PROGRAM _CYCLIC
 				ELSE 
 					gVisionImage.CMD.DeleteImage := FALSE;
 				END_IF
+				
 			// -----------------------------------------------------------------------------------------------------------
 			// Load image from camera
 			ELSIF gVisionImage.CMD.SaveImage THEN
-				// Do nothing, because of no picture is needed
-				IF NOT gVisionImage.CFG.UploadBmpJpg AND NOT gVisionImage.CFG.UploadSVG THEN 
-					gVisionImage.CMD.SaveImage := FALSE;
-				ELSE
-					// Generate new file name
-					DTGetTime_0.enable := 1;
-					DTGetTime_0();
-					DT_TO_DTStructure(DTGetTime_0.DT1, ADR(DTStructure_0));
-					FileNamePict := gVisionImage.CFG.DirName;
-					brsstrcat(ADR(FileNamePict), ADR('/'));
-					tmpStr1 := UINT_TO_STRING(DTStructure_0.year);
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.month);
-					IF(DTStructure_0.month < 10) THEN
-						brsstrcat(ADR(FileNamePict), ADR('0'));
-					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.day);
-					IF(DTStructure_0.day < 10) THEN
-						brsstrcat(ADR(FileNamePict), ADR('0'));
-					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.hour);
-					IF(DTStructure_0.hour < 10) THEN
-						brsstrcat(ADR(FileNamePict), ADR('0'));
-					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.minute);
-					IF(DTStructure_0.minute < 10) THEN
-						brsstrcat(ADR(FileNamePict), ADR('0'));
-					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.second);
-					IF(DTStructure_0.second < 10) THEN
-						brsstrcat(ADR(FileNamePict), ADR('0'));
-					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-					brsstrcat(ADR(FileNamePict), ADR('.'));
-					brsstrcpy(ADR(FileNameSvg), ADR(FileNamePict)); // Same filename but differend ending
-					IF gVisionImage.CFG.Format = 0 THEN
-						brsstrcat(ADR(FileNamePict), ADR('jpg'));
-					ELSE
-						brsstrcat(ADR(FileNamePict), ADR('bmp'));
-					END_IF
-					brsstrcat(ADR(FileNameSvg), ADR('svg'));
-					
-					ViBaseGetImage_0.Execute := FALSE;
-					ViBaseGetImage_0();
-
-					// Set default parameters
-					gVisionImage.DAT.Status		:= 65535;
-					Step						:= VISTEP_REQUEST1;
+				// Generate new file name
+				DTGetTime_0.enable := 1;
+				DTGetTime_0();
+				DT_TO_DTStructure(DTGetTime_0.DT1, ADR(DTStructure_0));
+				FileNamePict := gVisionImage.CFG.DirName;
+				brsstrcat(ADR(FileNamePict), ADR('/'));
+				tmpStr1 := UINT_TO_STRING(DTStructure_0.year);
+				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+				brsstrcat(ADR(FileNamePict), ADR('_'));
+				tmpStr1 := USINT_TO_STRING(DTStructure_0.month);
+				IF(DTStructure_0.month < 10) THEN
+					brsstrcat(ADR(FileNamePict), ADR('0'));
 				END_IF
+				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+				brsstrcat(ADR(FileNamePict), ADR('_'));
+				tmpStr1 := USINT_TO_STRING(DTStructure_0.day);
+				IF(DTStructure_0.day < 10) THEN
+					brsstrcat(ADR(FileNamePict), ADR('0'));
+				END_IF
+				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+				brsstrcat(ADR(FileNamePict), ADR('_'));
+				tmpStr1 := USINT_TO_STRING(DTStructure_0.hour);
+				IF(DTStructure_0.hour < 10) THEN
+					brsstrcat(ADR(FileNamePict), ADR('0'));
+				END_IF
+				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+				brsstrcat(ADR(FileNamePict), ADR('_'));
+				tmpStr1 := USINT_TO_STRING(DTStructure_0.minute);
+				IF(DTStructure_0.minute < 10) THEN
+					brsstrcat(ADR(FileNamePict), ADR('0'));
+				END_IF
+				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+				brsstrcat(ADR(FileNamePict), ADR('_'));
+				tmpStr1 := USINT_TO_STRING(DTStructure_0.second);
+				IF(DTStructure_0.second < 10) THEN
+					brsstrcat(ADR(FileNamePict), ADR('0'));
+				END_IF
+				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+				brsstrcat(ADR(FileNameSvg), ADR(FileNamePict));
+				brsstrcat(ADR(FileNameSvg), ADR('.svg'));
+				brsstrcat(ADR(FileNamePict), ADR('.bmp'));
+				
+				ViBaseGetImage_0.Execute := FALSE;
+				ViBaseGetImage_0();
+
+				gVisionImage.DAT.Status		:= 65535;
+				Step						:= VISTEP_REQUEST1;
+				
 			// -----------------------------------------------------------------------------------------------------------
 			// Reset error
 			ELSIF gVisionImage.CMD.ResetError THEN
 				gVisionImage.CMD.ResetError := FALSE;
-				// no error, so do nothing else
 			END_IF
 					
 			// -----------------------------------------------------------------------------------------------------------
@@ -198,6 +188,7 @@ PROGRAM _CYCLIC
 				gVisionImage.DAT.Status := DirCreate_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Delete directory on User-Partition
 		// -----------------------------------------------------------------------------------------------------------
@@ -212,6 +203,7 @@ PROGRAM _CYCLIC
 				gVisionImage.DAT.Status := DirDeleteEx_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Read all existing image names from directory
 		// -----------------------------------------------------------------------------------------------------------
@@ -228,10 +220,11 @@ PROGRAM _CYCLIC
 			date_newest			:= UDINT_TO_DT(0);
 			date_oldest			:= DT#2100-06-06-12:00:00;
 			cmdDeleteOldest		:= FALSE;
-			Step := VISTEP_READ_DIR2;		
-			// -----------------------------------------------------------------------------------------------------------
-			// Proceed with next entry
-			// -----------------------------------------------------------------------------------------------------------
+			Step := VISTEP_READ_DIR2;
+			
+		// -----------------------------------------------------------------------------------------------------------
+		// Proceed with next entry
+		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_READ_DIR2: 
 			DirRead_0.enable 	:= 1;
 			DirRead_0.pDevice 	:= ADR(gVisionImage.CFG.FileDevice);
@@ -282,6 +275,7 @@ PROGRAM _CYCLIC
 				gVisionImage.DAT.Status := DirRead_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Wait for vis before setting last file
 		// -----------------------------------------------------------------------------------------------------------
@@ -295,9 +289,10 @@ PROGRAM _CYCLIC
 				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			END_IF
-			// -----------------------------------------------------------------------------------------------------------
-			// Delete Image
-			// -----------------------------------------------------------------------------------------------------------
+			
+		// -----------------------------------------------------------------------------------------------------------
+		// Delete Image
+		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_DELETE_IMAGE:
 			cmdDeleteOldest			:= FALSE;
 			FileDelete_0.enable 	:= 1;
@@ -310,15 +305,15 @@ PROGRAM _CYCLIC
 				gVisionImage.DAT.Status := FileDelete_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
-		// Start new request, reset timeout timer
+		// Get new image
 		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_REQUEST1:
-
 			ViBaseGetImage_0.MpLink := ADR(gVisionImage.CFG.ComponentLink);
 			ViBaseGetImage_0.Execute := TRUE;
-			ViBaseGetImage_0.Type := gVisionImage.CFG.Format;
-			ViBaseGetImage_0.QualityLevel := gVisionImage.CFG.QualityJPG;
+			ViBaseGetImage_0.Type :=  viBASE_IMAGE_TYPE_BMP;
+			//ViBaseGetImage_0.QualityLevel := ;
 			ViBaseGetImage_0.Timeout := T#10s;
 			ViBaseGetImage_0.Buffer := MemUpload;
 			ViBaseGetImage_0.BufferSize := MemUploadSize;
@@ -326,18 +321,15 @@ PROGRAM _CYCLIC
 			
 			IF ViBaseGetImage_0.Busy = 0 THEN
 				IF ViBaseGetImage_0.StatusID = 0 THEN
-					IF gVisionImage.CFG.UploadBmpJpg THEN
-						Step := VISTEP_SAVE1;
-					ELSE
-						Step := VISTEP_SVG_PREPARE;
-					END_IF
+					Step := VISTEP_SAVE1;
 				ELSIF ViBaseGetImage_0.StatusID <> ERR_FUB_BUSY THEN
 					gVisionImage.DAT.Status := ViBaseGetImage_0.StatusID;
 					Step := VISTEP_ERR;
 				END_IF
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
-		// Save bmp/jpg file
+		// Save image
 		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_SAVE1:
 			FileCreate_0.enable		:= TRUE;
@@ -371,22 +363,18 @@ PROGRAM _CYCLIC
 			FileClose_0.enable		:= TRUE;
 			FileClose_0.ident		:= FileCreate_0.ident;
 			FileClose_0();
+
 			IF FileClose_0.status = 0 THEN
-				DiagTime.EndSaveBMPJPG := clock_ms() - DiagStartTime;
-				IF gVisionImage.CFG.UploadSVG THEN
-					Step := VISTEP_SVG_PREPARE;
-				ELSE
-					Step := VISTEP_READ_DIR1;
-				END_IF
+				Step := VISTEP_SVG_PREPARE;
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileClose_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Create SVG file with image and crosshair/texts
 		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_SVG_PREPARE:
-			DiagTime.BeginSVG := clock_ms() - DiagStartTime;
 			b64neededOutput	:= (ViBaseGetImage_0.BufferLen/3)*4 + BOOL_TO_UDINT(UDINT_TO_BOOL(ViBaseGetImage_0.BufferLen MOD 3))*4;
 			IF b64neededOutput < MemSvgSize - MemSvgHeaderSize - MemSvgCrosshSize THEN
 				brsmemset(MemSvg, 0, MemSvgSize); // clear complete memory
@@ -394,32 +382,30 @@ PROGRAM _CYCLIC
 				brsstrcpy(MemSvg, ADR(SvgTexts.Header1));
 				brsstrcat(MemSvg, ADR(FileNameSvg));
 				brsstrcat(MemSvg, ADR(SvgTexts.Header2));
-				IF gVisionImage.CFG.Format = viBASE_IMAGE_TYPE_JPG THEN
-					brsstrcat(MemSvg, ADR('jpg'));
-				ELSE
-					brsstrcat(MemSvg, ADR('bmp'));
-				END_IF
+				brsstrcat(MemSvg, ADR('bmp'));
 				brsstrcat(MemSvg, ADR(SvgTexts.Header3));
 				Step := VISTEP_SVG_BAS64_1;
 			ELSE
 				gVisionImage.DAT.Status := ERR_BUFF_TOO_SMALL;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Code picture data with Base64 to embedd the picture into a svg file
 		VISTEP_SVG_BAS64_1: 
-			b64AdrInBuffer	:= MemUpload; // Original bmp or jpg picture
-			b64AdrOutBuffer	:= MemSvg + brsstrlen(MemSvg); // Write to the end of the actual svg data
+			b64AdrInBuffer	:= MemUpload; 						// Original bmp or jpg picture
+			b64AdrOutBuffer	:= MemSvg + brsstrlen(MemSvg); 		// Write to the end of the actual svg data
 			b64actposIN		:= b64AdrInBuffer;
 			b64actposOUT	:= b64AdrOutBuffer;
 			Step := VISTEP_SVG_BAS64_2;
+			
 		VISTEP_SVG_BAS64_2:
 			FOR i := 0 TO CONVERT_CYCLES DO
 				IF b64actposIN < b64AdrInBuffer + ViBaseGetImage_0.BufferLen THEN
 					b64blockLen := UDINT_TO_USINT(LIMIT(0, b64AdrInBuffer + ViBaseGetImage_0.BufferLen - b64actposIN, 3));
 					b64in ACCESS b64actposIN;
 					b64out ACCESS b64actposOUT;
-					b64out[0]		:= b64key[ SHR(b64in[0],2) ];	// always
+					b64out[0]		:= b64key[ SHR(b64in[0],2) ];
 					IF b64blockLen = 1 THEN
 						b64out[1]	:= b64key[ SHL((b64in[0] AND 16#03),4)];
 						b64out[2]	:= 61;	// 61 = '='
@@ -441,6 +427,7 @@ PROGRAM _CYCLIC
 				END_IF
 				
 			END_FOR
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Prepare the second part after base64 picture data
 		VISTEP_SVG_CROSSH: 
@@ -469,21 +456,27 @@ PROGRAM _CYCLIC
 			END_FOR
 			brsstrcat(MemSvgCrossh, ADR(SvgTexts.SvgClose));
 			Step := VISTEP_SVG_CONCAT;
+			
 		VISTEP_SVG_CONCAT:
 			brsstrcat(MemSvg, MemSvgCrossh);
 			Step := VISTEP_SVG_SAVE1;
+			
+		// -----------------------------------------------------------------------------------------------------------
+		// Save SVG file
+		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_SVG_SAVE1:
-			DiagTime.BeginSVGSave := clock_ms() - DiagStartTime;
 			FileCreate_0.enable		:= TRUE;
 			FileCreate_0.pDevice	:= ADR(gVisionImage.CFG.FileDevice);
 			FileCreate_0.pFile		:= ADR(FileNameSvg);
 			FileCreate_0();
+			
 			IF FileCreate_0.status = 0 THEN
 				Step := VISTEP_SVG_SAVE2;
 			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileCreate_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		VISTEP_SVG_SAVE2:
 			FileWrite_0.enable		:= TRUE;
 			FileWrite_0.ident		:= FileCreate_0.ident;
@@ -491,23 +484,26 @@ PROGRAM _CYCLIC
 			FileWrite_0.pSrc		:= MemSvg;
 			FileWrite_0.len			:= brsstrlen(MemSvg);
 			FileWrite_0();
+			
 			IF FileWrite_0.status = 0 THEN
 				Step := VISTEP_SVG_SAVE3;
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileWrite_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		VISTEP_SVG_SAVE3:
 			FileClose_0.enable		:= TRUE;
 			FileClose_0.ident		:= FileCreate_0.ident;
 			FileClose_0();
+			
 			IF FileClose_0.status = 0 THEN
-				DiagTime.EndSVGSave := clock_ms() - DiagStartTime;
 				Step := VISTEP_READ_DIR1;
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileClose_0.status;
 				Step := VISTEP_ERR;
 			END_IF
+			
 		// -----------------------------------------------------------------------------------------------------------
 		// Error state
 		// -----------------------------------------------------------------------------------------------------------
