@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentMain" height="1050" width="2432" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-    <Widget xsi:type="widgets.brease.Image" id="imgDisconnected" top="350" left="450" width="440" height="300" zIndex="0" image="Media/disconnected.png" backColor="rgba(255, 255, 255, 0)" />
-    <Widget xsi:type="widgets.brease.WebViewer" id="WebViewerVisionMain" top="0" left="0" width="1280" height="1024" zIndex="3" path="VisionImg.html" backColor="rgba(255, 255, 255, 0)" borderStyle="none" borderWidth="0px 0px 0px 0px" />
+    <Widget xsi:type="widgets.brease.Image" id="imgCamera" top="0" left="0" width="1300" height="1024" zIndex="0" image="Media/VisionEye.png" backColor="rgba(255, 255, 255, 0)" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain1" top="0" left="0" width="1300" height="1024" zIndex="11" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain2" top="0" left="0" width="1300" height="1024" zIndex="12" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
     <Widget xsi:type="widgets.brease.Paper" id="paperMain3" top="0" left="0" width="1300" height="1024" zIndex="13" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/Crosshairs_Red.svg" transitionTime="0" borderStyle="none" />
@@ -19,7 +18,6 @@
     <Widget xsi:type="widgets.brease.NumericInput" id="numDetailsNo" top="245" left="1425" width="80" height="80" zIndex="33" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="5" minValue="1" textAlign="center" fontSize="50px" padding="0px 0px 0px 0px" />
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoDown" top="245" left="1335" width="80" height="80" zIndex="34" image="Media/back.svg" borderWidth="0px" />
     <Widget xsi:type="widgets.brease.Image" id="numDetailsNoUp" top="245" left="1525" width="80" height="80" zIndex="35" image="Media/forward.svg" borderWidth="0px" />
-    <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBoxImgRotation" top="400" left="1340" width="280" height="100" zIndex="36" dataProvider="[{'value':'0','text':'$IAT/RotationText/Rot0'},{'value':'1','text':'$IAT/RotationText/Rot1'},{'value':'2','text':'$IAT/RotationText/Rot2'},{'value':'3','text':'$IAT/RotationText/Rot3'}]" displaySettings="imageAndText" imageAlign="right" imagePath="Media/Rotation/" itemHeight="100" listPosition="bottom" listWidth="280" multiLine="true" selectedValue="0" padding="0px 10px" textAlign="center" fontSize="32px" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="RectangleFront" top="0" left="0" width="1300" height="1024" zIndex="37" borderStyle="none" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="RectangleFront" top="0" left="0" width="1300" height="1024" zIndex="36" borderStyle="none" />
   </Widgets>
 </Content>

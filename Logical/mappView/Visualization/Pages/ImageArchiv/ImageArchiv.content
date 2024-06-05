@@ -3,16 +3,13 @@
   <Widgets>
     <Widget xsi:type="widgets.brease.GroupBox" id="grpImage" top="10" left="10" width="520" height="500" zIndex="0" text="Image Archiv">
       <Widgets>
-        <Widget xsi:type="widgets.brease.ListBox" id="lstImageArchiv" top="3" left="220" width="290" height="397" zIndex="0" dataProvider="[]" borderWidth="1px" cornerRadius="3px" />
+        <Widget xsi:type="widgets.brease.ListBox" id="lstImageArchiv" top="3" left="220" width="290" height="397" zIndex="0" borderWidth="1px" cornerRadius="3px" />
         <Widget xsi:type="widgets.brease.Button" id="btnImageArchivRefresh" top="303" left="9" width="190" height="40" zIndex="1" text="Refresh" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
         <Widget xsi:type="widgets.brease.Button" id="btnImageArchivDelete" top="68" left="9" width="190" height="50" zIndex="2" text="Delete" cornerRadius="5px" backGroundGradient="linear-gradient(to bottom, #FFAA4D 0%,#FF8500 100%)" fontSize="24px" bold="true" style="Operate" />
         <Widget xsi:type="widgets.brease.Button" id="btnImageArchivSave" top="8" left="9" width="190" height="50" zIndex="3" text="Save" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.Button" id="btnShowUploadOptions" top="363" left="9" width="190" height="40" zIndex="4" text="Options" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.Label" id="labImage" top="423" left="13" width="71" zIndex="5" text="Status" textAlign="right" fontSize="20px" bold="true" />
-        <Widget xsi:type="widgets.brease.NumericOutput" id="numImageStatus" top="423" left="89" width="110" height="33" zIndex="6" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" borderWidth="1px" cornerRadius="3px" />
-        <Widget xsi:type="widgets.brease.Button" id="btnResetError" top="413" left="220" width="290" height="40" zIndex="7" text="Reset Error" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.Button" id="btnImageArchivDownload" top="128" left="9" width="190" height="50" zIndex="8" text="Download" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
-        <Widget xsi:type="widgets.brease.WebViewer" id="WebDownloadImage" top="133" left="54" width="106" height="45" zIndex="9" path="" borderStyle="none" visible="false" />
+        <Widget xsi:type="widgets.brease.Label" id="labImage" top="423" left="13" width="71" zIndex="4" text="Status" textAlign="right" fontSize="20px" bold="true" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numImageStatus" top="423" left="89" width="110" height="33" zIndex="5" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" borderWidth="1px" cornerRadius="3px" />
+        <Widget xsi:type="widgets.brease.Button" id="btnResetError" top="413" left="220" width="290" height="40" zIndex="6" text="Reset Error" cornerRadius="5px" fontSize="24px" bold="true" style="Operate" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.Image" id="imgImageArchiv" top="10" left="550" width="640" height="495" zIndex="1" cornerRadius="3px" />

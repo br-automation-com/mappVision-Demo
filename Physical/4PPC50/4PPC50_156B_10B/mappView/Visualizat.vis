@@ -35,7 +35,6 @@
 		<EventBindingsSet refId="ImageArchiv_eventbinding" />
 	</EventBindingsSets>
 	<Dialogs>
-		<Dialog refId="UploadOptionsDialog" />
 	</Dialogs>
 	<Contents preCache="all">
 		<Content refId="contentResult" />

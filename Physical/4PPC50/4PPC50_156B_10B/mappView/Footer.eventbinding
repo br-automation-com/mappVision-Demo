@@ -34,7 +34,7 @@
     <EventBinding id="SaveDiagData">
       <Source xsi:type="opcUa.Event" refId="::Vi_visu:VisionSensor.CMD.SaveDiagData" event="ValueChanged" />
       <Operand datatype="ANY_INT" name="DiagStatus">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_visu:VisionSensor.DIA.Status" serverAlias="">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Vi_visu:VisionSensor.DIA.Status">
           <Method xsi:type="opcUa.NodeAction.GetValue" />
         </ReadTarget>
       </Operand>

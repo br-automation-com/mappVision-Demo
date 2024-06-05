@@ -24,6 +24,7 @@ VAR
 	date_newest : DATE_AND_TIME;
 	date_oldest : DATE_AND_TIME;
 	cmdDeleteOldest : BOOL;
+	image_idx : UINT;
 	DTGetTime_0 : DTGetTime;
 	DTStructure_0 : DTStructure;
 	TON_VisPause : TON;
@@ -31,12 +32,7 @@ END_VAR
 (**)
 (*mappView connected variables*)
 VAR
-	visSelectedImageOld : STRING[80];
-	visSelectedImage : STRING[80];
-	visImagePath : STRING[80];
-	visEnableButtons_1 : BOOL;
-	visEnableButtons_2 : BOOL;
-	visDownloadFileUrl : STRING[200];
+	visImageSelectedOld : STRING[80];
 END_VAR
 (**)
 (*Create memory*)

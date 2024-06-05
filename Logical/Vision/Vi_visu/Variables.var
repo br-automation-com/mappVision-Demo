@@ -36,7 +36,6 @@ VAR
 	visSelectedFlashSegmentOld : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)
 	visRepetitiveMode : BOOL; (*Enable/Disable repetitive mode*)
 	RepetitiveModeTimer : TON; (*Timer for repetitive mode*)
-	DisableAutoArchiv : BOOL; (*Enable/Disable automatic archieving for images*)
 	InitialSearchSensor : BOOL; (*Flag for first boot*)
 	AutoSetupRunning : ARRAY[1..MAX_NUM_CAMS] OF BOOL; (*Flag for auto setup running*)
 END_VAR

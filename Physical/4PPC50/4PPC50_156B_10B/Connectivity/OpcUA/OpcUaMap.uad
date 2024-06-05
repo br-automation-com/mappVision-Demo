@@ -34,7 +34,11 @@
   <DefaultView AclId="2">
     <Module Name="&lt;Default&gt;">
       <GlobalVariables Name="Global Variables">
-        <Variable Name="gVisionImage" RecursiveEnable="1" />
+        <Variable Name="gVisionImage" RecursiveEnable="1">
+          <Variable Name="DAT">
+            <Variable Name="ImagesList" RecursiveEnable="2" />
+          </Variable>
+        </Variable>
         <Variable Name="gVisionLight" RecursiveEnable="1" />
         <Variable Name="gVisionNettime" RecursiveEnable="1" />
         <Variable Name="gVisionSensor" RecursiveEnable="1" />
@@ -42,13 +46,7 @@
         <Variable Name="gSelectedSensor" />
       </GlobalVariables>
       <Task Name="Vi_main" />
-      <Task Name="Vi_image">
-        <Variable Name="visImagePath" />
-        <Variable Name="visSelectedImage" />
-        <Variable Name="visDownloadFileUrl" />
-        <Variable Name="visEnableButtons_1" />
-        <Variable Name="visEnableButtons_2" />
-      </Task>
+      <Task Name="Vi_image" />
       <Task Name="Vi_nettime">
         <Variable Name="PowerlinkCycle_us" />
         <Variable Name="TriggerPosDelta" />

@@ -7,7 +7,7 @@ PROGRAM _INIT
 	gVisionImage.CFG.DirName		:= 'Vision';				// Directory used for images
 
 	gVisionImage.CMD.CreateDir	:= TRUE;
-	visSelectedImage			:= '';
+	gVisionImage.DAT.ImageSelected	:= '';
 
 	brsmemcpy(ADR(b64key), ADR('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'), SIZEOF(b64key));
 	
@@ -76,66 +76,84 @@ PROGRAM _CYCLIC
 			// -----------------------------------------------------------------------------------------------------------
 			// Delete image data from file device
 			ELSIF gVisionImage.CMD.DeleteImage THEN 
-				IF brsstrlen(ADR(visSelectedImage)) > 0 THEN
-					brsstrcpy(ADR(tmpStr1), ADR(gVisionImage.CFG.DirName));
-					brsstrcat(ADR(tmpStr1), ADR('/'));
-					brsstrcat(ADR(tmpStr1), ADR(visSelectedImage));
+				IF brsstrlen(ADR(gVisionImage.DAT.ImageSelected)) > 0 THEN
+					brsstrcpy(ADR(FileNamePict), ADR(gVisionImage.CFG.DirName));
+					brsstrcat(ADR(FileNamePict), ADR('/'));
+					brsstrcat(ADR(FileNamePict), ADR(gVisionImage.DAT.ImageSelected));
 					gVisionImage.DAT.Status := 65535;
 					Step := VISTEP_DELETE_IMAGE;
 				ELSE 
 					gVisionImage.CMD.DeleteImage := FALSE;
 				END_IF
-				
-			// -----------------------------------------------------------------------------------------------------------
-			// Load image from camera
-			ELSIF gVisionImage.CMD.SaveImage THEN
-				// Generate new file name
-				DTGetTime_0.enable := 1;
-				DTGetTime_0();
-				DT_TO_DTStructure(DTGetTime_0.DT1, ADR(DTStructure_0));
+
+				// -----------------------------------------------------------------------------------------------------------
+				// Save image from camera
+			ELSIF gVisionImage.CMD.GetImage THEN
 				FileNamePict := gVisionImage.CFG.DirName;
-				brsstrcat(ADR(FileNamePict), ADR('/'));
-				tmpStr1 := UINT_TO_STRING(DTStructure_0.year);
-				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-				brsstrcat(ADR(FileNamePict), ADR('_'));
-				tmpStr1 := USINT_TO_STRING(DTStructure_0.month);
-				IF(DTStructure_0.month < 10) THEN
-					brsstrcat(ADR(FileNamePict), ADR('0'));
-				END_IF
-				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-				brsstrcat(ADR(FileNamePict), ADR('_'));
-				tmpStr1 := USINT_TO_STRING(DTStructure_0.day);
-				IF(DTStructure_0.day < 10) THEN
-					brsstrcat(ADR(FileNamePict), ADR('0'));
-				END_IF
-				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-				brsstrcat(ADR(FileNamePict), ADR('_'));
-				tmpStr1 := USINT_TO_STRING(DTStructure_0.hour);
-				IF(DTStructure_0.hour < 10) THEN
-					brsstrcat(ADR(FileNamePict), ADR('0'));
-				END_IF
-				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-				brsstrcat(ADR(FileNamePict), ADR('_'));
-				tmpStr1 := USINT_TO_STRING(DTStructure_0.minute);
-				IF(DTStructure_0.minute < 10) THEN
-					brsstrcat(ADR(FileNamePict), ADR('0'));
-				END_IF
-				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-				brsstrcat(ADR(FileNamePict), ADR('_'));
-				tmpStr1 := USINT_TO_STRING(DTStructure_0.second);
-				IF(DTStructure_0.second < 10) THEN
-					brsstrcat(ADR(FileNamePict), ADR('0'));
-				END_IF
-				brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
-				brsstrcat(ADR(FileNameSvg), ADR(FileNamePict));
-				brsstrcat(ADR(FileNameSvg), ADR('.svg'));
-				brsstrcat(ADR(FileNamePict), ADR('.bmp'));
-				
+				brsstrcat(ADR(FileNamePict), ADR('/last_image.bmp'));
+
 				ViBaseGetImage_0.Execute := FALSE;
 				ViBaseGetImage_0();
 
 				gVisionImage.DAT.Status		:= 65535;
-				Step						:= VISTEP_REQUEST1;
+				Step						:= VISTEP_DELETE_IMAGE;
+				
+				// -----------------------------------------------------------------------------------------------------------
+				// Save image from camera
+			ELSIF gVisionImage.CMD.SaveImage THEN
+				// Generate file name if not provided
+				IF gVisionImage.CFG.FileName = '' THEN
+					// Generate new file name
+					DTGetTime_0.enable := 1;
+					DTGetTime_0();
+					DT_TO_DTStructure(DTGetTime_0.DT1, ADR(DTStructure_0));
+					FileNamePict := gVisionImage.CFG.DirName;
+					brsstrcat(ADR(FileNamePict), ADR('/'));
+					tmpStr1 := UINT_TO_STRING(DTStructure_0.year);
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR('_'));
+					tmpStr1 := USINT_TO_STRING(DTStructure_0.month);
+					IF(DTStructure_0.month < 10) THEN
+						brsstrcat(ADR(FileNamePict), ADR('0'));
+					END_IF
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR('_'));
+					tmpStr1 := USINT_TO_STRING(DTStructure_0.day);
+					IF(DTStructure_0.day < 10) THEN
+						brsstrcat(ADR(FileNamePict), ADR('0'));
+					END_IF
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR('_'));
+					tmpStr1 := USINT_TO_STRING(DTStructure_0.hour);
+					IF(DTStructure_0.hour < 10) THEN
+						brsstrcat(ADR(FileNamePict), ADR('0'));
+					END_IF
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR('_'));
+					tmpStr1 := USINT_TO_STRING(DTStructure_0.minute);
+					IF(DTStructure_0.minute < 10) THEN
+						brsstrcat(ADR(FileNamePict), ADR('0'));
+					END_IF
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR('_'));
+					tmpStr1 := USINT_TO_STRING(DTStructure_0.second);
+					IF(DTStructure_0.second < 10) THEN
+						brsstrcat(ADR(FileNamePict), ADR('0'));
+					END_IF
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+				ELSE
+					FileNamePict := gVisionImage.CFG.FileName;
+				END_IF
+
+				brsstrcpy(ADR(FileNameSvg), ADR(FileNamePict));
+				brsstrcat(ADR(FileNameSvg), ADR('.svg'));
+				brsstrcat(ADR(FileNamePict), ADR('.bmp'));
+
+				ViBaseGetImage_0.Execute := FALSE;
+				ViBaseGetImage_0();
+
+				gVisionImage.DAT.Status		:= 65535;
+				Step						:= VISTEP_DELETE_IMAGE;
 				
 			// -----------------------------------------------------------------------------------------------------------
 			// Reset error
@@ -145,34 +163,17 @@ PROGRAM _CYCLIC
 					
 			// -----------------------------------------------------------------------------------------------------------
 			// Load new image into window
-			IF visSelectedImageOld <> visSelectedImage AND dir_entry > 0 THEN
-				brsmemset(ADR(visImagePath), 0, SIZEOF(visImagePath));
+			IF visImageSelectedOld <> gVisionImage.DAT.ImageSelected AND dir_entry > 0 THEN
+				brsmemset(ADR(gVisionImage.DAT.ImagePath), 0, SIZEOF(gVisionImage.DAT.ImagePath));
 				brsmemset(ADR(tmpStr1), 0, SIZEOF(tmpStr1));
-				visImagePath := '/FileDevice:';
-				brsstrcat(ADR(visImagePath), ADR(gVisionImage.CFG.FileDevice));
-				brsstrcat(ADR(visImagePath), ADR('/'));
-				brsstrcat(ADR(visImagePath), ADR(gVisionImage.CFG.DirName));
-				brsstrcat(ADR(visImagePath), ADR('/'));
-				brsstrcat(ADR(visImagePath), ADR(visSelectedImage));
+				gVisionImage.DAT.ImagePath := '/FileDevice:';
+				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR(gVisionImage.CFG.FileDevice));
+				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR('/'));
+				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR(gVisionImage.CFG.DirName));
+				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR('/'));
+				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR(gVisionImage.DAT.ImageSelected));
 			END_IF
-			visSelectedImageOld := visSelectedImage;
-			
-			// -----------------------------------------------------------------------------------------------------------
-			// Disable buttons when command is pending
-			IF Step = VISTEP_WAIT THEN 
-				visEnableButtons_1 := TRUE;
-			ELSE
-				visEnableButtons_1 := FALSE;
-			END_IF
-			
-			// -----------------------------------------------------------------------------------------------------------
-			// Enable delete and download button in mappView
-			IF visEnableButtons_1 AND dir_entry > 0 AND Step = VISTEP_WAIT THEN
-				visEnableButtons_2 := TRUE;
-			ELSE
-				brsmemset(ADR(visImagePath), 0, SIZEOF(visImagePath));
-				visEnableButtons_2 := FALSE;
-			END_IF
+			visImageSelectedOld := gVisionImage.DAT.ImageSelected;
 
 		// -----------------------------------------------------------------------------------------------------------
 		// Create directory on User-Partition, if not exists
@@ -182,6 +183,7 @@ PROGRAM _CYCLIC
 			DirCreate_0.pDevice	:= ADR(gVisionImage.CFG.FileDevice);
 			DirCreate_0.pName	:= ADR(gVisionImage.CFG.DirName);
 			DirCreate_0();
+			
 			IF DirCreate_0.status = 0 OR DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
 				Step := VISTEP_READ_DIR1;
 			ELSIF DirCreate_0.status <> 65535 THEN
@@ -197,6 +199,7 @@ PROGRAM _CYCLIC
 			DirDeleteEx_0.pDevice	:= ADR(gVisionImage.CFG.FileDevice);
 			DirDeleteEx_0.pName		:= ADR(gVisionImage.CFG.DirName);
 			DirDeleteEx_0();
+			
 			IF DirDeleteEx_0.status = 0 THEN
 				Step := VISTEP_CREATE_DIR;
 			ELSIF DirDeleteEx_0.status <> 65535 THEN
@@ -209,10 +212,10 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		VISTEP_READ_DIR1:
 			// Clear all memory
-			brsmemset(ADR(gVisionImage.DAT.Images), 0, SIZEOF(gVisionImage.DAT.Images));
-			brsmemset(ADR(visSelectedImage), 0, SIZEOF(visSelectedImage));
-			visSelectedImageOld := '';
-			visSelectedImage	:= '';
+			brsmemset(ADR(gVisionImage.DAT.ImagesList), 0, SIZEOF(gVisionImage.DAT.ImagesList));
+			brsmemset(ADR(gVisionImage.DAT.ImageSelected), 0, SIZEOF(gVisionImage.DAT.ImageSelected));
+			visImageSelectedOld := '';
+			gVisionImage.DAT.ImageSelected	:= '';
 			dir_entry			:= 0;
 			idx					:= 0;
 			file_newest			:= '';
@@ -234,6 +237,7 @@ PROGRAM _CYCLIC
 			DirRead_0.pData 	:= ADR(dir_data);
 			DirRead_0.data_len 	:= SIZEOF(dir_data);
 			DirRead_0();
+			
 			IF DirRead_0.status = 0 THEN
 				// Make sure file is an image and we have space to store them
 				IF  brsstrcmp(ADR(dir_data.Filename) + brsstrlen(ADR(dir_data.Filename)) - 4, ADR('.bmp')) = 0 OR
@@ -248,13 +252,13 @@ PROGRAM _CYCLIC
 						brsstrcpy(ADR(file_oldest), ADR(dir_data.Filename));
 						date_oldest := dir_data.Date;
 					END_IF
-					IF dir_entry <= SIZEOF(gVisionImage.DAT.Images)/SIZEOF(gVisionImage.DAT.Images[0]) - 1 THEN
+					IF dir_entry <= SIZEOF(gVisionImage.DAT.ImagesList)/SIZEOF(gVisionImage.DAT.ImagesList[0]) - 1 THEN
 						// Create list box data
-						gVisionImage.DAT.Images[dir_entry] := '{"value":"';
-						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR(dir_data.Filename));					
-						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR('","text":"'));	
-						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR(dir_data.Filename));					
-						brsstrcat(ADR(gVisionImage.DAT.Images[dir_entry]), ADR('"}'));	
+						gVisionImage.DAT.ImagesList[dir_entry] := '{"value":"';
+						brsstrcat(ADR(gVisionImage.DAT.ImagesList[dir_entry]), ADR(dir_data.Filename));					
+						brsstrcat(ADR(gVisionImage.DAT.ImagesList[dir_entry]), ADR('","text":"'));	
+						brsstrcat(ADR(gVisionImage.DAT.ImagesList[dir_entry]), ADR(dir_data.Filename));					
+						brsstrcat(ADR(gVisionImage.DAT.ImagesList[dir_entry]), ADR('"}'));	
 						dir_entry := dir_entry + 1;
 					ELSE
 						cmdDeleteOldest := TRUE;
@@ -283,8 +287,9 @@ PROGRAM _CYCLIC
 			TON_VisPause.IN := TRUE;
 			TON_VisPause.PT := T#250ms;
 			TON_VisPause();
+			
 			IF TON_VisPause.Q THEN
-				brsstrcpy(ADR(visSelectedImage), ADR(file_newest));
+				brsstrcpy(ADR(gVisionImage.DAT.ImageSelected), ADR(file_newest));
 				brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));
 				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
@@ -297,10 +302,13 @@ PROGRAM _CYCLIC
 			cmdDeleteOldest			:= FALSE;
 			FileDelete_0.enable 	:= 1;
 			FileDelete_0.pDevice	:= ADR(gVisionImage.CFG.FileDevice);
-			FileDelete_0.pName 		:= ADR(tmpStr1);
+			FileDelete_0.pName 		:= ADR(FileNamePict);
 			FileDelete_0();
-			IF FileDelete_0.status = 0 THEN
-				Step := VISTEP_READ_DIR1; // Refresh --> Read dir again
+			
+			IF (FileDelete_0.status = 0 OR FileDelete_0.status = fiERR_FILE_NOT_FOUND) AND (gVisionImage.CMD.GetImage OR gVisionImage.CMD.SaveImage) THEN
+				Step := VISTEP_REQUEST;
+			ELSIF FileDelete_0.status = 0 THEN
+				Step := VISTEP_READ_DIR1;
 			ELSIF FileDelete_0.status <> 65535 THEN
 				gVisionImage.DAT.Status := FileDelete_0.status;
 				Step := VISTEP_ERR;
@@ -309,7 +317,7 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Get new image
 		// -----------------------------------------------------------------------------------------------------------
-		VISTEP_REQUEST1:
+		VISTEP_REQUEST:
 			ViBaseGetImage_0.MpLink := ADR(gVisionImage.CFG.ComponentLink);
 			ViBaseGetImage_0.Execute := TRUE;
 			ViBaseGetImage_0.Type :=  viBASE_IMAGE_TYPE_BMP;
@@ -365,7 +373,21 @@ PROGRAM _CYCLIC
 			FileClose_0();
 
 			IF FileClose_0.status = 0 THEN
-				Step := VISTEP_SVG_PREPARE;
+				image_idx := image_idx + 1;
+				brsitoa(image_idx, ADR(tmpStr1));
+				gVisionImage.DAT.ImageLast := '/FileDevice:';
+				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR(gVisionImage.CFG.FileDevice));
+				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR('/'));
+				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR(gVisionImage.CFG.DirName));
+				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR('/last_image.bmp?'));
+				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR(tmpStr1));
+				
+				IF gVisionImage.CMD.SaveImage THEN
+					Step := VISTEP_SVG_PREPARE;
+				ELSE
+					gVisionImage.CMD.GetImage := FALSE;
+					Step := VISTEP_WAIT;					
+				END_IF
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileClose_0.status;
 				Step := VISTEP_ERR;
@@ -408,12 +430,12 @@ PROGRAM _CYCLIC
 					b64out[0]		:= b64key[ SHR(b64in[0],2) ];
 					IF b64blockLen = 1 THEN
 						b64out[1]	:= b64key[ SHL((b64in[0] AND 16#03),4)];
-						b64out[2]	:= 61;	// 61 = '='
-						b64out[3]	:= 61;	// 61 = '='
+						b64out[2]	:= 61;
+						b64out[3]	:= 61;
 					ELSIF b64blockLen = 2 THEN
 						b64out[1]	:= b64key[ SHL((b64in[0] AND 16#03),4) OR SHR(b64in[1],4) ];
 						b64out[2]	:= b64key[ SHL((b64in[1] AND 16#0F),2)];
-						b64out[3]	:= 61;	// 61 = '='
+						b64out[3]	:= 61;
 					ELSIF b64blockLen = 3 THEN
 						b64out[1]	:= b64key[ SHL((b64in[0] AND 16#03),4) OR SHR(b64in[1],4) ];
 						b64out[2]	:= b64key[ SHL((b64in[1] AND 16#0F),2) OR SHR(b64in[2],6) ];

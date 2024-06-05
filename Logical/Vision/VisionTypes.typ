@@ -215,18 +215,23 @@ TYPE
 		CreateDir : BOOL;
 		DeleteDir : BOOL;
 		DeleteImage : BOOL;
-		Refresh : BOOL;
+		GetImage : BOOL;
 		SaveImage : BOOL;
+		Refresh : BOOL;
 		ResetError : BOOL;
 		RefreshCrosshair : BOOL;
 	END_STRUCT;
 	typVisionImageConfig : 	STRUCT 
 		FileDevice : STRING[80];
+		FileName : STRING[80];
 		DirName : STRING[80];
 		ComponentLink : ViComponentType;
 	END_STRUCT;
 	typVisionImageData : 	STRUCT 
-		Images : ARRAY[0..19]OF STRING[80];
+		ImagesList : ARRAY[0..19]OF STRING[80];
+		ImageSelected : STRING[80];
+		ImagePath : STRING[80];
+		ImageLast : STRING[80];
 		Crosshair : ARRAY[1..MAX_NUM_RESULTS]OF typVisionImageDataCrosshair;
 		Status : DINT;
 		VisionDisabled : BOOL;

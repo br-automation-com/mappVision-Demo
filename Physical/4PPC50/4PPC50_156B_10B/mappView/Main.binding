@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Main_binding">
 	<Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.DAT.ImageLast" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="imgCamera" attribute="image" />
+		</Binding>
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[1]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain1" attribute="transform" />
@@ -149,25 +153,9 @@
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNoUp" attribute="enable" />
 		</Binding>
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_visu:VisionSensor.HW.Connected" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="visible" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerPath" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="host" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visWebViewerQuery" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="WebViewerVisionMain" attribute="query" />
-		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="enable" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visImageRotation" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="DropDownBoxImgRotation" attribute="selectedIndex" />
 		</Binding>
 	</Bindings>
 </BindingsSet>

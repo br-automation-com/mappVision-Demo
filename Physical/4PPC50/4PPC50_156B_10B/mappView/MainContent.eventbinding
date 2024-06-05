@@ -1,36 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Main_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Bindings>
-		<!-- Selected details no />-->
-		<EventBinding id="contentMain.numDetailsNoDown.Click">
-			<Source contentRefId="contentMain" widgetRefId="numDetailsNoDown" xsi:type="widgets.brease.Image.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo" >
-						<Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
-					</Target>
-				</Action>		
-			</EventHandler>
-		</EventBinding>
-		<EventBinding id="contentMain.numDetailsNoUp.Click">
-			<Source contentRefId="contentMain" widgetRefId="numDetailsNoUp" xsi:type="widgets.brease.Image.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo" >
-						<Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-					</Target>
-				</Action>
-			</EventHandler>
-		</EventBinding>
-		<EventBinding id="contentMain.Rectangle1.Click">
-			<Source contentRefId="contentMain" widgetRefId="RectangleFront" xsi:type="widgets.brease.Rectangle.Event" event="Click" />
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visTextAlignment">
-						<Method xsi:type="opcUa.NodeAction.ToggleValueBool"/>
-					</Target>
- 				</Action>
-			</EventHandler>
-		</EventBinding>
-	</Bindings>
+  <Bindings>
+    <EventBinding id="contentMain.numDetailsNoDown.Click">
+      <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoDown" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo">
+            <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="contentMain.numDetailsNoUp.Click">
+      <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoUp" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo">
+            <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="contentMain.Rectangle1.Click">
+      <Source xsi:type="widgets.brease.Rectangle.Event" contentRefId="contentMain" widgetRefId="RectangleFront" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visTextAlignment">
+            <Method xsi:type="opcUa.NodeAction.ToggleValueBool" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_5">
+      <Source xsi:type="opcUa.Event" refId="::AsGlobalPV:gVisionImage.CMD.GetImage" event="ValueChanged" />
+      <EventHandler condition="newValue = TRUE">
+        <Action>
+          <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="imgCamera">
+            <Method xsi:type="widgets.brease.Image.Action.SetImage" image="Media/VisionEye.png" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+  </Bindings>
 </EventBindingSet>
