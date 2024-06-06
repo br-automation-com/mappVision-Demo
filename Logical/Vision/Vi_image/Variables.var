@@ -10,8 +10,6 @@ VAR
 	DirDeleteEx_0 : DirDeleteEx;
 	FileNamePict : STRING[80];
 	FileNameSvg : STRING[80];
-	FOpen : FileOpen;
-	FRead : FileReadEx;
 	FileCreate_0 : FileCreate;
 	FileDelete_0 : FileDelete;
 	FileWrite_0 : FileWrite;

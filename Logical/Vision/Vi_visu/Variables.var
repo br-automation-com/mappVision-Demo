@@ -17,19 +17,12 @@ VAR
 	tmpPixel : {REDUND_UNREPLICABLE} typPixelMain; (*Data that is specific for the blob function*)
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Vision function blocks*)
-VAR
-	VaGetList_01 : VaGetList;
-END_VAR
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Sensor variables*)
 VAR
-	visAutoArchiv : BOOL;
 	visSensorEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
 	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
 	visEnableRepetitive : BOOL; (*Enable/Disable repetitive mode*)
 	visImageTrigger : BOOL; (*Trigger new image*)
-	visVisionApplicationList : ARRAY[0..19] OF STRING[80]; (*Flash color string*)
 	visSensorFlashColor : STRING[10]; (*Flash color string*)
 	visSensorFlashColorOld : STRING[10]; (*Flash color string*)
 	visSelectedFlashSegment : ARRAY[0..3] OF USINT := [4(1)]; (*Selected flash segments*)
@@ -63,16 +56,26 @@ END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Image, crosshair data and constants*)
 VAR
-	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
+	visCrossHair : typCrossHair; (*Data structure to draw the crosshairs on the main page*)
+	CrosshairModelNumber : USINT;
+	CrosshairPositionX : REAL;
+	CrosshairPositionY : REAL;
+	CrosshairOrientation : INT;
 	tmpStr1 : STRING[1000];
+	tmpStr2 : STRING[100];
+	tmpStr3 : STRING[100];
+	tmpC : REAL;
+	tmpYI : REAL;
+	tmpXI : REAL;
+	DetailsNoOld : USINT;
+END_VAR
+VAR
+	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
 	i : UINT;
 	visCameraStatus : STRING[30];
 END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Error numbers*)
-VAR CONSTANT
-	ERR_VA_LIST_NUM : UINT := 30000; (*Number of applications exceeds array size*)
-END_VAR
 VAR
 	visVaListRefresh : BOOL;
 END_VAR

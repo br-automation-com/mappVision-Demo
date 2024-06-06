@@ -6,127 +6,127 @@
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="imgCamera" attribute="image" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[1]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[1]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain1" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[2]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[2]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain2" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[3]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[3]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain3" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[4]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[4]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain4" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[5]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[5]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain5" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[6]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[6]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain6" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[7]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[7]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain7" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[8]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[8]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain8" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[9]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[9]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain9" attribute="transform" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgTransformation[10]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgTransformation[10]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain10" attribute="transform" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[1]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[1]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain1" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[2]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[2]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain2" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[3]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[3]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain3" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[4]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[4]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain4" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[5]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[5]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain5" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[6]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[6]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain6" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[7]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[7]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain7" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[8]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[8]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain8" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[9]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[9]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain9" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgVisible[10]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgVisible[10]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain10" attribute="visible" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[1]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[1]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain1" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[2]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[2]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain2" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[3]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[3]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain3" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[4]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[4]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain4" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[5]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[5]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain5" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[6]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[6]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain6" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[7]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[7]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain7" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[8]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[8]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain8" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[9]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[9]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain9" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.SvgContent[10]" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.SvgContent[10]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="paperMain10" attribute="svgContent" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.ShowCrosshair" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.ShowCrosshair" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
@@ -142,7 +142,7 @@
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="btnChrosshairEnable" attribute="enable" />
 		</Binding>
 		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Vi_image:visCrossHair.DetailsNo" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vi_visu:visCrossHair.DetailsNo" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentMain" widgetRefId="numDetailsNo" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">

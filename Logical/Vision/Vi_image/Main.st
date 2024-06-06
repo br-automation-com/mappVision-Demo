@@ -55,6 +55,8 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Wait for new upload command
 		VISTEP_WAIT:
+			gVisionImage.DAT.Status := 0;
+
 			// -----------------------------------------------------------------------------------------------------------
 			// Create the internal directory VisionImageArchive
 			IF gVisionImage.CMD.CreateDir THEN 
@@ -291,7 +293,6 @@ PROGRAM _CYCLIC
 			IF TON_VisPause.Q THEN
 				brsstrcpy(ADR(gVisionImage.DAT.ImageSelected), ADR(file_newest));
 				brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));
-				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;
 			END_IF
 			
@@ -536,7 +537,6 @@ PROGRAM _CYCLIC
 					
 			IF gVisionImage.CMD.ResetError THEN
 				gVisionImage.CMD.ResetError := FALSE;
-				gVisionImage.DAT.Status := 0;
 				Step := VISTEP_WAIT;				
 			END_IF				
 			brsmemset(ADR(gVisionImage.CMD), 0, SIZEOF(gVisionImage.CMD));

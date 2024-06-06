@@ -5,7 +5,7 @@
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoDown" event="Click" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visCrossHair.DetailsNo">
             <Method xsi:type="opcUa.NodeAction.AddValue" value="-1" />
           </Target>
         </Action>
@@ -15,25 +15,20 @@
       <Source xsi:type="widgets.brease.Image.Event" contentRefId="contentMain" widgetRefId="numDetailsNoUp" event="Click" />
       <EventHandler>
         <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visCrossHair.DetailsNo">
+          <Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visCrossHair.DetailsNo">
             <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
-    <EventBinding id="contentMain.Rectangle1.Click">
-      <Source xsi:type="widgets.brease.Rectangle.Event" contentRefId="contentMain" widgetRefId="RectangleFront" event="Click" />
-      <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::Vi_image:visTextAlignment">
-            <Method xsi:type="opcUa.NodeAction.ToggleValueBool" />
           </Target>
         </Action>
       </EventHandler>
     </EventBinding>
     <EventBinding id="EventBinding_5">
       <Source xsi:type="opcUa.Event" refId="::AsGlobalPV:gVisionImage.CMD.GetImage" event="ValueChanged" />
-      <EventHandler condition="newValue = TRUE">
+      <Operand datatype="BOOL" name="RepetetiveMode">
+        <ReadTarget xsi:type="widgets.brease.ToggleButton.ReadAction" contentRefId="contentMain" widgetRefId="btnRepetitiveMode">
+          <Method xsi:type="widgets.brease.ToggleButton.Action.GetValueBool" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler condition="newValue = TRUE AND RepetetiveMode = FALSE">
         <Action>
           <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="imgCamera">
             <Method xsi:type="widgets.brease.Image.Action.SetImage" image="Media/VisionEye.png" />

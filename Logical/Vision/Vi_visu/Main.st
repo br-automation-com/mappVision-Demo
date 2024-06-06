@@ -41,9 +41,7 @@ END_PROGRAM
 // Cyclic part
 // -----------------------------------------------------------------------------------------------------------	
 PROGRAM _CYCLIC
-	// -----------------------------------------------------------------------------------------------------------
 	// Select first available camera after reboot
-	// -----------------------------------------------------------------------------------------------------------
 	IF InitialSearchSensor THEN 
 		FOR i := 1 TO MAX_NUM_CAMS DO
 			IF gVisionSensor[i].HW.Connected THEN
@@ -65,7 +63,7 @@ PROGRAM _CYCLIC
 	IF(gSelectedSensor < 1) THEN
 		gSelectedSensor := MAX_NUM_CAMS;
 	END_IF
-	// -----------------------------------------------------------------------------------------------------------
+
 	// Assign pointers
 	VisionSensor ACCESS ADR(gVisionSensor[gSelectedSensor]);
 	IF(VisionSensor.CFG.DataStructure <> 0) THEN
@@ -81,9 +79,7 @@ PROGRAM _CYCLIC
 		RETURN;
 	END_IF
 
-	// -----------------------------------------------------------------------------------------------------------
 	// Display camera status
-	// -----------------------------------------------------------------------------------------------------------
 	visCameraStatus := VisionSensor.DAT.StatusText;
 		
 	// -----------------------------------------------------------------------------------------------------------
@@ -114,8 +110,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Translate flash color and segments from mappView to IO mapping
 	// -----------------------------------------------------------------------------------------------------------
-	// Hint: Normally copy from recipe (VisionSensor) to visu. Only in case of a change in the visu copy to recipe
-	IF visSensorFlashColor <> visSensorFlashColorOld THEN // The flash color was changed in the mappView visualization
+	IF visSensorFlashColor <> visSensorFlashColorOld THEN
 		VisionSensor.DAT.FlashColor := UDINT_TO_USINT(brsatoi(ADR(visSensorFlashColor)));
 	ELSE
 		brsitoa(VisionSensor.DAT.FlashColor, ADR(visSensorFlashColor));
@@ -157,6 +152,10 @@ PROGRAM _CYCLIC
 		IF NETTIME_ENABLE THEN
 			VisionSensor.DAT.NettimeDelay := NettimeCurrent_us + NETTIME_DEFAULT_DELAY;
 		END_IF
+		// Hide previous results
+		FOR i := 1 TO MAX_NUM_RESULTS DO
+			visCrossHair.SvgVisible[i] := FALSE;
+		END_FOR;			
 		VisionSensor.CMD.ImageTrigger	:= TRUE;
 		visImageTrigger					:= FALSE;
 		VisionSensor.DAT.Active			:= TRUE;
@@ -173,7 +172,7 @@ PROGRAM _CYCLIC
 	// -----------------------------------------------------------------------------------------------------------
 	// Repetitive mode
 	// -----------------------------------------------------------------------------------------------------------
-	visEnableRepetitive := visSensorEnableCommand OR visRepetitiveMode; // Enable of the repetitive mode button. Don't disable while repetitive mode is active
+	visEnableRepetitive := visSensorEnableCommand OR visRepetitiveMode;
 	IF visRepetitiveMode THEN
 		RepetitiveModeTimer.IN := TRUE;
 		IF RepetitiveModeTimer.Q THEN
@@ -189,32 +188,7 @@ PROGRAM _CYCLIC
 	ELSE
 		RepetitiveModeTimer.IN := TRUE;
 	END_IF
-	RepetitiveModeTimer(PT := T#200ms);
-	
-	// -----------------------------------------------------------------------------------------------------------
-	// Get list of vision applications and components
-	// -----------------------------------------------------------------------------------------------------------
-	IF (visVaListRefresh) THEN
-		VaGetList_01(Enable := TRUE);
-		VisionSensor.FCT.Status := ERR_FUB_BUSY;
-		IF VaGetList_01.Status <> ERR_FUB_BUSY THEN
-			// Convert vision application list to mappView format
-			IF VaGetList_01.Status = ERR_OK THEN
-				IF VaGetList_01.VaApplicationCnt > 0 AND VaGetList_01.VaApplicationCnt < MAX_IDX_VA_LIST THEN
-					FOR i:=0 TO VaGetList_01.VaApplicationCnt - 1 DO
-						String2DataProvider(ADR(VaGetList_01.VaApplicationNames[i]), ADR(visVisionApplicationList[i]));
-					END_FOR
-				END_IF
-				VisionSensor.FCT.Status := ERR_OK;
-			ELSE // Error
-				brsmemset(ADR(visVisionApplicationList), 0, SIZEOF(visVisionApplicationList));
-				VisionSensor.FCT.Status := VaGetList_01.Status;
-			END_IF
-			// Reset function block
-			VaGetList_01(Enable := FALSE);
-			visVaListRefresh := FALSE;
-		END_IF
-	END_IF
+	RepetitiveModeTimer(PT := T#3000ms);
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Select first available light after reboot
@@ -228,6 +202,7 @@ PROGRAM _CYCLIC
 			END_IF
 		END_FOR
 	END_IF
+	
 	// -----------------------------------------------------------------------------------------------------------
 	// Map global structure to local reference
 	// -----------------------------------------------------------------------------------------------------------
@@ -284,4 +259,205 @@ PROGRAM _CYCLIC
 	// Enable fields for different light types
 	// -----------------------------------------------------------------------------------------------------------
 	visEnableLightBarValues := VisionLight.CFG.LightType = enumLightbar;
+	
+	// -----------------------------------------------------------------------------------------------------------
+	// Draw cross hairs on main page
+	// -----------------------------------------------------------------------------------------------------------
+	IF (EDGENEG(gVisionImage.CMD.GetImage) AND visCrossHair.ShowCrosshair) OR EDGEPOS(visCrossHair.ShowCrosshair) OR (visCrossHair.DetailsNo <> DetailsNoOld) THEN
+		// -----------------------------------------------------------------------------------------------------------
+		// Handle details no
+		IF(visCrossHair.DetailsNo < 1) THEN
+			visCrossHair.DetailsNo := VisionSensor.DAT.ResultCnt;
+		END_IF
+		IF(visCrossHair.DetailsNo > VisionSensor.DAT.ResultCnt) THEN
+			visCrossHair.DetailsNo := 1;
+		END_IF
+		IF visCrossHair.PixelRatio = 0 THEN
+			RETURN;
+		END_IF
+		DetailsNoOld := visCrossHair.DetailsNo;
+		brsmemset(ADR(gVisionImage.DAT.Crosshair), 0, SIZEOF(gVisionImage.DAT.Crosshair));
+		
+		// -----------------------------------------------------------------------------------------------------------
+		// Create cross hairs and data for all results
+		FOR i := 1 TO MAX_NUM_RESULTS DO
+			visCrossHair.SvgTransformation[i] := '';
+			visCrossHair.SvgVisible[i] := FALSE;
+			CrosshairPositionX := 0;
+			CrosshairPositionY := 0;
+			gVisionImage.DAT.Crosshair[i].CrosshairX		:= 0;
+			gVisionImage.DAT.Crosshair[i].CrosshairY		:= 0;
+			gVisionImage.DAT.Crosshair[i].CrosshairRotate	:= 0;
+			brsmemset(ADR(gVisionImage.DAT.Crosshair[i].Text), 0, SIZEOF(gVisionImage.DAT.Crosshair[i].Text));
+			
+			// -----------------------------------------------------------------------------------------------------------
+			// Make sure we have data to display
+			IF(VisionSensor.DAT.ResultCnt <> 0 AND i <= VisionSensor.DAT.ResultCnt) THEN
+				// Select data source from vision function
+				CASE VisionSensor.CFG.VisionFunction OF
+					enumBlob:
+						CrosshairModelNumber := gBlob.ModelNumber[i];
+						CrosshairPositionX := UDINT_TO_REAL(gBlob.PositionX[i]);    
+						CrosshairPositionY := UDINT_TO_REAL(gBlob.PositionY[i]);    
+						CrosshairOrientation := gBlob.Orientation[i];
+					enumMatch:
+						CrosshairModelNumber := gMatch.ModelNumber[i]; 
+						CrosshairPositionX := UDINT_TO_REAL(gMatch.PositionX[i]);    
+						CrosshairPositionY := UDINT_TO_REAL(gMatch.PositionY[i]);    
+						CrosshairOrientation := gMatch.Orientation[i];
+					enumCoderReader:
+						CrosshairPositionX := UDINT_TO_REAL(gCodeReader.PositionX[i]);    
+						CrosshairPositionY := UDINT_TO_REAL(gCodeReader.PositionY[i]);    
+						CrosshairOrientation := gCodeReader.Orientation[i];
+					enumOCR:
+						CrosshairPositionX := UDINT_TO_REAL(gOCR.PositionX[i]);    
+						CrosshairPositionY := UDINT_TO_REAL(gOCR.PositionY[i]);    
+						CrosshairOrientation := gOCR.Orientation[i];
+					enumMeasurement:
+						IF(gMT.UseResultAsXY = TRUE) THEN
+							CrosshairPositionX := UDINT_TO_REAL(gMT.Result[i])/10;    
+							CrosshairPositionY := UDINT_TO_REAL(gMT.Result[i+1])/10;
+							i := i + 1;
+						END_IF
+				END_CASE
+			
+				// -----------------------------------------------------------------------------------------------------------
+				// Show crosshair except for measurement function
+				IF (VisionSensor.CFG.VisionFunction <> enumMeasurement OR gMT.UseResultAsXY = TRUE) THEN
+					// -----------------------------------------------------------------------------------------------------------
+					// Set start values
+					IF(CrosshairPositionX <> 0 AND CrosshairPositionY <> 0) THEN
+						visCrossHair.SvgVisible[i] := TRUE;
+						
+						// Highlight selected crosshair and show detailed information
+						IF(visCrossHair.DetailsNo = i) THEN
+							tmpStr1 := '[{"select":"#CrosshairBlue","display":false}, {"select":"#CrosshairRed","display":true, "translate":[';
+						ELSE
+							tmpStr1 := '[{"select":"#CrosshairRed","display":false}, { "select":"#CrosshairBlue","display":true, "translate":[';
+						END_IF
+						
+						// Calculate cross hair X offset
+						tmpXI := CrosshairPositionX / visCrossHair.PixelRatio;
+						tmpC := USINT_TO_REAL(visCrossHair.Size) * visCrossHair.Scale / 2.0;
+						brsitoa(REAL_TO_INT(tmpXI - tmpC), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(','));
+						gVisionImage.DAT.Crosshair[i].CrosshairX := tmpXI - tmpC; 
+						
+						// Calculate cross hair Y offset
+						tmpYI := CrosshairPositionY / visCrossHair.PixelRatio;
+						brsitoa(REAL_TO_INT(tmpYI - tmpC), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						gVisionImage.DAT.Crosshair[i].CrosshairY := tmpYI - tmpC; 
+		
+						// Add cross hair scaling
+						brsstrcat(ADR(tmpStr1), ADR('],"scale":['));
+						brsftoa(visCrossHair.Scale, ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(','));
+						brsftoa(visCrossHair.Scale, ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+	
+						// Add cross hair rotation
+						brsstrcat(ADR(tmpStr1), ADR('],"spin":['));
+						brsftoa(CrosshairOrientation/-100, ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(','));
+						brsitoa(visCrossHair.Size/2, ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(','));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(']}]'));
+						visCrossHair.SvgTransformation[i] := tmpStr1;
+						gVisionImage.DAT.Crosshair[i].CrosshairRotate := CrosshairOrientation/-100;
+					
+						// -----------------------------------------------------------------------------------------------------------
+						// Add text data to selected cross hair
+						IF(visCrossHair.DetailsNo = i) THEN
+							tmpStr1 := '<text class="cText" fill="red" font-size="22" font-family="Helvetica, Arial, sans-serif" x="';
+						ELSE
+							tmpStr1 := '<text class="cText" fill="blue" font-size="22" font-family="Helvetica, Arial, sans-serif" x="';
+						END_IF
+						brsitoa(REAL_TO_INT(tmpXI - tmpC + visCrossHair.Size), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR('" y="'));
+						brsitoa(REAL_TO_INT(tmpYI - tmpC + visCrossHair.Size/2), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR('"> '));
+	
+						// Create prototype for new entry
+						tmpStr3:= '<tspan class="text" x="';
+						brsitoa(REAL_TO_INT(tmpXI + tmpC), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr3), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr3), ADR('" dy="-5" >'));
+	
+						// Add result no information
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr3));
+						brsitoa(i, ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+						brsstrcat(ADR(tmpStr1), ADR('</tspan></text>'));
+										
+						IF(visCrossHair.DetailsNo = i) THEN
+							// -----------------------------------------------------------------------------------------------------------
+							// Add text data from selected cross hair
+							brsstrcat(ADR(tmpStr1), ADR('<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="10"> '));
+							
+							// Add modell ID information for blob and match
+							IF(VisionSensor.CFG.VisionFunction = enumBlob OR VisionSensor.CFG.VisionFunction = enumMatch) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('ID: '), CrosshairModelNumber);
+							END_IF
+							// Add X and Y position information
+							IF(CrosshairPositionX <> 0) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Pos X: '), CrosshairPositionX/visCrossHair.PixelRatio);
+							END_IF	
+							IF(CrosshairPositionY <> 0) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Pos Y: '), CrosshairPositionY/visCrossHair.PixelRatio);
+							END_IF		
+							// Add orientation information
+							IF(VisionSensor.CFG.VisionFunction <> enumMeasurement) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Orientation: '), CrosshairOrientation/visCrossHair.PixelRatio);
+							END_IF
+							// Add detail information for blob
+							IF(VisionSensor.CFG.VisionFunction = enumBlob AND gBlob.EnhancedBlobInformation = 1) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Clipped: '), gBlob.Clipped[i]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Gray: '), gBlob.MeanGrayValue[i]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Length: '), UDINT_TO_REAL(gBlob.Length[i])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Width: '), UDINT_TO_REAL(gBlob.Width[i])/visCrossHair.PixelRatio);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Area: '), UDINT_TO_REAL(gBlob.Area[i])/visCrossHair.PixelRatio);
+							END_IF
+							// Add detail information for match
+							IF(VisionSensor.CFG.VisionFunction = enumMatch) THEN
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Score: '), gMatch.Score[i]);
+								CrosshairDetailsText(ADR(tmpStr1),  ADR('Scale: '), gMatch.Scale[i]);
+							END_IF
+							// Add detail information for code reader
+							IF(VisionSensor.CFG.VisionFunction = enumCoderReader) THEN
+								//CrosshairDetailsText(ADR(tmpStr1),  ADR('Code:'), UDINT_TO_REAL(CodeReader.BarcodeType[i]));
+								tmpStr2:= '<tspan class="text" x="10" dy="32">';
+								brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+								brsstrcat(ADR(tmpStr1), ADR('Code: '));
+								brsstrcat(ADR(tmpStr1), ADR(CodeTypes[LIMIT(0, gCodeReader.BarcodeType[i], MAX_NUM_CODETYPES)]));
+								brsstrcat(ADR(tmpStr1), ADR('</tspan> '));
+							END_IF
+							brsstrcat(ADR(tmpStr1), ADR('</text>'));
+						END_IF
+					END_IF
+					// -----------------------------------------------------------------------------------------------------------
+					// Add result information measurement
+				ELSE
+					visCrossHair.SvgTransformation[i] := '[{"select":"#CrosshairRed","display":false}, {"select":"#CrosshairBlue","display":false}]';
+					visCrossHair.SvgVisible[i] := TRUE;
+					brsstrcpy(ADR(tmpStr1), ADR('<text class="cText" fill="red" font-size="35" font-family="Helvetica, Arial, sans-serif" x="10" y="'));
+					brsitoa(i*40, ADR(tmpStr2));
+					brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+					brsstrcat(ADR(tmpStr1), ADR('"> '));
+					CrosshairDetailsText(ADR(tmpStr1),  ADR('Result:'), UDINT_TO_REAL(gMT.Result[i])/1000);
+					brsstrcat(ADR(tmpStr1), ADR('</text>'));
+				END_IF	
+				visCrossHair.SvgContent[i] := tmpStr1;
+				// for saving svg file
+				brsstrcpy(ADR(gVisionImage.DAT.Crosshair[i].Text), ADR(tmpStr1));
+			END_IF	
+		END_FOR
+	END_IF
 END_PROGRAM

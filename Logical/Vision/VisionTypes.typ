@@ -6,18 +6,12 @@ TYPE
 		CMD : typVisionCommand;
 		CFG : typVisionConfig;
 		DAT : typVisionData;
-		FCT : typVisionFunction;
-		DIA : typVisionDiag;
-		OPT : typVisionOptics;
 		HW : typVisionHW;
 	END_STRUCT;
 	typVisionCommand : 	STRUCT 
 		ImageTrigger : BOOL;
 		ImageTriggerReset : BOOL;
 		AutoSetupStartStop : BOOL;
-		VaSwitchApplication : BOOL;
-		SaveDiagData : BOOL;
-		ReadCameraInfo : BOOL;
 	END_STRUCT;
 	typVisionConfig : 	STRUCT 
 		VisionFunction : enumVisionFunction;
@@ -26,14 +20,6 @@ TYPE
 		ComponentLink : ViComponentType;
 		ResolutionWidth_X : UINT; (*Nr of sensor pixels in x direction (width). Is always bigger than height*)
 		ResolutionHeight_Y : UINT; (*Nr of sensor pixels in y direction (height). Is always smaller than width*)
-	END_STRUCT;
-	typVisionFunction : 	STRUCT 
-		ApplicationName : STRING[40];
-		Status : DINT;
-	END_STRUCT;
-	typVisionDiag : 	STRUCT 
-		DiagName : STRING[80] := 'diag.tgz';
-		Status : DINT;
 	END_STRUCT;
 	typVisionData : 	STRUCT 
 		Enable : BOOL := FALSE;
@@ -71,31 +57,6 @@ TYPE
 		Status : UDINT;
 		StatusText : STRING[30];
 		Active : BOOL;
-	END_STRUCT;
-	typVisionOptics : 	STRUCT 
-		OrderNr : STRING[40];
-		Binning : BOOL;
-		ResolutionX : INT;
-		ResolutionY : INT;
-		Lens : USINT;
-		Sensor : USINT;
-		ValidDistance : BOOL;
-		Distance_mm : LREAL;
-		DistanceLens_mm : LREAL;
-		HyperFocalDistance_mm : LREAL;
-		PixelSize_um : LREAL;
-		PixelSizeBinning_um : LREAL;
-		FocalLength_mm : LREAL;
-		MinObjectDist_mm : LREAL;
-		MaxObjectDist_mm : LREAL;
-		Aperture : LREAL;
-		CircleOfConfusion_mm : LREAL;
-		DepthOfFieldNearPos_mm : LREAL;
-		DepthOfFieldFarPos_mm : LREAL;
-		DepthOfField_mm : LREAL;
-		FieldOfView_X_mm : LREAL;
-		FieldOfView_Y_mm : LREAL;
-		Resolution_mmPerPx : LREAL;
 	END_STRUCT;
 	typVisionHW : 	STRUCT 
 		Connected : BOOL;

@@ -75,7 +75,6 @@
         <Variable Name="visSelectedFlashSegment" RecursiveEnable="1" />
         <Variable Name="visTableNo" />
         <Variable Name="visVaListRefresh" />
-        <Variable Name="visVisionApplicationList" />
         <Variable Name="Blob" RecursiveEnable="1">
           <Variable Name="ModelNumber" RecursiveEnable="1" />
           <Variable Name="Clipped" RecursiveEnable="1" />
@@ -124,7 +123,6 @@
         <Variable Name="visSensorEnableCommand" />
         <Variable Name="visSensorFlashColor" />
         <Variable Name="visEnableLightBarValues" />
-        <Variable Name="visAutoArchiv" />
         <Variable Name="Pixel" RecursiveEnable="1">
           <Variable Name="ModelNumber" RecursiveEnable="1" />
           <Variable Name="NumPixels" RecursiveEnable="1" />
@@ -140,6 +138,11 @@
         </Variable>
         <Variable Name="visSelectedCodeType" />
         <Variable Name="visSelectedParameterMode" />
+        <Variable Name="visCrossHair" RecursiveEnable="2">
+          <Variable Name="SvgTransformation" RecursiveEnable="2" />
+          <Variable Name="SvgContent" RecursiveEnable="2" />
+          <Variable Name="SvgVisible" RecursiveEnable="2" />
+        </Variable>
       </Task>
     </Module>
   </DefaultView>
