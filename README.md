@@ -20,28 +20,33 @@ This vision sample contains a lot of functions that are not included in the mapp
 - Easy-to-use mappView visualization
 - All IO data points of the camera are connected to the visualization
 - Image archive to save the images
-    - different formats available (jpg, bmp, svg)
-    - selection of quality levels for compressed images (jpg)
-    - Embedded crosshairs in the image (svg)
-- Rotation of the image on the main page
-- fast repetitive mode (5 fps/200ms)
 - Simultaneous use of several cameras in one visualization
 - Use of the nettime function together with axes
 - Integration of Lightbar and Backlight
-- Recipe management for the used parameters
 
 <a name="Requirements"></a>
 ## Requirements (current used versions)
 Should also work with newer and some older versions
 * Automation Studio 4.12
-* mapp 5.24
-* Automation Runtime C4.90
+* mapp 5.26
+* Automation Runtime I4.93
 
 Recommended task class is #8 with a 10ms cycle time. For the nettime and axis tasks use #1
 
 <a name="Revision-History"></a>
 ## Revision History
 You can find details in the project in "revision.txt"
+
+#### Version 5.26 
+- Update to mappVision 4.26 
+- Changed image request to official function block 
+- Removed recipe management 
+- Removed color detection 
+- Removed optic details 
+- Removed VC4 support 
+- Removed TCP proxy task 
+- Removed function to load VA applications 
+- Removed function to download images
 
 #### Version 5.24
 - Update to AS 4.12
