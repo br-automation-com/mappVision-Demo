@@ -83,6 +83,10 @@ PROGRAM _CYCLIC
 					brsstrcat(ADR(FileNamePict), ADR('/'));
 					brsstrcat(ADR(FileNamePict), ADR(gVisionImage.DAT.ImageSelected));
 					gVisionImage.DAT.Status := 65535;
+					
+					FileDelete_0.enable := FALSE;
+					FileDelete_0();
+					
 					Step := VISTEP_DELETE_IMAGE;
 				ELSE 
 					gVisionImage.CMD.DeleteImage := FALSE;
@@ -91,14 +95,13 @@ PROGRAM _CYCLIC
 				// -----------------------------------------------------------------------------------------------------------
 				// Save image from camera
 			ELSIF gVisionImage.CMD.GetImage THEN
-				FileNamePict := gVisionImage.CFG.DirName;
-				brsstrcat(ADR(FileNamePict), ADR('/last_image.bmp'));
-
 				ViBaseGetImage_0.Execute := FALSE;
 				ViBaseGetImage_0();
+				httpEncodeBase64_0.enable := FALSE;
+				httpEncodeBase64_0();				
 
 				gVisionImage.DAT.Status		:= 65535;
-				Step						:= VISTEP_DELETE_IMAGE;
+				Step						:= VISTEP_REQUEST1;
 				
 				// -----------------------------------------------------------------------------------------------------------
 				// Save image from camera
@@ -151,11 +154,20 @@ PROGRAM _CYCLIC
 				brsstrcat(ADR(FileNameSvg), ADR('.svg'));
 				brsstrcat(ADR(FileNamePict), ADR('.bmp'));
 
+				// Reset all function blocks
+				FileCreate_0.enable := FALSE;
+				FileCreate_0();
+				FileWrite_0.enable := FALSE;
+				FileWrite_0();
+				FileClose_0.enable := FALSE;
+				FileClose_0();
 				ViBaseGetImage_0.Execute := FALSE;
 				ViBaseGetImage_0();
+				httpEncodeBase64_0.enable := FALSE;
+				httpEncodeBase64_0();				
 
 				gVisionImage.DAT.Status		:= 65535;
-				Step						:= VISTEP_DELETE_IMAGE;
+				Step						:= VISTEP_REQUEST1;
 				
 			// -----------------------------------------------------------------------------------------------------------
 			// Reset error
@@ -306,9 +318,7 @@ PROGRAM _CYCLIC
 			FileDelete_0.pName 		:= ADR(FileNamePict);
 			FileDelete_0();
 			
-			IF (FileDelete_0.status = 0 OR FileDelete_0.status = fiERR_FILE_NOT_FOUND) AND (gVisionImage.CMD.GetImage OR gVisionImage.CMD.SaveImage) THEN
-				Step := VISTEP_REQUEST;
-			ELSIF FileDelete_0.status = 0 THEN
+			IF FileDelete_0.status = 0 THEN
 				Step := VISTEP_READ_DIR1;
 			ELSIF FileDelete_0.status <> 65535 THEN
 				gVisionImage.DAT.Status := FileDelete_0.status;
@@ -318,23 +328,79 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Get new image
 		// -----------------------------------------------------------------------------------------------------------
-		VISTEP_REQUEST:
+		VISTEP_REQUEST1:
 			ViBaseGetImage_0.MpLink := ADR(gVisionImage.CFG.ComponentLink);
-			ViBaseGetImage_0.Execute := TRUE;
-			ViBaseGetImage_0.Type :=  viBASE_IMAGE_TYPE_BMP;
-			//ViBaseGetImage_0.QualityLevel := ;
+			ViBaseGetImage_0.Execute := TRUE;			
+			IF gVisionImage.CMD.GetImage THEN
+				ViBaseGetImage_0.Type :=  viBASE_IMAGE_TYPE_JPG;
+				ViBaseGetImage_0.QualityLevel := IMAGE_QUALITY;
+			ELSE
+				ViBaseGetImage_0.Type :=  gVisionImage.CFG.ImageType;
+				ViBaseGetImage_0.QualityLevel := gVisionImage.CFG.ImageQuality;
+			END_IF
 			ViBaseGetImage_0.Timeout := T#10s;
-			ViBaseGetImage_0.Buffer := MemUpload;
-			ViBaseGetImage_0.BufferSize := MemUploadSize;
+			ViBaseGetImage_0.Buffer := ADR(bufferImage);
+			ViBaseGetImage_0.BufferSize := SIZEOF(bufferImage);;
 			ViBaseGetImage_0();
 			
 			IF ViBaseGetImage_0.Busy = 0 THEN
 				IF ViBaseGetImage_0.StatusID = 0 THEN
-					Step := VISTEP_SAVE1;
+					Step := VISTEP_REQUEST2;
 				ELSIF ViBaseGetImage_0.StatusID <> ERR_FUB_BUSY THEN
 					gVisionImage.DAT.Status := ViBaseGetImage_0.StatusID;
 					Step := VISTEP_ERR;
 				END_IF
+			END_IF
+			
+		// -----------------------------------------------------------------------------------------------------------
+		// Convert to base64
+		// -----------------------------------------------------------------------------------------------------------
+		VISTEP_REQUEST2:
+			httpEncodeBase64_0.enable    := TRUE;
+			httpEncodeBase64_0.pSrc      := ADR(bufferImage);
+			httpEncodeBase64_0.srcLen    := ViBaseGetImage_0.BufferLen;
+			httpEncodeBase64_0.pDest     := ADR(bufferImage64);
+			httpEncodeBase64_0.destSize  := SIZEOF(bufferImage64);
+			httpEncodeBase64_0();
+			
+			IF httpEncodeBase64_0.status = 0 THEN
+				Step := VISTEP_REQUEST3;
+			ELSIF httpEncodeBase64_0.status <> ERR_FUB_BUSY THEN
+				gVisionImage.DAT.Status := httpEncodeBase64_0.status;
+				Step := VISTEP_ERR;
+			END_IF
+			
+		// -----------------------------------------------------------------------------------------------------------
+		// Create SVG data
+		// -----------------------------------------------------------------------------------------------------------
+		VISTEP_REQUEST3:
+			brsitoa(gVisionImage.CFG.ResolutionWidth, ADR(tmpStr1));
+			brsitoa(gVisionImage.CFG.ResolutionHeight, ADR(tmpStr2));
+			
+			brsmemset(ADR(visCameraImage), 0, SIZEOF(visCameraImage));
+			visCameraImage := '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><image width="';
+			brsstrcat(ADR(visCameraImage), ADR(tmpStr1));
+			brsstrcat(ADR(visCameraImage), ADR('" height="'));
+			brsstrcat(ADR(visCameraImage), ADR(tmpStr2));
+			brsstrcat(ADR(visCameraImage), ADR('" xlink:href="data:image/'));
+			IF ViBaseGetImage_0.Type = viBASE_IMAGE_TYPE_JPG THEN
+				brsstrcat(ADR(visCameraImage), ADR('jpeg'));
+			ELSIF ViBaseGetImage_0.Type = viBASE_IMAGE_TYPE_BMP THEN
+				brsstrcat(ADR(visCameraImage), ADR('bmp'));
+			END_IF
+			brsstrcat(ADR(visCameraImage), ADR(';base64,'));
+			brsstrcat(ADR(visCameraImage), ADR(bufferImage64));
+			
+			// Finish up when command was get image
+			IF gVisionImage.CMD.GetImage THEN
+				brsstrcat(ADR(visCameraImage), ADR('"/></svg>'));
+				gVisionImage.CMD.GetImage := FALSE;
+				Step := VISTEP_WAIT;
+			// Save image to PLC
+			ELSE
+				bufferAdr := ADR(bufferImage);
+				bufferLen := ViBaseGetImage_0.BufferLen;				
+				Step := VISTEP_SAVE1;
 			END_IF
 			
 		// -----------------------------------------------------------------------------------------------------------
@@ -356,9 +422,8 @@ PROGRAM _CYCLIC
 		VISTEP_SAVE2:
 			FileWrite_0.enable		:= TRUE;
 			FileWrite_0.ident		:= FileCreate_0.ident;
-			FileWrite_0.offset		:= 0;
-			FileWrite_0.pSrc		:= MemUpload;
-			FileWrite_0.len			:= ViBaseGetImage_0.BufferLen;
+			FileWrite_0.pSrc		:= bufferAdr;
+			FileWrite_0.len			:= bufferLen;
 			FileWrite_0();
 			
 			IF FileWrite_0.status = 0 THEN
@@ -373,83 +438,16 @@ PROGRAM _CYCLIC
 			FileClose_0.ident		:= FileCreate_0.ident;
 			FileClose_0();
 
-			IF FileClose_0.status = 0 THEN
-				image_idx := image_idx + 1;
-				brsitoa(image_idx, ADR(tmpStr1));
-				gVisionImage.DAT.ImageLast := '/FileDevice:';
-				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR(gVisionImage.CFG.FileDevice));
-				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR('/'));
-				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR(gVisionImage.CFG.DirName));
-				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR('/last_image.bmp?'));
-				brsstrcat(ADR(gVisionImage.DAT.ImageLast), ADR(tmpStr1));
-				
-				IF gVisionImage.CMD.SaveImage THEN
-					Step := VISTEP_SVG_PREPARE;
+			IF FileClose_0.status = 0 THEN			
+				IF bufferAdr = ADR(bufferImage) THEN
+					Step := VISTEP_SVG_CROSSH;
 				ELSE
-					gVisionImage.CMD.GetImage := FALSE;
-					Step := VISTEP_WAIT;					
+					Step := VISTEP_READ_DIR1;					
 				END_IF
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
 				gVisionImage.DAT.Status := FileClose_0.status;
 				Step := VISTEP_ERR;
 			END_IF
-			
-		// -----------------------------------------------------------------------------------------------------------
-		// Create SVG file with image and crosshair/texts
-		// -----------------------------------------------------------------------------------------------------------
-		VISTEP_SVG_PREPARE:
-			b64neededOutput	:= (ViBaseGetImage_0.BufferLen/3)*4 + BOOL_TO_UDINT(UDINT_TO_BOOL(ViBaseGetImage_0.BufferLen MOD 3))*4;
-			IF b64neededOutput < MemSvgSize - MemSvgHeaderSize - MemSvgCrosshSize THEN
-				brsmemset(MemSvg, 0, MemSvgSize); // clear complete memory
-				// Prepare the svg header up to the base64 picture data
-				brsstrcpy(MemSvg, ADR(SvgTexts.Header1));
-				brsstrcat(MemSvg, ADR(FileNameSvg));
-				brsstrcat(MemSvg, ADR(SvgTexts.Header2));
-				brsstrcat(MemSvg, ADR('bmp'));
-				brsstrcat(MemSvg, ADR(SvgTexts.Header3));
-				Step := VISTEP_SVG_BAS64_1;
-			ELSE
-				gVisionImage.DAT.Status := ERR_BUFF_TOO_SMALL;
-				Step := VISTEP_ERR;
-			END_IF
-			
-		// -----------------------------------------------------------------------------------------------------------
-		// Code picture data with Base64 to embedd the picture into a svg file
-		VISTEP_SVG_BAS64_1: 
-			b64AdrInBuffer	:= MemUpload; 						// Original bmp or jpg picture
-			b64AdrOutBuffer	:= MemSvg + brsstrlen(MemSvg); 		// Write to the end of the actual svg data
-			b64actposIN		:= b64AdrInBuffer;
-			b64actposOUT	:= b64AdrOutBuffer;
-			Step := VISTEP_SVG_BAS64_2;
-			
-		VISTEP_SVG_BAS64_2:
-			FOR i := 0 TO CONVERT_CYCLES DO
-				IF b64actposIN < b64AdrInBuffer + ViBaseGetImage_0.BufferLen THEN
-					b64blockLen := UDINT_TO_USINT(LIMIT(0, b64AdrInBuffer + ViBaseGetImage_0.BufferLen - b64actposIN, 3));
-					b64in ACCESS b64actposIN;
-					b64out ACCESS b64actposOUT;
-					b64out[0]		:= b64key[ SHR(b64in[0],2) ];
-					IF b64blockLen = 1 THEN
-						b64out[1]	:= b64key[ SHL((b64in[0] AND 16#03),4)];
-						b64out[2]	:= 61;
-						b64out[3]	:= 61;
-					ELSIF b64blockLen = 2 THEN
-						b64out[1]	:= b64key[ SHL((b64in[0] AND 16#03),4) OR SHR(b64in[1],4) ];
-						b64out[2]	:= b64key[ SHL((b64in[1] AND 16#0F),2)];
-						b64out[3]	:= 61;
-					ELSIF b64blockLen = 3 THEN
-						b64out[1]	:= b64key[ SHL((b64in[0] AND 16#03),4) OR SHR(b64in[1],4) ];
-						b64out[2]	:= b64key[ SHL((b64in[1] AND 16#0F),2) OR SHR(b64in[2],6) ];
-						b64out[3]	:= b64key[ b64in[2] AND 16#3F ];
-					END_IF
-					b64actposIN		:= b64actposIN + 3;
-					b64actposOUT	:= b64actposOUT + 4;
-				ELSE
-					Step := VISTEP_SVG_CROSSH;
-					EXIT;
-				END_IF
-				
-			END_FOR
 			
 		// -----------------------------------------------------------------------------------------------------------
 		// Prepare the second part after base64 picture data
@@ -481,59 +479,39 @@ PROGRAM _CYCLIC
 			Step := VISTEP_SVG_CONCAT;
 			
 		VISTEP_SVG_CONCAT:
-			brsstrcat(MemSvg, MemSvgCrossh);
-			Step := VISTEP_SVG_SAVE1;
-			
-		// -----------------------------------------------------------------------------------------------------------
-		// Save SVG file
-		// -----------------------------------------------------------------------------------------------------------
-		VISTEP_SVG_SAVE1:
-			FileCreate_0.enable		:= TRUE;
-			FileCreate_0.pDevice	:= ADR(gVisionImage.CFG.FileDevice);
-			FileCreate_0.pFile		:= ADR(FileNameSvg);
+			// Reset all function blocks
+			FileCreate_0.enable := FALSE;
 			FileCreate_0();
-			
-			IF FileCreate_0.status = 0 THEN
-				Step := VISTEP_SVG_SAVE2;
-			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.DAT.Status := FileCreate_0.status;
-				Step := VISTEP_ERR;
-			END_IF
-			
-		VISTEP_SVG_SAVE2:
-			FileWrite_0.enable		:= TRUE;
-			FileWrite_0.ident		:= FileCreate_0.ident;
-			FileWrite_0.offset		:= 0;
-			FileWrite_0.pSrc		:= MemSvg;
-			FileWrite_0.len			:= brsstrlen(MemSvg);
+			FileWrite_0.enable := FALSE;
 			FileWrite_0();
-			
-			IF FileWrite_0.status = 0 THEN
-				Step := VISTEP_SVG_SAVE3;
-			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.DAT.Status := FileWrite_0.status;
-				Step := VISTEP_ERR;
-			END_IF
-			
-		VISTEP_SVG_SAVE3:
-			FileClose_0.enable		:= TRUE;
-			FileClose_0.ident		:= FileCreate_0.ident;
+			FileClose_0.enable := FALSE;
 			FileClose_0();
 			
-			IF FileClose_0.status = 0 THEN
-				Step := VISTEP_READ_DIR1;
-			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
-				gVisionImage.DAT.Status := FileClose_0.status;
-				Step := VISTEP_ERR;
-			END_IF
+			brsstrcat(ADR(bufferImage64), MemSvgCrossh);
+			bufferAdr := ADR(bufferImage64);
+			bufferLen := brsstrlen(ADR(bufferImage64));
+			FileNamePict := FileNameSvg;
 			
-		// -----------------------------------------------------------------------------------------------------------
-		// Error state
-		// -----------------------------------------------------------------------------------------------------------
+			Step := VISTEP_SAVE1;
+			
+			// -----------------------------------------------------------------------------------------------------------
+			// Error state
+			// -----------------------------------------------------------------------------------------------------------
 		VISTEP_ERR:
-			// Reset all commands and wait or ack
-			ViBaseGetImage_0.Execute	:= TRUE;
+			// Reset all function blocks
+			FileCreate_0.enable := FALSE;
+			FileCreate_0();
+			FileWrite_0.enable := FALSE;
+			FileWrite_0();
+			FileClose_0.enable := FALSE;
+			FileClose_0();
+			FileDelete_0.enable := FALSE;
+			FileDelete_0();
+
+			ViBaseGetImage_0.Execute := FALSE;
 			ViBaseGetImage_0();
+			httpEncodeBase64_0.enable := FALSE;
+			httpEncodeBase64_0();	
 					
 			IF gVisionImage.CMD.ResetError THEN
 				gVisionImage.CMD.ResetError := FALSE;

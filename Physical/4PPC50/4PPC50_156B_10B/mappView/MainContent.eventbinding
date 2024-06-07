@@ -21,20 +21,5 @@
         </Action>
       </EventHandler>
     </EventBinding>
-    <EventBinding id="EventBinding_5">
-      <Source xsi:type="opcUa.Event" refId="::AsGlobalPV:gVisionImage.CMD.GetImage" event="ValueChanged" />
-      <Operand datatype="BOOL" name="RepetetiveMode">
-        <ReadTarget xsi:type="widgets.brease.ToggleButton.ReadAction" contentRefId="contentMain" widgetRefId="btnRepetitiveMode">
-          <Method xsi:type="widgets.brease.ToggleButton.Action.GetValueBool" />
-        </ReadTarget>
-      </Operand>
-      <EventHandler condition="newValue = TRUE AND RepetetiveMode = FALSE">
-        <Action>
-          <Target xsi:type="widgets.brease.Image.Action" contentRefId="contentMain" widgetRefId="imgCamera">
-            <Method xsi:type="widgets.brease.Image.Action.SetImage" image="Media/VisionEye.png" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
   </Bindings>
 </EventBindingSet>

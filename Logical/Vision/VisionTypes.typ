@@ -18,8 +18,8 @@ TYPE
 		PowerlinkNode : USINT;
 		DataStructure : UDINT;
 		ComponentLink : ViComponentType;
-		ResolutionWidth_X : UINT; (*Nr of sensor pixels in x direction (width). Is always bigger than height*)
-		ResolutionHeight_Y : UINT; (*Nr of sensor pixels in y direction (height). Is always smaller than width*)
+		ResolutionWidth : UINT; (*Nr of sensor pixels in x direction (width). Is always bigger than height*)
+		ResolutionHeight : UINT; (*Nr of sensor pixels in y direction (height). Is always smaller than width*)
 	END_STRUCT;
 	typVisionData : 	STRUCT 
 		Enable : BOOL := FALSE;
@@ -185,13 +185,16 @@ TYPE
 		FileDevice : STRING[80];
 		FileName : STRING[80];
 		DirName : STRING[80];
+		ImageQuality : USINT;
+		ImageType : ViBaseImageTypeEnum;
 		ComponentLink : ViComponentType;
+		ResolutionWidth : UINT; (*Nr of sensor pixels in x direction (width). Is always bigger than height*)
+		ResolutionHeight : UINT; (*Nr of sensor pixels in y direction (height). Is always smaller than width*)
 	END_STRUCT;
 	typVisionImageData : 	STRUCT 
 		ImagesList : ARRAY[0..19]OF STRING[80];
 		ImageSelected : STRING[80];
 		ImagePath : STRING[80];
-		ImageLast : STRING[80];
 		Crosshair : ARRAY[1..MAX_NUM_RESULTS]OF typVisionImageDataCrosshair;
 		Status : DINT;
 	END_STRUCT;

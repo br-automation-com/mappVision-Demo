@@ -18,7 +18,7 @@
     <Object Type="Package">mappCockpit</Object>
   </Objects>
   <Configuration ModuleId="X20CP0483">
-    <AutomationRuntime Version="B4.93" />
+    <AutomationRuntime Version="J4.93" />
     <Build GccVersion="6.3.0" PostBuildStep="Powershell.exe -executionpolicy remotesigned -File &quot;$(WIN32_AS_PROJECT_PATH)/Logical/Vision/RouteInfo_Tool.ps1&quot; -ProjectPath &quot;$(WIN32_AS_PROJECT_PATH)&quot; -ProjectCfg &quot;$(AS_CONFIGURATION)&quot;" PreBuildStep="" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Vc FirmwareVersion="V4.72.6" />

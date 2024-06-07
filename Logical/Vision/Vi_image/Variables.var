@@ -1,6 +1,7 @@
 VAR
 	Step : VIStep_Enum;
 	tmpStr1 : STRING[80];
+	tmpStr2 : STRING[80];
 	idx : UINT;
 END_VAR
 (**)
@@ -22,7 +23,6 @@ VAR
 	date_newest : DATE_AND_TIME;
 	date_oldest : DATE_AND_TIME;
 	cmdDeleteOldest : BOOL;
-	image_idx : UINT;
 	DTGetTime_0 : DTGetTime;
 	DTStructure_0 : DTStructure;
 	TON_VisPause : TON;
@@ -46,8 +46,19 @@ VAR
 	MemSvgCrosshSize : UDINT;
 END_VAR
 (**)
+VAR CONSTANT
+	MAX_ENCODED_SIZE : UDINT := 7000000;
+	MAX_IMAGE_SIZE : UDINT := 6500000;
+END_VAR
 VAR
+	IMAGE_QUALITY : USINT := 50;
 	ViBaseGetImage_0 : ViBaseGetImage;
+	httpEncodeBase64_0 : httpEncodeBase64;
+	bufferImage : ARRAY[0..MAX_IMAGE_SIZE] OF USINT;
+	bufferAdr : UDINT;
+	bufferLen : UDINT;
+	bufferImage64 : ARRAY[0..MAX_IMAGE_SIZE] OF USINT;
+	visCameraImage : STRING[MAX_ENCODED_SIZE];
 END_VAR
 (**)
 (*Bas64*)

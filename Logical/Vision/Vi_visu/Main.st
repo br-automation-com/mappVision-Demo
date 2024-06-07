@@ -164,6 +164,8 @@ PROGRAM _CYCLIC
 	// Get image from camera
 	// -----------------------------------------------------------------------------------------------------------
 	IF EDGENEG(VisionSensor.CMD.ImageTrigger) THEN
+		gVisionImage.CFG.ResolutionWidth := gVisionSensor[gSelectedSensor].CFG.ResolutionWidth;
+		gVisionImage.CFG.ResolutionHeight := gVisionSensor[gSelectedSensor].CFG.ResolutionHeight;
 		gVisionImage.CFG.ComponentLink := gVisionSensor[gSelectedSensor].CFG.ComponentLink;
 		gVisionImage.CMD.GetImage := TRUE;
 	END_IF
@@ -187,7 +189,7 @@ PROGRAM _CYCLIC
 	ELSE
 		RepetitiveModeTimer.IN := TRUE;
 	END_IF
-	RepetitiveModeTimer(PT := T#3000ms);
+	RepetitiveModeTimer(PT := T#1000ms);
 
 	// -----------------------------------------------------------------------------------------------------------
 	// Select first available light after reboot

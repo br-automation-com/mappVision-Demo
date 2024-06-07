@@ -46,7 +46,9 @@
         <Variable Name="gSelectedSensor" />
       </GlobalVariables>
       <Task Name="Vi_main" />
-      <Task Name="Vi_image" />
+      <Task Name="Vi_image">
+        <Variable Name="visCameraImage" />
+      </Task>
       <Task Name="Vi_nettime">
         <Variable Name="PowerlinkCycle_us" />
         <Variable Name="TriggerPosDelta" />
