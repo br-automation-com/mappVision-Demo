@@ -74,7 +74,6 @@
         <Variable Name="visSelectedCodeTypeDetected" />
         <Variable Name="visSelectedFlashSegment" RecursiveEnable="1" />
         <Variable Name="visTableNo" />
-        <Variable Name="visVaListRefresh" />
         <Variable Name="Blob" RecursiveEnable="1">
           <Variable Name="ModelNumber" RecursiveEnable="1" />
           <Variable Name="Clipped" RecursiveEnable="1" />

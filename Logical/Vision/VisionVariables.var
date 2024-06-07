@@ -23,7 +23,7 @@ VAR CONSTANT
 	MAX_NUM_RESULTS : UINT := 10; (*Maximum number of results*)
 	MAX_NUM_PRODUCTS : UINT := 8; (*Maximum number of products for color detection*)
 	MAX_IDX_VA_LIST : UINT := 19; (*Maximum number of entrys in the Vision Application list*)
-	CONVERT_CYCLES : UINT := 1000;
+	CONVERT_CYCLES : UINT := 2000;
 	DEVICE_NAME : STRING[40] := 'VisionFileDevice'; (*File device where the images and recipes are stored*)
 	NETTIME_DEFAULT_DELAY : UDINT := 30000; (*This delay is used when software trigger is used and nettime is enabled*)
 	NETTIME_ENABLE : BOOL := FALSE; (*Enable nettime code, this generates the nettime when using manual triggers*)

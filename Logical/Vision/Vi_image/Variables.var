@@ -67,6 +67,5 @@ END_VAR
 (**)
 (*Constants*)
 VAR
-	ERR_NO_IMAGE : UINT := 50000;
 	ERR_BUFF_TOO_SMALL : UINT := 50001;
 END_VAR

@@ -180,7 +180,6 @@ TYPE
 		SaveImage : BOOL;
 		Refresh : BOOL;
 		ResetError : BOOL;
-		RefreshCrosshair : BOOL;
 	END_STRUCT;
 	typVisionImageConfig : 	STRUCT 
 		FileDevice : STRING[80];
@@ -195,7 +194,6 @@ TYPE
 		ImageLast : STRING[80];
 		Crosshair : ARRAY[1..MAX_NUM_RESULTS]OF typVisionImageDataCrosshair;
 		Status : DINT;
-		VisionDisabled : BOOL;
 	END_STRUCT;
 	typVisionImageDataCrosshair : 	STRUCT 
 		CrosshairX : REAL;

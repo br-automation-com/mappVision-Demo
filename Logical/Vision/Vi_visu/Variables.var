@@ -68,14 +68,7 @@ VAR
 	tmpYI : REAL;
 	tmpXI : REAL;
 	DetailsNoOld : USINT;
-END_VAR
-VAR
 	visTableNo : ARRAY[1..MAX_NUM_RESULTS] OF USINT := [1,2,3,4,5,6,7,8,9,10];
 	i : UINT;
 	visCameraStatus : STRING[30];
-END_VAR
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Error numbers*)
-VAR
-	visVaListRefresh : BOOL;
 END_VAR

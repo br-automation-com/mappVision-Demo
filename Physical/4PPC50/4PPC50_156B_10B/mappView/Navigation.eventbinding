@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Navigation_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
 		<EventBinding id="EventBinding_1">
@@ -49,24 +49,6 @@
 						<Method xsi:type="clientSystem.Action.LoadContentInArea" contentId="contentPixel" pageId="pageResult" areaId="AreaContent" />
 					</Target>
 				</Action>
-			</EventHandler>
-			<EventHandler condition="contentId=&quot;contentRecipe&quot;">
-				<Sequence>
-					<Step order="0">
-						<Action>
-							<Target xsi:type="opcUa.NodeAction" refId="::Vi_visu:visVaListRefresh">
-								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-							</Target>
-						</Action>
-					</Step>
-					<Step order="1">
-						<Action>
-							<Target xsi:type="opcUa.NodeAction" refId="::Recipe_01:RECIPE.CMD.Init">
-								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-							</Target>
-						</Action>
-					</Step>
-				</Sequence>
 			</EventHandler>
 		</EventBinding>
 		<EventBinding id="EventBinding_2">

@@ -267,8 +267,8 @@ PROGRAM _CYCLIC
 					END_IF
 				END_IF
 				idx := idx + 1;
-			ELSIF DirRead_0.status = fiERR_NO_MORE_ENTRIES THEN // Finish up when last entry was reached
-				IF cmdDeleteOldest THEN // Delete oldest file if there are too many entries
+			ELSIF DirRead_0.status = fiERR_NO_MORE_ENTRIES THEN
+				IF cmdDeleteOldest THEN
 					brsstrcpy(ADR(tmpStr1), ADR(gVisionImage.CFG.DirName));
 					brsstrcat(ADR(tmpStr1), ADR('/'));
 					brsstrcat(ADR(tmpStr1), ADR(file_oldest));

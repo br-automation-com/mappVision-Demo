@@ -17,8 +17,6 @@ END_VAR
 VAR CONSTANT
 	HexTab : STRING[16] := '0123456789ABCDEF';
 END_VAR
-(*-----------------------------------------------------------------------------------------------------------------------------------------*)
-(*Error numbers*)
 VAR
 	TON_DelayAfterAutoSetup : ARRAY[1..MAX_NUM_CAMS] OF TON;
 END_VAR
