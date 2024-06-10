@@ -37,8 +37,12 @@ Recommended task class is #8 with a 10ms cycle time. For the nettime and axis ta
 ## Revision History
 You can find details in the project in "revision.txt"
 
-#### Version 5.26 
-- Update to mappVision 4.26 
+#### Version 5.26.2 (10.06.2024)
+- Optimized image download
+- General code optimizations
+
+#### Version 5.26.1
+- Update to mappVision mapp 5.26
 - Changed image request to official function block 
 - Removed recipe management 
 - Removed color detection 
@@ -47,43 +51,3 @@ You can find details in the project in "revision.txt"
 - Removed TCP proxy task 
 - Removed function to load VA applications 
 - Removed function to download images
-
-#### Version 5.24
-- Update to AS 4.12
-- Update to mapp 4.24
-- Fixed image download node number is not correct
-- Removed old routing files
-- Changed image update interval to 500ms
-
-#### Version 5.15
-- Update recipe managment to V1.0
-- Updated constant for code reader parameter "ParameterMode"
-- Fix ViColor
-- Make it possible to change connections
-- Updated to official 5.15 versions and official lightbar upgrade
-- Vi_Optics added
-
-#### Version 2.3
- - Added RouteInfo_Tool.ps1
- - Added color detection first version
- - Split up main task into main and visu, integrated light task into main and visu
- - Added functionality to rotate the image on the main page
- - Click on the image on the main page toggles now the text position (crosshair-details) from left to right
- - CodeReader and OCR Text will be shown on the main page and saved in SVG file
- - Added proxy task to eliminate routing batch file
- - Added Pixel Counter hardware and code
- 
-#### Version 2.2
-- Added new functionality to show images in every size on the web viewer widget on the main page
-- Improved repetitive mode
-- SVG files save now all information. It is possible to click on the crosshairs to show the details
-- Added diagnostic data creation
-- Updated recipe management
-- Changed public arrays start index to 0 to avoid issues with C task
-- Added a VC4 visualization
-- Added functionality to show the image on the VC4 visualization (documentation still missing)
-- After boot the first found light will be selected
-- Some additional improvements, code optimizations & bug fixes
-
-#### Version 2.1
-- First public release
