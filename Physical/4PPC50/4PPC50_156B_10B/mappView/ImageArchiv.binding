@@ -17,5 +17,14 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.DAT.ImagesList" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="lstImageArchiv" attribute="dataProvider" />
 		</Binding>
-	</Bindings>
+	
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.ImageQuality" attribute="node" />
+<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="numFocus" attribute="node" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionImage.CFG.ImageType" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentImageArchiv" widgetRefId="ddbImageType" attribute="selectedIndex" />
+</Binding>
+</Bindings>
 </BindingsSet>

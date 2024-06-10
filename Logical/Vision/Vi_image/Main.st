@@ -8,39 +8,10 @@ PROGRAM _INIT
 
 	gVisionImage.CMD.CreateDir	:= TRUE;
 	gVisionImage.DAT.ImageSelected	:= '';
+	
+	brsmemset(ADR(bufferImage), 0, SIZEOF(bufferImage));
+	brsmemset(ADR(visCameraImage), 0, SIZEOF(visCameraImage));
 
-	brsmemcpy(ADR(b64key), ADR('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'), SIZEOF(b64key));
-	
-	// Create memory for uploading and transforming image
-	// Size: a 5MP picture in bmp format has less than 6.000.000 Bytes. A SVG with bas64 conversion maximum the 4/3 size.
-	MemUploadSize		:= 6000000;
-	MemSvgHeaderSize	:= 2000;
-	MemSvgCrosshSize	:= 18000;
-	MemSvgSize			:= MemUploadSize * 4 / 3 + MemSvgHeaderSize + MemSvgCrosshSize;
-	AsMemPartCreate_0.enable	:= TRUE;
-	AsMemPartCreate_0.len		:= MemUploadSize + MemSvgSize + MemSvgCrosshSize + 1000; // 1000 Bytes for AsMemPart stuff/header
-	AsMemPartCreate_0();
-	
-	IF AsMemPartCreate_0.status = 0 THEN
-		AsMemPartAllocClear_0.enable	:= TRUE;
-		AsMemPartAllocClear_0.ident		:= AsMemPartCreate_0.ident;
-		AsMemPartAllocClear_0.len		:= MemUploadSize;
-		AsMemPartAllocClear_0();
-		IF AsMemPartAllocClear_0.status = 0 THEN
-			MemUpload := AsMemPartAllocClear_0.mem;
-		END_IF
-		AsMemPartAllocClear_0.len		:= MemSvgSize;
-		AsMemPartAllocClear_0();
-		IF AsMemPartAllocClear_0.status = 0 THEN
-			MemSvg := AsMemPartAllocClear_0.mem;
-		END_IF
-		AsMemPartAllocClear_0.len		:= MemSvgCrosshSize;
-		AsMemPartAllocClear_0();
-		IF AsMemPartAllocClear_0.status = 0 THEN
-			MemSvgCrossh := AsMemPartAllocClear_0.mem;
-		END_IF
-	END_IF
-	ACTION_InitTexts;
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
@@ -63,13 +34,13 @@ PROGRAM _CYCLIC
 				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_CREATE_DIR;
 				
-			// -----------------------------------------------------------------------------------------------------------
-			// Delete image directory
+				// -----------------------------------------------------------------------------------------------------------
+				// Delete image directory
 			ELSIF gVisionImage.CMD.DeleteDir THEN
 				gVisionImage.DAT.Status := 65535;
 				Step := VISTEP_DELETE_DIR;
 				
-			// -----------------------------------------------------------------------------------------------------------
+				// -----------------------------------------------------------------------------------------------------------
 			// Refresh image data from file device
 			ELSIF gVisionImage.CMD.Refresh THEN 
 				gVisionImage.DAT.Status := 65535;
@@ -114,45 +85,49 @@ PROGRAM _CYCLIC
 					DT_TO_DTStructure(DTGetTime_0.DT1, ADR(DTStructure_0));
 					FileNamePict := gVisionImage.CFG.DirName;
 					brsstrcat(ADR(FileNamePict), ADR('/'));
-					tmpStr1 := UINT_TO_STRING(DTStructure_0.year);
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					tmpStr := UINT_TO_STRING(DTStructure_0.year);
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr));
 					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.month);
+					tmpStr := USINT_TO_STRING(DTStructure_0.month);
 					IF(DTStructure_0.month < 10) THEN
 						brsstrcat(ADR(FileNamePict), ADR('0'));
 					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr));
 					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.day);
+					tmpStr := USINT_TO_STRING(DTStructure_0.day);
 					IF(DTStructure_0.day < 10) THEN
 						brsstrcat(ADR(FileNamePict), ADR('0'));
 					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr));
 					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.hour);
+					tmpStr := USINT_TO_STRING(DTStructure_0.hour);
 					IF(DTStructure_0.hour < 10) THEN
 						brsstrcat(ADR(FileNamePict), ADR('0'));
 					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr));
 					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.minute);
+					tmpStr := USINT_TO_STRING(DTStructure_0.minute);
 					IF(DTStructure_0.minute < 10) THEN
 						brsstrcat(ADR(FileNamePict), ADR('0'));
 					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr));
 					brsstrcat(ADR(FileNamePict), ADR('_'));
-					tmpStr1 := USINT_TO_STRING(DTStructure_0.second);
+					tmpStr := USINT_TO_STRING(DTStructure_0.second);
 					IF(DTStructure_0.second < 10) THEN
 						brsstrcat(ADR(FileNamePict), ADR('0'));
 					END_IF
-					brsstrcat(ADR(FileNamePict), ADR(tmpStr1));
+					brsstrcat(ADR(FileNamePict), ADR(tmpStr));
 				ELSE
 					FileNamePict := gVisionImage.CFG.FileName;
 				END_IF
 
 				brsstrcpy(ADR(FileNameSvg), ADR(FileNamePict));
 				brsstrcat(ADR(FileNameSvg), ADR('.svg'));
-				brsstrcat(ADR(FileNamePict), ADR('.bmp'));
+				IF gVisionImage.CFG.ImageType = viBASE_IMAGE_TYPE_JPG THEN
+					brsstrcat(ADR(FileNamePict), ADR('.jpg'));
+				ELSE
+					brsstrcat(ADR(FileNamePict), ADR('.bmp'));
+				END_IF
 
 				// Reset all function blocks
 				FileCreate_0.enable := FALSE;
@@ -179,13 +154,16 @@ PROGRAM _CYCLIC
 			// Load new image into window
 			IF visImageSelectedOld <> gVisionImage.DAT.ImageSelected AND dir_entry > 0 THEN
 				brsmemset(ADR(gVisionImage.DAT.ImagePath), 0, SIZEOF(gVisionImage.DAT.ImagePath));
-				brsmemset(ADR(tmpStr1), 0, SIZEOF(tmpStr1));
+				brsmemset(ADR(tmpStr), 0, SIZEOF(tmpStr));
 				gVisionImage.DAT.ImagePath := '/FileDevice:';
 				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR(gVisionImage.CFG.FileDevice));
 				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR('/'));
 				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR(gVisionImage.CFG.DirName));
 				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR('/'));
 				brsstrcat(ADR(gVisionImage.DAT.ImagePath), ADR(gVisionImage.DAT.ImageSelected));
+			END_IF
+			IF dir_entry = 0 THEN
+				brsmemset(ADR(gVisionImage.DAT.ImagePath), 0, SIZEOF(gVisionImage.DAT.ImagePath));
 			END_IF
 			visImageSelectedOld := gVisionImage.DAT.ImageSelected;
 
@@ -281,9 +259,9 @@ PROGRAM _CYCLIC
 				idx := idx + 1;
 			ELSIF DirRead_0.status = fiERR_NO_MORE_ENTRIES THEN
 				IF cmdDeleteOldest THEN
-					brsstrcpy(ADR(tmpStr1), ADR(gVisionImage.CFG.DirName));
-					brsstrcat(ADR(tmpStr1), ADR('/'));
-					brsstrcat(ADR(tmpStr1), ADR(file_oldest));
+					brsstrcpy(ADR(tmpStr), ADR(gVisionImage.CFG.DirName));
+					brsstrcat(ADR(tmpStr), ADR('/'));
+					brsstrcat(ADR(tmpStr), ADR(file_oldest));
 					Step := VISTEP_DELETE_IMAGE;
 				ELSE
 					TON_VisPause(IN := FALSE);
@@ -373,16 +351,9 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Create SVG data
 		// -----------------------------------------------------------------------------------------------------------
-		VISTEP_REQUEST3:
-			brsitoa(gVisionImage.CFG.ResolutionWidth, ADR(tmpStr1));
-			brsitoa(gVisionImage.CFG.ResolutionHeight, ADR(tmpStr2));
-			
+		VISTEP_REQUEST3:		
 			brsmemset(ADR(visCameraImage), 0, SIZEOF(visCameraImage));
-			visCameraImage := '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><image width="';
-			brsstrcat(ADR(visCameraImage), ADR(tmpStr1));
-			brsstrcat(ADR(visCameraImage), ADR('" height="'));
-			brsstrcat(ADR(visCameraImage), ADR(tmpStr2));
-			brsstrcat(ADR(visCameraImage), ADR('" xlink:href="data:image/'));
+			visCameraImage := '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1280px" height="1024px" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="nonzero" clip-rule="evenodd" viewBox="0 0 1280 1024" xmlns:xlink="http://www.w3.org/1999/xlink"><image xlink:href="data:image/';
 			IF ViBaseGetImage_0.Type = viBASE_IMAGE_TYPE_JPG THEN
 				brsstrcat(ADR(visCameraImage), ADR('jpeg'));
 			ELSIF ViBaseGetImage_0.Type = viBASE_IMAGE_TYPE_BMP THEN
@@ -390,10 +361,11 @@ PROGRAM _CYCLIC
 			END_IF
 			brsstrcat(ADR(visCameraImage), ADR(';base64,'));
 			brsstrcat(ADR(visCameraImage), ADR(bufferImage64));
+			brsstrcat(ADR(visCameraImage), ADR('"/>'));
 			
 			// Finish up when command was get image
 			IF gVisionImage.CMD.GetImage THEN
-				brsstrcat(ADR(visCameraImage), ADR('"/></svg>'));
+				brsstrcat(ADR(visCameraImage), ADR('</svg>'));
 				gVisionImage.CMD.GetImage := FALSE;
 				Step := VISTEP_WAIT;
 			// Save image to PLC
@@ -452,30 +424,23 @@ PROGRAM _CYCLIC
 		// -----------------------------------------------------------------------------------------------------------
 		// Prepare the second part after base64 picture data
 		VISTEP_SVG_CROSSH: 
-			brsmemset(MemSvgCrossh, 0, MemSvgCrosshSize);
-			brsstrcat(MemSvgCrossh, ADR(SvgTexts.Header4));
-			brsstrcat(MemSvgCrossh, ADR(SvgTexts.CrosshairDefinition));
-			FOR i := 1 TO MAX_NUM_RESULTS DO
-				IF gVisionImage.DAT.Crosshair[i].CrosshairX <> 0 AND gVisionImage.DAT.Crosshair[i].CrosshairY <> 0 THEN
-					brsstrcat(MemSvgCrossh, ADR(SvgTexts.Crosshair1));
-					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[i].CrosshairX), ADR(tmpStr1));
-					brsstrcat(MemSvgCrossh, ADR(tmpStr1));
-					brsstrcat(MemSvgCrossh, ADR(','));
-					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[i].CrosshairY), ADR(tmpStr1));
-					brsstrcat(MemSvgCrossh, ADR(tmpStr1));
-					brsstrcat(MemSvgCrossh, ADR(') rotate('));
-					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[i].CrosshairRotate), ADR(tmpStr1));
-					brsstrcat(MemSvgCrossh, ADR(tmpStr1));
-					brsstrcat(MemSvgCrossh, ADR(',40,40)"/>'));
+			brsmemset(ADR(bufferCrosshair), 0, SIZEOF(bufferCrosshair));
+			brsstrcat(ADR(bufferCrosshair), ADR('<defs><symbol id="Fadenkreuz"><desc>Ein einfaches Fadenkreuz</desc><g id="Crosshair"><path style="stroke:#ff0000;stroke-width:5" d="M 40,1 V 30 Z" id="up" /><path style="stroke:#ff0000;stroke-width:5" d="M 40,50 V 80 Z" id="down" /><path style="stroke:#ff0000;stroke-width:5" d="M 30,40 H 0 Z" id="left" /><path style="stroke:#ff0000;stroke-width:5" d="M 80,40 H 50 Z" id="right" /><circle style="fill:none;stroke:#ff0000;stroke-width:5" cx="40" cy="40" r="25" id="circle6" /></g></symbol></defs>'));
+
+			FOR idx := 1 TO MAX_NUM_RESULTS DO
+				IF (gVisionImage.DAT.Crosshair[idx].CrosshairX <> 0 AND gVisionImage.DAT.Crosshair[idx].CrosshairY <> 0) AND (brsstrlen(ADR(bufferCrosshair)) < SIZEOF(bufferCrosshair) - 100) THEN
+					brsstrcat(ADR(bufferCrosshair), ADR('<use xlink:href="#Fadenkreuz" transform="translate('));
+					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[idx].CrosshairX), ADR(tmpStr));
+					brsstrcat(ADR(bufferCrosshair), ADR(tmpStr));
+					brsstrcat(ADR(bufferCrosshair), ADR(','));
+					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[idx].CrosshairY), ADR(tmpStr));
+					brsstrcat(ADR(bufferCrosshair), ADR(tmpStr));
+					brsstrcat(ADR(bufferCrosshair), ADR(') rotate('));
+					brsitoa(REAL_TO_DINT(gVisionImage.DAT.Crosshair[idx].CrosshairRotate), ADR(tmpStr));
+					brsstrcat(ADR(bufferCrosshair), ADR(tmpStr));
+					brsstrcat(ADR(bufferCrosshair), ADR(',40,40)"/>'));
 				END_IF
 			END_FOR
-			FOR i := 1 TO MAX_NUM_RESULTS DO
-				IF gVisionImage.DAT.Crosshair[i].CrosshairX <> 0 AND gVisionImage.DAT.Crosshair[i].CrosshairY <> 0 THEN
-					brsstrcat(MemSvgCrossh, ADR('$r$n$t'));
-					brsstrcat(MemSvgCrossh, ADR(gVisionImage.DAT.Crosshair[i].Text));
-				END_IF
-			END_FOR
-			brsstrcat(MemSvgCrossh, ADR(SvgTexts.SvgClose));
 			Step := VISTEP_SVG_CONCAT;
 			
 		VISTEP_SVG_CONCAT:
@@ -487,9 +452,10 @@ PROGRAM _CYCLIC
 			FileClose_0.enable := FALSE;
 			FileClose_0();
 			
-			brsstrcat(ADR(bufferImage64), MemSvgCrossh);
-			bufferAdr := ADR(bufferImage64);
-			bufferLen := brsstrlen(ADR(bufferImage64));
+			brsstrcat(ADR(visCameraImage), ADR(bufferCrosshair));
+			brsstrcat(ADR(visCameraImage), ADR('</svg>'));
+			bufferAdr := ADR(visCameraImage);
+			bufferLen := brsstrlen(ADR(visCameraImage));
 			FileNamePict := FileNameSvg;
 			
 			Step := VISTEP_SAVE1;

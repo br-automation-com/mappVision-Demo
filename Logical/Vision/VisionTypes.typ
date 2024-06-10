@@ -185,11 +185,9 @@ TYPE
 		FileDevice : STRING[80];
 		FileName : STRING[80];
 		DirName : STRING[80];
-		ImageQuality : USINT;
+		ImageQuality : USINT := 50;
 		ImageType : ViBaseImageTypeEnum;
 		ComponentLink : ViComponentType;
-		ResolutionWidth : UINT; (*Nr of sensor pixels in x direction (width). Is always bigger than height*)
-		ResolutionHeight : UINT; (*Nr of sensor pixels in y direction (height). Is always smaller than width*)
 	END_STRUCT;
 	typVisionImageData : 	STRUCT 
 		ImagesList : ARRAY[0..19]OF STRING[80];

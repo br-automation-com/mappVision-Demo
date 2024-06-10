@@ -1,11 +1,19 @@
+VAR CONSTANT
+	MAX_ENCODED_SIZE : UDINT := 7000000;
+	MAX_IMAGE_SIZE : UDINT := 6500000;
+	MAX_CROSSHAIR_SIZE : UDINT := 10000;
+END_VAR
+VAR
+	IMAGE_QUALITY : USINT := 50;
+END_VAR
+(**)
 VAR
 	Step : VIStep_Enum;
-	tmpStr1 : STRING[80];
-	tmpStr2 : STRING[80];
+	tmpStr : STRING[80];
 	idx : UINT;
 END_VAR
 (**)
-(*Filehandling*)
+(*File handling*)
 VAR
 	DirCreate_0 : DirCreate;
 	DirDeleteEx_0 : DirDeleteEx;
@@ -28,55 +36,16 @@ VAR
 	TON_VisPause : TON;
 END_VAR
 (**)
-(*mappView connected variables*)
+(*Image handling*)
 VAR
-	visImageSelectedOld : STRING[80];
-END_VAR
-(**)
-(*Create memory*)
-VAR
-	AsMemPartCreate_0 : AsMemPartCreate;
-	AsMemPartAllocClear_0 : AsMemPartAllocClear;
-	MemUpload : UDINT;
-	MemUploadSize : UDINT;
-	MemSvg : UDINT;
-	MemSvgSize : UDINT;
-	MemSvgHeaderSize : UDINT;
-	MemSvgCrossh : UDINT;
-	MemSvgCrosshSize : UDINT;
-END_VAR
-(**)
-VAR CONSTANT
-	MAX_ENCODED_SIZE : UDINT := 7000000;
-	MAX_IMAGE_SIZE : UDINT := 6500000;
-END_VAR
-VAR
-	IMAGE_QUALITY : USINT := 50;
 	ViBaseGetImage_0 : ViBaseGetImage;
 	httpEncodeBase64_0 : httpEncodeBase64;
 	bufferImage : ARRAY[0..MAX_IMAGE_SIZE] OF USINT;
 	bufferAdr : UDINT;
 	bufferLen : UDINT;
 	bufferImage64 : ARRAY[0..MAX_IMAGE_SIZE] OF USINT;
+	bufferCrosshair : ARRAY[0..MAX_CROSSHAIR_SIZE] OF USINT;
+	visImageSelectedOld : STRING[80];
 	visCameraImage : STRING[MAX_ENCODED_SIZE];
 END_VAR
 (**)
-(*Bas64*)
-VAR
-	b64AdrInBuffer : UDINT;
-	b64AdrOutBuffer : UDINT;
-	b64neededOutput : UDINT;
-	b64key : ARRAY[0..63] OF USINT;
-	b64actposIN : UDINT;
-	b64actposOUT : UDINT;
-	b64in : REFERENCE TO ARRAY[0..2] OF USINT;
-	b64out : REFERENCE TO ARRAY[0..3] OF USINT;
-	b64blockLen : USINT;
-	SvgTexts : SvgTexts_Type;
-	i : UDINT;
-END_VAR
-(**)
-(*Constants*)
-VAR
-	ERR_BUFF_TOO_SMALL : UINT := 50001;
-END_VAR

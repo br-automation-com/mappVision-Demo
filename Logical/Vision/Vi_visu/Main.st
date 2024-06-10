@@ -35,6 +35,10 @@ PROGRAM _INIT
 	visTableNo;
 	InitialSearchSensor := TRUE;
 	InitialSearchLight := TRUE;
+	brsmemset(ADR(visCrossHair.SvgContent), 0, SIZEOF(visCrossHair.SvgContent));
+	brsmemset(ADR(visCrossHair.SvgTransformation), 0, SIZEOF(visCrossHair.SvgTransformation));
+	brsmemset(ADR(visCrossHair.SvgVisible), 0, SIZEOF(visCrossHair.SvgVisible));
+
 END_PROGRAM
 
 // -----------------------------------------------------------------------------------------------------------
@@ -164,8 +168,6 @@ PROGRAM _CYCLIC
 	// Get image from camera
 	// -----------------------------------------------------------------------------------------------------------
 	IF EDGENEG(VisionSensor.CMD.ImageTrigger) THEN
-		gVisionImage.CFG.ResolutionWidth := gVisionSensor[gSelectedSensor].CFG.ResolutionWidth;
-		gVisionImage.CFG.ResolutionHeight := gVisionSensor[gSelectedSensor].CFG.ResolutionHeight;
 		gVisionImage.CFG.ComponentLink := gVisionSensor[gSelectedSensor].CFG.ComponentLink;
 		gVisionImage.CMD.GetImage := TRUE;
 	END_IF
@@ -274,7 +276,7 @@ PROGRAM _CYCLIC
 			visCrossHair.DetailsNo := 1;
 		END_IF
 		IF visCrossHair.PixelRatio = 0 THEN
-			RETURN;
+			visCrossHair.PixelRatio := 100;
 		END_IF
 		DetailsNoOld := visCrossHair.DetailsNo;
 		brsmemset(ADR(gVisionImage.DAT.Crosshair), 0, SIZEOF(gVisionImage.DAT.Crosshair));
